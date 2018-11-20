@@ -1,25 +1,64 @@
 page-onboarding {
-  & > ion-content {
-    background-image: $onboarding-welcome-bg, $onboarding-background-image;
-    background-position: top center;
-    background-size: contain;
-    background-repeat: no-repeat;
+  &>ion-content {
+    // background-image: $onboarding-welcome-bg, $onboarding-background-image;
+    background: rgba(248, 250, 251, 1);
+
+    .card {
+      position: relative;
+      padding: 42px 15px;
+      overflow: visible;
+
+      h1 {
+        font-size: 32px;
+        font-family: Roboto-Medium;
+        font-weight: 500;
+        color: rgba(87, 167, 86, 1);
+        line-height: 36px;
+        margin-bottom: 14px;
+      }
+
+      p {
+        font-size: 15px;
+        font-family: Roboto-Regular;
+        font-weight: 400;
+        color: rgba(110, 118, 125, 1);
+        line-height: 18px;
+      }
+    }
+
+    .card:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 80%;
+      left: 10%;
+      bottom: -10px;
+      height: 40px;
+      background: linear-gradient(270deg, rgba(11, 54, 74, 1) 0%, rgba(11, 77, 74, 1) 100%);
+      opacity: 0.2;
+      filter: blur(10px);
+    }
   }
+
   .logo-tagline {
     margin-top: calc(5vh + 5vw);
     text-align: center;
+
     img {
       max-width: 150px;
       margin: 5rem 0;
     }
+
     p {
       line-height: 1.6;
       font-size: 1.6rem;
     }
   }
+
   .primary-color {
     color: $onboarding-primary-color;
   }
+
   .comment-color {
     color: $onboarding-comment-color;
   }
