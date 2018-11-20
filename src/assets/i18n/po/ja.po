@@ -2523,3 +2523,8 @@ msgstr ""
 msgid "{{wallet.m}}-of-{{wallet.n}}"
 msgstr "{{wallet.m}}-of-{{wallet.n}}"
 
+msgid "Create"
+msgstr "作成"
+
+msgid "Recover"
+msgstr "回復"

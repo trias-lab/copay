@@ -2519,3 +2519,8 @@ msgstr ""
 msgid "{{wallet.m}}-of-{{wallet.n}}"
 msgstr "{{wallet.m}}-van-{{wallet.n}}"
 
+msgid "Create"
+msgstr "Create"
+
+msgid "Recover"
+msgstr "Recover"

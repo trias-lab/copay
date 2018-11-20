@@ -2519,3 +2519,8 @@ msgstr "{{wallet.credentials.m}}- der -{{wallet.credentials.n}}"
 msgid "{{wallet.m}}-of-{{wallet.n}}"
 msgstr "{{wallet.m}}-von-{{wallet.n}}"
 
+msgid "Create"
+msgstr "Erstellen"
+
+msgid "Recover"
+msgstr "Genesen"

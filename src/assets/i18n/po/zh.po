@@ -2519,3 +2519,9 @@ msgstr "{{wallet.credentials.m}}的{{wallet.credentials.n}}"
 msgid "{{wallet.m}}-of-{{wallet.n}}"
 msgstr "{{wallet.m}}{{wallet.n}}"
 
+msgid "Create"
+msgstr "创建"
+
+msgid "Recover"
+msgstr "恢复"
+
