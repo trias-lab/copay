@@ -1,14 +1,30 @@
 <ion-content no-bounce>
-  <div class="logo-tagline">
-    <img src='assets/img/app/logo-negative.svg' />
-    <p padding [ngClass]="{'primary-color': !isCopay, 'comment-color': isCopay}" translate>Take control of your money, get started with bitcoin.</p>
-  </div>
-  <div class="bottom-absolute">
-    <button ion-button class="button-standard e2e-get-started" (click)="getStarted()">
-      {{'Get started' | translate}}
-    </button>
-    <button ion-button clear class="button-standard primary-color" (click)="restoreFromBackup()">
-      {{'Restore from backup' | translate}}
-    </button>
-  </div>
+  <ion-card (click)="getStarted()">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+          <img src="assets/img/app/onboarding/create-wallet.jpg" />
+        </ion-col>
+        <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
+          <h1>{{'Create' | translate}}</h1>
+          <p> Set up a new wallet if you never used this app before.</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card (click)="restoreFromBackup()">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+          <img src="assets/img/app/onboarding/create-wallet.jpg" />
+        </ion-col>
+        <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
+          <h1>{{'Recover' | translate}}</h1>
+          <p> Recover your account data and balance.</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
 </ion-content>
