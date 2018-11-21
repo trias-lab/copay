@@ -7,6 +7,11 @@ page-onboarding {
       position: relative;
       padding: 42px 15px;
       overflow: visible;
+      margin-bottom: 30px;
+
+      &:first-child {
+        margin-top: 56px;
+      }
 
       h1 {
         font-size: 32px;
@@ -36,28 +41,14 @@ page-onboarding {
       opacity: 0.2;
       filter: blur(10px);
     }
-  }
 
-  .logo-tagline {
-    margin-top: calc(5vh + 5vw);
-    text-align: center;
-
-    img {
-      max-width: 150px;
-      margin: 5rem 0;
+    .hint {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(163, 173, 180, 1);
+      line-height: 18px;
+      padding: 0 15px;
+      text-align: center;
     }
-
-    p {
-      line-height: 1.6;
-      font-size: 1.6rem;
-    }
-  }
-
-  .primary-color {
-    color: $onboarding-primary-color;
-  }
-
-  .comment-color {
-    color: $onboarding-comment-color;
   }
 }
