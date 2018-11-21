@@ -22,27 +22,23 @@ $app-direction: ltr;
 @import 'modals';
 @import 'zero-state';
 // Colors
-$colors: (
-  primary: $color-primary,
-  secondary: $color-secondary,
-  warning: #fdb455,
-  danger: #df5264,
-  success: #01d1a2,
-  info: #5476eb,
-  light: #f4f4f4,
-  blank: #fff,
-  dark: #424242,
-  grey: #667,
-  light-grey: #9b9bab,
-  error: #e56c7b
-);
+$colors: (primary: $color-primary,
+secondary: $color-secondary,
+warning: #fdb455,
+danger: #df5264,
+success: #01d1a2,
+info: #5476eb,
+light: #f4f4f4,
+blank: #fff,
+dark: #424242,
+grey: #667,
+light-grey: #9b9bab,
+error: #e56c7b);
 
-$background-colors: (
-  warning: #fff7f2,
-  danger: #fff2f4,
-  success: #bfffeb,
-  info: #eff1f8
-);
+$background-colors: (warning: #fff7f2,
+danger: #fff2f4,
+success: #bfffeb,
+info: #eff1f8);
 // App background color
 $background-color: #f8f8f9;
 // Item list background color
@@ -63,11 +59,9 @@ $toolbar-md-title-text-color: color($colors, light);
 // Onboarding colors
 $onboarding-gradient-top-color: $toolbar-background;
 $onboarding-gradient-bottom-color: $color-secondary-dark;
-$onboarding-background-image: linear-gradient(
-  to bottom,
-  $onboarding-gradient-top-color 0%,
-  $onboarding-gradient-bottom-color 100%
-);
+$onboarding-background-image: linear-gradient(to bottom,
+$onboarding-gradient-top-color 0%,
+$onboarding-gradient-bottom-color 100%);
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
@@ -128,6 +122,7 @@ $button-md-text-transform: none;
 // --------------------------------------------------
 @import 'roboto';
 @import 'noto-sans';
+
 @font-face {
   font-family: 'AmazonEmberDisplay';
   src: url(../assets/fonts/AmazonEmberDisplay_Rg.ttf) format('truetype');
@@ -143,10 +138,10 @@ $button-md-text-transform: none;
 }
 
 // Removes border-bottom
-.md ion-list > .item:last-child,
-.md ion-list > .item-wrapper:last-child .item,
-.ios ion-list > .item:last-child,
-.ios ion-list > .item-wrapper:last-child .item {
+.md ion-list>.item:last-child,
+.md ion-list>.item-wrapper:last-child .item,
+.ios ion-list>.item:last-child,
+.ios ion-list>.item-wrapper:last-child .item {
   border-bottom: none;
 }
 
@@ -157,27 +152,33 @@ ion-footer {
     padding-top: 0rem !important;
     padding-right: 0rem !important;
     padding-left: 0rem !important;
+
     .toolbar-background {
       background: none;
       border: 0px;
     }
   }
+
   .toolbar-md {
     padding-bottom: 0rem !important;
   }
+
   .toolbar-ios {
     margin-bottom: -4px;
   }
 }
 
 .toolbar {
+
   // Titles centered on all headers for material design
   &.toolbar-md {
     //material design only
     position: relative;
+
     .back-button {
       z-index: 999;
     }
+
     .title-md {
       //material design only
       position: absolute;
@@ -185,13 +186,16 @@ ion-footer {
       top: 0;
       height: 100%;
       width: 100%;
-      text-align: center;
+      text-align: left;
+
       .toolbar-title-md {
         padding: 0px 50px 0px 50px;
         font-weight: 400;
+        color: #142A3F;
       }
     }
   }
+
   &.toolbar-ios {
     .back-button {
       padding: 15px;
