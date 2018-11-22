@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
+
+// pages
+import { CollectEmailPage } from './collect-email/collect-email';
 
 // providers
 import { AppProvider } from '../../providers/app/app';
 
 import { ActionSheetProvider } from '../../providers/action-sheet/action-sheet';
+import { OnGoingProcessProvider } from '../../providers/on-going-process/on-going-process';
+import { PersistenceProvider } from '../../providers/persistence/persistence';
 import { PlatformProvider } from '../../providers/platform/platform';
+import { PopupProvider } from '../../providers/popup/popup';
+import { ProfileProvider } from '../../providers/profile/profile';
 import { ImportWalletPage } from '../add/import-wallet/import-wallet';
-import { TourPage } from './tour/tour';
+// import { TourPage } from './tour/tour';
 
 @Component({
   selector: 'page-onboarding',
@@ -19,12 +27,19 @@ export class OnboardingPage {
   public appName: string;
   public isElectron: boolean;
 
+  private retryCount: number = 0;
+
   constructor(
     public navCtrl: NavController,
     private logger: Logger,
+    private translate: TranslateService,
     private app: AppProvider,
     private platformProvider: PlatformProvider,
-    private actionSheetProvider: ActionSheetProvider
+    private actionSheetProvider: ActionSheetProvider,
+    private profileProvider: ProfileProvider,
+    private onGoingProcessProvider: OnGoingProcessProvider,
+    private persistenceProvider: PersistenceProvider,
+    private popupProvider: PopupProvider
   ) {
     this.appName = this.app.info.nameCase;
     this.isCopay = this.appName == 'Copay' ? true : false;
@@ -39,8 +54,37 @@ export class OnboardingPage {
     if (this.isElectron) this.openElectronInfoModal();
   }
 
-  public getStarted(): void {
-    this.navCtrl.push(TourPage);
+  // public getStarted(): void {
+  //   this.navCtrl.push(TourPage);
+  // }
+
+  public createDefaultWallet(): void {
+    this.onGoingProcessProvider.set('creatingWallet');
+    this.profileProvider
+      .createDefaultWallet()
+      .then(wallet => {
+        this.onGoingProcessProvider.clear();
+        this.persistenceProvider.setOnboardingCompleted();
+        this.navCtrl.push(CollectEmailPage, { walletId: wallet.id });
+      })
+      .catch(err => {
+        setTimeout(() => {
+          this.logger.warn(
+            'Retrying to create default wallet.....:' + ++this.retryCount
+          );
+          if (this.retryCount > 3) {
+            this.onGoingProcessProvider.clear();
+            let title = this.translate.instant('Cannot create wallet');
+            let okText = this.translate.instant('Retry');
+            this.popupProvider.ionicAlert(title, err, okText).then(() => {
+              this.retryCount = 0;
+              this.createDefaultWallet();
+            });
+          } else {
+            this.createDefaultWallet();
+          }
+        }, 2000);
+      });
   }
 
   public restoreFromBackup(): void {
