@@ -359,6 +359,16 @@ ion-icon {
     width: 3rem !important;
   }
 
+  &[class*='tab-home'] {
+    mask-image: url(../assets/img/tab-icons/ico-home.svg);
+    width: 3rem !important;
+  }
+
+  &[class*='tab-settings'] {
+    mask-image: url(../assets/img/tab-icons/ico-settings.svg);
+    width: 3rem !important;
+  }
+
   &[class*='tab-send'] {
     mask-image: url(../assets/img/tab-icons/ico-send.svg);
   }
@@ -460,6 +470,43 @@ ion-alert .alert-message {
   .fullscreen-tab {
     .scroll-content {
       margin-bottom: 0 !important;
+    }
+  }
+}
+
+.hide-tabbar-tab {
+
+  .tab-button {
+    color: #CBD0D3 !important;
+
+    .tab-button-icon {
+      // color: #CBD0D3 !important;
+      // background-color: transparent !important;
+    }
+
+    &:nth-child(2) {
+      display: none !important;
+    }
+
+    &[aria-selected="true"] {
+      .tab-button-text {
+        color: #1abb9b !important;
+      }
+
+      ion-icon {
+        &[class*='tab-home'] {
+          width: 3rem !important;
+          color: #1abb9b;
+          background-color: linear-gradient(#2DA41E, #DEF0BF);
+        }
+
+        &[class*='tab-settings'] {
+          width: 3rem !important;
+          color: #1abb9b;
+          background-color: linear-gradient(#2DA41E, #DEF0BF);
+        }
+      }
+
     }
   }
 }
