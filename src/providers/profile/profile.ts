@@ -578,7 +578,8 @@ export class ProfileProvider {
 
       // Encrypt wallet
       this.onGoingProcessProvider.pause();
-      this.askToEncryptWallet(wallet).then(() => {
+      // A password is requied to encrypt the wallet
+      this.encrypt(wallet).then(() => {
         this.onGoingProcessProvider.resume();
 
         const walletId: string = wallet.credentials.walletId;
