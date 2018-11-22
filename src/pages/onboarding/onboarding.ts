@@ -4,20 +4,21 @@ import { NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
 // pages
+import { ImportWalletPage } from '../add/import-wallet/import-wallet';
 import { CollectEmailPage } from './collect-email/collect-email';
 
 // providers
-import { AppProvider } from '../../providers/app/app';
-
 import { ActionSheetProvider } from '../../providers/action-sheet/action-sheet';
+import { AppProvider } from '../../providers/app/app';
+import { LanguageProvider } from '../../providers/language/language';
 import { OnGoingProcessProvider } from '../../providers/on-going-process/on-going-process';
 import { PersistenceProvider } from '../../providers/persistence/persistence';
 import { PlatformProvider } from '../../providers/platform/platform';
 import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
-import { ImportWalletPage } from '../add/import-wallet/import-wallet';
-// import { TourPage } from './tour/tour';
+import { LanguagePage } from '../settings/language/language';
 
+// import { TourPage } from './tour/tour';
 @Component({
   selector: 'page-onboarding',
   templateUrl: 'onboarding.html'
@@ -26,6 +27,7 @@ export class OnboardingPage {
   public isCopay: boolean;
   public appName: string;
   public isElectron: boolean;
+  public currentLanguageName: string;
 
   private retryCount: number = 0;
 
@@ -39,7 +41,8 @@ export class OnboardingPage {
     private profileProvider: ProfileProvider,
     private onGoingProcessProvider: OnGoingProcessProvider,
     private persistenceProvider: PersistenceProvider,
-    private popupProvider: PopupProvider
+    private popupProvider: PopupProvider,
+    private language: LanguageProvider
   ) {
     this.appName = this.app.info.nameCase;
     this.isCopay = this.appName == 'Copay' ? true : false;
@@ -50,6 +53,11 @@ export class OnboardingPage {
     this.logger.info('Loaded: OnboardingPage');
   }
 
+  ionViewWillEnter() {
+    this.currentLanguageName = this.language.getName(
+      this.language.getCurrent()
+    );
+  }
   ionViewDidEnter() {
     if (this.isElectron) this.openElectronInfoModal();
   }
@@ -99,5 +107,9 @@ export class OnboardingPage {
       }
     );
     infoSheet.present();
+  }
+
+  public openLanguagePage(): void {
+    this.navCtrl.push(LanguagePage);
   }
 }

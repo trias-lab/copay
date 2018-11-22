@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/tabbar/img_tabbar_assets_i@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#83C90E" offset="0%"></stop>
+            <stop stop-color="#229F20" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="icon/tabbar/img_tabbar_assets_i" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="url(#linearGradient-1)" x="1" y="8" width="20" height="13" rx="2"></rect>
+        <rect id="Rectangle" fill="#FFFFFF" x="1" y="16" width="20" height="2"></rect>
+        <g id="Group" transform="translate(12.341582, 9.866708) rotate(-345.000000) translate(-12.341582, -9.866708) translate(2.341582, 3.366708)">
+            <rect id="Rectangle" stroke="#FFFFFF" fill="#CBD0D3" x="-0.5" y="-0.5" width="21" height="14" rx="2"></rect>
+            <rect id="Rectangle" fill="#FFFFFF" x="0" y="3" width="20" height="1"></rect>
+        </g>
+        <g id="Group" transform="translate(0.000000, 8.000000)">
+            <rect id="Rectangle" stroke="#FFFFFF" fill="#CBD0D3" x="-0.5" y="-0.5" width="22" height="15" rx="2"></rect>
+            <rect id="Rectangle" fill="#FFFFFF" x="0" y="7" width="21" height="3"></rect>
+        </g>
+    </g>
+</svg>

@@ -7,7 +7,7 @@
         </ion-col>
         <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
           <h1>{{'Create' | translate}}</h1>
-          <p> Set up a new wallet if you never used this app before.</p>
+          <p> Set up a new wallet if you never used this app before.zs</p>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -30,5 +30,18 @@
   <p class="hint">
     You'll be able to import existing wallet after created or recovered HD wallet.
   </p>
+
+  <div class="changeLanguage">
+    <button ion-item block (click)="openLanguagePage()">
+
+      <ion-label>
+        <span translate>Language</span>
+      </ion-label>
+      <ion-note *ngIf="currentLanguageName" item-end>
+        {{ currentLanguageName }}
+      </ion-note>
+    </button>
+  </div>
+
 
 </ion-content>
