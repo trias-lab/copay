@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { NavController } from 'ionic-angular';
+import { ModalController, NavController} from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
 // pages
+import { PinModalPage } from '../../pages/pin/pin-modal/pin-modal';
 import { ImportWalletPage } from '../add/import-wallet/import-wallet';
-import { CollectEmailPage } from './collect-email/collect-email';
+import { BackupRequestPage } from '../onboarding/backup-request/backup-request';
+// import { CollectEmailPage } from './collect-email/collect-email';
 
 // providers
 import { ActionSheetProvider } from '../../providers/action-sheet/action-sheet';
@@ -42,7 +44,8 @@ export class OnboardingPage {
     private onGoingProcessProvider: OnGoingProcessProvider,
     private persistenceProvider: PersistenceProvider,
     private popupProvider: PopupProvider,
-    private language: LanguageProvider
+    private language: LanguageProvider,
+    private modalCtrl: ModalController,
   ) {
     this.appName = this.app.info.nameCase;
     this.isCopay = this.appName == 'Copay' ? true : false;
@@ -66,14 +69,41 @@ export class OnboardingPage {
   //   this.navCtrl.push(TourPage);
   // }
 
+  private openPinModal(action, wallet): void {
+    const modal = this.modalCtrl.create(
+      PinModalPage,
+      { action },
+      { cssClass: 'fullscreen-modal' }
+    );
+    modal.present();
+    modal.onDidDismiss(() => {
+      // the modal is dismissed after verifing the pin code
+      this.logger.info('---PIN setup finished');
+      this.persistenceProvider.setOnboardingCompleted();
+      // request to backup the mneminic after setup pin code
+      this.navCtrl.push(BackupRequestPage, { walletId: wallet.id });
+    });
+  }
+
+  private setUpPin(wallet): Promise<any> {
+    return new Promise((resolve) => {
+        this.openPinModal('initPin',wallet);
+        this.logger.info('---PIN setup started');
+        return resolve(wallet);
+    })
+  }
+
   public createDefaultWallet(): void {
     this.onGoingProcessProvider.set('creatingWallet');
     this.profileProvider
       .createDefaultWallet()
       .then(wallet => {
         this.onGoingProcessProvider.clear();
-        this.persistenceProvider.setOnboardingCompleted();
-        this.navCtrl.push(CollectEmailPage, { walletId: wallet.id });
+        this.setUpPin(wallet).then(() => {
+          // TODO: do something after pin setup
+          // no need to collect email
+          // this.navCtrl.push(CollectEmailPage, { walletId: wallet.id });
+        })
       })
       .catch(err => {
         setTimeout(() => {

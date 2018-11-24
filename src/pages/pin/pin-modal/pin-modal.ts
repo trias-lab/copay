@@ -64,6 +64,11 @@ export class PinModalPage {
 
     this.unregister = this.platform.registerBackButtonAction(() => {});
 
+    // action could be:
+    // 1. pinSetUp: used to set up a new Pin code. The Modal DO have a cancel button.
+    // 2. lockSetUp: used to check the pin code before changing the lock. The modal DO have a cancel button.
+    // 3. checkPin: use to check the pin code before entering the APP. The Modal DO NOT have a cancel button.
+    // 4. initPin: use to initialize a pin code. The Modal DO NOT have a cancel button.
     this.action = this.navParams.get('action');
 
     if (this.action === 'checkPin' || this.action === 'lockSetUp') {
@@ -112,8 +117,9 @@ export class PinModalPage {
       clearInterval(this.countDown);
     }
     this.unregister();
+    // pass cancelClicked to pinModal's onDidDismiss function
     if (this.action === 'lockSetUp') this.viewCtrl.dismiss(cancelClicked);
-    else this.navCtrl.pop({ animate: true });
+    else this.navCtrl.pop({ animate: true });  // navigate to the previous page in the stack.
   }
 
   public newEntry(value: string): void {
@@ -129,7 +135,7 @@ export class PinModalPage {
         this.checkIfCorrect();
       }, 100);
     }
-    if (this.action === 'pinSetUp') {
+    if (this.action === 'pinSetUp' || this.action === 'initPin') {
       setTimeout(() => {
         if (!this.confirmingPin) {
           this.confirmingPin = true;
