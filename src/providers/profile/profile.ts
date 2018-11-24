@@ -504,35 +504,35 @@ export class ProfileProvider {
     });
   }
 
-  private askToEncryptWallet(wallet): Promise<any> {
-    return new Promise(resolve => {
-      if (!wallet.canSign()) return resolve();
+  // private askToEncryptWallet(wallet): Promise<any> {
+  //   return new Promise(resolve => {
+  //     if (!wallet.canSign()) return resolve();
 
-      const title = this.translate.instant(
-        'Would you like to protect this wallet with a password?'
-      );
-      const message = this.translate.instant(
-        'Encryption can protect your funds if this device is stolen or compromised by malicious software.'
-      );
-      const okText = this.translate.instant('Yes');
-      const cancelText = this.translate.instant('No');
-      this.popupProvider
-        .ionicConfirm(title, message, okText, cancelText)
-        .then(res => {
-          if (!res) {
-            return this.showWarningNoEncrypt().then(res => {
-              if (res) return resolve();
-              return this.encrypt(wallet).then(() => {
-                return resolve();
-              });
-            });
-          }
-          return this.encrypt(wallet).then(() => {
-            return resolve();
-          });
-        });
-    });
-  }
+  //     const title = this.translate.instant(
+  //       'Would you like to protect this wallet with a password?'
+  //     );
+  //     const message = this.translate.instant(
+  //       'Encryption can protect your funds if this device is stolen or compromised by malicious software.'
+  //     );
+  //     const okText = this.translate.instant('Yes');
+  //     const cancelText = this.translate.instant('No');
+  //     this.popupProvider
+  //       .ionicConfirm(title, message, okText, cancelText)
+  //       .then(res => {
+  //         if (!res) {
+  //           return this.showWarningNoEncrypt().then(res => {
+  //             if (res) return resolve();
+  //             return this.encrypt(wallet).then(() => {
+  //               return resolve();
+  //             });
+  //           });
+  //         }
+  //         return this.encrypt(wallet).then(() => {
+  //           return resolve();
+  //         });
+  //       });
+  //   });
+  // }
 
   private encrypt(wallet): Promise<any> {
     return new Promise(resolve => {
