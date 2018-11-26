@@ -660,11 +660,13 @@ export class HomePage {
   public goToAddView(): void {
     this.navCtrl.push(AddPage);
   }
-
+  // 当点击BTC或者BCH钱包的具体某一项
   public goToWalletDetails(wallet): void {
     if (this.showReorderBtc || this.showReorderBch) return;
+    // 取消订阅finishIncomingDataMenuEvent和bwsEvent事件
     this.events.unsubscribe('finishIncomingDataMenuEvent');
     this.events.unsubscribe('bwsEvent');
+    // 提交一个event给 OpenWallet事件
     this.events.publish('OpenWallet', wallet);
   }
 
