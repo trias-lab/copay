@@ -20,7 +20,7 @@ import { Animate } from './../../../directives/animate/animate';
   `
 })
 export class PinDots {
-  public dotArray = new Array(4);
+  public dotArray = new Array(6);
 
   @Input()
   pin: string;

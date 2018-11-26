@@ -195,7 +195,7 @@ export class PinModalPage {
   }
 
   private isComplete(): boolean {
-    if (this.currentPin.length < 4) return false;
+    if (this.currentPin.length < 6) return false;
     else return true;
   }
 
