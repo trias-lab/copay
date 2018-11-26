@@ -2,4 +2,38 @@ page-language {
   .toolbar-background-md {
     background: transparent;
   }
+
+  .item-radio-checked.item-md ion-label,
+  .item-md ion-label {
+    color: rgba(20, 42, 63, 1);
+  }
+
+  .radio-icon.radio-checked {
+    background: url('../../../assets/img/settings-icons/icon_checkmark@2x.png');
+    background-size: contain;
+    border: none;
+  }
+
+  .radio-md .radio-checked .radio-inner {
+    background: transparent;
+  }
+
+  .radio-md .radio-icon {
+    border: none;
+  }
+
+  ion-list {
+    padding-left: 50px;
+    background: rgba(248, 250, 251, 1);
+  }
+
+  .settings-list .item.item-md {
+    padding-left: 0px;
+    border-bottom: 1px solid rgba(229, 232, 234, 1);
+  }
+
+  .settings-list .item {
+    background: transparent;
+  }
+
 }
