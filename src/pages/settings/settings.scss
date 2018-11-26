@@ -1,4 +1,22 @@
 page-settings {
+  ion-list {
+    padding-left: 50px;
+    background: rgba(248, 250, 251, 1);
+  }
+
+  .settings-list .item.item-md {
+    padding-left: 0px;
+    border-bottom: 1px solid rgba(229, 232, 234, 1);
+  }
+
+  .toolbar-background.toolbar-background-md {
+    background: linear-gradient(225deg, rgba(246, 249, 250, 1) 0%, rgba(230, 235, 238, 1) 100%);
+  }
+
+  .settings-list .item {
+    background: transparent;
+  }
+
   ion-label,
   .item-title {
     white-space: normal;
@@ -10,17 +28,21 @@ page-settings {
     box-orient: vertical;
     -webkit-box-orient: vertical;
   }
+
   .icon-wallet,
   .icon-services {
     width: 25px;
     height: 25px;
   }
+
   .icon-card {
     width: 25px;
     height: 25px;
   }
+
   .icon-services {
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
     padding: 0rem;
   }
+
 }

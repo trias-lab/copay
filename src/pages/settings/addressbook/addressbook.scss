@@ -6,6 +6,7 @@ page-addressbook {
     align-items: center;
     justify-content: center;
     text-align: center;
+
     &-icon {
       display: inline-block;
       width: 50px;
@@ -14,15 +15,18 @@ page-addressbook {
       padding: 13px;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
       background-color: #fff;
+
       img {
         height: 100%;
         width: 100%;
       }
     }
+
     &-heading {
       font-size: 20px;
       margin: 1rem;
     }
+
     &-description {
       font-size: 0.9em;
       margin-top: 0;
@@ -33,20 +37,28 @@ page-addressbook {
       max-width: 300px;
     }
   }
+
   .contact {
     ion-label {
       display: flex;
       align-items: center;
+
       gravatar {
         margin-right: 1.5rem;
       }
     }
+
     .contact-info {
       overflow: hidden;
+
       .item-title {
         text-overflow: ellipsis;
         overflow: hidden;
       }
     }
+  }
+
+  .toolbar-background-md {
+    background: transparent;
   }
 }
