@@ -20,14 +20,15 @@
         <span class="message" *ngIf="expires" translate>Try again in {{expires}}</span>
       </div>
     </div>
-    <div class="icon-container">
+    <pin-dots [pin]="currentPin" animate></pin-dots>        
+
+    <!-- <div class="icon-container">
       <ion-icon class="app-icon">
         <img src="assets/img/app/icon-flat.svg" />
       </ion-icon>
-    </div>
+    </div> -->
   </div>
   <div class="code-wrapper">
-    <pin-dots [pin]="currentPin" animate></pin-dots>
     <pin-pad (keystroke)="newEntry($event)" type="pin"></pin-pad>
   </div>
 </ion-content>
