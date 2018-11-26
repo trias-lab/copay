@@ -27,6 +27,10 @@ page-onboarding {
         color: rgba(110, 118, 125, 1);
         line-height: 18px;
       }
+
+      img{
+        max-width: 100px;
+      }
     }
 
     .card:after {

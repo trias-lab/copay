@@ -14,7 +14,7 @@ pin-dots {
     height: $circle-diameter;
     width: $circle-diameter;
     background:rgba(242,245,247,1);
-    box-shadow:0px 1px 3px 0px rgba(0,0,0,0.32);
+    box-shadow:0px 1px 3px 0px rgba(0,0,0,0.32) inset;
     border:1px solid #CBD0D3;
     position: relative;
   }
