@@ -125,7 +125,7 @@ export class ReceivePage extends WalletTabsChild {
   }
 
   public shareAddress(): void {
-    // if (!this.showShareButton) return;
+    if (!this.showShareButton) return;
     this.socialSharing.share(this.address);
   }
 
@@ -172,20 +172,15 @@ export class ReceivePage extends WalletTabsChild {
     if (!this.showShareButton) return;
     this.shareAddress();
 
-    // 二维码信息
-    const qrcode =
-      '<div><ngx-qrcode  hide-toast="true" qrc-value="{{qrAddress}}"  qrc-errorCorrectionLevel="M"></ngx-qrcode></div>';
+    // const qrcode =
+    //   '<div><ngx-qrcode  hide-toast="true" qrc-value="{{qrAddress}}"  qrc-errorCorrectionLevel="M"></ngx-qrcode></div>';
 
-    // 创建canvas元素
-    var canvas = document.createElement('canvas');
-    canvas.style.border = 'solid 1px red';
-    canvas.id = 'canvas';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    // var box = document.getElementById("canvas_box");
-    // box.appendChild(canvas);
-
-    this.socialSharing.share(this.address, 'text', '../');
+    // var canvas = document.createElement('canvas');
+    // canvas.style.border = 'solid 1px red';
+    // canvas.id = 'canvas';
+    // canvas.style.width = '100%';
+    // canvas.style.height = '100%';
+    // this.socialSharing.share(this.address, 'text', '../');
   }
 
   public showFullAddr(): void {

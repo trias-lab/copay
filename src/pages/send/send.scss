@@ -124,8 +124,15 @@ page-send {
   }
 
   ion-label[fixed] {
-    width: 30px;
-    min-width: 30px;
-    max-width: 30px;
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+  }
+
+  ion-input {
+    input {
+      margin: 0 !important;
+      width: 100% !important;
+    }
   }
 }
