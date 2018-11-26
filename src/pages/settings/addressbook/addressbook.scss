@@ -62,3 +62,26 @@ page-addressbook {
     background: transparent;
   }
 }
+
+.toolbar-ios ion-title.address-back-title {
+  margin-left: 54px;
+  padding: 0;
+  .toolbar-title-ios {
+    text-align: left;
+    color: #142a3f;
+  }
+}
+.address-header-addOne {
+  width: 24px;
+  height: 24px;
+  color: #626a71;
+  font-size: 24px;
+}
+.address-header {
+}
+.address-header .toolbar-background-ios {
+  background: #f8fafb;
+}
+.address-header .back-button-ios {
+  color: #142a3f;
+}
