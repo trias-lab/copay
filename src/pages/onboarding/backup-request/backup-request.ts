@@ -16,6 +16,7 @@ import { DisclaimerPage } from '../disclaimer/disclaimer';
 })
 export class BackupRequestPage {
   private walletId: string;
+  public checked;
 
   constructor(
     public navCtrl: NavController,
@@ -26,6 +27,11 @@ export class BackupRequestPage {
     private popupProvider: PopupProvider
   ) {
     this.walletId = this.navParams.get('walletId');
+    this.checked = {  // whether 3 tips are checked
+      first: false,
+      second: false,
+      third: false
+    };
   }
 
   ionViewDidLoad() {
