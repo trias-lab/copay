@@ -4,8 +4,8 @@ page-pin {
       background-color: color($colors, light);
     }
   }
-  ion-content {
-    background-color: color($colors, blank) !important;
+  ion-content {    
+    background-color:rgba(248,250,251,1) !important;
     .scroll-content {
       display: flex;
       flex-direction: column;
@@ -13,13 +13,11 @@ page-pin {
     }
   }
   .pin-header {
-    border-bottom: 1px solid #eaeaea;
-    position: relative;
-    background-color: color($colors, light);
+    padding-top: 56px;
     flex-grow: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
 
     @media (max-height: 600px) {
       padding-bottom: 25px;
@@ -55,12 +53,12 @@ page-pin {
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: color($colors, blank);
+    background:rgba(248,250,251,1);
     .code-wrapper {
-      display: flex;
-      flex-direction: column;
-      height: 60vh;
-      min-height: 400px;
+      height: 33vh;
+      min-height: 216px;
+      width: 100%;
+      background:rgba(210,213,219,0.9);
 
       @media (max-height: 500px) {
         min-height: 340px;
