@@ -578,55 +578,55 @@ export class ProfileProvider {
 
       // Encrypt wallet
       this.onGoingProcessProvider.pause();
-      // A password is requied to encrypt the wallet
-      this.encrypt(wallet).then(() => {
-        this.onGoingProcessProvider.resume();
+      // DO NOT use password to encrypt the wallet by default
+      // this.encrypt(wallet).then(() => {
+      this.onGoingProcessProvider.resume();
 
-        const walletId: string = wallet.credentials.walletId;
+      const walletId: string = wallet.credentials.walletId;
 
-        if (!this.profile.addWallet(JSON.parse(wallet.export()))) {
-          const message = this.replaceParametersProvider.replace(
-            this.translate.instant('Wallet already in {{nameCase}}'),
-            { nameCase: this.appProvider.info.nameCase }
-          );
-          return reject(message);
-        }
+      if (!this.profile.addWallet(JSON.parse(wallet.export()))) {
+        const message = this.replaceParametersProvider.replace(
+          this.translate.instant('Wallet already in {{nameCase}}'),
+          { nameCase: this.appProvider.info.nameCase }
+        );
+        return reject(message);
+      }
 
-        const skipKeyValidation: boolean = this.shouldSkipValidation(walletId);
-        if (!skipKeyValidation) {
-          this.logger.debug('Trying to runValidation: ' + walletId);
-          this.runValidation(wallet);
-        }
+      const skipKeyValidation: boolean = this.shouldSkipValidation(walletId);
+      if (!skipKeyValidation) {
+        this.logger.debug('Trying to runValidation: ' + walletId);
+        this.runValidation(wallet);
+      }
 
-        this.bindWalletClient(wallet);
+      this.bindWalletClient(wallet);
 
-        const saveBwsUrl = (): Promise<any> => {
-          return new Promise(resolve => {
-            const defaults = this.configProvider.getDefaults();
-            const bwsFor = {};
-            bwsFor[walletId] = opts.bwsurl || defaults.bws.url;
+      const saveBwsUrl = (): Promise<any> => {
+        return new Promise(resolve => {
+          const defaults = this.configProvider.getDefaults();
+          const bwsFor = {};
+          bwsFor[walletId] = opts.bwsurl || defaults.bws.url;
 
-            // Dont save the default
-            if (bwsFor[walletId] == defaults.bws.url) {
-              return resolve();
-            }
-
-            this.configProvider.set({ bwsFor });
+          // Dont save the default
+          if (bwsFor[walletId] == defaults.bws.url) {
             return resolve();
-          });
-        };
+          }
 
-        saveBwsUrl().then(() => {
-          this.persistenceProvider
-            .storeProfile(this.profile)
-            .then(() => {
-              return resolve(wallet);
-            })
-            .catch(err => {
-              return reject(err);
-            });
+          this.configProvider.set({ bwsFor });
+          return resolve();
         });
+      };
+
+      saveBwsUrl().then(() => {
+        this.persistenceProvider
+          .storeProfile(this.profile)
+          .then(() => {
+            return resolve(wallet);
+          })
+          .catch(err => {
+            return reject(err);
+          });
       });
+      // });
     });
   }
 
