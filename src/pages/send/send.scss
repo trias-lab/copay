@@ -131,8 +131,73 @@ page-send {
 
   ion-input {
     input {
-      margin: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
       width: 100% !important;
+    }
+  }
+
+  ion-label {
+    color: #142A3F !important;
+  }
+
+  ion-range {
+    margin-left: 24px;
+  }
+
+  .input-wrapper {
+    flex-direction: row-reverse;
+  }
+
+  .send-equal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >div {
+      width: 22px;
+      height: 22px;
+      background: rgba(229, 232, 234, 1);
+      margin: auto;
+      border-radius: 50%;
+      color: #142A3F;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+
+  .send-balance {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(145, 153, 158, 1);
+    line-height: 20px;
+    margin: 5px 0 0px 24px;
+
+    span {
+      color: #142A3F;
+    }
+  }
+
+  .send-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(20, 42, 63, 1);
+    line-height: 20px;
+    margin: 20px 0 0px 24px;
+  }
+
+  .send-check {
+    padding: 24px 14px;
+    background: linear-gradient(270deg, rgba(246, 249, 250, 1) 0%, rgba(230, 235, 238, 1) 100%);
+    text-align: center;
+
+    >p {
+      font-size: 14px;
+      font-family: Roboto-Regular;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 1);
+      line-height: 18px;
     }
   }
 }

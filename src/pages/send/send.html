@@ -176,7 +176,7 @@
           </ion-row>
         </ion-grid>
 
-
+        <div class="send-title ">Amount</div>
         <ion-grid>
           <ion-row>
             <ion-col col-5>
@@ -187,8 +187,8 @@
 
               </ion-item>
             </ion-col>
-            <ion-col col-2>
-              <span>=</span>
+            <ion-col col-2 class="send-equal">
+              <div>≈</div>
             </ion-col>
             <ion-col col-5>
               <ion-item>
@@ -199,23 +199,19 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-        <ion-item>Balance:0.2557BTC</ion-item>
+
+        <div class="send-balance ">Balance:<span>0.2557</span> BTC</div>
+
+        <div class="send-title ">Transaction Fee</div>
+        <ion-range [(ngModel)]="brightness">
+        </ion-range>
+
+        <div class="send-balance "><span>0.2557</span> BTC <span> ≈ 0.2557</span>CNY</div>
 
         <ion-item>
-          <ion-range [(ngModel)]="brightness">
-            <ion-icon range-left small name="sunny"></ion-icon>
-            <ion-icon range-right name="sunny"></ion-icon>
-          </ion-range>
+          <ion-label stacked>Notes (Optional)</ion-label>
+          <ion-input type="text" placeholder="Business"></ion-input>
         </ion-item>
-
-        <ion-item> 0.00018738BTC=0.26565BTC</ion-item>
-
-        <ion-list>
-          <ion-item>
-            <ion-label stacked>Notes (Optional)</ion-label>
-            <ion-input type="text" placeholder="Business"></ion-input>
-          </ion-item>
-        </ion-list>
       </div>
 
       <div class="card" *ngIf="walletBchList && walletBchList[0]">
@@ -249,5 +245,11 @@
     <div *ngIf="!hasBtcWallets && !hasBchWallets" class="no-wallet-message">
       <span translate>To get started, you'll need to create a bitcoin wallet and get some bitcoin.</span>
     </div>
+  </div>
+
+
+  <div class="send-check">
+    <p>Double check the deposite address!</p>
+    <button ion-button block large> Send </button>
   </div>
 </ion-content>
