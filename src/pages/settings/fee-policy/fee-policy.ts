@@ -66,13 +66,6 @@ export class FeePolicyPage {
         this.logger.error(err);
         this.error = err;
       });
-    //当页面进入初始化的时候
-    let elements = document.querySelectorAll(".tabbar");
-    if (elements != null) {
-      Object.keys(elements).map((key) => {
-        elements[key].style.display = "flex";
-      });
-    }
   }
 
   public save() {
