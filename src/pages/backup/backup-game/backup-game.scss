@@ -31,10 +31,10 @@ page-backup-game {
     padding: 2rem;
   }
   .phrase-container {
-    background: white;
     margin: auto;
-    border: 2px dashed #d9d9d9;
-    border-radius: 3px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 2px 6px 0px rgba(0,0,0,0.1);
+    border-radius:4px;
     color: #192c3a;
     text-align: center;
     max-width: 500px;
@@ -42,6 +42,7 @@ page-backup-game {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     .phrase {
       padding: 2.5rem;
       font-weight: bold;
@@ -60,8 +61,56 @@ page-backup-game {
         height: 3rem;
         font-size: 14px;
       }
+      .word-container{
+          background:rgba(229,232,234,1);
+          text-align: left;
+          padding: 8px 6px;
+          .index {
+            font-size:12px;
+            font-weight:400;
+            color:rgba(110,118,125,1);
+            line-height:14px;
+            margin-bottom: 8px;
+          }
+          .word {
+            font-size:14px;
+            font-family:Roboto-Regular;
+            font-weight:400;
+            color:rgba(20,42,63,1);
+            line-height:18px;
+          }
+      }
+      .row{
+        .col{
+          padding: 2px;
+        }
+        .col:first-child .word-container{
+          border-radius:4px 0px 0px 0px;
+        }
+        .col:nth-child(3) .word-container{
+          border-radius:0px 4px 0px 0px;
+        }
+        .col:nth-child(10) .word-container{
+          border-radius:0px 0px 0px 4px;
+        }
+        .col:nth-child(12) .word-container{
+          border-radius:0px 0px 4px 0px;
+        }
+      }
     }
   }
+  .phrase-container:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 80%;
+      left: 10%;
+      bottom: -10px;
+      height: 40px;
+      background: linear-gradient(270deg, rgba(11, 54, 74, 1) 0%, rgba(11, 77, 74, 1) 100%);
+      opacity: 0.2;
+      filter: blur(10px);
+    }
   .words {
     max-width: 500px;
     margin: 0 auto;

@@ -23,10 +23,14 @@
           <div class="slide-title" translate>Please carefully write down this phrase.</div>
           <div class="phrase-container" copy-to-clipboard="{{ wallet.network == 'testnet' ? keys?.mnemonic : null }}">
             <div class="phrase">
-              <span *ngFor="let word of mnemonicWords">
-                <span>{{word}}</span>
-                <span *ngIf="useIdeograms">&#x3000;</span>
-              </span>
+              <ion-row>
+                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 *ngFor="let word of mnemonicWords index as i" >
+                  <div class="word-container">
+                    <div class="index">{{i+1}}</div>
+                    <div class="word">{{word}}</div>
+                  </div>
+                </ion-col>
+              </ion-row>
             </div>
           </div>
         </div>
