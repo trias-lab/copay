@@ -1038,6 +1038,7 @@ export class ProfileProvider {
           );
         }
       } else {
+        // Change mnemonic language here 
         const lang = this.languageProvider.getCurrent();
         try {
           walletClient.seedFromRandomWithMnemonic({
