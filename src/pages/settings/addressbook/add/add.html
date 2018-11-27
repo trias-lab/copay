@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="addressBookAdd">
+  <form [formGroup]="addressBookAdd" class="add-address-info-box">
     <ion-item>
       <ion-label stacked>{{ 'Name' | translate }}</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
@@ -24,38 +24,39 @@
         [value]="addressBookAdd.value.address"
         address-validator
       ></ion-input>
-
-      <ion-icon
-        *ngIf="addressBookAdd.controls.address.status == 'VALID'"
-        name="ios-checkmark-circle"
-        class="check success"
-        item-right
-      ></ion-icon>
-      <ion-icon
-        *ngIf="
-          addressBookAdd.value.address &&
-          addressBookAdd.controls.address.status == 'INVALID'
-        "
-        class="check fail"
-        name="ios-close-circle"
-        item-right
-      ></ion-icon>
-
-      <ion-icon
-        class="scanner-icon"
-        name="qr-scanner"
-        item-right
-        (click)="openScanner()"
-      ></ion-icon>
     </ion-item>
+    <ion-icon
+      *ngIf="addressBookAdd.controls.address.status == 'VALID'"
+      name="ios-checkmark-circle"
+      class="check success"
+      item-right
+    ></ion-icon>
+    <ion-icon
+      *ngIf="
+        addressBookAdd.value.address &&
+        addressBookAdd.controls.address.status == 'INVALID'
+      "
+      class="check fail"
+      name="ios-close-circle"
+      item-right
+    ></ion-icon>
+
+    <ion-icon
+      class="scanner-icon"
+      name="qr-scanner"
+      item-right
+      (click)="openScanner()"
+    ></ion-icon>
   </form>
 
-  <button
-    ion-button
-    class="button-standard"
-    (click)="save()"
-    [disabled]="addressBookAdd.invalid"
-  >
-    {{ 'Save' | translate }}
-  </button>
+  <div class="address-btn-block">
+    <button
+      ion-button
+      class="button-standard"
+      (click)="save()"
+      [disabled]="addressBookAdd.invalid"
+    >
+      {{ 'Save' | translate }}
+    </button>
+  </div>
 </ion-content>
