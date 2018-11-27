@@ -1,4 +1,4 @@
-<ion-header class="address-header">
+<ion-header class="address-header toolbar-header-wallet">
   <ion-navbar>
     <ion-title class="address-back-title">{{
       'Address Book' | translate
@@ -30,7 +30,7 @@
       placeholder="{{'Search a contact' | translate}}"
       (ionInput)="getItems($event)"
     ></ion-searchbar>
-    <ion-list>
+    <ion-list class="address-list">
       <button
         class="contact"
         ion-item

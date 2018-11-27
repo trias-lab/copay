@@ -63,25 +63,90 @@ page-addressbook {
   }
 }
 
-.toolbar-ios ion-title.address-back-title {
-  margin-left: 54px;
-  padding: 0;
-  .toolbar-title-ios {
+/*
+  app header toolbar common style 
+  add className toolbar-header-wallet in ion-header
+  start
+*/
+ion-header.toolbar-header-wallet {
+  // background: linear-gradient(225deg, #f6f9fa 0%, #e6ebee 100%);
+  background: transparent;
+  height: 64px;
+  padding: 20px 16px 0 16px;
+  .toolbar ion-title {
+    margin-left: 34px;
+    padding: 0;
+  }
+  .toolbar-title {
     text-align: left;
     color: #142a3f;
+    height: 24px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  .toolbar.toolbar-md .title-md .toolbar-title-md {
+    padding: 0;
+    margin: 0;
+  }
+  .address-header-addOne {
+    width: 24px;
+    height: 24px;
+    color: #626a71;
+    font-size: 24px;
+  }
+  .toolbar-background {
+    // background: linear-gradient(225deg, #f6f9fa 0%, #e6ebee 100%);
+    background: transparent;
+  }
+  .back-button {
+    color: #142a3f;
+  }
+  .toolbar.toolbar .back-button {
+    padding: 0;
+    line-height: 24px;
+    width: 24px;
+    height: 24px;
+    min-height: 24px;
+    margin: 0;
+    min-width: auto;
+  }
+  ion-navbar.toolbar {
+    padding: 0;
+    margin: 0;
+  }
+  .toolbar.toolbar-md {
+    min-height: auto;
+  }
+  .toolbar-ios {
+    min-height: auto;
   }
 }
-.address-header-addOne {
-  width: 24px;
-  height: 24px;
-  color: #626a71;
-  font-size: 24px;
+
+/*
+  app header toolbar common style 
+  end
+*/
+
+.searchbar {
+  padding: 0;
+  margin: 0 16px 16px;
+  width: auto;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
-.address-header {
+.searchbar-md .searchbar-search-icon,
+.searchbar-md .searchbar-md-cancel {
+  top: 14px;
 }
-.address-header .toolbar-background-ios {
-  background: #f8fafb;
+.searchbar-ios .searchbar-search-icon {
+  top: 12px;
 }
-.address-header .back-button-ios {
-  color: #142a3f;
+.address-list {
+  margin: 18px 16px 20px 16px;
+  height: 74px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
