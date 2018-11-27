@@ -116,7 +116,7 @@ ion-spinner * {
     background: white;
   }
 
-  justify-content: center;
+  justify-content: space-around;
   padding-top: 5px;
   transform: translate3d(0, 0, 0);
 
@@ -360,13 +360,15 @@ ion-icon {
   }
 
   &[class*='tab-home'] {
-    mask-image: url(../assets/img/tab-icons/ico-home.svg);
+    background: url(../assets/img/tab-icons/ico-home.svg) no-repeat center;
     width: 3rem !important;
+    background-size: 100% 100%;
   }
 
   &[class*='tab-settings'] {
-    mask-image: url(../assets/img/tab-icons/ico-settings.svg);
+    background: url(../assets/img/tab-icons/ico-settings.svg) no-repeat center;
     width: 3rem !important;
+    background-size: 100% 100%;
   }
 
   &[class*='tab-send'] {
@@ -490,20 +492,25 @@ ion-alert .alert-message {
 
     &[aria-selected="true"] {
       .tab-button-text {
-        color: #1abb9b !important;
+        color: #57A756 !important;
+
       }
 
       ion-icon {
         &[class*='tab-home'] {
           width: 3rem !important;
-          color: #1abb9b;
-          background-color: linear-gradient(#2DA41E, #DEF0BF);
+          color: unset;
+          background-size: 100% 100%;
+          // mask-image: url(../assets/img/tab-icons/img_tabbar_assets_a@2x.png);
+          background: url(../assets/img/tab-icons/ico-home-active.svg) no-repeat center;
         }
 
         &[class*='tab-settings'] {
           width: 3rem !important;
-          color: #1abb9b;
-          background-color: linear-gradient(#2DA41E, #DEF0BF);
+          color: unset;
+          background-size: 100% 100%;
+          // mask-image: url(../assets/img/tab-icons/ico-settings-active.svg);
+          background: url(../assets/img/tab-icons/ico-settings-active.svg) no-repeat center;
         }
       }
 
