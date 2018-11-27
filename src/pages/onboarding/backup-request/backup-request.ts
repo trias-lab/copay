@@ -7,7 +7,7 @@ import { Logger } from '../../../providers/logger/logger';
 import { PopupProvider } from '../../../providers/popup/popup';
 
 // Pages
-import { BackupWarningPage } from '../../backup/backup-warning/backup-warning';
+import { BackupGamePage } from '../../backup/backup-game/backup-game';
 import { DisclaimerPage } from '../disclaimer/disclaimer';
 
 @Component({
@@ -39,7 +39,12 @@ export class BackupRequestPage {
   }
 
   public initBackupFlow(): void {
-    this.navCtrl.push(BackupWarningPage, {
+    // this.navCtrl.push(BackupWarningPage, {
+    //   walletId: this.walletId,
+    //   fromOnboarding: true
+    // });
+    // Go to mnemonic backup game page directly
+    this.navCtrl.push(BackupGamePage, {
       walletId: this.walletId,
       fromOnboarding: true
     });
