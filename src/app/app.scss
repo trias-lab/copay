@@ -116,7 +116,7 @@ ion-spinner * {
     background: white;
   }
 
-  justify-content: space-around;
+  justify-content: space-around !important;
   padding-top: 5px;
   transform: translate3d(0, 0, 0);
 
@@ -506,17 +506,17 @@ ion-alert .alert-message {
         &[class*='tab-home'] {
           width: 3rem !important;
           color: unset;
-          background-size: 100% 100%;
           // mask-image: url(../assets/img/tab-icons/img_tabbar_assets_a@2x.png);
           background: url(../assets/img/tab-icons/ico-home-active.svg) no-repeat center;
+          background-size: 100% 100%;
         }
 
         &[class*='tab-settings'] {
           width: 3rem !important;
           color: unset;
-          background-size: 100% 100%;
           // mask-image: url(../assets/img/tab-icons/ico-settings-active.svg);
           background: url(../assets/img/tab-icons/ico-settings-active.svg) no-repeat center;
+          background-size: 100% 100%; // this attribute must be set after the url
         }
       }
 
