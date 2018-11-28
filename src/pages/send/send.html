@@ -1,13 +1,19 @@
 <ion-header [ngClass]="{'wallet-details-header': wallet}">
-  <ion-navbar [navbar-bg]="wallet && wallet.color">
-    <ion-buttons *ngIf="wallet" left>
+  <ion-navbar>
+    <!-- <ion-buttons *ngIf="wallet" left>
       <button class="modal-close-button" (click)="closeCam()" ion-button>
         <ion-icon ios="md-close" md="md-close"></ion-icon>
       </button>
-    </ion-buttons>
-    <ion-title>{{wallet && wallet.name || ('Amount' | translate)}}</ion-title>
+    </ion-buttons> -->
+
+    <ion-title>Send BTC</ion-title>
+
+    <!-- <ion-title>{{
+      (wallet && wallet.name) || ('Receive' | translate)
+      }}</ion-title> -->
+
   </ion-navbar>
-  <ion-toolbar *ngIf="wallet" [navbar-bg]="wallet.color">
+  <!-- <ion-toolbar *ngIf="wallet">
     <div *ngIf="!wallet.balanceHidden && !wallet.scanning && wallet.status" class="wallet-details-header__balance">
       <span>{{wallet.status && wallet.status.totalBalanceStr}}</span>
       <ion-icon *ngIf="wallet.status.totalBalanceSat != wallet.status.spendableAmount" ios="ios-timer-outline" md="md-timer"></ion-icon>
@@ -15,7 +21,7 @@
     <div *ngIf="wallet.balanceHidden  && !wallet.scanning" class="wallet-details-header__balance-hidden">
       <span class="title" translate>[Balance Hidden]</span>
     </div>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
 
 <ion-content no-bounce>
@@ -37,7 +43,7 @@
     </div>
   </div>
 
-  <!-- <div *ngIf="shouldShowZeroState()">
+  <div *ngIf="shouldShowZeroState()">
     <div *ngIf="hasBtcWallets || hasBchWallets">
       <div class="send-header-wrapper">
         <span class="send-heading" translate>Recipient</span>
@@ -128,15 +134,12 @@
     <div *ngIf="!hasBtcWallets && !hasBchWallets" class="no-wallet-message">
       <span translate>To get started, you'll need to create a bitcoin wallet and get some bitcoin.</span>
     </div>
-  </div> -->
+  </div>
 
 
   <div *ngIf="shouldShowZeroState()">
     <div *ngIf="hasBtcWallets || hasBchWallets">
-
-
       <div class="card" *ngIf="filteredContactsList && filteredContactsList[0]">
-
         <ion-item-divider class="title">
           <span translate>Target Address</span>
         </ion-item-divider>

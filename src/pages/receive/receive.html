@@ -1,13 +1,17 @@
 <ion-header class="wallet-details-header">
-  <ion-navbar [navbar-bg]="wallet.color">
-    <ion-buttons left>
+  <ion-navbar>
+    <!-- <ion-buttons left>
       <button class="modal-close-button" (click)="close()" ion-button>
         <ion-icon ios="md-close" md="md-close"></ion-icon>
       </button>
-    </ion-buttons>
-    <ion-title>{{
+    </ion-buttons> -->
+
+    <ion-title>Receive BTC</ion-title>
+
+    <!-- <ion-title>{{
       (wallet && wallet.name) || ('Receive' | translate)
-      }}</ion-title>
+      }}</ion-title> -->
+
     <ion-buttons right>
       <button *ngIf="
           wallet &&
@@ -20,7 +24,7 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-toolbar [navbar-bg]="wallet.color">
+  <!-- <ion-toolbar>
     <div *ngIf="!wallet.balanceHidden && !wallet.scanning && wallet.status" class="wallet-details-header__balance">
       <span>{{ wallet.status && wallet.status.totalBalanceStr }}</span>
       <ion-icon *ngIf="wallet.status.totalBalanceSat != wallet.status.spendableAmount" ios="ios-timer-outline" md="md-timer"></ion-icon>
@@ -28,7 +32,7 @@
     <div *ngIf="wallet.balanceHidden && !wallet.scanning" class="wallet-details-header__balance-hidden">
       <span class="title" translate>[Balance Hidden]</span>
     </div>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
 
 <ion-content no-bounce>
@@ -97,9 +101,7 @@
             <!-- <span class="address-divider"></span> -->
             <div class="adress_copy_address">Address</div>
             <div [ngClass]="{ 'fade-in-out': playAnimation }" class="address-text ellipsis">
-              <span copy-to-clipboard="{{ address }}" hide-toast="true">{{
-                address
-                }}</span>
+              <span hide-toast="true">{{address}}</span>
             </div>
 
             <!--
@@ -111,7 +113,7 @@
                 </span>
               </div>
             -->
-            <div class="adress_copy_btn" (click)="showFullAddr()">COPY</div>
+            <div class="adress_copy_btn" copy-to-clipboard="{{ address }}">COPY</div>
           </div>
         </div>
       </div>

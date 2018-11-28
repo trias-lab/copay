@@ -476,6 +476,12 @@ ion-alert .alert-message {
   }
 }
 
+.wallet-tab {
+  >div {
+    display: none;
+  }
+}
+
 .hide-tabbar-tab {
 
   .tab-button {

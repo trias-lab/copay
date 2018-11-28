@@ -1,4 +1,16 @@
 page-send {
+  .toolbar-background {
+    background: transparent !important;
+  }
+
+  .toolbar-title {
+    font-weight: 500 !important;
+  }
+
+  .toolbar {
+    background: transparent !important;
+  }
+
   .show-more {
     display: flex;
     text-align: center;
@@ -200,4 +212,6 @@ page-send {
       line-height: 18px;
     }
   }
+
+
 }

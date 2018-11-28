@@ -26,12 +26,13 @@ import { BackupWarningPage } from '../../pages/backup/backup-warning/backup-warn
 import { WalletAddressesPage } from '../../pages/settings/wallet-settings/wallet-settings-advanced/wallet-addresses/wallet-addresses';
 import { TxDetailsPage } from '../../pages/tx-details/tx-details';
 import { GiftCardProvider } from '../../providers/gift-card/gift-card';
+import { ReceivePage } from '../receive/receive';
+import { SendPage } from '../send/send';
 import { WalletSettingsPage } from '../settings/wallet-settings/wallet-settings';
 import { WalletTabsChild } from '../wallet-tabs/wallet-tabs-child';
 import { WalletTabsProvider } from '../wallet-tabs/wallet-tabs.provider';
 import { SearchTxModalPage } from './search-tx-modal/search-tx-modal';
 import { WalletBalancePage } from './wallet-balance/wallet-balance';
-
 const HISTORY_SHOW_LIMIT = 10;
 
 @Component({
@@ -416,5 +417,19 @@ export class WalletDetailsPage extends WalletTabsChild {
     setTimeout(() => {
       refresher.complete();
     }, 2000);
+  }
+
+  public receive() {
+    this.logger.error('receive');
+    this.navCtrl.push(ReceivePage, {
+      walletId: this.wallet.credentials.walletId
+    });
+  }
+
+  public send() {
+    this.logger.error('send');
+    this.navCtrl.push(SendPage, {
+      walletId: this.wallet.credentials.walletId
+    });
   }
 }

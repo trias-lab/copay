@@ -1,4 +1,16 @@
 page-receive {
+  .toolbar-background {
+    background: transparent !important;
+  }
+
+  .toolbar {
+    background: transparent !important;
+  }
+
+  .toolbar-title {
+    font-weight: 500 !important;
+  }
+
   .message-container {
     text-align: center;
     height: 100%;
@@ -45,7 +57,7 @@ page-receive {
       padding-left: 24px;
       font-size: 1.7rem;
 
-      > span {
+      >span {
         font-size: 12.5px;
         font-weight: 300;
       }
@@ -100,19 +112,19 @@ page-receive {
     color: rgba(20, 42, 63, 1);
     margin: auto;
   }
+
   .adress_deposit {
     text-align: center;
     color: #6e767d;
     margin-bottom: 0.75rem;
   }
+
   .adress_copy_btn {
     width: 57px;
     height: 20px;
-    background: linear-gradient(
-      270deg,
+    background: linear-gradient(270deg,
       rgba(131, 201, 14, 1) 0%,
-      rgba(34, 159, 32, 1) 100%
-    );
+      rgba(34, 159, 32, 1) 100%);
     border-radius: 10px;
     color: #fff;
     text-align: center;
