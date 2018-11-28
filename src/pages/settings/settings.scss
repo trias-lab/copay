@@ -9,8 +9,8 @@ page-settings {
     border-bottom: 1px solid rgba(229, 232, 234, 1);
   }
 
-  .toolbar-background.toolbar-background-md {
-    background: linear-gradient(225deg, rgba(246, 249, 250, 1) 0%, rgba(230, 235, 238, 1) 100%);
+  .toolbar-background {
+    background: linear-gradient(225deg, rgba(246, 249, 250, 1) 0%, rgba(230, 235, 238, 1) 100%) !important;
   }
 
   .settings-list .item {

@@ -3,22 +3,24 @@ page-language {
     background: transparent;
   }
 
-  .item-radio-checked.item-md ion-label,
-  .item-md ion-label {
+  item-radio-checked.item-md ion-label,
+  .item-md ion-label,
+  .item-radio-checked.item-ios ion-label {
     color: rgba(20, 42, 63, 1);
   }
 
   .radio-icon.radio-checked {
-    background: url('../../../assets/img/settings-icons/icon_checkmark@2x.png');
+    background: url('../../../assets/img/settings-icons/icon_checkmark@2x.png') no-repeat center;
     background-size: contain;
     border: none;
   }
 
-  .radio-md .radio-checked .radio-inner {
-    background: transparent;
+  .radio-checked .radio-inner {
+    background: transparent !important;
+    border: none !important;
   }
 
-  .radio-md .radio-icon {
+  .radio-icon {
     border: none;
   }
 

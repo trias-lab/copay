@@ -27,7 +27,7 @@ export class AboutPage {
     private externalLinkProvider: ExternalLinkProvider,
     private replaceParametersProvider: ReplaceParametersProvider,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   ionViewDidLoad() {
     this.logger.info('Loaded: AboutPage');
@@ -41,10 +41,10 @@ export class AboutPage {
 
   public openExternalLink(): void {
     let url =
-      'https://github.com/bitpay/' +
-      this.appProvider.info.gitHubRepoName +
-      '/tree/' +
-      this.appProvider.info.commitHash +
+      'https://github.com/trias-lab/wallet' +
+      // this.appProvider.info.gitHubRepoName +
+      // '/tree/' +
+      // this.appProvider.info.commitHash +
       '';
     let optIn = true;
     let title = this.translate.instant('Open GitHub Project');
