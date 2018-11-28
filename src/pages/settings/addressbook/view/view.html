@@ -1,10 +1,10 @@
-<ion-header no-border class="address-header toolbar-header-wallet">
+<ion-header no-border class="address-header">
   <ion-navbar>
     <ion-title class="address-back-title">{{ name }}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="address-detail">
   <div class="contact-view-header">
     <gravatar
       [name]="name"
@@ -12,28 +12,33 @@
       [width]="80"
       [email]="email"
     ></gravatar>
+    <p class="address-detail-name">{{ name }}</p>
+    <p class="address-detail-email" *ngIf="email">{{ email }}</p>
   </div>
   <ion-list>
-    <ion-item>
-      {{ 'Name' | translate }}
-      <ion-note item-end> {{ name }} </ion-note>
-    </ion-item>
-    <ion-item *ngIf="email">
-      {{ 'Email' | translate }}
-      <ion-note item-end> {{ email }} </ion-note>
-    </ion-item>
+    <!--
+      <ion-item>
+        <p class="address-info-title">{{ 'Name' | translate }}</p>
+        <p class="address-info-content">{{ name }}</p>
+      </ion-item>
+      <ion-item *ngIf="email">
+        <p class="address-info-title">{{ 'Email' | translate }}</p>
+        <p class="address-info-content">{{ email }}</p>
+      </ion-item>
+    -->
     <ion-item copy-to-clipboard="{{ address }}">
-      {{ 'Address' | translate }}
-      <div class="comment ellipsis">{{ address }}</div>
+      <p class="address-info-title">{{ 'Address' | translate }}</p>
+
+      <div class="comment ellipsis address-info-content">{{ address }}</div>
     </ion-item>
-    <ion-item-divider></ion-item-divider>
+    <!-- <ion-item-divider></ion-item-divider> -->
     <button ion-item class="btn-send" (click)="sendTo()">
       {{ 'Send Money' | translate }}
     </button>
-    <ion-item-divider></ion-item-divider>
+    <!-- <ion-item-divider></ion-item-divider> -->
     <button ion-item class="btn-remove" (click)="remove(address)">
       {{ 'Remove' | translate }}
     </button>
-    <ion-item-divider></ion-item-divider>
+    <!-- <ion-item-divider></ion-item-divider> -->
   </ion-list>
 </ion-content>

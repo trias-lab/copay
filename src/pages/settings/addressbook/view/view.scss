@@ -2,7 +2,7 @@ page-addressbook-view {
   .contact-view-header {
     position: relative;
     height: 70px;
-    background-color: $toolbar-background;
+    // background-color: $toolbar-background;
     padding-top: 20px;
     margin-bottom: 50px;
     text-align: center;
@@ -20,5 +20,60 @@ page-addressbook-view {
   .comment {
     color: color($colors, grey);
     padding-top: 10px;
+  }
+}
+ion-header.address-header {
+  .toolbar-title {
+    color: #fff;
+  }
+  .back-button {
+    color: #fff;
+  }
+}
+.address-detail {
+  background: #fff url(../../../assets/img/img_bg_pattern.png) no-repeat left
+    top;
+  .contact-view-header {
+    margin-top: 10px;
+    padding-top: 0;
+  }
+  .address-detail-name {
+    display: flex;
+    padding: 12px 0 0 20px;
+    margin: 0;
+    color: #fff;
+    font-size: 2.4rem;
+  }
+  .address-detail-email {
+    display: flex;
+    margin: 0;
+    padding: 12px 0 0 20px;
+    color: #fff;
+    font-size: 1.4rem;
+  }
+  .item-block {
+    padding-left: 50px;
+  }
+  .address-info-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: rgba(20, 42, 63, 1);
+  }
+  .address-info-content {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(110, 118, 125, 1);
+    padding: 0;
+    margin: 7px 0 0 0;
+  }
+  ion-label {
+    margin: 21px 16px 21px 0;
+  }
+  .item-inner {
+    border-bottom: 1px solid #e5e8ea;
+  }
+  gravatar {
+    float: left;
+    margin-left: 50px;
   }
 }

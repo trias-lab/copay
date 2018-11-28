@@ -65,7 +65,6 @@ page-addressbook {
 
 /*
   app header toolbar common style 
-  add className toolbar-header-wallet in ion-header
   start
 */
 ion-header {
@@ -145,7 +144,6 @@ ion-header {
 }
 .address-list {
   margin: 18px 16px 20px 16px;
-  height: 74px;
   background: rgba(255, 255, 255, 1);
   box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
