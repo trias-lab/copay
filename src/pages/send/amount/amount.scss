@@ -1,38 +1,58 @@
 page-amount {
+  .toolbar-background {
+    background: transparent !important;
+  }
+
+  .toolbar {
+    background: transparent !important;
+  }
+
+  .toolbar-title {
+    font-weight: 500 !important;
+  }
+
   ion-content.content {
     background: white;
   }
+
   $short-screen: 500px;
+
   .amount-wrapper {
     height: 100%;
     display: flex;
     flex-direction: column;
   }
+
   .amount-header-margin {
     margin: 2rem;
     margin-bottom: 0;
+
     @media (max-height: $short-screen + 70px) {
       margin: 1.5rem;
       margin-bottom: 0;
       margin-top: 1rem;
     }
   }
+
   .next-button {
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 200ms ease, transform 200ms ease;
     pointer-events: none;
+
     &.show {
       opacity: 1;
       pointer-events: all;
       transform: translateY(0);
     }
   }
+
   .amount-header {
     display: flex;
     width: 100%;
     position: relative;
     align-items: center;
+
     .switcher {
       flex: 1;
       display: inline-flex;
@@ -42,21 +62,26 @@ page-amount {
       border-radius: 3px;
       cursor: pointer;
       width: 81px;
+
       @media (max-height: $short-screen + 70px) {
         width: 75px;
       }
+
       &__icon {
         margin-right: 10px;
       }
+
       &__label {
         color: #060606;
         font-size: 18px;
         margin-top: 1px;
+
         @media (max-height: $short-screen + 70px) {
           font-size: 15px;
         }
       }
     }
+
     &__label {
       flex-grow: 1;
       text-align: center;
@@ -64,11 +89,13 @@ page-amount {
       width: 100%;
       font-size: 16px;
       pointer-events: none;
+
       @media (max-height: $short-screen) {
         font-size: 15px;
       }
     }
   }
+
   .amount-content {
     display: flex;
     flex-direction: column;
@@ -76,19 +103,23 @@ page-amount {
     align-items: center;
     width: 100%;
     flex-grow: 1;
+
     .expression-container {
       display: flex;
       align-items: center;
       position: relative;
+
       .expression {
         font-size: 50px;
         font-weight: 500;
         line-height: 50px;
+
         @media (max-height: $short-screen) {
           font-size: 40px;
           line-height: 40px;
         }
       }
+
       .unit {
         position: absolute;
         top: 2px;
@@ -97,23 +128,28 @@ page-amount {
         color: #4a4a4a;
       }
     }
+
     .amount {
       color: #a5a4a4;
     }
+
     .result {
       margin-top: 20px;
       font-size: 15px;
       color: #4a4a4a;
+
       @media (max-height: $short-screen) {
         font-size: 14px;
         margin-top: 15px;
       }
     }
   }
+
   pin-pad {
     .row {
       ion-col.col {
         min-height: 60px;
+
         @media (max-height: $short-screen) {
           min-height: 50px;
         }

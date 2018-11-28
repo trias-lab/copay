@@ -178,20 +178,26 @@ export class AmountPage extends WalletTabsChild {
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
+    this.logger.debug('start');
     if (this.disableHardwareKeyboard) return;
     if (!event.key) return;
+    // delete
     if (event.which === 8) {
       event.preventDefault();
       this.removeDigit();
     }
-
     if (event.key.match(this.reNr)) {
       this.pushDigit(event.key, true);
     } else if (event.key.match(this.reOp)) {
       this.pushOperator(event.key);
-    } else if (event.keyCode === 86) {
+    }
+    // check if you press the v key
+    else if (event.keyCode === 86) {
+      // check if you press the Ctrl key or meta key
       if (event.ctrlKey || event.metaKey) this.processClipboard();
-    } else if (event.keyCode === 13) this.finish();
+    }
+    // check if you press enter key
+    else if (event.keyCode === 13) this.finish();
   }
 
   private setAvailableUnits(): void {
@@ -357,8 +363,9 @@ export class AmountPage extends WalletTabsChild {
       this.changeDetectorRef.detectChanges();
     });
   }
-
+  // delete input characters
   public removeDigit(): void {
+    // start tracking changes to the expression element
     this.zone.run(() => {
       this.expression = this.expression.slice(0, -1);
       this.processAmount();
@@ -382,6 +389,7 @@ export class AmountPage extends WalletTabsChild {
     }
   }
 
+  // check if the last character of the letter is an operator  eg: *+X-
   private isOperator(val: string): boolean {
     const regex = /[\/\-\+\x\*]/;
     return regex.test(val);
@@ -467,13 +475,12 @@ export class AmountPage extends WalletTabsChild {
     );
   }
 
+  // format incoming character
   private format(val: string): string {
     if (!val) return undefined;
 
     let result = val.toString();
-
     if (this.isOperator(_.last(val))) result = result.slice(0, -1);
-
     return result.replace('x', '*');
   }
 

@@ -1,123 +1,167 @@
 page-confirm,
 confirm-card-purchase {
+  .toolbar-background {
+    background: transparent !important;
+  }
+
+  .toolbar {
+    background: transparent !important;
+  }
+
+  .toolbar-title {
+    font-weight: 500 !important;
+  }
+
   .wallet-details-header {
     button {
       font-weight: 100;
       font-size: 16px;
     }
   }
+
   ion-content {
+
     .fixed-content,
     .scroll-content {
       margin-bottom: 90px;
     }
   }
+
   .no-margin-bottom {
+
     .fixed-content,
     .scroll-content {
       margin-bottom: 0px;
     }
   }
+
   .header-container {
     padding: 20px 0px 20px 0px;
+
     .sending-label {
       display: flex;
       align-items: center;
+
       span {
         font-size: 1.8rem;
       }
     }
   }
+
   .amount-label {
     padding-top: 1rem;
+
     .amount {
       display: flex;
       font-size: 3.5rem;
       justify-content: space-between;
+
       .unit {
         font-weight: 400;
       }
+
       img.sending-img {
         width: auto;
         height: 40px;
       }
+
       .amount-coin {
         font-size: 1.5rem;
         font-size: 1.5rem;
         margin-top: 0.35rem;
         margin-left: 0.8rem;
       }
+
       div {
         display: flex;
       }
     }
   }
+
   .alternative {
     margin-top: 0.5rem;
     color: color($colors, light-grey);
   }
+
   .item-fee {
     line-height: 20px;
+
     .fee-title {
       margin-bottom: 5px;
       color: color($colors, grey);
     }
+
     .fee-loading {
       font-weight: 300;
       color: color($colors, light-grey);
     }
+
     .fee-amount {
       font-weight: 400;
     }
+
     .fee-details {
       margin-top: 3px;
       font-size: 12.5px;
       color: color($colors, light-grey);
     }
+
     &.warn {
       color: color($colors, error);
+
       .fee-details {
         color: color($colors, error);
       }
     }
+
     ion-note {
       font-weight: 100;
     }
+
     &.btn-opacity {
       opacity: 1;
     }
   }
+
   .item-gravatar {
     img {
       margin-right: 1rem;
     }
   }
+
   .paypro {
     width: 100%;
     cursor: pointer;
   }
+
   .no-wallet-message {
     ion-item {
       text-align: center;
       text-transform: uppercase;
     }
   }
+
   @mixin row-flex {
     display: flex;
     align-items: center;
     margin-top: 1rem;
   }
+
   .container-to,
   .container-from {
+
     .wallet,
     .payment-proposal-to {
       @include row-flex;
+
       .icon-wallet {
         margin-right: 1rem;
+
         &.disabled {
           background-color: color($colors, grey);
         }
       }
+
       .icon-bitcoin {
         margin: 9px 2rem 9px 0;
         width: 35px;
@@ -126,22 +170,27 @@ confirm-card-purchase {
         border: 1px solid color($colors, grey);
         border-radius: $icon-border-radius;
       }
+
       .text-address.ellipsis {
         flex: 0 0 47px;
+
         img {
           margin: 12px 0 12px 12px;
           vertical-align: middle;
         }
       }
+
       &.address-coppied {
         border-radius: 3px;
         background-color: rgb(248, 248, 248);
       }
     }
+
     &.not-clickable {
       pointer-events: none;
     }
   }
+
   .last-item {
     margin-left: auto !important;
   }
