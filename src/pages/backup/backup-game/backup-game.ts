@@ -46,6 +46,7 @@ export class BackupGamePage {
   public useIdeograms;
   public wallet;
   public keys;
+  public isWrongOrder: boolean; // whether word is selected in wrong order when check mnemonic
 
   private walletId: string;
 
@@ -137,9 +138,11 @@ export class BackupGamePage {
   public addButton(index: number, item): void {
     const newWord = {
       word: item.word,
-      prevIndex: index
+      prevIndex: index,
+      correct: true
     };
     this.customWords.push(newWord);
+    this.checkOrder();
     this.shuffledMnemonicWords[index].selected = true;
     this.shouldContinue();
   }
@@ -147,6 +150,7 @@ export class BackupGamePage {
   public removeButton(index: number, item): void {
     // if ($scope.loading) return;
     this.customWords.splice(index, 1);
+    this.checkOrder();
     this.shuffledMnemonicWords[item.prevIndex].selected = false;
     this.shouldContinue();
   }
@@ -213,11 +217,30 @@ export class BackupGamePage {
     this.password = '';
     this.customWords = [];
     this.selectComplete = false;
+    this.isWrongOrder = false;
     this.error = false;
 
     words = _.repeat('x', 300);
 
     if (this.currentIndex == 2) this.slidePrev();
+  }
+
+  /**
+   * Check if the selected mnemonic words are in correct order
+   */
+  public checkOrder(): void {
+    this.isWrongOrder = false;
+    this.logger.warn(this.customWords)
+    this.logger.warn(this.mnemonicWords)
+    let wordsCount = this.customWords.length;
+    if(wordsCount>0){
+      for (var i = 0; i<wordsCount; i++) {
+        if(this.customWords[i].word!==this.mnemonicWords[i]){
+          this.isWrongOrder = true;
+          this.customWords[i].correct = false;
+        }
+      }
+    }    
   }
 
   private confirm(): Promise<any> {

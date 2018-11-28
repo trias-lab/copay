@@ -44,31 +44,31 @@
     </ion-slide>
 
     <ion-slide>
-      <div class="slide-container">
+      <div class="slide-container check-slide">
         <div class="slide-body">
-          <div class="slide-title" translate>Let's verify your recovery phrase.</div>
+          <div class="slide-title" translate>Check Your Mnemonic</div>
           <div class="phrase-container">
-            <div class="phrase">
-              <button ion-button outline *ngFor="let customWord of customWords; let i = index" (click)="removeButton(i, customWord)">{{customWord.word}}</button>
+            <div>
+              <div class="phrase">
+                <button ion-button *ngFor="let customWord of customWords; let i = index" (click)="removeButton(i, customWord)" [ngClass]="{'wrong':!customWord.correct}" >{{customWord.word}}</button>
+              </div>
             </div>
+            <div class="words">
+              <button ion-button *ngFor="let shuffledWord of shuffledMnemonicWords; let i = index" (click)="addButton(i, shuffledWord)" [disabled]="shuffledWord.selected">{{shuffledWord.word}}</button>
+            </div>
+            <div class="hint invisible" [ngClass]="{'wrong':isWrongOrder}"><ion-icon name="warning"></ion-icon><span translate>Wrong Word!</span></div>                       
+            <div class="hint" translate>Please tap each word in the correct order.</div>
           </div>
         </div>
       </div>
       <div class="bottom-absolute">
-        <div *ngIf="!selectComplete">
-          <div class="slide-title" translate>Please tap each word in the correct order.</div>
-          <div class="words">
-            <button ion-button *ngFor="let shuffledWord of shuffledMnemonicWords; let i = index" (click)="addButton(i, shuffledWord)" [disabled]="shuffledWord.selected">{{shuffledWord.word}}</button>
-          </div>
-        </div>
-        <div *ngIf="selectComplete">
-          <div class="footer-text" translate>Is this correct?</div>
-          <button *ngIf="currentIndex == 1 && selectComplete" ion-button class="button-standard" (click)="slideNext(false)">
+        <div>
+          <button [disabled]="currentIndex != 1 || !selectComplete" ion-button class="button-standard" (click)="slideNext(false)">
             {{'Confirm' | translate}}
           </button>
-          <button ion-button clear class="button-standard" (click)="setFlow()">
+          <!-- <button ion-button clear class="button-standard" (click)="setFlow()">
             {{'Clear' | translate}}
-          </button>
+          </button> -->
         </div>
       </div>
     </ion-slide>

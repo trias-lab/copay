@@ -143,4 +143,58 @@ page-backup-game {
       color: color($colors, grey);
     }
   }
+  .slide-container.check-slide{
+    .phrase-container{
+      padding: 28px 16px;
+      .phrase{
+        background:rgba(246,247,249,1);
+        box-shadow:0px 1px 3px 0px rgba(0,0,0,0.24) inset;
+        border-radius:4px;
+        min-height: 156px;
+        padding: 12px;
+        text-align: left;
+        .button{
+          background:linear-gradient(270deg,rgba(110,118,125,1) 0%,rgba(128,138,148,1) 100%);
+          box-shadow:0px 2px 4px 0px rgba(87,167,86,0.1);
+          border-radius:4px;
+          height: 24px;
+          font-size:14px;
+          font-weight:400;
+          color:rgba(255,255,255,1);
+          line-height:16px;
+        }
+        .button.wrong{
+          background:linear-gradient(270deg,rgba(250,161,97,1) 0%,rgba(247,107,28,1) 100%);
+        }
+      }
+      .hint{
+        font-size:15px;
+        font-weight:400;
+        color:rgba(110,118,125,1);
+        line-height:18px;
+      }
+      .hint.invisible{
+        visibility: hidden;
+        font-size:14px;
+        font-weight:400;
+        color:rgba(245,113,35,1);
+        line-height:18px;
+        margin-top: 20px;
+        margin-bottom: 16px;
+      }
+      .hint.wrong{
+        visibility: visible;
+      }
+      .words{
+        margin: 16px -16px;
+        .button{         
+          height: 24px;
+          font-size:14px;
+          font-weight:400;
+          color:rgba(255,255,255,1);
+          line-height:16px;
+        }
+      }
+    }
+  }
 }
