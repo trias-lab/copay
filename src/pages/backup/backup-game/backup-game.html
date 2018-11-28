@@ -20,23 +20,23 @@
     <ion-slide>
       <div class="slide-container" *ngIf="mnemonicWords && mnemonicWords[0] || !credentialsEncrypted">
         <div>
-          <div class="slide-title" translate>Please carefully write down this phrase.</div>
+          <div class="slide-title" translate>Wallet Mnemonic</div>
           <div class="phrase-container" copy-to-clipboard="{{ wallet.network == 'testnet' ? keys?.mnemonic : null }}">
             <div class="phrase">
               <ion-row>
                 <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 *ngFor="let word of mnemonicWords index as i" >
                   <div class="word-container">
-                    <div class="index">{{i+1}}</div>
+                    <div class="index">{{i+1<10?'0'+(i+1):i+1}}</div>
                     <div class="word">{{word}}</div>
                   </div>
                 </ion-col>
               </ion-row>
+              <div class="hint" translate>Write down your mnemonic on paper, we'll help you doulble check in next step.</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="bottom-absolute">
-        <div translate class="footer-text">We will confirm on the next screen.</div>
+      <div class="bottom-absolute">        
         <button *ngIf="currentIndex == 0" ion-button class="button-standard" [disabled]="credentialsEncrypted || error" (click)="slideNext(true)">
           {{'I have written it down' | translate}}
         </button>

@@ -1,7 +1,7 @@
 page-backup-game {
   .slide-container {
     height: 100%;
-    max-height: 30rem;
+    max-height: 398px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,9 +16,11 @@ page-backup-game {
     text-align: center;
   }
   .slide-title {
-    font-size: 14px;
-    padding: 20px;
-    color: color($colors, grey);
+    padding: 26px 20px;
+    font-size:20px;
+    font-weight:500;
+    color:rgba(20,42,63,1);
+    line-height:24px;
   }
   .swiper-pagination {
     display: none;
@@ -37,14 +39,14 @@ page-backup-game {
     border-radius:4px;
     color: #192c3a;
     text-align: center;
-    max-width: 500px;
+    max-width: 343px;
     min-height: 9rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     position: relative;
     .phrase {
-      padding: 2.5rem;
+      padding: 28px 16px;
       font-weight: bold;
       line-height: 2;
       font-size: 16px;
@@ -97,7 +99,14 @@ page-backup-game {
           border-radius:0px 0px 4px 0px;
         }
       }
-    }
+      .hint {
+        font-size:15px;
+        font-weight:400;
+        color:rgba(110,118,125,1);
+        line-height:18px;
+        margin-top: 20px;
+      }
+    }    
   }
   .phrase-container:after {
       content: "";
