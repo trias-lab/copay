@@ -7,6 +7,7 @@ import {
   Platform
 } from 'ionic-angular';
 import * as _ from 'lodash';
+import * as echarts from 'echarts';
 import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
 
@@ -140,8 +141,23 @@ export class HomePage {
 
   ionViewDidEnter() {
     this._didEnter();
-  }
 
+    const ec = echarts as any;
+    var myChart = ec.init(document.getElementById('chart'));
+    var optionchart = {
+      series: {
+        type: 'pie',
+        data: [{
+          name: 'A', value: 15
+        }, {
+          name: 'B', value: 20
+        }, {
+          name: 'C', value: 15
+        }]
+      }
+    };
+    myChart.setOption(optionchart);
+  }
   private _willEnter() {
     // Show recent transactions card
     this.recentTransactionsEnabled = this.configProvider.get().recentTransactions.enabled;

@@ -1,13 +1,22 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
+    <!-- <ion-title>
       <img class="home-logo" src="assets/img/app/logo-negative.svg">
-    </ion-title>
+    </ion-title> -->
     <!-- <ion-buttons right>
       <button class="modal-close-button" (click)="settings()" ion-button>
         <img src="assets/img/icon-settings.svg">
       </button>
     </ion-buttons> -->
+    <h1>Assets</h1>
+    <!-- <ion-fab *ngIf="wallets && wallets[0]" id="scan-button" right bottom>
+      <button ion-fab color="primary" (click)="scan()">
+        <ion-icon name="tab-scan"></ion-icon>
+      </button>
+    </ion-fab> -->
+    <span class="addr-btn"></span>
+    <span class="scan-btn" (click)="scan()"></span>
+
   </ion-navbar>
 </ion-header>
 
@@ -18,6 +27,7 @@
   <div class="wrapper">
     <div class="header-extend" *ngIf="wallets && wallets[0]"></div>
 
+    <div id="chart"></div>
     <div class="card clipboard-card" *ngIf="validDataFromClipboard">
       <ion-item-divider>
         <div class="title" item-start>
@@ -36,7 +46,7 @@
 
     <div [ngClass]="{'content-animation': slideDown, 'initial-margin': validDataFromClipboard}">
 
-      <ion-card class="server-message" *ngIf="serverMessage">
+      <!-- <ion-card class="server-message" *ngIf="serverMessage">
         <div class="server-message-icon">
           <img src="assets/img/icon-warning-circled.svg" />
         </div>
@@ -63,7 +73,7 @@
             <span translate>Download</span>
           </div>
         </ion-card-content>
-      </ion-card>
+      </ion-card> -->
 
       <div class="prompt-user-fullscreen-container" *ngIf="!wallets || !wallets[0]">
         <div class="prompt-user">
@@ -140,7 +150,7 @@
       </div>
 
       <div class="card" *ngIf="walletsBtc && walletsBtc[0]">
-        <ion-item-divider>
+        <!-- <ion-item-divider>
           <div class="title wallets-list-title" item-start>
             <img src="assets/img/icon-bitcoin.svg" alt="Bitcoin Wallets" width="18" />
             <span translate>Bitcoin Wallets</span>
@@ -158,7 +168,7 @@
               {{'Done' | translate}}
             </button>
           </div>
-        </ion-item-divider>
+        </ion-item-divider> -->
 
         <ion-list reorder="{{showReorderBtc}}" (ionItemReorder)="reorderWalletsBtc($event)">
           <button ion-item *ngFor="let wallet of walletsBtc" (click)="goToWalletDetails(wallet)">
@@ -305,9 +315,9 @@
     </div>
   </div>
 
-  <ion-fab *ngIf="wallets && wallets[0]" id="scan-button" right bottom>
+  <!-- <ion-fab *ngIf="wallets && wallets[0]" id="scan-button" right bottom>
     <button ion-fab color="primary" (click)="scan()">
       <ion-icon name="tab-scan"></ion-icon>
     </button>
-  </ion-fab>
+  </ion-fab> -->
 </ion-content>
