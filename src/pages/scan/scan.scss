@@ -155,3 +155,18 @@ page-scan {
     background: transparent;
   }
 }
+
+ion-header.scan-header {
+  background: rgba(20, 42, 63, 1);
+  opacity: 0.9194;
+  .toolbar-title {
+    color: #fff;
+  }
+  .back-button {
+    color: #fff;
+  }
+}
+page-scan .page-scan-has-problems {
+  background: rgba(20, 42, 63, 1);
+  opacity: 0.9194;
+}

@@ -31,8 +31,7 @@ ion-header.address-header {
   }
 }
 .address-detail {
-  background: #fff url(../../../assets/img/img_bg_pattern.png) no-repeat left
-    top;
+  background: #fff url(../../../assets/img/img_bg_pattern.png) repeat-x left top;
   .contact-view-header {
     margin-top: 10px;
     padding-top: 0;
@@ -52,7 +51,7 @@ ion-header.address-header {
     font-size: 1.4rem;
   }
   .item-block {
-    padding-left: 50px;
+    // padding-left: 50px;
   }
   .address-info-title {
     font-size: 1.5rem;
@@ -70,7 +69,11 @@ ion-header.address-header {
     margin: 21px 16px 21px 0;
   }
   .item-inner {
-    border-bottom: 1px solid #e5e8ea;
+    border-bottom: 1px solid #e5e8ea !important;
+    margin-left: 50px;
+  }
+  .list-ios > .item-block:first-child {
+    border: none;
   }
   gravatar {
     float: left;
