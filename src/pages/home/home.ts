@@ -21,6 +21,7 @@ import { ShapeshiftPage } from '../integrations/shapeshift/shapeshift';
 import { PaperWalletPage } from '../paper-wallet/paper-wallet';
 import { AmountPage } from '../send/amount/amount';
 import { AddressbookAddPage } from '../settings/addressbook/add/add';
+import { AddressbookPage } from '../settings/addressbook/addressbook';
 import { TxDetailsPage } from '../tx-details/tx-details';
 import { TxpDetailsPage } from '../txp-details/txp-details';
 import { ActivityPage } from './activity/activity';
@@ -700,10 +701,15 @@ export class HomePage {
     let url = this.serverMessage.link;
     this.externalLinkProvider.open(url);
   }
-
+  // pages switch
   public goToAddView(): void {
     this.navCtrl.push(AddPage);
   }
+
+  public goToAddressbook(): void {
+    this.navCtrl.push(AddressbookPage);
+  }
+
   // 当点击BTC或者BCH钱包的具体某一项
   public goToWalletDetails(wallet): void {
     if (this.showReorderBtc || this.showReorderBch) return;
