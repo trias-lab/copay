@@ -1,13 +1,16 @@
 page-wallet-settings {
   .assertive {
     color: color($colors, danger);
+
     ion-label {
       white-space: inherit;
     }
   }
+
   .item-text {
     font-size: 12.5px;
   }
+
   .settings-color-block {
     display: inline-block;
     width: 15px;
@@ -16,5 +19,55 @@ page-wallet-settings {
     float: left;
     margin: 1rem;
     background-color: color($colors, primary);
+  }
+
+  .item-md {
+    margin-left: 36px;
+    padding-right: 16px;
+    background: #f8f8f8;
+  }
+
+  .settings-list .item {
+    border-bottom: 1px solid #E5E8EA;
+  }
+
+  ion-header {
+    background: url('../../../assets/img/img_bg_pattern.png') repeat !important;
+
+    .back-button {
+      color: #fff !important;
+      font-weight: 500;
+    }
+
+    .toolbar-title {
+      color: #fff !important;
+      font-weight: 500;
+    }
+  }
+
+  .delete span {
+    color: #D0021B;
+  }
+
+  .wallet-set-title {
+    height: 122px;
+    background: url('../../../assets/img/img_bg_pattern.png') repeat !important;
+    padding-left: 50px;
+    margin-bottom: 10px;
+
+    .set-detail {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 1);
+      line-height: 16px;
+    }
+
+    .set-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 1);
+      margin-top: 0;
+      padding-top: 14px;
+    }
   }
 }
