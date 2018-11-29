@@ -56,9 +56,9 @@ page-send {
   }
 
   .send-header-wrapper {
-    padding: 10px;
+    padding: 10px 16px;
     background-color: white;
-    box-shadow: 0px 5px 10px 0px #cccccc;
+    // box-shadow: 0px 5px 10px 0px #cccccc;
   }
 
   .send-heading {
@@ -70,7 +70,7 @@ page-send {
 
   .search-wrapper {
     margin-top: 15px;
-    background-color: #f2f2f2;
+    background: rgba(246, 247, 249, 1);
     display: flex;
     align-items: baseline;
     border: 1px solid #f2f2f2;
