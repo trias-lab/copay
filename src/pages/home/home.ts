@@ -145,16 +145,44 @@ export class HomePage {
     const ec = echarts as any;
     var myChart = ec.init(document.getElementById('chart'));
     var optionchart = {
-      series: {
-        type: 'pie',
-        data: [{
-          name: 'A', value: 15
-        }, {
-          name: 'B', value: 20
-        }, {
-          name: 'C', value: 15
-        }]
-      }
+      color: [
+        '#25EAB2', '#AD40BB', '#11A9F9'
+      ],
+      grid: {
+        left: 15,
+        top: 15,
+        bottom: 10,
+        right: 20
+      },
+      series: [
+        {
+          name: '访问来源',
+          type: 'pie',
+          radius: ['60%', '70%'],
+          hoverAnimation: false,
+          avoidLabelOverlap: false,
+          label: {
+            normal: {
+              show: true,
+              textStyle: {
+                fontSize: '12',
+                color: '#fff'
+
+              }
+            },
+          },
+          labelLine: {
+            normal: {
+              show: false
+            }
+          },
+          data: [
+            { value: 40, },
+            { value: 50, },
+            { value: 50, }
+          ]
+        }
+      ]
     };
     myChart.setOption(optionchart);
   }

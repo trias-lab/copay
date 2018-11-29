@@ -20,14 +20,19 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="fullscreen-tab" [ngClass]="{'zero-state': !wallets || !wallets[0]}">
+<ion-content class="fullscreen-tab clearfix" [ngClass]="{'zero-state': !wallets || !wallets[0]}">
   <ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="!showReorderBtc && !showReorderBch" pullMin="90" pullMax="180">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+  <div id="chart"></div>
+  <div class="account-detail">
+    <p>Account Balance</p>
+    <h2>$ 897,981,982.03</h2>
+    <div></div>
+  </div>
   <div class="wrapper">
     <div class="header-extend" *ngIf="wallets && wallets[0]"></div>
 
-    <div id="chart"></div>
     <div class="card clipboard-card" *ngIf="validDataFromClipboard">
       <ion-item-divider>
         <div class="title" item-start>
