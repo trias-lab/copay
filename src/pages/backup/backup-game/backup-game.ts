@@ -18,6 +18,7 @@ import { ActionSheetProvider } from '../../../providers/action-sheet/action-shee
 import { BwcErrorProvider } from '../../../providers/bwc-error/bwc-error';
 import { BwcProvider } from '../../../providers/bwc/bwc';
 import { OnGoingProcessProvider } from '../../../providers/on-going-process/on-going-process';
+import { PersistenceProvider } from '../../../providers/persistence/persistence';
 import { ProfileProvider } from '../../../providers/profile/profile';
 import { WalletProvider } from '../../../providers/wallet/wallet';
 
@@ -60,6 +61,7 @@ export class BackupGamePage {
     private bwcProvider: BwcProvider,
     private bwcErrorProvider: BwcErrorProvider,
     private onGoingProcessProvider: OnGoingProcessProvider,
+    private persistenceProvider: PersistenceProvider,
     private translate: TranslateService,
     public actionSheetProvider: ActionSheetProvider
   ) {
@@ -299,6 +301,7 @@ export class BackupGamePage {
         infoSheet.present();
         infoSheet.onDidDismiss(() => {
           if (this.fromOnboarding) {
+            this.persistenceProvider.setOnboardingCompleted();
             this.navCtrl.push(DisclaimerPage);
           } else {
             this.navCtrl.popToRoot();

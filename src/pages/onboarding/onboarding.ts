@@ -14,7 +14,7 @@ import { ActionSheetProvider } from '../../providers/action-sheet/action-sheet';
 import { AppProvider } from '../../providers/app/app';
 import { LanguageProvider } from '../../providers/language/language';
 import { OnGoingProcessProvider } from '../../providers/on-going-process/on-going-process';
-import { PersistenceProvider } from '../../providers/persistence/persistence';
+// import { PersistenceProvider } from '../../providers/persistence/persistence';
 import { PlatformProvider } from '../../providers/platform/platform';
 import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
@@ -42,7 +42,7 @@ export class OnboardingPage {
     private actionSheetProvider: ActionSheetProvider,
     private profileProvider: ProfileProvider,
     private onGoingProcessProvider: OnGoingProcessProvider,
-    private persistenceProvider: PersistenceProvider,
+    // private persistenceProvider: PersistenceProvider,
     private popupProvider: PopupProvider,
     private language: LanguageProvider,
     private modalCtrl: ModalController,
@@ -79,7 +79,7 @@ export class OnboardingPage {
     modal.onDidDismiss(() => {
       // the modal is dismissed after verifing the pin code
       this.logger.info('---PIN setup finished');
-      this.persistenceProvider.setOnboardingCompleted();
+      // this.persistenceProvider.setOnboardingCompleted();
       // request to backup the mneminic after setup pin code
       this.navCtrl.push(BackupRequestPage, { walletId: wallet.id });
     });
