@@ -1,3 +1,9 @@
+<ion-header no-border>
+  <ion-navbar *ngIf="!fromOnboarding">
+    <ion-title>{{'Backup Warning' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
 <ion-content no-bounce>
   <ion-card (click)="checked.first=!checked.first">
     <div

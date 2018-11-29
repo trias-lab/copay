@@ -81,7 +81,10 @@ export class OnboardingPage {
       this.logger.info('---PIN setup finished');
       // this.persistenceProvider.setOnboardingCompleted();
       // request to backup the mneminic after setup pin code
-      this.navCtrl.push(BackupRequestPage, { walletId: wallet.id });
+      this.navCtrl.push(BackupRequestPage, { 
+          walletId: wallet.id,
+          fromOnboarding: true 
+        });
     });
   }
 

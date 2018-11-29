@@ -16,6 +16,7 @@ import { DisclaimerPage } from '../disclaimer/disclaimer';
 })
 export class BackupRequestPage {
   private walletId: string;
+  private fromOnboarding: boolean;
   public checked;
 
   constructor(
@@ -27,6 +28,7 @@ export class BackupRequestPage {
     private popupProvider: PopupProvider
   ) {
     this.walletId = this.navParams.get('walletId');
+    this.fromOnboarding = this.navParams.get('fromOnboarding');
     this.checked = {  // whether 3 tips are checked
       first: false,
       second: false,
@@ -46,7 +48,7 @@ export class BackupRequestPage {
     // Go to mnemonic backup game page directly
     this.navCtrl.push(BackupGamePage, {
       walletId: this.walletId,
-      fromOnboarding: true
+      fromOnboarding: this.fromOnboarding
     });
   }
 
