@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { App, Events, NavController, NavParams } from 'ionic-angular';
+import { App, Events, ModalController, NavController, NavParams } from 'ionic-angular';
 import { Logger } from '../../../providers/logger/logger';
 
 // Pages
 import { DisclaimerPage } from '../../onboarding/disclaimer/disclaimer';
 import { ScanPage } from '../../scan/scan';
 import { TabsPage } from '../../tabs/tabs';
+import { PinModalPage } from '../../pin/pin-modal/pin-modal';
 
 // Providers
 import { ActionSheetProvider } from '../../../providers/action-sheet/action-sheet';
@@ -52,6 +53,7 @@ export class ImportWalletPage {
 
   constructor(
     private app: App,
+    private modalCtrl: ModalController,
     private navCtrl: NavController,
     private navParams: NavParams,
     private form: FormBuilder,
@@ -239,6 +241,21 @@ export class ImportWalletPage {
     }, 100);
   }
 
+  private openPinModal(action): void {
+    const modal = this.modalCtrl.create(
+      PinModalPage,
+      { action },
+      { cssClass: 'fullscreen-modal' }
+    );
+    modal.present();
+    modal.onDidDismiss(() => {
+      // the modal is dismissed after verifing the pin code
+      this.logger.info('---PIN setup finished');
+      this.profileProvider.setOnboardingCompleted();
+      this.navCtrl.push(DisclaimerPage);
+    });
+  }
+
   private finish(wallet): void {
     this.walletProvider
       .updateRemotePreferences(wallet)
@@ -247,8 +264,9 @@ export class ImportWalletPage {
         this.events.publish('status:updated');
         this.pushNotificationsProvider.updateSubscription(wallet);
         if (this.fromOnboarding) {
-          this.profileProvider.setOnboardingCompleted();
-          this.navCtrl.push(DisclaimerPage);
+          // set new pin code when importing a wallet
+          this.openPinModal('initPin');
+          this.logger.info('---PIN setup started'); 
         } else {
           this.app
             .getRootNavs()[0]
