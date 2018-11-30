@@ -234,8 +234,6 @@ export class BackupGamePage {
    */
   public checkOrder(): void {
     this.isWrongOrder = false;
-    this.logger.warn(this.customWords)
-    this.logger.warn(this.mnemonicWords)
     let wordsCount = this.customWords.length;
     if(wordsCount>0){
       for (var i = 0; i<wordsCount; i++) {
