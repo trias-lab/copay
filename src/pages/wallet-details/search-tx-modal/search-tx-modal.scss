@@ -1,25 +1,38 @@
 page-search-tx-modal {
+  ion-navbar {
+    ion-buttons {
+      button {
+        color: #142a3f !important;
+      }
+    }
+  }
+
   .tx-history {
     .tx-history-header {
       &--large {
         &.item {
           margin-bottom: 3px;
+
           ion-label {
             font-size: 15px;
           }
         }
       }
+
       &.item {
         min-height: 26px;
+
         ion-label {
           margin: 0;
           font-size: 14px;
         }
+
         .item-inner {
           padding: 0 !important;
         }
       }
     }
+
     .item-wrapper {
       &:last-child {
         .item-inner {
@@ -27,6 +40,7 @@ page-search-tx-modal {
         }
       }
     }
+
     .item {
       font-size: 16px;
       padding-left: 19px;
@@ -42,25 +56,31 @@ page-search-tx-modal {
         border-bottom: 1px solid color($colors, light);
       }
     }
+
     img {
       width: 35px;
     }
+
     .action {
       width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     .amount {
       color: color($colors, dark);
+
       .received {
         color: color($colors, success);
       }
     }
+
     .date {
       font-size: 14px;
       margin-top: 8px;
     }
+
     .txs-count {
       color: color($colors, grey);
       text-align: center;

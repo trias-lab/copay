@@ -482,6 +482,14 @@ ion-alert .alert-message {
   }
 }
 
+.home-tab {
+  .tab-button {
+    &:nth-child(2) {
+      display: none !important;
+    }
+  }
+}
+
 .hide-tabbar-tab {
 
   .tab-button {
@@ -491,10 +499,6 @@ ion-alert .alert-message {
       // color: #CBD0D3 !important;
       // background-color: transparent !important;
     }
-
-    // &:nth-child(2) {
-    //   display: none !important;
-    // }
 
     &[aria-selected="true"] {
       .tab-button-text {

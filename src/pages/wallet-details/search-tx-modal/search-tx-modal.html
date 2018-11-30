@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar [navbar-bg]="wallet?.color">
+  <ion-navbar>
     <ion-title>{{'Search Transactions' | translate}}</ion-title>
     <ion-buttons left>
       <button class="modal-close-button" (click)="close()" ion-button>
@@ -24,10 +24,14 @@
             </div>
             <div *ngIf="tx.confirmations > 0">
               <span *ngIf="tx.customData && tx.customData.service">
-                <img class="icon-services" src="assets/img/shapeshift/icon-shapeshift.svg" *ngIf="tx.customData.service == 'shapeshift'" width="40">
-                <img class="icon-services" src="assets/img/gift-cards/amazon/amazon-icon.svg" *ngIf="tx.customData.service == 'amazon'" width="40">
-                <img class="icon-services" src="assets/img/gift-cards/mercado-libre/mercado-livre-icon.svg" *ngIf="tx.customData.service == 'mercadolibre'" width="40">
-                <img class="icon-services" src="assets/img/bitpay-card/icon-bitpay.svg" *ngIf="tx.customData.service == 'debitcard'" width="40">
+                <img class="icon-services" src="assets/img/shapeshift/icon-shapeshift.svg" *ngIf="tx.customData.service == 'shapeshift'"
+                  width="40">
+                <img class="icon-services" src="assets/img/gift-cards/amazon/amazon-icon.svg" *ngIf="tx.customData.service == 'amazon'"
+                  width="40">
+                <img class="icon-services" src="assets/img/gift-cards/mercado-libre/mercado-livre-icon.svg" *ngIf="tx.customData.service == 'mercadolibre'"
+                  width="40">
+                <img class="icon-services" src="assets/img/bitpay-card/icon-bitpay.svg" *ngIf="tx.customData.service == 'debitcard'"
+                  width="40">
               </span>
               <span *ngIf="!tx.customData || !tx.customData.service">
                 <img src="assets/img/tx-action/icon-received.svg" *ngIf="tx.action == 'received'" width="40">

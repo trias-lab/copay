@@ -348,9 +348,21 @@ export class CopayApp {
   private scanFromWalletEvent(): void {
     this.events.subscribe('ScanFromWallet', async () => {
       await this.getGlobalTabs().select(1);
+      let elements = document.querySelectorAll('.home-tab>.tabbar');
+      if (elements != null) {
+        Object.keys(elements).map(key => {
+          elements[key].style.display = 'none';
+        });
+      }
       await this.toggleScannerVisibilityFromWithinWallet(true, 300);
     });
     this.events.subscribe('ExitScan', async () => {
+      let elements = document.querySelectorAll('.home-tab>.tabbar');
+      if (elements != null) {
+        Object.keys(elements).map(key => {
+          elements[key].style.display = 'flex';
+        });
+      }
       this.closeScannerFromWithinWallet();
     });
   }

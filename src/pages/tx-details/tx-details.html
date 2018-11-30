@@ -24,8 +24,8 @@
           <div class="amount-label">
             <div class="amount">
               <div>
-                <span *ngIf="btx.action == 'sent'" class="operator"> + </span>
-                <span *ngIf="btx.action == 'received'" class="operator"> - </span>
+                <span *ngIf="btx.action == 'sent'" class="operator"> - </span>
+                <span *ngIf="btx.action == 'received'" class="operator"> + </span>
 
                 {{btx.amountValueStr}}
                 {{btx.amountUnitStr}}

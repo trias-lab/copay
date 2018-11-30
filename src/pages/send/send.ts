@@ -4,6 +4,8 @@ import { Events, NavController, NavParams } from 'ionic-angular';
 import * as _ from 'lodash';
 
 // Providers
+// Pages
+import { Observable } from 'rxjs/Observable';
 import { ActionSheetProvider } from '../../providers/action-sheet/action-sheet';
 import { AddressBookProvider } from '../../providers/address-book/address-book';
 import { AddressProvider } from '../../providers/address/address';
@@ -14,11 +16,9 @@ import { Logger } from '../../providers/logger/logger';
 import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { Coin, WalletProvider } from '../../providers/wallet/wallet';
-import { WalletTabsProvider } from '../wallet-tabs/wallet-tabs.provider';
-
-// Pages
-import { Observable } from 'rxjs/Observable';
+import { AddressbookPage } from '../settings/addressbook/addressbook';
 import { WalletTabsChild } from '../wallet-tabs/wallet-tabs-child';
+import { WalletTabsProvider } from '../wallet-tabs/wallet-tabs.provider';
 import { AmountPage } from './amount/amount';
 
 export interface FlatWallet {
@@ -395,5 +395,9 @@ export class SendPage extends WalletTabsChild {
     if (this.scannerOpened) this.events.publish('ExitScan');
     else this.getParentTabs().dismiss();
     this.scannerOpened = false;
+  }
+
+  public goToAddressbook(): void {
+    this.navCtrl.push(AddressbookPage);
   }
 }

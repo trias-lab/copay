@@ -26,7 +26,7 @@
 
 <ion-content no-bounce>
 
-  <div class="prompt-user-fullscreen-container" *ngIf="!shouldShowZeroState()">
+  <div class="prompt-user-fullscreen-container" *ngIf="shouldShowZeroState()">
     <div class="prompt-user">
       <div class="title-icon larger-icon">
         <img src="assets/img/ghost-straight-face.svg" />
@@ -44,7 +44,7 @@
   </div>
 
 
-  <div *ngIf="shouldShowZeroState()">
+  <div *ngIf="!shouldShowZeroState()">
     <div class="card" *ngIf="hasBtcWallets || hasBchWallets">
       <div class="send-header-wrapper">
         <span class="send-heading" translate>Recipient</span>
@@ -62,7 +62,7 @@
           <ion-col col-6 class="send-col" (click)="openScanner()">
             <ion-icon ios="ios-qr-scanner" md="md-qr-scanner"></ion-icon>Scan QR Code
           </ion-col>
-          <ion-col col-6 class="send-col">
+          <ion-col col-6 class="send-col" (click)="goToAddressbook()">
             <ion-icon ios="ios-contacts" md="md-contacts"></ion-icon>Contacts
           </ion-col>
         </ion-row>
@@ -252,7 +252,7 @@
   </div> -->
 
 
-  <div class="send-check">
+  <div class="send-check" *ngIf="shouldShowZeroState()">
     <p>Double check the deposite address!</p>
     <button ion-button block large> Send </button>
   </div>
