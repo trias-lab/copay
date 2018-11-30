@@ -47,11 +47,19 @@
       </span>
     </div>
 
-    <div class="send-title ">Transaction Fee</div>
+
+    <button ion-item class="item-fee" [attr.detail-none]="usingMerchantFee ? '' : null" (click)="chooseFeeLevel()"
+      [ngClass]="{'warn': wallet && tx.txp[wallet.id] && tx.txp[wallet.id].feeTooHigh, 'btn-opacity': usingMerchantFee}"
+      [disabled]="usingMerchantFee">
+      <div class="fee-title">
+        <span translate>Bitcoin miner fee: </span>{{tx.feeLevelName}}
+      </div>
+    </button>
+    <!-- <div class="send-title ">Transaction Fee</div>
     <ion-range [(ngModel)]="brightness">
     </ion-range>
 
-    <div class="send-balance "><span>0.2557</span> BTC <span> ≈ 0.2557</span>CNY</div>
+    <div class="send-balance "><span>0.2557</span> BTC <span> ≈ 0.2557</span>CNY</div> -->
 
     <!-- <ion-item>
       <ion-label stacked>Notes (Optional)</ion-label>
