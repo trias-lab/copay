@@ -47,7 +47,6 @@ export class FeePolicyPage {
     if (elements != null) {
       Object.keys(elements).map((key) => {
         elements[key].style.display = 'none';
-        // elements[key].style.zIndex = '102';
       });
     }
   }
