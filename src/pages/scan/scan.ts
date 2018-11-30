@@ -99,7 +99,14 @@ export class ScanPage {
       this.ionViewWillEnter();
     });
   }
-
+  ngAfterViewInit() {
+    let elements = document.querySelectorAll('.home-tab>.tabbar');
+    if (elements != null) {
+      Object.keys(elements).map(key => {
+        elements[key].style.display = 'none';
+      });
+    }
+  }
   ionViewWillLeave() {
     this.events.unsubscribe('incomingDataError');
     this.events.unsubscribe('finishIncomingDataMenuEvent');
@@ -113,6 +120,13 @@ export class ScanPage {
       this.scanProvider.deactivate();
     }
     this.unregisterBackButtonAction && this.unregisterBackButtonAction();
+
+    let elements = document.querySelectorAll('.home-tab>.tabbar');
+    if (elements != null) {
+      Object.keys(elements).map(key => {
+        elements[key].style.display = 'flex';
+      });
+    }
   }
 
   ionViewWillEnter() {
