@@ -138,7 +138,7 @@
       </div>
 
       <div class="card" *ngIf="recentTransactionsEnabled && notifications && notifications[0]">
-        <ion-item-divider>
+        <!-- <ion-item-divider>
           <div class="title" item-start>
             <span translate>Recent Transactions</span>
           </div>
@@ -147,7 +147,7 @@
               <ion-badge color="danger">{{notificationsN}}</ion-badge>
             </button>
           </div>
-        </ion-item-divider>
+        </ion-item-divider> -->
         <ion-list>
           <page-wallet-activity *ngFor="let notification of notifications" (click)="openNotificationModal(notification)"
             [notification]="notification"></page-wallet-activity>
@@ -213,7 +213,7 @@
       </div>
 
       <div class="card" *ngIf="walletsBch && walletsBch[0]">
-        <ion-item-divider>
+        <!-- <ion-item-divider>
           <div class="title wallets-list-title" item-start>
             <img src="assets/img/bitcoin-cash-logo.svg" alt="Bitcoin Cash Wallets" width="22" />
             <span translate>Bitcoin Cash Wallets</span>
@@ -231,7 +231,7 @@
               {{'Done' | translate}}
             </button>
           </div>
-        </ion-item-divider>
+        </ion-item-divider> -->
 
         <ion-list reorder="{{showReorderBch}}" (ionItemReorder)="reorderWalletsBch($event)">
           <button ion-item *ngFor="let wallet of walletsBch" (click)="goToWalletDetails(wallet)">
