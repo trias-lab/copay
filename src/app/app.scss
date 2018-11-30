@@ -492,9 +492,9 @@ ion-alert .alert-message {
       // background-color: transparent !important;
     }
 
-    &:nth-child(2) {
-      display: none !important;
-    }
+    // &:nth-child(2) {
+    //   display: none !important;
+    // }
 
     &[aria-selected="true"] {
       .tab-button-text {

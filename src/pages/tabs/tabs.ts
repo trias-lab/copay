@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { HomePage } from '../home/home';
-import { ScanPage } from '../scan/scan';
+// import { ScanPage } from '../scan/scan';
 import { SettingsPage } from '../settings/settings';
 
 @Component({
@@ -11,6 +11,6 @@ export class TabsPage {
   tabs;
 
   homeRoot = HomePage;
-  scanRoot = ScanPage;
+  // scanRoot = ScanPage;
   settingsRoot = SettingsPage;
 }

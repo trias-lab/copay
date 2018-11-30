@@ -382,9 +382,9 @@ export class ScanPage {
     }
   }
 
-  public close() {
-    this.walletTabsProvider.getTabNav()
-      ? this.events.publish('ExitScan')
-      : this.navCtrl.parent.select(0);
-  }
+  // public close() {
+  //   this.walletTabsProvider.getTabNav()
+  //     ? this.events.publish('ExitScan')
+  //     : this.navCtrl.parent.select(0);
+  // }
 }
