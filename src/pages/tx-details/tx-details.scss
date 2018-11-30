@@ -3,20 +3,67 @@ page-tx-details {
   $item-lateral-padding: 20px;
   $item-label-color: #6c6c6e;
 
+  ion-content {
+    background: url('../../../assets/img/img_bg_pattern.png') repeat-x
+  }
+
   .tx-details-tit {
     padding-left: 30px;
-    background: url('../../assets/img/img_bg_pattern.png') no-repeat;
+    // background: url('../../assets/img/img_bg_pattern.png') no-repeat;
     background-size: cover;
     color: #fff;
     height: 140px;
   }
 
   ion-header {
+    .back-button {
+      color: #fff;
+    }
+
+    .toolbar-title {
+      font-weight: 500 !important;
+      color: #fff;
+    }
+  }
+
+  ion-list {
     background: #F8FAFB;
   }
 
-  .scroll-content {
-    background: #F8FAFB;
+
+  .clearfloat:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0
+  }
+
+  .clearfloat {
+    zoom: 1
+  }
+
+  .id_copy {
+    clear: both;
+  }
+
+  .id_copy_tit {
+    float: left;
+  }
+
+  .id_copy_btn {
+    float: left;
+    width: 48px;
+    height: 18px;
+    background: rgba(142, 157, 170, 1);
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    margin-left: 6px;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    margin-top: 4px;
   }
 
   ion-list {
@@ -58,6 +105,11 @@ page-tx-details {
         font-size: 3.5rem;
         justify-content: space-between;
         font-size: 3.5rem;
+
+        .operator {
+          font-size: 24px;
+          margin-right: 8px;
+        }
 
         .amount-coin {
           font-size: 1.5rem;
