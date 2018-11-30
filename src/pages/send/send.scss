@@ -119,20 +119,39 @@ page-send {
 
 
   .send-row {
-    justify-content: space-around;
+    padding: 10px 16px;
   }
 
+  .clearfloat:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0
+  }
+
+  .clearfloat {
+    zoom: 1
+  }
+
+
   .send-col {
+    float: left;
     border: 1px solid #E5E8EA;
     color: #57A756;
     text-align: center;
-    width: 150px;
-    max-width: 150px;
+    width: 45%;
+    height: 34px;
+    line-height: 34px;
 
     .icon {
       color: #57A756;
       margin-right: 6px;
     }
+  }
+
+  .fr {
+    float: right;
   }
 
   ion-label[fixed] {
@@ -199,19 +218,6 @@ page-send {
     margin: 20px 0 0px 24px;
   }
 
-  .send-check {
-    padding: 24px 14px;
-    background: linear-gradient(270deg, rgba(246, 249, 250, 1) 0%, rgba(230, 235, 238, 1) 100%);
-    text-align: center;
-
-    >p {
-      font-size: 14px;
-      font-family: Roboto-Regular;
-      font-weight: 400;
-      color: rgba(0, 0, 0, 1);
-      line-height: 18px;
-    }
-  }
-
+ 
 
 }

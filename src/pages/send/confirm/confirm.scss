@@ -12,6 +12,14 @@ confirm-card-purchase {
     font-weight: 500 !important;
   }
 
+  ion-list {
+    padding-left: 36px;
+
+    .item {
+      background: transparent;
+    }
+  }
+
   .wallet-details-header {
     button {
       font-weight: 100;
@@ -194,4 +202,19 @@ confirm-card-purchase {
   .last-item {
     margin-left: auto !important;
   }
+
+  .send-check {
+    padding: 24px 14px;
+    background: linear-gradient(270deg, rgba(246, 249, 250, 1) 0%, rgba(230, 235, 238, 1) 100%);
+    text-align: center;
+
+    >p {
+      font-size: 14px;
+      font-family: Roboto-Regular;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 1);
+      line-height: 18px;
+    }
+  }
+
 }

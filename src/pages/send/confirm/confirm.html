@@ -155,9 +155,17 @@
 </ion-content>
 
 <ion-footer>
-  <page-slide-to-accept #slideButton *ngIf="isCordova" [ngClass]="{'slide-confirm-fast slide-confirm-down': hideSlideButton, 'slide-confirm-slow': !hideSlideButton}"
+  <!-- <page-slide-to-accept #slideButton *ngIf="isCordova" [ngClass]="{'slide-confirm-fast slide-confirm-down': hideSlideButton, 'slide-confirm-slow': !hideSlideButton}"
     [disabled]="!wallet || !tx?.txp[wallet.id]" [buttonText]="buttonText" (slideDone)="approve(tx, wallet)"></page-slide-to-accept>
   <ion-toolbar *ngIf="!isCordova">
     <button ion-button full class="button-footer" (click)="approve(tx, wallet)" [disabled]="!wallet || !tx.txp[wallet.id]">{{buttonText}}</button>
-  </ion-toolbar>
+  </ion-toolbar> -->
+  <page-slide-to-accept #slideButton *ngIf="isCordova" [ngClass]="{'slide-confirm-fast slide-confirm-down': hideSlideButton, 'slide-confirm-slow': !hideSlideButton}"
+    [disabled]="!wallet || !tx?.txp[wallet.id]" [buttonText]="buttonText" (slideDone)="approve(tx, wallet)"></page-slide-to-accept>
+  <div class="send-check" *ngIf="!isCordova">
+    <p>Double check the deposite address!</p>
+    <button ion-button block large (click)="approve(tx, wallet)" [disabled]="!wallet || !tx.txp[wallet.id]">
+      {{buttonText}}
+    </button>
+  </div>
 </ion-footer>

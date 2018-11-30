@@ -52,22 +52,20 @@
           <ion-input placeholder="{{'Search or enter bitcoin address' | translate}}" [(ngModel)]="search"
             (ngModelChange)="processInput()"></ion-input>
           <ion-icon *ngIf="invalidAddress && search != ''" item-end class="backspace-icon" name="backspace" (click)="search = ''"></ion-icon>
-          <ion-icon item-end class="scan-icon" (click)="openScanner()">
+          <!-- <ion-icon item-end class="scan-icon" (click)="openScanner()">
             <img src="assets/img/scan-ico.svg">
-          </ion-icon>
+          </ion-icon> -->
         </ion-item>
       </div>
-      <ion-grid>
-        <ion-row class="send-row">
-          <ion-col col-6 class="send-col" (click)="openScanner()">
-            <ion-icon ios="ios-qr-scanner" md="md-qr-scanner"></ion-icon>Scan QR Code
-          </ion-col>
-          <ion-col col-6 class="send-col" (click)="goToAddressbook()">
-            <ion-icon ios="ios-contacts" md="md-contacts"></ion-icon>Contacts
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
+      <div class="send-row clearfloat">
+        <div class="send-col" (click)="openScanner()">
+          <ion-icon ios="ios-qr-scanner" md="md-qr-scanner"></ion-icon>Scan QR Code
+        </div>
+        <div class="send-col fr" (click)="goToAddressbook()">
+          <ion-icon ios="ios-contacts" md="md-contacts"></ion-icon>Contacts
+        </div>
+      </div>
+      <!--
       <div class="send-title ">Amount</div>
       <ion-grid>
         <ion-row>
@@ -103,8 +101,10 @@
       <ion-item>
         <ion-label stacked>Notes (Optional)</ion-label>
         <ion-input type="text" placeholder="Business"></ion-input>
-      </ion-item>
-      <div *ngIf="filteredContactsList && filteredContactsList[0]">
+      </ion-item> -->
+
+
+      <!-- <div *ngIf="filteredContactsList && filteredContactsList[0]">
         <ion-item-divider>
           <span class="title" translate>Transfer to Contact</span>
         </ion-item-divider>
@@ -119,9 +119,9 @@
             <span translate>Show all</span>
           </button>
         </ion-list>
-      </div>
+      </div> -->
 
-      <div class="card" *ngIf="walletBtcList && walletBtcList[0]">
+      <div *ngIf="walletBtcList && walletBtcList[0]">
         <ion-item-divider class="title">
           <img src="assets/img/icon-bitcoin.svg" alt="Bitcoin Wallets" width="16" />
           <span translate>Transfer to Bitcoin Wallet</span>
@@ -250,10 +250,4 @@
       <span translate>To get started, you'll need to create a bitcoin wallet and get some bitcoin.</span>
     </div>
   </div> -->
-
-
-  <div class="send-check" *ngIf="shouldShowZeroState()">
-    <p>Double check the deposite address!</p>
-    <button ion-button block large> Send </button>
-  </div>
 </ion-content>
