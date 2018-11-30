@@ -1223,29 +1223,27 @@ export class ProfileProvider {
       opts.m = 1;
       opts.n = 1;
       opts.networkName = 'livenet';
-      opts.coin = Coin.BTC;
+      opts.coin = Coin.BTC;    
       this.createWallet(opts)
         .then(wallet => {
-          return resolve(wallet);
+          const optsBch: Partial<WalletOptions> = {};
+          optsBch.m = 1;
+          optsBch.n = 1;
+          optsBch.networkName = 'livenet';
+          optsBch.coin = Coin.BCH;
+          optsBch.mnemonic = wallet.credentials.mnemonic
+          this.createWallet(optsBch)
+          .then(wallet =>{
+             return resolve(wallet);
+          })
+          .catch(err => {
+            return reject(err);
+          });
         })
         .catch(err => {
           return reject(err);
         });
-
-      // const opts1: Partial<WalletOptions> = {};
-      // opts1.m = 1;
-      // opts1.n = 1;
-      // opts1.networkName = 'livenet';
-      // opts1.coin = Coin.BCH;
-      // this.createWallet(opts1)
-      //   .then(wallet => {
-      //     return resolve(wallet);
-      //   })
-      //   .catch(err => {
-      //     return reject(err);
-      //   });
     });
-
   }
 
   public setDisclaimerAccepted(): Promise<any> {
