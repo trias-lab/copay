@@ -1,4 +1,13 @@
-page-wallet-details {
+page-wallet-details {  
+  ion-content{
+    background: url('../../../assets/img/img_bg_pattern.png') no-repeat;
+  }
+  ion-content.has-refresher>.scroll-content {
+    background: transparent;
+  }
+  .scroll-content .wrapper{
+    background-color: transparent;
+  }
   $icon-width: 36px;
   ion-refresher {
     height: 120px;
@@ -26,7 +35,7 @@ page-wallet-details {
     font-size: 2.5rem;
   }
   .balance-card {
-    background: color($colors, primary);
+    // background: color($colors, primary);
     overflow: hidden;
   }
   .balance-header {

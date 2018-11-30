@@ -14,12 +14,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content no-bounce #scrollArea [fixed-scroll-bg-color]="wallet.color" [ngClass]="{'zero-state': shouldShowZeroState()}">
-  <ion-refresher (ionRefresh)="doRefresh($event)" [ngStyle]="{'background': wallet.color}" pullMin="90" pullMax="180">
+<ion-content no-bounce #scrollArea [ngClass]="{'zero-state': shouldShowZeroState()}">
+  <ion-refresher (ionRefresh)="doRefresh($event)" pullMin="90" pullMax="180">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <div class="wrapper">
-    <expandable-header class="balance-card" [scrollArea]="scrollArea" [ngStyle]="{'background': wallet.color}">
+    <expandable-header class="balance-card" [scrollArea]="scrollArea" >
       <expandable-header-primary class="balance-header">
         <div (longPress)="toggleBalance()">
           <div (tap)="updateAll(true)" *ngIf="!updateStatusError && !wallet.balanceHidden && !wallet.scanning && wallet.status">
@@ -65,6 +65,8 @@
           <div translate>This wallet is not registered at the given Bitcore Wallet Service (BWS). You can recreate it
             from the local information.</div>
         </div>
+        <p (click)="receive()">Receive</p>
+        <p (click)="send()">Send</p>
       </expandable-header-primary>
       <expandable-header-footer class="wallet-info" *ngIf="wallet" style="display: flex; align-items: center">
 
@@ -140,10 +142,10 @@
         <div class="title-icon larger-icon">
           <img src="assets/img/ghost-tongue-out.svg" />
         </div>
-        <div class="title-info" (click)="receive()">
+        <div class="title-info" >
           <span translate>It's a ghost town in here</span>
         </div>
-        <div class="subtitle-info" (click)="send()">
+        <div class="subtitle-info" >
           <span translate>If you have funds stored on a website then you should move them into a secure wallet... like
             this one!</span>
         </div>
