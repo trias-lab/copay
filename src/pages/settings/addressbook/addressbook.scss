@@ -146,6 +146,10 @@ ion-header {
 .address-list {
   margin: 18px 16px 20px 16px;
   background: rgba(255, 255, 255, 1);
-  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+
+  button.contact {
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin: 0 0 20px 0;
+  }
 }
