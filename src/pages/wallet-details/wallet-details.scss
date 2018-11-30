@@ -5,9 +5,6 @@ page-wallet-details {
   ion-content.has-refresher>.scroll-content {
     background: transparent;
   }
-  .scroll-content .wrapper{
-    background-color: transparent;
-  }
   $icon-width: 36px;
   ion-refresher {
     height: 120px;
@@ -36,27 +33,31 @@ page-wallet-details {
   }
   .balance-card {
     // background: color($colors, primary);
-    overflow: hidden;
+    overflow: visible;
   }
   .balance-header {
     margin-top: 15px;
     height: 12rem;
     color: color($colors, light);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    // text-align: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
   }
   .balance-str {
     cursor: pointer;
-    font-size: 32px;
-    font-weight: 600;
+    font-size:24px;
+    font-weight:bold;
+    color:rgba(20,42,63,1);
+    line-height:28px;
   }
   .balance-alt-str {
-    padding-top: 5px;
-    font-size: 14px;
-    font-weight: 400;
+    padding-top: 6px;
+    font-size:14px;
+    font-weight:400;
+    color:rgba(110,118,125,1);
+    line-height:16px;
   }
   .balance-hidden {
     .title {
@@ -89,6 +90,7 @@ page-wallet-details {
   }
   .history-wrapper {
     margin-top: 1.3rem;
+    background:rgba(248,250,251,1);
   }
   .tx-history {
     .tx-history-header {
@@ -260,6 +262,89 @@ page-wallet-details {
     }
     .prompt-user {
       margin-bottom: 2rem;
+    }
+  }
+  .scroll-content .wrapper{
+    background-color: transparent;
+    .card {
+      background:rgba(255,255,255,1);
+      box-shadow:0px 2px 6px 0px rgba(0,0,0,0.1);
+      border-radius:4px;
+      padding: 0 8px;
+      .grid {
+        color:rgba(20,42,63,1);
+        .row{
+          &:first-child{
+            margin-top: 20px;
+            padding-bottom: 11px;
+            .col:nth-child(2){
+              img{
+                width:48px;
+                height:48px;
+                display: inline-block;
+                float:right;
+              }
+            }
+          }
+          &.address-row{
+            height: 36px;
+            background: rgba(246,247,249,1);
+            margin: 0px -13px;
+            padding: 0 18px; 
+            display: flex;
+            align-items: center;           
+            .address {
+              font-size: 12px;
+              font-weight: 400;
+              color: rgba(110,118,125,1);
+              overflow: hidden;
+              flex-grow:1;
+            }
+            .copy-button{
+              display: inline-block;
+              float:right;
+              width: 55px;
+              height:20px;
+              background:linear-gradient(270deg,rgba(181,189,194,1) 0%,rgba(145,153,158,1) 100%);
+              border-radius:10px;
+              font-size:14px;
+              font-weight:500;
+              color:rgba(255,255,255,1);
+              line-height:20px;
+              text-align: center;
+              margin-left: 12px;
+            }
+          }
+          &:last-child{
+            padding-top: 7px;
+            .col{
+              text-align: center;
+            }
+            a{
+              font-size:16px;
+              font-weight:500;
+              color:rgba(110,118,125,1);
+              height: 32px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            a>img{
+              width: 20px;
+              height: 20px;
+              display: inline-block;
+              margin-right: 9px;
+            }
+            .col:first-child a{
+              border-right: 2px solid rgba(246,247,249,1);
+            }
+          }
+          
+          .col{
+
+          }
+        }
+      }
     }
   }
 }
