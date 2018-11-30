@@ -9,7 +9,7 @@ page-home {
   }
 
   ion-content {
-    background: url('../../assets/img/img_bg_pattern.png') no-repeat;
+    background: url('../../assets/img/img_bg_pattern.png') repeat-x;
   }
 
   ion-content.has-refresher>.scroll-content {

@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import {
+  NavController,
+} from 'ionic-angular';
 import * as _ from 'lodash';
 import { Logger } from '../../../providers/logger/logger';
 
 // Providers
 import { ConfigProvider } from '../../../providers/config/config';
 import { FeeProvider } from '../../../providers/fee/fee';
+
+// Pages
+import { HomePage } from '../../home/home';
+import { SettingsPage } from '../settings';
 
 const COIN = 'btc';
 const NETWORK = 'livenet';
@@ -25,6 +32,7 @@ export class FeePolicyPage {
 
   constructor(
     private logger: Logger,
+    private navCtrl: NavController,
     private feeProvider: FeeProvider,
     private configProvider: ConfigProvider
   ) {
@@ -34,25 +42,25 @@ export class FeePolicyPage {
   }
 
   // when init the page
-  // ngAfterViewInit() {
-  //   let elements = document.querySelectorAll(".tabbar");
-  //   if (elements != null) {
-  //     Object.keys(elements).map((key) => {
-  //       elements[key].style.display = 'flex';
-  //       elements[key].style.zIndex = '102';
-  //     });
-  //   }
-  // }
+  ngAfterViewInit() {
+    let elements = document.querySelectorAll(".tabbar");
+    if (elements != null) {
+      Object.keys(elements).map((key) => {
+        elements[key].style.display = 'none';
+        // elements[key].style.zIndex = '102';
+      });
+    }
+  }
 
   // when quit the page
-  // ionViewWillLeave() {
-  //   let elements = document.querySelectorAll(".tabbar");
-  //   if (elements != null) {
-  //     Object.keys(elements).map((key) => {
-  //       elements[key].style.display = 'none';
-  //     });
-  //   }
-  // }
+  ionViewWillLeave() {
+    let elements = document.querySelectorAll(".tabbar");
+    if (elements != null) {
+      Object.keys(elements).map((key) => {
+        elements[key].style.display = 'flex';
+      });
+    }
+  }
 
   ionViewDidEnter() {
     this.error = null;
@@ -102,5 +110,13 @@ export class FeePolicyPage {
     };
 
     this.configProvider.set(opts);
+  }
+
+  public goToHomePage(): void {
+    this.navCtrl.push(HomePage);
+  }
+
+  public goToSettingsPage(): void {
+    this.navCtrl.push(SettingsPage);
   }
 }

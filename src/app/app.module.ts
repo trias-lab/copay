@@ -100,7 +100,7 @@ export class MyMissingTranslationHandler implements MissingTranslationHandler {
   imports: [
     IonicModule.forRoot(CopayApp, {
       animate: env.enableAnimations,
-      tabsHideOnSubPages: true,  // hide all subs' tab
+      tabsHideOnSubPages: false,  // hide all subs' tab
       tabsPlacement: 'bottom',
       backButtonIcon: 'arrow-round-back',
       backButtonText: ''
