@@ -59,6 +59,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   public showBalanceButton: boolean = false;
   public addressbook = {};
   public txps = [];
+  public selectedTab: string; // transactions or addresses
 
   constructor(
     navCtrl: NavController,
@@ -80,6 +81,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     private platform: Platform
   ) {
     super(navCtrl, profileProvider, walletTabsProvider);
+    this.selectedTab = 'addresses';
   }
 
   ionViewDidLoad() {
@@ -122,6 +124,19 @@ export class WalletDetailsPage extends WalletTabsChild {
 
   ionViewWillLeave() {
     this.onResumeSubscription.unsubscribe();
+  }
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+    this.logger.info(tab);
+    switch (tab) {
+      case 'transactions':        
+        break;
+      case 'addresses':        
+        break;
+      default:
+        break;
+    }
   }
 
   shouldShowZeroState() {

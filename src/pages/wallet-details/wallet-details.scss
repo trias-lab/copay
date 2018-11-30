@@ -5,6 +5,9 @@ page-wallet-details {
   ion-content.has-refresher>.scroll-content {
     background: transparent;
   }
+  ion-header .toolbar-title {
+    color: white;
+  }
   $icon-width: 36px;
   ion-refresher {
     height: 120px;
@@ -88,9 +91,16 @@ page-wallet-details {
       font-weight: 500;
     }
   }
-  .history-wrapper {
-    margin-top: 1.3rem;
-    background:rgba(248,250,251,1);
+  .tabs-wrapper {
+    margin-top: -36px;
+    background: #f8fafb;
+    padding-top: 38px;
+    .address-wrapper{
+      background: white;
+    }
+    .history-wrapper{
+
+    }
   }
   .tx-history {
     .tx-history-header {
@@ -271,6 +281,8 @@ page-wallet-details {
       box-shadow:0px 2px 6px 0px rgba(0,0,0,0.1);
       border-radius:4px;
       padding: 0 8px;
+      z-index: 2;
+      position: relative;
       .grid {
         color:rgba(20,42,63,1);
         .row{
@@ -292,7 +304,9 @@ page-wallet-details {
             margin: 0px -13px;
             padding: 0 18px; 
             display: flex;
-            align-items: center;           
+            align-items: center;
+            border-top: 1px solid rgba(229,232,234,1);      
+            border-bottom: 1px solid rgba(229,232,234,1);      
             .address {
               font-size: 12px;
               font-weight: 400;

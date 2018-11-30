@@ -139,7 +139,19 @@
       </a>
     </div>
 
-    <div class="history-wrapper">
+    <div class="tabs-wrapper">
+      <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="selectedTab" (ionChange)="selectTab(selectedTab)" >
+          <ion-segment-button value="transactions">
+            {{ 'Transactions' | translate }}
+          </ion-segment-button>
+          <ion-segment-button value="addresses">
+            {{ 'Addresses' | translate }}
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+    </div>
+    <div class="history-wrapper" *ngIf="selectedTab == 'transactions'">
 
       <ion-list *ngIf="wallet && wallet.isComplete() && !walletNotRegistered && txps && txps[0]" class="tx-history">
         <ion-item-divider *ngIf="wallet.incorrectDerivation">
@@ -296,6 +308,9 @@
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
       </ion-infinite-scroll>
 
+    </div>
+    <div class="address-wrapper" *ngIf="selectedTab == 'addresses'">
+      Address list
     </div>
   </div>
 </ion-content>
