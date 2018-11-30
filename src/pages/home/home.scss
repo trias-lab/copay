@@ -92,7 +92,7 @@ page-home {
     background-color: transparent;
 
     ion-list {
-      position: absolute;
+      position: relative;
       width: 100%;
       top: -38px;
     }
@@ -107,6 +107,10 @@ page-home {
       display: block;
       border-radius: 4px;
       background-color: #ffffff;
+
+      .item-inner {
+        border: none;
+      }
 
       ion-icon {
         float: left;
