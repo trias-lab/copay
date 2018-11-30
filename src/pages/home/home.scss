@@ -108,6 +108,15 @@ page-home {
       border-radius: 4px;
       background-color: #ffffff;
 
+      .item-img {
+        img {
+          width: 34px;
+          height: 34px;
+          padding: 0;
+          background-color: transparent;
+        }
+      }
+
       .item-inner {
         border: none;
       }
