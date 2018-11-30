@@ -2,119 +2,179 @@ page-tx-details {
   $item-border-color: #efefef;
   $item-lateral-padding: 20px;
   $item-label-color: #6c6c6e;
+
+  .tx-details-tit {
+    padding-left: 30px;
+    background: url('../../assets/img/img_bg_pattern.png') no-repeat;
+    background-size: cover;
+    color: #fff;
+    height: 140px;
+  }
+
+  ion-header {
+    background: #F8FAFB;
+  }
+
+  .scroll-content {
+    background: #F8FAFB;
+  }
+
+  ion-list {
+    padding-left: 30px;
+
+    .item {
+      background-color: #F8FAFB;
+    }
+  }
+
   .header-container {
     padding: 20px 0px 20px 0px;
+
     .sending-label {
       display: flex;
       align-items: center;
+
       img.sending-img {
         margin-right: 2rem;
         width: 40px;
         height: 40px;
       }
+
       span {
         font-size: 1.8rem;
       }
     }
+
     .amount-label {
       padding-top: 1rem;
+
       img.sending-img {
         width: auto;
         height: 40px;
       }
+
       .amount {
         display: flex;
         font-size: 3.5rem;
         justify-content: space-between;
         font-size: 3.5rem;
+
         .amount-coin {
           font-size: 1.5rem;
           margin-top: 0.35rem;
           margin-left: 0.8rem;
         }
+
         div {
           display: flex;
         }
       }
+
       .alternative {
         margin-top: 0.5rem;
-        color: color($colors, light-grey);
+        // color: color($colors, light-grey);
+        color: #fff;
       }
     }
   }
+
   .item-fee {
     .fee-title {
       margin-bottom: 5px;
       color: color($colors, grey);
     }
+
     .fee-amount {
       font-weight: 400;
     }
+
     .fee-details {
       font-size: 12.5px;
       margin-bottom: 5px;
       color: color($colors, light-grey);
     }
   }
+
   @mixin row-flex {
     display: flex;
     align-items: center;
     margin-top: 1rem;
   }
+
   .container-to,
   .container-from,
   .container-tx-id {
+
     .wallet,
     .payment-to,
     .tx-id {
       @include row-flex;
+
       .icon-wallet {
         width: 25px;
         height: 25px;
         margin-right: 1.8rem;
         box-shadow: none;
+
         &.disabled {
           background-color: color($colors, grey);
         }
       }
+
       .icon-bitcoin {
         width: 30px;
         height: 40px;
       }
+
       .id {
-        font-size: 12.5px;
-        color: color($colors, light-grey);
+        font-size: 15px;
+        // color: color($colors, light-grey);
+        color: #6E767D;
       }
+
+      .payment-to {
+        background: #F8FAFB;
+      }
+
       .text-address.ellipsis {
         flex: 0 0 47px;
+
         img {
           margin: 12px 0 12px 12px;
           vertical-align: middle;
         }
       }
+
       &.address-coppied {
         border-radius: 3px;
         background-color: rgb(248, 248, 248);
       }
     }
   }
+
   .timeline-item {
     background-color: color($colors, blank);
     border: 0;
+
     &:nth-child(2) {
       border-top: 1px solid $item-border-color;
     }
+
     &:last-child {
       border-bottom: 1px solid $item-border-color;
     }
+
     padding: 17px $item-lateral-padding;
-    > * {
+
+    >* {
       padding-right: 0;
     }
   }
+
   .timeline-content {
     display: flex;
     align-items: center;
+
     &-icon {
       display: flex;
       align-items: center;
@@ -123,10 +183,12 @@ page-tx-details {
       padding-left: 1rem;
       margin-right: 0.5rem;
       position: relative;
+
       img,
       .rejected {
         z-index: 12;
       }
+
       .line::before {
         content: '';
         background: #e8e8e8;
@@ -138,7 +200,8 @@ page-tx-details {
         transform: translateX(-50%) translateY(-100%);
         top: 0;
       }
-      > div {
+
+      >div {
         border: 3px solid color($colors, primary);
         border-radius: $icon-border-radius;
         display: flex;
@@ -151,6 +214,7 @@ page-tx-details {
         vertical-align: middle;
         color: color($colors, primary);
         z-index: 10;
+
         &.rejected {
           background: #e15061;
           border-color: #e15061;
@@ -160,15 +224,19 @@ page-tx-details {
         }
       }
     }
+
     &-label {
       flex-grow: 1;
-      > .action {
+
+      >.action {
         font-size: 16px;
+
         @media (max-width: 330px) {
           font-size: 14px;
         }
       }
-      > .name {
+
+      >.name {
         color: #aaa;
         font-size: 14px;
       }
