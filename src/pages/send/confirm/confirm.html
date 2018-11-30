@@ -10,7 +10,68 @@
 </ion-header>
 
 <ion-content #scrollArea [ngClass]="{'no-margin-bottom': memoFocused}" no-bounce>
-  <ion-list *ngIf="tx">
+
+  <div class="card" *ngIf="tx">
+    <div class="send-header-wrapper">
+      <span class="send-heading" translate>Recipient</span>
+      <ion-item class="search-wrapper">
+        <!-- <ion-input value="tx.toAddress" disabled></ion-input> -->
+        {{tx.toAddress}}
+      </ion-item>
+    </div>
+
+
+    <div class="send-title ">Amount</div>
+    <ion-grid class="confirm-amout-wap">
+      <ion-row>
+        <ion-col col-5>
+          <ion-item class="confirm-amount">
+            {{amount}} {{tx.coin | uppercase}}
+          </ion-item>
+        </ion-col>
+        <ion-col col-2 class="send-equal">
+          <div>≈</div>
+        </ion-col>
+        <ion-col col-5>
+          <ion-item class="confirm-amount">
+            {{tx.amount | satToFiat: tx.coin}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div *ngIf="wallet && tx.txp[wallet.id]" class="send-balance ">
+      Balance:
+      <span>
+        {{tx.txp[wallet.id].fee | satToUnit:tx.coin}}
+      </span>
+    </div>
+
+    <div class="send-title ">Transaction Fee</div>
+    <ion-range [(ngModel)]="brightness">
+    </ion-range>
+
+    <div class="send-balance "><span>0.2557</span> BTC <span> ≈ 0.2557</span>CNY</div>
+
+    <!-- <ion-item>
+      <ion-label stacked>Notes (Optional)</ion-label>
+      <ion-input type="text" placeholder="Business"></ion-input>
+    </ion-item> -->
+    <editable-item [scrollArea]="scrollArea" (focus)="hideSlideButton = $event" (valChange)="tx.description = $event"
+      [value]="tx.description" [itemPlaceholder]="'Enter a transaction memo' | translate">
+      <span item-label translate>Memo</span>
+    </editable-item>
+
+
+  </div>
+
+
+
+
+
+
+
+  <!-- <ion-list *ngIf="tx">
     <ion-item>
       <div class="header-container">
         <div class="sending-label">
@@ -72,7 +133,6 @@
           <span class="address-divider"></span>
         </div>
         <div class="ellipsis" *ngIf="!tx.paypro" copy-to-clipboard="{{ tx.origToAddress }}">
-          <!--TODO: <contact *ngIf="tx.origToAddress && !tx.name" address="{{tx.origToAddress}}"></contact>-->
           <span *ngIf="!tx.name">{{tx.origToAddress}}</span>
           <span *ngIf="tx.name">{{tx.name}}</span>
         </div>
@@ -96,7 +156,6 @@
             class="icon-wallet" />
         </ion-icon>
         <div class="ellipsis" copy-to-clipboard="{{ tx.origToAddress }}">
-          <!--TODO: <contact ng-if="tx.origToAddress && !tx.name" address="{{tx.origToAddress}}"></contact>-->
           <span *ngIf="!tx.name">{{tx.origToAddress}}</span>
           <span *ngIf="tx.name">{{tx.name}}</span>
         </div>
@@ -149,7 +208,7 @@
       <span item-label translate>Memo</span>
     </editable-item>
 
-  </ion-list>
+  </ion-list> -->
 
 
 </ion-content>

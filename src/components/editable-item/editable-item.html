@@ -3,8 +3,8 @@
   <div class="spinner" [ngClass]="{'spin-fade': saving}">
   </div>
 </div>
-<div ion-item class="item-text" [hidden]="!value && !isFocused">
-  <ion-textarea rows="1" [ngClass]="{'ios-margin-fix': platformProvider.isCordova}" (input)="resizeTextarea()" (ionFocus)="toggleValueUpdate()"
-    spellcheck="false" #itemTextarea [formControl]="textInput" (ionBlur)="saveValueNow()" class="item-textarea" [(ngModel)]="value"
-    placeholder="{{ itemPlaceholder }}"></ion-textarea>
+<div ion-item class="item-text">
+  <ion-textarea rows="1" [ngClass]="{'ios-margin-fix': platformProvider.isCordova}" (input)="resizeTextarea()"
+    spellcheck="false" #itemTextarea [formControl]="textInput" (ionBlur)="saveValueNow()" class="item-textarea"
+    [(ngModel)]="value" placeholder="{{ itemPlaceholder }}"></ion-textarea>
 </div>

@@ -22,7 +22,7 @@ page-tx-details {
 
     .toolbar-title {
       font-weight: 500 !important;
-      color: #fff;
+      color: #fff !important;
     }
   }
 
@@ -184,9 +184,6 @@ page-tx-details {
         color: #6E767D;
       }
 
-      .payment-to {
-        background: #F8FAFB;
-      }
 
       .text-address.ellipsis {
         flex: 0 0 47px;
@@ -202,6 +199,10 @@ page-tx-details {
         background-color: rgb(248, 248, 248);
       }
     }
+  }
+
+  .payment-to {
+    background: transparent !important;
   }
 
   .timeline-item {

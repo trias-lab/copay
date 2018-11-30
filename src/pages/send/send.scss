@@ -68,49 +68,6 @@ page-send {
     font-weight: 500;
   }
 
-  .search-wrapper {
-    margin-top: 15px;
-    background: rgba(246, 247, 249, 1);
-    display: flex;
-    align-items: baseline;
-    border: 1px solid #f2f2f2;
-    border-radius: 4px;
-
-    .item-inner {
-      align-items: center;
-      margin-left: 0rem !important;
-      border-bottom: 0px !important;
-      box-shadow: none !important;
-    }
-
-    .scan-icon {
-      margin: 0;
-      padding: 0.6rem 1rem 1rem 1rem;
-      z-index: 999;
-    }
-
-    .backspace-icon {
-      z-index: 999;
-    }
-
-    .bitcoin-icon {
-      margin-right: 1rem;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      width: 1rem;
-      height: 1rem;
-
-      // custom icons
-      &[class*='search-btc'] {
-        mask-image: url(../assets/img/icon-bitcoin-symbol.svg);
-        mask-size: 16px;
-        mask-position: 50% 50%;
-        mask-repeat: no-repeat;
-        background: #cccccc;
-      }
-    }
-  }
-
   .invalid {
     border: 1px solid color($colors, error);
     color: color($colors, error);
@@ -172,8 +129,47 @@ page-send {
     color: #142A3F !important;
   }
 
-  ion-range {
-    margin-left: 24px;
+  .search-wrapper {
+    margin-top: 15px;
+    background: rgba(246, 247, 249, 1);
+    display: flex;
+    align-items: baseline;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+
+    .item-inner {
+      align-items: center;
+      margin-left: 0rem !important;
+      border-bottom: 0px !important;
+      box-shadow: none !important;
+    }
+
+    .scan-icon {
+      margin: 0;
+      padding: 0.6rem 1rem 1rem 1rem;
+      z-index: 999;
+    }
+
+    .backspace-icon {
+      z-index: 999;
+    }
+
+    .bitcoin-icon {
+      margin-right: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      width: 1rem;
+      height: 1rem;
+
+      // custom icons
+      &[class*='search-btc'] {
+        mask-image: url(../assets/img/icon-bitcoin-symbol.svg);
+        mask-size: 16px;
+        mask-position: 50% 50%;
+        mask-repeat: no-repeat;
+        background: #cccccc;
+      }
+    }
   }
 
   .input-wrapper {
@@ -218,6 +214,6 @@ page-send {
     margin: 20px 0 0px 24px;
   }
 
- 
+
 
 }
