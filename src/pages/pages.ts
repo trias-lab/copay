@@ -7,7 +7,7 @@ import { JoinWalletPage } from '../pages/add/join-wallet/join-wallet';
 import { BackupGamePage } from '../pages/backup/backup-game/backup-game';
 import { SendFeedbackPage } from '../pages/feedback/send-feedback/send-feedback';
 import { FinishModalPage } from '../pages/finish/finish';
-import { BackupRequestPage } from '../pages/onboarding/backup-request/backup-request';
+import { BackupRequestPage } from '../pages/backup/backup-request/backup-request';
 import { CollectEmailPage } from '../pages/onboarding/collect-email/collect-email';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';

@@ -12,7 +12,7 @@ import { AppProvider } from '../../../providers/app/app';
 
 // pages
 import { EmailNotificationsProvider } from '../../../providers/email-notifications/email-notifications';
-import { BackupRequestPage } from '../backup-request/backup-request';
+import { BackupRequestPage } from '../../backup/backup-request/backup-request';
 
 @Component({
   selector: 'page-collect-email',

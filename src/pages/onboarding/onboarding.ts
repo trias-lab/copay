@@ -6,7 +6,7 @@ import { Logger } from '../../providers/logger/logger';
 // pages
 import { PinModalPage } from '../../pages/pin/pin-modal/pin-modal';
 import { ImportWalletPage } from '../add/import-wallet/import-wallet';
-import { BackupRequestPage } from '../onboarding/backup-request/backup-request';
+import { BackupRequestPage } from '../backup/backup-request/backup-request';
 // import { CollectEmailPage } from './collect-email/collect-email';
 
 // providers

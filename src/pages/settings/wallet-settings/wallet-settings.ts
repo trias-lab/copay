@@ -12,7 +12,7 @@ import { TouchIdProvider } from '../../../providers/touchid/touchid';
 import { WalletProvider } from '../../../providers/wallet/wallet';
 
 // pages
-import { BackupRequestPage } from '../../onboarding/backup-request/backup-request';
+import { BackupRequestPage } from '../../backup/backup-request/backup-request';
 import { WalletColorPage } from './wallet-color/wallet-color';
 import { WalletNamePage } from './wallet-name/wallet-name';
 import { WalletAddressesPage } from './wallet-settings-advanced/wallet-addresses/wallet-addresses';

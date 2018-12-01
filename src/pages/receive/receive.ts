@@ -8,7 +8,7 @@ import { Logger } from '../../providers/logger/logger';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 // Pages
-import { BackupRequestPage } from '../onboarding/backup-request/backup-request';
+import { BackupRequestPage } from '../backup/backup-request/backup-request';
 import { AmountPage } from '../send/amount/amount';
 
 // Providers
