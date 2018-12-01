@@ -79,8 +79,8 @@
               </ion-col>
             </ion-row>
             <ion-row class="address-row">
-              <div class="address"></div>
-              <div class="copy-button" copy-to-clipboard="{{wallet.address}}">
+              <div class="address">{{address}}</div>
+              <div class="copy-button" copy-to-clipboard="{{address}}">
                 COPY
               </div>
             </ion-row>
@@ -310,7 +310,29 @@
 
     </div>
     <div class="address-wrapper" *ngIf="selectedTab == 'addresses'">
-      Address list
+      <div class="loading" *ngIf="loadingAddr">
+        <ion-spinner icon="crescent"></ion-spinner>
+        <span translate>Loading addresses...</span>
+      </div>
+
+      <ion-list *ngIf="!loadingAddr" class="settings-list">
+        <div *ngIf="noBalance && noBalance[0]">
+          <ion-item-divider>{{'Unused addresses' | translate}}</ion-item-divider>
+          <ion-item *ngFor="let u of noBalance" copy-to-clipboard="{{u.address}}">
+            <h3>{{u.address}}</h3>
+            <p>{{u.path}} {{u.createdOn * 1000 | amDateFormat:'MMMM Do YYYY, hh:mm a'}}</p>
+          </ion-item>
+        </div>
+
+        <div *ngIf="withBalance && withBalance[0]">
+          <ion-item-divider>{{'Addresses with balance' | translate}}</ion-item-divider>
+          <ion-item *ngFor="let w of withBalance" copy-to-clipboard="{{w.address}}">
+            <h3>{{w.address}}</h3>
+            <p class="info">{{w.amount | satToUnit: wallet.coin}}</p>
+          </ion-item>
+        </div>
+
+      </ion-list>
     </div>
   </div>
 </ion-content>

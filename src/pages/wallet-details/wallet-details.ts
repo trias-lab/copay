@@ -17,6 +17,7 @@ import { ExternalLinkProvider } from '../../providers/external-link/external-lin
 import { ActionSheetProvider } from '../../providers/index';
 import { Logger } from '../../providers/logger/logger';
 import { OnGoingProcessProvider } from '../../providers/on-going-process/on-going-process';
+import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { TimeProvider } from '../../providers/time/time';
 import { WalletProvider } from '../../providers/wallet/wallet';
@@ -61,6 +62,14 @@ export class WalletDetailsPage extends WalletTabsChild {
   public txps = [];
   public selectedTab: string; // transactions or addresses
 
+  public address: string; // current address
+  public addressList: []; // list of addresses generated
+  public loadingAddr: boolean; // whether loading addresses
+  public noBalance;  // addresses without balance
+  public withBalance;  // addresses with balance  
+  // public latestUnused;  // addresses unused latest
+  // public latestWithBalance;  // addresses latest with balance
+
   constructor(
     navCtrl: NavController,
     private navParams: NavParams,
@@ -68,6 +77,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     private walletProvider: WalletProvider,
     private addressbookProvider: AddressBookProvider,
     private bwcError: BwcErrorProvider,
+    private popupProvider: PopupProvider,
     private events: Events,
     public giftCardProvider: GiftCardProvider,
     private logger: Logger,
@@ -78,15 +88,22 @@ export class WalletDetailsPage extends WalletTabsChild {
     private externalLinkProvider: ExternalLinkProvider,
     walletTabsProvider: WalletTabsProvider,
     private actionSheetProvider: ActionSheetProvider,
-    private platform: Platform
+    private platform: Platform   
   ) {
     super(navCtrl, profileProvider, walletTabsProvider);
-    this.selectedTab = 'addresses';
+    this.selectedTab = 'transactions'; // transactions or addresses
+    this.withBalance = null;
+    this.noBalance = null;
   }
 
   ionViewDidLoad() {
     this.events.subscribe('Wallet/updateAll', () => {
       this.updateAll();
+    });
+
+    this.setAddress();
+    this.events.subscribe('Wallet/setAddress', (newAddr?: boolean) => {
+      this.setAddress(newAddr);
     });
 
     // Getting info from cache
@@ -109,11 +126,17 @@ export class WalletDetailsPage extends WalletTabsChild {
       });
   }
 
-  ionViewWillEnter() {
+  ionViewWillEnter() {    
+    // The resume event emits when the native platform pulls the application out from the background. 
     this.onResumeSubscription = this.platform.resume.subscribe(() => {
       this.updateAll();
       this.events.subscribe('Wallet/updateAll', () => {
         this.updateAll();
+      });
+
+      this.setAddress();
+      this.events.subscribe('Wallet/setAddress', (newAddr?: boolean) => {
+        this.setAddress(newAddr);
       });
     });
   }
@@ -126,17 +149,21 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.onResumeSubscription.unsubscribe();
   }
 
+  /**
+   * handle the change of tabs
+   * @param {string} tab transactions or addresses
+   */
   selectTab(tab: string) {
-    this.selectedTab = tab;
-    this.logger.info(tab);
-    switch (tab) {
-      case 'transactions':        
-        break;
-      case 'addresses':        
-        break;
-      default:
-        break;
-    }
+    this.selectedTab = tab; // update the tab
+
+    // switch (tab) {
+    //   case 'transactions':        
+    //     break;
+    //   case 'addresses':  
+    //     break;
+    //   default:
+    //     break;
+    // }
   }
 
   shouldShowZeroState() {
@@ -154,6 +181,102 @@ export class WalletDetailsPage extends WalletTabsChild {
 
   goToPreferences() {
     this.navCtrl.push(WalletSettingsPage, { walletId: this.wallet.id });
+  }
+
+  /**
+   * Set current address
+   * @param  {boolean}       newAddr whether generate a new address
+   */
+  private async setAddress(newAddr?: boolean): Promise<void> {
+    this.logger.debug('-----setaddress')
+    this.logger.debug(this.address)
+    this.loadingAddr = newAddr || _.isEmpty(this.address) ? true : false;
+
+    let addr: string = (await this.walletProvider
+      .getAddress(this.wallet, newAddr)
+      .catch(err => {
+        this.loadingAddr = false;
+        this.logger.warn(this.bwcError.msg(err, 'Server Error'));
+      })) as string;
+    this.loadingAddr = false;
+    let address = await this.walletProvider.getAddressView(this.wallet, addr);
+    if (this.address && this.address != address) {
+      // do something when a new address is generated
+      this.updateAddresses()
+    }
+    this.logger.debug('new')
+    this.logger.debug(address)
+    this.address = address;  // update curent address
+  }
+
+  private updateAddresses() {
+    this.loadingAddr = true;
+    this.walletProvider
+      .getMainAddresses(this.wallet, {
+        doNotVerify: true
+      })
+      .then(allAddresses => {
+        this.logger.warn('--------allAddresses');
+        this.logger.warn(allAddresses)
+        this.addressList = allAddresses;
+
+        this.walletProvider
+          .getBalance(this.wallet, {})
+          .then(resp => {
+            this.withBalance = resp.byAddress;
+
+            var idx = _.keyBy(this.withBalance, 'address');
+            this.noBalance = _.reject(allAddresses, x => {
+              return idx[x.address];
+            });
+
+            this.processList(this.noBalance);
+            this.processList(this.withBalance);
+
+            // this.latestUnused = _.slice(
+            //   this.noBalance,
+            //   0,
+            //   this.UNUSED_ADDRESS_LIMIT
+            // );
+            // this.latestWithBalance = _.slice(
+            //   this.withBalance,
+            //   0,
+            //   this.BALANCE_ADDRESS_LIMIT
+            // );
+            // this.viewAll =
+            //   this.noBalance.length > this.UNUSED_ADDRESS_LIMIT ||
+            //   this.withBalance.length > this.BALANCE_ADDRESS_LIMIT;
+
+            this.loadingAddr = false;
+          })
+          .catch(err => {
+            this.logger.error(err);
+            this.loadingAddr = false;
+            this.popupProvider.ionicAlert(
+              this.bwcError.msg(
+                err,
+                this.translate.instant('Could not update wallet')
+              )
+            );
+          });
+      })
+      .catch(err => {
+        this.logger.error(err);
+        this.loadingAddr = false;
+        this.popupProvider.ionicAlert(
+          this.bwcError.msg(
+            err,
+            this.translate.instant('Could not update wallet')
+          )
+        );
+      });
+  }
+
+  private processList(list): void {
+    _.each(list, n => {
+      n.path = n.path ? n.path.replace(/^m/g, 'xpub') : null;
+      n.address = this.walletProvider.getAddressView(this.wallet, n.address);
+    });
   }
 
   private clearHistoryCache() {
@@ -239,6 +362,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     (force?) => {
       this.updateStatus(force);
       this.updateTxHistory();
+      this.updateAddresses();
     },
     2000,
     {
@@ -435,14 +559,12 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   public receive() {
-    this.logger.error('receive');
     this.navCtrl.push(ReceivePage, {
       walletId: this.wallet.credentials.walletId
     });
   }
 
   public send() {
-    this.logger.error('send');
     this.navCtrl.push(SendPage, {
       walletId: this.wallet.credentials.walletId
     });

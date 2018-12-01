@@ -94,14 +94,14 @@ page-wallet-details {
   .tabs-wrapper {
     margin-top: -36px;
     background: #f8fafb;
-    padding-top: 38px;
-    .address-wrapper{
-      background: white;
+    padding-top: 38px;    
+  }
+  .history-wrapper, .address-wrapper{
+      background:rgba(248,250,251,1);
     }
     .history-wrapper{
 
     }
-  }
   .tx-history {
     .tx-history-header {
       &--large {
