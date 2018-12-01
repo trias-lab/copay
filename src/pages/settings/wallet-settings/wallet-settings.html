@@ -7,8 +7,8 @@
 <ion-content no-bounce>
 
   <div class="wallet-set-title">
-    <p class="set-name">My BTC Wallet</p>
-    <p class="set-detail">Edit Wallet Name</p>
+    <p class="set-name">{{wallet && wallet.name}}</p>
+    <p class="set-detail" (click)="openWalletName()">Edit Wallet Name</p>
   </div>
   <ion-list class="settings-list">
     <!-- <ion-item-divider></ion-item-divider>
