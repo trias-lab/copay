@@ -63,7 +63,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   public selectedTab: string; // transactions or addresses
 
   public address: string; // current address
-  public addressList: []; // list of addresses generated
+  public allAddresses; // list of addresses generated
   public loadingAddr: boolean; // whether loading addresses
   public noBalance;  // addresses without balance
   public withBalance;  // addresses with balance  
@@ -94,6 +94,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.selectedTab = 'transactions'; // transactions or addresses
     this.withBalance = null;
     this.noBalance = null;
+    this.allAddresses = null;
   }
 
   ionViewDidLoad() {
@@ -218,7 +219,7 @@ export class WalletDetailsPage extends WalletTabsChild {
       .then(allAddresses => {
         this.logger.warn('--------allAddresses');
         this.logger.warn(allAddresses)
-        this.addressList = allAddresses;
+        this.allAddresses = allAddresses;
 
         this.walletProvider
           .getBalance(this.wallet, {})

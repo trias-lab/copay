@@ -120,14 +120,37 @@ page-wallet-details {
         height:4px;
         background:rgba(0,0,0,1);
       }
-    } 
+    }
+    .add-addr-btn, .edit-addr-btn {
+      display: inline-block;
+      margin-top: 20px;
+      float: right;
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+      img{
+        width: 18px;
+      }
+    }
+    .add-addr-btn{
+      margin-right: 18px;
+    }
   }
   .history-wrapper, .address-wrapper{
-      background:rgba(248,250,251,1);
+    background:rgba(248,250,251,1);
+  }
+  .address-wrapper {
+    &.loading{
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      display: flex;
+      width: 100%;
     }
-    .history-wrapper{
+  }
+  // .history-wrapper{
 
-    }
+  // }
   .tx-history {
     .tx-history-header {
       &--large {

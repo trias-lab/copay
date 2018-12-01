@@ -143,7 +143,9 @@
       <div class="tabs-inner-wrapper">
         <a class="tab-btn" [ngClass]="{'active': selectedTab=='transactions'}" (click)="selectTab('transactions')">{{ 'Transactions' | translate }}</a>
         <a class="tab-btn" [ngClass]="{'active': selectedTab=='addresses'}" (click)="selectTab('addresses')">{{ 'Addresses' | translate }}</a>
-        </div>
+        <div *ngIf="selectedTab == 'addresses'" class="edit-addr-btn"><img src="assets/img/icon_editName@2x.png" alt=""></div>
+        <div *ngIf="selectedTab == 'addresses'" class="add-addr-btn" (click)="setAddress(true)"><img src="assets/img/icon_addAddr@2x.png" alt=""></div>        
+      </div>
     </div>
     <div class="history-wrapper" *ngIf="selectedTab == 'transactions'">
 
@@ -303,7 +305,7 @@
       </ion-infinite-scroll>
 
     </div>
-    <div class="address-wrapper" *ngIf="selectedTab == 'addresses'">
+    <div class="address-wrapper" *ngIf="selectedTab == 'addresses'" [ngClass]="{'loading': loadingAddr}">
       <div class="loading" *ngIf="loadingAddr">
         <ion-spinner icon="crescent"></ion-spinner>
         <span translate>Loading addresses...</span>
