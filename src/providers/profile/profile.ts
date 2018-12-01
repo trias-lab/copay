@@ -1219,6 +1219,7 @@ export class ProfileProvider {
   // Create a default wallet
   public createDefaultWallet(): Promise<any> {
     return new Promise((resolve, reject) => {
+      // default BTC wallet option
       const opts: Partial<WalletOptions> = {};
       opts.m = 1;
       opts.n = 1;
@@ -1226,12 +1227,17 @@ export class ProfileProvider {
       opts.coin = Coin.BTC;    
       this.createWallet(opts)
         .then(wallet => {
+          // this two wallets have the same mnemonic which will be backup once
+          this.setBackupFlag(wallet.credentials.walletId);
+
+          // default BTH wallet option 
           const optsBch: Partial<WalletOptions> = {};
           optsBch.m = 1;
           optsBch.n = 1;
           optsBch.networkName = 'livenet';
           optsBch.coin = Coin.BCH;
-          optsBch.mnemonic = wallet.credentials.mnemonic
+          // use the same mnemonic of the BTC waller created above.
+          optsBch.mnemonic = wallet.credentials.mnemonic;
           this.createWallet(optsBch)
           .then(wallet =>{
              return resolve(wallet);
