@@ -22,7 +22,7 @@ import { TimeProvider } from '../../providers/time/time';
 import { WalletProvider } from '../../providers/wallet/wallet';
 
 // pages
-import { BackupWarningPage } from '../../pages/backup/backup-warning/backup-warning';
+import { BackupRequestPage } from '../../pages/onboarding/backup-request/backup-request';
 import { WalletAddressesPage } from '../../pages/settings/wallet-settings/wallet-settings-advanced/wallet-addresses/wallet-addresses';
 import { TxDetailsPage } from '../../pages/tx-details/tx-details';
 import { GiftCardProvider } from '../../providers/gift-card/gift-card';
@@ -330,7 +330,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   public openBackup() {
-    this.navCtrl.push(BackupWarningPage, {
+    this.navCtrl.push(BackupRequestPage, {
       walletId: this.wallet.credentials.walletId
     });
   }

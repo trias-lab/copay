@@ -8,7 +8,7 @@ import { Logger } from '../../providers/logger/logger';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 // Pages
-import { BackupWarningPage } from '../backup/backup-warning/backup-warning';
+import { BackupRequestPage } from '../onboarding/backup-request/backup-request';
 import { AmountPage } from '../send/amount/amount';
 
 // Providers
@@ -61,6 +61,7 @@ export class ReceivePage extends WalletTabsChild {
   }
 
   ionViewWillEnter() {
+    // The resume event emits when the native platform pulls the application out from the background. 
     this.onResumeSubscription = this.platform.resume.subscribe(() => {
       this.setAddress();
       this.events.subscribe('Wallet/setAddress', (newAddr?: boolean) => {
@@ -130,7 +131,7 @@ export class ReceivePage extends WalletTabsChild {
   }
 
   public goToBackup(): void {
-    this.navCtrl.push(BackupWarningPage, {
+    this.navCtrl.push(BackupRequestPage, {
       walletId: this.wallet.credentials.walletId
     });
   }
