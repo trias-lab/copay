@@ -7,8 +7,8 @@ import { Logger } from '../../../providers/logger/logger';
 import { PopupProvider } from '../../../providers/popup/popup';
 
 // Pages
-import { BackupGamePage } from '../../backup/backup-game/backup-game';
-import { DisclaimerPage } from '../disclaimer/disclaimer';
+import { BackupGamePage } from '../backup-game/backup-game';
+import { DisclaimerPage } from '../../onboarding/disclaimer/disclaimer';
 
 @Component({
   selector: 'page-backup-request',
