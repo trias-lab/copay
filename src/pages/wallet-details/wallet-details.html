@@ -314,7 +314,7 @@
       <ion-list *ngIf="!loadingAddr" class="settings-list">
         <div *ngIf="noBalance && noBalance[0]">
           <ion-item-divider>{{'Unused addresses' | translate}}</ion-item-divider>
-          <ion-item *ngFor="let u of noBalance" copy-to-clipboard="{{u.address}}">
+          <ion-item *ngFor="let u of noBalance" (click)="this.address = u.address">
             <h3>{{u.address}}</h3>
             <p>{{u.path}} {{u.createdOn * 1000 | amDateFormat:'MMMM Do YYYY, hh:mm a'}}</p>
           </ion-item>
@@ -322,7 +322,7 @@
 
         <div *ngIf="withBalance && withBalance[0]">
           <ion-item-divider>{{'Addresses with balance' | translate}}</ion-item-divider>
-          <ion-item *ngFor="let w of withBalance" copy-to-clipboard="{{w.address}}">
+          <ion-item *ngFor="let w of withBalance" (click)="this.address = w.address">
             <h3>{{w.address}}</h3>
             <p class="info">{{w.amount | satToUnit: wallet.coin}}</p>
           </ion-item>
