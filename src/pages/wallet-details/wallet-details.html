@@ -48,7 +48,7 @@
                   </div>
                 </div>
 
-                <div class="balance-spendable" (click)="openBalanceDetails()" *ngIf="!wallet.balanceHidden && !wallet.scanning && showBalanceButton && wallet.status">
+                <!-- <div class="balance-spendable" (click)="openBalanceDetails()" *ngIf="!wallet.balanceHidden && !wallet.scanning && showBalanceButton && wallet.status">
                   <ion-icon ios="ios-timer-outline" md="md-timer"></ion-icon>
                   <strong>
                     {{wallet.status.spendableBalanceStr}}
@@ -58,7 +58,7 @@
                     ({{wallet.status.spendableBalanceAlternative}} {{wallet.status.alternativeIsoCode}})
                   </span>
                   &rarr;
-                </div>
+                </div> -->
 
                 <div class="balance-error" *ngIf="updateStatusError" (tap)="updateAll(true)">
                   <span class="title" translate>Tap to retry</span>
