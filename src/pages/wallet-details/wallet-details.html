@@ -140,16 +140,10 @@
     </div>
 
     <div class="tabs-wrapper">
-      <ion-toolbar no-border-top>
-        <ion-segment [(ngModel)]="selectedTab" (ionChange)="selectTab(selectedTab)" >
-          <ion-segment-button value="transactions">
-            {{ 'Transactions' | translate }}
-          </ion-segment-button>
-          <ion-segment-button value="addresses">
-            {{ 'Addresses' | translate }}
-          </ion-segment-button>
-        </ion-segment>
-      </ion-toolbar>
+      <div class="tabs-inner-wrapper">
+        <a class="tab-btn" [ngClass]="{'active': selectedTab=='transactions'}" (click)="selectTab('transactions')">{{ 'Transactions' | translate }}</a>
+        <a class="tab-btn" [ngClass]="{'active': selectedTab=='addresses'}" (click)="selectTab('addresses')">{{ 'Addresses' | translate }}</a>
+        </div>
     </div>
     <div class="history-wrapper" *ngIf="selectedTab == 'transactions'">
 

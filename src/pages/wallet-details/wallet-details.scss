@@ -1,6 +1,6 @@
 page-wallet-details {  
   ion-content{
-    background: url('../../../assets/img/img_bg_pattern.png') no-repeat;
+    background: url('../../../assets/img/img_bg_pattern.png') repeat-x;
   }
   ion-content.has-refresher>.scroll-content {
     background: transparent;
@@ -94,7 +94,33 @@ page-wallet-details {
   .tabs-wrapper {
     margin-top: -36px;
     background: #f8fafb;
-    padding-top: 38px;    
+    padding: 18px 16px 0 16px;
+    line-height: 58px;
+    .tabs-inner-wrapper{
+      border-bottom: 1px solid #E5E8EA;
+    }
+    .tab-btn{
+      display: inline-block;
+      font-size:14px;
+      font-weight:bold;
+      color:rgba(163,173,180,1);
+      line-height:16px;
+      position: relative;
+      margin-right: 28px;
+      &.active{
+        color:rgba(0,0,0,1);
+      }
+      &.active:after{
+        content:'';
+        position: absolute;
+        left: calc(50% - 2px);
+        bottom: -16px;
+        border-radius: 50%;
+        width:4px;
+        height:4px;
+        background:rgba(0,0,0,1);
+      }
+    } 
   }
   .history-wrapper, .address-wrapper{
       background:rgba(248,250,251,1);
@@ -302,21 +328,26 @@ page-wallet-details {
             height: 36px;
             background: rgba(246,247,249,1);
             margin: 0px -13px;
-            padding: 0 18px; 
-            display: flex;
-            align-items: center;
+            padding: 0 18px;
             border-top: 1px solid rgba(229,232,234,1);      
-            border-bottom: 1px solid rgba(229,232,234,1);      
+            border-bottom: 1px solid rgba(229,232,234,1); 
+            position: relative;     
             .address {
               font-size: 12px;
               font-weight: 400;
+              line-height: 34px;
               color: rgba(110,118,125,1);
+              padding-right: 67px;
+              text-overflow: ellipsis;
               overflow: hidden;
-              flex-grow:1;
+              white-space: nowrap;
+              word-break: break-all;
             }
             .copy-button{
               display: inline-block;
-              float:right;
+              position: absolute;
+              top: 6px;
+              right: 18px;
               width: 55px;
               height:20px;
               background:linear-gradient(270deg,rgba(181,189,194,1) 0%,rgba(145,153,158,1) 100%);
@@ -326,7 +357,6 @@ page-wallet-details {
               color:rgba(255,255,255,1);
               line-height:20px;
               text-align: center;
-              margin-left: 12px;
             }
           }
           &:last-child{
