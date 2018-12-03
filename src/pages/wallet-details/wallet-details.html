@@ -311,7 +311,7 @@
         <span translate>Loading addresses...</span>
       </div>
 
-      <ion-list *ngIf="!loadingAddr" class="settings-list">
+      <ion-list *ngIf="!loadingAddr" class="addresses-list">
         <div *ngIf="noBalance && noBalance[0]">
           <ion-item-divider>{{'Unused addresses' | translate}}</ion-item-divider>
           <ion-item *ngFor="let u of noBalance" (click)="this.address = u.address">

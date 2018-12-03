@@ -138,6 +138,9 @@ page-wallet-details {
   }
   .history-wrapper, .address-wrapper{
     background:rgba(248,250,251,1);
+    .list {
+      margin: 0;
+    }
   }
   .address-wrapper {
     &.loading{
@@ -146,7 +149,7 @@ page-wallet-details {
       flex-grow: 1;
       display: flex;
       width: 100%;
-    }
+    }    
   }
   // .history-wrapper{
 
