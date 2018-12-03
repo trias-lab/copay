@@ -27,6 +27,7 @@ export interface GiftCardMap {
 
 const Keys = {
   ADDRESS_BOOK: network => 'addressbook-' + network,
+  ADDRESS_MANAGER: walletId => 'addressManager-'+ walletId,
   AGREE_DISCLAIMER: 'agreeDisclaimer',
   GIFT_CARD_USER_INFO: 'amazonUserInfo', // keeps legacy key for backwards compatibility
   APP_IDENTITY: network => 'appIdentity-' + network,
@@ -448,6 +449,20 @@ export class PersistenceProvider {
     return this.storage.remove(Keys.LOGS);
   }
 
+  /* address manager for wallet */
+  setAddressManager(walletId: string, addressManager) {
+    return this.storage.set(Keys.ADDRESS_MANAGER(walletId), addressManager);
+  }
+
+  getAddressManager(walletId: string) {
+    return this.storage.get(Keys.ADDRESS_MANAGER(walletId));
+  }
+
+  clearAddressManager(walletId: string) {
+    return this.storage.remove(Keys.ADDRESS_MANAGER(walletId));
+  }
+
+  /* address book for caontacts*/
   setAddressBook(network: string, addressbook) {
     return this.storage.set(Keys.ADDRESS_BOOK(network), addressbook);
   }
