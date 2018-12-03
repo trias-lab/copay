@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'Create New Address' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>      
+    <form [formGroup]="addressAddForm" class="add-address-info-box">
+      <ion-item>
+        <ion-label stacked>{{ 'Address Name' | translate }}</ion-label>
+        <ion-input formControlName="name" type="text" placeholder="name"></ion-input>
+      </ion-item>
+    </form>
+    <p class="hint">This helps you identify the addresses, you can always replace it if you need to.</p>
+  </ion-card>
+
+  <div class="address-btn-block">
+    <button
+      ion-button
+      class="button-standard"
+      (click)="confirm()"
+      [disabled]="addressAddForm.invalid"
+    >
+      {{ 'Create Address' | translate }}
+    </button>
+  </div>
+</ion-content>

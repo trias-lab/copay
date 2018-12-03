@@ -48,6 +48,7 @@ import { PinModalPage } from '../pages/pin/pin-modal/pin-modal';
 import { AmountPage } from '../pages/send/amount/amount';
 import { ConfirmPage } from '../pages/send/confirm/confirm';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
+import { AddressAddPage } from '../pages/wallet-details/add-address/add-address';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WalletDetailsPage } from '../pages/wallet-details/wallet-details';
 import { WalletTabsPage } from '../pages/wallet-tabs/wallet-tabs';
@@ -79,6 +80,7 @@ export class CopayApp {
 
   private pageMap = {
     AddressbookAddPage,
+    AddressAddPage,
     AmountPage,
     // BitPayCardIntroPage,
     // CoinbasePage,
