@@ -5,6 +5,7 @@ import { DecimalPipe } from '@angular/common';
 import {
   ActionSheetProvider,
   AddressBookProvider,
+  AddressManagerProvider,
   AddressProvider,
   AndroidFingerprintAuth,
   AppIdentityProvider,
@@ -72,6 +73,7 @@ import {
     ActionSheetProvider,
     AddressProvider,
     AddressBookProvider,
+    AddressManagerProvider,
     AndroidFingerprintAuth,
     AppProvider,
     AppIdentityProvider,
