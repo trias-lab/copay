@@ -28,7 +28,6 @@ confirm-card-purchase {
   }
 
   ion-content {
-
     .fixed-content,
     .scroll-content {
       margin-bottom: 90px;
@@ -36,7 +35,6 @@ confirm-card-purchase {
   }
 
   .no-margin-bottom {
-
     .fixed-content,
     .scroll-content {
       margin-bottom: 0px;
@@ -93,7 +91,10 @@ confirm-card-purchase {
 
   .item-fee {
     line-height: 20px;
-
+    float: right;
+    height: 30px;
+    font-size: 1.4rem;
+    margin-right: 20px;
     .fee-title {
       margin-bottom: 5px;
       color: color($colors, grey);
@@ -157,7 +158,6 @@ confirm-card-purchase {
 
   .container-to,
   .container-from {
-
     .wallet,
     .payment-proposal-to {
       @include row-flex;
@@ -205,10 +205,14 @@ confirm-card-purchase {
 
   .send-check {
     padding: 24px 14px;
-    background: linear-gradient(270deg, rgba(246, 249, 250, 1) 0%, rgba(230, 235, 238, 1) 100%);
+    background: linear-gradient(
+      270deg,
+      rgba(246, 249, 250, 1) 0%,
+      rgba(230, 235, 238, 1) 100%
+    );
     text-align: center;
 
-    >p {
+    > p {
       font-size: 14px;
       font-family: Roboto-Regular;
       font-weight: 400;
@@ -216,7 +220,6 @@ confirm-card-purchase {
       line-height: 18px;
     }
   }
-
 
   .send-title {
     font-size: 13px;
@@ -234,7 +237,7 @@ confirm-card-purchase {
     margin: 5px 0 0px 24px;
 
     span {
-      color: #142A3F;
+      color: #142a3f;
     }
   }
 
@@ -305,13 +308,13 @@ confirm-card-purchase {
     justify-content: center;
     align-items: center;
 
-    >div {
+    > div {
       width: 22px;
       height: 22px;
       background: rgba(229, 232, 234, 1);
       margin: auto;
       border-radius: 50%;
-      color: #142A3F;
+      color: #142a3f;
       font-weight: bold;
       font-size: 18px;
       text-align: center;
