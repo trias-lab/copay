@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 
 // providers
 import { AddressBookProvider } from '../../providers/address-book/address-book';
+import { AddressManagerProvider } from '../../providers/address-manager/address-manager';
 import { BwcErrorProvider } from '../../providers/bwc-error/bwc-error';
 import { ExternalLinkProvider } from '../../providers/external-link/external-link';
 import { ActionSheetProvider } from '../../providers/index';
@@ -23,6 +24,7 @@ import { TimeProvider } from '../../providers/time/time';
 import { WalletProvider } from '../../providers/wallet/wallet';
 
 // pages
+import { AddressAddPage } from './add-address/add-address';
 import { BackupRequestPage } from '../../pages/backup/backup-request/backup-request';
 import { WalletAddressesPage } from '../../pages/settings/wallet-settings/wallet-settings-advanced/wallet-addresses/wallet-addresses';
 import { TxDetailsPage } from '../../pages/tx-details/tx-details';
@@ -88,7 +90,8 @@ export class WalletDetailsPage extends WalletTabsChild {
     private externalLinkProvider: ExternalLinkProvider,
     walletTabsProvider: WalletTabsProvider,
     private actionSheetProvider: ActionSheetProvider,
-    private platform: Platform   
+    private platform: Platform,
+    private am: AddressManagerProvider
   ) {
     super(navCtrl, profileProvider, walletTabsProvider);
     this.selectedTab = 'transactions'; // transactions or addresses
@@ -116,7 +119,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     }
 
     this.requiresMultipleSignatures = this.wallet.credentials.m > 1;
-
+      
     this.addressbookProvider
       .list()
       .then(ab => {
@@ -157,14 +160,16 @@ export class WalletDetailsPage extends WalletTabsChild {
   selectTab(tab: string) {
     this.selectedTab = tab; // update the tab
 
-    // switch (tab) {
-    //   case 'transactions':        
-    //     break;
-    //   case 'addresses':  
-    //     break;
-    //   default:
-    //     break;
-    // }
+    switch (tab) {
+      case 'transactions': 
+        this.updateTxHistory();       
+        break;
+      case 'addresses':  
+        this.updateAddresses();
+        break;
+      default:
+        break;
+    }
   }
 
   shouldShowZeroState() {
@@ -184,13 +189,15 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.navCtrl.push(WalletSettingsPage, { walletId: this.wallet.id });
   }
 
+  createAddress(){
+    this.navCtrl.push(AddressAddPage, { walletId: this.wallet.id });
+  }
+
   /**
    * Set current address
    * @param  {boolean}       newAddr whether generate a new address
    */
   private async setAddress(newAddr?: boolean): Promise<void> {
-    this.logger.debug('-----setaddress')
-    this.logger.debug(this.address)
     this.loadingAddr = newAddr || _.isEmpty(this.address) ? true : false;
 
     let addr: string = (await this.walletProvider
@@ -205,9 +212,23 @@ export class WalletDetailsPage extends WalletTabsChild {
       // do something when a new address is generated
       this.updateAddresses()
     }
-    this.logger.debug('new')
-    this.logger.debug(address)
     this.address = address;  // update curent address
+    
+    //  If address manager is empty, or do not contain this address, add this address into it.
+    this.am
+    .list(this.wallet)
+    .then(am => {
+      if(_.isEmpty(am) || _.isEmpty(am[address])){
+        this.am
+          .add(this.wallet, {'name':'defaut', 'address': address})
+          .then(() => {
+            this.logger.debug('----Add address '+ address + 'to wallet manager' )
+          })
+          .catch(err => {
+            this.popupProvider.ionicAlert('Error', err);
+          });
+      }
+    })
   }
 
   private updateAddresses() {
@@ -217,8 +238,8 @@ export class WalletDetailsPage extends WalletTabsChild {
         doNotVerify: true
       })
       .then(allAddresses => {
-        this.logger.warn('--------allAddresses');
-        this.logger.warn(allAddresses)
+        // this.logger.warn('--------allAddresses');
+        // this.logger.warn(allAddresses)
         this.allAddresses = allAddresses;
 
         this.walletProvider
