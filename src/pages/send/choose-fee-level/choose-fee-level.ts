@@ -165,6 +165,8 @@ export class ChooseFeeLevelPage {
       newFeeLevel: this.feeLevel,
       customFeePerKB: this.customFeePerKB
     });
+    this.logger.info(this.feeLevel);
+    this.logger.info(this.customFeePerKB);
   }
 
   public cancel(): void {
