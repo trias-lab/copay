@@ -89,6 +89,7 @@ export class HomePage {
   public balanceItem; // Each wallet's coin amount
   public balanceName; // Each wallet's coin name
   public balanceLegend; // The legend attributes, like: name, color and percent
+  public chartLegend; // The chart legend attributes
   public balanceChart; // The chart object
   public legendColors; // Chart's color pools
   public selectedLegendColors; // Chart's color pools
@@ -144,6 +145,7 @@ export class HomePage {
     this.legendColors = ['#25EAB2', '#AD40BB', '#11A9F9', '#8B4BF7'];
     this.selectedLegendColors = [];
     this.balanceLegend = [];
+    this.chartLegend = [];
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.events.subscribe('Home/reloadStatus', () => {
       this._willEnter();
@@ -691,6 +693,7 @@ export class HomePage {
         this.totalBalance += parseFloat(amount);
         this.balanceItem.push({ value: parseFloat(amount) });
         this.balanceName.push(banlance.split(' ')[1]);
+
         // this.logger.warn('wallet every---', index);
         // No serverMessage for any wallet?
         if (!foundMessage) this.serverMessage = null;
@@ -698,6 +701,7 @@ export class HomePage {
         .then((banlance) => { // Add a callback for each. Update the chart.
           // this.logger.warn('wallet then', this.balanceItem);
           this.balanceLegend = [];
+          this.chartLegend = [];
           _.each(this.balanceItem, (balanceItem, index: number) => {
             let legendOne = {
               color: this.legendColors[index],
@@ -707,13 +711,20 @@ export class HomePage {
             this.selectedLegendColors.push(this.legendColors[index]);
             this.balanceLegend.push(legendOne);
             this.logger.warn('wallet every---', legendOne);
+            let legendChartOne = {
+              value: balanceItem.value,
+              itemStyle: {
+                normal: { color: this.legendColors[index] }
+              }
+            }
+            this.chartLegend.push(legendChartOne);
 
           })
           this.balanceChart.setOption({
-            color: this.selectedLegendColors,
+            // color: this.selectedLegendColors,
             series: [
               {
-                data: this.balanceItem
+                data: this.chartLegend
               }
             ]
           })
