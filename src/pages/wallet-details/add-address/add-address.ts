@@ -37,10 +37,10 @@ export class AddressAddPage {
   ) {
     this.addressAddForm = this.formBuilder.group({
       name: [
-        '',
-        Validators.compose([Validators.minLength(1), Validators.required])
+        'Default',
+        Validators.compose([Validators.maxLength(20)])
       ],
-      address: ['']
+      address: ''
     });
     this.wallet = this.profileProvider.getWallet(this.navParams.data.walletId);
   }
