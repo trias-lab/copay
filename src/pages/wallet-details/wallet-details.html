@@ -315,16 +315,19 @@
         <div *ngIf="noBalance && noBalance[0]">
           <!-- <ion-item-divider>{{'Unused addresses' | translate}}</ion-item-divider> -->
           <ion-item *ngFor="let u of noBalance" (click)="this.address = u.address">
-            <h3>{{u.address}}</h3>
-            <p>{{u.path}} {{u.createdOn * 1000 | amDateFormat:'MMMM Do YYYY, hh:mm a'}}</p>
+            <h3>{{u.name}} <span class="unused-mark"></span></h3>
+            <!-- <p>{{u.path}} {{u.createdOn * 1000 | amDateFormat:'MMMM Do YYYY, hh:mm a'}}</p> -->
+            <p>{{u.address}}</p>
+            <div class="selected" *ngIf="u.address == address"><img src="../../assets/img/app/onboarding/icon_checkmark@2x.png" alt=""></div>
           </ion-item>
         </div>
 
         <div *ngIf="withBalance && withBalance[0]">
           <!-- <ion-item-divider>{{'Addresses with balance' | translate}}</ion-item-divider> -->
           <ion-item *ngFor="let w of withBalance" (click)="this.address = w.address">
-            <h3>{{w.address}}</h3>
-            <p class="info">{{w.amount | satToUnit: wallet.coin}}</p>
+            <h3>{{w.name}} <span>{{w.amount | satToUnit: wallet.coin}}</span></h3>
+            <p>{{w.address}}</p>
+            <div class="selected" *ngIf="u.address == address"><img src="../../assets/img/app/onboarding/icon_checkmark@2x.png" alt=""></div>
           </ion-item>
         </div>
 
