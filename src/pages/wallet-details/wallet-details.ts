@@ -609,7 +609,8 @@ export class WalletDetailsPage extends WalletTabsChild {
 
   public receive() {
     this.navCtrl.push(ReceivePage, {
-      walletId: this.wallet.credentials.walletId
+      walletId: this.wallet.credentials.walletId,
+      address: this.address
     });
   }
 
