@@ -88,7 +88,10 @@ confirm-card-purchase {
     margin-top: 0.5rem;
     color: color($colors, light-grey);
   }
-
+  page-confirm .item-fee.warn {
+    background: #f00;
+    color: #fff;
+  }
   .item-fee {
     line-height: 20px;
     float: right;
