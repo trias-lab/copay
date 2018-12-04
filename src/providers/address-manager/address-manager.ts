@@ -105,7 +105,7 @@ export class AddressManagerProvider {
   public remove(wallet, addr): Promise<any> {
     return new Promise((resolve, reject) => {
       this.persistenceProvider
-        .getAddressBook(wallet.id)
+        .getAddressManager(wallet.id)
         .then(am => {
           if (am && _.isString(am)) am = JSON.parse(am);
           am = am || {};
@@ -119,7 +119,7 @@ export class AddressManagerProvider {
           }
           delete am[addr];
           this.persistenceProvider
-            .setAddressBook(wallet.id, JSON.stringify(am))
+            .setAddressManager(wallet.id, JSON.stringify(am))
             .then(() => {
               this.list(wallet)
                 .then(am => {
