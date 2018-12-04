@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ 'Create New Address' | translate }}</ion-title>
+    <ion-title *ngIf="!edit">{{ 'Create New Address' | translate }}</ion-title>
+    <ion-title *ngIf="edit">{{ 'Edit Address Name' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -22,7 +23,7 @@
       (click)="confirm()"
       [disabled]="addressAddForm.invalid"
     >
-      {{ 'Create Address' | translate }}
+      {{ edit ? 'Save Change':'Create Address' | translate }}
     </button>
   </div>
 </ion-content>

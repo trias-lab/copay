@@ -12,6 +12,8 @@ import { AddressManagerProvider } from '../../../providers/address-manager/addre
 import { Logger } from '../../../providers/logger/logger';
 import { PopupProvider } from '../../../providers/popup/popup';
 import { ProfileProvider } from '../../../providers/profile/profile';
+import { WalletProvider } from '../../../providers/wallet/wallet';
+
 
 @Component({
   selector: 'page-address-add',
@@ -20,12 +22,15 @@ import { ProfileProvider } from '../../../providers/profile/profile';
 export class AddressAddPage {
   private wallet;
   private addressAddForm: FormGroup;
+  private addressToEdit: string;
 
   public isCordova: boolean;
+  public edit: boolean;
 
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
+    private walletProvider: WalletProvider,
     // private events: Events,
     private am: AddressManagerProvider,
     // private addressProvider: AddressProvider,
@@ -34,28 +39,31 @@ export class AddressAddPage {
     private popupProvider: PopupProvider,
     private profileProvider: ProfileProvider,
     // private address: string
-  ) {
+  ) {    
+    this.wallet = this.profileProvider.getWallet(this.navParams.data.walletId);
+    this.addressToEdit = this.navParams.get('addressToEdit')
+    this.edit = this.navParams.get('edit')
+    let oldName = this.navParams.get('oldName')
     this.addressAddForm = this.formBuilder.group({
       name: [
-        'Default',
+        oldName || 'Default',
         Validators.compose([Validators.maxLength(20)])
       ],
       address: ''
     });
-    this.wallet = this.profileProvider.getWallet(this.navParams.data.walletId);
   }
 
   ionViewDidLoad() {
-    this.logger.info('Loaded: AddressAddPage');
-    
+    this.logger.info('Loaded: AddressAddPage');    
   }
 
-  private getNewAddr(): Promise<string> {
+  private async getNewAddr(): Promise<string> {
     return new Promise((resolve, reject) => {
       this.am.getAddress(this.wallet, true)
         .then(addr => {
-          this.logger.debug(addr)
-          return resolve(addr)
+          let address = this.walletProvider.getAddressView(this.wallet, addr);
+          this.logger.debug(address)
+          return resolve(address)
         })
         .catch(err => {
           return reject(err);
@@ -66,20 +74,39 @@ export class AddressAddPage {
   public confirm(): void {
     this.logger.debug('---this.addressAddForm.value')
     
-    this.getNewAddr()
-      .then(addr => {
-        this.addressAddForm.controls['address'].setValue(addr);
-        this.am
-          .add(this.wallet, this.addressAddForm.value)
-          .then(() => {
-            this.navCtrl.pop();
-          })
-          .catch(err => {
-            this.popupProvider.ionicAlert('Error', err);
-          });
-      })
-      .catch(err => {          
-        this.popupProvider.ionicAlert('Error', err);
-      })    
+    if(this.edit && this.addressToEdit){
+      this.am
+        .remove(this.wallet, this.addressToEdit)
+        .then(() => {
+          this.addressAddForm.controls['address'].setValue(this.addressToEdit);
+          this.am
+            .add(this.wallet, this.addressAddForm.value)
+            .then(() => {
+              this.navCtrl.pop();
+            })
+            .catch(err => {
+              this.popupProvider.ionicAlert('Error', err);
+            });
+        })
+        .catch(err => {
+          this.popupProvider.ionicAlert('Error', err);
+        });
+    }else{
+      this.getNewAddr()
+        .then(addr => {
+          this.addressAddForm.controls['address'].setValue(addr);
+          this.am
+            .add(this.wallet, this.addressAddForm.value)
+            .then(() => {
+              this.navCtrl.pop();
+            })
+            .catch(err => {
+              this.popupProvider.ionicAlert('Error', err);
+            });
+        })
+        .catch(err => {          
+          this.popupProvider.ionicAlert('Error', err);
+        })
+    }
   }
 }
