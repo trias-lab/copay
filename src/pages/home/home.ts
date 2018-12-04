@@ -1,5 +1,6 @@
 import { Component, NgZone, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import * as echarts from 'echarts';
 import {
   Events,
   ModalController,
@@ -7,7 +8,6 @@ import {
   Platform
 } from 'ionic-angular';
 import * as _ from 'lodash';
-import * as echarts from 'echarts';
 import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
 
@@ -17,9 +17,9 @@ import { BitPayCardPage } from '../integrations/bitpay-card/bitpay-card';
 import { BitPayCardIntroPage } from '../integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 import { CoinbasePage } from '../integrations/coinbase/coinbase';
 import { GlideraPage } from '../integrations/glidera/glidera';
-import { ScanPage } from '../scan/scan';
 import { ShapeshiftPage } from '../integrations/shapeshift/shapeshift';
 import { PaperWalletPage } from '../paper-wallet/paper-wallet';
+import { ScanPage } from '../scan/scan';
 import { AmountPage } from '../send/amount/amount';
 import { AddressbookAddPage } from '../settings/addressbook/add/add';
 import { AddressbookPage } from '../settings/addressbook/addressbook';
@@ -144,7 +144,6 @@ export class HomePage {
     this._willEnter();
     // this.logger.warn('wallet btc', this.walletsBtc)
     // this.logger.warn('wallet bch', this.walletsBch);
-
   }
 
   ionViewDidEnter() {
@@ -153,9 +152,7 @@ export class HomePage {
     const ec = echarts as any;
     var myChart = ec.init(document.getElementById('chart'));
     var optionchart = {
-      color: [
-        '#25EAB2', '#AD40BB', '#11A9F9'
-      ],
+      color: ['#25EAB2', '#AD40BB', '#11A9F9'],
       grid: {
         left: 15,
         top: 15,
@@ -175,20 +172,15 @@ export class HomePage {
               textStyle: {
                 fontSize: '12',
                 color: '#fff'
-
               }
-            },
+            }
           },
           labelLine: {
             normal: {
               show: false
             }
           },
-          data: [
-            { value: 40, },
-            { value: 50, },
-            { value: 50, }
-          ]
+          data: [{ value: 40 }, { value: 50 }, { value: 50 }]
         }
       ]
     };
@@ -674,8 +666,12 @@ export class HomePage {
       pr(wallet).then(() => {
         this.debounceUpdateTxps();
         this.debounceUpdateNotifications();
-        let banlance = wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
-          wallet.cachedBalance ? wallet.cachedBalance : '');
+        let banlance =
+          wallet.status && wallet.status.totalBalanceStr
+            ? wallet.status.totalBalanceStr
+            : wallet.cachedBalance
+            ? wallet.cachedBalance
+            : '';
         let amount = banlance.split(' ')[0];
         this.totalBalance += parseFloat(amount);
         this.logger.warn('wallet every', amount);

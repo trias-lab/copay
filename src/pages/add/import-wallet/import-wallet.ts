@@ -1,14 +1,20 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { App, Events, ModalController, NavController, NavParams } from 'ionic-angular';
+import {
+  App,
+  Events,
+  ModalController,
+  NavController,
+  NavParams
+} from 'ionic-angular';
 import { Logger } from '../../../providers/logger/logger';
 
 // Pages
 import { DisclaimerPage } from '../../onboarding/disclaimer/disclaimer';
+import { PinModalPage } from '../../pin/pin-modal/pin-modal';
 import { ScanPage } from '../../scan/scan';
 import { TabsPage } from '../../tabs/tabs';
-import { PinModalPage } from '../../pin/pin-modal/pin-modal';
 
 // Providers
 import { ActionSheetProvider } from '../../../providers/action-sheet/action-sheet';
@@ -266,7 +272,7 @@ export class ImportWalletPage {
         if (this.fromOnboarding) {
           // set new pin code when importing a wallet
           this.openPinModal('initPin');
-          this.logger.info('---PIN setup started'); 
+          this.logger.info('---PIN setup started');
         } else {
           this.app
             .getRootNavs()[0]

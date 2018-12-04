@@ -24,7 +24,6 @@ import { TimeProvider } from '../../providers/time/time';
 import { WalletProvider } from '../../providers/wallet/wallet';
 
 // pages
-import { AddressAddPage } from './add-address/add-address';
 import { BackupRequestPage } from '../../pages/backup/backup-request/backup-request';
 import { WalletAddressesPage } from '../../pages/settings/wallet-settings/wallet-settings-advanced/wallet-addresses/wallet-addresses';
 import { TxDetailsPage } from '../../pages/tx-details/tx-details';
@@ -34,6 +33,7 @@ import { SendPage } from '../send/send';
 import { WalletSettingsPage } from '../settings/wallet-settings/wallet-settings';
 import { WalletTabsChild } from '../wallet-tabs/wallet-tabs-child';
 import { WalletTabsProvider } from '../wallet-tabs/wallet-tabs.provider';
+import { AddressAddPage } from './add-address/add-address';
 import { SearchTxModalPage } from './search-tx-modal/search-tx-modal';
 import { WalletBalancePage } from './wallet-balance/wallet-balance';
 const HISTORY_SHOW_LIMIT = 10;
@@ -68,8 +68,8 @@ export class WalletDetailsPage extends WalletTabsChild {
   public address: string; // current address
   // public allAddresses; // list of addresses generated
   public loadingAddr: boolean; // whether loading addresses
-  public noBalance;  // addresses without balance
-  public withBalance;  // addresses with balance  
+  public noBalance; // addresses without balance
+  public withBalance; // addresses with balance
   // public latestUnused;  // addresses unused latest
   // public latestWithBalance;  // addresses latest with balance
 
@@ -120,7 +120,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     }
 
     this.requiresMultipleSignatures = this.wallet.credentials.m > 1;
-      
+
     this.addressbookProvider
       .list()
       .then(ab => {
@@ -131,8 +131,8 @@ export class WalletDetailsPage extends WalletTabsChild {
       });
   }
 
-  ionViewWillEnter() {    
-    // The resume event emits when the native platform pulls the application out from the background. 
+  ionViewWillEnter() {
+    // The resume event emits when the native platform pulls the application out from the background.
     this.onResumeSubscription = this.platform.resume.subscribe(() => {
       this.updateAll();
       this.events.subscribe('Wallet/updateAll', () => {
@@ -162,10 +162,10 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.selectedTab = tab; // update the tab
 
     // switch (tab) {
-    //   case 'transactions': 
-    //     this.updateTxHistory();       
+    //   case 'transactions':
+    //     this.updateTxHistory();
     //     break;
-    //   case 'addresses':  
+    //   case 'addresses':
     //     this.updateAddresses();
     //     break;
     //   default:
@@ -190,7 +190,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.navCtrl.push(WalletSettingsPage, { walletId: this.wallet.id });
   }
 
-  createAddress(){
+  createAddress() {
     this.navCtrl.push(AddressAddPage, { walletId: this.wallet.id });
   }
 
@@ -210,28 +210,26 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.loadingAddr = false;
 
     //  If address manager is empty, or do not contain this address, add this address into it.
-    this.am
-    .list(this.wallet)
-    .then(am => {
+    this.am.list(this.wallet).then(am => {
       this.addressStored = am;
-      if(_.isEmpty(am) || _.isEmpty(am[addr])){
+      if (_.isEmpty(am) || _.isEmpty(am[addr])) {
         this.am
-          .add(this.wallet, {'name':'default', 'address': addr})
+          .add(this.wallet, { name: 'default', address: addr })
           .then(() => {
-            this.logger.debug('----Add address '+ addr + 'to wallet manager' )
+            this.logger.debug('----Add address ' + addr + 'to wallet manager');
           })
           .catch(err => {
             this.popupProvider.ionicAlert('Error', err);
           });
       }
-    })
-    
+    });
+
     let address = await this.walletProvider.getAddressView(this.wallet, addr);
     if (this.address && this.address != address) {
       // do something when a new address is generated
-      this.updateAddresses()
+      this.updateAddresses();
     }
-    this.address = address;  // update curent address
+    this.address = address; // update curent address
   }
 
   private updateAddresses() {
@@ -240,7 +238,7 @@ export class WalletDetailsPage extends WalletTabsChild {
       .getMainAddresses(this.wallet, {
         doNotVerify: true
       })
-      .then(allAddresses => {        
+      .then(allAddresses => {
         this.walletProvider
           .getBalance(this.wallet, {})
           .then(resp => {
@@ -259,18 +257,18 @@ export class WalletDetailsPage extends WalletTabsChild {
                 this.addressStored = am;
 
                 // set names for addresses without balance
-                if(this.noBalance.length>0){
-                  _.each(this.noBalance, (item )=> {
-                    item['name'] =  this.addressStored[item.address].name;
+                if (this.noBalance.length > 0) {
+                  _.each(this.noBalance, item => {
+                    item['name'] = this.addressStored[item.address].name;
                   });
                 }
                 // set names for addresses with balance
-                if(this.withBalance.length>0){
-                  _.each(this.withBalance, (item )=> {
-                    item['name'] =  this.addressStored[item.address].name;
+                if (this.withBalance.length > 0) {
+                  _.each(this.withBalance, item => {
+                    item['name'] = this.addressStored[item.address].name;
                   });
-                }  
-                
+                }
+
                 // this.logger.warn('--------noBalance');
                 // this.logger.warn(this.noBalance)
                 // this.logger.warn('--------withBalance');
@@ -298,7 +296,7 @@ export class WalletDetailsPage extends WalletTabsChild {
               })
               .catch(err => {
                 this.logger.error(err);
-              });            
+              });
           })
           .catch(err => {
             this.logger.error(err);

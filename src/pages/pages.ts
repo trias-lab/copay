@@ -5,9 +5,9 @@ import { CreateWalletPage } from '../pages/add/create-wallet/create-wallet';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
 import { JoinWalletPage } from '../pages/add/join-wallet/join-wallet';
 import { BackupGamePage } from '../pages/backup/backup-game/backup-game';
+import { BackupRequestPage } from '../pages/backup/backup-request/backup-request';
 import { SendFeedbackPage } from '../pages/feedback/send-feedback/send-feedback';
 import { FinishModalPage } from '../pages/finish/finish';
-import { BackupRequestPage } from '../pages/backup/backup-request/backup-request';
 import { CollectEmailPage } from '../pages/onboarding/collect-email/collect-email';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
@@ -73,7 +73,6 @@ import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 import { PIN_COMPONENTS } from '../pages/pin/pin';
 import { AboutPage } from '../pages/settings/about/about';
 import { SessionLogPage } from '../pages/settings/about/session-log/session-log';
-import { AddressAddPage } from '../pages/wallet-details/add-address/add-address';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
 import { AddressbookPage } from '../pages/settings/addressbook/addressbook';
 import { AddressbookViewPage } from '../pages/settings/addressbook/view/view';
@@ -84,6 +83,7 @@ import { LanguagePage } from '../pages/settings/language/language';
 import { LockPage } from '../pages/settings/lock/lock';
 import { NotificationsPage } from '../pages/settings/notifications/notifications';
 import { SharePage } from '../pages/settings/share/share';
+import { AddressAddPage } from '../pages/wallet-details/add-address/add-address';
 
 /* Wallet Settings */
 import { WalletColorPage } from '../pages/settings/wallet-settings/wallet-color/wallet-color';
