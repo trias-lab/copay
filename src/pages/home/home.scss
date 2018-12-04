@@ -78,6 +78,24 @@ page-home {
       font-size: 22px;
       line-height: 24px;
     }
+
+    .chart-legend {
+      a {
+        display: inline-block;
+        width: 30%;
+        background: none;
+
+        span {
+          display: inline-block;
+          width: 11px;
+          height: 11px;
+          // background: rgba(139, 75, 247, 1);
+          border: 2px solid rgba(255, 255, 255, 1);
+          border-radius: 50%;
+          margin-right: 6px;
+        }
+      }
+    }
   }
 
   // card part

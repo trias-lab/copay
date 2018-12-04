@@ -85,10 +85,13 @@ export class HomePage {
   public showReorderBtc: boolean;
   public showReorderBch: boolean;
   public showIntegration;
-  public totalBalance: number;
-  public balanceItem;
-  public balanceLegend;
-  public balanceChart;
+  public totalBalance: number; // Total balance amount
+  public balanceItem; // Each wallet's coin amount
+  public balanceName; // Each wallet's coin name
+  public balanceLegend; // The legend attributes, like: name, color and percent
+  public balanceChart; // The chart object
+  public legendColors; // Chart's color pools
+  public selectedLegendColors; // Chart's color pools
 
   public hideHomeIntegrations: boolean;
   public showGiftCards: boolean;
@@ -137,6 +140,9 @@ export class HomePage {
     this.showReorderBch = false;
     this.totalBalance = 0;
     this.balanceItem = [];
+    this.balanceName = [];
+    this.legendColors = ['#25EAB2', '#AD40BB', '#11A9F9', '#8B4BF7'];
+    this.selectedLegendColors = [];
     this.balanceLegend = [];
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.events.subscribe('Home/reloadStatus', () => {
@@ -151,8 +157,8 @@ export class HomePage {
 
   ionViewDidEnter() {
     this._didEnter();
-
-    this.balanceLegend = ['#25EAB2', '#AD40BB', '#11A9F9', '#8B4BF7']
+    // this.balanceLegend = [{ color: '#25EAB2', percent: 0, name: 'BTC' },
+    // { color: '#AD40BB', percent: 0, name: 'BCH' }];
     const ec = echarts as any;
     let chart = ec.init(document.getElementById('chart'));
     this.balanceChart = chart;
@@ -670,7 +676,7 @@ export class HomePage {
     this.totalBalance = 0;
     this.balanceItem = [];
     // map wallet
-    _.each(this.wallets, wallet => {
+    _.each(this.wallets, (wallet, index: number) => {
       pr(wallet).then(() => {
         this.debounceUpdateTxps();
         this.debounceUpdateNotifications();
@@ -681,15 +687,30 @@ export class HomePage {
               ? wallet.cachedBalance
               : '';
         let amount = banlance.split(' ')[0];
+
         this.totalBalance += parseFloat(amount);
         this.balanceItem.push({ value: parseFloat(amount) });
-        this.logger.warn('wallet every', this.balanceItem);
+        this.balanceName.push(banlance.split(' ')[1]);
+        // this.logger.warn('wallet every---', index);
         // No serverMessage for any wallet?
         if (!foundMessage) this.serverMessage = null;
       })
-        .then(() => { // Add a callback for each. Update the chart.
-          this.logger.warn('wallet then', this.balanceItem);
+        .then((banlance) => { // Add a callback for each. Update the chart.
+          // this.logger.warn('wallet then', this.balanceItem);
+          this.balanceLegend = [];
+          _.each(this.balanceItem, (balanceItem, index: number) => {
+            let legendOne = {
+              color: this.legendColors[index],
+              name: this.balanceName[index],
+              percent: balanceItem.value * 100 / this.totalBalance
+            }
+            this.selectedLegendColors.push(this.legendColors[index]);
+            this.balanceLegend.push(legendOne);
+            this.logger.warn('wallet every---', legendOne);
+
+          })
           this.balanceChart.setOption({
+            color: this.selectedLegendColors,
             series: [
               {
                 data: this.balanceItem
@@ -777,6 +798,17 @@ export class HomePage {
       }
     }
   }
+
+  // public legendGenerate(indexes): void {
+  //   // let element = this.walletsBtc[indexes.from];
+  //   // this.walletsBtc.splice(indexes.from, 1);
+  //   // this.walletsBtc.splice(indexes.to, 0, element);
+  //   _.each(this.balanceLegend, (legend, index: number) => {
+  //     // this.profileProvider.setWalletOrder(wallet.id, index);
+  //     this.logger.warn('wallet btc!!!!!', legend);
+
+  //   });
+  // }
 
   public reorderBtc(): void {
     this.showReorderBtc = !this.showReorderBtc;

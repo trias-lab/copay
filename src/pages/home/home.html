@@ -28,7 +28,10 @@
   <div class="account-detail">
     <p>Account Balance</p>
     <h2>$ {{totalBalance}}</h2>
-    <div></div>
+    <div class="chart-legend">
+      <a *ngFor="let legend of balanceLegend"><span [ngStyle]="{'background-color': legend.color}"></span>{{legend.name}}
+        {{legend.percent}}%</a>
+    </div>
   </div>
   <div class="wrapper">
     <div class="header-extend" *ngIf="wallets && wallets[0]"></div>
@@ -175,7 +178,7 @@
           </div>
         </ion-item-divider> -->
 
-        <ion-list reorder="{{showReorderBtc}}" (ionItemReorder)="reorderWalletsBtc($event)">
+        <ion-list reorder="{{showReorderBtc}}" (ionItemReorder)="legendGenerate($event)">
           <button ion-item *ngFor="let wallet of walletsBtc" (click)="goToWalletDetails(wallet)">
             <ion-icon class="item-img" item-start>
               <!-- <img *ngIf="wallet.network == 'testnet'" [ngStyle]="{'background-color': wallet.color}" src="assets/img/img_wallet_BTC@2x.png"
