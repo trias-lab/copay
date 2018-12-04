@@ -86,6 +86,9 @@ export class HomePage {
   public showReorderBch: boolean;
   public showIntegration;
   public totalBalance: number;
+  public balanceItem;
+  public balanceLegend;
+  public balanceChart;
 
   public hideHomeIntegrations: boolean;
   public showGiftCards: boolean;
@@ -133,6 +136,8 @@ export class HomePage {
     this.showReorderBtc = false;
     this.showReorderBch = false;
     this.totalBalance = 0;
+    this.balanceItem = [];
+    this.balanceLegend = [];
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.events.subscribe('Home/reloadStatus', () => {
       this._willEnter();
@@ -142,19 +147,18 @@ export class HomePage {
 
   ionViewWillEnter() {
     this._willEnter();
-    // this.logger.warn('wallet btc', this.walletsBtc)
-    // this.logger.warn('wallet bch', this.walletsBch);
-
   }
 
   ionViewDidEnter() {
     this._didEnter();
 
+    this.balanceLegend = ['#25EAB2', '#AD40BB', '#11A9F9', '#8B4BF7']
     const ec = echarts as any;
-    var myChart = ec.init(document.getElementById('chart'));
-    var optionchart = {
+    let chart = ec.init(document.getElementById('chart'));
+    this.balanceChart = chart;
+    let optionchart = {
       color: [
-        '#25EAB2', '#AD40BB', '#11A9F9'
+        '#25EAB2', '#AD40BB'
       ],
       grid: {
         left: 15,
@@ -184,15 +188,11 @@ export class HomePage {
               show: false
             }
           },
-          data: [
-            { value: 40, },
-            { value: 50, },
-            { value: 50, }
-          ]
+          data: [{ value: 10 }, { value: 20 }]
         }
       ]
     };
-    myChart.setOption(optionchart);
+    this.balanceChart.setOption(optionchart);
   }
   private _willEnter() {
     // Show recent transactions card
@@ -669,6 +669,7 @@ export class HomePage {
       });
     };
     this.totalBalance = 0;
+    this.balanceItem = [];
     // map wallet
     _.each(this.wallets, wallet => {
       pr(wallet).then(() => {
@@ -678,10 +679,21 @@ export class HomePage {
           wallet.cachedBalance ? wallet.cachedBalance : '');
         let amount = banlance.split(' ')[0];
         this.totalBalance += parseFloat(amount);
-        this.logger.warn('wallet every', amount);
+        this.balanceItem.push({ value: parseFloat(amount) });
+        this.logger.warn('wallet every', this.balanceItem);
         // No serverMessage for any wallet?
         if (!foundMessage) this.serverMessage = null;
-      });
+      })
+        .then(() => { // Add a callback for each. Update the chart.
+          this.logger.warn('wallet then', this.balanceItem);
+          this.balanceChart.setOption({
+            series: [
+              {
+                data: this.balanceItem
+              }
+            ]
+          })
+        });
     });
   }
 
