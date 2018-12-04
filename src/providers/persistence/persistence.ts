@@ -27,7 +27,7 @@ export interface GiftCardMap {
 
 const Keys = {
   ADDRESS_BOOK: network => 'addressbook-' + network,
-  ADDRESS_MANAGER: walletId => 'addressManager-'+ walletId,
+  ADDRESS_MANAGER: walletId => 'addressManager-' + walletId,
   AGREE_DISCLAIMER: 'agreeDisclaimer',
   GIFT_CARD_USER_INFO: 'amazonUserInfo', // keeps legacy key for backwards compatibility
   APP_IDENTITY: network => 'appIdentity-' + network,
@@ -179,9 +179,9 @@ export class PersistenceProvider {
     }
     this.logger.debug(
       'Saved logs: ' +
-        logsAmount +
-        '. Logs after cleaning: ' +
-        Object.keys(logs).length
+      logsAmount +
+      '. Logs after cleaning: ' +
+      Object.keys(logs).length
     );
     return logs;
   }

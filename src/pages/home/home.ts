@@ -1,5 +1,6 @@
 import { Component, NgZone, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import * as echarts from 'echarts';
 import {
   Events,
   ModalController,
@@ -7,7 +8,6 @@ import {
   Platform
 } from 'ionic-angular';
 import * as _ from 'lodash';
-import * as echarts from 'echarts';
 import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
 
@@ -17,9 +17,9 @@ import { BitPayCardPage } from '../integrations/bitpay-card/bitpay-card';
 import { BitPayCardIntroPage } from '../integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 import { CoinbasePage } from '../integrations/coinbase/coinbase';
 import { GlideraPage } from '../integrations/glidera/glidera';
-import { ScanPage } from '../scan/scan';
 import { ShapeshiftPage } from '../integrations/shapeshift/shapeshift';
 import { PaperWalletPage } from '../paper-wallet/paper-wallet';
+import { ScanPage } from '../scan/scan';
 import { AmountPage } from '../send/amount/amount';
 import { AddressbookAddPage } from '../settings/addressbook/add/add';
 import { AddressbookPage } from '../settings/addressbook/addressbook';
@@ -179,9 +179,8 @@ export class HomePage {
               textStyle: {
                 fontSize: '12',
                 color: '#fff'
-
               }
-            },
+            }
           },
           labelLine: {
             normal: {
@@ -675,8 +674,12 @@ export class HomePage {
       pr(wallet).then(() => {
         this.debounceUpdateTxps();
         this.debounceUpdateNotifications();
-        let banlance = wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
-          wallet.cachedBalance ? wallet.cachedBalance : '');
+        let banlance =
+          wallet.status && wallet.status.totalBalanceStr
+            ? wallet.status.totalBalanceStr
+            : wallet.cachedBalance
+              ? wallet.cachedBalance
+              : '';
         let amount = banlance.split(' ')[0];
         this.totalBalance += parseFloat(amount);
         this.balanceItem.push({ value: parseFloat(amount) });

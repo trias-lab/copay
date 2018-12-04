@@ -1,103 +1,98 @@
 page-address-add {
-  .scanner-icon {
-    z-index: 99;
-    font-size: 28px;
-    color: color($colors, primary);
-  }
-  .check {
-    font-size: 22px;
-    padding-top: 3px;
-    &.success {
-      color: color($colors, success);
-    }
-    &.fail {
-      color: color($colors, danger);
-    }
-  }
-}
-
-.add-address-info-box {
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  margin: 0 16px 0 16px;
-  padding: 4px 0 28px 0;
-  .item-block {
-    padding: 0 16px;
-  }
-  .item-ios.item-block .item-inner {
-    border: none;
-    padding: 0;
-    margin: 16px 0 0 0;
-  }
-  .item-input ion-label {
-    height: 40px;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: rgba(20, 42, 63, 1);
-    line-height: 40px;
-    margin: 0;
-    padding: 0;
-  }
-  ion-input {
-    border: none;
-    height: 34px;
-    background: rgba(246, 247, 249, 1);
-    border-radius: 4px;
-    line-height: 34px;
-    color: rgba(171, 177, 184, 1);
-    font-size: 1.5rem;
-    margin-top: 0;
-  }
-  .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus)
-    .item-inner {
-    box-shadow: none;
-    border: none;
-  }
-  .item-md.item-input.item-input-has-focus .item-inner,
-  .item-md.item-input.input-has-focus .item-inner {
-    box-shadow: none;
-    border: none;
-  }
-  .check {
+  .card{
+    padding: 28px 20px;
     position: relative;
-    right: -88%;
-    top: -30px;
+    overflow: visible;
   }
-  .item-ios.item-label-stacked .text-input,
-  .item-ios.item-label-floating .text-input {
-    margin: 0;
-    padding: 0 0 0 8px;
-    width: auto;
+  .card:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 80%;
+    left: 10%;
+    bottom: -10px;
+    height: 40px;
+    background: linear-gradient(270deg, rgba(11, 54, 74, 1) 0%, rgba(11, 77, 74, 1) 100%);
+    opacity: 0.2;
+    filter: blur(10px);
   }
-  .scanner-icon {
-    display: block;
-    width: 100%;
-    padding: 10px 16px 0;
+  .add-address-form {
+    .item-block {
+      padding: 0;
+      margin-bottom: 8px;
+    }
+    .hint{
+      font-size:13px;
+      font-weight:400;
+      color:rgba(145,153,158,1);
+      line-height:20px;
+    }
+    .item-ios.item-block .item-inner {
+      border: none;
+      padding: 0;
+    }
+    .item-input ion-label {
+      font-size:13px;
+      font-weight:500;
+      color:rgba(20,42,63,1);
+      line-height:20px;
+      margin: 0;
+      margin-bottom: 4px;
+    }
+    ion-input {
+      border: none;
+      height: 34px;
+      background: rgba(246, 247, 249, 1);
+      border-radius: 4px;
+      line-height: 34px;
+      font-size: 1.5rem;
+      margin-top: 0;
+    }
+    .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus)
+      .item-inner {
+      box-shadow: none;
+      border: none;
+    }
+    .item-md.item-input.item-input-has-focus .item-inner,
+    .item-md.item-input.input-has-focus .item-inner {
+      box-shadow: none;
+      border: none;
+    }
+    .check {
+      position: relative;
+      right: -88%;
+      top: -30px;
+    }
+    .item-ios.item-label-stacked .text-input,
+    .item-ios.item-label-floating .text-input {
+      margin: 0;
+      padding: 0 0 0 8px;
+      width: auto;
+    }
+    .item-label-stacked .text-input-md,
+    .item-label-floating .text-input-md {
+      line-height: 22px;
+      padding-left: 8px;
+    }
   }
-  .item-label-stacked .text-input-md,
-  .item-label-floating .text-input-md {
-    line-height: 22px;
-    padding-left: 8px;
-  }
-}
 
-.address-btn-block {
-  background: linear-gradient(
-    270deg,
-    rgba(246, 249, 250, 1) 0%,
-    rgba(230, 235, 238, 1) 100%
-  );
-  padding: 32px 16px;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  button,
-  button[disabled],
-  [ion-button][disabled] {
+  .address-btn-block {
+    background: linear-gradient(
+      270deg,
+      rgba(246, 249, 250, 1) 0%,
+      rgba(230, 235, 238, 1) 100%
+    );
+    padding: 32px 16px;
+    position: fixed;
     width: 100%;
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
+    bottom: 0;
+    button,
+    button[disabled],
+    [ion-button][disabled] {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+    }
   }
 }

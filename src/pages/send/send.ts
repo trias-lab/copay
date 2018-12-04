@@ -16,7 +16,6 @@ import { Logger } from '../../providers/logger/logger';
 import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { Coin, WalletProvider } from '../../providers/wallet/wallet';
-import { AddressbookPage } from '../settings/addressbook/addressbook';
 import { WalletTabsChild } from '../wallet-tabs/wallet-tabs-child';
 import { WalletTabsProvider } from '../wallet-tabs/wallet-tabs.provider';
 import { AmountPage } from './amount/amount';
@@ -55,6 +54,8 @@ export class SendPage extends WalletTabsChild {
   public fiatAmount: number;
   public fiatCode: string;
   public invalidAddress: boolean;
+
+  public contactList: boolean = false;
 
   private CONTACTS_SHOW_LIMIT: number = 10;
   private currentContactsPage: number = 0;
@@ -397,7 +398,7 @@ export class SendPage extends WalletTabsChild {
     this.scannerOpened = false;
   }
 
-  public goToAddressbook(): void {
-    this.navCtrl.push(AddressbookPage);
+  public showContactList(): void {
+    this.contactList = !this.contactList;
   }
 }
