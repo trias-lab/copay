@@ -6,10 +6,10 @@
 
 <ion-content>
   <ion-card>      
-    <form [formGroup]="addressAddForm" class="add-address-info-box">
+    <form [formGroup]="addressAddForm" class="add-address-form">
       <ion-item>
         <ion-label stacked>{{ 'Address Name' | translate }}</ion-label>
-        <ion-input formControlName="name" type="text" placeholder="name"></ion-input>
+        <ion-input formControlName="name" type="text" placeholder="Default"></ion-input>
       </ion-item>
     </form>
     <p class="hint">This helps you identify the addresses, you can always replace it if you need to.</p>
