@@ -678,7 +678,7 @@ export class HomePage {
     this.totalBalance = 0;
     this.balanceItem = [];
     // map wallet
-    _.each(this.wallets, (wallet, index: number) => {
+    _.each(this.wallets, (wallet) => {
       pr(wallet).then(() => {
         this.debounceUpdateTxps();
         this.debounceUpdateNotifications();
@@ -698,7 +698,7 @@ export class HomePage {
         // No serverMessage for any wallet?
         if (!foundMessage) this.serverMessage = null;
       })
-        .then((banlance) => { // Add a callback for each. Update the chart.
+        .then(() => { // Add a callback for each. Update the chart.
           // this.logger.warn('wallet then', this.balanceItem);
           this.balanceLegend = [];
           this.chartLegend = [];
