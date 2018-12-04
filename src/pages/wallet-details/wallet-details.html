@@ -143,8 +143,9 @@
       <div class="tabs-inner-wrapper">
         <a class="tab-btn" [ngClass]="{'active': selectedTab=='transactions'}" (click)="selectTab('transactions')">{{ 'Transactions' | translate }}</a>
         <a class="tab-btn" [ngClass]="{'active': selectedTab=='addresses'}" (click)="selectTab('addresses')">{{ 'Addresses' | translate }}</a>
-        <div *ngIf="selectedTab == 'addresses'" class="edit-addr-btn"><img src="assets/img/icon_editName@2x.png" alt=""></div>
-        <div *ngIf="selectedTab == 'addresses'" class="add-addr-btn" (click)="createAddress()"><img src="assets/img/icon_addAddr@2x.png" alt=""></div>        
+        <div *ngIf="selectedTab == 'addresses' && !editingAddr" class="edit-addr-btn" (click)=" this.editingAddr = true"><img src="assets/img/icon_editName@2x.png" alt=""></div>
+        <div *ngIf="selectedTab == 'addresses' && !editingAddr" class="add-addr-btn" (click)="createAddress()"><img src="assets/img/icon_addAddr@2x.png" alt=""></div>
+        <div *ngIf="selectedTab == 'addresses' &&  editingAddr" class="done-addr-btn" (click)=" this.editingAddr = false">Done</div>          
       </div>
     </div>
     <div class="history-wrapper" *ngIf="selectedTab == 'transactions'">
@@ -314,20 +315,22 @@
       <ion-list *ngIf="!loadingAddr" class="addresses-list">
         <div *ngIf="noBalance && noBalance[0]">
           <!-- <ion-item-divider>{{'Unused addresses' | translate}}</ion-item-divider> -->
-          <ion-item *ngFor="let u of noBalance" (click)="this.address = u.address">
+          <ion-item *ngFor="let u of noBalance" (click)="editingAddr? editAddressName(u.address,u.name): this.address = u.address">
             <h3>{{u.name}} <span class="unused-mark"></span></h3>
             <!-- <p>{{u.path}} {{u.createdOn * 1000 | amDateFormat:'MMMM Do YYYY, hh:mm a'}}</p> -->
             <p>{{u.address}}</p>
-            <div class="selected" *ngIf="u.address == address"><img src="../../assets/img/app/onboarding/icon_checkmark@2x.png" alt=""></div>
+            <div class="selected" *ngIf="u.address == address && !editingAddr"><img src="../../assets/img/app/onboarding/icon_checkmark@2x.png" alt=""></div>
+            <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" *ngIf="editingAddr"></ion-icon>
           </ion-item>
         </div>
 
         <div *ngIf="withBalance && withBalance[0]">
           <!-- <ion-item-divider>{{'Addresses with balance' | translate}}</ion-item-divider> -->
-          <ion-item *ngFor="let w of withBalance" (click)="this.address = w.address">
+          <ion-item *ngFor="let w of withBalance" (click)=" editingAddr? editAddressName(w.address): this.address = w.address">
             <h3>{{w.name}} <span>{{w.amount | satToUnit: wallet.coin}}</span></h3>
             <p>{{w.address}}</p>
-            <div class="selected" *ngIf="u.address == address"><img src="../../assets/img/app/onboarding/icon_checkmark@2x.png" alt=""></div>
+            <div class="selected" *ngIf="u.address == address && !editingAddr"><img src="../../assets/img/app/onboarding/icon_checkmark@2x.png" alt=""></div>
+            <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" *ngIf="editingAddr"></ion-icon>
           </ion-item>
         </div>
 

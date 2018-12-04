@@ -122,7 +122,7 @@ page-wallet-details {
         background:rgba(0,0,0,1);
       }
     }
-    .add-addr-btn, .edit-addr-btn {
+    .add-addr-btn, .edit-addr-btn, .done-addr-btn {
       display: inline-block;
       margin-top: 20px;
       float: right;
@@ -132,6 +132,13 @@ page-wallet-details {
       img{
         width: 18px;
       }
+    }
+    .done-addr-btn{
+      width: auto;
+      font-size:14px;
+      font-weight:bold;
+      color:rgba(87,167,86,1);
+      line-height:16px;
     }
     .add-addr-btn{
       margin-right: 18px;
@@ -216,6 +223,14 @@ page-wallet-details {
           img{
             width: 18px;
           }
+        }
+        ion-icon{
+          position: absolute;
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          top: 11px;
+          right: 0;
         }
       }
     }
@@ -477,10 +492,6 @@ page-wallet-details {
             .col:first-child a{
               border-right: 2px solid rgba(246,247,249,1);
             }
-          }
-          
-          .col{
-
           }
         }
       }
