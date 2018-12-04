@@ -144,7 +144,7 @@
         <a class="tab-btn" [ngClass]="{'active': selectedTab=='transactions'}" (click)="selectTab('transactions')">{{ 'Transactions' | translate }}</a>
         <a class="tab-btn" [ngClass]="{'active': selectedTab=='addresses'}" (click)="selectTab('addresses')">{{ 'Addresses' | translate }}</a>
         <div *ngIf="selectedTab == 'addresses'" class="edit-addr-btn"><img src="assets/img/icon_editName@2x.png" alt=""></div>
-        <div *ngIf="selectedTab == 'addresses'" class="add-addr-btn" (click)="setAddress(true)"><img src="assets/img/icon_addAddr@2x.png" alt=""></div>        
+        <div *ngIf="selectedTab == 'addresses'" class="add-addr-btn" (click)="createAddress()"><img src="assets/img/icon_addAddr@2x.png" alt=""></div>        
       </div>
     </div>
     <div class="history-wrapper" *ngIf="selectedTab == 'transactions'">
@@ -313,7 +313,7 @@
 
       <ion-list *ngIf="!loadingAddr" class="addresses-list">
         <div *ngIf="noBalance && noBalance[0]">
-          <ion-item-divider>{{'Unused addresses' | translate}}</ion-item-divider>
+          <!-- <ion-item-divider>{{'Unused addresses' | translate}}</ion-item-divider> -->
           <ion-item *ngFor="let u of noBalance" (click)="this.address = u.address">
             <h3>{{u.address}}</h3>
             <p>{{u.path}} {{u.createdOn * 1000 | amDateFormat:'MMMM Do YYYY, hh:mm a'}}</p>
@@ -321,7 +321,7 @@
         </div>
 
         <div *ngIf="withBalance && withBalance[0]">
-          <ion-item-divider>{{'Addresses with balance' | translate}}</ion-item-divider>
+          <!-- <ion-item-divider>{{'Addresses with balance' | translate}}</ion-item-divider> -->
           <ion-item *ngFor="let w of withBalance" (click)="this.address = w.address">
             <h3>{{w.address}}</h3>
             <p class="info">{{w.amount | satToUnit: wallet.coin}}</p>

@@ -40,8 +40,7 @@ export class AddressManagerProvider {
 	    this.walletProvider
 	      .getAddress(wallet, newAddr)
 	      .then(addr => {
-	      	let address = this.walletProvider.getAddressView(wallet, addr);
-	      	return resolve(address);
+	      	return resolve(addr);
 	      })
 	      .catch(err => {
 	        this.logger.warn(this.bwcError.msg(err, 'Server Error'));
@@ -74,8 +73,6 @@ export class AddressManagerProvider {
         .getAddressManager(wallet.id)
         .then(am => {        	
 	        if (am && _.isString(am)) am = JSON.parse(am);
-	        this.logger.debug('----address manager')
-	    	  this.logger.debug(am)
 	        am = am || {};
 	        if (_.isArray(am)) am = {}; // No array
 	        if (am[entry.address]) {

@@ -46,6 +46,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   private currentPage: number = 0;
   private showBackupNeededMsg: boolean = true;
   private onResumeSubscription: Subscription;
+  private addressStored;
 
   public requiresMultipleSignatures: boolean;
   public wallet;
@@ -65,7 +66,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   public selectedTab: string; // transactions or addresses
 
   public address: string; // current address
-  public allAddresses; // list of addresses generated
+  // public allAddresses; // list of addresses generated
   public loadingAddr: boolean; // whether loading addresses
   public noBalance;  // addresses without balance
   public withBalance;  // addresses with balance  
@@ -97,7 +98,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.selectedTab = 'transactions'; // transactions or addresses
     this.withBalance = null;
     this.noBalance = null;
-    this.allAddresses = null;
+    // this.allAddresses = null;
   }
 
   ionViewDidLoad() {
@@ -160,16 +161,16 @@ export class WalletDetailsPage extends WalletTabsChild {
   selectTab(tab: string) {
     this.selectedTab = tab; // update the tab
 
-    switch (tab) {
-      case 'transactions': 
-        this.updateTxHistory();       
-        break;
-      case 'addresses':  
-        this.updateAddresses();
-        break;
-      default:
-        break;
-    }
+    // switch (tab) {
+    //   case 'transactions': 
+    //     this.updateTxHistory();       
+    //     break;
+    //   case 'addresses':  
+    //     this.updateAddresses();
+    //     break;
+    //   default:
+    //     break;
+    // }
   }
 
   shouldShowZeroState() {
@@ -207,28 +208,30 @@ export class WalletDetailsPage extends WalletTabsChild {
         this.logger.warn(this.bwcError.msg(err, 'Server Error'));
       })) as string;
     this.loadingAddr = false;
-    let address = await this.walletProvider.getAddressView(this.wallet, addr);
-    if (this.address && this.address != address) {
-      // do something when a new address is generated
-      this.updateAddresses()
-    }
-    this.address = address;  // update curent address
-    
+
     //  If address manager is empty, or do not contain this address, add this address into it.
     this.am
     .list(this.wallet)
     .then(am => {
-      if(_.isEmpty(am) || _.isEmpty(am[address])){
+      this.addressStored = am;
+      if(_.isEmpty(am) || _.isEmpty(am[addr])){
         this.am
-          .add(this.wallet, {'name':'defaut', 'address': address})
+          .add(this.wallet, {'name':'default', 'address': addr})
           .then(() => {
-            this.logger.debug('----Add address '+ address + 'to wallet manager' )
+            this.logger.debug('----Add address '+ addr + 'to wallet manager' )
           })
           .catch(err => {
             this.popupProvider.ionicAlert('Error', err);
           });
       }
     })
+    
+    let address = await this.walletProvider.getAddressView(this.wallet, addr);
+    if (this.address && this.address != address) {
+      // do something when a new address is generated
+      this.updateAddresses()
+    }
+    this.address = address;  // update curent address
   }
 
   private updateAddresses() {
@@ -237,11 +240,7 @@ export class WalletDetailsPage extends WalletTabsChild {
       .getMainAddresses(this.wallet, {
         doNotVerify: true
       })
-      .then(allAddresses => {
-        // this.logger.warn('--------allAddresses');
-        // this.logger.warn(allAddresses)
-        this.allAddresses = allAddresses;
-
+      .then(allAddresses => {        
         this.walletProvider
           .getBalance(this.wallet, {})
           .then(resp => {
@@ -252,24 +251,54 @@ export class WalletDetailsPage extends WalletTabsChild {
               return idx[x.address];
             });
 
-            this.processList(this.noBalance);
-            this.processList(this.withBalance);
+            // set address name
+            this.am
+              .list(this.wallet)
+              .then(am => {
+                // get addresses stored in ADDRESS_MANAGER
+                this.addressStored = am;
 
-            // this.latestUnused = _.slice(
-            //   this.noBalance,
-            //   0,
-            //   this.UNUSED_ADDRESS_LIMIT
-            // );
-            // this.latestWithBalance = _.slice(
-            //   this.withBalance,
-            //   0,
-            //   this.BALANCE_ADDRESS_LIMIT
-            // );
-            // this.viewAll =
-            //   this.noBalance.length > this.UNUSED_ADDRESS_LIMIT ||
-            //   this.withBalance.length > this.BALANCE_ADDRESS_LIMIT;
+                // set names for addresses without balance
+                if(this.noBalance.length>0){
+                  _.each(this.noBalance, (item )=> {
+                    item['name'] =  this.addressStored[item.address].name;
+                  });
+                }
+                // set names for addresses with balance
+                if(this.withBalance.length>0){
+                  _.each(this.withBalance, (item )=> {
+                    item['name'] =  this.addressStored[item.address].name;
+                  });
+                }  
+                
+                // this.logger.warn('--------noBalance');
+                // this.logger.warn(this.noBalance)
+                // this.logger.warn('--------withBalance');
+                // this.logger.warn(this.withBalance)
 
-            this.loadingAddr = false;
+                this.processList(this.noBalance);
+                this.processList(this.withBalance);
+
+                // this.allAddresses =
+                // this.latestUnused = _.slice(
+                //   this.noBalance,
+                //   0,
+                //   this.UNUSED_ADDRESS_LIMIT
+                // );
+                // this.latestWithBalance = _.slice(
+                //   this.withBalance,
+                //   0,
+                //   this.BALANCE_ADDRESS_LIMIT
+                // );
+                // this.viewAll =
+                //   this.noBalance.length > this.UNUSED_ADDRESS_LIMIT ||
+                //   this.withBalance.length > this.BALANCE_ADDRESS_LIMIT;
+
+                this.loadingAddr = false;
+              })
+              .catch(err => {
+                this.logger.error(err);
+              });            
           })
           .catch(err => {
             this.logger.error(err);
