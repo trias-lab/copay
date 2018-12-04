@@ -85,6 +85,8 @@ export class HomePage {
   public showReorderBtc: boolean;
   public showReorderBch: boolean;
   public showIntegration;
+  public totalBalance: number;
+
   public hideHomeIntegrations: boolean;
   public showGiftCards: boolean;
 
@@ -130,6 +132,7 @@ export class HomePage {
     this.isElectron = this.platformProvider.isElectron;
     this.showReorderBtc = false;
     this.showReorderBch = false;
+    this.totalBalance = 0;
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.events.subscribe('Home/reloadStatus', () => {
       this._willEnter();
@@ -139,6 +142,9 @@ export class HomePage {
 
   ionViewWillEnter() {
     this._willEnter();
+    // this.logger.warn('wallet btc', this.walletsBtc)
+    // this.logger.warn('wallet bch', this.walletsBch);
+
   }
 
   ionViewDidEnter() {
@@ -662,12 +668,17 @@ export class HomePage {
           });
       });
     };
-
+    this.totalBalance = 0;
+    // map wallet
     _.each(this.wallets, wallet => {
       pr(wallet).then(() => {
         this.debounceUpdateTxps();
         this.debounceUpdateNotifications();
-
+        let banlance = wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
+          wallet.cachedBalance ? wallet.cachedBalance : '');
+        let amount = banlance.split(' ')[0];
+        this.totalBalance += parseFloat(amount);
+        this.logger.warn('wallet every', amount);
         // No serverMessage for any wallet?
         if (!foundMessage) this.serverMessage = null;
       });
@@ -767,6 +778,7 @@ export class HomePage {
     _.each(this.walletsBtc, (wallet, index: number) => {
       this.profileProvider.setWalletOrder(wallet.id, index);
     });
+    // this.logger.warn('wallet btc!!!!!', this.walletsBtc);
   }
 
   public reorderWalletsBch(indexes): void {
@@ -776,6 +788,7 @@ export class HomePage {
     _.each(this.walletsBch, (wallet, index: number) => {
       this.profileProvider.setWalletOrder(wallet.id, index);
     });
+    // this.logger.warn('wallet bch!!!!!!', this.walletsBch);
   }
 
   public goToDownload(): void {

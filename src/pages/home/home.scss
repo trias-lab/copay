@@ -125,6 +125,13 @@ page-home {
         float: left;
         margin-top: 18px;
       }
+
+      .item-subtitle {
+        ion-icon {
+          float: none;
+          margin-top: 0px;
+        }
+      }
     }
   }
 
