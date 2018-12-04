@@ -72,6 +72,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   public withBalance; // addresses with balance
   // public latestUnused;  // addresses unused latest
   // public latestWithBalance;  // addresses latest with balance
+  public editingAddr:boolean;
 
   constructor(
     navCtrl: NavController,
@@ -99,6 +100,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.withBalance = null;
     this.noBalance = null;
     // this.allAddresses = null;
+    this.editingAddr = false;
   }
 
   ionViewDidLoad() {
@@ -194,6 +196,15 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.navCtrl.push(AddressAddPage, { walletId: this.wallet.id });
   }
 
+  editAddressName(addr: string, oldName:string) {
+    this.navCtrl.push(AddressAddPage, { 
+      walletId: this.wallet.id,
+      edit: true,
+      addressToEdit: addr,
+      oldName: oldName
+    });
+  }
+
   /**
    * Set current address
    * @param  {boolean}       newAddr whether generate a new address
@@ -209,14 +220,19 @@ export class WalletDetailsPage extends WalletTabsChild {
       })) as string;
     this.loadingAddr = false;
 
+    let address = await this.walletProvider.getAddressView(this.wallet, addr);
+    if (this.address && this.address != address) {
+      // do something when coin is bch
+    }
+
     //  If address manager is empty, or do not contain this address, add this address into it.
     this.am.list(this.wallet).then(am => {
       this.addressStored = am;
-      if (_.isEmpty(am) || _.isEmpty(am[addr])) {
+      if (_.isEmpty(am) || _.isEmpty(am[address])) {
         this.am
-          .add(this.wallet, { name: 'default', address: addr })
+          .add(this.wallet, { name: 'Default', address: address })
           .then(() => {
-            this.logger.debug('----Add address ' + addr + 'to wallet manager');
+            this.logger.debug('----Add address ' + address + 'to wallet manager');
           })
           .catch(err => {
             this.popupProvider.ionicAlert('Error', err);
@@ -224,16 +240,14 @@ export class WalletDetailsPage extends WalletTabsChild {
       }
     });
 
-    let address = await this.walletProvider.getAddressView(this.wallet, addr);
-    if (this.address && this.address != address) {
-      // do something when a new address is generated
-      this.updateAddresses();
-    }
+    
+    this.updateAddresses();
     this.address = address; // update curent address
   }
 
   private updateAddresses() {
     this.loadingAddr = true;
+    this.editingAddr = false; // reset editing status
     this.walletProvider
       .getMainAddresses(this.wallet, {
         doNotVerify: true
@@ -254,7 +268,15 @@ export class WalletDetailsPage extends WalletTabsChild {
               .list(this.wallet)
               .then(am => {
                 // get addresses stored in ADDRESS_MANAGER
-                this.addressStored = am;
+                this.addressStored = am;                
+
+                // this.logger.warn('--------noBalance');
+                // this.logger.warn(this.noBalance)
+                // this.logger.warn('--------withBalance');
+                // this.logger.warn(this.withBalance)
+
+                this.processList(this.noBalance);
+                this.processList(this.withBalance);
 
                 // set names for addresses without balance
                 if (this.noBalance.length > 0) {
@@ -268,14 +290,6 @@ export class WalletDetailsPage extends WalletTabsChild {
                     item['name'] = this.addressStored[item.address].name;
                   });
                 }
-
-                // this.logger.warn('--------noBalance');
-                // this.logger.warn(this.noBalance)
-                // this.logger.warn('--------withBalance');
-                // this.logger.warn(this.withBalance)
-
-                this.processList(this.noBalance);
-                this.processList(this.withBalance);
 
                 // this.allAddresses =
                 // this.latestUnused = _.slice(
