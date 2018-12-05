@@ -57,7 +57,7 @@ export class AddressAddPage {
     this.logger.info('Loaded: AddressAddPage');    
   }
 
-  private async getNewAddr(): Promise<string> {
+  private async getNewAddr(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.am.getAddress(this.wallet, true)
         .then(addr => {
