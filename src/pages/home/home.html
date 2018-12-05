@@ -29,8 +29,10 @@
     <p>Account Balance</p>
     <h2>{{totalBalance}} {{alternativeUnit}}</h2>
     <div class="chart-legend">
-      <a *ngFor="let legend of balanceLegend"><span [ngStyle]="{'background-color': legend.color}"></span>{{legend.name}}
-        {{legend.percent}}%</a>
+      <a *ngFor="let legend of balanceLegend">
+        <span [ngStyle]="{'background-color': legend.color}"></span>
+        {{legend.name}}
+        <b>{{legend.percent}}%</b></a>
     </div>
   </div>
   <div class="wrapper">

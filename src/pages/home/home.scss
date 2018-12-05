@@ -17,7 +17,7 @@ page-home {
   }
 
   .scroll-content .wrapper {
-    margin-top: 118px;
+    margin-top: 68px;
     height: 100%;
   }
 
@@ -84,6 +84,13 @@ page-home {
         display: inline-block;
         width: 30%;
         background: none;
+        color: rgba(255, 255, 255, 0.7);
+
+        b {
+          font-size: 14px;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 1);
+        }
 
         span {
           display: inline-block;
