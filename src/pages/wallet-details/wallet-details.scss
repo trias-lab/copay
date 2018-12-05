@@ -115,7 +115,7 @@ page-wallet-details {
         content:'';
         position: absolute;
         left: calc(50% - 2px);
-        bottom: -16px;
+        bottom: -12px;
         border-radius: 50%;
         width:4px;
         height:4px;
@@ -260,43 +260,56 @@ page-wallet-details {
       }
     }
     .item-wrapper {
-      &:last-child {
-        .item-inner {
-          border-bottom: 0;
-        }
-      }
+      margin: 0 16px;      
+      border-bottom: 1px solid #E5E8EA;
+      // &:last-child {
+      //   .item-inner {
+      //     border-bottom: 0;
+      //   }
+      // }
     }
     .item {
       font-size: 16px;
-      padding-left: 19px;
+      padding-left: 0;
+      background: transparent;
       .item-icon {
         margin-right: 15px;
       }
       .item-inner {
         background-image: none;
-        padding: 11px 10px 11px 0;
+        padding: 4px 0;
         margin-left: 3px;
-        border-bottom: 1px solid color($colors, light);
+        // margin-right: 16px;
       }
     }
     img {
-      width: $icon-width;
+      width: 24px;
     }
     .action {
       width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      font-size:15px;
+      font-weight:400;
+      color:rgba(0,0,0,1);
+      line-height:18px;
     }
     .amount {
-      color: color($colors, dark);
+      font-size:18px;
+      font-weight:400;
+      line-height:22px;      
+      color:rgba(175,57,0,1);
       .received {
-        color: color($colors, success);
+        color:rgba(60,119,59,1);
       }
     }
     .date {
       font-size: 14px;
-      margin-top: 8px;
+      margin-top: 6px;
+      font-weight:400;
+      color:rgba(110,118,125,1);
+      line-height:16px;
     }
   }
   .middle-message {
