@@ -149,10 +149,44 @@ page-home {
           float: none;
           margin-top: 0px;
         }
+
+        .dollar-value {
+          float: right;
+        }
       }
     }
   }
 
+  ion-list {
+    .item-title {
+
+      span.amount {
+        float: right;
+      }
+
+      span.name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        width: 138px;
+      }
+
+    }
+  }
+
+  .item-ios[detail-push] .item-inner,
+  button.item-ios:not([detail-none]) .item-inner,
+  a.item-ios:not([detail-none]) .item-inner {
+    background-image: none;
+    padding-right: 16px;
+  }
+
+  button ion-label,
+  .label-ios {
+    margin: 0px;
+    padding-top: 18px;
+  }
 
   .home-logo {
     height: 24px;

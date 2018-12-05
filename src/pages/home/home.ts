@@ -93,6 +93,7 @@ export class HomePage {
   public balanceChart; // The chart object
   public legendColors; // Chart's color pools
   public selectedLegendColors; // Chart's color pools
+  public alternativeUnit;
 
   public hideHomeIntegrations: boolean;
   public showGiftCards: boolean;
@@ -146,6 +147,7 @@ export class HomePage {
     this.selectedLegendColors = [];
     this.balanceLegend = [];
     this.chartLegend = [];
+    this.alternativeUnit = '';
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.events.subscribe('Home/reloadStatus', () => {
       this._willEnter();
@@ -689,34 +691,39 @@ export class HomePage {
             : wallet.cachedBalance
               ? wallet.cachedBalance
               : '';
-        let amount = banlance.split(' ')[0];
+        let alternativeBalance = wallet.status.totalBalanceAlternative.replace(/,/g, "");
+        let alternativeUnitOne = wallet.status.alternativeIsoCode;
+        let amount = banlance.split(' ')[0].replace(/,/g, "");
 
-        this.totalBalance += parseFloat(amount);
+        this.totalBalance += parseFloat(alternativeBalance);
         // this.balanceItem.push({ value: parseFloat(amount) });
         this.balanceItem.push({
           name: banlance.split(' ')[1],
-          value: parseFloat(amount)
+          value: parseFloat(amount),
+          alternativeBalance: parseFloat(alternativeBalance),
+          alternativeUnit: alternativeUnitOne
         });
 
-        // this.logger.warn('wallet every---', index);
+        this.logger.warn('wallet every---', parseFloat(alternativeBalance));
         // No serverMessage for any wallet?
         if (!foundMessage) this.serverMessage = null;
       })
         .then(() => { // Add a callback for each. Update the chart.
-          // this.logger.warn('wallet then', this.balanceItem);
+          this.logger.warn('wallet then', this.totalBalance);
           this.balanceLegend = [];
           this.chartLegend = [];
+          this.alternativeUnit = this.balanceItem[0].alternativeUnit;
           _.each(this.balanceItem, (balanceItem, index: number) => {
             let legendOne = {
               color: this.legendColors[index],
               name: balanceItem.name,
-              percent: balanceItem.value * 100 / this.totalBalance
+              percent: balanceItem.alternativeBalance * 100 / this.totalBalance
             }
             this.selectedLegendColors.push(this.legendColors[index]);
             this.balanceLegend.push(legendOne);
             // this.logger.warn('wallet every---', legendOne);
             let legendChartOne = {
-              value: balanceItem.value,
+              value: balanceItem.alternativeBalance,
               itemStyle: {
                 normal: { color: this.legendColors[index] }
               }

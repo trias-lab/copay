@@ -27,7 +27,7 @@
   <div id="chart"></div>
   <div class="account-detail">
     <p>Account Balance</p>
-    <h2>$ {{totalBalance}}</h2>
+    <h2>{{totalBalance}} {{alternativeUnit}}</h2>
     <div class="chart-legend">
       <a *ngFor="let legend of balanceLegend"><span [ngStyle]="{'background-color': legend.color}"></span>{{legend.name}}
         {{legend.percent}}%</a>
@@ -186,21 +186,17 @@
               <img *ngIf="wallet.network == 'testnet'" src="assets/img/icon-wallet-testnet.svg" class="icon-wallet" />
               <img *ngIf="wallet.network != 'testnet'" src="assets/img/img_wallet_BTC@2x.png" class="icon-wallet" />
             </ion-icon>
-            <div class="item-title">{{wallet.name}}</div>
-            <div class="item-subtitle">
-              <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate>
-                Incomplete
-              </span>
-              <span class="wallet-warning" *ngIf="wallet.isComplete() && wallet.needsBackup" translate>
-                Needs Backup
-              </span>
-              <span *ngIf="wallet.isComplete() && !wallet.needsBackup">
+            <div class="item-title">
+              <span class="name">{{wallet.name}}</span>
+              <span class="amount" *ngIf="wallet.isComplete() && !wallet.needsBackup">
                 <span *ngIf="!wallet.balanceHidden && !wallet.scanning">
-                  {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
+                  {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr.split(' ')[0]) : (
+                  wallet.cachedBalance ? (wallet.cachedBalance.split(' ')[0]) : '')}}
+                  <!-- {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
                   wallet.cachedBalance ? wallet.cachedBalance
                   + (wallet.cachedBalanceUpdatedOn ? ' &middot; ' + ( wallet.cachedBalanceUpdatedOn * 1000 | amTimeAgo)
                   :
-                  '') : '')}}
+                  '') : '')}} -->
                 </span>
                 <span *ngIf="wallet.scanning" translate>Scanning funds</span>
                 <span *ngIf="wallet.balanceHidden && !wallet.scanning">[
@@ -210,6 +206,20 @@
                   ios="ios-timer-outline" md="md-timer"></ion-icon>
                 <div *ngIf="wallet.error" class="wallet-warning">{{wallet.error}}</div>
               </span>
+            </div>
+            <div class="item-subtitle">
+              <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate>
+                Incomplete
+              </span>
+              <span class="wallet-warning" *ngIf="wallet.isComplete() && wallet.needsBackup" translate>
+                Needs Backup
+              </span>
+
+              <span class="dollar-value">
+                {{(wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
+                {{wallet.status.totalBalanceAlternative}}
+                {{wallet.status.alternativeIsoCode}}</span>
+
             </div>
           </button>
         </ion-list>
@@ -242,22 +252,19 @@
               <img *ngIf="wallet.network == 'testnet'" src="assets/img/icon-wallet-testnet.svg" class="icon-wallet" />
               <img *ngIf="wallet.network != 'testnet'" src="assets/img/img_wallet_BCH@2x.png" class="icon-wallet" />
             </ion-icon>
-            <div class="item-title">{{wallet.name}}</div>
-            <div class="item-subtitle">
-              <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate>
-                Incomplete
-              </span>
-              <span class="wallet-warning" *ngIf="wallet.isComplete() && wallet.needsBackup" translate>
-                Needs Backup
-              </span>
-              <span *ngIf="wallet.isComplete() && !wallet.needsBackup">
+            <div class="item-title clearfix">
+              <span class="name">{{wallet.name}}</span>
+              <span class="amount" *ngIf="wallet.isComplete() && !wallet.needsBackup">
                 <span *ngIf="!wallet.balanceHidden && !wallet.scanning">
-                  {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
+                  {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr.split(' ')[0]) : (
+                  wallet.cachedBalance ? (wallet.cachedBalance.split(' ')[0]) : '')}}
+                  <!-- {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
                   wallet.cachedBalance ? wallet.cachedBalance
                   + (wallet.cachedBalanceUpdatedOn ? ' &middot; ' + ( wallet.cachedBalanceUpdatedOn * 1000 | amTimeAgo)
                   :
-                  '') : '')}}
+                  '') : '')}} -->
                 </span>
+
                 <span *ngIf="wallet.scanning" translate>Scanning funds</span>
                 <span *ngIf="wallet.balanceHidden && !wallet.scanning">[
                   <span translate>Balance Hidden</span>]</span>
@@ -266,6 +273,19 @@
                   ios="ios-timer-outline" md="md-timer"></ion-icon>
                 <div *ngIf="wallet.error" class="wallet-warning">{{wallet.error}}</div>
               </span>
+            </div>
+            <div class="item-subtitle clearfix">
+              <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate>
+                Incomplete
+              </span>
+              <span class="wallet-warning" *ngIf="wallet.isComplete() && wallet.needsBackup" translate>
+                Needs Backup
+              </span>
+              <span class="dollar-value">
+                {{(wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
+                {{wallet.status.totalBalanceAlternative}}
+                {{wallet.status.alternativeIsoCode}}</span>
+
             </div>
           </button>
         </ion-list>
