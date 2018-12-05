@@ -87,7 +87,7 @@ export class HomePage {
   public showIntegration;
   public totalBalance: number; // Total balance amount
   public balanceItem; // Each wallet's coin amount
-  public balanceName; // Each wallet's coin name
+  // public balanceName; // Each wallet's coin name
   public balanceLegend; // The legend attributes, like: name, color and percent
   public chartLegend; // The chart legend attributes
   public balanceChart; // The chart object
@@ -141,7 +141,7 @@ export class HomePage {
     this.showReorderBch = false;
     this.totalBalance = 0;
     this.balanceItem = [];
-    this.balanceName = [];
+    // this.balanceName = [];
     this.legendColors = ['#25EAB2', '#AD40BB', '#11A9F9', '#8B4BF7'];
     this.selectedLegendColors = [];
     this.balanceLegend = [];
@@ -677,6 +677,7 @@ export class HomePage {
     };
     this.totalBalance = 0;
     this.balanceItem = [];
+    // this.balanceName = [];
     // map wallet
     _.each(this.wallets, (wallet) => {
       pr(wallet).then(() => {
@@ -691,8 +692,11 @@ export class HomePage {
         let amount = banlance.split(' ')[0];
 
         this.totalBalance += parseFloat(amount);
-        this.balanceItem.push({ value: parseFloat(amount) });
-        this.balanceName.push(banlance.split(' ')[1]);
+        // this.balanceItem.push({ value: parseFloat(amount) });
+        this.balanceItem.push({
+          name: banlance.split(' ')[1],
+          value: parseFloat(amount)
+        });
 
         // this.logger.warn('wallet every---', index);
         // No serverMessage for any wallet?
@@ -705,12 +709,12 @@ export class HomePage {
           _.each(this.balanceItem, (balanceItem, index: number) => {
             let legendOne = {
               color: this.legendColors[index],
-              name: this.balanceName[index],
+              name: balanceItem.name,
               percent: balanceItem.value * 100 / this.totalBalance
             }
             this.selectedLegendColors.push(this.legendColors[index]);
             this.balanceLegend.push(legendOne);
-            this.logger.warn('wallet every---', legendOne);
+            // this.logger.warn('wallet every---', legendOne);
             let legendChartOne = {
               value: balanceItem.value,
               itemStyle: {
