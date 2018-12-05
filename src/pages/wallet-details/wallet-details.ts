@@ -47,6 +47,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   private showBackupNeededMsg: boolean = true;
   private onResumeSubscription: Subscription;
   private addressStored;
+  private addressToAdd;
 
   public requiresMultipleSignatures: boolean;
   public wallet;
@@ -101,6 +102,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.noBalance = null;
     // this.allAddresses = null;
     this.editingAddr = false;
+    this.addressToAdd = null;
   }
 
   ionViewDidLoad() {
@@ -196,13 +198,33 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.navCtrl.push(AddressAddPage, { walletId: this.wallet.id });
   }
 
-  editAddressName(addr: string, oldName:string) {
+  editAddressName(addr: string, name:string) {
     this.navCtrl.push(AddressAddPage, { 
       walletId: this.wallet.id,
       edit: true,
       addressToEdit: addr,
-      oldName: oldName
+      oldName: name
     });
+  }
+
+  /**
+   * When address manager in local storage is empty, call this function 
+   * to add all addresses in the list this.addressToAdd to local storage.
+   */
+  private addAllAddress(){
+    let addressItem = this.addressToAdd.pop()
+    if(addressItem){
+      let addr = this.walletProvider.getAddressView(this.wallet, addressItem.address);
+      this.am
+        .add(this.wallet, { name: 'Default', address: addr })
+        .then(() => {
+          this.logger.debug('----Add address ' + addr + 'to wallet manager');
+          this.addAllAddress()
+        })
+        .catch(err => {
+          this.popupProvider.ionicAlert('Error', err);
+        });
+    }    
   }
 
   /**
@@ -228,26 +250,37 @@ export class WalletDetailsPage extends WalletTabsChild {
     //  If address manager is empty, or do not contain this address, add this address into it.
     this.am.list(this.wallet).then(am => {
       this.addressStored = am;
-      if (_.isEmpty(am) || _.isEmpty(am[address])) {
-        this.am
-          .add(this.wallet, { name: 'Default', address: address })
+      if (_.isEmpty(am)) {  // if local address manager is empty
+        // add all addresses of the wallet into local storage
+        this.walletProvider
+          .getMainAddresses(this.wallet, {
+            doNotVerify: true
+          })
+          .then(allAddresses => {
+            this.addressToAdd = allAddresses;
+            this.addAllAddress()
+            this.updateAddresses();
+          })        
+      }else if (_.isEmpty(am[address])) {  // if this address not stored in local storage
+         this.logger.debug('-----this address is not stored, add it into storage.')
+         this.am
+          .add(this.wallet, { name: 'Default', '{address}': address })
           .then(() => {
             this.logger.debug('----Add address ' + address + 'to wallet manager');
+            this.updateAddresses();
           })
           .catch(err => {
             this.popupProvider.ionicAlert('Error', err);
           });
       }
     });
-
-    
-    this.updateAddresses();
     this.address = address; // update curent address
   }
 
   private updateAddresses() {
     this.loadingAddr = true;
     this.editingAddr = false; // reset editing status
+
     this.walletProvider
       .getMainAddresses(this.wallet, {
         doNotVerify: true
