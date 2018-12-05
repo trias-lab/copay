@@ -26,6 +26,11 @@ page-settings {
 
   }
 
+  .settings-list .item.item-ios .item-inner,
+  .settings-list .item.item-md .item-inner {
+    background-image: none;
+  }
+
   ion-label,
   .item-title {
     white-space: normal;
