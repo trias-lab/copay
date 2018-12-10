@@ -110,7 +110,12 @@ export class WalletDetailsPage extends WalletTabsChild {
       this.updateAll();
     });
 
-    this.setAddress();
+    if (this.wallet.needsBackup && this.showBackupNeededMsg){
+      this.openBackupModal();
+    }else{
+      this.setAddress();
+    }
+
     this.events.subscribe('Wallet/setAddress', (newAddr?: boolean) => {
       this.setAddress(newAddr);
     });
@@ -243,6 +248,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.loadingAddr = false;
 
     let addressView = await this.walletProvider.getAddressView(this.wallet, addr);
+
     if (this.address && this.address != addressView) {
       // do something when coin is bch
     }
