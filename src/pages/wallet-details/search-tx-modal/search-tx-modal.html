@@ -19,10 +19,10 @@
       <div *ngFor="let tx of txHistorySearchResults; trackBy: trackByFn; let i = index;">
         <button ion-item (click)="close(tx.txid)">
           <ion-icon item-start>
-            <div *ngIf="tx.confirmations == 0">
+           <!--  <div *ngIf="tx.confirmations == 0">
               <img src="assets/img/tx-action/icon-confirming.svg" width="40">
-            </div>
-            <div *ngIf="tx.confirmations > 0">
+            </div> -->
+            <div>
               <span *ngIf="tx.customData && tx.customData.service">
                 <img class="icon-services" src="assets/img/shapeshift/icon-shapeshift.svg" *ngIf="tx.customData.service == 'shapeshift'"
                   width="40">
@@ -34,9 +34,9 @@
                   width="40">
               </span>
               <span *ngIf="!tx.customData || !tx.customData.service">
-                <img src="assets/img/tx-action/icon-received.svg" *ngIf="tx.action == 'received'" width="40">
-                <img src="assets/img/tx-action/icon-sent.svg" *ngIf="tx.action == 'sent'" width="40">
-                <img src="assets/img/tx-action/icon-moved.svg" *ngIf="tx.action == 'moved'" width="40">
+                <img src="assets/img/tx-action/icon_received@2x.png" *ngIf="tx.action == 'received'" width="40">
+                <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'" width="40">
+                <img src="assets/img/tx-action/icon_moved@2x.png" *ngIf="tx.action == 'moved'" width="40">
               </span>
             </div>
           </ion-icon>

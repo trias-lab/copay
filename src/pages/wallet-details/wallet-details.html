@@ -210,10 +210,10 @@
 
             <button ion-item (click)="goToTxDetails(tx)">
               <ion-icon class="item-img" item-start>
-                <div *ngIf="tx.confirmations == 0">
+                <!-- <div *ngIf="tx.confirmations == 0">
                   <img src="assets/img/tx-action/icon-confirming.svg" width="40">
-                </div>
-                <div *ngIf="tx.confirmations > 0">
+                </div> -->
+                <div>
                   <span *ngIf="tx.customData && tx.customData.service">
                     <img class="icon-services" src="assets/img/shapeshift/icon-shapeshift.svg" *ngIf="tx.customData.service == 'shapeshift'"
                       width="40">
@@ -231,11 +231,11 @@
                       width="40">
                   </span>
                   <span *ngIf="!tx.customData || (tx.customData && !tx.customData.service && !tx.customData.toWalletName)">
-                    <img src="../../assets/img/icon_sended@2x.png" *ngIf="tx.action == 'sent'" width="40">
+                    <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'" width="40">
                   </span>
                   <span>
-                    <img src="assets/img/icon_received@2x.png" *ngIf="tx.action == 'received'" width="40">
-                    <img src="assets/img/tx-action/icon-moved.svg" *ngIf="tx.action == 'moved'" width="40">
+                    <img src="assets/img/tx-action/icon_received@2x.png" *ngIf="tx.action == 'received'" width="40">
+                    <img src="assets/img/tx-action/icon_moved@2x.png" *ngIf="tx.action == 'moved'" width="40">
                   </span>
                 </div>
               </ion-icon>
@@ -248,6 +248,7 @@
                 <span *ngIf="(tx.action == 'sent' || tx.action == 'moved') && (addressbook && tx.outputs[0] && addressbook[tx.outputs[0].address])">{{addressbook[tx.outputs[0].address].name
                   || addressbook[tx.outputs[0].address]}}</span>
                 <span *ngIf="tx.action == 'received'">{{'Receiving' | translate}}</span>
+                <span class="pending-mark">Pending</span>
               </div>
 
               <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'received'">
@@ -292,7 +293,7 @@
               </div>
               <ion-note item-end text-end>
                 <div class="amount">
-                  <span [ngClass]="{'received': tx.action == 'received'}" *ngIf="tx.action != 'invalid'">{{tx.action == 'received'?'+':'-'}}{{tx.amount |
+                  <span [ngClass]="{'received': tx.action == 'received','sent': tx.action=='sent'}" *ngIf="tx.action != 'invalid'">{{tx.action == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{tx.amount |
                     satToUnit: wallet.coin}}</span>
                   <span class="double-spend" *ngIf="tx.action == 'invalid'" translate>(possible double spend)</span>
                 </div>
