@@ -185,18 +185,16 @@
       </ion-note>
     </ion-item> -->
 
-    <!-- <editable-item (valChange)="saveMemoInfo($event)" [value]="txMemo" [itemPlaceholder]="'Enter a transaction memo' | translate"
+    <editable-item (valChange)="saveMemoInfo($event)" [value]="txMemo" [itemPlaceholder]="'Enter a transaction memo' | translate"
       [scrollArea]="scrollArea">
-      <span item-label translate>Memo</span>
-    </editable-item> -->
-
-
-
-    <!-- <ion-item *ngIf="txsUnsubscribedForNotifications">
+      <span item-label translate>Notes</span>
+    </editable-item>
+    <ion-item *ngIf="txsUnsubscribedForNotifications">
       <ion-label>{{'Notify me if confirmed' | translate}}</ion-label>
       <ion-toggle checked="false" *ngIf="!btx.confirmations || btx.confirmations == 0" [(ngModel)]="txNotification.value"
         (ionChange)="txConfirmNotificationChange()"></ion-toggle>
-    </ion-item> -->
+    </ion-item>
+
 
     <div *ngIf="actionList && actionList[0]">
       <ion-item-divider>{{'Timeline' | translate}}</ion-item-divider>
