@@ -691,9 +691,19 @@ export class HomePage {
             : wallet.cachedBalance
               ? wallet.cachedBalance
               : '';
-        let alternativeBalance = wallet.status.totalBalanceAlternative.replace(/,/g, "");
+
+        let alternativeBalance = wallet.status.totalBalanceAlternative;
+        if (alternativeBalance.indexOf(",") != -1) {
+          alternativeBalance = alternativeBalance.replace(/,/g, "");
+          this.logger.warn('wallet.status.totalBalanceAlternative', alternativeBalance);
+
+        }
+
         let alternativeUnitOne = wallet.status.alternativeIsoCode;
-        let amount = banlance.split(' ')[0].replace(/,/g, "");
+        let amount = banlance.split(' ')[0];
+        if (amount.indexOf(",") != -1) {
+          amount = amount.replace(/,/g, "");
+        }
 
         this.totalBalance += parseFloat(alternativeBalance);
         // this.balanceItem.push({ value: parseFloat(amount) });
@@ -704,12 +714,12 @@ export class HomePage {
           alternativeUnit: alternativeUnitOne
         });
 
-        this.logger.warn('wallet every---', parseFloat(alternativeBalance));
+        // this.logger.warn('wallet every---', parseFloat(alternativeBalance));
         // No serverMessage for any wallet?
         if (!foundMessage) this.serverMessage = null;
       })
         .then(() => { // Add a callback for each. Update the chart.
-          this.logger.warn('wallet then', this.totalBalance);
+          // this.logger.warn('wallet then', this.totalBalance);
           this.balanceLegend = [];
           this.chartLegend = [];
           this.alternativeUnit = this.balanceItem[0].alternativeUnit;

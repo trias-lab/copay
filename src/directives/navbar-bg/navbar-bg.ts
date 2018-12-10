@@ -23,7 +23,7 @@ export class NavbarBg {
       'toolbar-background'
     )[0];
     color
-      ? toolbarBg.style.setProperty('background', color, 'important')
+      ? toolbarBg.style.setProperty('background', color)
       : toolbarBg.style.removeProperty('background');
   }
 }
