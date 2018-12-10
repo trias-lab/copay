@@ -693,7 +693,7 @@ export class HomePage {
               : '';
 
         let alternativeBalance = wallet.status.totalBalanceAlternative;
-        if (alternativeBalance.indexOf(",") != -1) {
+        if (alternativeBalance && alternativeBalance.indexOf(",") != -1) {
           alternativeBalance = alternativeBalance.replace(/,/g, "");
           this.logger.warn('wallet.status.totalBalanceAlternative', alternativeBalance);
 
@@ -701,7 +701,7 @@ export class HomePage {
 
         let alternativeUnitOne = wallet.status.alternativeIsoCode;
         let amount = banlance.split(' ')[0];
-        if (amount.indexOf(",") != -1) {
+        if (amount && amount.indexOf(",") != -1) {
           amount = amount.replace(/,/g, "");
         }
 
