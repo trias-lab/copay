@@ -222,7 +222,7 @@ export class WalletDetailsPage extends WalletTabsChild {
           this.addAllAddress()
         })
         .catch(err => {
-          this.popupProvider.ionicAlert('Error', err);
+          this.logger.debug(err + ': Address '+addr);
         });
     }    
   }
@@ -242,8 +242,8 @@ export class WalletDetailsPage extends WalletTabsChild {
       })) as string;
     this.loadingAddr = false;
 
-    let address = await this.walletProvider.getAddressView(this.wallet, addr);
-    if (this.address && this.address != address) {
+    let addressView = await this.walletProvider.getAddressView(this.wallet, addr);
+    if (this.address && this.address != addressView) {
       // do something when coin is bch
     }
 
@@ -284,20 +284,20 @@ export class WalletDetailsPage extends WalletTabsChild {
                 );
               });
           })        
-      }else if (_.isEmpty(am[address])) {  // if this address not stored in local storage
+      }else if (_.isEmpty(am[addressView])) {  // if this address not stored in local storage
          this.logger.debug('-----this address is not stored, add it into storage.')
          this.am
-          .add(this.wallet, { name: 'Default', '{address}': address })
+          .add(this.wallet, { name: 'Default', address: addressView })
           .then(() => {
-            this.logger.debug('----Add address ' + address + 'to wallet manager');
+            this.logger.debug('----Add address ' + addressView + 'to wallet manager');
             this.updateAddresses();
           })
           .catch(err => {
-            this.popupProvider.ionicAlert('Error', err);
+            this.logger.debug(err + ': Address '+ addressView);
           });
       }
     });
-    this.address = address; // update curent address
+    this.address = addressView; // update curent address
   }
 
   private updateAddresses() {
