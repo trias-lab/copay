@@ -249,7 +249,6 @@ export class WalletDetailsPage extends WalletTabsChild {
 
     //  If address manager is empty, or do not contain this address, add this address into it.
     this.am.list(this.wallet).then(am => {
-      this.addressStored = am;
       if (_.isEmpty(am)) {  // if local address manager is empty
         // add all addresses of the wallet into local storage
         this.walletProvider
@@ -257,9 +256,33 @@ export class WalletDetailsPage extends WalletTabsChild {
             doNotVerify: true
           })
           .then(allAddresses => {
-            this.addressToAdd = allAddresses;
-            this.addAllAddress()
-            this.updateAddresses();
+            // allAddresses only contains addresses with path 'm/0/...' but not 'm/1/...'.
+            // so it should concat addresses with balance and no balance to get all addresses.
+            this.walletProvider
+              .getBalance(this.wallet, {})
+              .then(resp => {
+                let withBalance = resp.byAddress;
+
+                let idx = _.keyBy(withBalance, 'address');
+                let noBalance = _.reject(allAddresses, x => {
+                  return idx[x.address];
+                });
+
+                this.addressToAdd = withBalance.concat(noBalance);
+
+                this.addAllAddress()
+                this.updateAddresses();
+              })
+              .catch(err => {
+                this.logger.error(err);
+                this.loadingAddr = false;
+                this.popupProvider.ionicAlert(
+                  this.bwcError.msg(
+                    err,
+                    this.translate.instant('Could not update wallet')
+                  )
+                );
+              });
           })        
       }else if (_.isEmpty(am[address])) {  // if this address not stored in local storage
          this.logger.debug('-----this address is not stored, add it into storage.')
