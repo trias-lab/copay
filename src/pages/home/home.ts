@@ -468,7 +468,7 @@ export class HomePage {
         let now = moment().unix();
         let timeExceeded = now - feedbackInfo.time >= 24 * 7 * 60 * 60;
         this.showRateCard = timeExceeded && !feedbackInfo.sent;
-        this.showCard.setShowRateCard(this.showRateCard);
+        // this.showCard.setShowRateCard(this.showRateCard);
       }
     });
   }
@@ -741,6 +741,8 @@ export class HomePage {
             this.chartLegend.push(legendChartOne);
 
           })
+          // this.logger.warn('wallet then', wallet.completeHistory);
+
           this.balanceChart.setOption({
             // color: this.selectedLegendColors,
             series: [
