@@ -10,7 +10,6 @@ import { BwcProvider } from '../bwc/bwc';
 import { ConfigProvider } from '../config/config';
 import { LanguageProvider } from '../language/language';
 import { Logger } from '../logger/logger';
-import { OnGoingProcessProvider } from '../on-going-process/on-going-process';
 import { PersistenceProvider } from '../persistence/persistence';
 import { PlatformProvider } from '../platform/platform';
 import { PopupProvider } from '../popup/popup';
@@ -43,7 +42,6 @@ export class ProfileProvider {
     private languageProvider: LanguageProvider,
     private events: Events,
     private popupProvider: PopupProvider,
-    private onGoingProcessProvider: OnGoingProcessProvider,
     private translate: TranslateService,
     private txFormatProvider: TxFormatProvider
   ) {
