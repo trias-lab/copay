@@ -1275,9 +1275,6 @@ export class ProfileProvider {
       opts.coin = Coin.BTC;    
       this.createWallet(opts)
         .then(wallet => {
-          // this two wallets have the same mnemonic which will be backup once
-          this.setBackupFlag(wallet.credentials.walletId);
-
           // default BTH wallet option 
           const optsBch: Partial<WalletOptions> = {};
           optsBch.m = 1;
@@ -1287,8 +1284,11 @@ export class ProfileProvider {
           // use the same mnemonic of the BTC waller created above.
           optsBch.mnemonic = wallet.credentials.mnemonic;
           this.createWallet(optsBch)
-          .then(wallet =>{
-             return resolve(wallet);
+          .then(walletBCH =>{
+            let wallets = [];
+            wallets.push(walletBCH)
+            wallets.push(wallet)
+            return resolve(wallets);
           })
           .catch(err => {
             return reject(err);

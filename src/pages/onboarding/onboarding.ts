@@ -100,12 +100,15 @@ export class OnboardingPage {
     this.onGoingProcessProvider.set('creatingWallet');
     this.profileProvider
       .createDefaultWallet()
-      .then(wallet => {
+      .then(wallets => {
         this.onGoingProcessProvider.clear();
-        this.setUpPin(wallet).then(() => {
+        this.setUpPin(wallets[0]).then(() => {
           // TODO: do something after pin setup
           // no need to collect email
           // this.navCtrl.push(CollectEmailPage, { walletId: wallet.id });
+
+          // this two wallets have the same mnemonic which will be backup once
+          this.profileProvider.setBackupFlag(wallets[1].credentials.walletId);
         })
       })
       .catch(err => {
