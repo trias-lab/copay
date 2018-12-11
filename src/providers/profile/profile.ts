@@ -73,6 +73,11 @@ export class ProfileProvider {
     // });
   }
 
+  /**
+   * Update wallet order stored in local storage.
+   * @param {string} walletId wallet id
+   * @param {number} index    new order index
+   */
   public setWalletOrder(walletId: string, index: number): void {
     this.persistenceProvider.setWalletOrder(walletId, index).then(() => {
       this.logger.debug(
@@ -82,17 +87,32 @@ export class ProfileProvider {
     if (this.wallet[walletId]) this.wallet[walletId]['order'] = index;
   }
 
+  /**
+   * Get wallet order by wallet id
+   * @param {string} walletId wallet id
+   */
   public async getWalletOrder(walletId: string) {
     const order = await this.persistenceProvider.getWalletOrder(walletId);
     return order;
   }
 
+  /**
+   * Set wallet backup flag to true.
+   * The backup flag is stored in local storage.
+   * @param  {string}       walletId wallet id
+   * @return {Promise<any>}
+   */
   public setBackupFlag(walletId: string): void {
     this.persistenceProvider.setBackupFlag(walletId);
     this.logger.debug('Backup flag stored');
     this.wallet[walletId].needsBackup = false;
   }
 
+  /**
+   * Check if a wallet requires backup.
+   * @param  {[type]}  wallet wallet id
+   * @return {boolean} 
+   */
   private requiresBackup(wallet): boolean {
     if (wallet.isPrivKeyExternal()) return false;
     if (!wallet.credentials.mnemonic && !wallet.credentials.mnemonicEncrypted)
@@ -102,6 +122,11 @@ export class ProfileProvider {
     return true;
   }
 
+  /**
+   * Check if a wallet still needs backup.
+   * @param  {[type]}  wallet wallet id
+   * @return {boolean} 
+   */
   private needsBackup(wallet): Promise<boolean> {
     return new Promise(resolve => {
       if (!this.requiresBackup(wallet)) {
@@ -122,6 +147,11 @@ export class ProfileProvider {
     });
   }
 
+  /**
+   * Check if the balance of a wallet is hidden
+   * @param  {[type]}           wallet [description]
+   * @return {Promise<boolean>}        [description]
+   */
   private isBalanceHidden(wallet): Promise<boolean> {
     return new Promise(resolve => {
       this.persistenceProvider
@@ -139,6 +169,12 @@ export class ProfileProvider {
     });
   }
 
+  /**
+   * Bind wallet listeners and update wallet settings
+   * @param  {[type]}           wallet [description]
+   * @param  {[type]}           opts   [description]
+   * @return {Promise<boolean>}        [description]
+   */
   private async bindWalletClient(wallet, opts?): Promise<boolean> {
     opts = opts ? opts : {};
     const walletId = wallet.credentials.walletId;
@@ -577,10 +613,10 @@ export class ProfileProvider {
       }
 
       // Encrypt wallet
-      this.onGoingProcessProvider.pause();
+      // this.onGoingProcessProvider.pause();
       // DO NOT use password to encrypt the wallet by default
       // this.encrypt(wallet).then(() => {
-      this.onGoingProcessProvider.resume();
+      // this.onGoingProcessProvider.resume();
 
       const walletId: string = wallet.credentials.walletId;
 
@@ -714,6 +750,20 @@ export class ProfileProvider {
     return new Promise((resolve, reject) => {
       this.logger.info('Importing Wallet Mnemonic');
       const walletClient = this.bwcProvider.getClient(null, opts);
+
+      // create default wallets when importing a wallet
+      this.createDefaultWallet()
+      .then(() => {
+        // this.setBackupFlag(wallet.credentials.walletId)
+        this.logger.info('----creating default Wallet finished.')
+      })
+      .catch(() => {
+        this.logger.warn(
+          'Retrying to create default wallet.....'
+        );
+        // another try
+        this.createDefaultWallet();
+      });
 
       words = this.normalizeMnemonic(words);
       walletClient.importFromMnemonic(
