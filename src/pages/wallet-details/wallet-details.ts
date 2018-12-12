@@ -419,7 +419,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   private showHistory() {
-    this.logger.warn('wallet1111111111111', this.wallet);
+    // this.logger.warn('wallet1111111111111', this.wallet);
 
     this.history = this.wallet.completeHistory.slice(
       0,
