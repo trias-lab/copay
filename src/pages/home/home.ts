@@ -601,42 +601,27 @@ export class HomePage {
     }
   );
 
-  private updateTxHistory(wallet) {
-    // this.updatingTxHistory = true;
+  // private updateTxHistory(wallet) {
+  //   let progressFn = function (_, newTxs) {
+  //     if (newTxs > 5) this.thistory = null;
+  //     this.updatingTxHistoryProgress = newTxs;
+  //   }.bind(this);
 
-    // this.updateTxHistoryError = false;
-    // this.updatingTxHistoryProgress = 0;
+  //   this.walletProvider
+  //     .getTxHistory(wallet, {
+  //       progressFn
+  //     })
+  //     .then(txHistory => {
 
-    let progressFn = function (_, newTxs) {
-      if (newTxs > 5) this.thistory = null;
-      this.updatingTxHistoryProgress = newTxs;
-    }.bind(this);
+  //       let hasTx = txHistory[0];
 
-    this.walletProvider
-      .getTxHistory(wallet, {
-        progressFn
-      })
-      .then(txHistory => {
-        // this.updatingTxHistory = false;
+  //       // {{tx.action == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{tx.amount | satToUnit: wallet.coin}}
 
-        let hasTx = txHistory[0];
-        // this.logger.warn('-----', hasTx.amountValueStr, wallet)
-
-        // {{tx.action == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{tx.amount | satToUnit: wallet.coin}}
-        // this.showNoTransactionsYetMsg = hasTx ? false : true;
-
-        // if (this.wallet.needsBackup && hasTx && this.showBackupNeededMsg)
-        //   this.openBackupModal();
-
-        /*this.wallet.completeHistory = txHistory; */
-        // this.showHistory();
-      })
-      .catch(err => {
-        this.logger.error(err);
-        // this.updatingTxHistory = false;
-        // this.updateTxHistoryError = true;
-      });
-  }
+  //     })
+  //     .catch(err => {
+  //       this.logger.error(err);
+  //     });
+  // }
 
   private updateTxps() {
     this.profileProvider
