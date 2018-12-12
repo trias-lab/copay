@@ -94,6 +94,7 @@ export class HomePage {
   public legendColors; // Chart's color pools
   public selectedLegendColors; // Chart's color pools
   public alternativeUnit;
+  // public updatePercent;
 
   public hideHomeIntegrations: boolean;
   public showGiftCards: boolean;
@@ -148,6 +149,7 @@ export class HomePage {
     this.balanceLegend = [];
     this.chartLegend = [];
     this.alternativeUnit = '';
+    // this.updatePercent = 0;
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.events.subscribe('Home/reloadStatus', () => {
       this._willEnter();
@@ -599,6 +601,43 @@ export class HomePage {
     }
   );
 
+  private updateTxHistory(wallet) {
+    // this.updatingTxHistory = true;
+
+    // this.updateTxHistoryError = false;
+    // this.updatingTxHistoryProgress = 0;
+
+    let progressFn = function (_, newTxs) {
+      if (newTxs > 5) this.thistory = null;
+      this.updatingTxHistoryProgress = newTxs;
+    }.bind(this);
+
+    this.walletProvider
+      .getTxHistory(wallet, {
+        progressFn
+      })
+      .then(txHistory => {
+        // this.updatingTxHistory = false;
+
+        let hasTx = txHistory[0];
+        // this.logger.warn('-----', hasTx.amountValueStr, wallet)
+
+        // {{tx.action == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{tx.amount | satToUnit: wallet.coin}}
+        // this.showNoTransactionsYetMsg = hasTx ? false : true;
+
+        // if (this.wallet.needsBackup && hasTx && this.showBackupNeededMsg)
+        //   this.openBackupModal();
+
+        /*this.wallet.completeHistory = txHistory; */
+        // this.showHistory();
+      })
+      .catch(err => {
+        this.logger.error(err);
+        // this.updatingTxHistory = false;
+        // this.updateTxHistoryError = true;
+      });
+  }
+
   private updateTxps() {
     this.profileProvider
       .getTxps({ limit: 3 })
@@ -692,10 +731,12 @@ export class HomePage {
               ? wallet.cachedBalance
               : '';
 
+        // this.updateTxHistory(wallet);
+
         let alternativeBalance = wallet.status.totalBalanceAlternative;
         if (alternativeBalance && alternativeBalance.indexOf(",") != -1) {
           alternativeBalance = alternativeBalance.replace(/,/g, "");
-          this.logger.warn('wallet.status.totalBalanceAlternative', alternativeBalance);
+          // this.logger.warn('wallet.status.totalBalanceAlternative', alternativeBalance);
 
         }
 
@@ -741,7 +782,7 @@ export class HomePage {
             this.chartLegend.push(legendChartOne);
 
           })
-          // this.logger.warn('wallet then', wallet.completeHistory);
+          // this.logger.warn('wallet then', wallet);
 
           this.balanceChart.setOption({
             // color: this.selectedLegendColors,
