@@ -1,5 +1,5 @@
 page-disclaimer {
-  &>ion-content {
+  & > ion-content {
     background-color: rgba(248, 250, 251, 1);
     // background-image: $onboarding-background-image !important;
     background-position: center center;
@@ -9,7 +9,6 @@ page-disclaimer {
 
   .scroll-content {
     padding: 0 16px;
-
   }
 
   .container {
@@ -27,7 +26,6 @@ page-disclaimer {
   text-align: center;
 
   ion-header {
-
     .toolbar-title,
     ion-icon {
       color: color($colors, primary);
@@ -44,7 +42,6 @@ page-disclaimer {
   }
 
   .checkbox-list {
-
     ion-item,
     .agree-to-terms ion-item {
       font-size: 14px;
@@ -54,10 +51,6 @@ page-disclaimer {
 
     ion-item {
       padding: 0;
-
-      ion-checkbox.checkbox {
-        margin-right: 12px !important;
-      }
     }
   }
 
@@ -82,16 +75,41 @@ page-disclaimer {
     color: color($colors, light-grey);
   }
 
-  .checkbox .checkbox-icon {
+  ion-checkbox.checkbox {
+    margin-right: 12px !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.24);
+    border: 1px solid rgba(203, 208, 211, 1);
     border-radius: 50%;
     width: 24px;
     height: 24px;
   }
 
+  .checkbox .checkbox-icon {
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    border: none;
+    margin-top: 2px;
+    margin-left: 2px;
+    &.checkbox-checked {
+      background: linear-gradient(
+        217deg,
+        rgba(131, 201, 14, 1) 0%,
+        rgba(34, 159, 32, 1) 100%
+      );
+      box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.24);
+    }
+  }
+
   .checkbox .checkbox-checked .checkbox-inner {
-    left: 7px;
-    width: 8px;
-    height: 15px;
-    top: 1px;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 10px;
+    border-top-width: 0;
+    border-width: 2px;
+    border-top-width: 0;
+    border-left-width: 0;
   }
 }
