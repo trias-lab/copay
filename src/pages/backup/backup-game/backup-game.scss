@@ -1,10 +1,10 @@
 page-backup-game {
   .slide-container {
     height: 100%;
-    max-height: 398px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // max-height: 398px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     @media (max-height: 550px) {
       align-items: baseline;
     }
@@ -17,10 +17,10 @@ page-backup-game {
   }
   .slide-title {
     padding: 26px 20px;
-    font-size:20px;
-    font-weight:500;
-    color:rgba(20,42,63,1);
-    line-height:24px;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(20, 42, 63, 1);
+    line-height: 24px;
   }
   .swiper-pagination {
     display: none;
@@ -34,9 +34,9 @@ page-backup-game {
   }
   .phrase-container {
     margin: auto;
-    background:rgba(255,255,255,1);
-    box-shadow:0px 2px 6px 0px rgba(0,0,0,0.1);
-    border-radius:4px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
     color: #192c3a;
     text-align: center;
     max-width: 343px;
@@ -63,63 +63,67 @@ page-backup-game {
         height: 3rem;
         font-size: 14px;
       }
-      .word-container{
-          background:rgba(229,232,234,1);
-          text-align: left;
-          padding: 8px 6px;
-          .index {
-            font-size:12px;
-            font-weight:400;
-            color:rgba(110,118,125,1);
-            line-height:14px;
-            margin-bottom: 8px;
-          }
-          .word {
-            font-size:14px;
-            font-family:Roboto-Regular;
-            font-weight:400;
-            color:rgba(20,42,63,1);
-            line-height:18px;
-          }
+      .word-container {
+        background: rgba(229, 232, 234, 1);
+        text-align: left;
+        padding: 8px 6px;
+        .index {
+          font-size: 12px;
+          font-weight: 400;
+          color: rgba(110, 118, 125, 1);
+          line-height: 14px;
+          margin-bottom: 8px;
+        }
+        .word {
+          font-size: 14px;
+          font-family: Roboto-Regular;
+          font-weight: 400;
+          color: rgba(20, 42, 63, 1);
+          line-height: 18px;
+        }
       }
-      .row{
-        .col{
+      .row {
+        .col {
           padding: 2px;
         }
-        .col:first-child .word-container{
-          border-radius:4px 0px 0px 0px;
+        .col:first-child .word-container {
+          border-radius: 4px 0px 0px 0px;
         }
-        .col:nth-child(3) .word-container{
-          border-radius:0px 4px 0px 0px;
+        .col:nth-child(3) .word-container {
+          border-radius: 0px 4px 0px 0px;
         }
-        .col:nth-child(10) .word-container{
-          border-radius:0px 0px 0px 4px;
+        .col:nth-child(10) .word-container {
+          border-radius: 0px 0px 0px 4px;
         }
-        .col:nth-child(12) .word-container{
-          border-radius:0px 0px 4px 0px;
+        .col:nth-child(12) .word-container {
+          border-radius: 0px 0px 4px 0px;
         }
       }
       .hint {
-        font-size:15px;
-        font-weight:400;
-        color:rgba(110,118,125,1);
-        line-height:18px;
+        font-size: 15px;
+        font-weight: 400;
+        color: rgba(110, 118, 125, 1);
+        line-height: 18px;
         margin-top: 20px;
       }
-    }    
+    }
   }
   .phrase-container:after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      width: 80%;
-      left: 10%;
-      bottom: -10px;
-      height: 40px;
-      background: linear-gradient(270deg, rgba(11, 54, 74, 1) 0%, rgba(11, 77, 74, 1) 100%);
-      opacity: 0.2;
-      filter: blur(10px);
-    }
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 80%;
+    left: 10%;
+    bottom: -10px;
+    height: 40px;
+    background: linear-gradient(
+      270deg,
+      rgba(11, 54, 74, 1) 0%,
+      rgba(11, 77, 74, 1) 100%
+    );
+    opacity: 0.2;
+    filter: blur(10px);
+  }
   .words {
     max-width: 500px;
     margin: 0 auto;
@@ -143,56 +147,64 @@ page-backup-game {
       color: color($colors, grey);
     }
   }
-  .slide-container.check-slide{
-    .phrase-container{
+  .slide-container.check-slide {
+    .phrase-container {
       padding: 28px 16px;
-      .phrase{
-        background:rgba(246,247,249,1);
-        box-shadow:0px 1px 3px 0px rgba(0,0,0,0.24) inset;
-        border-radius:4px;
+      .phrase {
+        background: rgba(246, 247, 249, 1);
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.24) inset;
+        border-radius: 4px;
         min-height: 156px;
         padding: 12px;
         text-align: left;
-        .button{
-          background:linear-gradient(270deg,rgba(110,118,125,1) 0%,rgba(128,138,148,1) 100%);
-          box-shadow:0px 2px 4px 0px rgba(87,167,86,0.1);
-          border-radius:4px;
+        .button {
+          background: linear-gradient(
+            270deg,
+            rgba(110, 118, 125, 1) 0%,
+            rgba(128, 138, 148, 1) 100%
+          );
+          box-shadow: 0px 2px 4px 0px rgba(87, 167, 86, 0.1);
+          border-radius: 4px;
           height: 24px;
-          font-size:14px;
-          font-weight:400;
-          color:rgba(255,255,255,1);
-          line-height:16px;
+          font-size: 14px;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 1);
+          line-height: 16px;
         }
-        .button.wrong{
-          background:linear-gradient(270deg,rgba(250,161,97,1) 0%,rgba(247,107,28,1) 100%);
+        .button.wrong {
+          background: linear-gradient(
+            270deg,
+            rgba(250, 161, 97, 1) 0%,
+            rgba(247, 107, 28, 1) 100%
+          );
         }
       }
-      .hint{
-        font-size:15px;
-        font-weight:400;
-        color:rgba(110,118,125,1);
-        line-height:18px;
+      .hint {
+        font-size: 15px;
+        font-weight: 400;
+        color: rgba(110, 118, 125, 1);
+        line-height: 18px;
       }
-      .hint.invisible{
+      .hint.invisible {
         visibility: hidden;
-        font-size:14px;
-        font-weight:400;
-        color:rgba(245,113,35,1);
-        line-height:18px;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(245, 113, 35, 1);
+        line-height: 18px;
         margin-top: 20px;
         margin-bottom: 16px;
       }
-      .hint.wrong{
+      .hint.wrong {
         visibility: visible;
       }
-      .words{
+      .words {
         margin: 16px -16px;
-        .button{         
+        .button {
           height: 24px;
-          font-size:14px;
-          font-weight:400;
-          color:rgba(255,255,255,1);
-          line-height:16px;
+          font-size: 14px;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 1);
+          line-height: 16px;
         }
       }
     }
