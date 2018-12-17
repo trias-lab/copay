@@ -119,14 +119,14 @@ page-home {
     ion-list {
       position: relative;
       width: 100%;
-      top: -23px;
     }
 
     .item {
-      padding-top: 1px;
       width: 92%;
+      padding-top: 1px;
+      padding-left: 10px;
       padding-bottom: 10px;
-      box-shadow: 0 7px 12px rgba(0, 0, 0, 0.06);
+      // box-shadow: 0 7px 12px rgba(0, 0, 0, 0.06);
       overflow: hidden;
       margin: 20px auto;
       display: block;
@@ -163,6 +163,61 @@ page-home {
       }
     }
   }
+
+  .card:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 80%;
+    left: 10%;
+    bottom: -10px;
+    height: 40px;
+    background: linear-gradient(270deg, rgba(11, 54, 74, 1) 0%, rgba(11, 77, 74, 1) 100%);
+    opacity: 0.2;
+    filter: blur(10px);
+  }
+  
+  .tabs-card:after{
+    bottom: -4px;
+    height: 22px;
+  }
+
+  .tabs-card{
+    height: 30px;
+    .list-header.tabs-wrapper {
+      padding: 0 10px;
+      line-height: 48px;
+      position: relative;
+      top: -18px;
+      
+      .tab-btn{
+        display: inline-block;
+        position: relative;
+        font-size:14px;
+        font-weight:500;
+        color:rgba(197,197,197,1);
+        line-height:20px;
+        padding: 0 17px;
+        margin-right: 2px;
+        padding: 0 17px;
+        &.active{
+          color:#fff;
+          background:rgba(110,118,125,1);
+          border-radius:10px;
+        }
+      }
+      .import-btn {
+        margin-top: 15px;
+        float: right;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        img{
+          width: 18px;
+        }
+      }
+    }
+  }  
 
   ion-list {
     .item-title {
