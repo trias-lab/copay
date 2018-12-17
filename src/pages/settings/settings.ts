@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { ModalController, NavController } from 'ionic-angular';
+import { ModalController, NavController, Platform } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
 import * as _ from 'lodash';
@@ -66,7 +67,9 @@ export class SettingsPage {
     private platformProvider: PlatformProvider,
     private translate: TranslateService,
     private modalCtrl: ModalController,
-    private touchid: TouchIdProvider
+    private touchid: TouchIdProvider,
+    private platform: Platform,
+    private statusBar: StatusBar,
   ) {
     this.appName = this.app.info.nameCase;
     this.walletsBch = [];
@@ -79,6 +82,10 @@ export class SettingsPage {
   }
 
   ionViewWillEnter() {
+  	// set status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleDefault();
+    }
     this.currentLanguageName = this.language.getName(
       this.language.getCurrent()
     );
@@ -97,6 +104,13 @@ export class SettingsPage {
       this.config && this.config.lock && this.config.lock.method
         ? this.config.lock.method.toLowerCase()
         : null;
+  }
+
+  ionViewWillLeave() {
+  	// reset style of status bar
+    if (this.platform.is('ios')) {
+      this.statusBar.styleLightContent();
+    }
   }
 
   ionViewDidEnter() {
