@@ -274,12 +274,13 @@ export class ImportWalletPage {
           this.openPinModal('initPin');
           this.logger.info('---PIN setup started');
         } else {
-          this.app
-            .getRootNavs()[0]
-            .setRoot(TabsPage)
-            .then(() => {
-              this.events.publish('OpenWallet', wallet);
-            });
+          this.navCtrl.pop(); // back to homepage
+          // this.app
+          //   .getRootNavs()[0]
+          //   .setRoot(TabsPage)
+          //   .then(() => {
+          //     this.events.publish('OpenWallet', wallet);
+          //   });
         }
       })
       .catch(err => {
