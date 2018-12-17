@@ -319,7 +319,7 @@ export class ImportWalletPage {
     this.onGoingProcessProvider.set('importingWallet');
     setTimeout(() => {
       this.profileProvider
-        .importMnemonic(words, opts)
+        .importMnemonic(words, opts, this.fromOnboarding)
         .then(wallet => {
           this.onGoingProcessProvider.clear();
           this.finish(wallet);

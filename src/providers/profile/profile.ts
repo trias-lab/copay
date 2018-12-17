@@ -744,24 +744,27 @@ export class ProfileProvider {
     return wordList.join(isJA ? '\u3000' : ' ');
   }
 
-  public importMnemonic(words: string, opts): Promise<any> {
+  public importMnemonic(words: string, opts, createDefaultWallets: boolean): Promise<any> {
     return new Promise((resolve, reject) => {
       this.logger.info('Importing Wallet Mnemonic');
       const walletClient = this.bwcProvider.getClient(null, opts);
 
-      // create default wallets when importing a wallet
-      this.createDefaultWallet()
-      .then(() => {
-        // this.setBackupFlag(wallet.credentials.walletId)
-        this.logger.info('----creating default Wallet finished.')
-      })
-      .catch(() => {
-        this.logger.warn(
-          'Retrying to create default wallet.....'
-        );
-        // another try
-        this.createDefaultWallet();
-      });
+      if (createDefaultWallets) {
+        // create default wallets when importing a wallet
+        this.createDefaultWallet()
+          .then(() => {
+            // this.setBackupFlag(wallet.credentials.walletId)
+            this.logger.info('----creating default Wallet finished.')
+          })
+          .catch(() => {
+            this.logger.warn(
+              'Retrying to create default wallet.....'
+            );
+            // another try
+            this.createDefaultWallet();
+          });
+      }
+
 
       words = this.normalizeMnemonic(words);
       walletClient.importFromMnemonic(
@@ -1272,7 +1275,7 @@ export class ProfileProvider {
       opts.m = 1;
       opts.n = 1;
       opts.networkName = 'livenet';
-      opts.coin = Coin.BTC;    
+      opts.coin = Coin.BTC;
       this.createWallet(opts)
         .then(wallet => {
           // default BTH wallet option 
@@ -1284,15 +1287,15 @@ export class ProfileProvider {
           // use the same mnemonic of the BTC waller created above.
           optsBch.mnemonic = wallet.credentials.mnemonic;
           this.createWallet(optsBch)
-          .then(walletBCH =>{
-            let wallets = [];
-            wallets.push(walletBCH)
-            wallets.push(wallet)
-            return resolve(wallets);
-          })
-          .catch(err => {
-            return reject(err);
-          });
+            .then(walletBCH => {
+              let wallets = [];
+              wallets.push(walletBCH)
+              wallets.push(wallet)
+              return resolve(wallets);
+            })
+            .catch(err => {
+              return reject(err);
+            });
         })
         .catch(err => {
           return reject(err);
