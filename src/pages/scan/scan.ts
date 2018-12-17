@@ -1,4 +1,5 @@
 import { Component, VERSION, ViewChild } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { Events, NavController, NavParams, Platform } from 'ionic-angular';
@@ -72,6 +73,7 @@ export class ScanPage {
     private navParams: NavParams,
     private walletTabsProvider: WalletTabsProvider,
     private platform: Platform,
+    private statusBar: StatusBar,
     private actionSheetProvider: ActionSheetProvider
   ) {
     this.isCameraSelected = false;
@@ -108,6 +110,11 @@ export class ScanPage {
     }
   }
   ionViewWillLeave() {
+    // reset status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleDefault();
+    }
+
     this.events.unsubscribe('incomingDataError');
     this.events.unsubscribe('finishIncomingDataMenuEvent');
     this.events.unsubscribe('scannerServiceInitialized');
@@ -130,6 +137,11 @@ export class ScanPage {
   }
 
   ionViewWillEnter() {
+    // set status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleLightContent();
+    }
+
     this.initializeBackButtonHandler();
     this.fromAddressbook = this.navParams.data.fromAddressbook;
     this.fromImport = this.navParams.data.fromImport;

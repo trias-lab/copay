@@ -1,4 +1,5 @@
 import { Component, NgZone, ViewChild } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import * as echarts from 'echarts';
 import {
@@ -132,7 +133,8 @@ export class HomePage {
     private emailProvider: EmailNotificationsProvider,
     private replaceParametersProvider: ReplaceParametersProvider,
     private clipboardProvider: ClipboardProvider,
-    private incomingDataProvider: IncomingDataProvider
+    private incomingDataProvider: IncomingDataProvider,
+    private statusBar: StatusBar
   ) {
     this.slideDown = false;
     this.updatingWalletId = {};
@@ -159,6 +161,9 @@ export class HomePage {
 
   ionViewWillEnter() {
     this._willEnter();
+    if (this.plt.is('ios')) {
+      this.statusBar.styleLightContent();
+    }
   }
 
   ionViewDidEnter() {
@@ -299,6 +304,9 @@ export class HomePage {
   }
 
   ionViewWillLeave() {
+    if (this.plt.is('ios')) {
+      this.statusBar.styleDefault();
+    }
     this.events.unsubscribe('finishIncomingDataMenuEvent');
     this.events.unsubscribe('bwsEvent');
     this.resetValuesForAnimationCard();

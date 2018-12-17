@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import {
   Events,
@@ -94,6 +95,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     walletTabsProvider: WalletTabsProvider,
     private actionSheetProvider: ActionSheetProvider,
     private platform: Platform,
+    private statusBar: StatusBar,
     private am: AddressManagerProvider
   ) {
     super(navCtrl, profileProvider, walletTabsProvider);
@@ -141,6 +143,11 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   ionViewWillEnter() {
+    // set status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleLightContent();
+    }
+
     // The resume event emits when the native platform pulls the application out from the background.
     this.onResumeSubscription = this.platform.resume.subscribe(() => {
       this.updateAll();
@@ -160,6 +167,10 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   ionViewWillLeave() {
+    // reset status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleDefault();
+    }
     this.onResumeSubscription.unsubscribe();
   }
 

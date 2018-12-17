@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
 import { Logger } from '../../../providers/logger/logger';
 
 // providers
@@ -48,8 +49,17 @@ export class WalletSettingsPage {
     private navParams: NavParams,
     private touchIdProvider: TouchIdProvider,
     private translate: TranslateService,
-    private actionSheetProvider: ActionSheetProvider
-  ) {}
+    private actionSheetProvider: ActionSheetProvider,
+    private platform: Platform,
+    private statusBar: StatusBar
+  ) { }
+
+  ionViewWillEnter() {
+    // set status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleLightContent();
+    }
+  }
 
   ionViewDidLoad() {
     this.logger.info('Loaded:  WalletSettingsPage');
@@ -72,6 +82,13 @@ export class WalletSettingsPage {
       !this.wallet.credentials.mnemonic
     ) {
       this.deleted = true;
+    }
+  }
+
+  ionViewWillLeave() {
+    // reset status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleDefault();
     }
   }
 

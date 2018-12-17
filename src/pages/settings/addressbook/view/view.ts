@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
 
 // Pages
 import { AmountPage } from '../../../../pages/send/amount/amount';
@@ -26,14 +27,30 @@ export class AddressbookViewPage {
     private navCtrl: NavController,
     private navParams: NavParams,
     private popupProvider: PopupProvider,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private platform: Platform,
+    private statusBar: StatusBar
   ) {
     this.address = this.navParams.data.contact.address;
     this.name = this.navParams.data.contact.name;
     this.email = this.navParams.data.contact.email;
   }
 
-  ionViewDidLoad() {}
+  ionViewDidLoad() { }
+
+  ionViewWillEnter() {
+    // set status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleLightContent();
+    }
+  }
+
+  ionViewWillLeave() {
+    // reset status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleDefault();
+    }
+  }
 
   public sendTo(): void {
     this.navCtrl.push(AmountPage, {

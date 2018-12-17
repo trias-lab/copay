@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { StatusBar } from '@ionic-native/status-bar';
 import { Vibration } from '@ionic-native/vibration';
 import {
   NavController,
@@ -47,7 +46,6 @@ export class PinModalPage {
     private navCtrl: NavController,
     private navParams: NavParams,
     private persistenceProvider: PersistenceProvider,
-    private statusBar: StatusBar,
     private vibration: Vibration,
     private viewCtrl: ViewController
   ) {
@@ -62,7 +60,7 @@ export class PinModalPage {
     this.expires = '';
     this.incorrect = false;
 
-    this.unregister = this.platform.registerBackButtonAction(() => {});
+    this.unregister = this.platform.registerBackButtonAction(() => { });
 
     // action could be:
     // 1. pinSetUp: used to set up a new Pin code. The Modal DO have a cancel button.
@@ -79,18 +77,6 @@ export class PinModalPage {
           this.setLockRelease();
         }
       });
-    }
-  }
-
-  ionViewWillEnter() {
-    if (this.platform.is('ios')) {
-      this.statusBar.styleDefault();
-    }
-  }
-
-  ionViewWillLeave() {
-    if (this.platform.is('ios')) {
-      this.statusBar.styleLightContent();
     }
   }
 

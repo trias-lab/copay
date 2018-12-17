@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Events, NavController, NavParams } from 'ionic-angular';
+import { Events, NavController, NavParams, Platform } from 'ionic-angular';
 import * as _ from 'lodash';
 import { Logger } from '../../providers/logger/logger';
 
@@ -50,8 +51,10 @@ export class TxDetailsPage {
     private txConfirmNotificationProvider: TxConfirmNotificationProvider,
     private txFormatProvider: TxFormatProvider,
     private walletProvider: WalletProvider,
-    private translate: TranslateService
-  ) {}
+    private translate: TranslateService,
+    private platform: Platform,
+    private statusBar: StatusBar
+  ) { }
 
   ionViewDidLoad() {
     this.config = this.configProvider.get();
@@ -82,6 +85,11 @@ export class TxDetailsPage {
   }
 
   ionViewWillEnter() {
+    // set status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleLightContent();
+    }
+
     this.events.subscribe('bwsEvent', (_, type: string, n) => {
       if (type == 'NewBlock' && n && n.data && n.data.network == 'livenet')
         this.updateTxDebounced({ hideLoading: true });
@@ -89,6 +97,11 @@ export class TxDetailsPage {
   }
 
   ionViewWillLeave() {
+    // reset status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleDefault();
+    }
+
     this.events.unsubscribe('bwsEvent');
   }
 
