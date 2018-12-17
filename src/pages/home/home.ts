@@ -14,6 +14,7 @@ import { Observable, Subscription } from 'rxjs';
 
 // Pages
 import { AddPage } from '../add/add';
+import { ImportWalletPage } from '../add/import-wallet/import-wallet';
 import { BitPayCardPage } from '../integrations/bitpay-card/bitpay-card';
 import { BitPayCardIntroPage } from '../integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 import { CoinbasePage } from '../integrations/coinbase/coinbase';
@@ -80,6 +81,7 @@ export class HomePage {
   public payProDetailsData;
   public remainingTimeStr: string;
   public slideDown: boolean;
+  public selectedCoinType: string;
 
   public showRateCard: boolean;
   public homeTip: boolean;
@@ -157,6 +159,7 @@ export class HomePage {
       this._willEnter();
       this._didEnter();
     });
+    this.selectedCoinType = "all";
   }
 
   ionViewWillEnter() {
@@ -446,6 +449,14 @@ export class HomePage {
       leading: true
     }
   );
+
+  /**
+  * handle the change of the coin type of wallets to display
+  * @param {string} coinType all / btc
+  */
+  public selectCoinType(coinType: string) {
+    this.selectedCoinType = coinType; // update the coin type of wallets
+  }
 
   public checkHomeTip(): void {
     this.persistenceProvider.getHomeTipAccepted().then((value: string) => {
@@ -988,5 +999,9 @@ export class HomePage {
   }
   public settings() {
     this.navCtrl.push(SettingsPage);
+  }
+
+  public importWallet() {
+    this.navCtrl.push(ImportWalletPage);
   }
 }
