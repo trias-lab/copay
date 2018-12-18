@@ -14,7 +14,7 @@ import { HomeIntegrationsProvider } from '../../providers/home-integrations/home
 import { LanguageProvider } from '../../providers/language/language';
 import { PlatformProvider } from '../../providers/platform/platform';
 import { ProfileProvider } from '../../providers/profile/profile';
-import { TouchIdProvider } from '../../providers/touchid/touchid';
+// import { TouchIdProvider } from '../../providers/touchid/touchid';
 
 // pages
 import { SendFeedbackPage } from '../feedback/send-feedback/send-feedback';
@@ -30,7 +30,7 @@ import { AdvancedPage } from './advanced/advanced';
 import { AltCurrencyPage } from './alt-currency/alt-currency';
 import { FeePolicyPage } from './fee-policy/fee-policy';
 import { LanguagePage } from './language/language';
-import { LockPage } from './lock/lock';
+// import { LockPage } from './lock/lock';
 import { NotificationsPage } from './notifications/notifications';
 import { SharePage } from './share/share';
 import { WalletSettingsPage } from './wallet-settings/wallet-settings';
@@ -66,7 +66,7 @@ export class SettingsPage {
     private platformProvider: PlatformProvider,
     private translate: TranslateService,
     private modalCtrl: ModalController,
-    private touchid: TouchIdProvider
+    // private touchid: TouchIdProvider
   ) {
     this.appName = this.app.info.nameCase;
     this.walletsBch = [];
@@ -136,15 +136,19 @@ export class SettingsPage {
     this.navCtrl.push(AboutPage);
   }
 
-  public openLockPage(): void {
-    let config = this.configProvider.get();
-    let lockMethod =
-      config && config.lock && config.lock.method
-        ? config.lock.method.toLowerCase()
-        : null;
-    if (!lockMethod || lockMethod == 'disabled') this.navCtrl.push(LockPage);
-    if (lockMethod == 'pin') this.openPinModal('lockSetUp');
-    if (lockMethod == 'fingerprint') this.checkFingerprint();
+  // public openLockPage(): void {
+  //   let config = this.configProvider.get();
+  //   let lockMethod =
+  //     config && config.lock && config.lock.method
+  //       ? config.lock.method.toLowerCase()
+  //       : null;
+  //   if (!lockMethod || lockMethod == 'disabled') this.navCtrl.push(LockPage);
+  //   if (lockMethod == 'pin') this.openPinModal('lockSetUp');
+  //   if (lockMethod == 'fingerprint') this.checkFingerprint();
+  // }
+
+  public resetPin(): void {
+    this.openPinModal('lockSetUp');
   }
 
   public openAddressBookPage(): void {
@@ -229,13 +233,15 @@ export class SettingsPage {
     );
     modal.present();
     modal.onDidDismiss(cancelClicked => {
-      if (!cancelClicked) this.navCtrl.push(LockPage);
+      // if (!cancelClicked) this.navCtrl.push(LockPage);
+      if (!cancelClicked && action == 'lockSetUp') this.openPinModal('pinSetUp');
+      // if (!cancelClicked && action == 'pinSetUp');
     });
   }
 
-  private checkFingerprint(): void {
-    this.touchid.check().then(() => {
-      this.navCtrl.push(LockPage);
-    });
-  }
+  // private checkFingerprint(): void {
+  //   this.touchid.check().then(() => {
+  //     this.navCtrl.push(LockPage);
+  //   });
+  // }
 }
