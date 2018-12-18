@@ -451,9 +451,9 @@ export class HomePage {
   );
 
   /**
-  * handle the change of the coin type of wallets to display
-  * @param {string} coinType all / btc
-  */
+   * handle the change of the coin type of wallets to display
+   * @param {string} coinType all / btc
+   */
   public selectCoinType(coinType: string) {
     this.selectedCoinType = coinType; // update the coin type of wallets
   }
