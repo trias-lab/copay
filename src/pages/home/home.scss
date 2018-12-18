@@ -126,7 +126,7 @@ page-home {
       padding-top: 1px;
       padding-left: 10px;
       padding-bottom: 10px;
-      // box-shadow: 0 7px 12px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 7px 12px rgba(0, 0, 0, 0.06);
       overflow: hidden;
       margin: 20px auto;
       display: block;
@@ -164,23 +164,23 @@ page-home {
     }
   }
 
-  .card:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    width: 80%;
-    left: 10%;
-    bottom: -10px;
-    height: 40px;
-    background: linear-gradient(270deg, rgba(11, 54, 74, 1) 0%, rgba(11, 77, 74, 1) 100%);
-    opacity: 0.2;
-    filter: blur(10px);
-  }
+  // .card:after {
+  //   content: "";
+  //   position: absolute;
+  //   z-index: -1;
+  //   width: 80%;
+  //   left: 10%;
+  //   bottom: -10px;
+  //   height: 40px;
+  //   background: linear-gradient(270deg, rgba(11, 54, 74, 1) 0%, rgba(11, 77, 74, 1) 100%);
+  //   opacity: 0.2;
+  //   filter: blur(10px);
+  // }
   
-  .tabs-card:after{
-    bottom: -4px;
-    height: 22px;
-  }
+  // .tabs-card:after{
+  //   bottom: -4px;
+  //   height: 22px;
+  // }
 
   .tabs-card{
     height: 30px;
