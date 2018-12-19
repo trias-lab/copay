@@ -63,6 +63,7 @@ export class HomePage {
   public wallets;
   public walletsBtc;
   public walletsBch;
+  public walletsEth;
   public cachedBalanceUpdateOn: string;
   public recentTransactionsEnabled: boolean;
   public txps;
@@ -87,6 +88,7 @@ export class HomePage {
   public homeTip: boolean;
   public showReorderBtc: boolean;
   public showReorderBch: boolean;
+  public showReorderEth: boolean;
   public showIntegration;
   public totalBalance: number; // Total balance amount
   public balanceItem; // Each wallet's coin amount
@@ -145,6 +147,7 @@ export class HomePage {
     this.isElectron = this.platformProvider.isElectron;
     this.showReorderBtc = false;
     this.showReorderBch = false;
+    this.showReorderEth = false;
     this.totalBalance = 0;
     this.balanceItem = [];
     // this.balanceName = [];
@@ -442,6 +445,9 @@ export class HomePage {
       this.walletsBch = _.filter(this.wallets, (x: any) => {
         return x.credentials.coin == 'bch';
       });
+      this.walletsEth = _.filter(this.wallets, (x: any) => {
+        return x.credentials.coin == 'eth';
+      });
       this.updateAllWallets();
     },
     5000,
@@ -734,13 +740,13 @@ export class HomePage {
             : wallet.cachedBalance
               ? wallet.cachedBalance
               : '';
+        this.logger.warn('111111112wallet-------', banlance);
 
         // this.updateTxHistory(wallet);
 
         let alternativeBalance = wallet.status.totalBalanceAlternative;
         if (alternativeBalance && alternativeBalance.indexOf(",") != -1) {
           alternativeBalance = alternativeBalance.replace(/,/g, "");
-          // this.logger.warn('wallet.status.totalBalanceAlternative', alternativeBalance);
 
         }
 
@@ -768,11 +774,13 @@ export class HomePage {
           this.balanceLegend = [];
           this.chartLegend = [];
           this.alternativeUnit = this.balanceItem[0].alternativeUnit;
+          this.logger.warn('555555555555wallet-------', this.totalBalance);
+
           _.each(this.balanceItem, (balanceItem, index: number) => {
             let legendOne = {
               color: this.legendColors[index],
               name: balanceItem.name,
-              percent: balanceItem.alternativeBalance * 100 / this.totalBalance
+              percent: this.totalBalance == 0 ? 0 : balanceItem.alternativeBalance * 100 / this.totalBalance
             }
             this.selectedLegendColors.push(this.legendColors[index]);
             this.balanceLegend.push(legendOne);
@@ -786,6 +794,7 @@ export class HomePage {
             this.chartLegend.push(legendChartOne);
 
           })
+
           // this.logger.warn('wallet then', wallet);
 
           this.balanceChart.setOption({
@@ -839,7 +848,7 @@ export class HomePage {
 
   // 当点击BTC或者BCH钱包的具体某一项
   public goToWalletDetails(wallet): void {
-    if (this.showReorderBtc || this.showReorderBch) return;
+    if (this.showReorderBtc || this.showReorderBch || this.showReorderEth) return;
     // 取消订阅finishIncomingDataMenuEvent和bwsEvent事件
     this.events.unsubscribe('finishIncomingDataMenuEvent');
     this.events.unsubscribe('bwsEvent');
@@ -897,6 +906,10 @@ export class HomePage {
     this.showReorderBch = !this.showReorderBch;
   }
 
+  public reorderEth(): void {
+    this.showReorderEth = !this.showReorderEth;
+  }
+
   public reorderWalletsBtc(indexes): void {
     let element = this.walletsBtc[indexes.from];
     this.walletsBtc.splice(indexes.from, 1);
@@ -915,6 +928,17 @@ export class HomePage {
       this.profileProvider.setWalletOrder(wallet.id, index);
     });
     // this.logger.warn('wallet bch!!!!!!', this.walletsBch);
+  }
+
+
+  public reorderWalletsEth(indexes): void {
+    let element = this.walletsEth[indexes.from];
+    this.walletsEth.splice(indexes.from, 1);
+    this.walletsEth.splice(indexes.to, 0, element);
+    _.each(this.walletsEth, (wallet, index: number) => {
+      this.profileProvider.setWalletOrder(wallet.id, index);
+    });
+    // this.logger.warn('wallet eth!!!!!!', this.walletsBch);
   }
 
   public goToDownload(): void {

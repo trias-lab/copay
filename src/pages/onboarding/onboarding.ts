@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ModalController, NavController} from 'ionic-angular';
+import { ModalController, NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
 // pages
@@ -81,18 +81,18 @@ export class OnboardingPage {
       this.logger.info('---PIN setup finished');
       // this.persistenceProvider.setOnboardingCompleted();
       // request to backup the mneminic after setup pin code
-      this.navCtrl.push(BackupRequestPage, { 
-          walletId: wallet.id,
-          fromOnboarding: true 
-        });
+      this.navCtrl.push(BackupRequestPage, {
+        walletId: wallet.id,
+        fromOnboarding: true
+      });
     });
   }
 
   private setUpPin(wallet): Promise<any> {
     return new Promise((resolve) => {
-        this.openPinModal('initPin',wallet);
-        this.logger.info('---PIN setup started');
-        return resolve(wallet);
+      this.openPinModal('initPin', wallet);
+      this.logger.info('---PIN setup started');
+      return resolve(wallet);
     })
   }
 
@@ -109,6 +109,7 @@ export class OnboardingPage {
 
           // this two wallets have the same mnemonic which will be backup once
           this.profileProvider.setBackupFlag(wallets[1].credentials.walletId);
+          this.profileProvider.setBackupFlag(wallets[2].credentials.walletId);
         })
       })
       .catch(err => {

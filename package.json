@@ -184,7 +184,7 @@
     "@zxing/ngx-scanner": "1.2.1",
     "angular2-moment": "1.7.1",
     "bitauth": "git+https://github.com/bitpay/bitauth.git#copay",
-    "bitcore-wallet-client": "6.7.5",
+    "bitcore-wallet-client": "git+https://git@github.com/trias-lab/bitcore-wallet-client.git#add-eth",
     "buffer-compare": "1.1.1",
     "cordova": "8.1.2",
     "cordova-android": "7.1.2",

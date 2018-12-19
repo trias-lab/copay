@@ -1286,12 +1286,27 @@ export class ProfileProvider {
           optsBch.coin = Coin.BCH;
           // use the same mnemonic of the BTC waller created above.
           optsBch.mnemonic = wallet.credentials.mnemonic;
+
+
+          const optsEth: Partial<WalletOptions> = {};
+          optsEth.m = 1;
+          optsEth.n = 1;
+          optsEth.networkName = 'livenet';
+          optsEth.coin = Coin.ETH;
+          // use the same mnemonic of the BTC waller created above.
+          optsEth.mnemonic = wallet.credentials.mnemonic;
           this.createWallet(optsBch)
             .then(walletBCH => {
               let wallets = [];
               wallets.push(walletBCH)
               wallets.push(wallet)
-              return resolve(wallets);
+              // return resolve(wallets);
+              this.createWallet(optsEth)
+                .then(walletETH => {
+                  // let wallets = [];
+                  wallets.push(walletETH)
+                  return resolve(wallets);
+                })
             })
             .catch(err => {
               return reject(err);

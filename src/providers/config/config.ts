@@ -145,7 +145,7 @@ const configDefault: Config = {
 
   // Bitcore wallet service URL
   bws: {
-    url: 'https://bws.bitpay.com/bws/api'
+    url: 'http://192.168.1.171:3232/bws/api'
   },
 
   download: {
@@ -268,13 +268,13 @@ export class ConfigProvider {
 
     this.logger.debug(
       'Config | spendUnconfirmed: ' +
-        spendUnconfirmed +
-        ' - useLegacyAddress: ' +
-        useLegacyAddress +
-        ' - persistentLogsEnabled: ' +
-        persistentLogsEnabled +
-        ' - lockMethod: ' +
-        lockMethod
+      spendUnconfirmed +
+      ' - useLegacyAddress: ' +
+      useLegacyAddress +
+      ' - persistentLogsEnabled: ' +
+      persistentLogsEnabled +
+      ' - lockMethod: ' +
+      lockMethod
     );
   }
 

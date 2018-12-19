@@ -22,7 +22,8 @@ import { TxFormatProvider } from '../tx-format/tx-format';
 
 export enum Coin {
   BTC = 'btc',
-  BCH = 'bch'
+  BCH = 'bch',
+  ETH = 'eth'
 }
 
 export interface WalletOptions {
@@ -605,7 +606,7 @@ export class WalletProvider {
       let LIMIT = 50;
       let requestLimit = FIRST_LIMIT;
       let walletId = wallet.credentials.walletId;
-      this.progressFn[walletId] = opts.progressFn || (() => {});
+      this.progressFn[walletId] = opts.progressFn || (() => { });
       let foundLimitTx = [];
 
       let fixTxsUnit = (txs): void => {
@@ -645,8 +646,8 @@ export class WalletProvider {
 
       this.logger.debug(
         'Trying to download Tx history for: ' +
-          walletId +
-          '. If it fails retry in 5 secs'
+        walletId +
+        '. If it fails retry in 5 secs'
       );
       this.getSavedTxs(walletId)
         .then(txsFromLocal => {
@@ -679,11 +680,11 @@ export class WalletProvider {
                   skip = skip + requestLimit;
                   this.logger.debug(
                     'Syncing TXs for:' +
-                      walletId +
-                      '. Got:' +
-                      newTxs.length +
-                      ' Skip:' +
-                      skip,
+                    walletId +
+                    '. Got:' +
+                    newTxs.length +
+                    ' Skip:' +
+                    skip,
                     ' EndingTxid:',
                     endingTxid,
                     ' Continue:',
@@ -705,7 +706,7 @@ export class WalletProvider {
                   if (!shouldContinue) {
                     this.logger.debug(
                       'Finished Sync: New / soft confirmed Txs: ' +
-                        newTxs.length
+                      newTxs.length
                     );
                     return resolve(newTxs);
                   }
@@ -1215,11 +1216,11 @@ export class WalletProvider {
         .then(() => {
           this.logger.debug(
             'Remote preferences saved for' +
-              lodash
-                .map(clients, (x: any) => {
-                  return x.credentials.walletId;
-                })
-                .join(',')
+            lodash
+              .map(clients, (x: any) => {
+                return x.credentials.walletId;
+              })
+              .join(',')
           );
 
           lodash.each(clients, c => {
@@ -1502,8 +1503,8 @@ export class WalletProvider {
             err && err.message
               ? err.message
               : this.translate.instant(
-                  'The payment was created but could not be completed. Please try again from home screen'
-                );
+                'The payment was created but could not be completed. Please try again from home screen'
+              );
           this.logger.error('Sign error: ' + msg);
           this.events.publish('Local/TxAction', wallet.id);
           return reject(msg);
@@ -1557,7 +1558,7 @@ export class WalletProvider {
     return new Promise((resolve, reject) => {
       let derivationPath = wallet.credentials.getBaseAddressDerivationPath();
       let encodingType = {
-        mnemonic: 1,
+        mnemonic: 1 ,
         xpriv: 2,
         xpub: 3
       };
@@ -1587,16 +1588,16 @@ export class WalletProvider {
 
       return resolve(
         info.type +
-          '|' +
-          info.data +
-          '|' +
-          wallet.credentials.network.toLowerCase() +
-          '|' +
-          derivationPath +
-          '|' +
-          wallet.credentials.mnemonicHasPassphrase +
-          '|' +
-          wallet.coin
+        '|' +
+        info.data +
+        '|' +
+        wallet.credentials.network.toLowerCase() +
+        '|' +
+        derivationPath +
+        '|' +
+        wallet.credentials.mnemonicHasPassphrase +
+        '|' +
+        wallet.coin
       );
     });
   }
