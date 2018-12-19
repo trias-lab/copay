@@ -14,7 +14,7 @@ import { HomeIntegrationsProvider } from '../../providers/home-integrations/home
 import { LanguageProvider } from '../../providers/language/language';
 import { PlatformProvider } from '../../providers/platform/platform';
 import { ProfileProvider } from '../../providers/profile/profile';
-// import { TouchIdProvider } from '../../providers/touchid/touchid';
+import { TouchIdProvider } from '../../providers/touchid/touchid';
 
 // pages
 import { SendFeedbackPage } from '../feedback/send-feedback/send-feedback';
@@ -48,10 +48,13 @@ export class SettingsPage {
   public config;
   public selectedAlternative;
   public isCordova: boolean;
-  public lockMethod: string;
   public integrationServices = [];
   public bitpayCardItems = [];
   public showBitPayCard: boolean = false;
+
+  public pinLock;
+  public fingerprintLock;
+  public needsBackupMsg: string;
 
   constructor(
     private navCtrl: NavController,
@@ -66,7 +69,7 @@ export class SettingsPage {
     private platformProvider: PlatformProvider,
     private translate: TranslateService,
     private modalCtrl: ModalController,
-    // private touchid: TouchIdProvider
+    private touchid: TouchIdProvider
   ) {
     this.appName = this.app.info.nameCase;
     this.walletsBch = [];
@@ -93,10 +96,8 @@ export class SettingsPage {
       name: this.config.wallet.settings.alternativeName,
       isoCode: this.config.wallet.settings.alternativeIsoCode
     };
-    this.lockMethod =
-      this.config && this.config.lock && this.config.lock.method
-        ? this.config.lock.method.toLowerCase()
-        : null;
+
+    this.checkFingerprintLock();
   }
 
   ionViewDidEnter() {
@@ -149,6 +150,61 @@ export class SettingsPage {
 
   public resetPin(): void {
     this.openPinModal('lockSetUp');
+  }
+
+  public toggleFingerprint(): void {
+    let lock = this.configProvider.get().lock;
+    if (!this.fingerprintLock.enabled) {
+      lock.fingerprint = null;
+      this.configProvider.set({ lock });
+    } else {
+      // check touchid before enable the option
+      this.touchid.check()
+        .then(() => {
+          lock.fingerprint = this.fingerprintLock.label
+          this.configProvider.set({ lock });
+        })
+    }
+  }
+
+  private checkFingerprintLock() {
+    let lockOptions = this.configProvider.get().lock;
+    let needsBackup = this.needsBackup();
+    this.touchid.isAvailable().then((type: any) => {
+      if (type) {
+        this.fingerprintLock = {
+          label: type == "touch" ? "Touch ID" : "Face ID",
+          enabled: lockOptions.fingerprint !== null,
+          disabled: needsBackup
+        }
+      }
+    });
+  }
+
+  private needsBackup() {
+    let wallets = this.profileProvider.getWallets();
+    let singleLivenetWallet =
+      wallets.length == 1 &&
+      wallets[0].network == 'livenet' &&
+      wallets[0].needsBackup;
+    let atLeastOneLivenetWallet = _.find(wallets, w => {
+      return w.network == 'livenet' && w.needsBackup;
+    });
+
+    if (singleLivenetWallet) {
+      this.needsBackupMsg = this.translate.instant(
+        'Back up your wallet before using this function'
+      );
+      return true;
+    } else if (atLeastOneLivenetWallet) {
+      this.needsBackupMsg = this.translate.instant(
+        'Back up all your wallets before using this function'
+      );
+      return true;
+    } else {
+      this.needsBackupMsg = null;
+      return false;
+    }
   }
 
   public openAddressBookPage(): void {

@@ -20,7 +20,7 @@ export class TouchIdProvider {
     private platform: PlatformProvider,
     private config: ConfigProvider,
     private logger: Logger
-  ) {}
+  ) { }
 
   public isAvailable(): Promise<any> {
     return new Promise(resolve => {
@@ -41,8 +41,8 @@ export class TouchIdProvider {
   private checkIOS(): Promise<any> {
     return new Promise(resolve => {
       this.touchId.isAvailable().then(
-        () => {
-          return resolve(true);
+        (type) => {
+          return resolve(type);
         },
         () => {
           this.logger.warn('Fingerprint is not available');

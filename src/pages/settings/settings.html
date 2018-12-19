@@ -95,11 +95,11 @@
         </ion-icon>
       </button>
 
-      <button ion-item *ngIf="isCordova" (click)="toggleFingerprint()">
+      <button ion-item *ngIf="isCordova && fingerprintLock">
         <ion-label>
-          {{'Fingerprint' | translate}}
+          {{fingerprintLock.label | translate}}
         </ion-label>
-        <ion-toggle checked="lockMethod === 'fingerprint'"></ion-toggle>
+        <ion-toggle [(ngModel)]="fingerprintLock.enabled" (ngModelChange)="toggleFingerprint($event)" [disabled]="fingerprintLock.disabled"></ion-toggle>
       </button>
 
       <button ion-item *ngIf="isCordova" (click)="resetPin()">
