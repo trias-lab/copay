@@ -740,7 +740,7 @@ export class HomePage {
             : wallet.cachedBalance
               ? wallet.cachedBalance
               : '';
-        this.logger.warn('111111112wallet-------', banlance);
+        this.logger.warn('111111112wallet-------', wallet);
 
         // this.updateTxHistory(wallet);
 
@@ -774,7 +774,7 @@ export class HomePage {
           this.balanceLegend = [];
           this.chartLegend = [];
           this.alternativeUnit = this.balanceItem[0].alternativeUnit;
-          this.logger.warn('555555555555wallet-------', this.totalBalance);
+          // this.logger.warn('555555555555wallet-------', this.totalBalance);
 
           _.each(this.balanceItem, (balanceItem, index: number) => {
             let legendOne = {
