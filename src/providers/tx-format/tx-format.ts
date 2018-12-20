@@ -41,7 +41,11 @@ export class TxFormatProvider {
   }
 
   // TODO: Check return of formatAmount(...), sometimes returns a number and sometimes a string
-  public formatAmount(satoshis: number, fullPrecision?: boolean, coin?: string) {
+  public formatAmount(
+    satoshis: number,
+    fullPrecision?: boolean,
+    coin?: string
+  ) {
     let settings = this.configProvider.get().wallet.settings;
 
     if (settings.unitCode == 'sat') return satoshis;
@@ -49,7 +53,7 @@ export class TxFormatProvider {
     // TODO : now only works for english, specify opts to change thousand separator and decimal separator
     var opts = {
       fullPrecision: !!fullPrecision,
-      coin: coin
+      coin: coin || ''
     };
     return this.bwcProvider
       .getUtils()
@@ -183,14 +187,19 @@ export class TxFormatProvider {
   ) {
     let settings = this.configProvider.get().wallet.settings;
     let satToBtc = 1 / 100000000;
-    let weiToEth = 1 / (10**18);
+    let weiToEth = 1 / 10 ** 18;
     let unitToSatoshi = settings.unitToSatoshi;
     let amountUnitStr;
     let amountSat;
     let alternativeIsoCode = settings.alternativeIsoCode;
 
     // If fiat currency
-    if (currency != 'BCH' && currency != 'BTC' && currency != 'ETH' && currency != 'sat') {
+    if (
+      currency != 'BCH' &&
+      currency != 'BTC' &&
+      currency != 'ETH' &&
+      currency != 'sat'
+    ) {
       let formattedAmount = onlyIntegers
         ? this.filter.formatFiatAmount(amount.toFixed(0))
         : this.filter.formatFiatAmount(amount);
@@ -200,21 +209,17 @@ export class TxFormatProvider {
       amountSat = Number(amount);
       amountUnitStr = this.formatAmountStr(coin, amountSat);
       // convert sat to BTC or BCH
-      if (coin === 'eth') {
-        amount = (amountSat * weiToEth).toFixed(18);
-      } else {
-        amount = (amountSat * satToBtc).toFixed(8);
-      }
+      coin === 'eth'
+        ? (amount = (amountSat * weiToEth).toFixed(18))
+        : (amount = (amountSat * satToBtc).toFixed(8));
       currency = coin.toUpperCase();
     } else {
       amountSat = parseInt((amount * unitToSatoshi).toFixed(0), 10);
       amountUnitStr = this.formatAmountStr(coin, amountSat);
       // convert unit to BTC or BCH
-      if (coin === 'eth') {
-        amount = (amountSat * weiToEth).toFixed(18);
-      } else {
-        amount = (amountSat * satToBtc).toFixed(8);
-      }
+      coin === 'eth'
+        ? (amount = (amountSat * weiToEth).toFixed(18))
+        : (amount = (amountSat * satToBtc).toFixed(8));
       currency = coin.toUpperCase();
     }
 
