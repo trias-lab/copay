@@ -9,26 +9,36 @@ export class RateProvider {
   private rates;
   private alternatives;
   private ratesBCH;
+  private ratesETH;
   private ratesBtcAvailable: boolean;
   private ratesBchAvailable: boolean;
+  private ratesEthAvailable: boolean;
 
   private SAT_TO_BTC: number;
   private BTC_TO_SAT: number;
+  private WEI_TO_ETH: number;
+  private ETH_TO_WEI: number;
 
   private rateServiceUrl = env.ratesAPI.btc;
   private bchRateServiceUrl = env.ratesAPI.bch;
+  private ethRateServiceUrl = env.ratesAPI.eth;
 
   constructor(private http: HttpClient, private logger: Logger) {
     this.logger.debug('RateProvider initialized');
     this.rates = {};
     this.alternatives = [];
     this.ratesBCH = {};
+    this.ratesETH = {};
     this.SAT_TO_BTC = 1 / 1e8;
     this.BTC_TO_SAT = 1e8;
+    this.WEI_TO_ETH = 1 / 1e18;
+    this.ETH_TO_WEI = 1e18;
     this.ratesBtcAvailable = false;
     this.ratesBchAvailable = false;
+    this.ratesEthAvailable = false;
     this.updateRatesBtc();
     this.updateRatesBch();
+    this.updateRatesEth();
   }
 
   public updateRatesBtc(): Promise<any> {
@@ -70,6 +80,23 @@ export class RateProvider {
     });
   }
 
+  public updateRatesEth(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.getETH()
+        .then(dataETH => {
+          _.each(dataETH, currency => {
+            this.ratesETH[currency.code] = currency.rate;
+          });
+          this.ratesEthAvailable = true;
+          resolve();
+        })
+        .catch(errorETH => {
+          this.logger.error(errorETH);
+          reject(errorETH);
+        });
+    });
+  }
+
   public getBTC(): Promise<any> {
     return new Promise(resolve => {
       this.http.get(this.rateServiceUrl).subscribe(data => {
@@ -86,8 +113,17 @@ export class RateProvider {
     });
   }
 
+  public getETH(): Promise<any> {
+    return new Promise(resolve => {
+      this.http.get(this.ethRateServiceUrl).subscribe(data => {
+        resolve(data);
+      });
+    });
+  }
+
   public getRate(code: string, chain?: string): number {
-    if (chain == 'bch') return this.ratesBCH[code];
+    if (chain == 'eth') return this.ratesETH[code];
+    else if (chain == 'bch') return this.ratesBCH[code];
     else return this.rates[code];
   }
 
@@ -103,12 +139,20 @@ export class RateProvider {
     return this.ratesBchAvailable;
   }
 
+  public isEthAvailable() {
+    return this.ratesEthAvailable;
+  }
+
   public toFiat(satoshis: number, code: string, chain: string): number {
     if (
       (!this.isBtcAvailable() && chain == 'btc') ||
-      (!this.isBchAvailable() && chain == 'bch')
+      (!this.isBchAvailable() && chain == 'bch') ||
+      (!this.isEthAvailable() && chain == 'eth')
     ) {
       return null;
+    }
+    if (chain == 'eth') {
+      return satoshis * this.WEI_TO_ETH * this.getRate(code, chain);
     }
     return satoshis * this.SAT_TO_BTC * this.getRate(code, chain);
   }
@@ -116,9 +160,13 @@ export class RateProvider {
   public fromFiat(amount: number, code: string, chain: string): number {
     if (
       (!this.isBtcAvailable() && chain == 'btc') ||
-      (!this.isBchAvailable() && chain == 'bch')
+      (!this.isBchAvailable() && chain == 'bch') ||
+      (!this.isEthAvailable() && chain == 'eth')
     ) {
       return null;
+    }
+    if (chain == 'eth') {
+      return (amount / this.getRate(code, chain)) * this.ETH_TO_WEI;
     }
     return (amount / this.getRate(code, chain)) * this.BTC_TO_SAT;
   }
@@ -142,7 +190,8 @@ export class RateProvider {
     return new Promise(resolve => {
       if (
         (this.ratesBtcAvailable && chain == 'btc') ||
-        (this.ratesBchAvailable && chain == 'bch')
+        (this.ratesBchAvailable && chain == 'bch') ||
+        (this.ratesEthAvailable && chain == 'eth')
       )
         resolve();
       else {
@@ -153,6 +202,11 @@ export class RateProvider {
         }
         if (chain == 'bch') {
           this.updateRatesBch().then(() => {
+            resolve();
+          });
+        }
+        if (chain == 'eth') {
+          this.updateRatesEth().then(() => {
             resolve();
           });
         }
