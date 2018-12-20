@@ -70,8 +70,10 @@ page-addressbook {
 ion-header {
   // background: linear-gradient(225deg, #f6f9fa 0%, #e6ebee 100%);
   background: transparent;
-  // height: 64px;
-  // padding: 20px 16px 0 16px;
+  &.header-md {
+    // height: 64px;
+    padding: 20px 16px 0 16px;
+  }
   padding: 0 16px;
   .toolbar ion-title {
     margin-left: 34px;
