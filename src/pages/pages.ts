@@ -69,7 +69,7 @@ import { ActivityPage } from '../pages/home/activity/activity';
 import { ProposalsPage } from '../pages/home/proposals/proposals';
 
 /* Settings */
-import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
+// import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 import { PIN_COMPONENTS } from '../pages/pin/pin';
 import { AboutPage } from '../pages/settings/about/about';
 import { SessionLogPage } from '../pages/settings/about/session-log/session-log';
@@ -151,7 +151,7 @@ export const PAGES = [
   ...GIFT_CARD_PAGES,
   GlideraPage,
   GravatarPage,
-  FingerprintModalPage,
+  // FingerprintModalPage,
   HomePage,
   LanguagePage,
   // LockPage,

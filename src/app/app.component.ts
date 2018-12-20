@@ -36,7 +36,7 @@ import { TouchIdProvider } from '../providers/touchid/touchid';
 import { CopayersPage } from '../pages/add/copayers/copayers';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
 import { JoinWalletPage } from '../pages/add/join-wallet/join-wallet';
-import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
+// import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 // import { BitPayCardIntroPage } from '../pages/integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 // import { CoinbasePage } from '../pages/integrations/coinbase/coinbase';
 // import { GlideraPage } from '../pages/integrations/glidera/glidera';
@@ -258,7 +258,8 @@ export class CopayApp {
     let config = this.configProvider.get();
     if (config && config.lock) {
       if (config.lock.fingerprint) {
-        this.openFingerprintModal();
+        // this.openFingerprintModal();
+        this.openPINModal('checkFingerprint');
       } else if (config.lock.pin.method) {
         this.openPINModal('checkPin');
       } else {
@@ -283,18 +284,18 @@ export class CopayApp {
     });
   }
 
-  private openFingerprintModal(): void {
-    this.isLockModalOpen = true;
-    const modal = this.modalCtrl.create(
-      FingerprintModalPage,
-      {},
-      { cssClass: 'fullscreen-modal' }
-    );
-    modal.present({ animate: false });
-    modal.onDidDismiss(() => {
-      this.isLockModalOpen = false;
-    });
-  }
+  // private openFingerprintModal(): void {
+  //   this.isLockModalOpen = true;
+  //   const modal = this.modalCtrl.create(
+  //     FingerprintModalPage,
+  //     {},
+  //     { cssClass: 'fullscreen-modal' }
+  //   );
+  //   modal.present({ animate: false });
+  //   modal.onDidDismiss(() => {
+  //     this.isLockModalOpen = false;
+  //   });
+  // }
 
   // private registerIntegrations(): void {
   //   // Gift Cards

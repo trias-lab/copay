@@ -13,6 +13,7 @@ import { Animate } from '../../../directives/animate/animate';
 import { ConfigProvider } from '../../../providers/config/config';
 import { Logger } from '../../../providers/logger/logger';
 import { PersistenceProvider } from '../../../providers/persistence/persistence';
+import { TouchIdProvider } from '../../../providers/touchid/touchid';
 
 @Component({
   selector: 'page-pin',
@@ -47,7 +48,8 @@ export class PinModalPage {
     private navParams: NavParams,
     private persistenceProvider: PersistenceProvider,
     private vibration: Vibration,
-    private viewCtrl: ViewController
+    private viewCtrl: ViewController,
+    private touchid: TouchIdProvider,
   ) {
     this.ATTEMPT_LIMIT = 3;
     this.ATTEMPT_LOCK_OUT_TIME = 2 * 60;
@@ -67,16 +69,21 @@ export class PinModalPage {
     // 2. lockSetUp: used to check the pin code before changing the lock. The modal DO have a cancel button.
     // 3. checkPin: use to check the pin code before entering the APP. The Modal DO NOT have a cancel button.
     // 4. initPin: use to initialize a pin code. The Modal DO NOT have a cancel button.
+    // 5. checkFingerprint: use to check the touchID or faceID before entering the APP. If the check is cancelled or failed, PIN can be used to unlock the app.
     this.action = this.navParams.get('action');
 
-    if (this.action === 'checkPin' || this.action === 'lockSetUp') {
+    if (this.action === 'checkPin' || this.action === 'checkFingerprint' || this.action === 'lockSetUp') {
       this.persistenceProvider.getLockStatus().then((isLocked: string) => {
         if (!isLocked) return;
-        if (this.action === 'checkPin') {
+        if (this.action === 'checkPin' || this.action === 'checkFingerprint') {
           this.showLockTimer();
           this.setLockRelease();
         }
       });
+    }
+    if (this.action === 'checkFingerprint') {
+      this.unregister = this.platform.registerBackButtonAction(() => { });
+      this.checkFingerprint();
     }
   }
 
@@ -98,6 +105,13 @@ export class PinModalPage {
     this.onResumeSubscription.unsubscribe();
   }
 
+  public checkFingerprint(): void {
+    this.touchid.check().then(() => {
+      this.unregister();
+      this.navCtrl.pop({ animate: true });
+    });
+  }
+
   public close(cancelClicked?: boolean): void {
     if (this.countDown) {
       clearInterval(this.countDown);
@@ -116,7 +130,7 @@ export class PinModalPage {
     this.incorrect = false;
     this.currentPin = this.currentPin + value;
     if (!this.isComplete()) return;
-    if (this.action === 'checkPin' || this.action === 'lockSetUp') {
+    if (this.action === 'checkPin' || this.action === 'checkFingerprint' || this.action === 'lockSetUp') {
       setTimeout(() => {
         this.checkIfCorrect();
       }, 100);
@@ -195,7 +209,7 @@ export class PinModalPage {
     let config = this.configProvider.get();
     let pinValue = config.lock && config.lock.pin && config.lock.pin.value;
     if (pinValue == this.currentPin) {
-      if (this.action === 'checkPin' || this.action === 'lockSetUp') {
+      if (this.action === 'checkPin' || this.action === 'checkFingerprint' || this.action === 'lockSetUp') {
         this.close();
       }
     } else {
