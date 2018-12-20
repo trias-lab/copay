@@ -307,11 +307,9 @@
         </div>
       </ion-list>
       <!-- </div> -->
-
-      <div class="card" *ngIf="walletsEth && walletsEth[0]">
-
-        <ion-list reorder="{{showReorderEth}}" (ionItemReorder)="reorderWalletsEth($event)">
-          <button ion-item *ngFor="let wallet of walletsEth" (click)="goToWalletDetails(wallet)">
+      <ion-list reorder="{{showReorderEth}}" (ionItemReorder)="reorderWalletsEth($event)" *ngIf="walletsEth && walletsEth[0] && (selectedCoinType=='eth' || selectedCoinType=='all')">
+        <div class="card" *ngFor="let wallet of walletsEth" (click)="goToWalletDetails(wallet)">
+          <button ion-item>
             <ion-icon class="item-img" item-start>
               <img *ngIf="wallet.network == 'testnet'" src="assets/img/icon-wallet-testnet.svg" class="icon-wallet" />
               <img *ngIf="wallet.network != 'testnet'" src="assets/img/img_wallet_ETH@2x.png" class="icon-wallet" />
@@ -344,8 +342,8 @@
 
             </div>
           </button>
-        </ion-list>
-      </div>
+        </div>
+      </ion-list>
 
       <div class="card" *ngIf="showBitPayCard && bitpayCardItems && bitpayCardItems[0] && wallets &&wallets[0]">
         <ion-item-divider>
