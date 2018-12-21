@@ -795,7 +795,7 @@ export class HomePage {
             let legendOne = {
               color: this.legendColors[index],
               name: balanceItem.name,
-              percent: this.totalBalance == 0 ? 0 : (balanceItem.alternativeBalance * 100 / this.totalBalance).toFixed(0)
+              percent: this.totalBalance ? Math.round(balanceItem.alternativeBalance * 100 / this.totalBalance) : 0
             }
             this.selectedLegendColors.push(this.legendColors[index]);
             this.balanceLegend.push(legendOne);
