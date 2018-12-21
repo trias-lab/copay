@@ -765,7 +765,7 @@ export class HomePage {
 
         }
 
-        let alternativeUnitOne = wallet.status.alternativeIsoCode;
+        let alternativeUnitOne = wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : '';
         let amount = banlance.split(' ')[0];
         if (amount && amount.indexOf(",") != -1) {
           amount = amount.replace(/,/g, "");
@@ -795,7 +795,7 @@ export class HomePage {
             let legendOne = {
               color: this.legendColors[index],
               name: balanceItem.name,
-              percent: this.totalBalance == 0 ? 0 : balanceItem.alternativeBalance * 100 / this.totalBalance
+              percent: this.totalBalance == 0 ? 0 : (balanceItem.alternativeBalance * 100 / this.totalBalance).toFixed(0)
             }
             this.selectedLegendColors.push(this.legendColors[index]);
             this.balanceLegend.push(legendOne);
