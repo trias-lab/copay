@@ -166,6 +166,7 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
+    // if (!this.chartLegend) {
     const ec = echarts as any;
     let chart = ec.init(document.getElementById('chart'));
     this.balanceChart = chart;
@@ -205,6 +206,8 @@ export class HomePage {
       ]
     };
     this.balanceChart.setOption(optionchart);
+    // }
+
 
     this._willEnter();
     if (this.plt.is('ios')) {
@@ -224,6 +227,7 @@ export class HomePage {
 
     // Update list of wallets, status and TXPs
     this.setWallets();
+    this.logger.warn('this.chartLegend!', this.chartLegend);
 
     this.addressBookProvider
       .list()
