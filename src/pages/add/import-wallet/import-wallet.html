@@ -25,7 +25,8 @@
         <li translate>The Wallet Service URL</li>
       </ul>
       <small>
-        <span translate>NOTE: To import a wallet from a 3rd party software, please go to Add Wallet, Create Wallet, and specify the Recovery Phrase there.</span>
+        <span translate>NOTE: To import a wallet from a 3rd party software, please go to Add Wallet, Create Wallet, and
+          specify the Recovery Phrase there.</span>
       </small>
     </ion-item>
   </ion-card>
@@ -39,7 +40,8 @@
 
     <div *ngIf="selectedTab == 'file'">
       <ion-item class="hide-validation" *ngIf="!isSafari && !isCordova">
-        <ion-input class="upload-hidden" type="file" accept="json" [(ngModel)]="formFile" (change)="fileChangeEvent($event)" formControlName="file"></ion-input>
+        <ion-input class="upload-hidden" type="file" accept="json" [(ngModel)]="formFile" (change)="fileChangeEvent($event)"
+          formControlName="file"></ion-input>
         <div item-content class="upload-ui">
           <div class="empty-message">{{'Choose a backup file from your computer' | translate}}&hellip;</div>
           <div class="filled-message">{{prettyFileName}}</div>
@@ -59,9 +61,11 @@
 
     <ion-item *ngIf="selectedTab != 'file'">
       <ion-label stacked>{{'Coin' | translate}}</ion-label>
-      <ion-select okText="{{okText}}" cancelText="{{cancelText}}" placeholder="{{'Select a coin' | translate}}" formControlName="coin">
+      <ion-select okText="{{okText}}" cancelText="{{cancelText}}" placeholder="{{'Select a coin' | translate}}"
+        formControlName="coin">
         <ion-option value="btc">Bitcoin (BTC)</ion-option>
         <ion-option value="bch">Bitcoin Cash (BCH)</ion-option>
+        <ion-option value="eth">Ethereum (ETH)</ion-option>
       </ion-select>
     </ion-item>
 
@@ -85,7 +89,8 @@
 
         <label-tip type="info" header="no-header">
           <div label-tip-body translate>
-            This field is only for users who, in previous versions (it's not supported anymore), set a password to protect their recovery phrase. This field is not for your encrypt password.
+            This field is only for users who, in previous versions (it's not supported anymore), set a password to
+            protect their recovery phrase. This field is not for your encrypt password.
           </div>
         </label-tip>
 
@@ -102,7 +107,9 @@
         <label-tip *ngIf="importForm.value.testnetEnabled" type="warn">
           <span label-tip-title translate>Testnet Wallet</span>
           <div label-tip-body translate>
-            The testnet is an alternative Bitcoin block chain, to be used for testing. Testnet coins are separate and distinct from actual bitcoins, and do not have any value. This allows application developers or bitcoin testers to experiment, without having to use real bitcoins.
+            The testnet is an alternative Bitcoin block chain, to be used for testing. Testnet coins are separate and
+            distinct from actual bitcoins, and do not have any value. This allows application developers or bitcoin
+            testers to experiment, without having to use real bitcoins.
           </div>
         </label-tip>
 
