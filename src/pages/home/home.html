@@ -27,12 +27,12 @@
   <div id="chart"></div>
   <div class="account-detail">
     <p>Account Balance</p>
-    <h2>{{totalBalance}} {{alternativeUnit}}</h2>
+    <h2>{{totalBalance ? totalBalance.toFixed(2) : 0}} {{alternativeUnit}}</h2>
     <div class="chart-legend">
       <a *ngFor="let legend of balanceLegend">
         <span [ngStyle]="{'background-color': legend.color}"></span>
-        {{legend.name}}
-        <b>{{legend.percent}}%</b></a>
+        {{legend.name ? legend.name : ''}}
+        <b>{{legend.percent ? legend.percent : 0}}%</b></a>
     </div>
   </div>
   <div class="wrapper">
@@ -203,7 +203,7 @@
               <img *ngIf="wallet.network != 'testnet'" src="assets/img/img_wallet_BTC@2x.png" class="icon-wallet" />
             </ion-icon>
             <div class="item-title">
-              <span class="name">{{wallet.name}}</span>
+              <span class="name">{{wallet.name ? wallet.name : ''}}</span>
               <span class="amount" *ngIf="wallet.isComplete() && !wallet.needsBackup">
                 <span *ngIf="!wallet.balanceHidden && !wallet.scanning">
                   {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr.split(' ')[0]) : (
@@ -233,7 +233,7 @@
 
               <span class="dollar-value">
                 {{(wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
-                {{wallet.status.totalBalanceAlternative}}
+                {{wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}}
                 {{wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
 
             </div>
@@ -271,7 +271,7 @@
               <img *ngIf="wallet.network != 'testnet'" src="assets/img/img_wallet_BCH@2x.png" class="icon-wallet" />
             </ion-icon>
             <div class="item-title clearfix">
-              <span class="name">{{wallet.name}}</span>
+              <span class="name">{{wallet.name ? wallet.name : ''}}</span>
               <span class="amount" *ngIf="wallet.isComplete() && !wallet.needsBackup">
                 <span *ngIf="!wallet.balanceHidden && !wallet.scanning">
                   {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr.split(' ')[0]) : (
@@ -301,7 +301,7 @@
               </span>
               <span class="dollar-value">
                 {{(wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
-                {{wallet.status.totalBalanceAlternative}}
+                {{wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}}
                 {{wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
 
             </div>
@@ -317,7 +317,7 @@
               <img *ngIf="wallet.network != 'testnet'" src="assets/img/img_wallet_ETH@2x.png" class="icon-wallet" />
             </ion-icon>
             <div class="item-title clearfix">
-              <span class="name">{{wallet.name}}</span>
+              <span class="name">{{wallet.name ? wallet.name : ''}}</span>
               <span class="amount" *ngIf="wallet.isComplete() && !wallet.needsBackup">
                 <span *ngIf="!wallet.balanceHidden && !wallet.scanning">
                   {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr.split(' ')[0]) : (
@@ -339,7 +339,7 @@
               </span>
               <span class="dollar-value">
                 {{(wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
-                {{wallet.status.totalBalanceAlternative}}
+                {{wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}}
                 {{wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
 
             </div>
