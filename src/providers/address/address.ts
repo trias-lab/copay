@@ -8,10 +8,12 @@ export class AddressProvider {
   private bitcore;
   private bitcoreCash;
   private Bitcore;
+  private bitcoreEth;
 
   constructor(private bwcProvider: BwcProvider) {
     this.bitcore = this.bwcProvider.getBitcore();
     this.bitcoreCash = this.bwcProvider.getBitcoreCash();
+    this.bitcoreEth = this.bwcProvider.getBitcoreEth();
     this.Bitcore = {
       btc: {
         lib: this.bitcore,
@@ -20,12 +22,19 @@ export class AddressProvider {
       bch: {
         lib: this.bitcoreCash,
         translateTo: 'btc'
+      },
+      eth: {
+        lib: this.bitcoreEth,
+        translateTo: 'eth'
       }
     };
   }
 
   public getCoin(address: string) {
-    address = address.replace(/^(bitcoincash:|bchtest:|bitcoin:)/i, '');
+    address = address.replace(
+      /^(bitcoincash:|bchtest:|bitcoin:|bitcoreEth:)/i,
+      ''
+    );
     try {
       new this.Bitcore['btc'].lib.Address(address);
       return 'btc';
@@ -34,13 +43,21 @@ export class AddressProvider {
         new this.Bitcore['bch'].lib.Address(address);
         return 'bch';
       } catch (e) {
-        return null;
+        try {
+          new this.Bitcore['eth'].lib.Address(address);
+          return 'eth';
+        } catch (e) {
+          return null;
+        }
       }
     }
   }
 
   public getNetwork(address: string) {
-    address = address.replace(/^(bitcoincash:|bchtest:|bitcoin:)/i, '');
+    address = address.replace(
+      /^(bitcoincash:|bchtest:|bitcoin:|bitcoreEth:)/i,
+      ''
+    );
     let network;
     try {
       network = this.bwcProvider.getBitcore().Address(address).network.name;
@@ -48,7 +65,12 @@ export class AddressProvider {
       try {
         network = this.bwcProvider.getBitcoreCash().Address(address).network
           .name;
-      } catch (e) {}
+      } catch (e) {
+        try {
+          network = this.bwcProvider.getBitcoreEth().Address(address).network
+            .name;
+        } catch (e) {}
+      }
     }
     return network;
   }
@@ -75,14 +97,24 @@ export class AddressProvider {
   public validateAddress(address: string) {
     let Address = this.bitcore.Address;
     let AddressCash = this.bitcoreCash.Address;
+    let AddressEth = this.bitcoreEth.Address;
     let isLivenet = Address.isValid(address, 'livenet');
     let isTestnet = Address.isValid(address, 'testnet');
     let isLivenetCash = AddressCash.isValid(address, 'livenet');
     let isTestnetCash = AddressCash.isValid(address, 'testnet');
+    let isLivenetEth = AddressEth.isValid(address, 'livenet');
+    let isTestnetEth = AddressEth.isValid(address, 'testnet');
     return {
       address,
-      isValid: isLivenet || isTestnet || isLivenetCash || isTestnetCash,
-      network: isTestnet || isTestnetCash ? 'testnet' : 'livenet',
+      isValid:
+        isLivenet ||
+        isTestnet ||
+        isLivenetCash ||
+        isTestnetCash ||
+        isLivenetEth ||
+        isTestnetEth,
+      network:
+        isTestnet || isTestnetCash || isTestnetEth ? 'testnet' : 'livenet',
       coin: this.getCoin(address),
       translation: this.translateAddress(address)
     };
@@ -117,7 +149,7 @@ export class AddressProvider {
 
   public extractAddress(address: string): string {
     let extractedAddress = address
-      .replace(/^(bitcoincash:|bchtest:|bitcoin:)/i, '')
+      .replace(/^(bitcoincash:|bchtest:|bitcoin:|bitcoreEth)/i, '')
       .replace(/\?.*/, '');
     return extractedAddress || address;
   }
@@ -127,7 +159,7 @@ export class AddressProvider {
     let Address = this.bitcore.Address;
     let URICash = this.bitcoreCash.URI;
     let AddressCash = this.bitcoreCash.Address;
-
+    let AddressEth = this.bitcoreEth.Address;
     // Bip21 uri
     let uri, isAddressValidLivenet, isAddressValidTestnet;
     if (/^bitcoin:/.test(address)) {
@@ -162,6 +194,22 @@ export class AddressProvider {
       if (isUriValid && (isAddressValidLivenet || isAddressValidTestnet)) {
         return true;
       }
+    } else if (/^bitcoreEth:/.test(address)) {
+      let isUriValid = URI.isValid(address);
+      if (isUriValid) {
+        uri = new URI(address);
+        isAddressValidLivenet = Address.isValid(
+          uri.address.toString(),
+          'livenet'
+        );
+        isAddressValidTestnet = Address.isValid(
+          uri.address.toString(),
+          'testnet'
+        );
+      }
+      if (isUriValid && (isAddressValidLivenet || isAddressValidTestnet)) {
+        return true;
+      }
     }
 
     // Regular Address: try Bitcoin and Bitcoin Cash
@@ -169,11 +217,16 @@ export class AddressProvider {
     let regularAddressTestnet = Address.isValid(address, 'testnet');
     let regularAddressCashLivenet = AddressCash.isValid(address, 'livenet');
     let regularAddressCashTestnet = AddressCash.isValid(address, 'testnet');
+
+    let regularAddressEthLivenet = AddressEth.isValid(address, 'livenet');
+    let regularAddressEthTestnet = AddressEth.isValid(address, 'testnet');
     if (
       regularAddressLivenet ||
       regularAddressTestnet ||
       regularAddressCashLivenet ||
-      regularAddressCashTestnet
+      regularAddressCashTestnet ||
+      regularAddressEthLivenet ||
+      regularAddressEthTestnet
     ) {
       return true;
     }
