@@ -123,28 +123,35 @@ export class ConfirmPage extends WalletTabsChild {
   ionViewWillEnter() {
     this.navCtrl.swipeBackEnabled = false;
     this.isOpenSelector = false;
-    let B = this.navParams.data.coin == 'bch' ? this.bitcoreCash : this.bitcore;
+    this.logger.info(
+      this.navParams.data.coin + '-_____________________________coin'
+    );
     let networkName;
-    try {
-      networkName = new B.Address(this.navParams.data.toAddress).network.name;
-    } catch (e) {
-      var message = this.translate.instant(
-        'Copay only supports Bitcoin Cash using new version numbers addresses'
-      );
-      var backText = this.translate.instant('Go back');
-      var learnText = this.translate.instant('Learn more');
-      this.popupProvider
-        .ionicConfirm(null, message, backText, learnText)
-        .then(back => {
-          if (!back) {
-            var url =
-              'https://support.bitpay.com/hc/en-us/articles/115004671663';
-            this.externalLinkProvider.open(url);
-          }
-          this.navCtrl.pop();
-        });
-      return;
-    }
+    let B = this.navParams.data.coin == 'bch' ? this.bitcoreCash : this.bitcore;
+    networkName = new B.Address(this.navParams.data.toAddress).network.name;
+    // try {
+    //   networkName = new B.Address(this.navParams.data.toAddress).network.name;
+    //   this.logger.info(
+    //     networkName + '-_____________________________networkName'
+    //   );
+    // } catch (e) {
+    //   var message = this.translate.instant(
+    //     'Copay only supports Bitcoin Cash using new version numbers addresses'
+    //   );
+    //   var backText = this.translate.instant('Go back');
+    //   var learnText = this.translate.instant('Learn more');
+    //   this.popupProvider
+    //     .ionicConfirm(null, message, backText, learnText)
+    //     .then(back => {
+    //       if (!back) {
+    //         var url =
+    //           'https://support.bitpay.com/hc/en-us/articles/115004671663';
+    //         this.externalLinkProvider.open(url);
+    //       }
+    //       this.navCtrl.pop();
+    //     });
+    //   return;
+    // }
 
     this.tx = {
       toAddress: this.navParams.data.toAddress,

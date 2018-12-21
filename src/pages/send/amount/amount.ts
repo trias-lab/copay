@@ -152,6 +152,9 @@ export class AmountPage extends WalletTabsChild {
 
   async ionViewDidLoad() {
     this.setAvailableUnits();
+    this.logger.warn(
+      this.wallet.coin + '_______________________this.wallet.coin'
+    );
     this.updateUnitUI();
     this.cardConfig =
       this.cardName &&
@@ -220,7 +223,13 @@ export class AmountPage extends WalletTabsChild {
         shortName: 'BCH'
       });
     }
-
+    if (parentWalletCoin === 'eth' || !parentWalletCoin) {
+      this.availableUnits.push({
+        name: 'Eth',
+        id: 'eth',
+        shortName: 'ETH'
+      });
+    }
     this.unitIndex = 0;
 
     if (this.navParams.data.coin) {

@@ -224,18 +224,21 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   /**
-   * When address manager in local storage is empty, call this function 
+   * When address manager in local storage is empty, call this function
    * to add all addresses in the list this.addressToAdd to local storage.
    */
   private addAllAddress() {
-    let addressItem = this.addressToAdd.pop()
+    let addressItem = this.addressToAdd.pop();
     if (addressItem) {
-      let addr = this.walletProvider.getAddressView(this.wallet, addressItem.address);
+      let addr = this.walletProvider.getAddressView(
+        this.wallet,
+        addressItem.address
+      );
       this.am
         .add(this.wallet, { name: 'Default', address: addr })
         .then(() => {
           this.logger.debug('----Add address ' + addr + 'to wallet manager');
-          this.addAllAddress()
+          this.addAllAddress();
         })
         .catch(err => {
           this.logger.debug(err + ': Address ' + addr);
@@ -258,7 +261,10 @@ export class WalletDetailsPage extends WalletTabsChild {
       })) as string;
     this.loadingAddr = false;
 
-    let addressView = await this.walletProvider.getAddressView(this.wallet, addr);
+    let addressView = await this.walletProvider.getAddressView(
+      this.wallet,
+      addr
+    );
 
     if (this.address && this.address != addressView) {
       // do something when coin is bch
@@ -266,7 +272,8 @@ export class WalletDetailsPage extends WalletTabsChild {
 
     //  If address manager is empty, or do not contain this address, add this address into it.
     this.am.list(this.wallet).then(am => {
-      if (_.isEmpty(am)) {  // if local address manager is empty
+      if (_.isEmpty(am)) {
+        // if local address manager is empty
         // add all addresses of the wallet into local storage
         this.walletProvider
           .getMainAddresses(this.wallet, {
@@ -287,7 +294,7 @@ export class WalletDetailsPage extends WalletTabsChild {
 
                 this.addressToAdd = withBalance.concat(noBalance);
 
-                this.addAllAddress()
+                this.addAllAddress();
                 this.updateAddresses();
               })
               .catch(err => {
@@ -300,13 +307,18 @@ export class WalletDetailsPage extends WalletTabsChild {
                   )
                 );
               });
-          })
-      } else if (_.isEmpty(am[addressView])) {  // if this address not stored in local storage
-        this.logger.debug('-----this address is not stored, add it into storage.')
+          });
+      } else if (_.isEmpty(am[addressView])) {
+        // if this address not stored in local storage
+        this.logger.debug(
+          '-----this address is not stored, add it into storage.'
+        );
         this.am
           .add(this.wallet, { name: 'Default', address: addressView })
           .then(() => {
-            this.logger.debug('----Add address ' + addressView + 'to wallet manager');
+            this.logger.debug(
+              '----Add address ' + addressView + 'to wallet manager'
+            );
             this.updateAddresses();
           })
           .catch(err => {
@@ -469,7 +481,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.updateTxHistoryError = false;
     this.updatingTxHistoryProgress = 0;
 
-    let progressFn = function (_, newTxs) {
+    let progressFn = function(_, newTxs) {
       if (newTxs > 5) this.thistory = null;
       this.updatingTxHistoryProgress = newTxs;
     }.bind(this);

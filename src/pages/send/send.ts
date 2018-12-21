@@ -216,12 +216,14 @@ export class SendPage extends WalletTabsChild {
   private checkCoinAndNetwork(data, isPayPro?): boolean {
     let isValid;
     if (isPayPro) {
+      this.logger.warn('1111');
       isValid = this.addressProvider.checkCoinAndNetworkFromPayPro(
         this.wallet.coin,
         this.wallet.network,
         data
       );
     } else {
+      this.logger.warn('2222');
       isValid = this.addressProvider.checkCoinAndNetworkFromAddr(
         this.wallet.coin,
         this.wallet.network,
@@ -325,6 +327,8 @@ export class SendPage extends WalletTabsChild {
         ) {
           const isValid = this.checkCoinAndNetwork(this.search);
           if (isValid) this.redir();
+        } else if (parsedData && parsedData.type == 'EthcoinAddress') {
+          this.redir();
         } else {
           this.invalidAddress = true;
         }
