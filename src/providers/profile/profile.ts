@@ -54,7 +54,7 @@ export class ProfileProvider {
     const config = this.configProvider.get();
     const defaults = this.configProvider.getDefaults();
     const defaultColor =
-      this.appProvider.info.nameCase == 'Copay' ? '#1abb9b' : '#647ce8';
+      this.appProvider.info.nameCase == 'Copay' ? '#229F20' : '#647ce8';
     // this.config.whenAvailable( (config) => { TODO
     wallet.usingCustomBWS =
       config.bwsFor &&
