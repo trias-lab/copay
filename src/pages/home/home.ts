@@ -166,16 +166,6 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
-    this._willEnter();
-    if (this.plt.is('ios')) {
-      this.statusBar.styleLightContent();
-    }
-  }
-
-  ionViewDidEnter() {
-    this._didEnter();
-    // this.balanceLegend = [{ color: '#25EAB2', percent: 0, name: 'BTC' },
-    // { color: '#AD40BB', percent: 0, name: 'BCH' }];
     const ec = echarts as any;
     let chart = ec.init(document.getElementById('chart'));
     this.balanceChart = chart;
@@ -215,6 +205,18 @@ export class HomePage {
       ]
     };
     this.balanceChart.setOption(optionchart);
+
+    this._willEnter();
+    if (this.plt.is('ios')) {
+      this.statusBar.styleLightContent();
+    }
+  }
+
+  ionViewDidEnter() {
+    this._didEnter();
+    // this.balanceLegend = [{ color: '#25EAB2', percent: 0, name: 'BTC' },
+    // { color: '#AD40BB', percent: 0, name: 'BCH' }];
+
   }
   private _willEnter() {
     // Show recent transactions card
