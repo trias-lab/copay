@@ -232,9 +232,10 @@
               </span>
 
               <span class="dollar-value">
-                {{(wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
-                {{wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}}
-                {{wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
+                {{(wallet.status && wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$'
+                : ''}}
+                {{wallet.status && wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}}
+                {{wallet.status && wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
 
             </div>
           </button>
@@ -300,9 +301,10 @@
                 Needs Backup
               </span>
               <span class="dollar-value">
-                {{(wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
-                {{wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}}
-                {{wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
+                {{(wallet.status && wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$'
+                : ''}}
+                {{wallet.status && wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}}
+                {{wallet.status && wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
 
             </div>
           </button>
@@ -338,9 +340,10 @@
                 Needs Backup
               </span>
               <span class="dollar-value">
-                {{(wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
-                {{wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}}
-                {{wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
+                {{(wallet.status && wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$'
+                : ''}}
+                {{wallet.status && wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}}
+                {{wallet.status && wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
 
             </div>
           </button>
