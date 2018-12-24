@@ -41,7 +41,7 @@ export class ConfirmPage extends WalletTabsChild {
   @ViewChild('slideButton')
   slideButton;
 
-  private bitcore;
+  // private bitcore;
   protected bitcoreCash;
 
   public countDown = null;
@@ -100,7 +100,7 @@ export class ConfirmPage extends WalletTabsChild {
     walletTabsProvider: WalletTabsProvider
   ) {
     super(navCtrl, profileProvider, walletTabsProvider);
-    this.bitcore = this.bwcProvider.getBitcore();
+    // this.bitcore = this.bwcProvider.getBitcore();
     this.bitcoreCash = this.bwcProvider.getBitcoreCash();
     this.CONFIRM_LIMIT_USD = 20;
     this.FEE_TOO_HIGH_LIMIT_PER = 15;
@@ -127,8 +127,12 @@ export class ConfirmPage extends WalletTabsChild {
       this.navParams.data.coin + '-_____________________________coin'
     );
     let networkName;
-    let B = this.navParams.data.coin == 'bch' ? this.bitcoreCash : this.bitcore;
-    networkName = new B.Address(this.navParams.data.toAddress).network.name;
+    // let B = this.navParams.data.coin == 'bch' ? this.bitcoreCash : this.bitcore;
+    // networkName = new B.Address(this.navParams.data.toAddress).network.name;
+    // this.logger.info(
+    //   networkName + '-_____________________________---------------------------networkName'
+    // );
+
     // try {
     //   networkName = new B.Address(this.navParams.data.toAddress).network.name;
     //   this.logger.info(
@@ -168,7 +172,7 @@ export class ConfirmPage extends WalletTabsChild {
       name: this.navParams.data.name,
       email: this.navParams.data.email,
       color: this.navParams.data.color,
-      network: networkName,
+      network: networkName || '',
       coin: this.navParams.data.coin,
       txp: {}
     };
