@@ -152,9 +152,6 @@ export class AmountPage extends WalletTabsChild {
 
   async ionViewDidLoad() {
     this.setAvailableUnits();
-    this.logger.warn(
-      this.wallet.coin + '_______________________this.wallet.coin'
-    );
     this.updateUnitUI();
     this.cardConfig =
       this.cardName &&

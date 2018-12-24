@@ -129,7 +129,6 @@ export class WalletDetailsPage extends WalletTabsChild {
       this.wallet.status = this.wallet.cachedStatus;
       if (this.wallet.completeHistory) this.showHistory();
     }
-
     this.requiresMultipleSignatures = this.wallet.credentials.m > 1;
 
     this.addressbookProvider
@@ -500,6 +499,11 @@ export class WalletDetailsPage extends WalletTabsChild {
           this.openBackupModal();
 
         this.wallet.completeHistory = txHistory;
+
+        this.logger.warn(
+          JSON.stringify(txHistory[0]) +
+            '__________________________________txHistory'
+        );
         this.showHistory();
       })
       .catch(() => {
