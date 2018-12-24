@@ -27,9 +27,10 @@
               <ion-col>
                 <div (longPress)="toggleBalance()">
                   <div (tap)="updateAll(true)" *ngIf="!updateStatusError && !wallet.balanceHidden && !wallet.scanning && wallet.status">
-                    <div class="balance-str">{{wallet.status.totalBalanceStr}}</div>
+                    <div class="balance-str">{{wallet.status && wallet.status.totalBalanceStr}}</div>
                     <div class="balance-alt-str">
-                      {{wallet.status.totalBalanceAlternative}} {{wallet.status.alternativeIsoCode}}
+                      {{wallet.status && wallet.status.totalBalanceAlternative}} {{wallet.status &&
+                      wallet.status.alternativeIsoCode}}
                     </div>
                   </div>
 
@@ -55,7 +56,7 @@
                   </strong>
                   &nbsp;
                   <span>
-                    ({{wallet.status.spendableBalanceAlternative}} {{wallet.status.alternativeIsoCode}})
+                    ({{wallet.status.spendableBalanceAlternative}} {{wallet.status && wallet.status.alternativeIsoCode}})
                   </span>
                   &rarr;
                 </div> -->
@@ -169,9 +170,9 @@
         <ion-item *ngIf="wallet.status && wallet.status.lockedBalanceSat" class="locked-balance">
           <span translate>Total Locked Balance</span>
           <ion-note item-end>
-            <span class="total-locked-amount">{{wallet.status.lockedBalanceStr}}</span>
-            <div class="total-alt-locked-amount">{{wallet.status.lockedBalanceAlternative}}
-              {{wallet.status.alternativeIsoCode}}</div>
+            <span class="total-locked-amount">{{wallet.status && wallet.status.lockedBalanceStr}}</span>
+            <div class="total-alt-locked-amount">{{wallet.status && wallet.status.lockedBalanceAlternative}}
+              {{wallet.status && wallet.status.alternativeIsoCode}}</div>
           </ion-note>
         </ion-item>
       </ion-list>

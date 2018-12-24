@@ -21,11 +21,11 @@
         </div>
         <div class="balance">
           <span class="total">
-            {{status.totalBalanceStr}}
+            {{status && status.totalBalanceStr}}
           </span>
           <div>
             <span class="fiat">
-              {{status.totalBalanceAlternative}} {{status.alternativeIsoCode}}
+              {{status && status.totalBalanceAlternative}} {{status && status.alternativeIsoCode}}
             </span>
           </div>
         </div>
@@ -45,11 +45,11 @@
         </div>
         <div class="balance">
           <span class="available">
-            {{status.spendableBalanceStr}}
+            {{status && status.spendableBalanceStr}}
           </span>
           <div>
             <span class="fiat">
-              {{status.spendableBalanceAlternative}} {{status.alternativeIsoCode}}
+              {{status && status.spendableBalanceAlternative}} {{status && status.alternativeIsoCode}}
             </span>
           </div>
         </div>
@@ -69,11 +69,11 @@
         </div>
         <div class="balance">
           <span class="confirming">
-            {{status.pendingBalanceStr}}
+            {{status && status.pendingBalanceStr}}
           </span>
           <div>
             <span class="fiat">
-              {{status.pendingBalanceAlternative}} {{status.alternativeIsoCode}}
+              {{status && status.pendingBalanceAlternative}} {{status && status.alternativeIsoCode}}
             </span>
           </div>
         </div>
@@ -93,11 +93,11 @@
         </div>
         <div class="balance">
           <span class="locked">
-            {{status.lockedBalanceStr}}
+            {{status && status.lockedBalanceStr}}
           </span>
           <div>
             <span class="fiat">
-              {{status.lockedBalanceAlternative}} {{status.alternativeIsoCode}}
+              {{status && status.lockedBalanceAlternative}} {{status && status.alternativeIsoCode}}
             </span>
           </div>
         </div>
@@ -105,7 +105,9 @@
     </ion-item>
     <label-tip type="info" header="no-header">
       <div label-tip-body translate>
-          The amount of bitcoin stored in this wallet that is allocated as inputs to your pending transaction proposals. The amount is determined using unspent transaction outputs associated with this wallet and may be more than the actual amounts associated with your pending transaction proposals.
+        The amount of bitcoin stored in this wallet that is allocated as inputs to your pending transaction proposals.
+        The amount is determined using unspent transaction outputs associated with this wallet and may be more than the
+        actual amounts associated with your pending transaction proposals.
       </div>
     </label-tip>
 
