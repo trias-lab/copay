@@ -299,8 +299,8 @@
               <ion-note item-end text-end>
                 <div class="amount">
                   <span [ngClass]="{'received': tx.action == 'received','sent': tx.action=='sent'}" *ngIf="tx.action != 'invalid'">{{tx.action
-                    == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{tx.amount |
-                    satToUnit: wallet.coin}}</span>
+                    == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{wallet.coin !== 'eth' ? (tx.amount | satToUnit:
+                    wallet.coin) : (tx.amount | weiToUnit: wallet.coin)}}</span>
                   <span class="double-spend" *ngIf="tx.action == 'invalid'" translate>(possible double spend)</span>
                 </div>
               </ion-note>

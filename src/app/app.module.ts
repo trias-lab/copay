@@ -34,6 +34,7 @@ import { KeysPipe } from '../pipes/keys';
 import { OrderByPipe } from '../pipes/order-by';
 import { SatToFiatPipe } from '../pipes/satToFiat';
 import { SatToUnitPipe } from '../pipes/satToUnit';
+import { WeiToUnitPipe } from '../pipes/weiToUnit';
 
 /* Directives */
 import { Animate } from '../directives/animate/animate';
@@ -95,6 +96,7 @@ export class MyMissingTranslationHandler implements MissingTranslationHandler {
     FormatCurrencyPipe,
     KeysPipe,
     SatToUnitPipe,
+    WeiToUnitPipe,
     SatToFiatPipe,
     OrderByPipe
   ],
