@@ -26,9 +26,13 @@ export class WalletTransactionHistoryPage {
   public csvFilename;
   public csvHeader: string[];
   public unitToSatoshi: number;
+  public unitToWei: number;
   public unitDecimals: number;
   public satToUnit: number;
+  public weiToUnit: number;
   public satToBtc: number;
+  public weiToEth: number;
+  public unitToCoin: number;
 
   private currency: string;
 
@@ -56,10 +60,15 @@ export class WalletTransactionHistoryPage {
     this.isCordova = this.platformProvider.isCordova;
     this.appName = this.appProvider.info.nameCase;
     this.config = this.configProvider.get();
-    this.unitToSatoshi = this.config.wallet.settings.unitToSatoshi;
+    this.unitToSatoshi = this.config.wallet.settings.unitToWei;
+    this.unitToWei = this.config.wallet.settings.unitToSatoshi;
     this.unitDecimals = this.config.wallet.settings.unitDecimals;
     this.satToUnit = 1 / this.unitToSatoshi;
+    this.weiToUnit = 1 / this.unitToWei;
     this.satToBtc = 1 / 100000000;
+    this.weiToEth = 1 / 1000000000000000000;
+    this.unitToCoin = this.wallet.coin !== 'eth'? this.satToBtc : this.weiToEth;
+
     this.csvHistory();
   }
 
@@ -125,12 +134,12 @@ export class WalletTransactionHistoryPage {
           }
           _amount =
             (it.action == 'sent' ? '-' : '') +
-            (amount * this.satToBtc).toFixed(8);
+            (amount * this.unitToCoin).toFixed(8);
           _note = it.message || '';
           _comment = it.note ? it.note.body : '';
 
           if (it.action == 'moved')
-            _note += ' Moved:' + (it.amount * this.satToBtc).toFixed(8);
+            _note += ' Moved:' + (it.amount * this.unitToCoin).toFixed(8);
 
           this.csvContent.push({
             Date: this.formatDate(it.time * 1000),
@@ -145,7 +154,7 @@ export class WalletTransactionHistoryPage {
           });
 
           if (it.fees && (it.action == 'moved' || it.action == 'sent')) {
-            var _fee = (it.fees * this.satToBtc).toFixed(8);
+            var _fee = (it.fees * this.unitToCoin).toFixed(8);
             this.csvContent.push({
               Date: this.formatDate(it.time * 1000),
               Destination: 'Bitcoin Network Fees',
