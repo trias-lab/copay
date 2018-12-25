@@ -337,7 +337,7 @@
         <div *ngIf="withBalance && withBalance[0]">
           <!-- <ion-item-divider>{{'Addresses with balance' | translate}}</ion-item-divider> -->
           <ion-item *ngFor="let w of withBalance" (click)=" editingAddr? editAddressName(w.address): this.address = w.address">
-            <h3>{{w.name}} <span>{{w.amount | satToUnit: wallet.coin}}</span></h3>
+            <h3>{{w.name}} <span>{{wallet.coin!=='eth'? (w.amount | satToUnit: wallet.coin):(w.amount | weiToUnit: wallet.coin)}}</span></h3>
             <p>{{w.address}}</p>
             <div class="selected" *ngIf="w.address == address && !editingAddr"><img src="../../assets/img/app/onboarding/icon_checkmark@2x.png"
                 alt=""></div>
