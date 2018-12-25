@@ -157,7 +157,7 @@ export class WalletTransactionHistoryPage {
             var _fee = (it.fees * this.unitToCoin).toFixed(8);
             this.csvContent.push({
               Date: this.formatDate(it.time * 1000),
-              Destination: 'Bitcoin Network Fees',
+              Destination: this.currency !== 'ETH'? 'Bitcoin Network Fees':'Ethereum Network Fees',
               Description: '',
               Amount: '-' + _fee,
               Currency: this.currency,
