@@ -239,4 +239,12 @@ export class TxFormatProvider {
     let unitDecimals = settings.unitDecimals;
     return parseFloat((amount * satToUnit).toFixed(unitDecimals));
   }
+
+  public weiToUnit(amount): number {
+    let settings = this.configProvider.get().wallet.settings;
+    let unitToWei = settings.unitToWei;
+    let weiToUnit = 1 / unitToWei;
+    let unitDecimals = settings.unitDecimals;
+    return parseFloat((amount * weiToUnit).toFixed(unitDecimals));
+  }
 }

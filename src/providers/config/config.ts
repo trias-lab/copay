@@ -20,6 +20,7 @@ export interface Config {
     settings: {
       unitName: string;
       unitToSatoshi: number;
+      unitToWei: number;
       unitDecimals: number;
       unitCode: string;
       alternativeName: string;
@@ -137,6 +138,7 @@ const configDefault: Config = {
     settings: {
       unitName: 'BTC',
       unitToSatoshi: 100000000,
+      unitToWei: 1000000000000000000,
       unitDecimals: 8,
       unitCode: 'btc',
       alternativeName: 'US Dollar',
@@ -359,11 +361,13 @@ export class ConfigProvider {
     }
 
     if (this.configCache.wallet.settings.unitCode == 'bit') {
-      // Convert to BTC. Bits will be disabled
+      // Convert to BTC / ETH. Bits will be disabled
       this.configCache.wallet.settings.unitName =
         configDefault.wallet.settings.unitName;
       this.configCache.wallet.settings.unitToSatoshi =
         configDefault.wallet.settings.unitToSatoshi;
+        this.configCache.wallet.settings.unitToWei =
+        configDefault.wallet.settings.unitToWei;
       this.configCache.wallet.settings.unitDecimals =
         configDefault.wallet.settings.unitDecimals;
       this.configCache.wallet.settings.unitCode =
