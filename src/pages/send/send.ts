@@ -41,13 +41,16 @@ export class SendPage extends WalletTabsChild {
   public search: string = '';
   public walletsBtc;
   public walletsBch;
+  public walletsEth;
   public walletBchList: FlatWallet[];
   public walletBtcList: FlatWallet[];
+  public walletEthList: FlatWallet[];
   public contactsList = [];
   public filteredContactsList = [];
   public filteredWallets = [];
   public hasBtcWallets: boolean;
   public hasBchWallets: boolean;
+  public hasEthWallets: boolean;
   public hasContacts: boolean;
   public contactsShowMore: boolean;
   public amount: string;
@@ -99,10 +102,15 @@ export class SendPage extends WalletTabsChild {
   ionViewWillEnter() {
     this.walletsBtc = this.profileProvider.getWallets({ coin: 'btc' });
     this.walletsBch = this.profileProvider.getWallets({ coin: 'bch' });
+    this.walletsEth = this.profileProvider.getWallets({ coin: 'eth' });
     this.hasBtcWallets = !_.isEmpty(this.walletsBtc);
     this.hasBchWallets = !_.isEmpty(this.walletsBch);
+    this.hasEthWallets = !_.isEmpty(this.walletsEth);
     this.walletBchList = this.getBchWalletsList();
     this.walletBtcList = this.getBtcWalletsList();
+    this.walletEthList = this.getEthWalletsList();
+    this.logger.warn(this.walletBtcList + '-----------walletBtcList');
+    this.logger.warn(this.walletEthList + '-----------walletEthList');
     this.updateContactsList();
   }
 
@@ -117,7 +125,9 @@ export class SendPage extends WalletTabsChild {
   private getBtcWalletsList(): FlatWallet[] {
     return this.hasBtcWallets ? this.getRelevantWallets(this.walletsBtc) : [];
   }
-
+  private getEthWalletsList(): FlatWallet[] {
+    return this.hasEthWallets ? this.getRelevantWallets(this.walletsEth) : [];
+  }
   private getRelevantWallets(rawWallets): FlatWallet[] {
     return rawWallets
       .map(wallet => this.flattenWallet(wallet))
@@ -216,14 +226,12 @@ export class SendPage extends WalletTabsChild {
   private checkCoinAndNetwork(data, isPayPro?): boolean {
     let isValid;
     if (isPayPro) {
-      this.logger.warn('1111');
       isValid = this.addressProvider.checkCoinAndNetworkFromPayPro(
         this.wallet.coin,
         this.wallet.network,
         data
       );
     } else {
-      this.logger.warn('2222');
       isValid = this.addressProvider.checkCoinAndNetworkFromAddr(
         this.wallet.coin,
         this.wallet.network,
@@ -358,6 +366,11 @@ export class SendPage extends WalletTabsChild {
     }
     if (this.hasBtcWallets && this.wallet.coin === 'btc') {
       this.filteredWallets = this.walletBtcList.filter(wallet => {
+        return _.includes(wallet.name.toLowerCase(), this.search.toLowerCase());
+      });
+    }
+    if (this.hasEthWallets && this.wallet.coin === 'eth') {
+      this.filteredWallets = this.walletEthList.filter(wallet => {
         return _.includes(wallet.name.toLowerCase(), this.search.toLowerCase());
       });
     }
