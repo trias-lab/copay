@@ -122,9 +122,16 @@ export class RateProvider {
   }
 
   public getRate(code: string, chain?: string): number {
-    if (chain == 'eth') return this.ratesETH[code];
-    else if (chain == 'bch') return this.ratesBCH[code];
-    else return this.rates[code];
+    if (chain == 'eth') {
+      this.logger.info(this.ratesETH[code] + 'this.ratesETH[code]');
+      return this.ratesETH[code];
+    } else if (chain == 'bch') {
+      this.logger.info(this.ratesBCH[code] + 'this.ratesBCH[code]');
+      return this.ratesBCH[code];
+    } else {
+      this.logger.info(this.rates[code] + 'this.rates[code]');
+      return this.rates[code];
+    }
   }
 
   public getAlternatives() {
@@ -152,9 +159,14 @@ export class RateProvider {
       return null;
     }
     if (chain == 'eth') {
+      this.logger.info(satoshis + ' eth-satoshis');
+      this.logger.info(this.getRate(code, chain) + 'eth_rate');
       return satoshis * this.WEI_TO_ETH * this.getRate(code, chain);
+    } else {
+      this.logger.info(satoshis + 'btc-satoshis');
+      this.logger.info(this.getRate(code, chain) + 'btc_rate');
+      return satoshis * this.SAT_TO_BTC * this.getRate(code, chain);
     }
-    return satoshis * this.SAT_TO_BTC * this.getRate(code, chain);
   }
 
   public fromFiat(amount: number, code: string, chain: string): number {

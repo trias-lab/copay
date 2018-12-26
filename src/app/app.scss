@@ -482,7 +482,6 @@ ion-alert .alert-message {
   }
 }
 
-
 .hide-tabbar-tab {
 
   .tab-button {
@@ -519,6 +518,10 @@ ion-alert .alert-message {
 
     }
   }
+}
+
+.home-tab .tab-button:nth-child(2) {
+  display: none !important;
 }
 
 .header-extend {

@@ -109,8 +109,6 @@ export class SendPage extends WalletTabsChild {
     this.walletBchList = this.getBchWalletsList();
     this.walletBtcList = this.getBtcWalletsList();
     this.walletEthList = this.getEthWalletsList();
-    this.logger.warn(this.walletBtcList + '-----------walletBtcList');
-    this.logger.warn(this.walletEthList + '-----------walletEthList');
     this.updateContactsList();
   }
 

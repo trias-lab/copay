@@ -52,7 +52,9 @@ export class AmountPage extends WalletTabsChild {
   private altUnitIndex: number;
   private unitIndex: number;
   private unitToSatoshi: number;
+  private unitToWei: number;
   private satToUnit: number;
+  private satToWei: number;
   private unitDecimals: number;
   private zone;
   private description: string;
@@ -136,7 +138,9 @@ export class AmountPage extends WalletTabsChild {
     this.nextView = this.getNextView();
 
     this.unitToSatoshi = this.config.wallet.settings.unitToSatoshi;
+    this.unitToWei = this.config.wallet.settings.unitToWei;
     this.satToUnit = 1 / this.unitToSatoshi;
+    this.satToWei = 1 / this.unitToWei;
     this.unitDecimals = this.config.wallet.settings.unitDecimals;
 
     // BitPay Card ID or Wallet ID
@@ -178,7 +182,6 @@ export class AmountPage extends WalletTabsChild {
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    this.logger.debug('start');
     if (this.disableHardwareKeyboard) return;
     if (!event.key) return;
     // delete
@@ -333,9 +336,17 @@ export class AmountPage extends WalletTabsChild {
     if (!this.wallet) {
       return this.finish();
     }
-    const maxAmount = this.txFormatProvider.satToUnit(
-      this.wallet.status.availableBalanceSat
-    );
+    let maxAmount;
+    if (this.availableUnits[this.unitIndex].id !== 'eth') {
+      maxAmount = this.txFormatProvider.satToUnit(
+        this.wallet.status.availableBalanceSat
+      );
+    } else {
+      maxAmount = this.txFormatProvider.weiToUnit(
+        this.wallet.status.availableBalanceSat
+      );
+    }
+
     this.zone.run(() => {
       this.expression = this.availableUnits[this.unitIndex].isFiat
         ? this.toFiat(maxAmount, this.wallet.coin).toFixed(2)
@@ -421,10 +432,35 @@ export class AmountPage extends WalletTabsChild {
       if (this.availableUnits[this.unitIndex].isFiat) {
         let a = this.fromFiat(result);
         if (a) {
-          this.alternativeAmount = this.txFormatProvider.formatAmount(
-            a * this.unitToSatoshi,
-            true
+          this.logger.info(
+            'come-----------------------------------------------------------' +
+              JSON.stringify(this.availableUnits[this.unitIndex])
           );
+          this.logger.info(
+            '-----------------------------------------------------------this.unitIndex' +
+              JSON.stringify(this.unitIndex)
+          );
+          this.logger.info(
+            '-----------------------------------------------------------this.availableUnits' +
+              JSON.stringify(this.availableUnits)
+          );
+          if (this.availableUnits[this.unitIndex].id !== 'eth') {
+            this.logger.info(
+              '-----------------------------------------------------------comebtc'
+            );
+            this.alternativeAmount = this.txFormatProvider.formatAmount(
+              a * this.unitToSatoshi,
+              true
+            );
+          } else {
+            this.logger.info(
+              '-----------------------------------------------------------eeth'
+            );
+            this.alternativeAmount = this.txFormatProvider.formatAmount(
+              a * this.unitToWei,
+              true
+            );
+          }
           this.checkAmountForBitpaycard(result);
         } else {
           this.alternativeAmount = result ? 'N/A' : null;
@@ -460,25 +496,45 @@ export class AmountPage extends WalletTabsChild {
 
   private fromFiat(val, coin?: string): number {
     coin = coin || this.availableUnits[this.altUnitIndex].id;
-    return parseFloat(
-      (
-        this.rateProvider.fromFiat(val, this.fiatCode, coin) * this.satToUnit
-      ).toFixed(this.unitDecimals)
-    );
+    if (this.availableUnits[this.unitIndex].id !== 'eth') {
+      return parseFloat(
+        (
+          this.rateProvider.fromFiat(val, this.fiatCode, coin) * this.satToUnit
+        ).toFixed(this.unitDecimals)
+      );
+    } else {
+      return parseFloat(
+        (
+          this.rateProvider.fromFiat(val, this.fiatCode, coin) * this.satToWei
+        ).toFixed(this.unitDecimals)
+      );
+    }
   }
 
   private toFiat(val: number, coin?: Coin): number {
     if (!this.rateProvider.getRate(this.fiatCode)) return undefined;
 
-    return parseFloat(
-      this.rateProvider
-        .toFiat(
-          val * this.unitToSatoshi,
-          this.fiatCode,
-          coin || this.availableUnits[this.unitIndex].id
-        )
-        .toFixed(2)
-    );
+    if (this.availableUnits[this.unitIndex].id !== 'eth') {
+      return parseFloat(
+        this.rateProvider
+          .toFiat(
+            val * this.unitToSatoshi,
+            this.fiatCode,
+            coin || this.availableUnits[this.unitIndex].id
+          )
+          .toFixed(2)
+      );
+    } else {
+      return parseFloat(
+        this.rateProvider
+          .toFiat(
+            val * this.unitToWei,
+            this.fiatCode,
+            coin || this.availableUnits[this.unitIndex].id
+          )
+          .toFixed(2)
+      );
+    }
   }
 
   // format incoming character

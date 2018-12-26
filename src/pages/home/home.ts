@@ -755,7 +755,7 @@ export class HomePage {
             : wallet.cachedBalance
               ? wallet.cachedBalance
               : '';
-        this.logger.warn('111111112wallet-------', wallet);
+  
 
         // this.updateTxHistory(wallet);
 
