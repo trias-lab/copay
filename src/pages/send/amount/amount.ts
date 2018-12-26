@@ -53,8 +53,10 @@ export class AmountPage extends WalletTabsChild {
   private unitIndex: number;
   private unitToSatoshi: number;
   private unitToWei: number;
+  private unitToCoin: number;
   private satToUnit: number;
-  private satToWei: number;
+  private weiToUnit: number;
+  private coinToUnit: number;
   private unitDecimals: number;
   private zone;
   private description: string;
@@ -140,7 +142,7 @@ export class AmountPage extends WalletTabsChild {
     this.unitToSatoshi = this.config.wallet.settings.unitToSatoshi;
     this.unitToWei = this.config.wallet.settings.unitToWei;
     this.satToUnit = 1 / this.unitToSatoshi;
-    this.satToWei = 1 / this.unitToWei;
+    this.weiToUnit = 1 / this.unitToWei;
     this.unitDecimals = this.config.wallet.settings.unitDecimals;
 
     // BitPay Card ID or Wallet ID
@@ -208,6 +210,9 @@ export class AmountPage extends WalletTabsChild {
 
     const parentWalletCoin = this.wallet && this.wallet.coin;
 
+    this.unitToCoin = parentWalletCoin !== 'eth' ? this.unitToSatoshi : this.unitToWei;
+    this.coinToUnit = parentWalletCoin !== 'eth' ? this.satToUnit : this.weiToUnit;
+    
     if (parentWalletCoin === 'btc' || !parentWalletCoin) {
       this.availableUnits.push({
         name: 'Bitcoin',
@@ -336,17 +341,11 @@ export class AmountPage extends WalletTabsChild {
     if (!this.wallet) {
       return this.finish();
     }
-    let maxAmount;
-    if (this.availableUnits[this.unitIndex].id !== 'eth') {
-      maxAmount = this.txFormatProvider.satToUnit(
-        this.wallet.status.availableBalanceSat
-      );
-    } else {
-      maxAmount = this.txFormatProvider.weiToUnit(
-        this.wallet.status.availableBalanceSat
-      );
-    }
-
+    const maxAmount = this.wallet.coin!=='eth'? this.txFormatProvider.satToUnit(
+      this.wallet.status.availableBalanceSat
+    ) : this.txFormatProvider.weiToUnit(
+      this.wallet.status.availableBalanceSat
+    );
     this.zone.run(() => {
       this.expression = this.availableUnits[this.unitIndex].isFiat
         ? this.toFiat(maxAmount, this.wallet.coin).toFixed(2)
@@ -432,35 +431,10 @@ export class AmountPage extends WalletTabsChild {
       if (this.availableUnits[this.unitIndex].isFiat) {
         let a = this.fromFiat(result);
         if (a) {
-          this.logger.info(
-            'come-----------------------------------------------------------' +
-              JSON.stringify(this.availableUnits[this.unitIndex])
+          this.alternativeAmount = this.txFormatProvider.formatAmount(
+            a * this.unitToCoin,
+            true
           );
-          this.logger.info(
-            '-----------------------------------------------------------this.unitIndex' +
-              JSON.stringify(this.unitIndex)
-          );
-          this.logger.info(
-            '-----------------------------------------------------------this.availableUnits' +
-              JSON.stringify(this.availableUnits)
-          );
-          if (this.availableUnits[this.unitIndex].id !== 'eth') {
-            this.logger.info(
-              '-----------------------------------------------------------comebtc'
-            );
-            this.alternativeAmount = this.txFormatProvider.formatAmount(
-              a * this.unitToSatoshi,
-              true
-            );
-          } else {
-            this.logger.info(
-              '-----------------------------------------------------------eeth'
-            );
-            this.alternativeAmount = this.txFormatProvider.formatAmount(
-              a * this.unitToWei,
-              true
-            );
-          }
           this.checkAmountForBitpaycard(result);
         } else {
           this.alternativeAmount = result ? 'N/A' : null;
@@ -489,52 +463,31 @@ export class AmountPage extends WalletTabsChild {
       return this.filterProvider.formatFiatAmount(val);
     else
       return this.txFormatProvider.formatAmount(
-        val.toFixed(this.unitDecimals) * this.unitToSatoshi,
+        val.toFixed(this.unitDecimals) * this.unitToCoin,
         true
       );
   }
 
   private fromFiat(val, coin?: string): number {
     coin = coin || this.availableUnits[this.altUnitIndex].id;
-    if (this.availableUnits[this.unitIndex].id !== 'eth') {
-      return parseFloat(
-        (
-          this.rateProvider.fromFiat(val, this.fiatCode, coin) * this.satToUnit
-        ).toFixed(this.unitDecimals)
-      );
-    } else {
-      return parseFloat(
-        (
-          this.rateProvider.fromFiat(val, this.fiatCode, coin) * this.satToWei
-        ).toFixed(this.unitDecimals)
-      );
-    }
+    return parseFloat(
+      (
+        this.rateProvider.fromFiat(val, this.fiatCode, coin) * this.coinToUnit
+      ).toFixed(this.unitDecimals)
+    );
   }
 
   private toFiat(val: number, coin?: Coin): number {
     if (!this.rateProvider.getRate(this.fiatCode)) return undefined;
-
-    if (this.availableUnits[this.unitIndex].id !== 'eth') {
-      return parseFloat(
-        this.rateProvider
-          .toFiat(
-            val * this.unitToSatoshi,
-            this.fiatCode,
-            coin || this.availableUnits[this.unitIndex].id
-          )
-          .toFixed(2)
-      );
-    } else {
-      return parseFloat(
-        this.rateProvider
-          .toFiat(
-            val * this.unitToWei,
-            this.fiatCode,
-            coin || this.availableUnits[this.unitIndex].id
-          )
-          .toFixed(2)
-      );
-    }
+    return parseFloat(
+      this.rateProvider
+        .toFiat(
+          val * this.unitToCoin,
+          this.fiatCode,
+          coin || this.availableUnits[this.unitIndex].id
+        )
+        .toFixed(2)
+    );
   }
 
   // format incoming character
@@ -602,8 +555,9 @@ export class AmountPage extends WalletTabsChild {
     } else {
       let amount = _amount;
       amount = unit.isFiat
-        ? (this.fromFiat(amount) * this.unitToSatoshi).toFixed(0)
-        : (amount * this.unitToSatoshi).toFixed(0);
+        ? (this.fromFiat(amount) * this.unitToCoin).toFixed(0)
+        : (amount * this.unitToCoin).toFixed(0);
+
       data = {
         recipientType: this.recipientType,
         amount,

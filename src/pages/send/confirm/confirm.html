@@ -39,7 +39,7 @@
     </ion-grid>
 
     <div *ngIf="wallet && tx.txp[wallet.id]" class="send-balance ">
-      Balance: <span> {{ tx.txp[wallet.id].fee | satToUnit: tx.coin }} </span>
+      Balance: <span> {{ tx.coin !== 'eth'?(tx.txp[wallet.id].fee | satToUnit: tx.coin):(tx.txp[wallet.id].fee | weiToUnit: tx.coin) }} </span>
     </div>
 
     <!--
@@ -71,11 +71,8 @@
 
       <div class="send-balance " *ngIf="wallet && tx.txp[wallet.id]">
         <span
-          ><span class="fee-amount">{{
-            tx.txp[wallet.id].fee | satToUnit: tx.coin
-          }}</span></span
-        >
-        BTC <span> ≈ {{ tx.txp[wallet.id].fee | satToFiat: tx.coin }}</span>
+          ><span class="fee-amount">{{tx.coin!=='eth'?(tx.txp[wallet.id].fee | satToUnit: tx.coin):(tx.txp[wallet.id].fee | weiToUnit: tx.coin)}}</span></span>
+        <span> ≈ {{ tx.txp[wallet.id].fee | satToFiat: tx.coin }}</span>
         <span *ngIf="tx.txp[wallet.id].feeRatePerStr">
           &middot;
           <span>

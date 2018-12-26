@@ -214,7 +214,12 @@ export class ConfirmPage extends WalletTabsChild {
   }
 
   private getAmountDetails() {
-    this.amount = this.decimalPipe.transform(this.tx.amount / 1e8, '1.2-6');
+    if(this.tx.coin === 'eth'){
+      this.amount = this.decimalPipe.transform(this.tx.amount / 1e18, '1.2-6');
+    }else{
+      this.amount = this.decimalPipe.transform(this.tx.amount / 1e8, '1.2-6');
+    }
+    
   }
 
   private afterWalletSelectorSet() {
