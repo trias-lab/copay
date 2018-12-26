@@ -54,7 +54,7 @@ export class SettingsPage {
 
   public pinLock;
   public fingerprintLock;
-  public needsBackupMsg: string;
+  // public needsBackupMsg: string;
 
   constructor(
     private navCtrl: NavController,
@@ -169,43 +169,43 @@ export class SettingsPage {
 
   private checkFingerprintLock() {
     let lockOptions = this.configProvider.get().lock;
-    let needsBackup = this.needsBackup();
+    // let needsBackup = this.needsBackup();
     this.touchid.isAvailable().then((type: any) => {
       if (type) {
         this.fingerprintLock = {
           label: type == "touch" ? "Touch ID" : "Face ID",
           enabled: lockOptions.fingerprint !== null,
-          disabled: needsBackup
+          // disabled: needsBackup
         }
       }
     });
   }
 
-  private needsBackup() {
-    let wallets = this.profileProvider.getWallets();
-    let singleLivenetWallet =
-      wallets.length == 1 &&
-      wallets[0].network == 'livenet' &&
-      wallets[0].needsBackup;
-    let atLeastOneLivenetWallet = _.find(wallets, w => {
-      return w.network == 'livenet' && w.needsBackup;
-    });
+  // private needsBackup() {
+  //   let wallets = this.profileProvider.getWallets();
+  //   let singleLivenetWallet =
+  //     wallets.length == 1 &&
+  //     wallets[0].network == 'livenet' &&
+  //     wallets[0].needsBackup;
+  //   let atLeastOneLivenetWallet = _.find(wallets, w => {
+  //     return w.network == 'livenet' && w.needsBackup;
+  //   });
 
-    if (singleLivenetWallet) {
-      this.needsBackupMsg = this.translate.instant(
-        'Back up your wallet before using this function'
-      );
-      return true;
-    } else if (atLeastOneLivenetWallet) {
-      this.needsBackupMsg = this.translate.instant(
-        'Back up all your wallets before using this function'
-      );
-      return true;
-    } else {
-      this.needsBackupMsg = null;
-      return false;
-    }
-  }
+  //   if (singleLivenetWallet) {
+  //     this.needsBackupMsg = this.translate.instant(
+  //       'Back up your wallet before using this function'
+  //     );
+  //     return true;
+  //   } else if (atLeastOneLivenetWallet) {
+  //     this.needsBackupMsg = this.translate.instant(
+  //       'Back up all your wallets before using this function'
+  //     );
+  //     return true;
+  //   } else {
+  //     this.needsBackupMsg = null;
+  //     return false;
+  //   }
+  // }
 
   public openAddressBookPage(): void {
     this.navCtrl.push(AddressbookPage);
