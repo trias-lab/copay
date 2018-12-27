@@ -1,6 +1,16 @@
 page-import-wallet {
+  .segment-ios-primary .segment-button.segment-activated {
+    background: transparent;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(20, 42, 63, 1);
+    line-height: 24px;
+    border: none;
+  }
+
   .assertive {
     color: color($colors, danger);
+
     ion-label {
       white-space: inherit;
     }
@@ -10,26 +20,32 @@ page-import-wallet {
     border-bottom-color: #f4f4f4 !important;
     box-shadow: none !important;
   }
+
   .scanner-icon {
     z-index: 99;
     font-size: 28px;
     color: color($colors, primary);
   }
+
   $upload-box-height: 200px;
+
   .upload-hidden {
     opacity: 0;
     height: $upload-box-height;
     z-index: 1;
-    & > input {
+
+    &>input {
       height: 100%;
       margin: 0;
       cursor: pointer;
     }
   }
-  .ng-invalid + .upload-ui > .filled-message,
-  .ng-valid + .upload-ui > .empty-message {
+
+  .ng-invalid+.upload-ui>.filled-message,
+  .ng-valid+.upload-ui>.empty-message {
     display: none;
   }
+
   .upload-ui {
     display: flex;
     justify-content: center;
@@ -51,7 +67,8 @@ page-import-wallet {
     color: #999;
     font-style: italic;
   }
-  .ng-valid + .upload-ui {
+
+  .ng-valid+.upload-ui {
     border: 3px solid lighten(color($colors, success), 20%);
     color: color($colors, success);
     background-color: lighten(color($colors, success), 55%);

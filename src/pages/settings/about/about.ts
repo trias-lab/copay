@@ -32,7 +32,8 @@ export class AboutPage {
   ionViewDidLoad() {
     this.logger.info('Loaded: AboutPage');
     this.commitHash = this.appProvider.info.commitHash;
-    this.version = this.appProvider.info.version;
+    // this.version = this.appProvider.info.version;
+    this.version = '1.0.0';
     this.title = this.replaceParametersProvider.replace(
       this.translate.instant('About {{appName}}'),
       { appName: this.appProvider.info.nameCase }
