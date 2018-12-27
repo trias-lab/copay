@@ -649,7 +649,7 @@ export class ConfirmPage extends WalletTabsChild {
         return reject(msg);
       }
 
-      if (tx.amount > Number.MAX_SAFE_INTEGER) {
+      if (tx.coin !== 'eth' && tx.amount > Number.MAX_SAFE_INTEGER) {
         let msg = this.translate.instant('Amount too big');
         return reject(msg);
       }
