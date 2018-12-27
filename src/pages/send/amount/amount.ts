@@ -322,7 +322,8 @@ export class AmountPage extends WalletTabsChild {
         nextPage = ShapeshiftConfirmPage;
         break;
       default:
-        this.showSendMax = true;
+      	// hide send max for eth wallets
+        if(this.navParams.data.coin !== 'eth') this.showSendMax = true;
         nextPage = ConfirmPage;
     }
     return nextPage;
