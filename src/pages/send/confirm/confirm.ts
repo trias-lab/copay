@@ -41,7 +41,7 @@ export class ConfirmPage extends WalletTabsChild {
   @ViewChild('slideButton')
   slideButton;
 
-  // private bitcore;
+  private bitcore;
   protected bitcoreCash;
 
   public countDown = null;
@@ -100,7 +100,7 @@ export class ConfirmPage extends WalletTabsChild {
     walletTabsProvider: WalletTabsProvider
   ) {
     super(navCtrl, profileProvider, walletTabsProvider);
-    // this.bitcore = this.bwcProvider.getBitcore();
+    this.bitcore = this.bwcProvider.getBitcore();
     this.bitcoreCash = this.bwcProvider.getBitcoreCash();
     this.CONFIRM_LIMIT_USD = 20;
     this.FEE_TOO_HIGH_LIMIT_PER = 15;
@@ -126,36 +126,41 @@ export class ConfirmPage extends WalletTabsChild {
     this.logger.info(
       this.navParams.data.coin + '-_____________________________coin'
     );
-    let networkName;
-    // let B = this.navParams.data.coin == 'bch' ? this.bitcoreCash : this.bitcore;
-    // networkName = new B.Address(this.navParams.data.toAddress).network.name;
-    // this.logger.info(
-    //   networkName + '-_____________________________---------------------------networkName'
-    // );
 
-    // try {
-    //   networkName = new B.Address(this.navParams.data.toAddress).network.name;
-    //   this.logger.info(
-    //     networkName + '-_____________________________networkName'
-    //   );
-    // } catch (e) {
-    //   var message = this.translate.instant(
-    //     'Copay only supports Bitcoin Cash using new version numbers addresses'
-    //   );
-    //   var backText = this.translate.instant('Go back');
-    //   var learnText = this.translate.instant('Learn more');
-    //   this.popupProvider
-    //     .ionicConfirm(null, message, backText, learnText)
-    //     .then(back => {
-    //       if (!back) {
-    //         var url =
-    //           'https://support.bitpay.com/hc/en-us/articles/115004671663';
-    //         this.externalLinkProvider.open(url);
-    //       }
-    //       this.navCtrl.pop();
-    //     });
-    //   return;
-    // }
+    let networkName;
+    if(this.navParams.data.coin == 'eth'){
+      networkName = 'livenet';
+    }else{
+      let B = this.navParams.data.coin == 'bch' ? this.bitcoreCash : this.bitcore;
+      networkName = new B.Address(this.navParams.data.toAddress).network.name;
+      this.logger.info(
+        networkName + '-_____________________________---------------------------networkName'
+      );
+
+      try {
+        networkName = new B.Address(this.navParams.data.toAddress).network.name;
+        this.logger.info(
+          networkName + '-_____________________________networkName'
+        );
+      } catch (e) {
+        var message = this.translate.instant(
+          'Copay only supports Bitcoin Cash using new version numbers addresses'
+        );
+        var backText = this.translate.instant('Go back');
+        var learnText = this.translate.instant('Learn more');
+        this.popupProvider
+          .ionicConfirm(null, message, backText, learnText)
+          .then(back => {
+            if (!back) {
+              var url =
+                'https://support.bitpay.com/hc/en-us/articles/115004671663';
+              this.externalLinkProvider.open(url);
+            }
+            this.navCtrl.pop();
+          });
+        return;
+      }
+    }    
 
     this.tx = {
       toAddress: this.navParams.data.toAddress,
@@ -806,7 +811,7 @@ export class ConfirmPage extends WalletTabsChild {
         let amountUsd = parseFloat(val);
         if (amountUsd <= this.CONFIRM_LIMIT_USD) return resolve();
 
-        let amount = (this.tx.amount / 1e8).toFixed(8);
+        let amount = txp.coin!=='eth'?(this.tx.amount / 1e8).toFixed(8):(this.tx.amount / 1e18).toFixed(8);
         let unit = txp.coin.toUpperCase();
         let name = wallet.name;
         let message = this.replaceParametersProvider.replace(
