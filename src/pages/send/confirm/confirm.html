@@ -39,7 +39,7 @@
     </ion-grid>
 
     <div *ngIf="wallet && tx.txp[wallet.id]" class="send-balance ">
-      Balance: <span> {{ tx.coin !== 'eth'?(tx.txp[wallet.id].fee | satToUnit: tx.coin):(tx.txp[wallet.id].fee | weiToUnit: tx.coin) }} </span>
+      Balance: <span>{{wallet.status && wallet.status.totalBalanceStr}}</span>
     </div>
 
     <!--
