@@ -44,7 +44,7 @@
         <ion-note item-end>
           <span *ngIf="loadingFee">...</span>
           <span *ngIf="feePerSatByte && !loadingFee">
-            {{ feePerSatByte }} sat/byte
+            {{ feePerSatByte }} {{coin !== 'eth'?'sat/byte':'Gwei'}}
           </span>
         </ion-note>
       </ion-item>

@@ -82,8 +82,8 @@ export class FeeProvider {
                 '/' +
                 network +
                 ' ' +
-                (feeLevelRate.feePerKb / 1000).toFixed() +
-                ' SAT/B'
+                (coin !=='eth' ? (feeLevelRate.feePerKb / 1000).toFixed():(feeLevelRate.feePerKb / 1000000000).toFixed()) +
+                (coin !=='eth' ? ' SAT/B' : ' Gwei')
             );
           return resolve(feeRate);
         })
