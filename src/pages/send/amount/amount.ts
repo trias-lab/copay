@@ -210,9 +210,11 @@ export class AmountPage extends WalletTabsChild {
 
     const parentWalletCoin = this.wallet && this.wallet.coin;
 
-    this.unitToCoin = parentWalletCoin !== 'eth' ? this.unitToSatoshi : this.unitToWei;
-    this.coinToUnit = parentWalletCoin !== 'eth' ? this.satToUnit : this.weiToUnit;
-    
+    this.unitToCoin =
+      parentWalletCoin !== 'eth' ? this.unitToSatoshi : this.unitToWei;
+    this.coinToUnit =
+      parentWalletCoin !== 'eth' ? this.satToUnit : this.weiToUnit;
+
     if (parentWalletCoin === 'btc' || !parentWalletCoin) {
       this.availableUnits.push({
         name: 'Bitcoin',
@@ -322,8 +324,8 @@ export class AmountPage extends WalletTabsChild {
         nextPage = ShapeshiftConfirmPage;
         break;
       default:
-      	// hide send max for eth wallets
-        if(this.navParams.data.coin !== 'eth') this.showSendMax = true;
+        // hide send max for eth wallets
+        if (this.navParams.data.coin !== 'eth') this.showSendMax = true;
         nextPage = ConfirmPage;
     }
     return nextPage;
@@ -342,11 +344,14 @@ export class AmountPage extends WalletTabsChild {
     if (!this.wallet) {
       return this.finish();
     }
-    const maxAmount = this.wallet.coin!=='eth'? this.txFormatProvider.satToUnit(
-      this.wallet.status.availableBalanceSat
-    ) : this.txFormatProvider.weiToUnit(
-      this.wallet.status.availableBalanceSat
-    );
+    const maxAmount =
+      this.wallet.coin !== 'eth'
+        ? this.txFormatProvider.satToUnit(
+            this.wallet.status.availableBalanceSat
+          )
+        : this.txFormatProvider.weiToUnit(
+            this.wallet.status.availableBalanceSat
+          );
     this.zone.run(() => {
       this.expression = this.availableUnits[this.unitIndex].isFiat
         ? this.toFiat(maxAmount, this.wallet.coin).toFixed(2)
@@ -434,7 +439,8 @@ export class AmountPage extends WalletTabsChild {
         if (a) {
           this.alternativeAmount = this.txFormatProvider.formatAmount(
             a * this.unitToCoin,
-            true
+            true,
+            this.wallet.coin
           );
           this.checkAmountForBitpaycard(result);
         } else {
