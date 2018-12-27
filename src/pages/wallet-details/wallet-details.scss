@@ -122,7 +122,7 @@ page-wallet-details {
         background:rgba(0,0,0,1);
       }
     }
-    .add-addr-btn, .edit-addr-btn, .done-addr-btn {
+    .add-addr-btn, .edit-addr-btn, .done-addr-btn, .search-tx-btn, ion-spinner {
       display: inline-block;
       margin-top: 20px;
       float: right;
@@ -131,6 +131,11 @@ page-wallet-details {
       line-height: 18px;
       img{
         width: 18px;
+      }
+    }
+    ion-spinner {
+      * {
+        stroke: #6E767D;
       }
     }
     .done-addr-btn{
@@ -390,18 +395,18 @@ page-wallet-details {
       flex-grow: 1;
       padding-left: 2px;
     }
-    .search-button {
-      padding: 0;
-      padding-bottom: 8px;
-    }
-    ion-spinner {
-      margin: 0;
-      width: 20px;
-      height: 20px;
-      * {
-        stroke: color($colors, light);
-      }
-    }
+    // .search-button {
+    //   padding: 0;
+    //   padding-bottom: 8px;
+    // }
+    // ion-spinner {
+    //   margin: 0;
+    //   width: 20px;
+    //   height: 20px;
+    //   * {
+    //     stroke: #6E767D;
+    //   }
+    // }
   }
   .icon-services {
     border-radius: 50%;
