@@ -325,7 +325,7 @@ export class AmountPage extends WalletTabsChild {
         break;
       default:
         // hide send max for eth wallets
-        if (this.navParams.data.coin !== 'eth') this.showSendMax = true;
+        if (this.navParams.data.coin !== 'eth' && this.navParams.data.coin !== 'tri') this.showSendMax = true;
         nextPage = ConfirmPage;
     }
     return nextPage;
@@ -347,11 +347,11 @@ export class AmountPage extends WalletTabsChild {
     const maxAmount =
       this.wallet.coin !== 'eth'
         ? this.txFormatProvider.satToUnit(
-            this.wallet.status.availableBalanceSat
-          )
+          this.wallet.status.availableBalanceSat
+        )
         : this.txFormatProvider.weiToUnit(
-            this.wallet.status.availableBalanceSat
-          );
+          this.wallet.status.availableBalanceSat
+        );
     this.zone.run(() => {
       this.expression = this.availableUnits[this.unitIndex].isFiat
         ? this.toFiat(maxAmount, this.wallet.coin).toFixed(2)
@@ -592,9 +592,9 @@ export class AmountPage extends WalletTabsChild {
     this.processAmount();
     this.logger.debug(
       'Update unit coin @amount unit:' +
-        this.unit +
-        ' alternativeUnit:' +
-        this.alternativeUnit
+      this.unit +
+      ' alternativeUnit:' +
+      this.alternativeUnit
     );
   }
 
