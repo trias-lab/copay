@@ -42,15 +42,18 @@ export class SendPage extends WalletTabsChild {
   public walletsBtc;
   public walletsBch;
   public walletsEth;
+  public walletsTri;
   public walletBchList: FlatWallet[];
   public walletBtcList: FlatWallet[];
   public walletEthList: FlatWallet[];
+  public walletTriList: FlatWallet[];
   public contactsList = [];
   public filteredContactsList = [];
   public filteredWallets = [];
   public hasBtcWallets: boolean;
   public hasBchWallets: boolean;
   public hasEthWallets: boolean;
+  public hasTriWallets: boolean;
   public hasContacts: boolean;
   public contactsShowMore: boolean;
   public amount: string;
@@ -103,12 +106,15 @@ export class SendPage extends WalletTabsChild {
     this.walletsBtc = this.profileProvider.getWallets({ coin: 'btc' });
     this.walletsBch = this.profileProvider.getWallets({ coin: 'bch' });
     this.walletsEth = this.profileProvider.getWallets({ coin: 'eth' });
+    this.walletsTri = this.profileProvider.getWallets({ coin: 'tri' });
     this.hasBtcWallets = !_.isEmpty(this.walletsBtc);
     this.hasBchWallets = !_.isEmpty(this.walletsBch);
     this.hasEthWallets = !_.isEmpty(this.walletsEth);
+    this.hasTriWallets = !_.isEmpty(this.walletsTri);
     this.walletBchList = this.getBchWalletsList();
     this.walletBtcList = this.getBtcWalletsList();
     this.walletEthList = this.getEthWalletsList();
+    this.walletTriList = this.getTriWalletsList();
     this.updateContactsList();
   }
 
@@ -125,6 +131,9 @@ export class SendPage extends WalletTabsChild {
   }
   private getEthWalletsList(): FlatWallet[] {
     return this.hasEthWallets ? this.getRelevantWallets(this.walletsEth) : [];
+  }
+  private getTriWalletsList(): FlatWallet[] {
+    return this.hasTriWallets ? this.getRelevantWallets(this.walletsTri) : [];
   }
   private getRelevantWallets(rawWallets): FlatWallet[] {
     return rawWallets
@@ -333,7 +342,7 @@ export class SendPage extends WalletTabsChild {
         ) {
           const isValid = this.checkCoinAndNetwork(this.search);
           if (isValid) this.redir();
-        } else if (parsedData && parsedData.type == 'EthcoinAddress') {
+        } else if (parsedData && parsedData.type == 'EthcoinAddress'||parsedData.type == 'TricoinAddress') {
           this.redir();
         } else {
           this.invalidAddress = true;
@@ -369,6 +378,11 @@ export class SendPage extends WalletTabsChild {
     }
     if (this.hasEthWallets && this.wallet.coin === 'eth') {
       this.filteredWallets = this.walletEthList.filter(wallet => {
+        return _.includes(wallet.name.toLowerCase(), this.search.toLowerCase());
+      });
+    }
+    if (this.hasTriWallets && this.wallet.coin === 'tri') {
+      this.filteredWallets = this.walletTriList.filter(wallet => {
         return _.includes(wallet.name.toLowerCase(), this.search.toLowerCase());
       });
     }

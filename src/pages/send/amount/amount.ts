@@ -210,10 +210,25 @@ export class AmountPage extends WalletTabsChild {
 
     const parentWalletCoin = this.wallet && this.wallet.coin;
 
-    this.unitToCoin =
-      parentWalletCoin !== 'eth' ? this.unitToSatoshi : this.unitToWei;
-    this.coinToUnit =
-      parentWalletCoin !== 'eth' ? this.satToUnit : this.weiToUnit;
+    if (parentWalletCoin == 'eth') {
+      this.unitToCoin = this.unitToWei;
+    } else if (parentWalletCoin == 'tri') {
+      this.unitToCoin = this.unitToWei;
+    } else {
+      this.unitToCoin = this.unitToSatoshi;
+    }
+
+    if (parentWalletCoin == 'eth') {
+      this.coinToUnit = this.weiToUnit;
+    } else if (parentWalletCoin == 'tri') {
+      this.coinToUnit = this.weiToUnit;
+    } else {
+      this.coinToUnit = this.satToUnit;
+    }
+    // this.unitToCoin =
+    //   parentWalletCoin !== 'eth' ? this.unitToSatoshi : this.unitToWei;
+    // this.coinToUnit =
+    //   parentWalletCoin !== 'eth' ? this.satToUnit : this.weiToUnit;
 
     if (parentWalletCoin === 'btc' || !parentWalletCoin) {
       this.availableUnits.push({
@@ -235,6 +250,13 @@ export class AmountPage extends WalletTabsChild {
         name: 'Eth',
         id: 'eth',
         shortName: 'ETH'
+      });
+    }
+    if (parentWalletCoin === 'tri' || !parentWalletCoin) {
+      this.availableUnits.push({
+        name: 'TRI',
+        id: 'tri',
+        shortName: 'TRI'
       });
     }
     this.unitIndex = 0;
@@ -325,7 +347,11 @@ export class AmountPage extends WalletTabsChild {
         break;
       default:
         // hide send max for eth wallets
-        if (this.navParams.data.coin !== 'eth' && this.navParams.data.coin !== 'tri') this.showSendMax = true;
+        if (
+          this.navParams.data.coin !== 'eth' &&
+          this.navParams.data.coin !== 'tri'
+        )
+          this.showSendMax = true;
         nextPage = ConfirmPage;
     }
     return nextPage;
@@ -344,14 +370,21 @@ export class AmountPage extends WalletTabsChild {
     if (!this.wallet) {
       return this.finish();
     }
-    const maxAmount =
-      this.wallet.coin !== 'eth'
-        ? this.txFormatProvider.satToUnit(
-          this.wallet.status.availableBalanceSat
-        )
-        : this.txFormatProvider.weiToUnit(
-          this.wallet.status.availableBalanceSat
-        );
+    let maxAmount;
+    if (this.wallet.coin == 'eth') {
+      maxAmount = this.txFormatProvider.weiToUnit(
+        this.wallet.status.availableBalanceSat
+      );
+    } else if (this.wallet.coin == 'tri') {
+      maxAmount = this.txFormatProvider.weiToUnit(
+        this.wallet.status.availableBalanceSat
+      );
+    } else {
+      maxAmount = this.txFormatProvider.satToUnit(
+        this.wallet.status.availableBalanceSat
+      );
+    }
+
     this.zone.run(() => {
       this.expression = this.availableUnits[this.unitIndex].isFiat
         ? this.toFiat(maxAmount, this.wallet.coin).toFixed(2)
@@ -592,9 +625,9 @@ export class AmountPage extends WalletTabsChild {
     this.processAmount();
     this.logger.debug(
       'Update unit coin @amount unit:' +
-      this.unit +
-      ' alternativeUnit:' +
-      this.alternativeUnit
+        this.unit +
+        ' alternativeUnit:' +
+        this.alternativeUnit
     );
   }
 
