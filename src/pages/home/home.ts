@@ -64,6 +64,7 @@ export class HomePage {
   public walletsBtc;
   public walletsBch;
   public walletsEth;
+  public walletsTri;
   public cachedBalanceUpdateOn: string;
   public recentTransactionsEnabled: boolean;
   public txps;
@@ -463,6 +464,9 @@ export class HomePage {
       this.walletsEth = _.filter(this.wallets, (x: any) => {
         return x.credentials.coin == 'eth';
       });
+      this.walletsTri = _.filter(this.wallets, (x: any) => {
+        return x.credentials.coin == 'tri';
+      });
       this.updateAllWallets();
     },
     5000,
@@ -755,7 +759,7 @@ export class HomePage {
             : wallet.cachedBalance
               ? wallet.cachedBalance
               : '';
-  
+
 
         // this.updateTxHistory(wallet);
 
@@ -954,6 +958,16 @@ export class HomePage {
       this.profileProvider.setWalletOrder(wallet.id, index);
     });
     // this.logger.warn('wallet eth!!!!!!', this.walletsBch);
+  }
+
+  public reorderWalletsTri(indexes): void {
+    let element = this.walletsTri[indexes.from];
+    this.walletsTri.splice(indexes.from, 1);
+    this.walletsTri.splice(indexes.to, 0, element);
+    _.each(this.walletsTri, (wallet, index: number) => {
+      this.profileProvider.setWalletOrder(wallet.id, index);
+    });
+    // this.logger.warn('wallet Tri!!!!!!', this.walletsTri);
   }
 
   public goToDownload(): void {
