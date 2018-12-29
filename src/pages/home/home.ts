@@ -90,6 +90,7 @@ export class HomePage {
   public showReorderBtc: boolean;
   public showReorderBch: boolean;
   public showReorderEth: boolean;
+  public showReorderTri: boolean;
   public showIntegration;
   public totalBalance: number; // Total balance amount
   public balanceItem; // Each wallet's coin amount
@@ -149,6 +150,7 @@ export class HomePage {
     this.showReorderBtc = false;
     this.showReorderBch = false;
     this.showReorderEth = false;
+    this.showReorderTri = false;
     this.totalBalance = 0;
     this.balanceItem = [];
     // this.balanceName = [];
@@ -867,7 +869,7 @@ export class HomePage {
 
   // 当点击BTC或者BCH钱包的具体某一项
   public goToWalletDetails(wallet): void {
-    if (this.showReorderBtc || this.showReorderBch || this.showReorderEth) return;
+    if (this.showReorderBtc || this.showReorderBch || this.showReorderEth || this.showReorderTri) return;
     // 取消订阅finishIncomingDataMenuEvent和bwsEvent事件
     this.events.unsubscribe('finishIncomingDataMenuEvent');
     this.events.unsubscribe('bwsEvent');
@@ -927,6 +929,10 @@ export class HomePage {
 
   public reorderEth(): void {
     this.showReorderEth = !this.showReorderEth;
+  }
+
+  public reorderTri(): void {
+    this.showReorderTri = !this.showReorderTri;
   }
 
   public reorderWalletsBtc(indexes): void {
