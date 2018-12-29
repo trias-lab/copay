@@ -10,9 +10,11 @@ export class RateProvider {
   private alternatives;
   private ratesBCH;
   private ratesETH;
+  private ratesTRI;
   private ratesBtcAvailable: boolean;
   private ratesBchAvailable: boolean;
   private ratesEthAvailable: boolean;
+  private ratesTriAvailable: boolean;
 
   private SAT_TO_BTC: number;
   private BTC_TO_SAT: number;
@@ -22,6 +24,7 @@ export class RateProvider {
   private rateServiceUrl = env.ratesAPI.btc;
   private bchRateServiceUrl = env.ratesAPI.bch;
   private ethRateServiceUrl = env.ratesAPI.eth;
+  private triRateServiceUrl = env.ratesAPI.tri;
 
   constructor(private http: HttpClient, private logger: Logger) {
     this.logger.debug('RateProvider initialized');
@@ -29,6 +32,7 @@ export class RateProvider {
     this.alternatives = [];
     this.ratesBCH = {};
     this.ratesETH = {};
+    this.ratesTRI = {};
     this.SAT_TO_BTC = 1 / 1e8;
     this.BTC_TO_SAT = 1e8;
     this.WEI_TO_ETH = 1 / 1e18;
@@ -36,9 +40,11 @@ export class RateProvider {
     this.ratesBtcAvailable = false;
     this.ratesBchAvailable = false;
     this.ratesEthAvailable = false;
+    this.ratesTriAvailable = false;
     this.updateRatesBtc();
     this.updateRatesBch();
     this.updateRatesEth();
+    this.updateRatesTri();
   }
 
   public updateRatesBtc(): Promise<any> {
@@ -97,6 +103,23 @@ export class RateProvider {
     });
   }
 
+  public updateRatesTri(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.getTRI()
+        .then(data => {
+          _.each(data, currency => {
+            this.ratesTRI[currency.code] = currency.rate;
+          });
+          this.ratesTriAvailable = true;
+          resolve();
+        })
+        .catch(error => {
+          this.logger.error(error);
+          reject(error);
+        });
+    });
+  }
+
   public getBTC(): Promise<any> {
     return new Promise(resolve => {
       this.http.get(this.rateServiceUrl).subscribe(data => {
@@ -121,10 +144,21 @@ export class RateProvider {
     });
   }
 
+  public getTRI(): Promise<any> {
+    return new Promise(resolve => {
+      this.http.get(this.triRateServiceUrl).subscribe(data => {
+        resolve(data);
+      });
+    });
+  }
+
   public getRate(code: string, chain?: string): number {
     if (chain == 'eth') {
       // this.logger.info(this.ratesETH[code] + 'this.ratesETH[code]');
       return this.ratesETH[code];
+    } else if (chain == 'tri') {
+      // this.logger.info(this.ratesTRI[code] + 'this.ratesTRI[code]');
+      return this.ratesTRI[code];
     } else if (chain == 'bch') {
       // this.logger.info(this.ratesBCH[code] + 'this.ratesBCH[code]');
       return this.ratesBCH[code];
@@ -150,15 +184,20 @@ export class RateProvider {
     return this.ratesEthAvailable;
   }
 
+  public isTriAvailable() {
+    return this.ratesTriAvailable;
+  }
+
   public toFiat(satoshis: number, code: string, chain: string): number {
     if (
       (!this.isBtcAvailable() && chain == 'btc') ||
       (!this.isBchAvailable() && chain == 'bch') ||
-      (!this.isEthAvailable() && chain == 'eth')
+      (!this.isEthAvailable() && chain == 'eth') ||
+      (!this.isTriAvailable() && chain == 'tri')
     ) {
       return null;
     }
-    if (chain == 'eth') {
+    if (chain == 'eth' || chain == 'tri') {
       // this.logger.info(satoshis + ' eth-satoshis');
       // this.logger.info(this.getRate(code, chain) + 'eth_rate');
       return satoshis * this.WEI_TO_ETH * this.getRate(code, chain);
@@ -173,11 +212,12 @@ export class RateProvider {
     if (
       (!this.isBtcAvailable() && chain == 'btc') ||
       (!this.isBchAvailable() && chain == 'bch') ||
-      (!this.isEthAvailable() && chain == 'eth')
+      (!this.isEthAvailable() && chain == 'eth') ||
+      (!this.isTriAvailable() && chain == 'tri')
     ) {
       return null;
     }
-    if (chain == 'eth') {
+    if (chain == 'eth' || chain == 'tri') {
       return (amount / this.getRate(code, chain)) * this.ETH_TO_WEI;
     }
     return (amount / this.getRate(code, chain)) * this.BTC_TO_SAT;
@@ -203,7 +243,8 @@ export class RateProvider {
       if (
         (this.ratesBtcAvailable && chain == 'btc') ||
         (this.ratesBchAvailable && chain == 'bch') ||
-        (this.ratesEthAvailable && chain == 'eth')
+        (this.ratesEthAvailable && chain == 'eth') ||
+        (this.ratesTriAvailable && chain == 'tri')
       )
         resolve();
       else {
@@ -219,6 +260,11 @@ export class RateProvider {
         }
         if (chain == 'eth') {
           this.updateRatesEth().then(() => {
+            resolve();
+          });
+        }
+        if (chain == 'tri') {
+          this.updateRatesTri().then(() => {
             resolve();
           });
         }

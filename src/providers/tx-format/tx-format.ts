@@ -104,7 +104,8 @@ export class TxFormatProvider {
     if (
       (!this.rate.isBtcAvailable() && coin == 'btc') ||
       (!this.rate.isBchAvailable() && coin == 'bch') ||
-      (!this.rate.isEthAvailable() && coin == 'eth')
+      (!this.rate.isEthAvailable() && coin == 'eth') ||
+      (!this.rate.isTriAvailable() && coin == 'tri')
     )
       return null;
     return val();
@@ -159,8 +160,8 @@ export class TxFormatProvider {
     tx.feeStr = tx.fee
       ? this.formatAmountStr(coin, tx.fee)
       : tx.fees
-      ? this.formatAmountStr(coin, tx.fees)
-      : 'N/A';
+        ? this.formatAmountStr(coin, tx.fees)
+        : 'N/A';
     if (tx.amountStr) {
       tx.amountValueStr = tx.amountStr.split(' ')[0];
       tx.amountUnitStr = tx.amountStr.split(' ')[1];
@@ -198,6 +199,7 @@ export class TxFormatProvider {
       currency != 'BCH' &&
       currency != 'BTC' &&
       currency != 'ETH' &&
+      currency != 'TRI' &&
       currency != 'sat'
     ) {
       let formattedAmount = onlyIntegers
@@ -209,7 +211,7 @@ export class TxFormatProvider {
       amountSat = Number(amount);
       amountUnitStr = this.formatAmountStr(coin, amountSat);
       // convert sat to BTC or BCH
-      coin === 'eth'
+      coin === 'eth' || coin === 'tri'
         ? (amount = (amountSat * weiToEth).toFixed(18))
         : (amount = (amountSat * satToBtc).toFixed(8));
       currency = coin.toUpperCase();
@@ -217,7 +219,7 @@ export class TxFormatProvider {
       amountSat = parseInt((amount * unitToSatoshi).toFixed(0), 10);
       amountUnitStr = this.formatAmountStr(coin, amountSat);
       // convert unit to BTC or BCH
-      coin === 'eth'
+      coin === 'eth' || coin === 'tri'
         ? (amount = (amountSat * weiToEth).toFixed(18))
         : (amount = (amountSat * satToBtc).toFixed(8));
       currency = coin.toUpperCase();
