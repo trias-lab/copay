@@ -23,7 +23,8 @@ import { TxFormatProvider } from '../tx-format/tx-format';
 export enum Coin {
   BTC = 'btc',
   BCH = 'bch',
-  ETH = 'eth'
+  ETH = 'eth',
+  TRI = 'tri'
 }
 
 export interface WalletOptions {
@@ -1558,7 +1559,7 @@ export class WalletProvider {
     return new Promise((resolve, reject) => {
       let derivationPath = wallet.credentials.getBaseAddressDerivationPath();
       let encodingType = {
-        mnemonic: 1 ,
+        mnemonic: 1,
         xpriv: 2,
         xpub: 3
       };
