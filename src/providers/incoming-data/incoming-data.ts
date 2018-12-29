@@ -87,7 +87,10 @@ export class IncomingDataProvider {
     let reg = /^0x[a-fA-F0-9]{40}$/;
     return reg.test(data);
   }
-
+  private isValidTricoinAddress(data: string): boolean {
+    let reg = /^0x[a-fA-F0-9]{40}$/;
+    return reg.test(data);
+  }
   private isValidBitcoinAddress(data: string): boolean {
     return !!(
       this.bwcProvider.getBitcore().Address.isValid(data, 'livenet') ||
@@ -255,6 +258,14 @@ export class IncomingDataProvider {
   ): void {
     this.logger.debug('Incoming-data: ETH plain address');
     const coin = Coin.ETH;
+    this.goToAmountPage(data, coin);
+  }
+  private handlePlainTricoinAddress(
+    data: string
+    // redirParams?: RedirParams
+  ): void {
+    this.logger.debug('Incoming-data: Tri plain address');
+    const coin = Coin.TRI;
     this.goToAmountPage(data, coin);
   }
 
@@ -427,8 +438,15 @@ export class IncomingDataProvider {
       // this.handlePlainEthcoinAddress(data, redirParams);
       this.handlePlainEthcoinAddress(data);
       return true;
-      // Plain Address (Bitcoin Cash)
-    } else if (this.isValidBitcoinCashAddress(data)) {
+    }
+    // Plain Address (Tri)
+    else if (this.isValidTricoinAddress(data)) {
+      // this.handlePlainTricoinAddress(data, redirParams);
+      this.handlePlainTricoinAddress(data);
+      return true;
+    }
+    // Plain Address (Bitcoin Cash)
+    else if (this.isValidBitcoinCashAddress(data)) {
       this.handlePlainBitcoinCashAddress(data, redirParams);
       return true;
 
@@ -530,6 +548,14 @@ export class IncomingDataProvider {
         data,
         type: 'EthcoinAddress',
         title: this.translate.instant('Eth Address')
+      };
+      // Plain Address (Tri)
+    } else if (this.isValidEthcoinAddress(data)) {
+      this.logger.warn('tri');
+      return {
+        data,
+        type: 'TricoinAddress',
+        title: this.translate.instant('Tri Address')
       };
       // Plain Address (Bitcoin)
     } else if (this.isValidBitcoinAddress(data)) {
