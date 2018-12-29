@@ -107,12 +107,12 @@ export class ChooseFeeLevelPage {
     // If no custom fee
     if (value) {
       this.customFeePerKB = null;
-      this.feePerSatByte = this.coin!=='eth'?(value.feePerKb / 1000).toFixed():(value.feePerKb / 1000000000).toFixed();
+      this.feePerSatByte = this.coin !== 'eth' && this.coin !== 'tri' ? (value.feePerKb / 1000).toFixed() : (value.feePerKb / 1000000000).toFixed();
       this.avgConfirmationTime = value.nbBlocks * 10;
     } else {
       this.avgConfirmationTime = null;
       this.customSatPerByte = Number(this.feePerSatByte);
-      this.customFeePerKB = this.coin!=='eth'?(+this.feePerSatByte * 1000).toFixed():(+this.feePerSatByte * 1000000000).toFixed();
+      this.customFeePerKB = this.coin !== 'eth' && this.coin !== 'tri' ? (+this.feePerSatByte * 1000).toFixed() : (+this.feePerSatByte * 1000000000).toFixed();
     }
 
     // Warnings
@@ -139,14 +139,14 @@ export class ChooseFeeLevelPage {
     let value = _.find(this.feeLevels.levels[this.network], feeLevel => {
       return feeLevel.level == 'superEconomy';
     });
-    return this.coin!=='eth'? parseInt((value.feePerKb / 1000).toFixed(), 10):parseInt((value.feePerKb / 1000000000).toFixed(), 10);
+    return this.coin !== 'eth' && this.coin !== 'tri' ? parseInt((value.feePerKb / 1000).toFixed(), 10) : parseInt((value.feePerKb / 1000000000).toFixed(), 10);
   }
 
   private getMaxRecommended(): number {
     let value = _.find(this.feeLevels.levels[this.network], feeLevel => {
       return feeLevel.level == 'urgent';
     });
-    return this.coin!=='eth'? parseInt((value.feePerKb / 1000).toFixed(), 10):parseInt((value.feePerKb / 1000000000).toFixed(), 10);
+    return this.coin !== 'eth' && this.coin !== 'tri' ? parseInt((value.feePerKb / 1000).toFixed(), 10) : parseInt((value.feePerKb / 1000000000).toFixed(), 10);
   }
 
   public checkFees(feePerSatByte: string): void {
@@ -160,7 +160,7 @@ export class ChooseFeeLevelPage {
 
   public ok(): void {
     this.customFeePerKB = this.customFeePerKB
-      ? (this.coin!=='eth'?(this.customSatPerByte * 1000).toFixed():(this.customSatPerByte * 1000000000).toFixed())
+      ? (this.coin !== 'eth' && this.coin !== 'tri' ? (this.customSatPerByte * 1000).toFixed() : (this.customSatPerByte * 1000000000).toFixed())
       : null;
     this.viewCtrl.dismiss({
       newFeeLevel: this.feeLevel,
