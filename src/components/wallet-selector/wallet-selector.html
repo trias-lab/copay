@@ -8,7 +8,7 @@
     <ion-col col-4 text-center class="destination-title">{{ title }}</ion-col>
   </ion-row>
   <!--<div *ngFor="let wallet of wallets" (click)="selectWallet(wallet)">{{wallet.name}}</div>-->
-  <div class="no-wallets" *ngIf="(!walletsBtc || !walletsBtc[0]) && (!walletsBch || !walletsBch[0]) && (!walletsEth || !walletsEth[0] && (!walletsTri || !walletsTri[0])"
+  <div class="no-wallets" *ngIf="(!walletsBtc || !walletsBtc[0]) && (!walletsBch || !walletsBch[0]) && (!walletsEth || !walletsEth[0])&& (!walletsTri || !walletsTri[0])"
     translate>
     No wallets available
   </div>
