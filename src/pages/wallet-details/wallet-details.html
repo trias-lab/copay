@@ -299,7 +299,8 @@
               <ion-note item-end text-end>
                 <div class="amount">
                   <span [ngClass]="{'received': tx.action == 'received','sent': tx.action=='sent'}" *ngIf="tx.action != 'invalid'">{{tx.action
-                    == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{wallet.coin !== 'eth' ? (tx.amount | satToUnit:
+                    == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{wallet.coin !== 'eth' && wallet.coin !== 'tri' ?
+                    (tx.amount | satToUnit:
                     wallet.coin) : (tx.amount | weiToUnit: wallet.coin)}}</span>
                   <span class="double-spend" *ngIf="tx.action == 'invalid'" translate>(possible double spend)</span>
                 </div>
@@ -336,7 +337,8 @@
         <div *ngIf="withBalance && withBalance[0]">
           <!-- <ion-item-divider>{{'Addresses with balance' | translate}}</ion-item-divider> -->
           <ion-item *ngFor="let w of withBalance" (click)=" editingAddr? editAddressName(w.address): this.address = w.address">
-            <h3>{{w.name}} <span>{{wallet.coin!=='eth'? (w.amount | satToUnit: wallet.coin):(w.amount | weiToUnit:
+            <h3>{{w.name}} <span>{{wallet.coin!=='eth' && wallet.coin!=='tri'? (w.amount | satToUnit:
+                wallet.coin):(w.amount | weiToUnit:
                 wallet.coin)}}</span></h3>
             <p>{{w.address}}</p>
             <div class="selected" *ngIf="w.address == address && !editingAddr"><img src="../../assets/img/app/onboarding/icon_checkmark@2x.png"
