@@ -110,6 +110,7 @@ export class OnboardingPage {
           // this two wallets have the same mnemonic which will be backup once
           this.profileProvider.setBackupFlag(wallets[1].credentials.walletId);
           this.profileProvider.setBackupFlag(wallets[2].credentials.walletId);
+          this.profileProvider.setBackupFlag(wallets[3].credentials.walletId);
         })
       })
       .catch(err => {
