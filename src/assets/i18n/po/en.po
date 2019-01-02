@@ -999,8 +999,8 @@ msgstr "Get news and updates from BitPay"
 msgid "Get started"
 msgstr "Get started"
 
-msgid "Get started by adding your first one."
-msgstr "Get started by adding your first one."
+msgid "Create contacts to mange frequently used addresses, so you don’t have to type in everytime."
+msgstr "Create contacts to mange frequently used addresses, so you don’t have to type in everytime."
 
 msgid "Getting fee levels..."
 msgstr "Getting fee levels..."

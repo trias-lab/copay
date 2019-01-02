@@ -14,11 +14,14 @@
 <ion-content>
   <div class="zero-state" *ngIf="isEmptyList">
     <ion-icon class="zero-state-icon">
-      <img class="svg" src="assets/img/address-book-add.svg" />
+      <img class="svg" src="assets/img/img_ContactEmpty@3x.png" />
     </ion-icon>
-    <div class="zero-state-heading" translate>No contacts yet</div>
-    <div class="zero-state-description" translate>
-      Get started by adding your first one.
+    <!-- <div class="zero-state-heading" translate>No contacts yet</div> -->
+    <div class="zero-state-description">
+      {{
+        'Create contacts to mange frequently used addresses, so you don’t have to type in everytime.'
+          | translate
+      }}
     </div>
     <button ion-button class="button-standard" (click)="addEntry()">
       {{ 'Add Contact' | translate }}

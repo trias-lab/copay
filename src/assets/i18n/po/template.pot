@@ -947,7 +947,7 @@ msgstr ""
 msgid "Get started"
 msgstr ""
 
-msgid "Get started by adding your first one."
+msgid "Create contacts to mange frequently used addresses, so you don’t have to type in everytime."
 msgstr ""
 
 msgid "Getting fee levels..."

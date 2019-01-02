@@ -902,8 +902,8 @@ msgstr "从 BitPay 获取新闻和更新"
 msgid "Get started"
 msgstr "马上体验"
 
-msgid "Get started by adding your first one."
-msgstr "通过添加您的第一个开始。"
+msgid "Create contacts to mange frequently used addresses, so you don’t have to type in everytime."
+msgstr "创建联系人以管理常用地址，这样您就不必每次都输入。"
 
 msgid "Getting fee levels..."
 msgstr "正在获取收费水平..."
