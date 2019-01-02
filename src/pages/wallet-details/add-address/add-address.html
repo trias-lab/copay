@@ -2,11 +2,16 @@
   <ion-navbar>
     <ion-title *ngIf="!edit">{{ 'Create New Address' | translate }}</ion-title>
     <ion-title *ngIf="edit">{{ 'Edit Address Name' | translate }}</ion-title>
+    <ion-buttons end>
+      <button class="header-option" (click)="confirm()" [disabled]="addressAddForm.invalid">
+        {{ edit ? 'Save':'Create' | translate }}
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>      
+  <ion-card>
     <form [formGroup]="addressAddForm" class="add-address-form">
       <ion-item>
         <ion-label stacked>{{ 'Address Name' | translate }}</ion-label>
@@ -15,15 +20,4 @@
     </form>
     <p class="hint">This helps you identify the addresses, you can always replace it if you need to.</p>
   </ion-card>
-
-  <div class="address-btn-block">
-    <button
-      ion-button
-      class="button-standard"
-      (click)="confirm()"
-      [disabled]="addressAddForm.invalid"
-    >
-      {{ edit ? 'Save Change':'Create Address' | translate }}
-    </button>
-  </div>
 </ion-content>

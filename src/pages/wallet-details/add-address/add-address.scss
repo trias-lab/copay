@@ -1,9 +1,10 @@
 page-address-add {
-  .card{
+  .card {
     padding: 28px 20px;
     position: relative;
     overflow: visible;
   }
+
   .card:after {
     content: "";
     position: absolute;
@@ -16,29 +17,34 @@ page-address-add {
     opacity: 0.2;
     filter: blur(10px);
   }
+
   .add-address-form {
     .item-block {
       padding: 0;
       margin-bottom: 8px;
     }
-    .hint{
-      font-size:13px;
-      font-weight:400;
-      color:rgba(145,153,158,1);
-      line-height:20px;
+
+    .hint {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(145, 153, 158, 1);
+      line-height: 20px;
     }
+
     .item-ios.item-block .item-inner {
       border: none;
       padding: 0;
     }
+
     .item-input ion-label {
-      font-size:13px;
-      font-weight:500;
-      color:rgba(20,42,63,1);
-      line-height:20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(20, 42, 63, 1);
+      line-height: 20px;
       margin: 0;
       margin-bottom: 4px;
     }
+
     ion-input {
       border: none;
       height: 34px;
@@ -48,27 +54,31 @@ page-address-add {
       font-size: 1.5rem;
       margin-top: 0;
     }
-    .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus)
-      .item-inner {
+
+    .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
       box-shadow: none;
       border: none;
     }
+
     .item-md.item-input.item-input-has-focus .item-inner,
     .item-md.item-input.input-has-focus .item-inner {
       box-shadow: none;
       border: none;
     }
+
     .check {
       position: relative;
       right: -88%;
       top: -30px;
     }
+
     .item-ios.item-label-stacked .text-input,
     .item-ios.item-label-floating .text-input {
       margin: 0;
       padding: 0 0 0 8px;
       width: auto;
     }
+
     .item-label-stacked .text-input-md,
     .item-label-floating .text-input-md {
       line-height: 22px;
@@ -77,15 +87,14 @@ page-address-add {
   }
 
   .address-btn-block {
-    background: linear-gradient(
-      270deg,
+    background: linear-gradient(270deg,
       rgba(246, 249, 250, 1) 0%,
-      rgba(230, 235, 238, 1) 100%
-    );
+      rgba(230, 235, 238, 1) 100%);
     padding: 32px 16px;
     position: fixed;
     width: 100%;
     bottom: 0;
+
     button,
     button[disabled],
     [ion-button][disabled] {
@@ -94,5 +103,11 @@ page-address-add {
       padding: 0;
       max-width: 100%;
     }
+  }
+
+  .header-option {
+    color: #57A756;
+    background: transparent;
+    font-size: 17px;
   }
 }
