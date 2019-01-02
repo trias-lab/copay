@@ -4,31 +4,44 @@ page-addressbook-add {
     font-size: 28px;
     color: color($colors, primary);
   }
+
   .check {
     font-size: 22px;
     padding-top: 3px;
+
     &.success {
       color: color($colors, success);
     }
+
     &.fail {
       color: color($colors, danger);
     }
   }
+
+  .header-option {
+    color: #57A756;
+    background: transparent;
+    font-size: 17px;
+  }
 }
+
 .add-address-info-box {
   background: rgba(255, 255, 255, 1);
   box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   margin: 0 16px 0 16px;
   padding: 4px 0 28px 0;
+
   .item-block {
     padding: 0 16px;
   }
+
   .item-ios.item-block .item-inner {
     border: none;
     padding: 0;
     margin: 16px 0 0 0;
   }
+
   .item-input ion-label {
     height: 40px;
     font-size: 1.3rem;
@@ -38,6 +51,7 @@ page-addressbook-add {
     margin: 0;
     padding: 0;
   }
+
   ion-input {
     border: none;
     height: 34px;
@@ -48,32 +62,37 @@ page-addressbook-add {
     font-size: 1.5rem;
     margin-top: 0;
   }
-  .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus)
-    .item-inner {
+
+  .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
     box-shadow: none;
     border: none;
   }
+
   .item-md.item-input.item-input-has-focus .item-inner,
   .item-md.item-input.input-has-focus .item-inner {
     box-shadow: none;
     border: none;
   }
+
   .check {
     position: relative;
     right: -88%;
     top: -30px;
   }
+
   .item-ios.item-label-stacked .text-input,
   .item-ios.item-label-floating .text-input {
     margin: 0;
     padding: 0 0 0 8px;
     width: auto;
   }
+
   .scanner-icon {
     display: block;
     width: 100%;
     padding: 10px 16px 0;
   }
+
   .item-label-stacked .text-input-md,
   .item-label-floating .text-input-md {
     line-height: 22px;
@@ -81,12 +100,15 @@ page-addressbook-add {
   }
 }
 
+
 .address-btn-block {
-  background: radial-gradient(ellipse at center, rgba(246,249,250,1) 0%,rgba(230,235,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: radial-gradient(ellipse at center, rgba(246, 249, 250, 1) 0%, rgba(230, 235, 238, 1) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   padding: 32px 16px;
   position: fixed;
   width: 100%;
   bottom: 0;
+
   button,
   button[disabled],
   [ion-button][disabled] {
@@ -95,4 +117,6 @@ page-addressbook-add {
     padding: 0;
     max-width: 100%;
   }
+
+
 }
