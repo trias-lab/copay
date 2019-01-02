@@ -755,6 +755,41 @@ export class ProfileProvider {
           .then(() => {
             // this.setBackupFlag(wallet.credentials.walletId)
             this.logger.info('----creating default Wallet finished.')
+            words = this.normalizeMnemonic(words);
+            walletClient.importFromMnemonic(
+              words,
+              {
+                network: opts.networkName,
+                passphrase: opts.passphrase,
+                entropySourcePath: opts.entropySourcePath,
+                derivationStrategy: opts.derivationStrategy || 'BIP44',
+                account: opts.account || 0,
+                coin: opts.coin
+              },
+              err => {
+                if (err) {
+                  if (err instanceof this.errors.NOT_AUTHORIZED) {
+                    return reject(err);
+                  }
+
+                  this.bwcErrorProvider
+                    .cb(err, this.translate.instant('Could not import'))
+                    .then((msg: string) => {
+                      return reject(msg);
+                    });
+                } else {
+                  this.addAndBindWalletClient(walletClient, {
+                    bwsurl: opts.bwsurl
+                  })
+                    .then(wallet => {
+                      return resolve(wallet);
+                    })
+                    .catch(err => {
+                      return reject(err);
+                    });
+                }
+              }
+            );
           })
           .catch(() => {
             this.logger.warn(
@@ -763,44 +798,43 @@ export class ProfileProvider {
             // another try
             this.createDefaultWallet();
           });
-      }
-
-
-      words = this.normalizeMnemonic(words);
-      walletClient.importFromMnemonic(
-        words,
-        {
-          network: opts.networkName,
-          passphrase: opts.passphrase,
-          entropySourcePath: opts.entropySourcePath,
-          derivationStrategy: opts.derivationStrategy || 'BIP44',
-          account: opts.account || 0,
-          coin: opts.coin
-        },
-        err => {
-          if (err) {
-            if (err instanceof this.errors.NOT_AUTHORIZED) {
-              return reject(err);
-            }
-
-            this.bwcErrorProvider
-              .cb(err, this.translate.instant('Could not import'))
-              .then((msg: string) => {
-                return reject(msg);
-              });
-          } else {
-            this.addAndBindWalletClient(walletClient, {
-              bwsurl: opts.bwsurl
-            })
-              .then(wallet => {
-                return resolve(wallet);
-              })
-              .catch(err => {
+      }else {
+        words = this.normalizeMnemonic(words);
+        walletClient.importFromMnemonic(
+          words,
+          {
+            network: opts.networkName,
+            passphrase: opts.passphrase,
+            entropySourcePath: opts.entropySourcePath,
+            derivationStrategy: opts.derivationStrategy || 'BIP44',
+            account: opts.account || 0,
+            coin: opts.coin
+          },
+          err => {
+            if (err) {
+              if (err instanceof this.errors.NOT_AUTHORIZED) {
                 return reject(err);
-              });
+              }
+
+              this.bwcErrorProvider
+                .cb(err, this.translate.instant('Could not import'))
+                .then((msg: string) => {
+                  return reject(msg);
+                });
+            } else {
+              this.addAndBindWalletClient(walletClient, {
+                bwsurl: opts.bwsurl
+              })
+                .then(wallet => {
+                  return resolve(wallet);
+                })
+                .catch(err => {
+                  return reject(err);
+                });
+            }
           }
-        }
-      );
+        );
+      }      
     });
   }
 
