@@ -20,15 +20,18 @@ $short-device-height: 570px;
     color: rgba(0, 0, 0, 0.8);
     width: 77%;
     max-width: 310px;
-    font-size: 16px;
     margin: auto;
-    font-weight: 300;
+    font-size:14px;
+    font-weight:400;
+    color:rgba(163,173,180,1);
+    line-height:18px;
+    padding-top: 16px;
   }
   .title-icon {
     margin: auto;
   }
   .larger-icon {
-    width: 150px;
+    width: 141px;
   }
   button {
     margin-top: 30px;
