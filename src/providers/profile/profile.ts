@@ -852,6 +852,15 @@ export class ProfileProvider {
     this.persistenceProvider.storeNewProfile(this.profile);
   }
 
+  private resetProfile(): void {
+    this.wallet = {};
+    _.each(this.profile.credentials, credentials => {
+      this.persistenceProvider.clearBackupFlag(credentials.walletId)
+    });
+    this.persistenceProvider.deleteProfile();
+    this.createProfile();
+  }
+
   public bindProfile(profile): Promise<any> {
     return new Promise((resolve, reject) => {
       const bindWallets = (): Promise<any> => {
@@ -1270,6 +1279,10 @@ export class ProfileProvider {
   // Create a default wallet
   public createDefaultWallet(): Promise<any> {
     return new Promise((resolve, reject) => {
+      // clear wallets in profile
+      this.logger.debug('----Clearing wallets...')
+      this.resetProfile();      
+
       // default BTC wallet option
       const opts: Partial<WalletOptions> = {};
       opts.m = 1;
