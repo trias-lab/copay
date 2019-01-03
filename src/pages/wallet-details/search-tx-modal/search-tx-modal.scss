@@ -1,4 +1,11 @@
 page-search-tx-modal {
+  .hint {
+    font-size:14px;
+    font-weight:400;
+    color:rgba(163,173,180,1);
+    line-height:18px;
+    margin: 0 16px;
+  }
   ion-navbar {
     ion-buttons {
       button {

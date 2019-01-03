@@ -12,6 +12,7 @@
 <ion-content>
   <div>
     <ion-searchbar placeholder="{{'Search Transactions' | translate}}" [(ngModel)]="search" (ngModelChange)="updateSearchInput(search)"></ion-searchbar>
+    <div *ngIf="!(txHistorySearchResults && txHistorySearchResults[0])" class="hint">You can search for address, name, amount, date, TxID or notes. </div>
   </div>
 
   <ion-list *ngIf="txHistorySearchResults && txHistorySearchResults[0]" class="tx-history">
