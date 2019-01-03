@@ -17,7 +17,7 @@
 
   <ion-list *ngIf="txHistorySearchResults && txHistorySearchResults[0]" class="tx-history">
     <div>
-      <div *ngFor="let tx of txHistorySearchResults; trackBy: trackByFn; let i = index;">
+      <div class="btn-container" *ngFor="let tx of txHistorySearchResults; trackBy: trackByFn; let i = index;">
         <button ion-item (click)="close(tx.txid)">
           <ion-icon item-start>
            <!--  <div *ngIf="tx.confirmations == 0">
@@ -42,56 +42,59 @@
             </div>
           </ion-icon>
 
-          <div class="action" *ngIf="tx.confirmations == 0">
+          <span class="action" *ngIf="tx.confirmations == 0">
             <span *ngIf="(tx.action == 'sent') && !(addressbook && addressbook[tx.outputs[0].address])">{{'Sending'
               | translate}}</span>
             <span *ngIf="(tx.action == 'moved') && !(addressbook && addressbook[tx.outputs[0].address])">{{'Moving'
               | translate}}</span>
-            <span *ngIf="(tx.action == 'sent' || tx.action == 'moved') && (addressbook && addressbook[tx.outputs[0].address])">{{addressbook[tx.outputs[0].address].name
-              || addressbook[tx.outputs[0].address]}}</span>
+            <!-- <span *ngIf="(tx.action == 'sent' || tx.action == 'moved') && (addressbook && addressbook[tx.outputs[0].address])">{{addressbook[tx.outputs[0].address].name
+              || addressbook[tx.outputs[0].address]}}</span> -->
             <span *ngIf="tx.action == 'received'">{{'Receiving' | translate}}</span>
-          </div>
+          </span>
 
-          <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'received'">
-            <span *ngIf="(!tx.note || (tx.note && tx.note.body == '')) && (!addressbook || !addressbook[tx.outputs[0].address])">{{'Received'
-              | translate}}</span>
-            <span *ngIf="tx.note && tx.note.body != ''">{{tx.note.body}}</span>
+          <span class="action" *ngIf="tx.confirmations > 0 && tx.action == 'received'">
+            <span >{{'Received' | translate}}</span>
+            <!-- <span *ngIf="tx.note && tx.note.body != ''">{{tx.note.body}}</span>
             <span *ngIf="addressbook && addressbook[tx.outputs[0].address]">
               {{addressbook[tx.outputs[0].address].name || addressbook[tx.outputs[0].address]}}
-            </span>
-          </div>
+            </span> -->
+          </span>
 
-          <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'sent'">
-            <span *ngIf="!tx.message && (!tx.note || (tx.note && tx.note.body == '')) && (!addressbook || !addressbook[tx.outputs[0].address])">{{'Sent'
-              | translate}}</span>
-            <span *ngIf="tx.message">{{tx.message}}</span>
+          <span class="action" *ngIf="tx.confirmations > 0 && tx.action == 'sent'">
+            <span >{{'Sent' | translate}}</span>
+            <!-- <span *ngIf="tx.message">{{tx.message}}</span>
             <span *ngIf="!tx.message && tx.note && tx.note.body != ''">{{tx.note.body}}</span>
             <span *ngIf="!tx.message && addressbook && addressbook[tx.outputs[0].address]">
               {{addressbook[tx.outputs[0].address].name || addressbook[tx.outputs[0].address]}}
-            </span>
-          </div>
+            </span> -->
+          </span>
 
-          <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'moved'">
-            <span *ngIf="(!tx.note || (tx.note && tx.note.body == ''))" translate>Moved</span>
-            <span *ngIf="tx.note && tx.note.body != ''">{{tx.note.body}}</span>
-          </div>
+          <span class="action" *ngIf="tx.confirmations > 0 && tx.action == 'moved'">
+            <span translate>Moved</span>
+            <!-- <span *ngIf="tx.note && tx.note.body != ''">{{tx.note.body}}</span> -->
+          </span>
 
-          <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'invalid'">
-            <span class="assertive" *ngIf="!tx.message && !tx.note" translate>Invalid</span>
-          </div>
+          <span class="action" *ngIf="tx.confirmations > 0 && tx.action == 'invalid'">
+            <span class="assertive" translate>Invalid</span>
+          </span>
 
-          <ion-note item-end text-end>
-            <div class="amount">
-              <span [ngClass]="{'received': tx.action == 'received'}" *ngIf="tx.action != 'invalid'">{{tx.amount |
-                satToUnit: wallet.coin}}</span>
-              <span class="double-spend" *ngIf="tx.action == 'invalid'" translate>(possible double spend)</span>
-            </div>
-            <div class="date">
+          <span class="amount">
+            <span *ngIf="tx.action != 'invalid'">{{tx.amount |
+              satToUnit: wallet.coin}}</span>
+            <span class="double-spend" *ngIf="tx.action == 'invalid'" translate>(possible double spend)</span>
+          </span>
+
+          <div class="sub-description">
+            <span class="date">
               <span *ngIf="tx.time && createdWithinPastDay(tx.time * 1000)">{{tx.time * 1000 | amTimeAgo}}</span>
               <span *ngIf="tx.time && !createdWithinPastDay(tx.time * 1000)">{{tx.time * 1000 | amDateFormat:'MMM D,
                 YYYY'}}</span>
-            </div>
-          </ion-note>
+            </span>
+            <span class="note" *ngIf="tx.message"> | {{tx.message}}</span>
+            <span class="note" *ngIf="!tx.message && tx.note && tx.note.body != ''"> | {{tx.note.body}}</span>
+          </div>
+
+          
         </button>
       </div>
     </div>

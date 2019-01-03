@@ -48,44 +48,54 @@ page-search-tx-modal {
       }
     }
 
+    .btn-container{
+      padding: 0 16px 20px;
+    }
+
     .item {
       font-size: 16px;
-      padding-left: 19px;
+      height: 74px;
+      background: rgba(255,255,255,1);
+      box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.1);
+      border-radius: 4px;
 
       .item-icon {
         margin-right: 15px;
       }
 
       .item-inner {
-        background-image: none;
-        padding: 11px 10px 11px 0;
-        margin-left: 3px;
-        border-bottom: 1px solid color($colors, light);
+        background-image: url('../../../assets/img/settings-icons/icon_next@2x.png');
+        border-bottom: 0;
       }
     }
 
     img {
-      width: 35px;
+      width: 24px;
     }
 
-    .action {
-      width: 100%;
+    .action, .amount {
+      font-size:18px;
+      font-weight:500;
+      color:rgba(20,42,63,1);
+      line-height:20px;
+    }
+
+    .sub-description {
+      margin-top: 6px;
+      font-size:15px;
+      font-weight:400;
+      color:rgba(145,153,158,1);
+      line-height:16px;
+    }
+
+    .note {
+      width: 60%;
+      display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    .amount {
-      color: color($colors, dark);
-
-      .received {
-        color: color($colors, success);
-      }
-    }
-
-    .date {
-      font-size: 14px;
-      margin-top: 8px;
+      height: 20px;
+      vertical-align: middle;
     }
 
     .txs-count {
