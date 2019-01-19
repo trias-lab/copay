@@ -234,7 +234,7 @@ export class WalletDetailsPage extends WalletTabsChild {
         addressItem.address
       );
       this.am
-        .add(this.wallet, { name: 'Default', address: addr })
+        .add(this.wallet, { name: 'Default', address: addr, amount:addressItem.amount || 0 })
         .then(() => {
           this.logger.debug('----Add address ' + addr + 'to wallet manager');
           this.addAllAddress();
