@@ -25,6 +25,7 @@ import { ScanPage } from '../scan/scan';
 import { AmountPage } from '../send/amount/amount';
 import { AddressbookAddPage } from '../settings/addressbook/add/add';
 import { AddressbookPage } from '../settings/addressbook/addressbook';
+import { SwapPage } from '../swap/swap';
 import { TxDetailsPage } from '../tx-details/tx-details';
 import { TxpDetailsPage } from '../txp-details/txp-details';
 import { ActivityPage } from './activity/activity';
@@ -863,6 +864,9 @@ export class HomePage {
     this.navCtrl.push(AddPage);
   }
 
+  public goToSwapPage(): void {
+    this.navCtrl.push(SwapPage);
+  }
   public goToAddressbook(): void {
     this.navCtrl.push(AddressbookPage);
   }
