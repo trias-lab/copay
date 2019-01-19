@@ -8,57 +8,80 @@
 
   <ion-navbar>
     <ion-title>swap</ion-title>
+    <ion-buttons end>
+      <button (click)="startSwap()" [disabled]="swapForm">
+        {{ 'Initiate' | translate }}
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content class="card">
-  <div class="card">
-    <ion-item class="">
-      <ion-label color="primary">{{
-        'From' | translate
-        }}</ion-label>
-
-      <ion-select id="fromCoin" okText="ok" cancelText="cancel" [(ngModel)]="fromCoin" (ionChange)="handleChangeFromCoin(fromCoin)">
-          <ion-option *ngFor="let token of tokens" [value]="token">{{
-            token.symbol | translate
-            }}</ion-option>
-        </ion-select>
+<ion-content>
+  <ion-card class="swap-form">
+    <h1>{{'Withdraw Address' | translate}}</h1>
+    <ion-item>
+      <ion-label stacked>{{ 'Wallet' | translate }}</ion-label>
+      <ion-select id="wallet-selector" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedWallet" (ionChange)="handleSelectWallet(selectedWallet)">
+        <ion-option *ngFor="let w of wallets" [value]="w">
+        {{ w.coin | uppercase}}  {{ w.name | translate }}</ion-option>
+      </ion-select>
     </ion-item>
-    <ion-item class="">
-      <ion-label color="primary">{{
-        'From' | translate
-        }}</ion-label>
-
-      <ion-input id='fromQty' type="number" [(ngModel)]="fromCoin && fromCoin.symbol=='ETH' && ethQty || tokenQty" (ionChange)="handleChangeTokenQty()" placeholder="0" required clearInput [disabled]="fromCoin && fromCoin.symbol=='ETH'" ></ion-input>
+    <ion-item>
+      <ion-label stacked>{{ 'Address' | translate }}</ion-label>
+      <ion-select id="address-selector" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedAddr" (ionChange)="handleSelectAddress(selectedAddr)">
+        <ion-option *ngFor="let addr of addrWithBalance" [value]="addr">
+        {{ addr.name }}({{selectedWallet.coin !== 'eth' && selectedWallet.coin !== 'tri' ?
+                    (addr.amount | satToUnit:
+                    selectedWallet.coin) : (addr.amount | weiToUnit: selectedWallet.coin)}})</ion-option>
+      </ion-select>
     </ion-item>
-    <ion-item class="">
-      <ion-label color="primary">{{
-        'To' | translate
-        }}</ion-label>
+    <ion-note>Make sure the balance is sufficient. </ion-note>
 
-      <ion-select id="toCoin" okText="ok" cancelText="cancel" [(ngModel)]="toCoin" (ionChange)="handleChangeToCoin(toCoin)">
-          <ion-option *ngFor="let token of tokens" [value]="token" [selected]="token.symbol==toCoin">{{
-            token.symbol | translate
-            }}</ion-option>
-        </ion-select>
-    </ion-item>
-    <ion-item class="">
-      <ion-label color="primary">{{
-        'To' | translate
-        }}</ion-label>
-      <ion-input id='toQty' type="number" [(ngModel)]="toCoin && toCoin.symbol=='ETH'&& ethQty || tokenQty"  (ionChange)="handleChangeTokenQty()" placeholder="0" required clearInput [disabled]="toCoin && toCoin.symbol=='ETH'"></ion-input>
-    </ion-item>
-   <button [disabled]="customSatPerByte >= maxFeeAllowed || showError" (click)="ok()" class="button-standard"
-      ion-button>
-      {{ 'Start Swap' | translate }}
-    </button>
-
-    <ion-note>{{message}}</ion-note>
-    <ion-note ng-show="showResult">
-      {{txSuccess?'Swap successed!':'Swap failed!'}}
-      <p>You can go <a href="'https:\/\/ropsten.etherscan.io\/tx\/'+txHash" target="blank" >HERE </a> to check the details of your swap transaction.</p>
-    </ion-note>    
-  </div>
+    <h1>Exchange Detail</h1>
+    <div>
+      <ion-label stacked>{{ 'Exchange...' | translate }}</ion-label>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-8>
+            <ion-input id='fromQty' type="number" [(ngModel)]="fromCoin && fromCoin.symbol=='ETH' && ethQty || tokenQty" (ionChange)="handleChangeTokenQty()" placeholder="0" required clearInput [disabled]="fromCoin && fromCoin.symbol=='ETH'" ></ion-input>
+          </ion-col>
+          <ion-col col-4>
+            <ion-select id="fromCoin" okText="ok" cancelText="cancel" [(ngModel)]="fromCoin" (ionChange)="handleChangeFromCoin(fromCoin)">
+              <ion-option *ngFor="let token of tokens" [value]="token">{{
+                token.symbol | translate
+                }}</ion-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="">
+      <ion-label stacked>{{ 'For...' | translate }}</ion-label>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-8>
+            <ion-input id='toQty' type="number" [(ngModel)]="toCoin && toCoin.symbol=='ETH'&& ethQty || tokenQty"  (ionChange)="handleChangeTokenQty()" placeholder="0" required clearInput [disabled]="toCoin && toCoin.symbol=='ETH'"></ion-input>
+          </ion-col>
+          <ion-col col-4>
+            <ion-select id="toCoin" okText="ok" cancelText="cancel" [(ngModel)]="toCoin" (ionChange)="handleChangeToCoin(toCoin)">
+              <ion-option *ngFor="let token of tokens" [value]="token" [selected]="token.symbol==toCoin">{{
+                token.symbol | translate
+                }}</ion-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ion-note>Rate:</ion-note>
+    <div>
+      <ion-label stacked>Fee level</ion-label>
+      <ion-segment [(ngModel)]="selectedFee" color="primary" (ionChange)="handleSelectFeeLevel(selectedFee)">
+        <ion-segment-button *ngFor="let fee of feeOpts" [value]="fee">
+          {{ fee | translate }}
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </ion-card>
 </ion-content>

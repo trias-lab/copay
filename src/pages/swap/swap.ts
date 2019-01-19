@@ -1,14 +1,25 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
-// import { NavController, NavParams } from 'ionic-angular';
-import { Logger } from '../../providers/logger/logger';
+// import {
+//   FormBuilder,
+//   FormGroup,
+//   Validators
+// } from '@angular/forms';
+// import { TranslateService } from '@ngx-translate/core';
+import { 
+  Events,
+  Platform
+  } from 'ionic-angular';
+import * as _ from 'lodash';
+import { Subscription } from 'rxjs';
 
-// import ethereumjs-tx to sign and serialise transactions
-// import { Tx } from 'ethereumjs-tx';
-// Import node-fetch to query the trading API
-// const fetch = require('node-fetch');
-// Import web3 for broadcasting transactions
-// import { Web3 } from 'web3';
+// providers
+import { AddressManagerProvider } from '../../providers/address-manager/address-manager';
+// import { BwcErrorProvider } from '../../providers/bwc-error/bwc-error';
+import { Logger } from '../../providers/logger/logger';
+// import { PopupProvider } from '../../providers/popup/popup';
+import { ProfileProvider } from '../../providers/profile/profile';
+// import { WalletProvider } from '../../providers/wallet/wallet';
 /**
  * Generated class for the SwapPage page.
  *
@@ -21,34 +32,51 @@ import { Logger } from '../../providers/logger/logger';
   templateUrl: 'swap.html',
 })
 export class SwapPage {
-	public message: string = '';
+  public wallets;  
+  public selectedWallet;
+  public addrWithBalance;
+  public selectedAddr;
 	public fromCoin;
  	public isFromCoinSupported: boolean = true;
   public toCoin;
   public isToCoinSupported: boolean = true;
   public ethQty: number;
   public tokenQty: number;
-  public GAS_PRICE = 'medium';  // Gas price of the transaction
+  public feeOpts;
+  public selectedFee;  // Gas price of the transaction
+
   public USER_ACCOUNT; // Your Ethereum wallet address
   public WALLET_ID;  // Your fee sharing address
   public private_key;
+
   public showResult = false;
   public txSuccess = false;
   public txHash: string = '';
   public tokens = [];
   public txNotFinished: boolean = false;
+  public message: string = '';
 
   private TOKEN_ADDRESS: string;
   private ETH_TOKEN_ADDRESS = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';  // Representation of ETH as an address on Ropsten
   private apiURL: string = 'https://ropsten-api.kyber.network/';
-  // private PRIVATE_KEY: object;
-  // private web3;
+
+  private onResumeSubscription: Subscription;
+  private onPauseSubscription: Subscription;
 
 	constructor(
+    private plt: Platform,
   	// private navCtrl: NavController, 
   	// private navParams: NavParams,
+    private profileProvider: ProfileProvider,
+    private events: Events,
   	private logger: Logger,
-    private http: HttpClient
+    private http: HttpClient,
+    // private popupProvider: PopupProvider,
+    // private walletProvider: WalletProvider,
+    // private bwcError: BwcErrorProvider,
+    // private translate: TranslateService,
+    private am: AddressManagerProvider,
+    // private formBuilder: FormBuilder,
 	) {
     this.ethQty = 0;
     this.tokenQty = 0; 
@@ -58,19 +86,108 @@ export class SwapPage {
     this.TOKEN_ADDRESS = '0x4E470dc7321E84CA96FcAEDD0C8aBCebbAEB68C6'  // use KNC contract address on Ropsten by default
     this.ETH_TOKEN_ADDRESS = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'  // Representation of ETH as an address on Ropsten
     this.apiURL = 'https://ropsten-api.kyber.network/'
+    // this.addressAddForm = this.formBuilder.group({
+    //   name: [
+    //     oldName || 'Default',
+    //     Validators.compose([Validators.maxLength(20)])
+    //   ],
+    //   address: ''
+    // });
     this.getSupportedTokens();
     // Connect to Infura's ropsten node
     // this.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io"));
 
     // Your private key
     // this.PRIVATE_KEY = Buffer.from(this.private_key, 'hex');
+    this.feeOpts = ['low', 'medium', 'high']
+    this.selectedFee = 'medium';
   }
 
-  async ionViewDidLoad() {
+  ionViewDidLoad(){
     this.logger.info('ionViewDidLoad SwapPage');
-    // this.getSupportedTokens();
-    // let tokens = await this.getSupportedTokens()
-    // this.tokens = tokens.data;
+    this.setWallets()
+    this.subscribeStatusEvents();
+    this.onResumeSubscription = this.plt.resume.subscribe(() => {
+      this.setWallets();
+      this.subscribeStatusEvents();
+    });
+    this.onPauseSubscription = this.plt.pause.subscribe(() => {
+      this.events.unsubscribe('status:updated');
+    });
+  }
+
+  ngOnDestroy() {
+    this.onResumeSubscription.unsubscribe();
+    this.onPauseSubscription.unsubscribe();
+  }
+
+  private subscribeStatusEvents() {
+    // Create, Join, Import and Delete -> Get Wallets -> Update Status for All Wallets -> Update recent transactions and txps
+    this.events.subscribe('status:updated', () => {
+      this.setWallets();
+    });
+  }
+
+  private setWallets = _.debounce(
+    () => {
+      let wallets = this.profileProvider.getWallets();
+      this.wallets = _.filter(wallets, (w)=>{
+        return !w.needsBackup;
+      });
+      this.selectedWallet = this.wallets[0]
+      this.getAddresses(this.selectedWallet)
+      this.logger.debug('-------------------------------setWallets')
+      this.logger.debug(this.wallets)
+      // this.walletsBtc = _.filter(this.wallets, (x: any) => {
+      //   return x.credentials.coin == 'btc';
+      // });
+      // this.walletsBch = _.filter(this.wallets, (x: any) => {
+      //   return x.credentials.coin == 'bch';
+      // });
+      // this.walletsEth = _.filter(this.wallets, (x: any) => {
+      //   return x.credentials.coin == 'eth';
+      // });
+      // this.walletsTri = _.filter(this.wallets, (x: any) => {
+      //   return x.credentials.coin == 'tri';
+      // });
+      // this.updateAllWallets();
+    },
+    5000,
+    {
+      leading: true
+    }
+  );
+
+  private getAddresses(wallet):Promise<any>{
+    return new Promise((resolve)=>{
+      this.am.list(wallet).then(am => {
+        this.logger.debug('---------------------------------addresses')        
+        this.logger.debug(am)      
+        this.addrWithBalance = _.filter(am, (a) => {
+          return a.amount > 0
+        })
+        this.selectedAddr = this.addrWithBalance[0]
+        this.logger.debug('-----------------------this.addrWithBalance')
+        this.logger.debug(this.addrWithBalance)
+        return resolve()
+      })
+    })
+  }
+
+  public handleSelectWallet(selectedWallet){
+    this.logger.debug('------handleSelectWallet')
+    this.logger.debug(selectedWallet)
+    this.getAddresses(selectedWallet)
+  }
+
+  public handleSelectAddress(selectedAddr){
+    this.logger.debug('--------handleSelectAddress')
+    this.logger.debug(selectedAddr)
+  }
+
+  public handleSelectFeeLevel(selectedFee){
+    this.logger.debug('--------handleSelectFeeLevel')
+    this.logger.debug(selectedFee)
   }
 
   /**
@@ -112,7 +229,7 @@ export class SwapPage {
           ####################################
           */
           if(!isTokenEnabled){
-            let enableTokenDetails = this.getEnableTokenDetails(this.USER_ACCOUNT, this.TOKEN_ADDRESS, this.GAS_PRICE)
+            let enableTokenDetails = this.getEnableTokenDetails(this.USER_ACCOUNT, this.TOKEN_ADDRESS, this.selectedFee)
             // Extract the raw transaction details
             let rawTx = enableTokenDetails
             this.logger.debug(rawTx)
@@ -527,7 +644,7 @@ export class SwapPage {
         ### TRADE EXECUTION ###
         #######################
         */
-        let tradeDetails = await this.getTradeDetails(this.USER_ACCOUNT, this.ETH_TOKEN_ADDRESS, this.TOKEN_ADDRESS, this.ethQty, this.tokenQty * 0.97, this.GAS_PRICE, this.WALLET_ID);
+        let tradeDetails = await this.getTradeDetails(this.USER_ACCOUNT, this.ETH_TOKEN_ADDRESS, this.TOKEN_ADDRESS, this.ethQty, this.tokenQty * 0.97, this.selectedFee, this.WALLET_ID);
         this.executeTrade(tradeDetails)
 
         /* TOKEN -> ETH */
@@ -537,7 +654,7 @@ export class SwapPage {
         ### TRADE EXECUTION ###
         #######################
         */
-        let tradeDetails = await this.getTradeDetails(this.USER_ACCOUNT, this.TOKEN_ADDRESS, this.ETH_TOKEN_ADDRESS, this.tokenQty, this.ethQty * 0.97, this.GAS_PRICE, this.WALLET_ID);
+        let tradeDetails = await this.getTradeDetails(this.USER_ACCOUNT, this.TOKEN_ADDRESS, this.ETH_TOKEN_ADDRESS, this.tokenQty, this.ethQty * 0.97, this.selectedFee, this.WALLET_ID);
         this.executeTrade(tradeDetails);
       }
     }    
