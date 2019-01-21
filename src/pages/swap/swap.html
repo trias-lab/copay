@@ -45,11 +45,11 @@
       <ion-grid>
         <ion-row>
           <ion-col col-8>
-            <ion-input id='fromQty' type="number" [(ngModel)]="fromCoin && fromCoin.symbol=='ETH' && ethQty || tokenQty" (ionChange)="handleChangeTokenQty()" placeholder="0" required clearInput [disabled]="fromCoin && fromCoin.symbol=='ETH'" ></ion-input>
+            <ion-input id='fromQty' type="number" [(ngModel)]="fromQtyEntered" (ionChange)="handleChangeFromQty(fromQtyEntered)" placeholder="0" required clearInput ></ion-input>
           </ion-col>
           <ion-col col-4>
-            <ion-select id="fromCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="fromCoin" (ionChange)="handleChangeFromCoin(fromCoin)">
-              <ion-option *ngFor="let token of tokens" [value]="token">{{
+            <ion-select id="fromCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedFromCoin" (ionChange)="handleChangeFromCoin(selectedFromCoin)">
+              <ion-option *ngFor="let token of fromTokens" [value]="token">{{
                 token.symbol | translate
                 }}</ion-option>
             </ion-select>
@@ -62,11 +62,11 @@
       <ion-grid>
         <ion-row>
           <ion-col col-8>
-            <ion-input id='toQty' type="number" [(ngModel)]="toCoin && toCoin.symbol=='ETH'&& ethQty || tokenQty"  (ionChange)="handleChangeTokenQty()" placeholder="0" required clearInput [disabled]="toCoin && toCoin.symbol=='ETH'"></ion-input>
+            <ion-input id='toQty' type="number" [(ngModel)]="toQtyEntered"  (ionChange)="handleChangeToQty(toQtyEntered)" placeholder="0" required clearInput></ion-input>
           </ion-col>
           <ion-col col-4>
-            <ion-select id="toCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="toCoin" (ionChange)="handleChangeToCoin(toCoin)">
-              <ion-option *ngFor="let token of tokens" [value]="token" [selected]="token.symbol==toCoin">{{
+            <ion-select id="toCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedToCoin" (ionChange)="handleChangeToCoin(selectedToCoin)">
+              <ion-option *ngFor="let token of toTokens" [value]="token" [selected]="token.symbol==toCoin">{{
                 token.symbol | translate
                 }}</ion-option>
             </ion-select>
@@ -74,7 +74,7 @@
         </ion-row>
       </ion-grid>
     </div>
-    <ion-note>Rate:</ion-note>
+    <ion-note>Rate ≈ {{rate}}</ion-note>
     <div>
       <ion-label stacked>Fee level</ion-label>
       <ion-segment [(ngModel)]="selectedFee" color="primary" (ionChange)="handleSelectFeeLevel(selectedFee)">
