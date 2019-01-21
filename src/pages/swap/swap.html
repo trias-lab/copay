@@ -48,7 +48,7 @@
             <ion-input id='fromQty' type="number" [(ngModel)]="fromCoin && fromCoin.symbol=='ETH' && ethQty || tokenQty" (ionChange)="handleChangeTokenQty()" placeholder="0" required clearInput [disabled]="fromCoin && fromCoin.symbol=='ETH'" ></ion-input>
           </ion-col>
           <ion-col col-4>
-            <ion-select id="fromCoin" okText="ok" cancelText="cancel" [(ngModel)]="fromCoin" (ionChange)="handleChangeFromCoin(fromCoin)">
+            <ion-select id="fromCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="fromCoin" (ionChange)="handleChangeFromCoin(fromCoin)">
               <ion-option *ngFor="let token of tokens" [value]="token">{{
                 token.symbol | translate
                 }}</ion-option>
@@ -65,7 +65,7 @@
             <ion-input id='toQty' type="number" [(ngModel)]="toCoin && toCoin.symbol=='ETH'&& ethQty || tokenQty"  (ionChange)="handleChangeTokenQty()" placeholder="0" required clearInput [disabled]="toCoin && toCoin.symbol=='ETH'"></ion-input>
           </ion-col>
           <ion-col col-4>
-            <ion-select id="toCoin" okText="ok" cancelText="cancel" [(ngModel)]="toCoin" (ionChange)="handleChangeToCoin(toCoin)">
+            <ion-select id="toCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="toCoin" (ionChange)="handleChangeToCoin(toCoin)">
               <ion-option *ngFor="let token of tokens" [value]="token" [selected]="token.symbol==toCoin">{{
                 token.symbol | translate
                 }}</ion-option>
