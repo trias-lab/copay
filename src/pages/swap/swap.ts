@@ -1,11 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
-// import {
-//   FormBuilder,
-//   FormGroup,
-//   Validators
-// } from '@angular/forms';
-// import { TranslateService } from '@ngx-translate/core';
 import { 
   Events,
   Platform
@@ -20,12 +14,6 @@ import { Logger } from '../../providers/logger/logger';
 // import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
 // import { WalletProvider } from '../../providers/wallet/wallet';
-/**
- * Generated class for the SwapPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-swap',
@@ -98,11 +86,7 @@ export class SwapPage {
     this.TOKEN_ADDRESS = '0x4E470dc7321E84CA96FcAEDD0C8aBCebbAEB68C6'  // use KNC contract address on Ropsten by default
     this.ETH_TOKEN_ADDRESS = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
     this.getSupportedTokens();
-    // Connect to Infura's ropsten node
-    // this.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io"));
 
-    // Your private key
-    // this.PRIVATE_KEY = Buffer.from(this.private_key, 'hex');
     this.feeOpts = ['low', 'medium', 'high']
     this.selectedFee = 'medium';
   }
@@ -135,26 +119,11 @@ export class SwapPage {
   private setWallets = _.debounce(
     () => {
       let wallets = this.profileProvider.getWallets();
-      this.wallets = _.filter(wallets, (w)=>{
-        return !w.needsBackup;
+      this.wallets = _.filter(wallets, (x: any) => {
+        return x.credentials.coin == 'eth' && !x.needsBackup;
       });
       this.selectedWallet = this.wallets[0]
       this.getAddresses(this.selectedWallet)
-      // this.logger.debug('-------------------------------setWallets')
-      // this.logger.debug(this.wallets)
-      // this.walletsBtc = _.filter(this.wallets, (x: any) => {
-      //   return x.credentials.coin == 'btc';
-      // });
-      // this.walletsBch = _.filter(this.wallets, (x: any) => {
-      //   return x.credentials.coin == 'bch';
-      // });
-      // this.walletsEth = _.filter(this.wallets, (x: any) => {
-      //   return x.credentials.coin == 'eth';
-      // });
-      // this.walletsTri = _.filter(this.wallets, (x: any) => {
-      //   return x.credentials.coin == 'tri';
-      // });
-      // this.updateAllWallets();
     },
     5000,
     {
@@ -195,11 +164,6 @@ export class SwapPage {
   }
 
   public handleChangeFromQty(newQty){
-    this.logger.debug('--------------change from qty')
-    this.logger.debug('fromQty:',this.fromQty)
-    this.logger.debug('fromCoin:',this.fromCoin.symbol)
-    this.logger.debug('toQty:',this.toQty)
-    this.logger.debug('toCoin:',this.toCoin.symbol)
     if(newQty && this.fromQty !== newQty){
       this.fromQty = newQty;
       this.toQty = this.rate*newQty;
@@ -213,11 +177,6 @@ export class SwapPage {
   }
 
   public handleChangeToQty(newQty){
-    this.logger.debug('--------------change to qty')
-    this.logger.debug('fromQty:',this.fromQty)
-    this.logger.debug('fromCoin:',this.fromCoin)
-    this.logger.debug('toQty:',this.toQty)
-    this.logger.debug('toCoin:',this.toCoin)
     if(newQty && this.toQty !== newQty){
       this.fromQty = this.toQty/this.rate;
       this.toQty = newQty;
@@ -341,24 +300,14 @@ export class SwapPage {
     this.logger.debug(this.fromCoin)
     if(this.fromCoin.symbol!==newToken.symbol){
       if(newToken.symbol!=='ETH'){
-        /*
-        ###################################
-        ### CHECK IF TOKEN IS SUPPORTED ###
-        ###################################
-        */ 
-        let isTokenSupported = this.isTokenSupported(newToken.symbol)
-        if (isTokenSupported) {
-          this.fromCoin = newToken;
-        	this.toCoin = this.tokens[0];
-          this.fromTokens=this.tokens
-          this.toTokens=[this.tokens[0]]
-        	this.ethQty = 0;
-        	this.tokenQty = 0;
-          // set token address
-          this.TOKEN_ADDRESS = newToken.id
-        } else {
-          this.message = 'Token ' + newToken.symbol + ' is not supported';
-        }
+        this.fromCoin = newToken;
+      	this.toCoin = this.tokens[0];
+        this.fromTokens=this.tokens
+        this.toTokens=[this.tokens[0]]
+      	this.ethQty = 0;
+      	this.tokenQty = 0;
+        // set token address
+        this.TOKEN_ADDRESS = newToken.id
       }else{
         this.fromCoin = newToken;
         this.toCoin = this.tokens[1];  // use KNC by default
@@ -371,6 +320,8 @@ export class SwapPage {
       }      
       this.selectedFromCoin = this.fromCoin;
       this.selectedToCoin = this.toCoin;
+
+      // update rate and token amount
       this.updateRate().then(()=>{
         this.toQty = this.rate*this.fromQty;
         this.toQtyEntered = this.toQty;
@@ -393,23 +344,13 @@ export class SwapPage {
     this.logger.debug(this.toCoin)
     if(this.toCoin.symbol !== newToken.symbol){
       if(newToken.symbol!=='ETH'){
-        /*
-        ###################################
-        ### CHECK IF TOKEN IS SUPPORTED ###
-        ###################################
-        */ 
-        let isTokenSupported = this.isTokenSupported(newToken.symbol)
-        if (isTokenSupported) {
-  	      this.toCoin = newToken;
-  	      this.fromCoin = this.tokens[0];  // use ETH by default
-          this.toTokens=this.tokens
-          this.fromTokens=[this.tokens[0]]
-  	      this.ethQty = 0;
-  	      this.tokenQty = 0;
-          this.TOKEN_ADDRESS = newToken.id
-        } else {
-          this.message = 'Token ' + newToken.symbol + ' is not supported';
-        }
+	      this.toCoin = newToken;
+	      this.fromCoin = this.tokens[0];  // use ETH by default
+        this.toTokens=this.tokens
+        this.fromTokens=[this.tokens[0]]
+	      this.ethQty = 0;
+	      this.tokenQty = 0;
+        this.TOKEN_ADDRESS = newToken.id
       }else{
       	this.toCoin = newToken;
         this.fromCoin = this.tokens[1];  // use KNC by default
@@ -421,6 +362,8 @@ export class SwapPage {
       }
       this.selectedFromCoin = this.fromCoin;
       this.selectedToCoin = this.toCoin;
+
+      // update rate and token amount
       this.updateRate().then(()=>{
         this.fromQty = this.toQty/this.rate;
         this.fromQtyEntered = this.fromQty;
@@ -433,44 +376,24 @@ export class SwapPage {
   }
 
   /**
-   * Private key onchange event handler
-   * @param {*} e 
-   */
-  // public handleChangePrivateKey(e){
-  //   this.private_key = e.target.value;
-  //   // this.PRIVATE_KEY = Buffer.from(e.target.value, 'hex');
-  // }
-
-  /**
-   * User wallet address onchange event handler
-   * @param {*} e 
-   */
-  // public handleChangeUserAccount(e){
-  //   // set wallet_id and user_account to the same address by default
-  //   this.USER_ACCOUNT = e.target.value;
-  //   this.WALLET_ID = e.target.value;
-  // }
-
-  /**
    * Get all supported tokens on Kyber Network
    */
   private getSupportedTokens() {
-    // this.logger.debug('---getSupportedTokens')
     // Querying the API /currencies endpoint
-    // let tokensBasicInfoRequest = await fetch(this.apiURL + 'currencies')
     this.http
       .get(this.apiURL + 'currencies')
       .subscribe(
         (res:any) => {
           this.logger.info('SUCCESS REQUEST:'+this.apiURL + 'currencies');
-          // this.logger.info(res);
           this.tokens = res.data;
           this.fromCoin = this.tokens[0]
           this.toCoin = this.tokens[1]
           this.selectedFromCoin = this.fromCoin;
           this.selectedToCoin = this.toCoin;
+          // update token list
           this.fromTokens=[this.tokens[0]]
           this.toTokens=this.tokens
+          // update rate
           this.updateRate();
           return res;
         },
@@ -479,29 +402,6 @@ export class SwapPage {
           return null;
         }
       );
-    // Parsing the output
-    // let tokensBasicInfo = await tokensBasicInfoRequest.json()
-    // this.logger.debug('---all tokens')
-    // this.logger.debug(tokensBasicInfo)
-    // return tokensBasicInfoRequest
-  }
-
-  /**
-   * Check if a token is supported on Kyber Network
-   * @param {*} tokenStr symbol of the token
-   */
-  private isTokenSupported(tokenStr){
-    // let self = this
-    // let tokens = this.getSupportedTokens();
-    // Checking to see if token is supported
-    return this.tokens.some(token => {
-      if(tokenStr == token.symbol){
-        this.TOKEN_ADDRESS = token.address
-        return true
-      }else{
-      	return false
-      }
-    });
   }
 
   /**
