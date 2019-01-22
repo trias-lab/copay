@@ -9,11 +9,12 @@ import { Subscription } from 'rxjs';
 
 // providers
 import { AddressManagerProvider } from '../../providers/address-manager/address-manager';
+// import { BwcProvider } from '../../providers/bwc/bwc'
 // import { BwcErrorProvider } from '../../providers/bwc-error/bwc-error';
 import { Logger } from '../../providers/logger/logger';
 // import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
-// import { WalletProvider } from '../../providers/wallet/wallet';
+import { WalletProvider } from '../../providers/wallet/wallet';
 
 @Component({
   selector: 'page-swap',
@@ -66,12 +67,12 @@ export class SwapPage {
     private events: Events,
   	private logger: Logger,
     private http: HttpClient,
+    // private bwcProvider: BwcProvider,
     // private popupProvider: PopupProvider,
-    // private walletProvider: WalletProvider,
+    private walletProvider: WalletProvider,
     // private bwcError: BwcErrorProvider,
     // private translate: TranslateService,
     private am: AddressManagerProvider,
-    // private formBuilder: FormBuilder,
 	) {
     this.getSupportedTokens();
 
@@ -80,7 +81,7 @@ export class SwapPage {
   }
 
   ionViewDidLoad(){
-    this.logger.info('ionViewDidLoad SwapPage');
+    this.logger.debug('ionViewDidLoad SwapPage');
     this.setWallets()
     this.subscribeStatusEvents();
     this.onResumeSubscription = this.plt.resume.subscribe(() => {
@@ -110,8 +111,10 @@ export class SwapPage {
       this.wallets = _.filter(wallets, (x: any) => {
         return x.credentials.coin == 'eth' && !x.needsBackup;
       });
-      this.selectedWallet = this.wallets[0]
-      this.getAddresses(this.selectedWallet)
+      if(this.wallets.length > 0){        
+        this.selectedWallet = this.wallets[0]
+        this.getAddresses(this.selectedWallet)
+      }
     },
     5000,
     {
@@ -296,7 +299,7 @@ export class SwapPage {
       .get(this.apiURL + 'currencies')
       .subscribe(
         (res:any) => {
-          this.logger.info('SUCCESS REQUEST:'+this.apiURL + 'currencies');
+          this.logger.debug('SUCCESS REQUEST:'+this.apiURL + 'currencies');
           this.tokens = res.data;
           this.fromCoin = this.tokens[0]
           this.toCoin = this.tokens[1]
@@ -347,8 +350,8 @@ export class SwapPage {
         })
         .subscribe(
           (res) => {
-            this.logger.info('SUCCESS REQUEST:'+this.apiURL + 'trade_data');
-            // this.logger.info(res);
+            this.logger.debug('SUCCESS REQUEST:'+this.apiURL + 'trade_data');
+            // this.logger.debug(res);
             return resolve(res);
           },
           (err) => {
@@ -371,8 +374,8 @@ export class SwapPage {
         .get(this.apiURL + 'users/' + user_address + '/currencies')
         .subscribe(
           (res:any) => {
-            this.logger.info('SUCCESS REQUEST:'+ this.apiURL + 'users/' + user_address + '/currencies');
-            // this.logger.info(res.data);
+            this.logger.debug('SUCCESS REQUEST:'+ this.apiURL + 'users/' + user_address + '/currencies');
+            // this.logger.debug(res.data);
             return resolve(res.data);
           },
           (err) => {
@@ -388,7 +391,7 @@ export class SwapPage {
    * @param  {[type]}       token [description]
    * @return {Promise<any>}       [description]
    */
-  private checkTokenEnabled(token): Promise<any>{
+  private checkTokenEnabled(token): Promise<any>{ 
     return new Promise((resolve, reject) => {
       this.getEnabledStatuses(this.selectedAddr.address).then((enabledStatuses)=>{
         // Checking to see if TOKEN is enabled
@@ -402,7 +405,31 @@ export class SwapPage {
           this.getEnableTokenDetails(this.selectedAddr.address, token.id, this.selectedFee).then((enableTokenDetails) => {
             // Extract the raw transaction details
             let rawTx = enableTokenDetails
+            this.logger.debug('------token not enabled')
             this.logger.debug(rawTx)
+            this.walletProvider.prepare(this.selectedWallet)
+              .then((password:string)=>{                
+                this.logger.debug('---------this.selectedAddr.path')
+                this.logger.debug(this.selectedAddr.path)
+                let signedTx = this.selectedWallet.signEthTranscation(password, this.selectedAddr.path, rawTx)
+                this.logger.debug('---------signedTx')
+                this.logger.debug(signedTx)
+                this.selectedWallet.broadcastRawTx(
+                  {
+                    rawTx: '0x' + signedTx.toString('hex'),
+                    network: 'livenet',
+                    coin: 'eth'
+                  },
+                  (err) => {
+                    if (err) return reject(err);
+                    return resolve();
+                  }
+                );
+              })
+              .catch(err => {
+                this.logger.error(err)
+              })
+            
             // // Create a new transaction
             // let tx = new Tx(rawTx)
             // // Signing the transaction
@@ -419,6 +446,8 @@ export class SwapPage {
             this.logger.debug(err);
             return reject(err);
           })
+        }else{
+          return resolve();
         }
       })
       .catch((err) => {
@@ -450,8 +479,8 @@ export class SwapPage {
         })
         .subscribe(
           (res:any) => {
-            this.logger.info('SUCCESS REQUEST:'+ this.apiURL + 'users/' + user_address + '/currencies/' + id + '/enable_data');
-            // this.logger.info(res.data);
+            this.logger.debug('SUCCESS REQUEST:'+ this.apiURL + 'users/' + user_address + '/currencies/' + id + '/enable_data');
+            // this.logger.debug(res.data);
             return resolve(res.data);
           },
           (err) => {
@@ -483,8 +512,8 @@ export class SwapPage {
         })
         .subscribe(
           (res: any) => {
-            this.logger.info('SUCCESS REQUEST:'+this.apiURL + 'buy_rate');
-            this.logger.info(res);
+            this.logger.debug('SUCCESS REQUEST:'+this.apiURL + 'buy_rate');
+            this.logger.debug(res);
             return resolve(res.data);
           },
           (err) => {
@@ -516,7 +545,7 @@ export class SwapPage {
         })
         .subscribe(
           (res:any) => {
-            this.logger.info('SUCCESS REQUEST:'+this.apiURL + 'sell_rate');
+            this.logger.debug('SUCCESS REQUEST:'+this.apiURL + 'sell_rate');
             return resolve(res.data);
           },
           (err) => {
@@ -536,7 +565,30 @@ export class SwapPage {
     this.showResult = false;
     // Extract the raw transaction details
     let rawTx = tradeDetails.data[0];
-    this.logger.debug(rawTx);
+    this.logger.debug('----------trade-details')
+    this.logger.debug(tradeDetails)
+    this.walletProvider.prepare(this.selectedWallet)
+      .then((password:string)=>{                
+        this.logger.debug('---------this.selectedAddr.path')
+        this.logger.debug(this.selectedAddr.path)
+        let signedTx = this.selectedWallet.signEthTranscation(password, this.selectedAddr.path, rawTx)
+        this.logger.debug('---------signedTx')
+        this.logger.debug('0x' + signedTx.toString('hex'))
+        this.selectedWallet.broadcastRawTx(
+          {
+            rawTx: '0x' + signedTx.toString('hex'),
+            network: 'livenet',
+            coin: 'eth'
+          },
+          (err, txid) => {
+            if (err) this.logger.debug(err);
+            this.logger.debug('Tx '+ txid + ' broadcast success!')
+          }
+        );
+      })
+      .catch(err => {
+        this.logger.error(err)
+      })
     // Create a new transaction
     // let tx = new Tx(rawTx);
     // // Signing the transaction
@@ -560,14 +612,15 @@ export class SwapPage {
 
   public async startSwap() {    
     if(this.fromQty>0 && this.toQty>0){
-      let tokenToCheck = this.fromCoin.symbol
+      let tokenToCheck = this.fromCoin
       /* if ETH -> TOKEN */
       if (this.fromCoin.symbol == 'ETH' && this.toCoin.symbol !== "ETH") {
-        tokenToCheck = this.toCoin.symbol
+        tokenToCheck = this.toCoin
       }
 
       // enable token
       this.checkTokenEnabled(tokenToCheck).then(()=>{
+        this.logger.debug('----enabled')
         // trade execution
         this.getTradeDetails(this.selectedAddr.address, this.fromCoin.id, this.toCoin.id, this.fromQty, this.toQty * 0.97, this.selectedFee).then((tradeDetails) => {
             this.executeTrade(tradeDetails)
