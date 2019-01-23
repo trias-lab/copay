@@ -1,18 +1,24 @@
+import { DecimalPipe } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { 
   Events,
+  ModalController,
   Platform
   } from 'ionic-angular';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
+
+// pages
+import { SwapConfirmPage } from '../swap-confirm/swap-confirm';
 
 // providers
 import { AddressManagerProvider } from '../../providers/address-manager/address-manager';
 // import { BwcProvider } from '../../providers/bwc/bwc'
 import { BwcErrorProvider } from '../../providers/bwc-error/bwc-error';
 import { Logger } from '../../providers/logger/logger';
+import { OnGoingProcessProvider } from '../../providers/on-going-process/on-going-process'
 import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { WalletProvider } from '../../providers/wallet/wallet';
@@ -45,15 +51,6 @@ export class SwapPage {
   public feeOpts;
   public selectedFee;  // Gas price of the transaction
 
-  public WALLET_ID;  // Your fee sharing address
-  public private_key;
-
-  public showResult = false;
-  public txSuccess = false;
-  public txHash: string = '';  
-  public txNotFinished: boolean = false;
-  public message: string = '';
-
   private apiURL: string = 'https://ropsten-api.kyber.network/';
   // private apiURL: string = 'https://api.kyber.network/'; // when production
 
@@ -62,8 +59,6 @@ export class SwapPage {
 
 	constructor(
     private plt: Platform,
-  	// private navCtrl: NavController, 
-  	// private navParams: NavParams,
     private profileProvider: ProfileProvider,
     private events: Events,
   	private logger: Logger,
@@ -74,6 +69,9 @@ export class SwapPage {
     private bwcError: BwcErrorProvider,
     private translate: TranslateService,
     private am: AddressManagerProvider,
+    private modalCtrl: ModalController,
+    private onGoingProcessProvider: OnGoingProcessProvider,
+    private decimalPipe: DecimalPipe
 	) {
     this.getSupportedTokens();
 
@@ -123,6 +121,18 @@ export class SwapPage {
     }
   );
 
+  private updateAll(){
+    this.getAddresses(this.selectedWallet);
+    this.fromQty = 0;
+    this.toQty = 0;
+    this.fromQtyEntered = 0;
+    this.toQtyEntered = 0;
+    this.fromCoin = this.tokens[0];
+    this.toCoin = this.tokens[1];  // use KNC by default
+    this.fromTokens=[this.tokens[0]]
+    this.toTokens=this.tokens
+  }
+
   private getAddresses(wallet):Promise<any>{
     return new Promise((resolve)=>{
       this.walletProvider
@@ -131,12 +141,17 @@ export class SwapPage {
           // get all addresses with balance
           let addrWithBalance = resp.byAddress;
           // match addresses stored in local storage then add names.
+          
           this.am.list(wallet).then(am => {
             this.addrWithBalance = addrWithBalance;
             _.forEach(addrWithBalance, (value, index)=>{
               this.addrWithBalance[index].name = am[value.address].name
-            }) 
+            })
+            // this.logger.debug('----------------------addr with balance')
+            // this.logger.debug(addrWithBalance)
             this.selectedAddr = this.addrWithBalance[0]
+            // this.logger.debug('----------------------selectedAddr')
+            // this.logger.debug(this.selectedAddr)
             return resolve()
           })
         })
@@ -416,18 +431,15 @@ export class SwapPage {
         })
 
         if(!isTokenEnabled){
+          this.onGoingProcessProvider.set('enablingToken');
           this.getEnableTokenDetails(this.selectedAddr.address, token.id, this.selectedFee).then((enableTokenDetails) => {
             // Extract the raw transaction details
             let rawTx = enableTokenDetails
-            this.logger.debug('------token not enabled')
-            this.logger.debug(rawTx)
             this.walletProvider.prepare(this.selectedWallet)
-              .then((password:string)=>{                
-                this.logger.debug('---------this.selectedAddr.path')
-                this.logger.debug(this.selectedAddr.path)
+              .then((password:string)=>{
+                this.onGoingProcessProvider.set('signingTx');
                 let signedTx = this.selectedWallet.signEthTranscation(password, this.selectedAddr.path, rawTx)
-                this.logger.debug('---------signedTx')
-                this.logger.debug(signedTx)
+                this.onGoingProcessProvider.set('broadcastingTx');
                 this.selectedWallet.broadcastRawTx(
                   {
                     rawTx: '0x' + signedTx.toString('hex'),
@@ -436,16 +448,19 @@ export class SwapPage {
                   },
                   (err) => {
                     if (err) return reject(err);
+                    this.onGoingProcessProvider.clear();
                     return resolve();
                   }
                 );
               })
               .catch(err => {
+                this.onGoingProcessProvider.clear()
                 this.logger.error(err)
               })
             return resolve();
           })
           .catch((err)=>{
+            this.onGoingProcessProvider.clear()
             this.logger.debug(err);
             return reject(err);
           })
@@ -454,6 +469,7 @@ export class SwapPage {
         }
       })
       .catch((err) => {
+        this.onGoingProcessProvider.clear()
         this.logger.debug(err);
         return reject(err);
       })
@@ -564,19 +580,13 @@ export class SwapPage {
    * @param {*} tradeDetails 
    */
   private async executeTrade(tradeDetails){
-    this.txNotFinished = true;
-    this.showResult = false;
     // Extract the raw transaction details
     let rawTx = tradeDetails.data[0];
-    this.logger.debug('----------trade-details')
-    this.logger.debug(tradeDetails)
     this.walletProvider.prepare(this.selectedWallet)
-      .then((password:string)=>{                
-        this.logger.debug('---------this.selectedAddr.path')
-        this.logger.debug(this.selectedAddr.path)
+      .then((password:string)=>{
+        this.onGoingProcessProvider.set('signingTx');
         let signedTx = this.selectedWallet.signEthTranscation(password, this.selectedAddr.path, rawTx)
-        this.logger.debug('---------signedTx')
-        this.logger.debug('0x' + signedTx.toString('hex'))
+        this.onGoingProcessProvider.set('broadcastingTx');
         this.selectedWallet.broadcastRawTx(
           {
             rawTx: '0x' + signedTx.toString('hex'),
@@ -586,34 +596,56 @@ export class SwapPage {
           (err, txid) => {
             if (err) this.logger.debug(err);
             this.logger.debug('Tx '+ txid + ' broadcast success!')
+            this.onGoingProcessProvider.clear();
+            this.updateAll()
           }
         );
       })
       .catch(err => {
+        this.onGoingProcessProvider.clear()
         this.logger.error(err)
       })
-    this.showResult = true;
   }
 
   public async startSwap() {    
     if(this.fromQty>0 && this.toQty>0){
-      let tokenToCheck = this.fromCoin
-      /* if ETH -> TOKEN */
-      if (this.fromCoin.symbol == 'ETH' && this.toCoin.symbol !== "ETH") {
-        tokenToCheck = this.toCoin
-      }
+      let txObject = {
+        exchangeFrom: this.decimalPipe.transform(this.fromQty, '1.0-6') + ' ' + this.fromCoin.symbol.toUpperCase(),
+        exchangeTo: this.decimalPipe.transform(this.toQty, '1.0-6') + ' ' + this.toCoin.symbol.toUpperCase(),
+        address: this.selectedAddr.address,
+        gasPrice: this.selectedFee
+      };
 
-      // enable token
-      this.checkTokenEnabled(tokenToCheck).then(()=>{
-        this.logger.debug('----enabled')
-        // trade execution
-        this.getTradeDetails(this.selectedAddr.address, this.fromCoin.id, this.toCoin.id, this.fromQty, this.toQty * 0.97, this.selectedFee).then((tradeDetails) => {
-            this.executeTrade(tradeDetails)
-          })
-        })
-        .catch((err) => {
-          this.logger.debug(err)
-        })
+      const myModal = this.modalCtrl.create(SwapConfirmPage, txObject, {
+        showBackdrop: true,
+        enableBackdropDismiss: false,
+        cssClass: "swap-confirm-modal"
+      });
+
+      myModal.present();
+
+      myModal.onDidDismiss(data => {
+        if(data && data.isConfrimed){
+          let tokenToCheck = this.fromCoin
+          /* if ETH -> TOKEN */
+          if (this.fromCoin.symbol == 'ETH' && this.toCoin.symbol !== "ETH") {
+            tokenToCheck = this.toCoin
+          }
+
+          // enable token
+          this.checkTokenEnabled(tokenToCheck).then(()=>{
+            this.onGoingProcessProvider.set('creatingTx');
+            // trade execution
+            this.getTradeDetails(this.selectedAddr.address, this.fromCoin.id, this.toCoin.id, this.fromQty, this.toQty * 0.97, this.selectedFee).then((tradeDetails) => {            
+                this.executeTrade(tradeDetails)
+              })
+            })
+            .catch((err) => {
+              this.onGoingProcessProvider.clear()
+              this.logger.debug(err)
+            })
+        }
+      });      
     }    
   }
 
