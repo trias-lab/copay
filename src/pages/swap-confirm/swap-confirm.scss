@@ -1,0 +1,95 @@
+.swap-confirm-modal{
+	background-color: rgba(0,0,0,0.8);
+	.modal-wrapper{
+    width: 90%;
+    height: 63%;
+    margin-top: 16%;
+    margin-left: 5%;
+
+    page-swap-confirm {		
+			ion-content{
+				padding: 0;
+    		background:rgba(255,255,255,1);
+    		box-shadow:0px 2px 6px 0px rgba(0,0,0,0.1);
+				border-radius:4px;
+			}
+			h1{
+				font-size:20px;
+				font-weight:500;
+				color:rgba(20,42,63,1);
+				line-height:24px;
+				margin-top: 38px;
+				padding: 0 16px;
+			}
+			p{
+				font-size:14px;
+				font-weight:400;
+				color:rgba(110,118,125,1);
+				line-height:20px;
+				margin-top: 14px;
+				padding: 0 16px;
+			}
+			ion-list{
+				margin: 36px 0;				
+				ion-item:nth-child(1+2n){
+					background-color: #E5E8EA;
+				}
+				ion-item:nth-child(2n){
+					background-color: #FCFCFC;
+				}
+				.item-block:first-child {
+			    border-top: 1px solid #E5E8EA;
+				}
+				.item-block{
+					border-bottom: 1px solid #E5E8EA;
+					.item-inner{
+						border: none;
+					}
+				}
+				ion-label{
+					font-size:15px;
+					font-weight:500;
+					color:rgba(20,42,63,1);
+					line-height:20px;
+					margin: 12px;
+				}
+				ion-note{
+					max-width: 61%;
+					color: #6E767D;
+					font-size:15px;
+					font-weight:400;
+					color:rgba(110,118,125,1);
+					line-height:20px;
+				}
+			}
+			.button-group{
+				padding: 10px 16px;
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				background:rgba(246,247,249,1);
+				border-radius:0px 0px 4px 4px;
+				border-top: 1px solid #E5E8EA;
+			}
+			.cancel-button{
+				width:128px;
+				height:22px;
+				font-size:16px;
+				font-weight:bold;
+				color:rgba(110,118,125,1);
+				line-height:32px;				
+				height: 32px;
+				width: 145px;
+				display: inline-block;
+    		text-align: center;
+			}
+			.confirm-button{
+				float: right;
+				height: 32px;
+				width: 145px;
+				margin: 0;
+			}
+		}
+	}	
+}
+
