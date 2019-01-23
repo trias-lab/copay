@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { 
   Events,
   Platform
@@ -10,9 +11,9 @@ import { Subscription } from 'rxjs';
 // providers
 import { AddressManagerProvider } from '../../providers/address-manager/address-manager';
 // import { BwcProvider } from '../../providers/bwc/bwc'
-// import { BwcErrorProvider } from '../../providers/bwc-error/bwc-error';
+import { BwcErrorProvider } from '../../providers/bwc-error/bwc-error';
 import { Logger } from '../../providers/logger/logger';
-// import { PopupProvider } from '../../providers/popup/popup';
+import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { WalletProvider } from '../../providers/wallet/wallet';
 
@@ -68,10 +69,10 @@ export class SwapPage {
   	private logger: Logger,
     private http: HttpClient,
     // private bwcProvider: BwcProvider,
-    // private popupProvider: PopupProvider,
+    private popupProvider: PopupProvider,
     private walletProvider: WalletProvider,
-    // private bwcError: BwcErrorProvider,
-    // private translate: TranslateService,
+    private bwcError: BwcErrorProvider,
+    private translate: TranslateService,
     private am: AddressManagerProvider,
 	) {
     this.getSupportedTokens();
@@ -124,17 +125,30 @@ export class SwapPage {
 
   private getAddresses(wallet):Promise<any>{
     return new Promise((resolve)=>{
-      this.am.list(wallet).then(am => {
-        // this.logger.debug('---------------------------------addresses')        
-        // this.logger.debug(am)      
-        this.addrWithBalance = _.filter(am, (a) => {
-          return a.amount > 0
+      this.walletProvider
+        .getBalance(wallet, {})
+        .then(resp => {
+          // get all addresses with balance
+          let addrWithBalance = resp.byAddress;
+          // match addresses stored in local storage then add names.
+          this.am.list(wallet).then(am => {
+            this.addrWithBalance = addrWithBalance;
+            _.forEach(addrWithBalance, (value, index)=>{
+              this.addrWithBalance[index].name = am[value.address].name
+            }) 
+            this.selectedAddr = this.addrWithBalance[0]
+            return resolve()
+          })
         })
-        this.selectedAddr = this.addrWithBalance[0]
-        // this.logger.debug('-----------------------this.addrWithBalance')
-        // this.logger.debug(this.addrWithBalance)
-        return resolve()
-      })
+        .catch(err => {
+          this.logger.error(err);
+          this.popupProvider.ionicAlert(
+            this.bwcError.msg(
+              err,
+              this.translate.instant('Could not update addresses')
+            )
+          );
+        });      
     })
   }
 
@@ -429,17 +443,6 @@ export class SwapPage {
               .catch(err => {
                 this.logger.error(err)
               })
-            
-            // // Create a new transaction
-            // let tx = new Tx(rawTx)
-            // // Signing the transaction
-            // tx.sign(this.PRIVATE_KEY)
-            // // Serialise the transaction (RLP encoding)
-            // let serializedTx = tx.serialize()
-            // // Broadcasting the transaction
-            // let txReceipt = await this.web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex')).catch(error => this.logger.debug(error))
-            // // Log the transaction receipt
-            // this.logger.debug(txReceipt)
             return resolve();
           })
           .catch((err)=>{
@@ -589,25 +592,7 @@ export class SwapPage {
       .catch(err => {
         this.logger.error(err)
       })
-    // Create a new transaction
-    // let tx = new Tx(rawTx);
-    // // Signing the transaction
-    // tx.sign(this.PRIVATE_KEY);
-    // // Serialise the transaction (RLP encoding)
-    // let serializedTx = tx.serialize();
-    // // Broadcasting the transaction
-    // let txReceipt = await this.web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex'))
-    //   .catch(error => { 
-    //     this.logger.debug(error); 
-    //     this.txNotFinished = false;
-    //   });
-    // Log the transaction receipt
     this.showResult = true;
-    // this.txSuccess = txReceipt.status;
-    // this.txHash = txReceipt.transactionHash;
-    // this.txNotFinished = false;
-    // this.logger.debug(txReceipt);
-    // return txReceipt;
   }
 
   public async startSwap() {    
