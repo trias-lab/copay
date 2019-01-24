@@ -5,7 +5,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { 
   Events,
   ModalController,
-  Platform
+  Platform,
+  ViewController
   } from 'ionic-angular';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
@@ -70,6 +71,7 @@ export class SwapPage {
     private translate: TranslateService,
     private am: AddressManagerProvider,
     private modalCtrl: ModalController,
+    private viewCtrl: ViewController,
     private onGoingProcessProvider: OnGoingProcessProvider,
     private decimalPipe: DecimalPipe
 	) {
@@ -102,6 +104,9 @@ export class SwapPage {
     this.events.subscribe('status:updated', () => {
       this.setWallets();
     });
+    this.events.subscribe('Wallet/setAddress', () => {
+      this.getAddresses(this.selectedWallet);
+    });
   }
 
   private setWallets = _.debounce(
@@ -113,6 +118,10 @@ export class SwapPage {
       if(this.wallets.length > 0){        
         this.selectedWallet = this.wallets[0]
         this.getAddresses(this.selectedWallet)
+      } else {
+        this.popupProvider.ionicAlert(this.translate.instant('Needs Backup'), "There is no backed up ETH wallet. It's highly advised that you verify your recovery phrase so that your funds can be recovered in case your phone was lost or stolen.", 'Go Back').then( () => {
+          this.viewCtrl.dismiss();
+        });
       }
     },
     5000,
@@ -455,13 +464,12 @@ export class SwapPage {
               })
               .catch(err => {
                 this.onGoingProcessProvider.clear()
-                this.logger.error(err)
+                return reject(err)
               })
             return resolve();
           })
           .catch((err)=>{
             this.onGoingProcessProvider.clear()
-            this.logger.debug(err);
             return reject(err);
           })
         }else{
@@ -470,7 +478,6 @@ export class SwapPage {
       })
       .catch((err) => {
         this.onGoingProcessProvider.clear()
-        this.logger.debug(err);
         return reject(err);
       })
     })   
@@ -594,16 +601,22 @@ export class SwapPage {
             coin: 'eth'
           },
           (err, txid) => {
-            if (err) this.logger.debug(err);
-            this.logger.debug('Tx '+ txid + ' broadcast success!')
-            this.onGoingProcessProvider.clear();
-            this.updateAll()
+            if (err){
+              this.logger.error(err);
+              this.popupProvider.ionicAlert(this.translate.instant('Error executing trade:'), this.bwcError.msg(err));
+            } else {
+              this.popupProvider.ionicAlert('Success', 'Transaction has been sent, we’ll notify you when it is comfirmed.', 'Great!');
+              this.logger.debug('Tx '+ txid + ' broadcast success!')
+              this.updateAll()
+            }
+            this.onGoingProcessProvider.clear();  
           }
         );
       })
       .catch(err => {
         this.onGoingProcessProvider.clear()
-        this.logger.error(err)
+        this.logger.error(err);
+        this.popupProvider.ionicAlert(this.translate.instant('Error executing trade:'), this.bwcError.msg(err));
       })
   }
 
@@ -642,7 +655,7 @@ export class SwapPage {
             })
             .catch((err) => {
               this.onGoingProcessProvider.clear()
-              this.logger.debug(err)
+              this.popupProvider.ionicAlert('Failed', err, 'Ok');
             })
         }
       });      
