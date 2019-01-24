@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>swap</ion-title>
     <ion-buttons end>
-      <button (click)="startSwap()" [disabled]="!(fromQty && toQty && selectedWallet && selectedAddr)">
+      <button class="start-swap-btn" (click)="startSwap()" [disabled]="!(fromQty && toQty && selectedWallet && selectedAddr)">
         {{ 'Initiate' | translate }}
       </button>
     </ion-buttons>
