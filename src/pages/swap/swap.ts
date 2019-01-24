@@ -150,19 +150,24 @@ export class SwapPage {
           // get all addresses with balance
           let addrWithBalance = resp.byAddress;
           // match addresses stored in local storage then add names.
-          
-          this.am.list(wallet).then(am => {
-            this.addrWithBalance = addrWithBalance;
-            _.forEach(addrWithBalance, (value, index)=>{
-              this.addrWithBalance[index].name = am[value.address].name
+          if(addrWithBalance.length>0){
+            this.am.list(wallet).then(am => {
+              this.addrWithBalance = addrWithBalance;
+              _.forEach(addrWithBalance, (value, index)=>{
+                this.addrWithBalance[index].name = am[value.address].name
+              })
+              // this.logger.debug('----------------------addr with balance')
+              // this.logger.debug(addrWithBalance)
+              this.selectedAddr = this.addrWithBalance[0]
+              // this.logger.debug('----------------------selectedAddr')
+              // this.logger.debug(this.selectedAddr)
+              return resolve()
             })
-            // this.logger.debug('----------------------addr with balance')
-            // this.logger.debug(addrWithBalance)
-            this.selectedAddr = this.addrWithBalance[0]
-            // this.logger.debug('----------------------selectedAddr')
-            // this.logger.debug(this.selectedAddr)
-            return resolve()
-          })
+          } else {
+            this.logger.error('No address with balance.');
+            this.addrWithBalance = [];
+            this.selectedAddr = null;
+          }         
         })
         .catch(err => {
           this.logger.error(err);

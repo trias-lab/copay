@@ -30,14 +30,15 @@
     </ion-item>
     <ion-item>
       <ion-label stacked>{{ 'Address' | translate }}</ion-label>
-      <ion-select id="address-selector" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedAddr" (ionChange)="handleSelectAddress(selectedAddr)">
+      <ion-select id="address-selector" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedAddr" (ionChange)="handleSelectAddress(selectedAddr)" [disabled]="!selectedAddr">
         <ion-option *ngFor="let addr of addrWithBalance" [value]="addr">
-        {{ addr.name }}({{selectedWallet.coin !== 'eth' && selectedWallet.coin !== 'tri' ?
-                    (addr.amount | satToUnit:
-                    selectedWallet.coin) : (addr.amount | weiToUnit: selectedWallet.coin)}})</ion-option>
+        {{ addr.name }}({{ addr.amount | weiToUnit: selectedWallet.coin }})</ion-option>
       </ion-select>
     </ion-item>
-    <ion-note>Make sure the balance is sufficient. </ion-note>
+    <ion-note *ngIf="selectedAddr">Make sure the balance is sufficient. </ion-note>
+    <ion-note class="warning" *ngIf="!selectedAddr">Balance Not Sufficient. </ion-note>
+    <br>
+    <ion-note>Current address: {{ selectedWallet && selectedAddr && (selectedAddr.amount || 0 | weiToUnit: selectedWallet && selectedWallet.coin) || '0 ETH'}} </ion-note>
 
     <h1>Exchange Detail</h1>
     <div>
@@ -45,10 +46,10 @@
       <ion-grid>
         <ion-row>
           <ion-col col-8>
-            <ion-input id='fromQty' type="number" [(ngModel)]="fromQtyEntered" (ionChange)="handleChangeFromQty(fromQtyEntered)" placeholder="0" required clearInput ></ion-input>
+            <ion-input id='fromQty' type="number" [(ngModel)]="fromQtyEntered" (ionChange)="handleChangeFromQty(fromQtyEntered)" placeholder="0" required clearInput [disabled]="!selectedAddr"></ion-input>
           </ion-col>
           <ion-col col-4>
-            <ion-select id="fromCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedFromCoin" (ionChange)="handleChangeFromCoin(selectedFromCoin)">
+            <ion-select id="fromCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedFromCoin" (ionChange)="handleChangeFromCoin(selectedFromCoin)" [disabled]="!selectedAddr">
               <ion-option *ngFor="let token of fromTokens" [value]="token">{{
                 token.symbol | translate
                 }}</ion-option>
@@ -62,10 +63,10 @@
       <ion-grid>
         <ion-row>
           <ion-col col-8>
-            <ion-input id='toQty' type="number" [(ngModel)]="toQtyEntered"  (ionChange)="handleChangeToQty(toQtyEntered)" placeholder="0" required clearInput></ion-input>
+            <ion-input id='toQty' type="number" [(ngModel)]="toQtyEntered"  (ionChange)="handleChangeToQty(toQtyEntered)" placeholder="0" required clearInput [disabled]="!selectedAddr"></ion-input>
           </ion-col>
           <ion-col col-4>
-            <ion-select id="toCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedToCoin" (ionChange)="handleChangeToCoin(selectedToCoin)">
+            <ion-select id="toCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedToCoin" (ionChange)="handleChangeToCoin(selectedToCoin)" [disabled]="!selectedAddr">
               <ion-option *ngFor="let token of toTokens" [value]="token" [selected]="token.symbol==toCoin">{{
                 token.symbol | translate
                 }}</ion-option>
