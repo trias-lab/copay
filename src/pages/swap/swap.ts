@@ -154,13 +154,13 @@ export class SwapPage {
             this.am.list(wallet).then(am => {
               this.addrWithBalance = addrWithBalance;
               _.forEach(addrWithBalance, (value, index)=>{
-                this.addrWithBalance[index].name = am[value.address].name
+                this.addrWithBalance[index].name = am[value.address] && am[value.address].name || "Default"
               })
               // this.logger.debug('----------------------addr with balance')
               // this.logger.debug(addrWithBalance)
               this.selectedAddr = this.addrWithBalance[0]
               // this.logger.debug('----------------------selectedAddr')
-              // this.logger.debug(this.selectedAddr)
+              // this.logger.debug(this.selectedAddr)              
               return resolve()
             })
           } else {
