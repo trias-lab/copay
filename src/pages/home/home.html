@@ -39,7 +39,7 @@
   <div class="wrapper">
     <div class="header-extend" *ngIf="wallets && wallets[0]"></div>
 
-    <div class="card clipboard-card" *ngIf="validDataFromClipboard">
+    <!-- <div class="card clipboard-card" *ngIf="validDataFromClipboard">
       <ion-item-divider>
         <div class="title" item-start>
           <img src="assets/img/paste-clipboard.svg" alt="Clipboard" width="20" />
@@ -53,7 +53,7 @@
       </ion-item-divider>
       <page-clipboard-card [remainingTimeStr]="remainingTimeStr" [payProDetailsData]="payProDetailsData"
         [validDataFromClipboard]="validDataFromClipboard" (click)="processClipboardData(validDataFromClipboard.data)"></page-clipboard-card>
-    </div>
+    </div> -->
 
     <div [ngClass]="{'content-animation': slideDown, 'initial-margin': validDataFromClipboard}">
 
@@ -126,7 +126,7 @@
         </ion-card-content>
       </ion-card> -->
 
-      <ion-card class="tabs-card">
+      <ion-card class="tabs-card" *ngIf="wallets && wallets[0]">
         <div class="tabs-wrapper list-header item">
           <div class="tabs-inner-wrapper">
             <a class="tab-btn" [ngClass]="{'active': selectedCoinType=='all'}" (click)="selectCoinType('all')">{{
@@ -141,7 +141,7 @@
           </div>
         </div>
       </ion-card>
-
+      <!-- 
       <div class="card" *ngIf="txps && txps[0]">
         <ion-item-divider>
           <div class="title" item-start>
@@ -156,10 +156,10 @@
         <ion-list>
           <page-txp *ngFor="let txp of txps" [tx]="txp" [addressbook]="addressbook"></page-txp>
         </ion-list>
-      </div>
+      </div> -->
 
-      <div class="card" *ngIf="recentTransactionsEnabled && notifications && notifications[0]">
-        <!-- <ion-item-divider>
+      <!-- <div class="card" *ngIf="recentTransactionsEnabled && notifications && notifications[0]"> -->
+      <!-- <ion-item-divider>
           <div class="title" item-start>
             <span translate>Recent Transactions</span>
           </div>
@@ -169,11 +169,11 @@
             </button>
           </div>
         </ion-item-divider> -->
-        <!-- <ion-list>
+      <!-- <ion-list>
           <page-wallet-activity *ngFor="let notification of notifications" (click)="openNotificationModal(notification)"
             [notification]="notification"></page-wallet-activity>
         </ion-list> -->
-      </div>
+      <!-- </div> -->
 
       <!-- <div class="card" *ngIf="walletsBtc && walletsBtc[0]"> -->
       <!-- <ion-item-divider>
@@ -397,7 +397,7 @@
 
 
 
-      <div class="card" *ngIf="showBitPayCard && bitpayCardItems && bitpayCardItems[0] && wallets &&wallets[0]">
+      <!-- <div class="card" *ngIf="showBitPayCard && bitpayCardItems && bitpayCardItems[0] && wallets &&wallets[0]">
         <ion-item-divider>
           <div class="title" item-start>
             <span>BitPay Visa
@@ -420,10 +420,10 @@
               {{card.updatedOn ? (' &middot; ' + (card.updatedOn * 1000 | amTimeAgo)) : ''}}</div>
           </button>
         </ion-list>
-      </div>
+      </div> -->
 
-      <gift-cards *ngIf="showGiftCards"></gift-cards>
-
+      <!-- <gift-cards *ngIf="showGiftCards"></gift-cards> -->
+      <!-- 
       <div class="card" *ngIf="homeIntegrations && homeIntegrations.length > 0 && wallets && wallets[0]">
         <ion-item-divider (click)="hideHomeIntegrations = !hideHomeIntegrations">
           <div class="title" item-start translate>Services</div>
@@ -442,8 +442,8 @@
             <span class="item-title">{{service.title || service.name}}</span>
           </button>
         </ion-list>
+      </div> -->
 
-      </div>
     </div>
   </div>
 

@@ -71,7 +71,8 @@ export class SettingsPage {
     private modalCtrl: ModalController,
     private touchid: TouchIdProvider
   ) {
-    this.appName = this.app.info.nameCase;
+    // this.appName = this.app.info.nameCase;
+    this.appName = 'Tri Wallet';
     this.walletsBch = [];
     this.walletsBtc = [];
     this.isCordova = this.platformProvider.isCordova;
