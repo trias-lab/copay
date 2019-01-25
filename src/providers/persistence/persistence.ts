@@ -458,7 +458,7 @@ export class PersistenceProvider {
     return this.storage.get(Keys.ADDRESS_MANAGER(walletId));
   }
 
-  clearAddressManager(walletId: string) {
+  removeAddressManager(walletId: string) {
     return this.storage.remove(Keys.ADDRESS_MANAGER(walletId));
   }
 
@@ -537,7 +537,9 @@ export class PersistenceProvider {
     return this.clearLastAddress(walletId)
       .then(() => this.removeTxHistory(walletId))
       .then(() => this.clearBackupFlag(walletId))
-      .then(() => this.removeWalletOrder(walletId));
+      .then(() => this.removeWalletOrder(walletId))      
+      .then(() => this.removeBalanceCache(walletId))
+      .then(()=> this.removeAddressManager(walletId));
   }
 
   setGiftCardConfigCache(data) {

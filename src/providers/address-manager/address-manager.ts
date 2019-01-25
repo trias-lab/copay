@@ -143,7 +143,7 @@ export class AddressManagerProvider {
   public clear(wallet): Promise<any> {
     return new Promise((resolve, reject) => {
       this.persistenceProvider
-        .clearAddressManager(wallet.id)
+        .removeAddressManager(wallet.id)
         .then(() => {
         	return resolve();
         })
