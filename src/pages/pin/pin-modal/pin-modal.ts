@@ -73,14 +73,9 @@ export class PinModalPage {
     this.action = this.navParams.get('action');
 
     if (this.action === 'checkPin' || this.action === 'checkFingerprint' || this.action === 'lockSetUp') {
-      this.persistenceProvider.getLockStatus().then((isLocked: string) => {
-        if (!isLocked) return;
-        if (this.action === 'checkPin' || this.action === 'checkFingerprint') {
-          this.showLockTimer();
-          this.setLockRelease();
-        }
-      });
+      this.checkIfLocked();
     }
+
     if (this.action === 'checkFingerprint') {
       this.unregister = this.platform.registerBackButtonAction(() => { });
       this.checkFingerprint();
@@ -95,14 +90,28 @@ export class PinModalPage {
       this.currentPin = this.firstPinEntered = '';
     });
     this.onResumeSubscription = this.platform.resume.subscribe(() => {
-      this.showLockTimer();
-      this.setLockRelease();
+      this.disableButtons = true;
+      this.checkIfLocked();
     });
   }
 
   ngOnDestroy() {
     this.onPauseSubscription.unsubscribe();
     this.onResumeSubscription.unsubscribe();
+  }
+
+  private checkIfLocked(): void {
+    this.persistenceProvider.getLockStatus().then((isLocked: string) => {
+      if (!isLocked) {
+        this.disableButtons = null;
+        return;
+      }
+
+      if (this.action === 'checkPin' || this.action === 'checkFingerprint') {
+        this.showLockTimer();
+        this.setLockRelease();
+      }
+    });
   }
 
   public checkFingerprint(): void {
@@ -158,12 +167,14 @@ export class PinModalPage {
     this.incorrect = true;
     if (
       this.currentAttempts == this.ATTEMPT_LIMIT &&
-      this.action !== 'lockSetUp'
+      (this.action === 'checkPin' || this.action === 'checkFingerprint')
     ) {
       this.currentAttempts = 0;
       this.persistenceProvider.setLockStatus('locked');
       this.showLockTimer();
       this.setLockRelease();
+    } else {
+      this.disableButtons = null;
     }
   }
 
@@ -196,7 +207,8 @@ export class PinModalPage {
 
   private isComplete(): boolean {
     if (this.currentPin.length < 6) return false;
-    else return true;
+    if (this.action != 'pinSetUp' && this.action != 'initPin') this.disableButtons = true;
+    return true;
   }
 
   public save(): void {
