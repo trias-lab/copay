@@ -311,8 +311,8 @@
       </ion-infinite-scroll>
 
     </div>
-    <div class="address-wrapper" *ngIf="selectedTab == 'addresses'" [ngClass]="{'loading': loadingAddr}">
-      <div class="loading" *ngIf="loadingAddr">
+    <div class="address-wrapper" *ngIf="selectedTab == 'addresses'" >
+      <div class="middle-message" *ngIf="loadingAddr">
         <ion-spinner icon="crescent"></ion-spinner>
         <span translate>Loading addresses...</span>
       </div>
