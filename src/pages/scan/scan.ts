@@ -345,7 +345,7 @@ export class ScanPage {
       this.navCtrl.pop();
     } else if (this.fromSend) {
       this.events.publish('update:address', { value: contents });
-      this.close();
+      this.navCtrl.pop();
     } else {
       const redirParms = { activePage: 'ScanPage' };
       this.incomingDataProvider.redir(contents, redirParms);
