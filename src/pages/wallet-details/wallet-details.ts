@@ -273,7 +273,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.am.list(this.wallet).then(am => {
       // If the address is new and not stored in local address-manager
       // update addresses stored in address-manager
-      if (_.isEmpty(am[addressView])) {
+      // if (_.isEmpty(am[addressView])) {
         this.walletProvider
           .getMainAddresses(this.wallet, {
             doNotVerify: true
@@ -294,8 +294,8 @@ export class WalletDetailsPage extends WalletTabsChild {
                 // contat address lists and exclude the addresses already stored in local
                 let amx = _.keys(am);
                 this.addressToAdd = _.reject(withBalance.concat(noBalance), x => {
-                  return amx[x.address];
-                }); 
+                  return amx.indexOf(x.address) !== -1;
+                });
 
                 this.addAllAddress();
                 this.updateAddresses();
@@ -311,7 +311,7 @@ export class WalletDetailsPage extends WalletTabsChild {
                 );
               });
           });
-        }
+        // }
     });
     this.address = addressView; // update curent address
   }
