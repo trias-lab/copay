@@ -83,7 +83,7 @@
 
     <div *ngIf="showAdvOpts">
       <div *ngIf="selectedTab == 'words'">
-        <ion-item class="with-label">
+        <!-- <ion-item class="with-label">
           <ion-label stacked>{{'Password' | translate}}</ion-label>
           <ion-input type="password" formControlName="passphrase"></ion-input>
         </ion-item>
@@ -94,7 +94,7 @@
             protect their recovery phrase. This field is not for your encrypt password.
           </div>
         </label-tip>
-
+ -->
         <ion-item>
           <ion-label stacked>{{'Derivation path' | translate}}</ion-label>
           <ion-input type="text" formControlName="derivationPath" [value]="importForm.value.derivationPath"></ion-input>
