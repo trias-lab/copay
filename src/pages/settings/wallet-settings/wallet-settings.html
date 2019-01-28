@@ -41,7 +41,7 @@
         <ion-label [ngClass]="{'disabled': needsBackup}">{{'Request Fingerprint'| translate}}</ion-label>
         <ion-toggle [(ngModel)]="touchIdEnabled" (ionChange)="touchIdChange()"></ion-toggle>
       </ion-item>
-    </div>
+    </div> -->
     <div *ngIf="canSign">
       <ion-item class="with-label">
         <ion-label>{{'Request Encrypt Password' | translate}}</ion-label>
@@ -57,7 +57,7 @@
         </div>
       </label-tip>
     </div>
-    <ion-item-divider>{{'Advanced' | translate}}</ion-item-divider>
+    <!-- <ion-item-divider>{{'Advanced' | translate}}</ion-item-divider>
     <button ion-item (click)="openWalletInformation()">
       <span translate>Wallet Information</span>
     </button>

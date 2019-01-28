@@ -22,7 +22,7 @@
     </div>
     <pin-dots [pin]="currentPin" animate></pin-dots>
     <p class="hint" *ngIf="!confirmingPin && !incorrect">
-      {{(action === 'pinSetUp' || action === 'initPin')? 'This pin will be used to unlock your wallet or grant transfer.':'Please enter your PIN to grant permission to proceed to the next step.'}}
+      {{(action === 'pinSetUp' || action === 'initPin')? 'This pin will be used to unlock your wallet.':'Please enter your PIN to grant permission to proceed to the next step.'}}
     </p>
     <p class="hint" *ngIf="confirmingPin && !incorrect">
       Tap the pin again to confirm.
