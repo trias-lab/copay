@@ -47,6 +47,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   private currentPage: number = 0;
   private showBackupNeededMsg: boolean = true;
   private onResumeSubscription: Subscription;
+  private analyzeUtxosDone: boolean;
   private addressStored;
   private addressToAdd;
 
@@ -64,6 +65,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   public showNoTransactionsYetMsg: boolean;
   public showBalanceButton: boolean = false;
   public addressbook = {};
+  public lowUtxosWarning: boolean;
   public txps = [];
   public selectedTab: string; // transactions or addresses
 
@@ -468,7 +470,7 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.updateTxHistoryError = false;
     this.updatingTxHistoryProgress = 0;
 
-    let progressFn = function(_, newTxs) {
+    const progressFn = function(_, newTxs) {
       if (newTxs > 5) this.thistory = null;
       this.updatingTxHistoryProgress = newTxs;
     }.bind(this);
@@ -480,7 +482,7 @@ export class WalletDetailsPage extends WalletTabsChild {
       .then(txHistory => {
         this.updatingTxHistory = false;
 
-        let hasTx = txHistory[0];
+        const hasTx = txHistory[0];
         this.showNoTransactionsYetMsg = hasTx ? false : true;
 
         if (this.wallet.needsBackup && hasTx && this.showBackupNeededMsg)
@@ -529,6 +531,22 @@ export class WalletDetailsPage extends WalletTabsChild {
     }, 300);
   }
 
+  private analyzeUtxos(): void {
+    if (this.analyzeUtxosDone) return;
+
+    this.walletProvider
+      .getLowUtxos(this.wallet)
+      .then(resp => {
+        if (!resp) return;
+        this.analyzeUtxosDone = true;
+        this.lowUtxosWarning = !!resp.warning;
+        this.logger.info(resp.warning);
+      })
+      .catch(err => {
+        this.logger.error('analyzeUtxos', err);
+      });
+  }
+
   private updateStatus(force?: boolean) {
     this.updatingStatus = true;
     this.updateStatusError = null;
@@ -544,6 +562,7 @@ export class WalletDetailsPage extends WalletTabsChild {
         this.showBalanceButton =
           this.wallet.status.totalBalanceSat !=
           this.wallet.status.spendableAmount;
+         this.analyzeUtxos();
       })
       .catch(err => {
         this.updatingStatus = false;
@@ -608,7 +627,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   public getDate(txCreated) {
-    let date = new Date(txCreated * 1000);
+    const date = new Date(txCreated * 1000);
     return date;
   }
 
@@ -620,8 +639,8 @@ export class WalletDetailsPage extends WalletTabsChild {
     if (index === 0) {
       return true;
     }
-    let curTx = this.history[index];
-    let prevTx = this.history[index - 1];
+    const curTx = this.history[index];
+    const prevTx = this.history[index - 1];
     return !this.createdDuringSameMonth(curTx, prevTx);
   }
 
@@ -656,7 +675,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   public openSearchModal(): void {
-    let modal = this.modalCtrl.create(
+    const modal = this.modalCtrl.create(
       SearchTxModalPage,
       {
         addressbook: this.addressbook,
@@ -676,13 +695,13 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   public openExternalLink(url: string): void {
-    let optIn = true;
-    let title = null;
-    let message = this.translate.instant(
+    const optIn = true;
+    const title = null;
+    const message = this.translate.instant(
       'Help and support information is available at the website.'
     );
-    let okText = this.translate.instant('Open');
-    let cancelText = this.translate.instant('Go Back');
+    const okText = this.translate.instant('Open');
+    const cancelText = this.translate.instant('Go Back');
     this.externalLinkProvider.open(
       url,
       optIn,
