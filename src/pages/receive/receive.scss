@@ -1,7 +1,8 @@
 page-receive {
-  ion-header ion-icon{
+  ion-header ion-icon {
     color: #142a3f;
   }
+
   .toolbar-background {
     background: transparent !important;
   }
@@ -141,7 +142,7 @@ page-receive {
   .scroll-content .wrapper {
     display: flex;
     flex-direction: column;
-    background-color: rgb(251, 251, 251);
+    // background-color: rgb(251, 251, 251);
   }
 
   .scroll-content {

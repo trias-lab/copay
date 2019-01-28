@@ -128,13 +128,18 @@ export class ConfirmPage extends WalletTabsChild {
     );
 
     let networkName;
-    if (this.navParams.data.coin == 'eth' || this.navParams.data.coin == 'tri') {
+    if (
+      this.navParams.data.coin == 'eth' ||
+      this.navParams.data.coin == 'tri'
+    ) {
       networkName = 'livenet';
     } else {
-      let B = this.navParams.data.coin == 'bch' ? this.bitcoreCash : this.bitcore;
+      let B =
+        this.navParams.data.coin == 'bch' ? this.bitcoreCash : this.bitcore;
       networkName = new B.Address(this.navParams.data.toAddress).network.name;
       this.logger.info(
-        networkName + '-_____________________________---------------------------networkName'
+        networkName +
+          '-_____________________________---------------------------networkName'
       );
 
       try {
@@ -167,7 +172,7 @@ export class ConfirmPage extends WalletTabsChild {
       sendMax: this.navParams.data.useSendMax ? true : false,
       amount: this.navParams.data.useSendMax
         ? 0
-        : parseInt(this.navParams.data.amount, 10),
+        : Number(this.navParams.data.amount),
       description: this.navParams.data.description,
       paypro: this.navParams.data.paypro,
       spendUnconfirmed: this.config.wallet.spendUnconfirmed,
@@ -219,7 +224,10 @@ export class ConfirmPage extends WalletTabsChild {
   }
 
   private getAmountDetails() {
-    this.amount = this.tx.coin === 'eth' || this.tx.coin === 'tri' ? this.decimalPipe.transform(this.tx.amount / 1e18, '1.2-6') : this.decimalPipe.transform(this.tx.amount / 1e8, '1.2-6');
+    this.amount =
+      this.tx.coin === 'eth' || this.tx.coin === 'tri'
+        ? this.decimalPipe.transform(this.tx.amount / 1e18, '1.2-6')
+        : this.decimalPipe.transform(this.tx.amount / 1e8, '1.2-6');
   }
 
   private afterWalletSelectorSet() {
@@ -434,9 +442,9 @@ export class ConfirmPage extends WalletTabsChild {
             let maxAllowedFee = feeRate * 2;
             this.logger.info(
               'Using Merchant Fee:' +
-              tx.feeRate +
-              ' vs. referent level:' +
-              maxAllowedFee
+                tx.feeRate +
+                ' vs. referent level:' +
+                maxAllowedFee
             );
             if (tx.network != 'testnet' && tx.feeRate > maxAllowedFee) {
               this.onGoingProcessProvider.set('calculatingFee');
@@ -654,7 +662,11 @@ export class ConfirmPage extends WalletTabsChild {
         return reject(msg);
       }
 
-      if (tx.coin !== 'eth' && tx.coin !== 'tri' && tx.amount > Number.MAX_SAFE_INTEGER) {
+      if (
+        tx.coin !== 'eth' &&
+        tx.coin !== 'tri' &&
+        tx.amount > Number.MAX_SAFE_INTEGER
+      ) {
         let msg = this.translate.instant('Amount too big');
         return reject(msg);
       }
@@ -749,8 +761,8 @@ export class ConfirmPage extends WalletTabsChild {
         this.isWithinWalletTabs()
           ? this.navCtrl.popToRoot()
           : this.navCtrl.last().name == 'ConfirmCardPurchasePage'
-            ? this.navCtrl.pop()
-            : this.app.getRootNavs()[0].setRoot(TabsPage);
+          ? this.navCtrl.pop()
+          : this.app.getRootNavs()[0].setRoot(TabsPage);
       }
     });
   }
@@ -811,7 +823,10 @@ export class ConfirmPage extends WalletTabsChild {
         let amountUsd = parseFloat(val);
         if (amountUsd <= this.CONFIRM_LIMIT_USD) return resolve();
 
-        let amount = txp.coin !== 'eth' && txp.coin !== 'tri' ? (this.tx.amount / 1e8).toFixed(8) : (this.tx.amount / 1e18).toFixed(8);
+        let amount =
+          txp.coin !== 'eth' && txp.coin !== 'tri'
+            ? (this.tx.amount / 1e8).toFixed(8)
+            : (this.tx.amount / 1e18).toFixed(8);
         let unit = txp.coin.toUpperCase();
         let name = wallet.name;
         let message = this.replaceParametersProvider.replace(

@@ -205,7 +205,7 @@ export class SendPage extends WalletTabsChild {
   }
 
   public async goToReceive() {
-    await this.walletTabsProvider.goToTabIndex(0);
+    // await this.walletTabsProvider.goToTabIndex(0);
     const coinName = this.wallet.coin === Coin.BTC ? 'bitcoin' : 'bitcoin cash';
     const infoSheet = this.actionSheetProvider.createInfoSheet(
       'receiving-bitcoin',
@@ -342,7 +342,10 @@ export class SendPage extends WalletTabsChild {
         ) {
           const isValid = this.checkCoinAndNetwork(this.search);
           if (isValid) this.redir();
-        } else if (parsedData && parsedData.type == 'EthcoinAddress'||parsedData.type == 'TricoinAddress') {
+        } else if (
+          (parsedData && parsedData.type == 'EthcoinAddress') ||
+          parsedData.type == 'TricoinAddress'
+        ) {
           this.redir();
         } else {
           this.invalidAddress = true;
