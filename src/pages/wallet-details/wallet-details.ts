@@ -464,10 +464,10 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.txps = !txps ? [] : _.sortBy(txps, 'createdOn').reverse();
   }
 
-  private updateTxHistory(retry?: boolean) {
+  private updateTxHistory(opts) {
     this.updatingTxHistory = true;
 
-    if (!retry) {
+    if (!opts.retry) {
       this.updateTxHistoryError = false;
       this.updatingTxHistoryProgress = 0;
     }
@@ -479,7 +479,8 @@ export class WalletDetailsPage extends WalletTabsChild {
 
     this.walletProvider
       .getTxHistory(this.wallet, {
-        progressFn
+        progressFn,
+        opts
       })
       .then(txHistory => {
         this.updatingTxHistory = false;
@@ -498,7 +499,9 @@ export class WalletDetailsPage extends WalletTabsChild {
             '__________________________________txHistory'
         );
         this.showHistory();
-        this.events.publish('Wallet/updateAll'); // Workaround to refresh the view when the promise result is from a destroyed one
+        if (!opts.retry) {
+          this.events.publish('Wallet/updateAll', { retry: true }); // Workaround to refresh the view when the promise result is from a destroyed one
+        }
       })
       .catch(err => {
         if (err != 'HISTORY_IN_PROGRESS') {
@@ -509,9 +512,10 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   private updateAll = _.debounce(
-    (force?) => {
-      this.updateStatus(force);
-      this.updateTxHistory();
+    (opts?) => {
+      opts = opts || {}
+      this.updateStatus(opts);
+      this.updateTxHistory(opts);
       this.updateAddresses();
     },
     2000,
@@ -557,14 +561,14 @@ export class WalletDetailsPage extends WalletTabsChild {
       });
   }
 
-  private updateStatus(force?: boolean) {
+  private updateStatus(opts) {
     this.updatingStatus = true;
     this.updateStatusError = null;
     this.walletNotRegistered = false;
     this.showBalanceButton = false;
 
     this.walletProvider
-      .getStatus(this.wallet, { force: !!force })
+      .getStatus(this.wallet, opts)
       .then(status => {
         this.updatingStatus = false;
         this.setPendingTxps(status.pendingTxps);
