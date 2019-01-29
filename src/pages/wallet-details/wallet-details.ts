@@ -464,11 +464,13 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.txps = !txps ? [] : _.sortBy(txps, 'createdOn').reverse();
   }
 
-  private updateTxHistory() {
+  private updateTxHistory(retry?: boolean) {
     this.updatingTxHistory = true;
 
-    this.updateTxHistoryError = false;
-    this.updatingTxHistoryProgress = 0;
+    if (!retry) {
+      this.updateTxHistoryError = false;
+      this.updatingTxHistoryProgress = 0;
+    }
 
     const progressFn = function(_, newTxs) {
       if (newTxs > 5) this.thistory = null;
@@ -481,6 +483,7 @@ export class WalletDetailsPage extends WalletTabsChild {
       })
       .then(txHistory => {
         this.updatingTxHistory = false;
+        this.updatingTxHistoryProgress = 0;
 
         const hasTx = txHistory[0];
         this.showNoTransactionsYetMsg = hasTx ? false : true;
@@ -495,10 +498,13 @@ export class WalletDetailsPage extends WalletTabsChild {
             '__________________________________txHistory'
         );
         this.showHistory();
+        this.events.publish('Wallet/updateAll'); // Workaround to refresh the view when the promise result is from a destroyed one
       })
-      .catch(() => {
-        this.updatingTxHistory = false;
-        this.updateTxHistoryError = true;
+      .catch(err => {
+        if (err != 'HISTORY_IN_PROGRESS') {
+          this.updatingTxHistory = false;
+          this.updateTxHistoryError = true;
+        }
       });
   }
 
