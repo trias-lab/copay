@@ -60,7 +60,6 @@ export interface TransactionProposal {
   customData?: {
     service?: string;
     giftCardName?: CardName;
-    glideraToken?: string;
     shapeShift?: string;
     toWalletName?: any;
   };

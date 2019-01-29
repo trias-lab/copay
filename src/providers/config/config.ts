@@ -73,7 +73,6 @@ export interface Config {
 
   showIntegration: {
     coinbase: boolean;
-    glidera: boolean;
     debitcard: boolean;
     amazon: boolean;
     mercadolibre: boolean;
@@ -195,7 +194,6 @@ const configDefault: Config = {
   // External services
   showIntegration: {
     coinbase: false,
-    glidera: false,
     debitcard: true,
     amazon: true,
     mercadolibre: true,

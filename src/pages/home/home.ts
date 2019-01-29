@@ -18,7 +18,6 @@ import { ImportWalletPage } from '../add/import-wallet/import-wallet';
 import { BitPayCardPage } from '../integrations/bitpay-card/bitpay-card';
 import { BitPayCardIntroPage } from '../integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 import { CoinbasePage } from '../integrations/coinbase/coinbase';
-import { GlideraPage } from '../integrations/glidera/glidera';
 import { ShapeshiftPage } from '../integrations/shapeshift/shapeshift';
 import { PaperWalletPage } from '../paper-wallet/paper-wallet';
 import { ScanPage } from '../scan/scan';
@@ -1036,7 +1035,6 @@ export class HomePage {
     const pageMap = {
       BitPayCardIntroPage,
       CoinbasePage,
-      GlideraPage,
       ShapeshiftPage
     };
     this.navCtrl.push(pageMap[page]);

@@ -21,7 +21,6 @@ import { AppProvider } from '../providers/app/app';
 // import { CoinbaseProvider } from '../providers/coinbase/coinbase';
 import { ConfigProvider } from '../providers/config/config';
 import { EmailNotificationsProvider } from '../providers/email-notifications/email-notifications';
-// import { GlideraProvider } from '../providers/glidera/glidera';
 import { IncomingDataProvider } from '../providers/incoming-data/incoming-data';
 import { Logger } from '../providers/logger/logger';
 import { PersistenceProvider } from '../providers/persistence/persistence';
@@ -39,7 +38,6 @@ import { JoinWalletPage } from '../pages/add/join-wallet/join-wallet';
 // import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 // import { BitPayCardIntroPage } from '../pages/integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 // import { CoinbasePage } from '../pages/integrations/coinbase/coinbase';
-// import { GlideraPage } from '../pages/integrations/glidera/glidera';
 // import { ShapeshiftPage } from '../pages/integrations/shapeshift/shapeshift';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
@@ -86,7 +84,6 @@ export class CopayApp {
     // CoinbasePage,
     ConfirmPage,
     CopayersPage,
-    // GlideraPage,
     ImportWalletPage,
     JoinWalletPage,
     PaperWalletPage,
@@ -107,7 +104,6 @@ export class CopayApp {
     private configProvider: ConfigProvider,
     // private giftCardProvider: GiftCardProvider,
     private modalCtrl: ModalController,
-    // private glideraProvider: GlideraProvider,
     // private coinbaseProvider: CoinbaseProvider,
     // private bitPayCardProvider: BitPayCardProvider,
     // private shapeshiftProvider: ShapeshiftProvider,
@@ -305,11 +301,6 @@ export class CopayApp {
   //   if (this.appProvider.info._enabledExtensions.shapeshift) {
   //     this.shapeshiftProvider.setCredentials();
   //     this.shapeshiftProvider.register();
-  //   }
-  //   // Glidera
-  //   if (this.appProvider.info._enabledExtensions.glidera) {
-  //     this.glideraProvider.setCredentials();
-  //     this.glideraProvider.register();
   //   }
   //   // Coinbase
   //   if (this.appProvider.info._enabledExtensions.coinbase) {
