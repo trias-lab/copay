@@ -252,7 +252,6 @@
     "@types/node": "7.0.61",
     "ajv": "6.2.0",
     "archiver": "2.1.1",
-    "bhttp": "1.2.4",
     "codecov": "3.0.0",
     "connect": "3.6.5",
     "cz-conventional-changelog": "2.1.0",
