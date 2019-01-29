@@ -472,10 +472,10 @@ export class WalletDetailsPage extends WalletTabsChild {
       this.updatingTxHistoryProgress = 0;
     }
 
-    const progressFn = function(_, newTxs) {
-      if (newTxs > 5) this.thistory = null;
+    const progressFn = ((_, newTxs) => {
+      if (newTxs > 5) this.history = null;
       this.updatingTxHistoryProgress = newTxs;
-    }.bind(this);
+    }).bind(this);
 
     this.walletProvider
       .getTxHistory(this.wallet, {

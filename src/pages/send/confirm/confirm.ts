@@ -817,11 +817,11 @@ export class ConfirmPage extends WalletTabsChild {
   }
 
   private confirmTx(_, txp, wallet) {
-    return new Promise(resolve => {
-      if (this.walletProvider.isEncrypted(wallet)) return resolve();
+    return new Promise<boolean>(resolve => {
+      if (this.walletProvider.isEncrypted(wallet)) return resolve(false);
       this.txFormatProvider.formatToUSD(wallet.coin, txp.amount).then(val => {
         let amountUsd = parseFloat(val);
-        if (amountUsd <= this.CONFIRM_LIMIT_USD) return resolve();
+        if (amountUsd <= this.CONFIRM_LIMIT_USD) return resolve(false);
 
         let amount =
           txp.coin !== 'eth' && txp.coin !== 'tri'
