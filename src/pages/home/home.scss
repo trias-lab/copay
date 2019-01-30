@@ -12,6 +12,10 @@ page-home {
     margin: 0;
   }
 
+  .scroll-content .wrapper {
+    height: fit-content;
+  }
+
   ion-content {
     background: linear-gradient(270deg, rgba(29, 33, 69, 0) 0%, rgba(4, 9, 45, 0.62) 100%),
       url('../../assets/img/img_bg_pattern.png') repeat-x;
