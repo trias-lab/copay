@@ -158,10 +158,10 @@ export class HomePage {
       '#25EAB2', '#AD40BB', '#11A9F9',
       '#8B4BF7', '#D34848', '#D3CDEB',
       '#22332A', '#CED348', '#5F48D3',
-      '#5CAADB', '#ED3966', '#8AED39',
-      '#F5980C', '#0CF5D2', '#142FE0',
-      '#A31497', '#9E9519', '#908BE0',
-      '#36B599', '#9ADCE3'
+      // '#5CAADB', '#ED3966', '#8AED39',
+      // '#F5980C', '#0CF5D2', '#142FE0',
+      // '#A31497', '#9E9519', '#908BE0',
+      // '#36B599', '#9ADCE3'
 
     ];
     this.selectedLegendColors = [];
@@ -751,6 +751,7 @@ export class HomePage {
     this.balanceItem = [];
     // this.balanceName = [];
     // map wallet
+    let i = 0;
     _.each(this.wallets, (wallet) => {
       pr(wallet).then(() => {
         this.debounceUpdateTxps();
@@ -789,15 +790,25 @@ export class HomePage {
         // this.logger.warn('wallet every---', parseFloat(alternativeBalance));
         // No serverMessage for any wallet?
         if (!foundMessage) this.serverMessage = null;
-      })
-        .then(() => { // Add a callback for each. Update the chart.
+
+        // All the item has been looped
+        i++;
+        // Update the chart.
+        if (i == this.wallets.length) {
           // this.logger.warn('wallet then', this.totalBalance);
           this.balanceLegend = [];
           this.chartLegend = [];
           this.alternativeUnit = this.balanceItem[0].alternativeUnit;
-          // this.logger.warn('555555555555wallet-------', this.totalBalance);
+          this.logger.warn('********wwwwwwwwwww555555555555wallet-------', this.balanceItem);
+          let sortedBalanceItem = _.orderBy(this.balanceItem, ['alternativeBalance'], ['desc']);
+          this.logger.warn('2222222wwwwwwwwwww555555555555wallet-------', sortedBalanceItem);
 
-          _.each(this.balanceItem, (balanceItem, index: number) => {
+          let part1 = _.slice(sortedBalanceItem, 0, 3)
+          let part2 = _.slice(sortedBalanceItem, 3)
+          this.logger.warn('@@@@@@wwwwwwwwwww555555555555wallet-------', part1, '@@@', part2);
+          let k = 0;
+          _.each(part1, (balanceItem, index: number) => {
+            this.logger.warn('bbbbbbwwwwwwwwwww555555555555wallet-------', index);
             let legendOne = {
               color: this.legendColors[index],
               name: balanceItem.name,
@@ -814,7 +825,39 @@ export class HomePage {
             }
             this.chartLegend.push(legendChartOne);
 
+            // All the item has been looped
+            k++;
+            if (k == part1.length) {
+              let others = 0;
+              let j = 0;
+              _.each(part2, (balanceItem) => {
+                others += balanceItem.alternativeBalance;
+                // All the item has been looped
+                j++;
+                if (j == part2.length) {
+                  let othersLegendOne = {
+                    color: this.legendColors[3],
+                    name: 'Others',
+                    percent: this.totalBalance ? Math.round(others * 100 / this.totalBalance) : 0
+                  }
+                  this.selectedLegendColors.push(this.legendColors[3]);
+                  this.balanceLegend.push(othersLegendOne);
+                  // this.logger.warn('wallet every---', legendOne);
+                  let othersLegendChartOne = {
+                    value: others,
+                    itemStyle: {
+                      normal: { color: this.legendColors[3] }
+                    }
+                  }
+                  this.chartLegend.push(othersLegendChartOne);
+                }
+              })
+
+            }
+
           })
+
+
 
           // this.logger.warn('wallet then', wallet);
 
@@ -826,8 +869,15 @@ export class HomePage {
               }
             ]
           })
-        });
-    });
+        }
+
+
+      })
+
+
+
+    })
+
   }
 
   private checkUpdate(): void {
