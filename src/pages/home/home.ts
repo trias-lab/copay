@@ -155,8 +155,8 @@ export class HomePage {
     this.balanceItem = [];
     // this.balanceName = [];
     this.legendColors = [
-      '#25EAB2', '#AD40BB', '#11A9F9',
-      '#8B4BF7', '#D34848', '#D3CDEB',
+      '#25EAB2', '#11A9F9', '#8B4BF7',
+      '#AD40BB', '#D34848', '#D3CDEB',
       '#22332A', '#CED348', '#5F48D3',
       // '#5CAADB', '#ED3966', '#8AED39',
       // '#F5980C', '#0CF5D2', '#142FE0',
