@@ -7,8 +7,8 @@ import { Logger } from '../../../providers/logger/logger';
 
 // Pages
 import { FinishModalPage } from '../../finish/finish';
+import { HomePage } from '../../home/home';
 import { PayProPage } from '../../paypro/paypro';
-import { TabsPage } from '../../tabs/tabs';
 import { ChooseFeeLevelPage } from '../choose-fee-level/choose-fee-level';
 
 // Providers
@@ -725,7 +725,7 @@ export class ConfirmPage extends WalletTabsChild {
       if (option || typeof option === 'undefined') {
         this.isWithinWalletTabs()
           ? this.navCtrl.pop()
-          : this.app.getRootNavs()[0].setRoot(TabsPage);
+          : this.app.getRootNavs()[0].setRoot(HomePage);
       } else {
         this.tx.sendMax = true;
         this.setWallet(this.wallet);
@@ -762,7 +762,7 @@ export class ConfirmPage extends WalletTabsChild {
           ? this.navCtrl.popToRoot()
           : this.navCtrl.last().name == 'ConfirmCardPurchasePage'
           ? this.navCtrl.pop()
-          : this.app.getRootNavs()[0].setRoot(TabsPage);
+          : this.app.getRootNavs()[0].setRoot(HomePage);
       }
     });
   }
@@ -906,7 +906,7 @@ export class ConfirmPage extends WalletTabsChild {
 
     this.isWithinWalletTabs()
       ? this.close()
-      : this.app.getRootNavs()[0].setRoot(TabsPage);
+      : this.app.getRootNavs()[0].setRoot(HomePage);
   }
 
   public openPPModal(): void {

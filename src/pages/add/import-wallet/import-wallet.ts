@@ -11,10 +11,10 @@ import {
 import { Logger } from '../../../providers/logger/logger';
 
 // Pages
+import { HomePage } from '../../home/home';
 import { DisclaimerPage } from '../../onboarding/disclaimer/disclaimer';
 import { PinModalPage } from '../../pin/pin-modal/pin-modal';
 import { ScanPage } from '../../scan/scan';
-import { TabsPage } from '../../tabs/tabs';
 
 // Providers
 import { ActionSheetProvider } from '../../../providers/action-sheet/action-sheet';
@@ -277,7 +277,7 @@ export class ImportWalletPage {
           this.navCtrl.pop(); // back to homepage
           // this.app
           //   .getRootNavs()[0]
-          //   .setRoot(TabsPage)
+          //   .setRoot(HomePage)
           //   .then(() => {
           //     this.events.publish('OpenWallet', wallet);
           //   });
@@ -287,7 +287,7 @@ export class ImportWalletPage {
         this.logger.error('Import: could not updateRemotePreferences', err);
         this.app
           .getRootNavs()[0]
-          .setRoot(TabsPage)
+          .setRoot(HomePage)
           .then(() => {
             this.events.publish('OpenWallet', wallet);
           });

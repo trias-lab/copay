@@ -35,6 +35,7 @@ import { TouchIdProvider } from '../providers/touchid/touchid';
 import { CopayersPage } from '../pages/add/copayers/copayers';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
 import { JoinWalletPage } from '../pages/add/join-wallet/join-wallet';
+import { HomePage } from '../pages/home/home';
 // import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 // import { BitPayCardIntroPage } from '../pages/integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 // import { CoinbasePage } from '../pages/integrations/coinbase/coinbase';
@@ -46,7 +47,6 @@ import { PinModalPage } from '../pages/pin/pin-modal/pin-modal';
 import { AmountPage } from '../pages/send/amount/amount';
 import { ConfirmPage } from '../pages/send/confirm/confirm';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
-import { TabsPage } from '../pages/tabs/tabs';
 import { AddressAddPage } from '../pages/wallet-details/add-address/add-address';
 import { WalletDetailsPage } from '../pages/wallet-details/wallet-details';
 import { WalletTabsPage } from '../pages/wallet-tabs/wallet-tabs';
@@ -69,12 +69,12 @@ export class CopayApp {
   public rootPage:
     | typeof AmountPage
     | typeof DisclaimerPage
-    | typeof TabsPage
+    | typeof HomePage
     | typeof OnboardingPage;
   private onResumeSubscription: Subscription;
   private isLockModalOpen: boolean;
-  private isWalletModalOpen: boolean;
-  private walletModal: any;
+  // private isWalletModalOpen: boolean;
+  // private walletModal: any;
 
   private pageMap = {
     AddressbookAddPage,
@@ -93,7 +93,8 @@ export class CopayApp {
 
   constructor(
     private config: Config,
-    private platform: Platform,
+    private platform: Platform,    
+    // private navCtrl: NavController,
     private platformProvider: PlatformProvider,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
@@ -233,7 +234,7 @@ export class CopayApp {
     if (profile) {
       this.logger.info('Profile exists.');
 
-      this.rootPage = TabsPage;
+      this.rootPage = HomePage;
 
       if (this.platform.is('cordova')) {
         this.handleDeepLinks();
@@ -324,24 +325,21 @@ export class CopayApp {
 
   private openWallet(wallet) {
     // check if modal is already open
-    if (this.isWalletModalOpen) {
-      this.walletModal.dismiss();
-    }
+    // if (this.isWalletModalOpen) {
+    //   this.walletModal.dismiss();
+    // }
     const page = wallet.isComplete() ? WalletTabsPage : CopayersPage;
-    this.isWalletModalOpen = true;
-    this.walletModal = this.modalCtrl.create(
+    // this.isWalletModalOpen = true;
+    this.nav.push(
       page,
       {
         walletId: wallet.credentials.walletId
-      },
-      {
-        cssClass: 'wallet-details-modal'
       }
     );
-    this.walletModal.present();
-    this.walletModal.onDidDismiss(() => {
-      this.isWalletModalOpen = false;
-    });
+    // this.walletModal.present();
+    // this.walletModal.onDidDismiss(() => {
+    //   this.isWalletModalOpen = false;
+    // });
   }
 
   private scanFromWalletEvent(): void {

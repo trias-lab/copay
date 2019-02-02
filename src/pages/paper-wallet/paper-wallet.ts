@@ -5,7 +5,8 @@ import * as _ from 'lodash';
 
 // pages
 import { FinishModalPage } from '../finish/finish';
-import { TabsPage } from '../tabs/tabs';
+import { HomePage } from '../home/home';
+
 
 // providers
 import { ActionSheetProvider } from '../../providers/action-sheet/action-sheet';
@@ -328,7 +329,7 @@ export class PaperWalletPage {
     );
     modal.present();
     modal.onDidDismiss(() => {
-      this.app.getRootNavs()[0].setRoot(TabsPage);
+      this.app.getRootNavs()[0].setRoot(HomePage);
     });
   }
 }

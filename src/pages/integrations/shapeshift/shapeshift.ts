@@ -11,7 +11,7 @@ import * as _ from 'lodash';
 import { Logger } from '../../../providers/logger/logger';
 
 // Pages
-import { TabsPage } from '../../tabs/tabs';
+import { HomePage } from '../../home/home';
 import { ShapeshiftDetailsPage } from './shapeshift-details/shapeshift-details';
 import { ShapeshiftShiftPage } from './shapeshift-shift/shapeshift-shift';
 
@@ -106,7 +106,7 @@ export class ShapeshiftPage {
                 )
                 .then(() => {
                   this.shapeshiftProvider.logout(this.accessToken);
-                  this.app.getRootNavs()[0].setRoot(TabsPage);
+                  this.app.getRootNavs()[0].setRoot(HomePage);
                 });
             }
           }
@@ -219,7 +219,7 @@ export class ShapeshiftPage {
     this.externalLinkProvider
       .open(url, optIn, title, message, okText, cancelText)
       .then(() => {
-        this.app.getRootNavs()[0].setRoot(TabsPage);
+        this.app.getRootNavs()[0].setRoot(HomePage);
       });
   }
 

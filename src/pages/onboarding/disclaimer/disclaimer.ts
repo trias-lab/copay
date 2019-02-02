@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { NavController } from 'ionic-angular';
 import { Logger } from '../../../providers/logger/logger';
 
-import { TabsPage } from '../../tabs/tabs';
+import { HomePage } from '../../home/home';
 
 import { EmailNotificationsProvider } from '../../../providers/email-notifications/email-notifications';
 import { ExternalLinkProvider } from '../../../providers/external-link/external-link';
@@ -82,7 +82,7 @@ export class DisclaimerPage {
   confirm() {
     this.persistenceProvider.setEmailLawCompliance('accepted');
     this.persistenceProvider.setDisclaimerAccepted();
-    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.setRoot(HomePage);
     this.navCtrl.popToRoot({ animate: false });
   }
 }
