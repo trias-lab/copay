@@ -6,6 +6,7 @@ import { EditableItemComponent } from './editable-item/editable-item';
 import { EXPANDABLE_HEADER_COMPONENTS } from './expandable-header/expandable-header';
 import { LabelTip } from './label-tip/label-tip';
 import { SearchBarComponent } from './search-bar/search-bar';
+import { TabsBarComponent } from './tabs-bar/tabs-bar';
 
 export const COMPONENTS = [
   ActionCardComponent,
@@ -15,5 +16,6 @@ export const COMPONENTS = [
   EditableItemComponent,
   LabelTip,
   ClipboardCardPage,
-  SearchBarComponent
+  SearchBarComponent,
+  TabsBarComponent
 ];
