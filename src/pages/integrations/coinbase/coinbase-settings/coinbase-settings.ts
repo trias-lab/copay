@@ -11,7 +11,8 @@ import { Logger } from '../../../../providers/logger/logger';
 import { PopupProvider } from '../../../../providers/popup/popup';
 
 // pages
-import { HomePage } from '../../../home/home';
+// import { HomePage } from '../../../home/home';
+import { TabsPage } from '../../../tabs/tabs';
 
 @Component({
   selector: 'page-coinbase-settings',
@@ -96,7 +97,7 @@ export class CoinbaseSettingsPage {
           this.coinbaseProvider.logout();
           this.showInHome = false;
           this.showInHomeSwitch();
-          this.app.getRootNavs()[0].setRoot(HomePage);
+          this.app.getRootNavs()[0].setRoot(TabsPage);
         }
       });
   }

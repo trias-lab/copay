@@ -4,8 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { App, Events, NavController, NavParams } from 'ionic-angular';
 
 // Pages
-import { HomePage } from '../../home/home';
+// import { HomePage } from '../../home/home';
 import { ScanPage } from '../../scan/scan';
+import { TabsPage } from '../../tabs/tabs';
 
 // Providers
 import { ActionSheetProvider } from '../../../providers/action-sheet/action-sheet';
@@ -188,7 +189,7 @@ export class JoinWalletPage {
         this.pushNotificationsProvider.updateSubscription(wallet);
         this.app
           .getRootNavs()[0]
-          .setRoot(HomePage)
+          .setRoot(TabsPage)
           .then(() => {
             this.events.publish('OpenWallet', wallet);
           });

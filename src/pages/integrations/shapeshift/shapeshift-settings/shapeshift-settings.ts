@@ -4,7 +4,8 @@ import { App } from 'ionic-angular';
 import * as _ from 'lodash';
 
 // Pages
-import { HomePage } from '../../../home/home';
+// import { HomePage } from '../../../home/home';
+import { TabsPage } from '../../../tabs/tabs';
 
 // Providers
 import { ConfigProvider } from '../../../../providers/config/config';
@@ -87,7 +88,7 @@ export class ShapeshiftSettingsPage {
         if (res) {
           this.shapeshiftProvider.getStoredToken(accessToken => {
             this.shapeshiftProvider.logout(accessToken);
-            this.app.getRootNavs()[0].setRoot(HomePage);
+            this.app.getRootNavs()[0].setRoot(TabsPage);
           });
         }
       });

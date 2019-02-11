@@ -35,7 +35,7 @@ import { TouchIdProvider } from '../providers/touchid/touchid';
 import { CopayersPage } from '../pages/add/copayers/copayers';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
 import { JoinWalletPage } from '../pages/add/join-wallet/join-wallet';
-import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 // import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 // import { BitPayCardIntroPage } from '../pages/integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 // import { CoinbasePage } from '../pages/integrations/coinbase/coinbase';
@@ -48,6 +48,7 @@ import { AmountPage } from '../pages/send/amount/amount';
 import { ConfirmPage } from '../pages/send/confirm/confirm';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
 import { AddressAddPage } from '../pages/wallet-details/add-address/add-address';
+import { TabsPage } from '../pages/tabs/tabs';
 import { WalletDetailsPage } from '../pages/wallet-details/wallet-details';
 import { WalletTabsPage } from '../pages/wallet-tabs/wallet-tabs';
 
@@ -69,7 +70,7 @@ export class CopayApp {
   public rootPage:
     | typeof AmountPage
     | typeof DisclaimerPage
-    | typeof HomePage
+    | typeof TabsPage
     | typeof OnboardingPage;
   private onResumeSubscription: Subscription;
   private isLockModalOpen: boolean;
@@ -234,7 +235,7 @@ export class CopayApp {
     if (profile) {
       this.logger.info('Profile exists.');
 
-      this.rootPage = HomePage;
+      this.rootPage = TabsPage;
 
       if (this.platform.is('cordova')) {
         this.handleDeepLinks();

@@ -17,7 +17,7 @@ import { PayProPage } from '../pages/paypro/paypro';
 import { SlideToAcceptPage } from '../pages/slide-to-accept/slide-to-accept';
 import { SwapConfirmPage } from '../pages/swap-confirm/swap-confirm';
 import { SwapPage } from '../pages/swap/swap';
-// import { TabsPage } from '../pages/tabs/tabs';
+import { TabsPage } from '../pages/tabs/tabs';
 import { TxDetailsPage } from '../pages/tx-details/tx-details';
 import { TxpDetailsPage } from '../pages/txp-details/txp-details';
 import { SearchTxModalPage } from '../pages/wallet-details/search-tx-modal/search-tx-modal';
@@ -171,7 +171,7 @@ export const PAGES = [
   SendFeedbackPage,
   FinishModalPage,
   TourPage,
-  // TabsPage,
+  TabsPage,
   TxpDetailsPage,
   TxDetailsPage,
   TxpPage,
