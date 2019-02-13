@@ -11,7 +11,7 @@
 
 <ion-content no-bounce>
   <ion-card>
-    <div [attr.padding]="isIOS ? '' : null">
+    <div>
       <ion-segment [(ngModel)]="selectedTab" color="primary" (ionChange)="selectTab(selectedTab)">
         <ion-segment-button value="words">
           {{ 'Recovery Phrase' | translate }}

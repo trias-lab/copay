@@ -4,6 +4,12 @@ page-import-wallet {
     background: transparent;
     font-size: 17px;
   }
+  ion-segment {
+    padding: 11px;
+  }
+  .segment-ios{
+    padding: 16px;
+  }
   .card .item-block{
     padding: 20px 8px 0 16px;
     &:first-child{
