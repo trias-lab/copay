@@ -1,4 +1,9 @@
 page-import-wallet {
+  .import-button {
+    color: #57A756;
+    background: transparent;
+    font-size: 17px;
+  }
   .card .item-block{
     padding: 20px 8px 0 16px;
     &:first-child{
@@ -90,12 +95,42 @@ page-import-wallet {
     }
   }
 
-  $upload-box-height: 200px;
+  .file-container{
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+  }
+
+  $upload-box-height: 34px;
+
+  .file-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 16px;
+    width: calc(100% - 32px);
+    height:84px;
+    background:rgba(248,250,251,1);
+    border-radius:4px;
+    font-size:15px;
+    font-weight:400;
+    color:rgba(20,42,63,1);
+    line-height:22px;
+    .filled-message {
+      max-width: 92%;
+      word-break: break-all;
+      word-wrap: break-word;
+    }
+  }
 
   .upload-hidden {
     opacity: 0;
     height: $upload-box-height;
     z-index: 1;
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 16px;
+    width: calc(100% - 32px);
 
     &>input {
       height: 100%;
@@ -103,7 +138,8 @@ page-import-wallet {
       cursor: pointer;
     }
   }
-
+  .ng-invalid+.upload-ui+.file-info>.filled-message,
+  .ng-valid+.upload-ui+.file-info>.empty-message,
   .ng-invalid+.upload-ui>.filled-message,
   .ng-valid+.upload-ui>.empty-message {
     display: none;
@@ -115,25 +151,16 @@ page-import-wallet {
     align-items: center;
     border-radius: 3px;
     position: absolute;
-    padding: 18px 1em;
-    width: 92%;
-    top: 0;
-    left: 0;
-    margin: 20px 4%;
-    height: $upload-box-height - 40px;
-    color: #999;
-    font-weight: bold;
-    text-align: center;
-    font-size: 16px;
-    line-height: 1.4;
-    border: 3px dashed #ddd;
-    color: #999;
-    font-style: italic;
-  }
-
-  .ng-valid+.upload-ui {
-    border: 3px solid lighten(color($colors, success), 20%);
-    color: color($colors, success);
-    background-color: lighten(color($colors, success), 55%);
+    width: calc(92% - 32px);
+    top: 184px;
+    left: 16px;
+    margin-left: 16px;
+    height: 34px;
+    border-radius: 4px;
+    border: 1px solid #e5e8ea;
+    font-size: 13px;
+    font-weight: 500;
+    color: #57a756;
+    line-height: 18px;
   }
 }

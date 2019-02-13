@@ -1,6 +1,11 @@
 <ion-header>
   <ion-navbar>
     <ion-title>{{'Import wallet' | translate}}</ion-title>
+    <ion-buttons end>
+      <button class="import-button" (click)="import()" [disabled]="!importForm.valid">
+      {{'Import' | translate}}
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -38,20 +43,27 @@
         <ion-textarea formControlName="words" [value]="importForm.value.words" placeholder="{{'Type the recovery phrase (usually 12 words)' | translate}}" autocapitalize="none"></ion-textarea>
       </ion-item>
 
-      <div class="scanner-icon" name="qr-scanner" (click)="openScanner()">
+      <div *ngIf="selectedTab == 'words'" class="scanner-icon" name="qr-scanner" (click)="openScanner()">
         <img src="assets/img/qrcode-solid.svg">
         {{'Scan QR Code' | translate}}
       </div>
 
       <div *ngIf="selectedTab == 'file'">
-        <ion-item class="hide-validation" *ngIf="!isSafari && !isCordova">
+       <!--  <ion-item *ngIf="!isSafari && !isCordova">
+        </ion-item> -->
+
+        <div class="file-container hide-validation" *ngIf="!isSafari && !isCordova">
           <ion-input class="upload-hidden" type="file" accept="json" [(ngModel)]="formFile" (change)="fileChangeEvent($event)"
             formControlName="file"></ion-input>
           <div item-content class="upload-ui">
-            <div class="empty-message">{{'Choose a backup file from your computer' | translate}}&hellip;</div>
-            <div class="filled-message">{{prettyFileName}}</div>
+            <div class="empty-message"> {{'Select File' | translate}}&hellip;</div>
+            <div class="filled-message">{{'Replace File' | translate}}</div>
           </div>
-        </ion-item>
+          <div item-content class="file-info">
+            <span class="empty-message">{{'Choose a file to begin.' | translate}}&hellip;</span>
+            <span class="filled-message">{{prettyFileName}}</span>
+          </div>
+        </div>
 
         <ion-item *ngIf="isSafari || isCordova">
           <ion-label stacked>{{'Paste the backup plain text code' | translate}}</ion-label>
@@ -130,10 +142,10 @@
   </ion-card>
 </ion-content>
 
-<ion-footer>
+<!-- <ion-footer>
   <ion-toolbar>
     <button ion-button full class="button-footer" (click)="import()" [disabled]="!importForm.valid">
       {{'Import wallet' | translate}}
     </button>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->
