@@ -74,6 +74,7 @@ export class AmountPage extends WalletTabsChild {
   public showSendMax: boolean;
   public allowSend: boolean;
   public recipientType: string;
+  public coin: string;
   public toAddress: string;
   public network: string;
   public name: string;
@@ -114,6 +115,7 @@ export class AmountPage extends WalletTabsChild {
     this.name = this.navParams.data.name;
     this.email = this.navParams.data.email;
     this.color = this.navParams.data.color;
+    this.coin = this.navParams.data.coin;
     this.fixedUnit = this.navParams.data.fixedUnit;
     this.description = this.navParams.data.description;
     this.onlyIntegers = this.navParams.data.onlyIntegers
@@ -208,7 +210,7 @@ export class AmountPage extends WalletTabsChild {
   private setAvailableUnits(): void {
     this.availableUnits = [];
 
-    const parentWalletCoin = this.wallet && this.wallet.coin;
+    const parentWalletCoin = this.coin;
 
     if (parentWalletCoin == 'eth') {
       this.unitToCoin = this.unitToWei;
@@ -217,7 +219,14 @@ export class AmountPage extends WalletTabsChild {
     } else {
       this.unitToCoin = this.unitToSatoshi;
     }
-
+    // this.logger.info(
+    //   this.wallet.coin +
+    //     '--------------------------------------- this.wallet.coin!!!!!!!!!!!!!!!!!!!!!!!!!'
+    // );
+    this.logger.info(
+      this.unitToCoin +
+        '--------------------------------------- this.unitToCoin!!!!!!!!!!!!!!!!!!!!!!!!!'
+    );
     if (parentWalletCoin == 'eth') {
       this.coinToUnit = this.weiToUnit;
     } else if (parentWalletCoin == 'tri') {
@@ -605,7 +614,6 @@ export class AmountPage extends WalletTabsChild {
         name: this.name,
         email: this.email,
         color: this.color,
-        coin,
         useSendMax: this.useSendMax,
         description: this.description
       };
