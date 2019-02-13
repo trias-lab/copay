@@ -13,3 +13,88 @@ page-wallet-export {
     text-align: center;
   }
 }
+.export-content {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin: 0 16px;
+  padding-bottom: 28px;
+  padding-top: 28px;
+  .item-divider-ios,
+  .item-divider-md {
+    padding: 0;
+  }
+  .input-wrapper {
+    background: #fff;
+  }
+  .item-input ion-input {
+    height: 34px;
+    background: rgba(246, 247, 249, 1);
+    border-radius: 4px;
+    padding-left: 8px;
+  }
+
+  .list-md .item-block .item-inner,
+  .list-ios .item-block .item-inner {
+    border-bottom: none;
+    padding-right: 16px;
+  }
+  .item-input .label-md,
+  .item-select .label-md,
+  .item-datetime .label-md,
+  .label-ios[stacked] {
+    color: #142a3f;
+    margin-top: 20px;
+    line-height: 24px;
+  }
+}
+.export-tab {
+  min-height: 40px;
+
+  ion-segment.export-tab-btnCover {
+    padding: 0 16px;
+  }
+  .toolbar-background-ios,
+  .toolbar-background-md {
+    background: transparent;
+  }
+
+  .segment-ios-blank .segment-button,
+  .segment-md-blank .segment-button {
+    border: 1px solid #57a756;
+    color: #57a756;
+    max-width: 100%;
+    height: 30px;
+    line-height: 30px;
+  }
+  .segment-ios-blank .segment-button.segment-activated,
+  .segment-md .segment-button.activated,
+  .segment-md .segment-button.segment-activated {
+    background: #57a756;
+    color: #fff;
+  }
+}
+
+.item-md.item-input.ng-invalid.ng-touched .item-inner {
+  border-bottom-color: transparent !important;
+  -webkit-box-shadow: inset 0 -1px 0 0 transparent !important;
+  box-shadow: inset 0 -1px 0 0 transparent !important;
+}
+.item-md.item-input.ng-valid.item-input-has-value .item-inner,
+.item-md.item-input.ng-valid.input-has-value .item-inner {
+  border-bottom-color: transparent !important;
+  -webkit-box-shadow: inset 0 -1px 0 0 transparent !important;
+  box-shadow: inset 0 -1px 0 0 transparent !important;
+}
+.item-md.item-input.item-input-has-focus .item-inner,
+.item-md.item-input.input-has-focus .item-inner {
+  border-bottom-color: transparent !important;
+  -webkit-box-shadow: inset 0 -1px 0 0 transparent !important;
+  box-shadow: inset 0 -1px 0 0 transparent !important;
+}
+.item-input-has-focus .label-md[stacked],
+.input-has-focus .label-md[stacked],
+.item-input-has-focus .label-md[floating],
+.input-has-focus .label-md[floating] {
+  color: #142a3f !important;
+}
