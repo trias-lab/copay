@@ -66,8 +66,8 @@
         </div>
 
         <ion-item *ngIf="isSafari || isCordova">
-          <ion-label stacked>{{'Paste the backup plain text code' | translate}}</ion-label>
-          <ion-textarea formControlName="backupText" rows="5" [value]="importForm.value.backupText"></ion-textarea>
+          <ion-label stacked>{{'File Content' | translate}}</ion-label>
+          <ion-textarea placeholder="{{'Please paste the code in the backup file' | translate}}" formControlName="backupText" rows="5" [value]="importForm.value.backupText"></ion-textarea>
         </ion-item>
 
         <ion-item>
