@@ -1,11 +1,58 @@
 page-import-wallet {
-  .segment-ios-primary .segment-button.segment-activated {
-    background: transparent;
-    font-size: 20px;
-    font-weight: 500;
-    color: rgba(20, 42, 63, 1);
-    line-height: 24px;
-    border: none;
+  .card .item-block{
+    padding: 20px 8px 0 16px;
+    &:first-child{
+      padding-top: 4px;
+    }
+    ion-label {
+      font-size:13px;
+      font-weight:500;
+      color:rgba(20,42,63,1);
+      line-height:20px;
+      margin: 0;
+      margin-bottom: 4px;
+    }
+    &.title-advanced {
+      padding-right: 16px;
+      .item-inner{
+        padding-bottom: 4px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #E5E8EA;
+        ion-label {
+          font-size:17px;
+          font-weight:500;
+          color:rgba(110,118,125,1);
+          line-height:24px;
+        }
+      }
+    }
+  }
+
+  .text-input{
+    border-radius:4px;
+    padding: 6px 8px;
+    margin: 0!important;
+    width: 100%!important;
+    font-size:15px;
+    font-weight:400;
+    color:#142A3F;
+    line-height:22px;    
+    background:rgba(246,247,249,1);
+  }
+
+  ion-textarea .text-input {    
+    height: 126px;    
+  }
+
+  ion-select {
+    height:34px;
+    background:rgba(246,247,249,1);
+    border-radius:4px;
+    padding: 6px 8px !important;
+    font-size:15px;
+    font-weight:400;
+    color:rgba(20,42,63,1);
+    line-height:22px;
   }
 
   .assertive {
@@ -22,9 +69,25 @@ page-import-wallet {
   }
 
   .scanner-icon {
-    z-index: 99;
-    font-size: 28px;
-    color: color($colors, primary);
+    font-size:13px;
+    font-weight:500;
+    color:rgba(87,167,86,1);
+    line-height:34px;
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    height:34px;
+    border-radius:4px;
+    border:1px solid rgba(229,232,234,1);
+    text-align: center;
+    margin-top: 4px;
+    img {
+      display: inline-block;
+      width:14px;
+      height:18px;
+      margin-right: 5px;
+      vertical-align: middle;
+      margin-top: -4px;
+    }
   }
 
   $upload-box-height: 200px;

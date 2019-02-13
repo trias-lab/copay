@@ -11,7 +11,12 @@ page-settings {
 
   ion-list {
     padding-left: 50px;
+    padding-bottom: 60px;
     background: rgba(248, 250, 251, 1);
+  }
+
+  .item-md {
+    background: transparent;
   }
 
   .toolbar-background {
@@ -19,9 +24,10 @@ page-settings {
   }
 
   .settings-list .item.item-ios.item-ios,
-  .settings-list .item.item-md.item-ios {
+  .settings-list .item.item-md.item-ios,
+  .settings-list .item {
     padding-left: 0px;
-    border-bottom: 1px solid rgba(229, 232, 234, 1);
+    border-bottom: 1px solid rgba(229, 232, 234, 1) !important;
     background: transparent;
 
   }

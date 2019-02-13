@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { App, Events, NavController, NavParams } from 'ionic-angular';
 
 // Pages
+// import { HomePage } from '../../home/home';
 import { ScanPage } from '../../scan/scan';
 import { TabsPage } from '../../tabs/tabs';
 

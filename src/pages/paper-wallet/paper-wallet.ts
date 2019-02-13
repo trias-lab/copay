@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 
 // pages
 import { FinishModalPage } from '../finish/finish';
+// import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 
 // providers

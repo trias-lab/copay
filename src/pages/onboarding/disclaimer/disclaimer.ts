@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { NavController } from 'ionic-angular';
 import { Logger } from '../../../providers/logger/logger';
 
+// import { HomePage } from '../../home/home';
 import { TabsPage } from '../../tabs/tabs';
 
 import { EmailNotificationsProvider } from '../../../providers/email-notifications/email-notifications';

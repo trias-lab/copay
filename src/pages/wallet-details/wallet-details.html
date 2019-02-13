@@ -228,7 +228,7 @@
                       width="40">
                   </span>
                   <span *ngIf="tx.customData && tx.customData.toWalletName && !tx.customData.service">
-                    <img class="icon-services" src="assets/img/icon-wallet-reverse.svg" *ngIf="tx.action == 'sent'"
+                    <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'"
                       width="40">
                   </span>
                   <span *ngIf="!tx.customData || (tx.customData && !tx.customData.service && !tx.customData.toWalletName)">
@@ -261,13 +261,14 @@
                 </span>
               </div>
 
-              <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'sent'">
+               <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'sent'">
                 <span *ngIf="(tx.message && (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (!tx.customData || !tx.customData.toWalletName)"
                   translate>Sent</span>
-                <span *ngIf="(tx.message && (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (tx.customData && tx.customData.toWalletName)">{{tx.customData.toWalletName}}</span>
                 <span *ngIf="!tx.message && (!tx.note || (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (!tx.customData || !tx.customData.toWalletName)">{{'Sent'
                   | translate}}</span>
-                <span *ngIf="!tx.message && (!tx.note || (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (tx.customData && tx.customData.toWalletName)">{{tx.customData.toWalletName}}</span>
+                <span *ngIf="!tx.message && (!tx.note || (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (tx.customData && tx.customData.toWalletName)">
+                  {{ 'Sent to {walletName}' | translate: {walletName: tx.customData.toWalletName} }}
+                </span>
                 <span *ngIf="!tx.note && tx.message">{{tx.message}}</span>
                 <span *ngIf="tx.note && tx.note.body != ''">{{tx.note.body}}</span>
                 <span *ngIf="!tx.message && addressbook && tx.outputs[0] && addressbook[tx.outputs[0].address]">
@@ -346,4 +347,5 @@
       </ion-list>
     </div>
   </div>
+  <tabs-bar selectedTab="home"></tabs-bar>
 </ion-content>

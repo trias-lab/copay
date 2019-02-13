@@ -4,6 +4,7 @@ import { App } from 'ionic-angular';
 import * as _ from 'lodash';
 
 // Pages
+// import { HomePage } from '../../../home/home';
 import { TabsPage } from '../../../tabs/tabs';
 
 // Providers

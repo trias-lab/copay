@@ -69,24 +69,13 @@ export interface Config {
     enabled: boolean;
   };
 
-  persistentLogsEnabled: boolean;
-
   showIntegration: {
     coinbase: boolean;
-    glidera: boolean;
     debitcard: boolean;
     amazon: boolean;
     mercadolibre: boolean;
     shapeshift: boolean;
     giftcards: boolean;
-  };
-
-  rates: {
-    url: string;
-  };
-
-  release: {
-    url: string;
   };
 
   pushNotificationsEnabled: boolean;
@@ -120,131 +109,121 @@ export interface Config {
   };
 }
 
-const configDefault: Config = {
-  // wallet limits
-  limits: {
-    totalCopayers: 6,
-    mPlusN: 100
-  },
-
-  // wallet default config
-  wallet: {
-    useLegacyAddress: false,
-    requiredCopayers: 2,
-    totalCopayers: 3,
-    spendUnconfirmed: false,
-    reconnectDelay: 5000,
-    idleDurationMin: 4,
-    settings: {
-      unitName: 'BTC',
-      unitToSatoshi: 100000000,
-      unitToWei: 1000000000000000000,
-      unitDecimals: 8,
-      unitCode: 'btc',
-      alternativeName: 'US Dollar',
-      alternativeIsoCode: 'USD',
-      defaultLanguage: '',
-      feeLevel: 'normal'
-    }
-  },
-
-  // Bitcore wallet service URL
-  bws: {
-    url: 'http://192.168.1.171:3232/bws/api'
-  },
-
-  download: {
-    bitpay: {
-      url: 'https://bitpay.com/wallet'
-    },
-    copay: {
-      url: 'https://copay.io/#download'
-    }
-  },
-
-  rateApp: {
-    bitpay: {
-      ios:
-        'https://itunes.apple.com/app/bitpay-secure-bitcoin-wallet/id1149581638',
-      android:
-        'https://play.google.com/store/apps/details?id=com.bitpay.wallet',
-      wp: ''
-    },
-    copay: {
-      ios: 'https://itunes.apple.com/app/copay-bitcoin-wallet/id951330296',
-      android: 'https://play.google.com/store/apps/details?id=com.bitpay.copay',
-      wp: ''
-    }
-  },
-
-  lock: {
-    pin: {
-      method: null,
-      value: null,
-      bannedUntil: null
-    },
-    fingerprint: null
-  },
-
-  recentTransactions: {
-    enabled: true
-  },
-
-  persistentLogsEnabled: true,
-
-  // External services
-  showIntegration: {
-    coinbase: false,
-    glidera: false,
-    debitcard: true,
-    amazon: true,
-    mercadolibre: true,
-    shapeshift: true,
-    giftcards: true
-  },
-
-  rates: {
-    url: 'https://insight.bitpay.com:443/api/rates'
-  },
-
-  release: {
-    url: 'https://api.github.com/repos/bitpay/copay/releases/latest'
-  },
-
-  pushNotificationsEnabled: true,
-
-  inAppNotificationsEnabled: true,
-
-  desktopNotificationsEnabled: true,
-
-  confirmedTxsNotifications: {
-    enabled: true
-  },
-
-  emailNotifications: {
-    enabled: false,
-    email: ''
-  },
-
-  log: {
-    weight: 3
-  },
-
-  blockExplorerUrl: {
-    btc: 'insight.bitpay.com',
-    bch: 'bch-insight.bitpay.com/#'
-  }
-};
-
 @Injectable()
 export class ConfigProvider {
-  private configCache: Config;
+  public configCache: Config;
+  public configDefault: Config;
 
   constructor(
     private logger: Logger,
     private persistence: PersistenceProvider
   ) {
     this.logger.debug('ConfigProvider initialized');
+    this.configDefault = {
+      // wallet limits
+      limits: {
+        totalCopayers: 6,
+        mPlusN: 100
+      },
+
+      // wallet default config
+      wallet: {
+        useLegacyAddress: false,
+        requiredCopayers: 2,
+        totalCopayers: 3,
+        spendUnconfirmed: false,
+        reconnectDelay: 5000,
+        idleDurationMin: 4,
+        settings: {
+          unitName: 'BTC',
+          unitToSatoshi: 100000000,
+          unitToWei: 1000000000000000000,
+          unitDecimals: 8,
+          unitCode: 'btc',
+          alternativeName: 'US Dollar',
+          alternativeIsoCode: 'USD',
+          defaultLanguage: '',
+          feeLevel: 'normal'
+        }
+      },
+
+      // Bitcore wallet service URL
+      bws: {
+        url: 'http://192.168.1.171:3232/bws/api'
+      },
+
+      download: {
+        bitpay: {
+          url: 'https://bitpay.com/wallet'
+        },
+        copay: {
+          url: 'https://copay.io/#download'
+        }
+      },
+
+      rateApp: {
+        bitpay: {
+          ios:
+            'https://itunes.apple.com/app/bitpay-secure-bitcoin-wallet/id1149581638',
+          android:
+            'https://play.google.com/store/apps/details?id=com.bitpay.wallet',
+          wp: ''
+        },
+        copay: {
+          ios: 'https://itunes.apple.com/app/copay-bitcoin-wallet/id951330296',
+          android:
+            'https://play.google.com/store/apps/details?id=com.bitpay.copay',
+          wp: ''
+        }
+      },
+
+	  lock: {
+	    pin: {
+	      method: null,
+	      value: null,
+	      bannedUntil: null
+	    },
+	    fingerprint: null
+	  },
+
+      recentTransactions: {
+        enabled: true
+      },
+
+      // External services
+      showIntegration: {
+        coinbase: false,
+        debitcard: true,
+        amazon: true,
+        mercadolibre: true,
+        shapeshift: true,
+        giftcards: true
+      },
+
+      pushNotificationsEnabled: true,
+
+      inAppNotificationsEnabled: true,
+
+      desktopNotificationsEnabled: true,
+
+      confirmedTxsNotifications: {
+        enabled: true
+      },
+
+      emailNotifications: {
+        enabled: false,
+        email: ''
+      },
+
+      log: {
+        weight: 3
+      },
+
+      blockExplorerUrl: {
+        btc: 'insight.bitpay.com',
+        bch: 'bch-insight.bitpay.com/#'
+      }
+    };
   }
 
   public load() {
@@ -256,7 +235,7 @@ export class ConfigProvider {
             this.configCache = _.clone(config);
             this.backwardCompatibility();
           } else {
-            this.configCache = _.clone(configDefault);
+            this.configCache = _.clone(this.configDefault);
           }
           this.logImportantConfig(this.configCache);
           resolve();
@@ -271,18 +250,15 @@ export class ConfigProvider {
   private logImportantConfig(config: Config): void {
     const spendUnconfirmed = config.wallet.spendUnconfirmed;
     const useLegacyAddress = config.wallet.useLegacyAddress;
-    const persistentLogsEnabled = config.persistentLogsEnabled;
     const lockMethod = config && config.lock && config.lock.fingerprint ? "PIN and " + config.lock.fingerprint : "PIN";
 
     this.logger.debug(
       'Config | spendUnconfirmed: ' +
-      spendUnconfirmed +
-      ' - useLegacyAddress: ' +
-      useLegacyAddress +
-      ' - persistentLogsEnabled: ' +
-      persistentLogsEnabled +
-      ' - lockMethod: ' +
-      lockMethod
+        spendUnconfirmed +
+        ' - useLegacyAddress: ' +
+        useLegacyAddress +
+        ' - lockMethod: ' +
+        lockMethod
     );
   }
 
@@ -290,7 +266,7 @@ export class ConfigProvider {
    * @param newOpts object or string (JSON)
    */
   public set(newOpts) {
-    const config = _.cloneDeep(configDefault);
+    const config = _.cloneDeep(this.configDefault);
 
     if (_.isString(newOpts)) {
       newOpts = JSON.parse(newOpts);
@@ -307,71 +283,56 @@ export class ConfigProvider {
   }
 
   public getDefaults(): Config {
-    return configDefault;
+    return this.configDefault;
   }
 
   private backwardCompatibility() {
     // these ifs are to avoid migration problems
     if (this.configCache.bws) {
-      this.configCache.bws = configDefault.bws;
+      this.configCache.bws = this.configDefault.bws;
     }
     if (!this.configCache.wallet) {
-      this.configCache.wallet = configDefault.wallet;
+      this.configCache.wallet = this.configDefault.wallet;
     }
     if (!this.configCache.wallet.settings.unitCode) {
-      this.configCache.wallet.settings.unitCode =
-        configDefault.wallet.settings.unitCode;
+      this.configCache.wallet.settings.unitCode = this.configDefault.wallet.settings.unitCode;
     }
     if (!this.configCache.showIntegration) {
-      this.configCache.showIntegration = configDefault.showIntegration;
+      this.configCache.showIntegration = this.configDefault.showIntegration;
     } else {
       if (this.configCache.showIntegration.giftcards !== false) {
-        this.configCache.showIntegration.giftcards =
-          configDefault.showIntegration.giftcards;
+        this.configCache.showIntegration.giftcards = this.configDefault.showIntegration.giftcards;
       }
     }
     if (!this.configCache.recentTransactions) {
-      this.configCache.recentTransactions = configDefault.recentTransactions;
-    }
-    if (!this.configCache.persistentLogsEnabled) {
-      this.configCache.persistentLogsEnabled =
-        configDefault.persistentLogsEnabled;
+      this.configCache.recentTransactions = this.configDefault.recentTransactions;
     }
     if (!this.configCache.pushNotificationsEnabled) {
-      this.configCache.pushNotificationsEnabled =
-        configDefault.pushNotificationsEnabled;
+      this.configCache.pushNotificationsEnabled = this.configDefault.pushNotificationsEnabled;
     }
     if (!this.configCache.inAppNotificationsEnabled) {
-      this.configCache.inAppNotificationsEnabled =
-        configDefault.inAppNotificationsEnabled;
+      this.configCache.inAppNotificationsEnabled = this.configDefault.inAppNotificationsEnabled;
     }
     if (!this.configCache.desktopNotificationsEnabled) {
-      this.configCache.desktopNotificationsEnabled =
-        configDefault.desktopNotificationsEnabled;
+      this.configCache.desktopNotificationsEnabled = this.configDefault.desktopNotificationsEnabled;
     }
     if (!this.configCache.emailNotifications) {
-      this.configCache.emailNotifications = configDefault.emailNotifications;
+      this.configCache.emailNotifications = this.configDefault.emailNotifications;
     }
     if (!this.configCache.lock) {
-      this.configCache.lock = configDefault.lock;
+      this.configCache.lock = this.configDefault.lock;
     }
     if (!this.configCache.confirmedTxsNotifications) {
-      this.configCache.confirmedTxsNotifications =
-        configDefault.confirmedTxsNotifications;
+      this.configCache.confirmedTxsNotifications = this.configDefault.confirmedTxsNotifications;
     }
 
     if (this.configCache.wallet.settings.unitCode == 'bit') {
-      // Convert to BTC / ETH. Bits will be disabled
-      this.configCache.wallet.settings.unitName =
-        configDefault.wallet.settings.unitName;
-      this.configCache.wallet.settings.unitToSatoshi =
-        configDefault.wallet.settings.unitToSatoshi;
-        this.configCache.wallet.settings.unitToWei =
-        configDefault.wallet.settings.unitToWei;
-      this.configCache.wallet.settings.unitDecimals =
-        configDefault.wallet.settings.unitDecimals;
-      this.configCache.wallet.settings.unitCode =
-        configDefault.wallet.settings.unitCode;
+      // Convert to BTC. Bits will be disabled
+      this.configCache.wallet.settings.unitName = this.configDefault.wallet.settings.unitName;
+      this.configCache.wallet.settings.unitToSatoshi = this.configDefault.wallet.settings.unitToSatoshi;
+      this.configCache.wallet.settings.unitToWei = this.configDefault.wallet.settings.unitToWei;
+      this.configCache.wallet.settings.unitDecimals = this.configDefault.wallet.settings.unitDecimals;
+      this.configCache.wallet.settings.unitCode = this.configDefault.wallet.settings.unitCode;
     }
   }
 }

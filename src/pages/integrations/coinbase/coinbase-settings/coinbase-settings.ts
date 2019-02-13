@@ -9,6 +9,9 @@ import { ConfigProvider } from '../../../../providers/config/config';
 import { HomeIntegrationsProvider } from '../../../../providers/home-integrations/home-integrations';
 import { Logger } from '../../../../providers/logger/logger';
 import { PopupProvider } from '../../../../providers/popup/popup';
+
+// pages
+// import { HomePage } from '../../../home/home';
 import { TabsPage } from '../../../tabs/tabs';
 
 @Component({
