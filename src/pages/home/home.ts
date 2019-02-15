@@ -1101,16 +1101,16 @@ export class HomePage {
     }, 2000);
   }
 
-  // public scan() {
-  //   this.navCtrl.parent.select(1);
-  // }
+  public scan() {
+    this.navCtrl.parent.select(1);
+  }
 
-  public scan(): void {
-    this.navCtrl.push(ScanPage);
-  }
-  public settings() {
-    this.navCtrl.push(SettingsPage);
-  }
+  // public scan(): void {
+  //   this.navCtrl.push(ScanPage);
+  // }
+  // public settings() {
+  //   this.navCtrl.push(SettingsPage);
+  // }
 
   public importWallet() {
     this.navCtrl.push(ImportWalletPage);
