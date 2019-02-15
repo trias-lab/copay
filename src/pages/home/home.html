@@ -227,6 +227,7 @@
               </span>
             </div>
             <div class="item-subtitle">
+              <span class="wallet-type" *ngIf="!wallet.needsBackup">Bitcoin</span>
               <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate>
                 Incomplete
               </span>
@@ -297,6 +298,7 @@
               </span>
             </div>
             <div class="item-subtitle clearfix">
+              <span class="wallet-type" *ngIf="!wallet.needsBackup">Bitcoin</span>
               <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate>
                 Incomplete
               </span>
@@ -338,6 +340,7 @@
               </span>
             </div>
             <div class="item-subtitle clearfix">
+              <span class="wallet-type" *ngIf="!wallet.needsBackup">Ethereum</span>
               <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate>
                 Incomplete
               </span>
@@ -378,6 +381,7 @@
               </span>
             </div>
             <div class="item-subtitle clearfix">
+              <span class="wallet-type" *ngIf="!wallet.needsBackup">Trias</span>
               <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate>
                 Incomplete
               </span>
