@@ -74,8 +74,8 @@ export class CopayApp {
     | typeof OnboardingPage;
   private onResumeSubscription: Subscription;
   private isLockModalOpen: boolean;
-  // private isWalletModalOpen: boolean;
-  // private walletModal: any;
+  private isWalletModalOpen: boolean;
+  private walletModal: any;
 
   private pageMap = {
     AddressbookAddPage,
@@ -326,41 +326,32 @@ export class CopayApp {
 
   private openWallet(wallet) {
     // check if modal is already open
-    // if (this.isWalletModalOpen) {
-    //   this.walletModal.dismiss();
-    // }
+    if (this.isWalletModalOpen) {
+      this.walletModal.dismiss();
+    }
     const page = wallet.isComplete() ? WalletTabsPage : CopayersPage;
-    // this.isWalletModalOpen = true;
-    this.nav.push(
+    this.isWalletModalOpen = true;
+    this.walletModal = this.modalCtrl.create(
       page,
       {
         walletId: wallet.credentials.walletId
+      },
+      {
+        cssClass: 'wallet-details-modal'
       }
     );
-    // this.walletModal.present();
-    // this.walletModal.onDidDismiss(() => {
-    //   this.isWalletModalOpen = false;
-    // });
+    this.walletModal.present();
+    this.walletModal.onDidDismiss(() => {
+      this.isWalletModalOpen = false;
+    });
   }
 
   private scanFromWalletEvent(): void {
     this.events.subscribe('ScanFromWallet', async () => {
       await this.getGlobalTabs().select(1);
-      let elements = document.querySelectorAll('.home-tab>.tabbar');
-      if (elements != null) {
-        Object.keys(elements).map(key => {
-          elements[key].style.display = 'none';
-        });
-      }
       await this.toggleScannerVisibilityFromWithinWallet(true, 300);
     });
     this.events.subscribe('ExitScan', async () => {
-      let elements = document.querySelectorAll('.home-tab>.tabbar');
-      if (elements != null) {
-        Object.keys(elements).map(key => {
-          elements[key].style.display = 'flex';
-        });
-      }
       this.closeScannerFromWithinWallet();
     });
   }
