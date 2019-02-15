@@ -954,7 +954,7 @@ msgid "Hide advanced options"
 msgstr "Masquer les options avancées"
 
 msgid "Home"
-msgstr "Accueil"
+msgstr "Les atouts"
 
 msgid "How satisfied are you with {{appName}} wallet?"
 msgstr "Êtes-vous content de l'appli {{appName}} ?"

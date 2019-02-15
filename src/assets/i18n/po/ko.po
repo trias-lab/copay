@@ -954,7 +954,7 @@ msgid "Hide advanced options"
 msgstr "고급 옵션 숨기기"
 
 msgid "Home"
-msgstr "홈"
+msgstr "자산"
 
 msgid "How satisfied are you with {{appName}} wallet?"
 msgstr ""

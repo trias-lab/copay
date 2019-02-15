@@ -954,7 +954,7 @@ msgid "Hide advanced options"
 msgstr "隐藏高级选项"
 
 msgid "Home"
-msgstr "主屏幕"
+msgstr "资产"
 
 msgid "How satisfied are you with {{appName}} wallet?"
 msgstr "Làm thế nào bạn hài lòng với {{AppName}}  ví ?"

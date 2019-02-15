@@ -1066,7 +1066,7 @@ msgid "Hide advanced options"
 msgstr "Hide advanced options"
 
 msgid "Home"
-msgstr "Home"
+msgstr "Assets"
 
 msgid "How satisfied are you with {{appName}} wallet?"
 msgstr "How satisfied are you with {{appName}} wallet?"
