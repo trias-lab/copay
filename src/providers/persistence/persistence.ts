@@ -175,9 +175,9 @@ export class PersistenceProvider {
     }
     this.logger.debug(
       'Saved logs: ' +
-      logsAmount +
-      '. Logs after cleaning: ' +
-      Object.keys(logs).length
+        logsAmount +
+        '. Logs after cleaning: ' +
+        Object.keys(logs).length
     );
     return logs;
   }
@@ -485,9 +485,9 @@ export class PersistenceProvider {
     return this.clearLastAddress(walletId)
       .then(() => this.removeTxHistory(walletId))
       .then(() => this.clearBackupFlag(walletId))
-      .then(() => this.removeWalletOrder(walletId))      
+      .then(() => this.removeWalletOrder(walletId))
       .then(() => this.removeBalanceCache(walletId))
-      .then(()=> this.removeAddressManager(walletId));
+      .then(() => this.removeAddressManager(walletId));
   }
 
   setGiftCardConfigCache(data) {

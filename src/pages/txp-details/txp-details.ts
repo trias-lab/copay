@@ -129,7 +129,6 @@ export class TxpDetailsPage {
     this.applyButtonText();
 
     this.amount = this.decimalPipe.transform(this.tx.amount / 1e8, '1.2-6');
-
   }
 
   ionViewWillEnter() {

@@ -8,7 +8,7 @@ page-wallet-settings {
   }
 
   ion-content {
-    background: url('../../../assets/img/img_bg_pattern.png') repeat-x
+    background: url('../../../assets/img/img_bg_pattern.png') repeat-x;
   }
 
   .item-text {
@@ -32,7 +32,7 @@ page-wallet-settings {
   }
 
   .settings-list .item {
-    border-bottom: 1px solid #E5E8EA;
+    border-bottom: 1px solid #e5e8ea;
   }
 
   ion-header {
@@ -48,16 +48,16 @@ page-wallet-settings {
   }
 
   ion-list {
-    background: #F8FAFB;
+    background: #f8fafb;
     padding-left: 30px;
 
     .item {
-      background: #F8FAFB;
+      background: #f8fafb;
     }
   }
 
   .delete span {
-    color: #D0021B;
+    color: #d0021b;
   }
 
   .wallet-set-title {
@@ -88,15 +88,15 @@ page-wallet-settings {
     padding: 4px 8px;
     display: inline-block;
 
-    &>img {
+    & > img {
       width: 16px;
       height: 16px;
       background: transparent;
       position: absolute;
     }
 
-    &>span {
-      margin-left: 20px
+    & > span {
+      margin-left: 20px;
     }
   }
 }

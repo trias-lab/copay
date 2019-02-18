@@ -103,11 +103,11 @@ export class BackupGamePage {
 
   ngOnInit() {
     this.currentIndex = 0;
-    if(!this.fromOnboarding){
+    if (!this.fromOnboarding) {
       this.navBar.backButtonClick = () => {
         if (this.slides) this.slidePrev();
         else this.navCtrl.pop();
-      };      
+      };
     }
   }
 
@@ -235,14 +235,14 @@ export class BackupGamePage {
   public checkOrder(): void {
     this.isWrongOrder = false;
     let wordsCount = this.customWords.length;
-    if(wordsCount>0){
-      for (var i = 0; i<wordsCount; i++) {
-        if(this.customWords[i].word!==this.mnemonicWords[i]){
+    if (wordsCount > 0) {
+      for (var i = 0; i < wordsCount; i++) {
+        if (this.customWords[i].word !== this.mnemonicWords[i]) {
           this.isWrongOrder = true;
           this.customWords[i].correct = false;
         }
       }
-    }    
+    }
   }
 
   private confirm(): Promise<any> {

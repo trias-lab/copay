@@ -54,7 +54,7 @@ export class TxDetailsPage {
     private translate: TranslateService,
     private platform: Platform,
     private statusBar: StatusBar
-  ) { }
+  ) {}
 
   ionViewDidLoad() {
     this.config = this.configProvider.get();

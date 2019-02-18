@@ -19,7 +19,7 @@ page-addressbook-add {
   }
 
   .header-option {
-    color: #57A756;
+    color: #57a756;
     background: transparent;
     font-size: 17px;
   }
@@ -63,7 +63,8 @@ page-addressbook-add {
     margin-top: 0;
   }
 
-  .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+  .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus)
+    .item-inner {
     box-shadow: none;
     border: none;
   }
@@ -100,9 +101,12 @@ page-addressbook-add {
   }
 }
 
-
 .address-btn-block {
-  background: radial-gradient(ellipse at center, rgba(246, 249, 250, 1) 0%, rgba(230, 235, 238, 1) 100%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(246, 249, 250, 1) 0%,
+    rgba(230, 235, 238, 1) 100%
+  );
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   padding: 32px 16px;
   position: fixed;
@@ -117,6 +121,4 @@ page-addressbook-add {
     padding: 0;
     max-width: 100%;
   }
-
-
 }

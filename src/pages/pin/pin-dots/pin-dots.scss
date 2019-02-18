@@ -13,18 +13,22 @@ pin-dots {
     border: 1px solid color($colors, light-grey);
     height: $circle-diameter;
     width: $circle-diameter;
-    background:rgba(242,245,247,1);
-    box-shadow:0px 1px 3px 0px rgba(0,0,0,0.32) inset;
-    border:1px solid #CBD0D3;
+    background: rgba(242, 245, 247, 1);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.32) inset;
+    border: 1px solid #cbd0d3;
     position: relative;
   }
   .filled:before {
     content: '';
     position: absolute;
-    width:10px;
-    height:10px;
-    background:linear-gradient(228deg,rgba(140,199,43,1) 0%,rgba(93,184,92,1) 100%);
-    box-shadow:0px 1px 4px 0px rgba(0,0,0,0.1);
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(
+      228deg,
+      rgba(140, 199, 43, 1) 0%,
+      rgba(93, 184, 92, 1) 100%
+    );
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
     left: 3px;
     top: 3px;
     border-radius: 50%;

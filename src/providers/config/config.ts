@@ -61,8 +61,8 @@ export interface Config {
       method: any;
       value: any;
       bannedUntil: any;
-    },
-    fingerprint: any  // "Face ID" / "Touch ID" / null
+    };
+    fingerprint: any; // "Face ID" / "Touch ID" / null
   };
 
   recentTransactions: {
@@ -177,14 +177,14 @@ export class ConfigProvider {
         }
       },
 
-	  lock: {
-	    pin: {
-	      method: null,
-	      value: null,
-	      bannedUntil: null
-	    },
-	    fingerprint: null
-	  },
+      lock: {
+        pin: {
+          method: null,
+          value: null,
+          bannedUntil: null
+        },
+        fingerprint: null
+      },
 
       recentTransactions: {
         enabled: true
@@ -250,7 +250,10 @@ export class ConfigProvider {
   private logImportantConfig(config: Config): void {
     const spendUnconfirmed = config.wallet.spendUnconfirmed;
     const useLegacyAddress = config.wallet.useLegacyAddress;
-    const lockMethod = config && config.lock && config.lock.fingerprint ? "PIN and " + config.lock.fingerprint : "PIN";
+    const lockMethod =
+      config && config.lock && config.lock.fingerprint
+        ? 'PIN and ' + config.lock.fingerprint
+        : 'PIN';
 
     this.logger.debug(
       'Config | spendUnconfirmed: ' +

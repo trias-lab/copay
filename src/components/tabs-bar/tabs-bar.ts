@@ -1,7 +1,5 @@
-import { Component, Input} from '@angular/core';
-import {
-  NavController
-} from 'ionic-angular';
+import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 // providers
 import { Logger } from '../../providers/logger/logger';
@@ -15,24 +13,20 @@ import { SettingsPage } from '../../pages/settings/settings';
   templateUrl: `tabs-bar.html`
 })
 export class TabsBarComponent {
-	@Input()
+  @Input()
   selectedTab: string;
 
-  constructor(
-  	private navCtrl: NavController,
-  	private logger: Logger
-	) {
+  constructor(private navCtrl: NavController, private logger: Logger) {
     this.logger.debug('Hello TabsBarComponent Component');
     // this.selectedTab = "home";
   }
 
-  public select(tabname){
-  	if(tabname=="home"){
-      this.navCtrl.setPages([{page:HomePage}],{})
-  	}
-  	if(tabname=="settings"){
-      this.navCtrl.setPages([{page:SettingsPage}],{})
-
-  	}
+  public select(tabname) {
+    if (tabname == 'home') {
+      this.navCtrl.setPages([{ page: HomePage }], {});
+    }
+    if (tabname == 'settings') {
+      this.navCtrl.setPages([{ page: SettingsPage }], {});
+    }
   }
 }

@@ -38,7 +38,8 @@ page-fee-policy {
   }
 
   .radio-icon.radio-checked {
-    background: url('../../../assets/img/settings-icons/icon_checkmark@2x.png') no-repeat center;
+    background: url('../../../assets/img/settings-icons/icon_checkmark@2x.png')
+      no-repeat center;
     background-size: contain;
     border: none;
   }
@@ -68,9 +69,8 @@ page-fee-policy {
 
   .bar-button-default-md,
   .bar-button-clear-md-default,
-  .bar-button-md-default,
-    {
-    color: #142A3F;
+  .bar-button-md-default {
+    color: #142a3f;
   }
 
   .customized-tabs {
@@ -94,13 +94,13 @@ page-fee-policy {
     display: flex;
     width: 100%;
 
-    &>a.actiove {
+    & > a.actiove {
       color: #1abb9b;
     }
 
-    &>a {
+    & > a {
       min-height: 41px;
-      color: #CBD0D3;
+      color: #cbd0d3;
       max-width: 15vw;
       min-width: 80px;
       // max-width: 240px;

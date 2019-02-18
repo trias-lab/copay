@@ -1,9 +1,9 @@
-page-wallet-details {  
-  ion-content{
+page-wallet-details {
+  ion-content {
     background: url('../../../assets/img/img_bg_pattern.png') repeat-x;
-    background-color:#F8FAFB !important;
+    background-color: #f8fafb !important;
   }
-  ion-content.has-refresher>.scroll-content {
+  ion-content.has-refresher > .scroll-content {
     background: transparent;
   }
   ion-header .toolbar-title {
@@ -51,17 +51,17 @@ page-wallet-details {
   }
   .balance-str {
     cursor: pointer;
-    font-size:24px;
-    font-weight:bold;
-    color:rgba(20,42,63,1);
-    line-height:28px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(20, 42, 63, 1);
+    line-height: 28px;
   }
   .balance-alt-str {
     padding-top: 6px;
-    font-size:14px;
-    font-weight:400;
-    color:rgba(110,118,125,1);
-    line-height:16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(110, 118, 125, 1);
+    line-height: 16px;
   }
   .balance-hidden {
     .title {
@@ -97,60 +97,65 @@ page-wallet-details {
     background: #f8fafb;
     padding: 18px 16px 0 16px;
     line-height: 58px;
-    .tabs-inner-wrapper{
-      border-bottom: 1px solid #E5E8EA;
+    .tabs-inner-wrapper {
+      border-bottom: 1px solid #e5e8ea;
     }
-    .tab-btn{
+    .tab-btn {
       display: inline-block;
-      font-size:14px;
-      font-weight:bold;
-      color:rgba(163,173,180,1);
-      line-height:16px;
+      font-size: 14px;
+      font-weight: bold;
+      color: rgba(163, 173, 180, 1);
+      line-height: 16px;
       position: relative;
       margin-right: 28px;
-      &.active{
-        color:rgba(0,0,0,1);
+      &.active {
+        color: rgba(0, 0, 0, 1);
       }
-      &.active:after{
-        content:'';
+      &.active:after {
+        content: '';
         position: absolute;
         left: calc(50% - 2px);
         bottom: -12px;
         border-radius: 50%;
-        width:4px;
-        height:4px;
-        background:rgba(0,0,0,1);
+        width: 4px;
+        height: 4px;
+        background: rgba(0, 0, 0, 1);
       }
     }
-    .add-addr-btn, .edit-addr-btn, .done-addr-btn, .search-tx-btn, ion-spinner {
+    .add-addr-btn,
+    .edit-addr-btn,
+    .done-addr-btn,
+    .search-tx-btn,
+    ion-spinner {
       display: inline-block;
       margin-top: 20px;
       float: right;
       width: 18px;
       height: 18px;
       line-height: 18px;
-      img{
+      img {
         width: 18px;
       }
     }
     ion-spinner {
       * {
-        stroke: #6E767D;
+        stroke: #6e767d;
       }
     }
-    .done-addr-btn{
+    .done-addr-btn {
       width: auto;
-      font-size:14px;
-      font-weight:bold;
-      color:rgba(87,167,86,1);
-      line-height:16px;
+      font-size: 14px;
+      font-weight: bold;
+      color: rgba(87, 167, 86, 1);
+      line-height: 16px;
     }
-    .add-addr-btn{
+    .add-addr-btn {
       margin-right: 18px;
     }
   }
-  .history-wrapper, .address-wrapper{
-    background:rgba(248,250,251,1);
+  .history-wrapper,
+  .address-wrapper {
+    background: rgba(248, 250, 251, 1);
     .list {
       margin: 0;
     }
@@ -159,56 +164,56 @@ page-wallet-details {
     .list {
       .item {
         background: transparent;
-        .item-inner{
+        .item-inner {
           padding-right: 16px;
           border-bottom: 0;
         }
-        .input-wrapper{
-          border-bottom: 1px solid #E5E8EA;
+        .input-wrapper {
+          border-bottom: 1px solid #e5e8ea;
         }
-        .label{
+        .label {
           position: relative;
           margin: 18px 0;
-          h3{
-            font-size:15px;
-            font-weight:400;
-            color:rgba(20,42,63,1);
-            line-height:18px;
+          h3 {
+            font-size: 15px;
+            font-weight: 400;
+            color: rgba(20, 42, 63, 1);
+            line-height: 18px;
             margin-bottom: 6px;
-            span{
-              font-size:12px;
-              font-weight:bold;
-              color:rgba(87,167,86,1);
-              line-height:18px;
+            span {
+              font-size: 12px;
+              font-weight: bold;
+              color: rgba(87, 167, 86, 1);
+              line-height: 18px;
               margin-left: 6px;
             }
-            .unused-mark{
+            .unused-mark {
               display: inline-block;
               position: relative;
               margin-left: 6px;
-              width:12px;
-              height:12px;
+              width: 12px;
+              height: 12px;
               border-radius: 50%;
-              border:1px solid rgba(189,225,188,1);
+              border: 1px solid rgba(189, 225, 188, 1);
               vertical-align: middle;
             }
-            .unused-mark:before{
-              content:'';
+            .unused-mark:before {
+              content: '';
               position: absolute;
               width: 8px;
               height: 8px;
               border-radius: 50%;
-              background:rgba(87,167,86,1);
-              left:1px;
-              top:1px;
+              background: rgba(87, 167, 86, 1);
+              left: 1px;
+              top: 1px;
             }
           }
-          p{
-            font-size:14px;
-            font-weight:400;
-            color:rgba(110,118,125,1);
-            line-height:16px;
-            margin:0;
+          p {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(110, 118, 125, 1);
+            line-height: 16px;
+            margin: 0;
             padding-right: 40px;
           }
         }
@@ -219,11 +224,11 @@ page-wallet-details {
           height: 18px;
           top: 11px;
           right: 0;
-          img{
+          img {
             width: 18px;
           }
         }
-        ion-icon{
+        ion-icon {
           position: absolute;
           display: inline-block;
           width: 18px;
@@ -259,8 +264,8 @@ page-wallet-details {
       }
     }
     .item-wrapper {
-      margin: 0 16px;      
-      border-bottom: 1px solid #E5E8EA;
+      margin: 0 16px;
+      border-bottom: 1px solid #e5e8ea;
       // &:last-child {
       //   .item-inner {
       //     border-bottom: 0;
@@ -289,11 +294,11 @@ page-wallet-details {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-size:15px;
-      font-weight:400;
-      color:rgba(0,0,0,1);
-      line-height:18px;
-      .pending-mark{
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 1);
+      line-height: 18px;
+      .pending-mark {
         width: 56px;
         height: 18px;
         background: #57a756;
@@ -301,29 +306,29 @@ page-wallet-details {
         margin-left: 4px;
         font-size: 12px;
         font-weight: 400;
-        color: rgba(255,255,255,1);
+        color: rgba(255, 255, 255, 1);
         line-height: 14px;
         padding: 1px 6px;
       }
     }
     .amount {
-      font-size:18px;
-      font-weight:400;
-      line-height:22px;
-      color:rgba(20,42,63,1);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 22px;
+      color: rgba(20, 42, 63, 1);
       .received {
-        color:rgba(60,119,59,1);
+        color: rgba(60, 119, 59, 1);
       }
       .sent {
-        color:rgba(175,57,0,1);
+        color: rgba(175, 57, 0, 1);
       }
     }
     .date {
       font-size: 14px;
       margin-top: 6px;
-      font-weight:400;
-      color:rgba(110,118,125,1);
-      line-height:16px;
+      font-weight: 400;
+      color: rgba(110, 118, 125, 1);
+      line-height: 16px;
     }
   }
   .middle-message {
@@ -438,87 +443,91 @@ page-wallet-details {
       margin-bottom: 2rem;
     }
   }
-  .scroll-content .wrapper{
+  .scroll-content .wrapper {
     background-color: transparent;
     .card {
-      background:rgba(255,255,255,1);
-      box-shadow:0px 2px 6px 0px rgba(0,0,0,0.1);
-      border-radius:4px;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
       padding: 0 8px;
       z-index: 2;
       position: relative;
       .grid {
-        color:rgba(20,42,63,1);
-        .row{
-          &:first-child{
+        color: rgba(20, 42, 63, 1);
+        .row {
+          &:first-child {
             margin-top: 20px;
             padding-bottom: 11px;
-            .col:nth-child(2){
-              img{
-                width:48px;
-                height:48px;
+            .col:nth-child(2) {
+              img {
+                width: 48px;
+                height: 48px;
                 display: inline-block;
-                float:right;
+                float: right;
               }
             }
           }
-          &.address-row{
+          &.address-row {
             height: 36px;
-            background: rgba(246,247,249,1);
+            background: rgba(246, 247, 249, 1);
             margin: 0px -13px;
             padding: 0 18px;
-            border-top: 1px solid rgba(229,232,234,1);      
-            border-bottom: 1px solid rgba(229,232,234,1); 
-            position: relative;     
+            border-top: 1px solid rgba(229, 232, 234, 1);
+            border-bottom: 1px solid rgba(229, 232, 234, 1);
+            position: relative;
             .address {
               font-size: 12px;
               font-weight: 400;
               line-height: 34px;
-              color: rgba(110,118,125,1);
+              color: rgba(110, 118, 125, 1);
               padding-right: 67px;
               text-overflow: ellipsis;
               overflow: hidden;
               white-space: nowrap;
               word-break: break-all;
             }
-            .copy-button{
+            .copy-button {
               display: inline-block;
               position: absolute;
               top: 6px;
               right: 18px;
               width: 55px;
-              height:20px;
-              background:linear-gradient(270deg,rgba(181,189,194,1) 0%,rgba(145,153,158,1) 100%);
-              border-radius:10px;
-              font-size:14px;
-              font-weight:500;
-              color:rgba(255,255,255,1);
-              line-height:20px;
+              height: 20px;
+              background: linear-gradient(
+                270deg,
+                rgba(181, 189, 194, 1) 0%,
+                rgba(145, 153, 158, 1) 100%
+              );
+              border-radius: 10px;
+              font-size: 14px;
+              font-weight: 500;
+              color: rgba(255, 255, 255, 1);
+              line-height: 20px;
               text-align: center;
             }
           }
-          &:last-child{
+          &:last-child {
             padding-top: 7px;
-            .col{
+            .col {
               text-align: center;
             }
-            a{
-              font-size:16px;
-              font-weight:500;
-              color:rgba(110,118,125,1);
+            a {
+              font-size: 16px;
+              font-weight: 500;
+              color: rgba(110, 118, 125, 1);
               height: 32px;
               display: flex;
               align-items: center;
               justify-content: center;
             }
-            a>img{
+            a > img {
               width: 20px;
               height: 20px;
               display: inline-block;
               margin-right: 9px;
             }
-            .col:first-child a{
-              border-right: 2px solid rgba(246,247,249,1);
+            .col:first-child a {
+              border-right: 2px solid rgba(246, 247, 249, 1);
             }
           }
         }

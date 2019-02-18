@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  NavController,
-} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import * as _ from 'lodash';
 import { Logger } from '../../../providers/logger/logger';
 
@@ -43,9 +41,9 @@ export class FeePolicyPage {
 
   // when init the page
   ngAfterViewInit() {
-    let elements = document.querySelectorAll(".tabbar");
+    let elements = document.querySelectorAll('.tabbar');
     if (elements != null) {
-      Object.keys(elements).map((key) => {
+      Object.keys(elements).map(key => {
         elements[key].style.display = 'none';
       });
     }
@@ -53,9 +51,9 @@ export class FeePolicyPage {
 
   // when quit the page
   ionViewWillLeave() {
-    let elements = document.querySelectorAll(".tabbar");
+    let elements = document.querySelectorAll('.tabbar');
     if (elements != null) {
-      Object.keys(elements).map((key) => {
+      Object.keys(elements).map(key => {
         elements[key].style.display = 'flex';
       });
     }

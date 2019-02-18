@@ -10,7 +10,8 @@ page-language {
   }
 
   .radio-icon.radio-checked {
-    background: url('../../../assets/img/settings-icons/icon_checkmark@2x.png') no-repeat center;
+    background: url('../../../assets/img/settings-icons/icon_checkmark@2x.png')
+      no-repeat center;
     background-size: contain;
     border: none;
   }
@@ -41,8 +42,7 @@ page-language {
 
   .bar-button-default-md,
   .bar-button-clear-md-default,
-  .bar-button-md-default,
-    {
-    color: #142A3F;
+  .bar-button-md-default {
+    color: #142a3f;
   }
 }

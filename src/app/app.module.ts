@@ -140,4 +140,4 @@ export class MyMissingTranslationHandler implements MissingTranslationHandler {
     AddressManagerProvider
   ]
 })
-export class AppModule { }
+export class AppModule {}

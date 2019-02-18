@@ -238,7 +238,7 @@ export class WalletDetailsPage extends WalletTabsChild {
         addressItem.address
       );
       this.am
-        .add(this.wallet, { name: 'Default', address: addr})
+        .add(this.wallet, { name: 'Default', address: addr })
         .then(() => {
           this.logger.debug('----Add address ' + addr + 'to wallet manager');
           this.addAllAddress();
@@ -278,44 +278,44 @@ export class WalletDetailsPage extends WalletTabsChild {
       // If the address is new and not stored in local address-manager
       // update addresses stored in address-manager
       // if (_.isEmpty(am[addressView])) {
-        this.walletProvider
-          .getMainAddresses(this.wallet, {
-            doNotVerify: true
-          })
-          .then(allAddresses => {
-            // allAddresses only contains addresses with path 'm/0/...' but not 'm/1/...'.
-            // so it should concat addresses with balance and no balance to get all addresses.
-            this.walletProvider
-              .getBalance(this.wallet, {})
-              .then(resp => {
-                let withBalance = resp.byAddress;
+      this.walletProvider
+        .getMainAddresses(this.wallet, {
+          doNotVerify: true
+        })
+        .then(allAddresses => {
+          // allAddresses only contains addresses with path 'm/0/...' but not 'm/1/...'.
+          // so it should concat addresses with balance and no balance to get all addresses.
+          this.walletProvider
+            .getBalance(this.wallet, {})
+            .then(resp => {
+              let withBalance = resp.byAddress;
 
-                let idx = _.keyBy(withBalance, 'address');
-                let noBalance = _.reject(allAddresses, x => {
-                  return idx[x.address];
-                });
-
-                // contat address lists and exclude the addresses already stored in local
-                let amx = _.keys(am);
-                this.addressToAdd = _.reject(withBalance.concat(noBalance), x => {
-                  return amx.indexOf(x.address) !== -1;
-                });
-
-                this.addAllAddress();
-                this.updateAddresses();
-              })
-              .catch(err => {
-                this.logger.error(err);
-                this.loadingAddr = false;
-                this.popupProvider.ionicAlert(
-                  this.bwcError.msg(
-                    err,
-                    this.translate.instant('Could not update wallet')
-                  )
-                );
+              let idx = _.keyBy(withBalance, 'address');
+              let noBalance = _.reject(allAddresses, x => {
+                return idx[x.address];
               });
-          });
-        // }
+
+              // contat address lists and exclude the addresses already stored in local
+              let amx = _.keys(am);
+              this.addressToAdd = _.reject(withBalance.concat(noBalance), x => {
+                return amx.indexOf(x.address) !== -1;
+              });
+
+              this.addAllAddress();
+              this.updateAddresses();
+            })
+            .catch(err => {
+              this.logger.error(err);
+              this.loadingAddr = false;
+              this.popupProvider.ionicAlert(
+                this.bwcError.msg(
+                  err,
+                  this.translate.instant('Could not update wallet')
+                )
+              );
+            });
+        });
+      // }
     });
     this.address = addressView; // update curent address
   }

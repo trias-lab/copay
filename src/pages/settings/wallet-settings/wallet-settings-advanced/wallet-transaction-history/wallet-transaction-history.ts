@@ -69,7 +69,10 @@ export class WalletTransactionHistoryPage {
     this.weiToUnit = 1 / this.unitToWei;
     this.satToBtc = 1 / 100000000;
     this.weiToEth = 1 / 1000000000000000000;
-    this.unitToCoin = this.wallet.coin !== 'eth' && this.wallet.coin !== 'tri' ? this.satToBtc : this.weiToEth;
+    this.unitToCoin =
+      this.wallet.coin !== 'eth' && this.wallet.coin !== 'tri'
+        ? this.satToBtc
+        : this.weiToEth;
 
     this.csvHistory();
   }
@@ -159,7 +162,12 @@ export class WalletTransactionHistoryPage {
             const _fee = (it.fees * this.unitToCoin).toFixed(8);
             this.csvContent.push({
               Date: this.formatDate(it.time * 1000),
-              Destination: this.currency !== 'ETH' ? (this.currency !== 'TRI' ? 'Bitcoin Network Fees' : 'TRI Network Fees') : 'Ethereum Network Fees',
+              Destination:
+                this.currency !== 'ETH'
+                  ? this.currency !== 'TRI'
+                    ? 'Bitcoin Network Fees'
+                    : 'TRI Network Fees'
+                  : 'Ethereum Network Fees',
               Description: '',
               Amount: '-' + _fee,
               Currency: this.currency,

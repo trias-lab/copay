@@ -54,7 +54,7 @@ export class ReceivePage extends WalletTabsChild {
     // private translate: TranslateService,
     // private externalLinkProvider: ExternalLinkProvider,
     // private addressProvider: AddressProvider,
-    walletTabsProvider: WalletTabsProvider,
+    walletTabsProvider: WalletTabsProvider
     // private platform: Platform
   ) {
     super(navCtrl, profileProvider, walletTabsProvider);

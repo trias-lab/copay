@@ -94,7 +94,7 @@ export class CopayApp {
 
   constructor(
     private config: Config,
-    private platform: Platform,    
+    private platform: Platform,
     // private navCtrl: NavController,
     private platformProvider: PlatformProvider,
     private statusBar: StatusBar,
@@ -162,14 +162,14 @@ export class CopayApp {
 
     this.logger.info(
       'Platform ready (' +
-      readySource +
-      '): ' +
-      this.appProvider.info.nameCase +
-      ' - v' +
-      this.appProvider.info.version +
-      ' #' +
-      this.appProvider.info.commitHash +
-      deviceInfo
+        readySource +
+        '): ' +
+        this.appProvider.info.nameCase +
+        ' - v' +
+        this.appProvider.info.version +
+        ' #' +
+        this.appProvider.info.commitHash +
+        deviceInfo
     );
 
     if (this.platform.is('cordova')) {
@@ -178,15 +178,15 @@ export class CopayApp {
       // Set User-Agent
       this.userAgent.set(
         this.appProvider.info.name +
-        ' ' +
-        this.appProvider.info.version +
-        ' (' +
-        this.device.platform +
-        ' ' +
-        this.device.version +
-        ' - ' +
-        this.device.model +
-        ')'
+          ' ' +
+          this.appProvider.info.version +
+          ' (' +
+          this.device.platform +
+          ' ' +
+          this.device.version +
+          ' - ' +
+          this.device.model +
+          ')'
       );
 
       // Set to portrait
@@ -266,7 +266,6 @@ export class CopayApp {
     } else {
       return;
     }
-
   }
 
   private openPINModal(action): void {

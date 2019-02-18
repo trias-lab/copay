@@ -16,17 +16,17 @@ import { WalletTabsProvider } from './wallet-tabs.provider';
     <ion-tabs selectedIndex="1" #tabs class="wallet-tab">
       <ion-tab
         [root]="receiveRoot"
-        tabTitle="{{'Receive'|translate}}"
+        tabTitle="{{ 'Receive' | translate }}"
         tabIcon="tab-receive"
       ></ion-tab>
       <ion-tab
         [root]="activityRoot"
-        tabTitle="{{'Activity'|translate}}"
+        tabTitle="{{ 'Activity' | translate }}"
         tabIcon="tab-activity"
       ></ion-tab>
       <ion-tab
         [root]="sendRoot"
-        tabTitle="{{'Send'|translate}}"
+        tabTitle="{{ 'Send' | translate }}"
         tabIcon="tab-send"
       ></ion-tab>
     </ion-tabs>

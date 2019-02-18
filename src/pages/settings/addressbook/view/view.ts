@@ -36,7 +36,7 @@ export class AddressbookViewPage {
     this.email = this.navParams.data.contact.email;
   }
 
-  ionViewDidLoad() { }
+  ionViewDidLoad() {}
 
   ionViewWillEnter() {
     // set status bar style

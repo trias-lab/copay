@@ -1,69 +1,69 @@
 page-import-wallet {
   .import-button {
-    color: #57A756;
+    color: #57a756;
     background: transparent;
     font-size: 17px;
   }
   ion-segment {
     padding: 11px;
   }
-  .segment-ios{
+  .segment-ios {
     padding: 16px;
   }
-  .card .item-block{
+  .card .item-block {
     padding: 20px 8px 0 16px;
-    &:first-child{
+    &:first-child {
       padding-top: 4px;
     }
     ion-label {
-      font-size:13px;
-      font-weight:500;
-      color:rgba(20,42,63,1);
-      line-height:20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(20, 42, 63, 1);
+      line-height: 20px;
       margin: 0;
       margin-bottom: 4px;
     }
     &.title-advanced {
       padding-right: 16px;
-      .item-inner{
+      .item-inner {
         padding-bottom: 4px;
         margin-bottom: 20px;
-        border-bottom: 1px solid #E5E8EA;
+        border-bottom: 1px solid #e5e8ea;
         ion-label {
-          font-size:17px;
-          font-weight:500;
-          color:rgba(110,118,125,1);
-          line-height:24px;
+          font-size: 17px;
+          font-weight: 500;
+          color: rgba(110, 118, 125, 1);
+          line-height: 24px;
         }
       }
     }
   }
 
-  .text-input{
-    border-radius:4px;
+  .text-input {
+    border-radius: 4px;
     padding: 6px 8px;
-    margin: 0!important;
-    width: 100%!important;
-    font-size:15px;
-    font-weight:400;
-    color:#142A3F;
-    line-height:22px;    
-    background:rgba(246,247,249,1);
+    margin: 0 !important;
+    width: 100% !important;
+    font-size: 15px;
+    font-weight: 400;
+    color: #142a3f;
+    line-height: 22px;
+    background: rgba(246, 247, 249, 1);
   }
 
-  ion-textarea .text-input {    
-    height: 126px;    
+  ion-textarea .text-input {
+    height: 126px;
   }
 
   ion-select {
-    height:34px;
-    background:rgba(246,247,249,1);
-    border-radius:4px;
+    height: 34px;
+    background: rgba(246, 247, 249, 1);
+    border-radius: 4px;
     padding: 6px 8px !important;
-    font-size:15px;
-    font-weight:400;
-    color:rgba(20,42,63,1);
-    line-height:22px;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(20, 42, 63, 1);
+    line-height: 22px;
   }
 
   .assertive {
@@ -80,28 +80,28 @@ page-import-wallet {
   }
 
   .scanner-icon {
-    font-size:13px;
-    font-weight:500;
-    color:rgba(87,167,86,1);
-    line-height:34px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(87, 167, 86, 1);
+    line-height: 34px;
     width: calc(100% - 32px);
     margin-left: 16px;
-    height:34px;
-    border-radius:4px;
-    border:1px solid rgba(229,232,234,1);
+    height: 34px;
+    border-radius: 4px;
+    border: 1px solid rgba(229, 232, 234, 1);
     text-align: center;
     margin-top: 4px;
     img {
       display: inline-block;
-      width:14px;
-      height:18px;
+      width: 14px;
+      height: 18px;
       margin-right: 5px;
       vertical-align: middle;
       margin-top: -4px;
     }
   }
 
-  .file-container{
+  .file-container {
     margin-top: 8px;
     display: flex;
     flex-wrap: wrap-reverse;
@@ -115,13 +115,13 @@ page-import-wallet {
     align-items: center;
     margin-left: 16px;
     width: calc(100% - 32px);
-    height:84px;
-    background:rgba(248,250,251,1);
-    border-radius:4px;
-    font-size:15px;
-    font-weight:400;
-    color:rgba(20,42,63,1);
-    line-height:22px;
+    height: 84px;
+    background: rgba(248, 250, 251, 1);
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(20, 42, 63, 1);
+    line-height: 22px;
     .filled-message {
       max-width: 92%;
       word-break: break-all;
@@ -138,16 +138,16 @@ page-import-wallet {
     margin-left: 16px;
     width: calc(100% - 32px);
 
-    &>input {
+    & > input {
       height: 100%;
       margin: 0;
       cursor: pointer;
     }
   }
-  .ng-invalid+.upload-ui+.file-info>.filled-message,
-  .ng-valid+.upload-ui+.file-info>.empty-message,
-  .ng-invalid+.upload-ui>.filled-message,
-  .ng-valid+.upload-ui>.empty-message {
+  .ng-invalid + .upload-ui + .file-info > .filled-message,
+  .ng-valid + .upload-ui + .file-info > .empty-message,
+  .ng-invalid + .upload-ui > .filled-message,
+  .ng-valid + .upload-ui > .empty-message {
     display: none;
   }
 

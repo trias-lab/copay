@@ -29,7 +29,8 @@ export class BackupRequestPage {
   ) {
     this.walletId = this.navParams.get('walletId');
     this.fromOnboarding = this.navParams.get('fromOnboarding');
-    this.checked = {  // whether 3 tips are checked
+    this.checked = {
+      // whether 3 tips are checked
       first: false,
       second: false,
       third: false

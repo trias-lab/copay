@@ -52,7 +52,7 @@ export class WalletSettingsPage {
     private actionSheetProvider: ActionSheetProvider,
     private platform: Platform,
     private statusBar: StatusBar
-  ) { }
+  ) {}
 
   ionViewWillEnter() {
     // set status bar style

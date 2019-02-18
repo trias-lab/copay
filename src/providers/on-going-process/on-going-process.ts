@@ -69,7 +69,7 @@ export class OnGoingProcessProvider {
       buyingGiftCard: this.translate.instant('Buying Gift Card...'),
       topup: this.translate.instant('Top up in progress...'),
       duplicatingWallet: this.translate.instant('Duplicating wallet...'),
-      enablingToken: this.translate.instant('Enabling token for transfer...'),
+      enablingToken: this.translate.instant('Enabling token for transfer...')
     };
     return processNames;
   }

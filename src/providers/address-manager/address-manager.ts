@@ -17,14 +17,13 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class AddressManagerProvider {
-
   constructor(
     private logger: Logger,
     private persistenceProvider: PersistenceProvider,
     private walletProvider: WalletProvider,
     private translate: TranslateService,
     // private addressProvider: AddressProvider,
-    private bwcError: BwcErrorProvider, 
+    private bwcError: BwcErrorProvider
   ) {
     this.logger.debug('AddressManagerProvider initialized');
   }
@@ -34,19 +33,19 @@ export class AddressManagerProvider {
    * @param  {boolean}       newAddr whether generate a new address
    */
   public async getAddress(wallet, newAddr?: boolean): Promise<any> {
-    this.logger.debug('-----getAddress')
+    this.logger.debug('-----getAddress');
 
     return new Promise((resolve, reject) => {
-	    this.walletProvider
-	      .getAddress(wallet, newAddr)
-	      .then(addr => {
-	      	return resolve(addr);
-	      })
-	      .catch(err => {
-	        this.logger.warn(this.bwcError.msg(err, 'Server Error'));
-	        return reject(err);
-	      });
-		});
+      this.walletProvider
+        .getAddress(wallet, newAddr)
+        .then(addr => {
+          return resolve(addr);
+        })
+        .catch(err => {
+          this.logger.warn(this.bwcError.msg(err, 'Server Error'));
+          return reject(err);
+        });
+    });
   }
 
   public list(wallet): Promise<any> {
@@ -57,11 +56,13 @@ export class AddressManagerProvider {
           if (am && _.isString(am)) am = JSON.parse(am);
 
           am = am || {};
-          
+
           return resolve(am);
         })
         .catch(() => {
-          let msg = this.translate.instant('Could not get the Address Manager of this wallet');
+          let msg = this.translate.instant(
+            'Could not get the Address Manager of this wallet'
+          );
           return reject(msg);
         });
     });
@@ -71,30 +72,30 @@ export class AddressManagerProvider {
     return new Promise((resolve, reject) => {
       this.persistenceProvider
         .getAddressManager(wallet.id)
-        .then(am => {        	
-	        if (am && _.isString(am)) am = JSON.parse(am);
-	        am = am || {};
-	        if (_.isArray(am)) am = {}; // No array
-	        if (am[entry.address]) {
-	          	let msg = this.translate.instant('Entry already exist');
-	        	return reject(msg);
-	        }
-			    am[entry.address] = entry;
-			    this.persistenceProvider
-    				.setAddressManager(wallet.id, JSON.stringify(am))
-    				.then(() => {
-    				this.list(wallet)
-    				  .then(am => {
-    				    return resolve(am);
-    				  })
-    				  .catch(err => {
-    				    return reject(err);
-    				  });
-    				})
-    				.catch(() => {
-    				let msg = this.translate.instant('Error adding new entry');
-    				return reject(msg);
-  				});
+        .then(am => {
+          if (am && _.isString(am)) am = JSON.parse(am);
+          am = am || {};
+          if (_.isArray(am)) am = {}; // No array
+          if (am[entry.address]) {
+            let msg = this.translate.instant('Entry already exist');
+            return reject(msg);
+          }
+          am[entry.address] = entry;
+          this.persistenceProvider
+            .setAddressManager(wallet.id, JSON.stringify(am))
+            .then(() => {
+              this.list(wallet)
+                .then(am => {
+                  return resolve(am);
+                })
+                .catch(err => {
+                  return reject(err);
+                });
+            })
+            .catch(() => {
+              let msg = this.translate.instant('Error adding new entry');
+              return reject(msg);
+            });
         })
         .catch(err => {
           return reject(err);
@@ -145,7 +146,7 @@ export class AddressManagerProvider {
       this.persistenceProvider
         .removeAddressManager(wallet.id)
         .then(() => {
-        	return resolve();
+          return resolve();
         })
         .catch(() => {
           let msg = this.translate.instant('Error deleting address manager');

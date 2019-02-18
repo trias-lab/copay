@@ -107,7 +107,7 @@ export class ProfileProvider {
   /**
    * Check if a wallet requires backup.
    * @param  {[type]}  wallet wallet id
-   * @return {boolean} 
+   * @return {boolean}
    */
   private requiresBackup(wallet): boolean {
     if (wallet.isPrivKeyExternal()) return false;
@@ -121,7 +121,7 @@ export class ProfileProvider {
   /**
    * Check if a wallet still needs backup.
    * @param  {[type]}  wallet wallet id
-   * @return {boolean} 
+   * @return {boolean}
    */
   private needsBackup(wallet): Promise<boolean> {
     return new Promise(resolve => {
@@ -238,7 +238,7 @@ export class ProfileProvider {
           return;
         }
         wallet.setNotificationsInterval(this.UPDATE_PERIOD);
-        wallet.openWallet(() => { });
+        wallet.openWallet(() => {});
       }
     );
     this.events.subscribe('wallet:updated', (walletId: string) => {
@@ -430,7 +430,7 @@ export class ProfileProvider {
             this.profile.setChecked(this.platformProvider.ua, walletId);
           } else {
             this.logger.warn('Key Derivation failed for wallet:' + walletId);
-            this.persistenceProvider.clearLastAddress(walletId).then(() => { });
+            this.persistenceProvider.clearLastAddress(walletId).then(() => {});
           }
 
           this.storeProfileIfDirty();
@@ -742,7 +742,11 @@ export class ProfileProvider {
     return wordList.join(isJA ? '\u3000' : ' ');
   }
 
-  public importMnemonic(words: string, opts, createDefaultWallets: boolean): Promise<any> {
+  public importMnemonic(
+    words: string,
+    opts,
+    createDefaultWallets: boolean
+  ): Promise<any> {
     return new Promise((resolve, reject) => {
       this.logger.info('Importing Wallet Mnemonic');
       const walletClient = this.bwcProvider.getClient(null, opts);
@@ -752,7 +756,7 @@ export class ProfileProvider {
         this.createDefaultWallet()
           .then(() => {
             // this.setBackupFlag(wallet.credentials.walletId)
-            this.logger.info('----creating default Wallet finished.')
+            this.logger.info('----creating default Wallet finished.');
             words = this.normalizeMnemonic(words);
             walletClient.importFromMnemonic(
               words,
@@ -790,13 +794,11 @@ export class ProfileProvider {
             );
           })
           .catch(() => {
-            this.logger.warn(
-              'Retrying to create default wallet.....'
-            );
+            this.logger.warn('Retrying to create default wallet.....');
             // another try
             this.createDefaultWallet();
           });
-      }else {
+      } else {
         words = this.normalizeMnemonic(words);
         walletClient.importFromMnemonic(
           words,
@@ -832,7 +834,7 @@ export class ProfileProvider {
             }
           }
         );
-      }      
+      }
     });
   }
 
@@ -887,7 +889,7 @@ export class ProfileProvider {
   private resetProfile(): void {
     this.wallet = {};
     _.each(this.profile.credentials, credentials => {
-      this.persistenceProvider.clearBackupFlag(credentials.walletId)
+      this.persistenceProvider.clearBackupFlag(credentials.walletId);
     });
     this.persistenceProvider.deleteProfile();
     this.createProfile();
@@ -1027,9 +1029,9 @@ export class ProfileProvider {
 
       this.logger.debug(
         'Binding wallet:' +
-        credentials.walletId +
-        ' Validating?:' +
-        !skipKeyValidation
+          credentials.walletId +
+          ' Validating?:' +
+          !skipKeyValidation
       );
       return resolve(this.bindWalletClient(walletClient));
     });
@@ -1130,7 +1132,7 @@ export class ProfileProvider {
           );
         }
       } else {
-        // Change mnemonic language here 
+        // Change mnemonic language here
         const lang = this.languageProvider.getCurrent();
         try {
           walletClient.seedFromRandomWithMnemonic({
@@ -1312,8 +1314,8 @@ export class ProfileProvider {
   public createDefaultWallet(): Promise<any> {
     return new Promise((resolve, reject) => {
       // clear wallets in profile
-      this.logger.debug('----Clearing wallets...')
-      this.resetProfile();      
+      this.logger.debug('----Clearing wallets...');
+      this.resetProfile();
 
       // default BTC wallet option
       const opts: Partial<WalletOptions> = {};
@@ -1323,7 +1325,7 @@ export class ProfileProvider {
       opts.coin = Coin.BTC;
       this.createWallet(opts)
         .then(wallet => {
-          // default BTH wallet option 
+          // default BTH wallet option
           const optsBch: Partial<WalletOptions> = {};
           optsBch.m = 1;
           optsBch.n = 1;
@@ -1331,7 +1333,6 @@ export class ProfileProvider {
           optsBch.coin = Coin.BCH;
           // use the same mnemonic of the BTC waller created above.
           optsBch.mnemonic = wallet.credentials.mnemonic;
-
 
           const optsEth: Partial<WalletOptions> = {};
           optsEth.m = 1;
@@ -1352,20 +1353,18 @@ export class ProfileProvider {
           this.createWallet(optsBch)
             .then(walletBCH => {
               let wallets = [];
-              wallets.push(walletBCH)
-              wallets.push(wallet)
+              wallets.push(walletBCH);
+              wallets.push(wallet);
               // return resolve(wallets);
-              this.createWallet(optsEth)
-                .then(walletETH => {
-                  // let wallets = [];
-                  wallets.push(walletETH)
+              this.createWallet(optsEth).then(walletETH => {
+                // let wallets = [];
+                wallets.push(walletETH);
 
-                  this.createWallet(optsTri)
-                    .then(walletTri => {
-                      wallets.push(walletTri)
-                      return resolve(wallets);
-                    })
-                })
+                this.createWallet(optsTri).then(walletTri => {
+                  wallets.push(walletTri);
+                  return resolve(wallets);
+                });
+              });
             })
             .catch(err => {
               return reject(err);

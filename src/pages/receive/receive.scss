@@ -61,7 +61,7 @@ page-receive {
       padding-left: 24px;
       font-size: 1.7rem;
 
-      >span {
+      > span {
         font-size: 12.5px;
         font-weight: 300;
       }
@@ -126,9 +126,11 @@ page-receive {
   .adress_copy_btn {
     width: 57px;
     height: 20px;
-    background: linear-gradient(270deg,
+    background: linear-gradient(
+      270deg,
       rgba(131, 201, 14, 1) 0%,
-      rgba(34, 159, 32, 1) 100%);
+      rgba(34, 159, 32, 1) 100%
+    );
     border-radius: 10px;
     color: #fff;
     text-align: center;

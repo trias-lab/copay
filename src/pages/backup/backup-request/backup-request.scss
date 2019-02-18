@@ -1,6 +1,6 @@
 page-backup-request {
   & > ion-content {
-    background:rgba(248,250,251,1);
+    background: rgba(248, 250, 251, 1);
     display: flex;
     flex-direction: column;
     .card {
@@ -8,7 +8,7 @@ page-backup-request {
       padding: 14px 6px;
       overflow: visible;
       margin-bottom: 30px;
-      margin-top:0;
+      margin-top: 0;
       text-align: left;
 
       &:first-child {
@@ -21,18 +21,18 @@ page-backup-request {
       }
 
       h1 {
-        font-size:18px;
-        font-weight:500;
-        color:rgba(87,167,86,1);
-        line-height:22px;
+        font-size: 18px;
+        font-weight: 500;
+        color: rgba(87, 167, 86, 1);
+        line-height: 22px;
         margin-bottom: 8px;
       }
 
       p {
-        font-size:15px;
-        font-weight:400;
-        color:rgba(110,118,125,1);
-        line-height:18px;
+        font-size: 15px;
+        font-weight: 400;
+        color: rgba(110, 118, 125, 1);
+        line-height: 18px;
       }
 
       $circle-diameter: 24px;
@@ -44,38 +44,42 @@ page-backup-request {
         border: 1px solid color($colors, light-grey);
         height: $circle-diameter;
         width: $circle-diameter;
-        background:rgba(242,245,247,1);
-        box-shadow:0px 1px 3px 0px rgba(0,0,0,0.32) inset;
-        border:1px solid #CBD0D3;
+        background: rgba(242, 245, 247, 1);
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.32) inset;
+        border: 1px solid #cbd0d3;
         position: absolute;
         top: 10px;
         right: 10px;
       }
       .filled:before {
-        $inner-diameter: calc( #{$circle-diameter} - 8px);
+        $inner-diameter: calc(#{$circle-diameter} - 8px);
         content: '';
         position: absolute;
-        width:$inner-diameter;
-        height:$inner-diameter;
-        background-image:url(../../../assets/img/app/onboarding/icon_checkmark@2x.png);
+        width: $inner-diameter;
+        height: $inner-diameter;
+        background-image: url(../../../assets/img/app/onboarding/icon_checkmark@2x.png);
         background-repeat: no-repeat;
         background-size: $inner-diameter $inner-diameter;
         left: 3px;
         top: 3px;
-        box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.24);
+        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.24);
         border-radius: 50%;
       }
     }
 
     .card:after {
-      content: "";
+      content: '';
       position: absolute;
       z-index: -1;
       width: 80%;
       left: 10%;
       bottom: -10px;
       height: 40px;
-      background: linear-gradient(270deg, rgba(11, 54, 74, 1) 0%, rgba(11, 77, 74, 1) 100%);
+      background: linear-gradient(
+        270deg,
+        rgba(11, 54, 74, 1) 0%,
+        rgba(11, 77, 74, 1) 100%
+      );
       opacity: 0.2;
       filter: blur(10px);
     }

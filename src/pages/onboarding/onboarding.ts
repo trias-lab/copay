@@ -45,7 +45,7 @@ export class OnboardingPage {
     // private persistenceProvider: PersistenceProvider,
     private popupProvider: PopupProvider,
     private language: LanguageProvider,
-    private modalCtrl: ModalController,
+    private modalCtrl: ModalController
   ) {
     this.appName = this.app.info.nameCase;
     this.isCopay = this.appName == 'Copay' ? true : false;
@@ -89,11 +89,11 @@ export class OnboardingPage {
   }
 
   private setUpPin(wallet): Promise<any> {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       this.openPinModal('initPin', wallet);
       this.logger.info('---PIN setup started');
       return resolve(wallet);
-    })
+    });
   }
 
   public createDefaultWallet(): void {
@@ -111,7 +111,7 @@ export class OnboardingPage {
           this.profileProvider.setBackupFlag(wallets[1].credentials.walletId);
           this.profileProvider.setBackupFlag(wallets[2].credentials.walletId);
           this.profileProvider.setBackupFlag(wallets[3].credentials.walletId);
-        })
+        });
       })
       .catch(err => {
         setTimeout(() => {

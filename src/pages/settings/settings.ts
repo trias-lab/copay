@@ -159,11 +159,10 @@ export class SettingsPage {
       this.configProvider.set({ lock });
     } else {
       // check touchid before enable the option
-      this.touchid.check()
-        .then(() => {
-          lock.fingerprint = this.fingerprintLock.label
-          this.configProvider.set({ lock });
-        })
+      this.touchid.check().then(() => {
+        lock.fingerprint = this.fingerprintLock.label;
+        this.configProvider.set({ lock });
+      });
     }
   }
 
@@ -173,10 +172,10 @@ export class SettingsPage {
     this.touchid.isAvailable().then((type: any) => {
       if (type) {
         this.fingerprintLock = {
-          label: type == "touch" ? "Touch ID" : "Face ID",
-          enabled: lockOptions.fingerprint !== null,
+          label: type == 'touch' ? 'Touch ID' : 'Face ID',
+          enabled: lockOptions.fingerprint !== null
           // disabled: needsBackup
-        }
+        };
       }
     });
   }
@@ -287,7 +286,8 @@ export class SettingsPage {
     modal.present();
     modal.onDidDismiss(cancelClicked => {
       // if (!cancelClicked) this.navCtrl.push(LockPage);
-      if (!cancelClicked && action == 'lockSetUp') this.openPinModal('pinSetUp');
+      if (!cancelClicked && action == 'lockSetUp')
+        this.openPinModal('pinSetUp');
       // if (!cancelClicked && action == 'pinSetUp');
     });
   }

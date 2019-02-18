@@ -6,14 +6,18 @@ page-address-add {
   }
 
   .card:after {
-    content: "";
+    content: '';
     position: absolute;
     z-index: -1;
     width: 80%;
     left: 10%;
     bottom: -10px;
     height: 40px;
-    background: linear-gradient(270deg, rgba(11, 54, 74, 1) 0%, rgba(11, 77, 74, 1) 100%);
+    background: linear-gradient(
+      270deg,
+      rgba(11, 54, 74, 1) 0%,
+      rgba(11, 77, 74, 1) 100%
+    );
     opacity: 0.2;
     filter: blur(10px);
   }
@@ -55,7 +59,8 @@ page-address-add {
       margin-top: 0;
     }
 
-    .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus)
+      .item-inner {
       box-shadow: none;
       border: none;
     }
@@ -87,9 +92,11 @@ page-address-add {
   }
 
   .address-btn-block {
-    background: linear-gradient(270deg,
+    background: linear-gradient(
+      270deg,
       rgba(246, 249, 250, 1) 0%,
-      rgba(230, 235, 238, 1) 100%);
+      rgba(230, 235, 238, 1) 100%
+    );
     padding: 32px 16px;
     position: fixed;
     width: 100%;
@@ -106,7 +113,7 @@ page-address-add {
   }
 
   .header-option {
-    color: #57A756;
+    color: #57a756;
     background: transparent;
     font-size: 17px;
   }

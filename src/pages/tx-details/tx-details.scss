@@ -4,7 +4,7 @@ page-tx-details {
   $item-label-color: #6c6c6e;
 
   ion-content {
-    background: url('../../../assets/img/img_bg_pattern.png') repeat-x
+    background: url('../../../assets/img/img_bg_pattern.png') repeat-x;
   }
 
   .tx-details-tit {
@@ -27,20 +27,19 @@ page-tx-details {
   }
 
   ion-list {
-    background: #F8FAFB;
+    background: #f8fafb;
   }
-
 
   .clearfloat:after {
     display: block;
     clear: both;
-    content: "";
+    content: '';
     visibility: hidden;
-    height: 0
+    height: 0;
   }
 
   .clearfloat {
-    zoom: 1
+    zoom: 1;
   }
 
   .id_copy {
@@ -70,7 +69,7 @@ page-tx-details {
     padding-left: 30px;
 
     .item {
-      background-color: #F8FAFB;
+      background-color: #f8fafb;
     }
   }
 
@@ -156,7 +155,6 @@ page-tx-details {
   .container-to,
   .container-from,
   .container-tx-id {
-
     .wallet,
     .payment-to,
     .tx-id {
@@ -181,9 +179,8 @@ page-tx-details {
       .id {
         font-size: 15px;
         // color: color($colors, light-grey);
-        color: #6E767D;
+        color: #6e767d;
       }
-
 
       .text-address.ellipsis {
         flex: 0 0 47px;
@@ -219,7 +216,7 @@ page-tx-details {
 
     padding: 17px $item-lateral-padding;
 
-    >* {
+    > * {
       padding-right: 0;
     }
   }
@@ -254,7 +251,7 @@ page-tx-details {
         top: 0;
       }
 
-      >div {
+      > div {
         border: 3px solid color($colors, primary);
         border-radius: $icon-border-radius;
         display: flex;
@@ -281,7 +278,7 @@ page-tx-details {
     &-label {
       flex-grow: 1;
 
-      >.action {
+      > .action {
         font-size: 16px;
 
         @media (max-width: 330px) {
@@ -289,7 +286,7 @@ page-tx-details {
         }
       }
 
-      >.name {
+      > .name {
         color: #aaa;
         font-size: 14px;
       }

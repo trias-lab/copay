@@ -12,22 +12,22 @@ import { Logger } from '../../providers/logger/logger';
 
 @Component({
   selector: 'page-swap-confirm',
-  templateUrl: 'swap-confirm.html',
+  templateUrl: 'swap-confirm.html'
 })
 export class SwapConfirmPage {
-	public exchangeFrom: string;
-	public exchangeTo: string;
-	public address: string;
-	public gasPrice: string;
-	public okText: string;
+  public exchangeFrom: string;
+  public exchangeTo: string;
+  public address: string;
+  public gasPrice: string;
+  public okText: string;
   public cancelText: string;
 
   constructor(
-  	private viewCtrl: ViewController,
+    private viewCtrl: ViewController,
     private logger: Logger,
-		private translate: TranslateService
-	) {
-  	this.okText = this.translate.instant('Exchange');
+    private translate: TranslateService
+  ) {
+    this.okText = this.translate.instant('Exchange');
     this.cancelText = this.translate.instant('Cancel');
     this.exchangeFrom = this.viewCtrl.data.exchangeFrom;
     this.exchangeTo = this.viewCtrl.data.exchangeTo;
@@ -39,12 +39,12 @@ export class SwapConfirmPage {
     this.logger.debug('ionViewDidLoad SwapConfirmPage');
   }
 
-  public confirm(): void{
-  	this.logger.debug('----confirm')
-  	this.viewCtrl.dismiss({ isConfrimed: true})
+  public confirm(): void {
+    this.logger.debug('----confirm');
+    this.viewCtrl.dismiss({ isConfrimed: true });
   }
 
-  public cancel(): void{
-  	this.viewCtrl.dismiss();
+  public cancel(): void {
+    this.viewCtrl.dismiss();
   }
 }

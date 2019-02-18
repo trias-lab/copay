@@ -24,7 +24,7 @@ export type CardItemAction = 'archive' | 'view';
     <ion-item-sliding #slidingItem>
       <button ion-item (click)="performAction('view')">
         <img
-          class="{{cardConfig?.brand.replace('.', '')}}"
+          class="{{ cardConfig?.brand.replace('.', '') }}"
           [src]="cardConfig?.logo"
         />
         <ion-note
