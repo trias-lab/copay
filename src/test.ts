@@ -78,7 +78,7 @@ import { PlatformProvider } from './providers/platform/platform';
 import { KeysPipe } from './pipes/keys';
 import { SatToFiatPipe } from './pipes/satToFiat';
 import { SatToUnitPipe } from './pipes/satToUnit';
-
+import { WeiToUnitPipe } from './pipes/weiToUnit';
 import { DomProvider, Logger } from './providers';
 import { ProvidersModule } from './providers/providers.module';
 
@@ -89,6 +89,20 @@ import { DomProviderMock } from './providers/dom/dom.mock';
 import { LoggerMock } from './providers/logger/logger.mock';
 
 declare const require: any;
+
+export class NavParamsMock {
+  static returnParam = null;
+  public get(_): any {
+    if (NavParamsMock.returnParam) {
+      return NavParamsMock.returnParam;
+    }
+    return 'default';
+  }
+  public data: any = {};
+  static setParams(value) {
+    NavParamsMock.returnParam = value;
+  }
+}
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
@@ -170,6 +184,10 @@ const ionicProviders = [
   {
     provide: AndroidFingerprintAuth,
     useClass: AndroidFingerprintAuthMock
+  },
+  {
+    provide: NavParams,
+    useClass: NavParamsMock
   }
 ];
 const baseProviders = [
@@ -210,6 +228,7 @@ export class TestUtils {
         KeysPipe,
         SatToFiatPipe,
         SatToUnitPipe,
+        WeiToUnitPipe,
         InfoSheetComponent,
         ActionSheetComponent
       ],
@@ -222,8 +241,8 @@ export class TestUtils {
         KeysPipe,
         SatToFiatPipe,
         SatToUnitPipe,
+        WeiToUnitPipe,
         GestureController,
-        NavParams,
         PlatformProvider,
         ...providers
       ]
