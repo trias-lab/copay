@@ -886,7 +886,7 @@ export class HomePage {
           //   '@@@',
           //   part2
           // );
-          let k = 0;
+          // let k = 0;
           _.each(sortedBalanceItem, (balanceItem, index: number) => {
             this.logger.warn(
               'bbbbbbwwwwwwwwwww555555555555wallet-------',
