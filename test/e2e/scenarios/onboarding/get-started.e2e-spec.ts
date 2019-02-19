@@ -20,7 +20,7 @@ describe('Onboarding: Get Started', () => {
   });
 
   // The onboarding mega-test. Try everything:
-  it('Should allow the user to navigate intro screens', async () => {
+  /* it('Should allow the user to navigate intro screens', async () => {
     await element(by.css('.e2e-get-started')).click();
     await expectPage('tour');
     await element(by.css('.e2e-got-it')).click();
@@ -61,7 +61,7 @@ describe('Onboarding: Get Started', () => {
       await expectPage('collect-email');
       // TODO: complete onboarding process, testing as much as possible
     });
-  });
+  }); */
 
   // Our goal for this test is to click all the "Skip" buttons, and get through
   // onboarding as quickly as possible.

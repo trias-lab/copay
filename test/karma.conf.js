@@ -1,7 +1,7 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
     webpack: {
       node: {
@@ -25,9 +25,7 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     files: [],
-    preprocessors: {
-
-    },
+    preprocessors: {},
     mime: {
       'text/x-typescript': ['ts', 'tsx']
     },
@@ -36,9 +34,10 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly'],
       fixWebpackSourcePaths: true
     },
-    reporters: config.angularCli && config.angularCli.codeCoverage ?
-      ['spec', 'coverage-istanbul'] :
-      ['spec', 'kjhtml'],
+    reporters:
+      config.angularCli && config.angularCli.codeCoverage
+        ? ['spec', 'coverage-istanbul']
+        : ['spec', 'kjhtml'],
     specReporter: {
       suppressSkipped: true // do not print information about skipped tests
     },
