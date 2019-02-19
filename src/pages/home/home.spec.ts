@@ -45,6 +45,15 @@ describe('HomePage', () => {
         );
         instance.ionViewWillEnter();
       });
+      it('should style the status bar for light content on iOS', () => {
+        instance.plt.is.and.returnValue(true);
+        const spy = spyOn(instance.statusBar, 'styleLightContent');
+        instance.plt.resume = new Subject();
+        instance.plt.pause = new Subject();
+        instance.ionViewWillEnter();
+        instance.ionViewDidLoad();
+        expect(spy).toHaveBeenCalled();
+      });
     });
 
     describe('ionViewDidEnter', () => {
@@ -85,6 +94,15 @@ describe('HomePage', () => {
     });
 
     describe('ionViewWillLeave', () => {
+      it('should set default status bar styling on iOS', () => {
+        instance.plt.is.and.returnValue(true);
+        const spy = spyOn(instance.statusBar, 'styleDefault');
+        instance.plt.resume = new Subject();
+        instance.plt.pause = new Subject();
+        instance.ionViewWillLeave();
+        instance.ionViewDidLoad();
+        expect(spy).toHaveBeenCalled();
+      });
       it('should unsubscribe from bwsEvent event', () => {
         const spy = spyOn(instance.events, 'unsubscribe');
         instance.ionViewWillLeave();

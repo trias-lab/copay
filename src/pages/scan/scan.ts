@@ -101,14 +101,14 @@ export class ScanPage {
       this.ionViewWillEnter();
     });
   }
-  ngAfterViewInit() {
-    let elements = document.querySelectorAll('.home-tab>.tabbar');
-    if (elements != null) {
-      Object.keys(elements).map(key => {
-        elements[key].style.display = 'none';
-      });
-    }
-  }
+  // ngAfterViewInit() {
+  //   let elements = document.querySelectorAll('.home-tab>.tabbar');
+  //   if (elements != null) {
+  //     Object.keys(elements).map(key => {
+  //       elements[key].style.display = 'none';
+  //     });
+  //   }
+  // }
   ionViewWillLeave() {
     // reset status bar style
     if (this.platform.is('ios')) {
@@ -128,12 +128,12 @@ export class ScanPage {
     }
     this.unregisterBackButtonAction && this.unregisterBackButtonAction();
 
-    let elements = document.querySelectorAll('.home-tab>.tabbar');
-    if (elements != null) {
-      Object.keys(elements).map(key => {
-        elements[key].style.display = 'flex';
-      });
-    }
+    // let elements = document.querySelectorAll('.home-tab>.tabbar');
+    // if (elements != null) {
+    //   Object.keys(elements).map(key => {
+    //     elements[key].style.display = 'flex';
+    //   });
+    // }
   }
 
   ionViewWillEnter() {
