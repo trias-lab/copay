@@ -102,6 +102,9 @@ export class HomePage {
   public selectedLegendColors; // Chart's color pools
   public alternativeUnit;
   // public updatePercent;
+  public ethBalance: number;
+  public triBalance: number;
+  public btcBalance: number;
 
   public hideHomeIntegrations: boolean;
   public showGiftCards: boolean;
@@ -180,6 +183,9 @@ export class HomePage {
       this._didEnter();
     });
     this.selectedCoinType = 'all';
+    this.ethBalance = 0;
+    this.triBalance = 0;
+    this.btcBalance = 0;
   }
 
   ionViewWillEnter() {
@@ -750,6 +756,9 @@ export class HomePage {
     };
     this.totalBalance = 0;
     this.balanceItem = [];
+    this.ethBalance = 0;
+    this.triBalance = 0;
+    this.btcBalance = 0;
     // this.balanceName = [];
     // map wallet
     let i = 0;
@@ -761,12 +770,12 @@ export class HomePage {
           wallet.status && wallet.status.totalBalanceStr
             ? wallet.status.totalBalanceStr
             : wallet.cachedBalance
-            ? wallet.cachedBalance
-            : '';
+              ? wallet.cachedBalance
+              : '';
 
         // this.updateTxHistory(wallet);
 
-        let alternativeBalance = wallet.status.totalBalanceAlternative;
+        let alternativeBalance = wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0;
         if (alternativeBalance && alternativeBalance.indexOf(',') != -1) {
           alternativeBalance = alternativeBalance.replace(/,/g, '');
         }
@@ -781,22 +790,66 @@ export class HomePage {
 
         this.totalBalance += parseFloat(alternativeBalance);
         // this.balanceItem.push({ value: parseFloat(amount) });
-        this.balanceItem.push({
-          name: banlance.split(' ')[1],
-          value: parseFloat(amount),
-          alternativeBalance: parseFloat(alternativeBalance),
-          alternativeUnit: alternativeUnitOne
-        });
+        // this.balanceItem.push({
+        //   name: banlance.split(' ')[1],
+        //   value: parseFloat(amount),
+        //   alternativeBalance: parseFloat(alternativeBalance),
+        //   alternativeUnit: alternativeUnitOne
+        // });
 
-        // this.logger.warn('wallet every---', parseFloat(alternativeBalance));
+        // this.logger.warn('wallet every---', wallet.coin);
         // No serverMessage for any wallet?
         if (!foundMessage) this.serverMessage = null;
 
+        if (wallet.coin == 'eth') {
+          this.ethBalance += parseFloat(alternativeBalance)
+          // this.balanceItem.push({
+          //   name: 'ETH',
+          //   value: parseFloat(amount),
+          //   alternativeBalance: parseFloat(alternativeBalance),
+          //   alternativeUnit: alternativeUnitOne
+          // });
+        } else if (wallet.coin == 'tri') {
+          this.logger.warn('wwwwwwwwwww55555', 'aaa', alternativeBalance);
+          this.triBalance += parseFloat(alternativeBalance)
+          // this.balanceItem.push({
+          //   name: 'TRI',
+          //   value: parseFloat(amount),
+          //   alternativeBalance: parseFloat(alternativeBalance),
+          //   alternativeUnit: alternativeUnitOne
+          // });
+        } else if (wallet.coin == 'btc' || wallet.coin == 'bch') {
+          this.btcBalance += parseFloat(alternativeBalance)
+          // this.balanceItem.push({
+          //   name: 'BTC',
+          //   value: parseFloat(amount),
+          //   alternativeBalance: parseFloat(alternativeBalance),
+          //   alternativeUnit: alternativeUnitOne
+          // });
+        }
         // All the item has been looped
         i++;
         // Update the chart.
         if (i == this.wallets.length) {
-          // this.logger.warn('wallet then', this.totalBalance);
+          this.logger.warn('wwwwwwwwwww55555', this.totalBalance, 'aa', this.ethBalance, 'bb', this.triBalance, 'cc', this.btcBalance);
+          this.balanceItem.push({
+            name: 'ETH',
+            // value: parseFloat(amount),
+            alternativeBalance: this.ethBalance,
+            alternativeUnit: alternativeUnitOne
+          });
+          this.balanceItem.push({
+            name: 'BTC',
+            // value: parseFloat(amount),
+            alternativeBalance: this.btcBalance,
+            alternativeUnit: alternativeUnitOne
+          });
+          this.balanceItem.push({
+            name: 'TRI',
+            // value: parseFloat(amount),
+            alternativeBalance: this.triBalance,
+            alternativeUnit: alternativeUnitOne
+          });
           this.balanceLegend = [];
           this.chartLegend = [];
           this.alternativeUnit = this.balanceItem[0].alternativeUnit;
@@ -814,16 +867,16 @@ export class HomePage {
             sortedBalanceItem
           );
 
-          let part1 = _.slice(sortedBalanceItem, 0, 3);
-          let part2 = _.slice(sortedBalanceItem, 3);
-          this.logger.warn(
-            '@@@@@@wwwwwwwwwww555555555555wallet-------',
-            part1,
-            '@@@',
-            part2
-          );
+          // let part1 = _.slice(sortedBalanceItem, 0, 3);
+          // let part2 = _.slice(sortedBalanceItem, 3);
+          // this.logger.warn(
+          //   '@@@@@@wwwwwwwwwww555555555555wallet-------',
+          //   part1,
+          //   '@@@',
+          //   part2
+          // );
           let k = 0;
-          _.each(part1, (balanceItem, index: number) => {
+          _.each(sortedBalanceItem, (balanceItem, index: number) => {
             this.logger.warn(
               'bbbbbbwwwwwwwwwww555555555555wallet-------',
               index
@@ -833,8 +886,8 @@ export class HomePage {
               name: balanceItem.name,
               percent: this.totalBalance
                 ? Math.round(
-                    (balanceItem.alternativeBalance * 100) / this.totalBalance
-                  )
+                  (balanceItem.alternativeBalance * 100) / this.totalBalance
+                )
                 : 0
             };
             this.selectedLegendColors.push(this.legendColors[index]);
@@ -849,35 +902,35 @@ export class HomePage {
             this.chartLegend.push(legendChartOne);
 
             // All the item has been looped
-            k++;
-            if (k == part1.length) {
-              let others = 0;
-              let j = 0;
-              _.each(part2, balanceItem => {
-                others += balanceItem.alternativeBalance;
-                // All the item has been looped
-                j++;
-                if (j == part2.length) {
-                  let othersLegendOne = {
-                    color: this.legendColors[3],
-                    name: 'Others',
-                    percent: this.totalBalance
-                      ? Math.round((others * 100) / this.totalBalance)
-                      : 0
-                  };
-                  this.selectedLegendColors.push(this.legendColors[3]);
-                  this.balanceLegend.push(othersLegendOne);
-                  // this.logger.warn('wallet every---', legendOne);
-                  let othersLegendChartOne = {
-                    value: others,
-                    itemStyle: {
-                      normal: { color: this.legendColors[3] }
-                    }
-                  };
-                  this.chartLegend.push(othersLegendChartOne);
-                }
-              });
-            }
+            // k++;
+            // if (k == part1.length) {
+            // let others = 0;
+            // let j = 0;
+            // _.each(part2, balanceItem => {
+            //   others += balanceItem.alternativeBalance;
+            //   // All the item has been looped
+            //   j++;
+            //   if (j == part2.length) {
+            //     let othersLegendOne = {
+            //       color: this.legendColors[3],
+            //       name: 'Others',
+            //       percent: this.totalBalance
+            //         ? Math.round((others * 100) / this.totalBalance)
+            //         : 0
+            //     };
+            //     this.selectedLegendColors.push(this.legendColors[3]);
+            //     this.balanceLegend.push(othersLegendOne);
+            //     // this.logger.warn('wallet every---', legendOne);
+            //     let othersLegendChartOne = {
+            //       value: others,
+            //       itemStyle: {
+            //         normal: { color: this.legendColors[3] }
+            //       }
+            //     };
+            //     this.chartLegend.push(othersLegendChartOne);
+            //   }
+            // });
+            // }
           });
 
           // this.logger.warn('wallet then', wallet);
