@@ -1,5 +1,4 @@
 page-home {
-
   // background: $toolbar-background;
   .clearfix:before,
   .clearfix:after {
@@ -17,13 +16,15 @@ page-home {
   }
 
   ion-content {
-    background: linear-gradient(270deg,
-      rgba(29, 33, 69, 0) 0%,
-      rgba(4, 9, 45, 0.62) 100%),
+    background: linear-gradient(
+        270deg,
+        rgba(29, 33, 69, 0) 0%,
+        rgba(4, 9, 45, 0.62) 100%
+      ),
       url('../../assets/img/img_bg_pattern.png') repeat-x;
   }
 
-  ion-content.has-refresher>.scroll-content {
+  ion-content.has-refresher > .scroll-content {
     background: transparent;
   }
 
@@ -61,19 +62,22 @@ page-home {
   }
 
   .scan-btn {
-    background: url('../../assets/img/tab-icons/icon_scan@2x.png') no-repeat center;
+    background: url('../../assets/img/tab-icons/icon_scan@2x.png') no-repeat
+      center;
     background-size: 100% 100%;
     margin-right: 20px;
   }
 
   .swap-btn {
-    background: url('../../assets/img/tab-icons/icon_swap@2x.png') no-repeat center;
+    background: url('../../assets/img/tab-icons/icon_swap@2x.png') no-repeat
+      center;
     background-size: 100% 100%;
     margin-right: 20px;
   }
 
   .addr-btn {
-    background: url('../../assets/img/tab-icons/icon_contact@2x.png') no-repeat center;
+    background: url('../../assets/img/tab-icons/icon_contact@2x.png') no-repeat
+      center;
     background-size: 100% 100%;
   }
 
@@ -87,7 +91,7 @@ page-home {
     color: rgba(203, 208, 211, 1);
     overflow: hidden;
 
-    &>p {
+    & > p {
       font-size: 14px;
       line-height: 14px;
       margin-bottom: 0;
@@ -313,11 +317,11 @@ page-home {
       align-items: center;
       max-width: 70%;
 
-      >img {
+      > img {
         margin-right: 7px;
       }
 
-      >span {
+      > span {
         line-height: 18px;
       }
     }
@@ -334,7 +338,7 @@ page-home {
   .title {
     font-weight: 500;
 
-    >img {
+    > img {
       margin-right: 7px;
     }
   }

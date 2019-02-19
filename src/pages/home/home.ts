@@ -770,12 +770,14 @@ export class HomePage {
           wallet.status && wallet.status.totalBalanceStr
             ? wallet.status.totalBalanceStr
             : wallet.cachedBalance
-              ? wallet.cachedBalance
-              : '';
+            ? wallet.cachedBalance
+            : '';
 
         // this.updateTxHistory(wallet);
 
-        let alternativeBalance = wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0;
+        let alternativeBalance = wallet.status.totalBalanceAlternative
+          ? wallet.status.totalBalanceAlternative
+          : 0;
         if (alternativeBalance && alternativeBalance.indexOf(',') != -1) {
           alternativeBalance = alternativeBalance.replace(/,/g, '');
         }
@@ -802,7 +804,7 @@ export class HomePage {
         if (!foundMessage) this.serverMessage = null;
 
         if (wallet.coin == 'eth') {
-          this.ethBalance += parseFloat(alternativeBalance)
+          this.ethBalance += parseFloat(alternativeBalance);
           // this.balanceItem.push({
           //   name: 'ETH',
           //   value: parseFloat(amount),
@@ -811,7 +813,7 @@ export class HomePage {
           // });
         } else if (wallet.coin == 'tri') {
           this.logger.warn('wwwwwwwwwww55555', 'aaa', alternativeBalance);
-          this.triBalance += parseFloat(alternativeBalance)
+          this.triBalance += parseFloat(alternativeBalance);
           // this.balanceItem.push({
           //   name: 'TRI',
           //   value: parseFloat(amount),
@@ -819,7 +821,7 @@ export class HomePage {
           //   alternativeUnit: alternativeUnitOne
           // });
         } else if (wallet.coin == 'btc' || wallet.coin == 'bch') {
-          this.btcBalance += parseFloat(alternativeBalance)
+          this.btcBalance += parseFloat(alternativeBalance);
           // this.balanceItem.push({
           //   name: 'BTC',
           //   value: parseFloat(amount),
@@ -831,7 +833,16 @@ export class HomePage {
         i++;
         // Update the chart.
         if (i == this.wallets.length) {
-          this.logger.warn('wwwwwwwwwww55555', this.totalBalance, 'aa', this.ethBalance, 'bb', this.triBalance, 'cc', this.btcBalance);
+          this.logger.warn(
+            'wwwwwwwwwww55555',
+            this.totalBalance,
+            'aa',
+            this.ethBalance,
+            'bb',
+            this.triBalance,
+            'cc',
+            this.btcBalance
+          );
           this.balanceItem.push({
             name: 'ETH',
             // value: parseFloat(amount),
@@ -886,8 +897,8 @@ export class HomePage {
               name: balanceItem.name,
               percent: this.totalBalance
                 ? Math.round(
-                  (balanceItem.alternativeBalance * 100) / this.totalBalance
-                )
+                    (balanceItem.alternativeBalance * 100) / this.totalBalance
+                  )
                 : 0
             };
             this.selectedLegendColors.push(this.legendColors[index]);
