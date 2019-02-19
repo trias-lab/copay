@@ -1,1 +1,32 @@
-{"plugins":["cordova-launch-review","cordova-clipboard","cordova-plugin-android-fingerprint-auth","cordova-plugin-device","cordova-plugin-globalization","cordova-plugin-qrscanner","cordova-plugin-add-swift-support","cordova-plugin-splashscreen","cordova-plugin-statusbar","cordova-plugin-inappbrowser","cordova-plugin-touch-id","cordova-plugin-whitelist","cordova-plugin-x-socialsharing","es6-promise-plugin","cordova-plugin-x-toast","cordova-plugin-ionic-keyboard","cordova-plugin-screen-orientation","im.ltdev.cordova.UserAgent","cordova-plugin-spinner-dialog","cordova-plugin-dialogs","cordova-plugin-network-information","cordova-plugin-uniquedeviceid","cordova-plugin-vibration","cordova-plugin-file","cordova-custom-config","cordova-plugin-customurlscheme","cordova-plugin-fcm","cordova-plugin-ionic-webview"]}
+{
+  "plugins": [
+    "cordova-launch-review",
+    "cordova-clipboard",
+    "cordova-plugin-android-fingerprint-auth",
+    "cordova-plugin-device",
+    "cordova-plugin-globalization",
+    "cordova-plugin-qrscanner",
+    "cordova-plugin-add-swift-support",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "cordova-plugin-inappbrowser",
+    "cordova-plugin-touch-id",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-x-socialsharing",
+    "es6-promise-plugin",
+    "cordova-plugin-x-toast",
+    "cordova-plugin-ionic-keyboard",
+    "cordova-plugin-screen-orientation",
+    "im.ltdev.cordova.UserAgent",
+    "cordova-plugin-spinner-dialog",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-network-information",
+    "cordova-plugin-uniquedeviceid",
+    "cordova-plugin-vibration",
+    "cordova-plugin-file",
+    "cordova-custom-config",
+    "cordova-plugin-customurlscheme",
+    "cordova-plugin-fcm",
+    "cordova-plugin-ionic-webview"
+  ]
+}
