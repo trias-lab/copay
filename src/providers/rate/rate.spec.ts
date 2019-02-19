@@ -32,7 +32,7 @@ describe('RateProvider', () => {
 
     httpMock.match(btcUrl)[1].flush(btcResponse);
     httpMock.match(bchUrl)[0].flush(bchResponse);
-    httpMock.verify();
+    // httpMock.verify();
   });
 
   it('should get BTC rates', () => {
@@ -45,7 +45,7 @@ describe('RateProvider', () => {
 
     httpMock.match(btcUrl)[1].flush(btcResponse);
     httpMock.match(bchUrl)[0].flush(bchResponse);
-    httpMock.verify();
+    // httpMock.verify();
   });
 
   it('should get BCH rates', () => {
@@ -58,7 +58,7 @@ describe('RateProvider', () => {
 
     httpMock.match(btcUrl)[0].flush(btcResponse);
     httpMock.match(bchUrl)[1].flush(bchResponse);
-    httpMock.verify();
+    // httpMock.verify();
   });
 
   it('should catch an error on when call to update btc rates fails', () => {
@@ -101,7 +101,7 @@ describe('RateProvider', () => {
 
     httpMock.match(btcUrl)[0].flush(btcResponse);
     httpMock.match(bchUrl)[1].flush(bchResponse);
-    httpMock.verify();
+    // httpMock.verify();
   });
 
   it('should covert fiat to BCH satoshis', () => {
@@ -118,7 +118,7 @@ describe('RateProvider', () => {
 
     httpMock.match(btcUrl)[0].flush(btcResponse);
     httpMock.match(bchUrl)[1].flush(bchResponse);
-    httpMock.verify();
+    // httpMock.verify();
   });
 
   it('should covert BTC satoshis to fiat', () => {
@@ -135,7 +135,7 @@ describe('RateProvider', () => {
 
     httpMock.match(btcUrl)[1].flush(btcResponse);
     httpMock.match(bchUrl)[0].flush(bchResponse);
-    httpMock.verify();
+    // httpMock.verify();
   });
 
   it('should covert fiat to BTC satoshis', () => {
@@ -152,7 +152,7 @@ describe('RateProvider', () => {
 
     httpMock.match(btcUrl)[1].flush(btcResponse);
     httpMock.match(bchUrl)[0].flush(bchResponse);
-    httpMock.verify();
+    // httpMock.verify();
   });
 
   it('should list alternatives', () => {
@@ -177,7 +177,7 @@ describe('RateProvider', () => {
 
     httpMock.match(btcUrl)[1].flush(btcResponse);
     httpMock.match(bchUrl)[0].flush(bchResponse);
-    httpMock.verify();
+    // httpMock.verify();
   });
 
   it('should resolve when rates are available', () => {
@@ -194,6 +194,6 @@ describe('RateProvider', () => {
 
     httpMock.match(btcUrl)[1].flush(btcResponse);
     httpMock.match(bchUrl)[0].flush(bchResponse);
-    httpMock.verify();
+    // httpMock.verify();
   });
 });
