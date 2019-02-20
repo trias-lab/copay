@@ -1,19 +1,29 @@
 import { async, ComponentFixture } from '@angular/core/testing';
 
-import { TestUtils } from '../../test';
+import { TestUtils } from '../../../../test';
+import { AddressbookViewPage } from './view';
 
-import { TxDetailsPage } from './tx-details';
-
-describe('TxDetailsPage', () => {
-  let fixture: ComponentFixture<TxDetailsPage>;
+describe('AddressbookViewPage', () => {
+  let fixture: ComponentFixture<AddressbookViewPage>;
   let instance;
 
   beforeEach(async(() =>
-    TestUtils.configurePageTestingModule([TxDetailsPage]).then(testEnv => {
-      fixture = testEnv.fixture;
-      instance = testEnv.instance;
-      fixture.detectChanges();
-    })));
+    TestUtils.configurePageTestingModule([AddressbookViewPage]).then(
+      testEnv => {
+        fixture = testEnv.fixture;
+        instance = testEnv.instance;
+        instance.navParams = {
+          data: {
+            contact: {
+              address: '',
+              name: '',
+              email: ''
+            }
+          }
+        };
+        fixture.detectChanges();
+      }
+    )));
   afterEach(() => {
     fixture.destroy();
   });
@@ -34,16 +44,6 @@ describe('TxDetailsPage', () => {
         const spy = spyOn(instance.statusBar, 'styleDefault');
         instance.ionViewWillLeave();
         expect(spy).toHaveBeenCalled();
-      });
-    });
-  });
-
-  describe('Methods', () => {
-    describe('#saveMemoInfo', () => {
-      it('should set btx note body to the new txMemo', async () => {
-        instance.btx = { note: {} };
-        await instance.saveMemoInfo('new memo');
-        expect(instance.btx.note.body).toEqual('new memo');
       });
     });
   });

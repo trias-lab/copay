@@ -1,15 +1,14 @@
 import { async, ComponentFixture } from '@angular/core/testing';
 
-import { TestUtils } from '../../test';
+import { TestUtils } from '../../../test';
+import { WalletSettingsPage } from './wallet-settings';
 
-import { TxDetailsPage } from './tx-details';
-
-describe('TxDetailsPage', () => {
-  let fixture: ComponentFixture<TxDetailsPage>;
+describe('WalletSettingsPage', () => {
+  let fixture: ComponentFixture<WalletSettingsPage>;
   let instance;
 
   beforeEach(async(() =>
-    TestUtils.configurePageTestingModule([TxDetailsPage]).then(testEnv => {
+    TestUtils.configurePageTestingModule([WalletSettingsPage]).then(testEnv => {
       fixture = testEnv.fixture;
       instance = testEnv.instance;
       fixture.detectChanges();
@@ -34,16 +33,6 @@ describe('TxDetailsPage', () => {
         const spy = spyOn(instance.statusBar, 'styleDefault');
         instance.ionViewWillLeave();
         expect(spy).toHaveBeenCalled();
-      });
-    });
-  });
-
-  describe('Methods', () => {
-    describe('#saveMemoInfo', () => {
-      it('should set btx note body to the new txMemo', async () => {
-        instance.btx = { note: {} };
-        await instance.saveMemoInfo('new memo');
-        expect(instance.btx.note.body).toEqual('new memo');
       });
     });
   });

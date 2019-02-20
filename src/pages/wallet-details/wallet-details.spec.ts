@@ -1,5 +1,7 @@
 import { async, ComponentFixture } from '@angular/core/testing';
 
+import { Subject } from 'rxjs';
+
 import { TestUtils } from '../../test';
 
 import { ProfileProvider } from './../../providers/profile/profile';
@@ -32,6 +34,16 @@ describe('WalletDetailsPage', () => {
     fixture.destroy();
   });
   describe('Lifecycle Hooks', () => {
+    describe('ionViewWillEnter', () => {
+      it('should style the status bar for light content on iOS', () => {
+        instance.platform.is.and.returnValue(true);
+        const spy = spyOn(instance.statusBar, 'styleLightContent');
+        instance.platform.resume = new Subject();
+        instance.ionViewWillEnter();
+        instance.ionViewDidLoad();
+        expect(spy).toHaveBeenCalled();
+      });
+    });
     describe('ionViewDidLoad', () => {
       it('should subscribe to events', () => {
         const spy = spyOn(instance.events, 'subscribe');
@@ -43,6 +55,16 @@ describe('WalletDetailsPage', () => {
       it('should update history', () => {
         const spy = spyOn(instance, 'updateAll');
         instance.ionViewDidEnter();
+        expect(spy).toHaveBeenCalled();
+      });
+    });
+    describe('ionViewWillLeave', () => {
+      it('should set default status bar styling on iOS', () => {
+        instance.platform.is.and.returnValue(true);
+        const spy = spyOn(instance.statusBar, 'styleDefault');
+        instance.platform.resume = new Subject();
+        instance.ionViewWillLeave();
+        instance.ionViewDidLoad();
         expect(spy).toHaveBeenCalled();
       });
     });
