@@ -151,10 +151,10 @@ export class SendPage extends WalletTabsChild {
         contactsList.push({
           name: _.isObject(v) ? v.name : v,
           address: k,
-          network: this.addressProvider.validateAddress(k).network,
+          network: this.addressProvider.getNetwork(k),
           email: _.isObject(v) ? v.email : null,
           recipientType: 'contact',
-          coin: this.addressProvider.validateAddress(k).coin,
+          coin: this.addressProvider.getCoin(k),
           getAddress: () => Promise.resolve(k)
         });
       });
@@ -251,16 +251,9 @@ export class SendPage extends WalletTabsChild {
       return true;
     } else {
       this.invalidAddress = true;
-      let network;
-      if (isPayPro) {
-        network = data.network;
-      } else {
-        const extractedAddress = this.addressProvider.extractAddress(data);
-        const addressData = this.addressProvider.validateAddress(
-          extractedAddress
-        );
-        network = addressData.network;
-      }
+      let network = isPayPro
+        ? data.network
+        : this.addressProvider.getNetwork(data);
       if (this.wallet.coin === 'bch' && this.wallet.network === network) {
         const isLegacy = this.checkIfLegacy();
         isLegacy ? this.showLegacyAddrMessage() : this.showErrorMessage();
