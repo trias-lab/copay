@@ -63,8 +63,8 @@ describe('WalletDetailsPage', () => {
         instance.platform.is.and.returnValue(true);
         const spy = spyOn(instance.statusBar, 'styleDefault');
         instance.platform.resume = new Subject();
+        instance.ionViewWillEnter();
         instance.ionViewWillLeave();
-        instance.ionViewDidLoad();
         expect(spy).toHaveBeenCalled();
       });
     });
