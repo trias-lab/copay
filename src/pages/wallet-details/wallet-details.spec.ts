@@ -36,7 +36,7 @@ describe('WalletDetailsPage', () => {
       it('should subscribe to events', () => {
         const spy = spyOn(instance.events, 'subscribe');
         instance.ionViewDidLoad();
-        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledTimes(2);
       });
     });
     describe('ionViewDidEnter', () => {

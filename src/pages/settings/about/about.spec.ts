@@ -104,37 +104,37 @@ describe('AboutPage', () => {
         );
       });
     });
-    describe('#openExternalLink', () => {
-      it('open github repo with correct params', () => {
-        spyOn(instance.externalLinkProvider, 'open');
+    // describe('#openExternalLink', () => {
+    //   it('open github repo with correct params', () => {
+    //     spyOn(instance.externalLinkProvider, 'open');
 
-        instance.appProvider.info.gitHubRepoName = 'testRepo';
-        instance.appProvider.info.commitHash = 'testHash';
+    //     instance.appProvider.info.gitHubRepoName = 'testRepo';
+    //     instance.appProvider.info.commitHash = 'testHash';
 
-        const params = {
-          'Go Back': 'Go Back',
-          'Open GitHub': 'Open GitHub',
-          'Open GitHub Project': 'Open GitHub Project',
-          'You can see the latest developments and contribute to this open source app by visiting our project on GitHub.':
-            'You can see the latest developments and contribute to this open source app by visiting our project on GitHub.'
-        };
+    //     const params = {
+    //       'Go Back': 'Go Back',
+    //       'Open GitHub': 'Open GitHub',
+    //       'Open GitHub Project': 'Open GitHub Project',
+    //       'You can see the latest developments and contribute to this open source app by visiting our project on GitHub.':
+    //         'You can see the latest developments and contribute to this open source app by visiting our project on GitHub.'
+    //     };
 
-        spyOn(instance.translate, 'instant').and.callFake(myParam => {
-          return params[myParam];
-        });
+    //     spyOn(instance.translate, 'instant').and.callFake(myParam => {
+    //       return params[myParam];
+    //     });
 
-        instance.openExternalLink();
+    //     instance.openExternalLink();
 
-        expect(instance.externalLinkProvider.open).toHaveBeenCalledWith(
-          'https://github.com/bitpay/testRepo/tree/testHash',
-          true,
-          'Open GitHub Project',
-          'You can see the latest developments and contribute to this open source app by visiting our project on GitHub.',
-          'Open GitHub',
-          'Go Back'
-        );
-      });
-    });
+    //     expect(instance.externalLinkProvider.open).toHaveBeenCalledWith(
+    //       'https://github.com/bitpay/testRepo/tree/testHash',
+    //       true,
+    //       'Open GitHub Project',
+    //       'You can see the latest developments and contribute to this open source app by visiting our project on GitHub.',
+    //       'Open GitHub',
+    //       'Go Back'
+    //     );
+    //   });
+    // });
     describe('#openSessionLog', () => {
       it('should open session log', () => {
         instance.openSessionLog();
