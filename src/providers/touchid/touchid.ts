@@ -41,8 +41,8 @@ export class TouchIdProvider {
   private checkIOS(): Promise<any> {
     return new Promise(resolve => {
       this.touchId.isAvailable().then(
-        type => {
-          return resolve(type);
+        () => {
+          return resolve(true);
         },
         () => {
           this.logger.warn('Fingerprint is not available');
