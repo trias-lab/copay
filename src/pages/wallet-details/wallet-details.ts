@@ -111,6 +111,19 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   ionViewDidLoad() {
+    // The resume event emits when the native platform pulls the application out from the background.
+    this.onResumeSubscription = this.platform.resume.subscribe(() => {
+      this.updateAll();
+      this.events.subscribe('Wallet/updateAll', (opts?) => {
+        this.updateAll(opts);
+      });
+
+      this.setAddress();
+      this.events.subscribe('Wallet/setAddress', (newAddr?: boolean) => {
+        this.setAddress(newAddr);
+      });
+    });
+
     this.events.subscribe('Wallet/updateAll', (opts?) => {
       this.updateAll(opts);
     });
@@ -150,19 +163,6 @@ export class WalletDetailsPage extends WalletTabsChild {
     if (this.platform.is('ios')) {
       this.statusBar.styleLightContent();
     }
-
-    // The resume event emits when the native platform pulls the application out from the background.
-    this.onResumeSubscription = this.platform.resume.subscribe(() => {
-      this.updateAll();
-      this.events.subscribe('Wallet/updateAll', (opts?) => {
-        this.updateAll(opts);
-      });
-
-      this.setAddress();
-      this.events.subscribe('Wallet/setAddress', (newAddr?: boolean) => {
-        this.setAddress(newAddr);
-      });
-    });
   }
 
   ionViewDidEnter() {
@@ -174,6 +174,9 @@ export class WalletDetailsPage extends WalletTabsChild {
     if (this.platform.is('ios')) {
       this.statusBar.styleDefault();
     }
+  }
+
+  ngOnDestroy() {
     this.onResumeSubscription.unsubscribe();
   }
 

@@ -30,11 +30,7 @@ export class AddressbookViewPage {
     private translate: TranslateService,
     private platform: Platform,
     private statusBar: StatusBar
-  ) {
-    this.address = this.navParams.data.contact.address;
-    this.name = this.navParams.data.contact.name;
-    this.email = this.navParams.data.contact.email;
-  }
+  ) {}
 
   ionViewDidLoad() {}
 
@@ -43,6 +39,10 @@ export class AddressbookViewPage {
     if (this.platform.is('ios')) {
       this.statusBar.styleLightContent();
     }
+
+    this.address = this.navParams.data.contact.address;
+    this.name = this.navParams.data.contact.name;
+    this.email = this.navParams.data.contact.email;
   }
 
   ionViewWillLeave() {
