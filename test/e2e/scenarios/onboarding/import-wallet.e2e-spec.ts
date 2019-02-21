@@ -15,26 +15,16 @@ describe('Onboarding: Import Wallet', () => {
   beforeEach(async () => {
     await browser.get('');
     await disableCSSAnimations();
-    await element(by.partialButtonText('backup')).click();
+    await element(by.id('recover-btn')).click();
     await waitForIonicPage('import-wallet');
   });
   afterEach(clearStorage);
 
   it('has two views, each with advanced options', async () => {
     await expectPage('import-wallet');
-    await element(
-      by.cssContainingText('ion-label', 'advanced options')
-    ).click();
-    await takeScreenshot('import-wallet-advanced');
-    await element(
-      by.cssContainingText('ion-label', 'advanced options')
-    ).click();
+    await takeScreenshot('import-wallet');
     await element(by.css('ion-segment-button[value=file]')).click();
     await takeScreenshot('import-wallet-file');
-    await element(
-      by.cssContainingText('ion-label', 'advanced options')
-    ).click();
-    await takeScreenshot('import-wallet-file-advanced');
   });
 
   /* describe('Restore from 12 word backup', () => {
