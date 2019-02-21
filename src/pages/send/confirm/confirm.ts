@@ -137,11 +137,6 @@ export class ConfirmPage extends WalletTabsChild {
     } else {
       let B =
         this.navParams.data.coin == 'bch' ? this.bitcoreCash : this.bitcore;
-      networkName = new B.Address(this.navParams.data.toAddress).network.name;
-      this.logger.info(
-        networkName +
-          '-_____________________________---------------------------networkName'
-      );
 
       try {
         networkName = new B.Address(this.navParams.data.toAddress).network.name;
