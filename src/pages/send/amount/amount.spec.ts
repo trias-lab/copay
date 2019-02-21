@@ -32,7 +32,7 @@ describe('AmountPage', () => {
     fixture.destroy();
   });
 
-  describe('sendMax', () => {
+  xdescribe('sendMax', () => {
     it('should set the send display value expression to the available balance', () => {
       instance.wallet = wallet;
       instance.ionViewDidLoad();
