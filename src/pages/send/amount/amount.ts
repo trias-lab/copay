@@ -473,8 +473,7 @@ export class AmountPage extends WalletTabsChild {
         if (a) {
           this.alternativeAmount = this.txFormatProvider.formatAmount(
             a * this.unitToCoin,
-            true,
-            this.wallet.coin
+            true
           );
           this.checkAmountForBitpaycard(result);
         } else {

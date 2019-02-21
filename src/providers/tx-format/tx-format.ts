@@ -26,7 +26,7 @@ export class TxFormatProvider {
   }
 
   public toCashAddress(address: string, withPrefix?: boolean): string {
-    let cashAddr: string = this.bitcoreCash.Address(address).toCashAddress();
+    let cashAddr: string = this.bitcoreCash.Address(address).toString();
 
     if (withPrefix) {
       return cashAddr;
@@ -36,24 +36,21 @@ export class TxFormatProvider {
   }
 
   public toLegacyAddress(address: string): string {
-    let legacyAddr: string = this.bitcoreCash.Address(address);
+    let legacyAddr: string = this.bitcoreCash
+      .Address(address)
+      .toLegacyAddress();
     return legacyAddr;
   }
 
   // TODO: Check return of formatAmount(...), sometimes returns a number and sometimes a string
-  public formatAmount(
-    satoshis: number,
-    fullPrecision?: boolean,
-    coin?: string
-  ) {
+  public formatAmount(satoshis: number, fullPrecision?: boolean) {
     let settings = this.configProvider.get().wallet.settings;
 
     if (settings.unitCode == 'sat') return satoshis;
 
     // TODO : now only works for english, specify opts to change thousand separator and decimal separator
     var opts = {
-      fullPrecision: !!fullPrecision,
-      coin: coin || ''
+      fullPrecision: !!fullPrecision
     };
     return this.bwcProvider
       .getUtils()
@@ -62,7 +59,7 @@ export class TxFormatProvider {
 
   public formatAmountStr(coin: string, satoshis: number): string {
     if (isNaN(satoshis)) return undefined;
-    return this.formatAmount(satoshis, false, coin) + ' ' + coin.toUpperCase();
+    return this.formatAmount(satoshis) + ' ' + coin.toUpperCase();
   }
 
   public toFiat(coin: string, satoshis: number, code: string): Promise<string> {
@@ -169,7 +166,10 @@ export class TxFormatProvider {
 
     if (tx.size && (tx.fee || tx.fees) && tx.amountUnitStr)
       tx.feeRate =
-        (tx.fee || tx.fees) / tx.size + ' ' + tx.amountUnitStr + '/b';
+        ((tx.fee || tx.fees) / tx.size).toFixed(2) +
+        ' ' +
+        tx.amountUnitStr +
+        '/b';
 
     if (tx.addressTo && coin == 'bch') {
       tx.addressTo = useLegacyAddress
