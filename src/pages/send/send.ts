@@ -223,8 +223,8 @@ export class SendPage extends WalletTabsChild {
   public openScanner(): void {
     this.scannerOpened = true;
     this.walletTabsProvider.setSendParams({
-      amount: this.navParams.get('amount'),
-      coin: this.navParams.get('coin')
+      amount: this.navParams.data.amount,
+      coin: this.navParams.data.coin
     });
     this.walletTabsProvider.setFromPage({ fromSend: true });
     this.events.publish('ScanFromWallet');
@@ -267,8 +267,8 @@ export class SendPage extends WalletTabsChild {
 
   private redir() {
     this.incomingDataProvider.redir(this.search, {
-      amount: this.navParams.get('amount'),
-      coin: this.navParams.get('coin')
+      amount: this.navParams.data.amount,
+      coin: this.navParams.data.coin
     });
     this.search = '';
   }
@@ -305,7 +305,7 @@ export class SendPage extends WalletTabsChild {
     });
   }
 
-  public processInput(): void {
+  public async processInput() {
     if (this.search && this.search.trim() != '') {
       this.searchWallets();
       this.searchContacts();
