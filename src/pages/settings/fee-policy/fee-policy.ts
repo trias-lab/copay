@@ -39,26 +39,6 @@ export class FeePolicyPage {
     this.currentFeeLevel = this.feeProvider.getCurrentFeeLevel();
   }
 
-  // when init the page
-  ngAfterViewInit() {
-    let elements = document.querySelectorAll('.tabbar');
-    if (elements != null) {
-      Object.keys(elements).map(key => {
-        elements[key].style.display = 'none';
-      });
-    }
-  }
-
-  // when quit the page
-  ionViewWillLeave() {
-    let elements = document.querySelectorAll('.tabbar');
-    if (elements != null) {
-      Object.keys(elements).map(key => {
-        elements[key].style.display = 'flex';
-      });
-    }
-  }
-
   ionViewDidEnter() {
     this.error = null;
     return this.feeProvider
