@@ -111,7 +111,7 @@ msgid "Addresses with balance"
 msgstr "有余额的地址"
 
 msgid "Advanced"
-msgstr "進階"
+msgstr "进阶"
 
 msgid "All"
 msgstr ""
