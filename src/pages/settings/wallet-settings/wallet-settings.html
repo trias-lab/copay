@@ -1,5 +1,7 @@
 <ion-header>
-  <ion-navbar> <ion-title>Wallet Settings</ion-title> </ion-navbar>
+  <ion-navbar>
+    <ion-title>Wallet Settings</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content no-bounce>
@@ -29,11 +31,7 @@
       </ion-item>
       <ion-item-divider>{{'Security' | translate}}</ion-item-divider>
     -->
-    <button
-      ion-item
-      (click)="openBackupSettings()"
-      [ngClass]="{ warn: needsBackup }"
-    >
+    <button ion-item (click)="openBackupSettings()" [ngClass]="{ warn: needsBackup }">
       <span translate>Backup</span>
       <!--
         <ion-note *ngIf="needsBackup" class="wallet-warning" item-end>
@@ -49,16 +47,12 @@
         </ion-item>
       </div>
     -->
-    <div *ngIf="canSign">
+    <div>
       <ion-item class="with-label">
         <ion-label>{{ 'Request Encrypt Password' | translate }}</ion-label>
-        <ion-toggle
-          [(ngModel)]="encryptEnabled"
-          (ionChange)="encryptChange()"
-          [disabled]="(needsBackup || !wallet.isComplete()) && !encryptEnabled"
-        ></ion-toggle>
+        <ion-toggle [(ngModel)]="encryptEnabled" (ionChange)="encryptChange()" [disabled]="(needsBackup || !wallet.isComplete()) && !encryptEnabled"></ion-toggle>
       </ion-item>
-      <label-tip type="info">
+      <!-- <label-tip type="info">
         <span label-tip-title translate>Password Not Recoverable</span>
         <div label-tip-body>
           <span translate
@@ -74,7 +68,7 @@
             >Learn More</a
           >
         </div>
-      </label-tip>
+      </label-tip> -->
     </div>
     <!--
       <ion-item-divider>{{'Advanced' | translate}}</ion-item-divider>
@@ -101,5 +95,5 @@
     </button>
     <ion-item-divider></ion-item-divider>
   </ion-list>
-  <tabs-bar selectedTab="home"></tabs-bar>
+  <!-- <tabs-bar selectedTab="home"></tabs-bar> -->
 </ion-content>
