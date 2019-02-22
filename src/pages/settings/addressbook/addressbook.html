@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title class="address-back-title">{{
       'Address Book' | translate
-    }}</ion-title>
+      }}</ion-title>
     <ion-buttons *ngIf="!isEmptyList" right>
       <button ion-button (click)="addEntry()" class="address-header-addOne">
         <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
@@ -19,8 +19,8 @@
     <!-- <div class="zero-state-heading" translate>No contacts yet</div> -->
     <div class="zero-state-description">
       {{
-        'Create contacts to mange frequently used addresses, so you don’t have to type in everytime.'
-          | translate
+      'Create contacts to mange frequently used addresses, so you don’t have to type in everytime.'
+      | translate
       }}
     </div>
     <button ion-button class="button-standard" (click)="addEntry()">
@@ -29,23 +29,10 @@
   </div>
 
   <div *ngIf="!isEmptyList">
-    <ion-searchbar
-      placeholder="{{'Search a contact' | translate}}"
-      (ionInput)="getItems($event)"
-    ></ion-searchbar>
+    <ion-searchbar placeholder="{{'Search a contact' | translate}}" (ionInput)="getItems($event)"></ion-searchbar>
     <ion-list class="address-list">
-      <button
-        class="contact"
-        ion-item
-        *ngFor="let entry of filteredAddressbook"
-        (click)="viewEntry(entry)"
-      >
-        <gravatar
-          [name]="entry.name"
-          [height]="30"
-          [width]="30"
-          [email]="entry.email"
-        ></gravatar>
+      <button class="contact" ion-item *ngFor="let entry of filteredAddressbook" (click)="viewEntry(entry)">
+        <gravatar [name]="entry.name" [height]="30" [width]="30" [email]="entry.email"></gravatar>
         <div class="contact-info">
           <div clss="item-title">{{ entry.name }}</div>
           <div class="item-subtitle">{{ entry.address }}</div>
@@ -53,5 +40,5 @@
       </button>
     </ion-list>
   </div>
-  <tabs-bar selectedTab="home"></tabs-bar>
 </ion-content>
+<tabs-bar selectedTab="home"></tabs-bar>

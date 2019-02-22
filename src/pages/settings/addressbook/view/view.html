@@ -6,12 +6,7 @@
 
 <ion-content class="address-detail">
   <div class="contact-view-header">
-    <gravatar
-      [name]="name"
-      [height]="80"
-      [width]="80"
-      [email]="email"
-    ></gravatar>
+    <gravatar [name]="name" [height]="80" [width]="80" [email]="email"></gravatar>
     <p class="address-detail-name">{{ name }}</p>
     <p class="address-detail-email" *ngIf="email">{{ email }}</p>
   </div>
@@ -41,5 +36,5 @@
     </button>
     <!-- <ion-item-divider></ion-item-divider> -->
   </ion-list>
-  <tabs-bar selectedTab="home"></tabs-bar>
 </ion-content>
+<tabs-bar selectedTab="home"></tabs-bar>

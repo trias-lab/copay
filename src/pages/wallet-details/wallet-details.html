@@ -228,8 +228,7 @@
                       width="40">
                   </span>
                   <span *ngIf="tx.customData && tx.customData.toWalletName && !tx.customData.service">
-                    <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'"
-                      width="40">
+                    <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'" width="40">
                   </span>
                   <span *ngIf="!tx.customData || (tx.customData && !tx.customData.service && !tx.customData.toWalletName)">
                     <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'" width="40">
@@ -261,7 +260,7 @@
                 </span>
               </div>
 
-               <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'sent'">
+              <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'sent'">
                 <span *ngIf="(tx.message && (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (!tx.customData || !tx.customData.toWalletName)"
                   translate>Sent</span>
                 <span *ngIf="!tx.message && (!tx.note || (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (!tx.customData || !tx.customData.toWalletName)">{{'Sent'
@@ -312,7 +311,7 @@
       </ion-infinite-scroll>
 
     </div>
-    <div class="address-wrapper" *ngIf="selectedTab == 'addresses'" >
+    <div class="address-wrapper" *ngIf="selectedTab == 'addresses'">
       <div class="middle-message" *ngIf="loadingAddr">
         <ion-spinner icon="crescent"></ion-spinner>
         <span translate>Loading addresses...</span>
@@ -347,5 +346,5 @@
       </ion-list>
     </div>
   </div>
-  <tabs-bar selectedTab="home"></tabs-bar>
 </ion-content>
+<tabs-bar selectedTab="home"></tabs-bar>
