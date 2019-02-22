@@ -2202,7 +2202,7 @@ msgid "Urgent"
 msgstr "非常快"
 
 msgid "Use Bitcoin Cash Copay Style Addresses"
-msgstr "使用比特币现金Copay格式地址"
+msgstr "使用比特币现金Tri Wallet格式地址"
 
 msgid "Use Unconfirmed Funds"
 msgstr "使用未经确认的资金"
