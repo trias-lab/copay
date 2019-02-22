@@ -605,6 +605,7 @@ export class AmountPage extends WalletTabsChild {
         name: this.name,
         email: this.email,
         color: this.color,
+        coin,
         useSendMax: this.useSendMax,
         description: this.description
       };
