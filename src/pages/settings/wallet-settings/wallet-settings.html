@@ -47,7 +47,7 @@
         </ion-item>
       </div>
     -->
-    <div>
+    <div *ngIf="canSign">
       <ion-item class="with-label">
         <ion-label>{{ 'Request Encrypt Password' | translate }}</ion-label>
         <ion-toggle [(ngModel)]="encryptEnabled" (ionChange)="encryptChange()" [disabled]="(needsBackup || !wallet.isComplete()) && !encryptEnabled"></ion-toggle>
@@ -95,5 +95,5 @@
     </button>
     <ion-item-divider></ion-item-divider>
   </ion-list>
-  <!-- <tabs-bar selectedTab="home"></tabs-bar> -->
+  <tabs-bar selectedTab="home"></tabs-bar>
 </ion-content>
