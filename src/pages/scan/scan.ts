@@ -319,21 +319,23 @@ export class ScanPage {
   }
 
   private handleSuccessfulScan(contents: string): void {
+    var arr = contents.split(':');
+    var str = arr[1];
     if (this.fromAddressbook) {
-      this.events.publish('update:address', { value: contents });
+      this.events.publish('update:address', { value: str });
       this.navCtrl.pop();
     } else if (this.fromImport) {
-      this.events.publish('update:words', { value: contents });
+      this.events.publish('update:words', { value: str });
       this.navCtrl.pop();
     } else if (this.fromJoin) {
-      this.events.publish('update:invitationCode', { value: contents });
+      this.events.publish('update:invitationCode', { value: str });
       this.navCtrl.pop();
     } else if (this.fromSend) {
-      this.events.publish('update:address', { value: contents });
-      this.navCtrl.pop();
+      this.events.publish('update:address', { value: str });
+      this.close();
     } else {
       const redirParms = { activePage: 'ScanPage' };
-      this.incomingDataProvider.redir(contents, redirParms);
+      this.incomingDataProvider.redir(str, redirParms);
     }
   }
 
