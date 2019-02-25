@@ -1,9 +1,19 @@
 import { Component } from '@angular/core';
+
+import { TranslateService } from '@ngx-translate/core';
+
 import { AlertController, NavController, NavParams } from 'ionic-angular';
+
 import * as _ from 'lodash';
+
 import { AddressBookProvider } from '../../../providers/address-book/address-book';
+// import { AddressProvider } from '../../../providers/address/address';
 import { Logger } from '../../../providers/logger/logger';
+import { PopupProvider } from '../../../providers/popup/popup';
+
 import { AddressbookAddPage } from './add/add';
+
+// import { promise } from 'selenium-webdriver';
 import { AddressbookViewPage } from './view/view';
 
 @Component({
@@ -16,12 +26,20 @@ export class AddressbookPage {
   public filteredAddressbook: object[] = [];
 
   public isEmptyList: boolean;
+  public addressArray: object[] = [];
+
+  // select edit address book list
+  public showEditAllRadio: boolean = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    private addressBookProvider: AddressBookProvider,
+    // private addressProvider: AddressProvider,
     private logger: Logger,
+    private translate: TranslateService,
+    private popupProvider: PopupProvider,
     private addressbookProvider: AddressBookProvider
   ) {
     this.initAddressbook();
@@ -43,7 +61,8 @@ export class AddressbookPage {
           contacts.push({
             name: _.isObject(contact) ? contact.name : contact,
             address: k,
-            email: _.isObject(contact) ? contact.email : null
+            email: _.isObject(contact) ? contact.email : null,
+            showEditRadio: false // Default not selected
           });
         });
         this.addressbook = _.clone(contacts);
@@ -59,7 +78,13 @@ export class AddressbookPage {
   }
 
   public viewEntry(contact): void {
-    this.navCtrl.push(AddressbookViewPage, { contact });
+    // if select editEntry option , this.showEditAllRadio = true
+    if (this.showEditAllRadio) {
+      // edit address book list
+      this.selectDeletAdd(contact);
+    } else {
+      this.navCtrl.push(AddressbookViewPage, { contact });
+    }
   }
 
   public getItems(event): void {
@@ -77,5 +102,58 @@ export class AddressbookPage {
       // Reset items back to all of the items
       this.initAddressbook();
     }
+  }
+
+  // select edit address book list
+  public editeEntry(): void {
+    this.showEditAllRadio = true;
+  }
+  // edit address book list
+  public selectDeletAdd(contact): void {
+    contact.showEditRadio = !contact.showEditRadio;
+  }
+  public filterDeleteAdd(contact): any {
+    let deleteListAdd: object[] = [];
+    for (let i = 0; i < contact.length; i++) {
+      if (contact[i].showEditRadio) {
+        deleteListAdd.push(contact[i].address);
+      }
+    }
+    return deleteListAdd;
+  }
+  public deleteArray(contact): void {
+    var title = this.translate.instant('Warning!');
+    var message = this.translate.instant(
+      'Are you sure you want to delete this contact?'
+    );
+
+    this.popupProvider
+      .ionicConfirm(title, message, null, null)
+      .then(res => {
+        if (!res) return;
+        this.addressCycle(contact);
+      })
+      .then(() => {
+        this.initAddressbook();
+      });
+  }
+
+  public addressCycle(contact): void {
+    let deleteListAdd = this.filterDeleteAdd(contact);
+    _.each(deleteListAdd, data => {
+      alert(JSON.stringify(data));
+      return this.addressBookProvider.remove(data).catch(err => {
+        this.popupProvider.ionicAlert(this.translate.instant('Error'), err);
+        return;
+      });
+    });
+  }
+
+  public deleteDone(contact): any {
+    for (let i = 0; i < contact.length; i++) {
+      contact[i].showEditRadio = false;
+    }
+
+    this.showEditAllRadio = false;
   }
 }

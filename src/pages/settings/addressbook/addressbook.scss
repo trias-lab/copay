@@ -154,6 +154,15 @@ ion-header {
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     margin: 0 0 20px 0;
+    ion-label {
+      overflow: initial;
+    }
+    .contact-info {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 80%;
+    }
   }
 }
 
@@ -165,4 +174,31 @@ page-addressbook .zero-state-icon {
   box-shadow: none;
   border-radius: inherit;
   background: inherit;
+}
+.check-radio {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(203, 208, 211, 1);
+  border-radius: 12px;
+  margin: 0 8px 0 2px;
+  text-align: center;
+  span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(
+      217deg,
+      rgba(131, 201, 14, 1) 0%,
+      rgba(34, 159, 32, 1) 100%
+    );
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.24);
+    border-radius: 9px;
+    vertical-align: middle;
+    color: #fff;
+    margin-top: -5px;
+  }
 }
