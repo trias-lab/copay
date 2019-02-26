@@ -196,6 +196,7 @@ export class CopayApp {
       if (this.platform.is('ios')) this.statusBar.overlaysWebView(true);
 
       this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByName('white');
       this.splashScreen.hide();
 
       // Subscribe Resume
