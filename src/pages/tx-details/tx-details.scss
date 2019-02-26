@@ -3,23 +3,19 @@ page-tx-details {
   $item-lateral-padding: 20px;
   $item-label-color: #6c6c6e;
 
-  ion-content {
-    background: url('../../../assets/img/img_bg_pattern.png') repeat-x;
-  }
-
   .tx-details-tit {
     padding-left: 30px;
     // background: url('../../assets/img/img_bg_pattern.png') no-repeat;
     background-size: cover;
     color: #fff;
-    height: 140px;
+    height: auto;
   }
 
   ion-header {
+    background: url('../../../assets/img/img_bg_pattern.png') repeat-x;
     .back-button {
       color: #fff;
     }
-
     .toolbar-title {
       font-weight: 500 !important;
       color: #fff !important;
@@ -156,7 +152,6 @@ page-tx-details {
   .container-to,
   .container-from,
   .container-tx-id {
-
     .wallet,
     .payment-to,
     .tx-id {
@@ -218,7 +213,7 @@ page-tx-details {
 
     padding: 17px $item-lateral-padding;
 
-    >* {
+    > * {
       padding-right: 0;
     }
   }
@@ -253,7 +248,7 @@ page-tx-details {
         top: 0;
       }
 
-      >div {
+      > div {
         border: 3px solid color($colors, primary);
         border-radius: $icon-border-radius;
         display: flex;
@@ -280,7 +275,7 @@ page-tx-details {
     &-label {
       flex-grow: 1;
 
-      >.action {
+      > .action {
         font-size: 16px;
 
         @media (max-width: 330px) {
@@ -288,7 +283,7 @@ page-tx-details {
         }
       }
 
-      >.name {
+      > .name {
         color: #aaa;
         font-size: 14px;
       }

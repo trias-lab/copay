@@ -2,52 +2,45 @@
   <ion-navbar>
     <ion-title translate>Transaction Detail</ion-title>
   </ion-navbar>
+  <div *ngIf="btx" class="tx-details-tit">
+    <div class="header-container">
+      <div class="sending-label" *ngIf="btx.confirmations > 0">
+        <span *ngIf="btx.action === 'sent'" translate>Sent</span>
+        <span *ngIf="btx.action === 'received'" translate>Received</span>
+        <span *ngIf="btx.action === 'moved'" translate>Moved</span>
+      </div>
+      <div class="sending-label" *ngIf="btx.confirmations === 0">
+        <span *ngIf="btx.action == 'sent'" translate>Sending</span>
+        <span *ngIf="btx.action == 'moved'" translate>Moving</span>
+        <span *ngIf="btx.action == 'received'" translate>Receiving</span>
+      </div>
+      <div class="amount-label">
+        <div class="amount">
+          <div>
+            <span *ngIf="btx.action == 'sent'" class="operator"> - </span>
+            <span *ngIf="btx.action == 'received'" class="operator"> + </span>
+
+            {{btx.amountValueStr}}
+            {{btx.amountUnitStr}}
+          </div>
+          <!-- <span *ngIf="btx.confirmations > 0">
+                    <img class="sending-img" src="assets/img/tx-action/icon-sent.svg" width="40" *ngIf="btx.action === 'sent'">
+                    <img class="sending-img" src="assets/img/tx-action/icon-received.svg" width="40" *ngIf="btx.action === 'received'">
+                    <img class="sending-img" src="assets/img/tx-action/icon-moved.svg" width="40" *ngIf="btx.action === 'moved'">
+                  </span>
+                  <span *ngIf="btx.confirmations === 0">
+                    <img class="sending-img" src="assets/img/tx-action/icon-confirming.svg">
+                  </span> -->
+        </div>
+        <div class="alternative">{{btx.alternativeAmountStr}}</div>
+      </div>
+    </div>
+  </div>
 </ion-header>
 
-<ion-content no-bounce #scrollArea>
+<ion-content no-bounce>
+  
 
-
-  <expandable-header class="balance-card" [scrollArea]="scrollArea">
-    <expandable-header-primary class="balance-header">
-      <div *ngIf="btx" class="tx-details-tit">
-        <div class="header-container">
-          <div class="sending-label" *ngIf="btx.confirmations > 0">
-            <span *ngIf="btx.action === 'sent'" translate>Sent</span>
-            <span *ngIf="btx.action === 'received'" translate>Received</span>
-            <span *ngIf="btx.action === 'moved'" translate>Moved</span>
-          </div>
-          <div class="sending-label" *ngIf="btx.confirmations === 0">
-            <span *ngIf="btx.action == 'sent'" translate>Sending</span>
-            <span *ngIf="btx.action == 'moved'" translate>Moving</span>
-            <span *ngIf="btx.action == 'received'" translate>Receiving</span>
-          </div>
-          <div class="amount-label">
-            <div class="amount">
-              <div>
-                <span *ngIf="btx.action == 'sent'" class="operator"> - </span>
-                <span *ngIf="btx.action == 'received'" class="operator"> + </span>
-
-                {{btx.amountValueStr}}
-                {{btx.amountUnitStr}}
-              </div>
-              <!-- <span *ngIf="btx.confirmations > 0">
-                        <img class="sending-img" src="assets/img/tx-action/icon-sent.svg" width="40" *ngIf="btx.action === 'sent'">
-                        <img class="sending-img" src="assets/img/tx-action/icon-received.svg" width="40" *ngIf="btx.action === 'received'">
-                        <img class="sending-img" src="assets/img/tx-action/icon-moved.svg" width="40" *ngIf="btx.action === 'moved'">
-                      </span>
-                      <span *ngIf="btx.confirmations === 0">
-                        <img class="sending-img" src="assets/img/tx-action/icon-confirming.svg">
-                      </span> -->
-            </div>
-            <div class="alternative">{{btx.alternativeAmountStr}}</div>
-          </div>
-        </div>
-      </div>
-    </expandable-header-primary>
-    <expandable-header-footer class="wallet-info" *ngIf="wallet" style="display: flex; align-items: center">
-    </expandable-header-footer>
-
-  </expandable-header>
 
   <ion-list *ngIf="btx">
 
