@@ -109,47 +109,68 @@ export class AddressbookPage {
     this.showEditAllRadio = true;
   }
   // edit address book list
-  public selectDeletAdd(contact): void {
-    contact.showEditRadio = !contact.showEditRadio;
+  public selectDeletAdd(contactList): void {
+    contactList.showEditRadio = !contactList.showEditRadio;
   }
   public filterDeleteAdd(contact): any {
     let deleteListAdd: object[] = [];
     for (let i = 0; i < contact.length; i++) {
       if (contact[i].showEditRadio) {
-        deleteListAdd.push(contact[i].address);
+        deleteListAdd.push(contact[i]);
       }
     }
     return deleteListAdd;
   }
-  public deleteArray(contact): void {
+  public deleteAddConfirm(contact): void {
     var title = this.translate.instant('Warning!');
     var message = this.translate.instant(
       'Are you sure you want to delete this contact?'
     );
 
-    this.popupProvider
-      .ionicConfirm(title, message, null, null)
-      .then(res => {
-        if (!res) return;
-        this.addressCycle(contact);
-      })
-      .then(() => {
-        this.initAddressbook();
-      });
-  }
+    var isSelect: boolean = false;
 
-  public addressCycle(contact): void {
-    let deleteListAdd = this.filterDeleteAdd(contact);
-    _.each(deleteListAdd, data => {
-      alert(JSON.stringify(data));
-      return this.addressBookProvider.remove(data).catch(err => {
-        this.popupProvider.ionicAlert(this.translate.instant('Error'), err);
-        return;
-      });
+    _.each(contact, data => {
+      if (data.showEditRadio) {
+        isSelect = true;
+      }
     });
+
+    if (isSelect) {
+      this.popupProvider
+        .ionicConfirm(title, message, null, null)
+        .then(res => {
+          if (!res) return;
+          this.removeAddList(contact);
+        })
+        .then(() => {
+          this.deleteCancle(contact);
+        })
+        .catch(err => {
+          this.popupProvider.ionicAlert(this.translate.instant('Error'), err);
+          return;
+        });
+    } else {
+      this.popupProvider.ionicConfirm(
+        title,
+        'Please select the contact you want to delete',
+        null,
+        null
+      );
+    }
   }
 
-  public deleteDone(contact): any {
+  public async removeAddList(contact): Promise<any> {
+    let deleteListAdd = this.filterDeleteAdd(contact);
+    for (let i = 0; i < deleteListAdd.length; i++) {
+      await this.addressBookProvider
+        .remove(deleteListAdd[i].address)
+        .then(() => {
+          this.initAddressbook();
+        });
+    }
+  }
+
+  public deleteCancle(contact): any {
     for (let i = 0; i < contact.length; i++) {
       contact[i].showEditRadio = false;
     }

@@ -17,7 +17,7 @@
     <ion-buttons *ngIf="!isEmptyList && showEditAllRadio" right>
       <button
         ion-button
-        (click)="deleteArray(filteredAddressbook)"
+        (click)="deleteAddConfirm(filteredAddressbook)"
         class="address-header-addOne"
       >
         <ion-icon name="trash"></ion-icon>
@@ -26,7 +26,7 @@
     <ion-buttons *ngIf="!isEmptyList && showEditAllRadio" right>
       <button
         ion-button
-        (click)="deleteDone(filteredAddressbook)"
+        (click)="deleteCancle(filteredAddressbook)"
         class="address-header-addOne"
       >
         <ion-icon name="checkmark"></ion-icon>
