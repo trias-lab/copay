@@ -67,6 +67,7 @@ page-tx-details {
 
   ion-list {
     padding-left: 30px;
+    padding-bottom: 50px;
 
     .item {
       background-color: #f8fafb;
@@ -155,6 +156,7 @@ page-tx-details {
   .container-to,
   .container-from,
   .container-tx-id {
+
     .wallet,
     .payment-to,
     .tx-id {
@@ -216,7 +218,7 @@ page-tx-details {
 
     padding: 17px $item-lateral-padding;
 
-    > * {
+    >* {
       padding-right: 0;
     }
   }
@@ -251,7 +253,7 @@ page-tx-details {
         top: 0;
       }
 
-      > div {
+      >div {
         border: 3px solid color($colors, primary);
         border-radius: $icon-border-radius;
         display: flex;
@@ -278,7 +280,7 @@ page-tx-details {
     &-label {
       flex-grow: 1;
 
-      > .action {
+      >.action {
         font-size: 16px;
 
         @media (max-width: 330px) {
@@ -286,7 +288,7 @@ page-tx-details {
         }
       }
 
-      > .name {
+      >.name {
         color: #aaa;
         font-size: 14px;
       }
