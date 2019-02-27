@@ -39,7 +39,7 @@
 </ion-header>
 
 <ion-content no-bounce>
-  
+
 
 
   <ion-list *ngIf="btx">
@@ -86,15 +86,31 @@
         </div>
       </div>
     </ion-item>
-    <ion-item *ngIf="btx.action === 'sent'" class="container-to">
-      <span translate>To</span>
-      <div class="payment-to address-coppied">
-        <div class="text-address ellipsis">
+
+    <ion-item class="container-from" *ngIf="btx && btx.inputs && btx.inputs[0].address">
+      <div class="id_copy clearfloat">
+        <span *ngIf="btx.action === 'sent'" class="id_copy_tit" translate>From</span>
+        <div class="id_copy_btn" copy-to-clipboard="{{ btx.inputs[0].address  }}">COPY</div>
+      </div>
+      <div class="tx-id">
+        <div class="ellipsis id" copy-to-clipboard="{{ btx.inputs[0].address }}">
+          <span>{{ btx.inputs[0].address }}</span>
+        </div>
+      </div>
+    </ion-item>
+
+    <ion-item class="container-to">
+      <div class="id_copy clearfloat">
+        <span translate class="id_copy_tit">To</span>
+        <div class="id_copy_btn" copy-to-clipboard="{{ btx.addressTo ? btx.addressTo : btx.outputs[0].address  }}">COPY</div>
+      </div>
+      <div class="payment-to address-coppied tx-id">
+        <!-- <div class="text-address ellipsis">
           <img *ngIf="!cardId" src="assets/img/icon-bitcoin-small.svg" width="12">
           <img *ngIf="cardId" src="assets/img/icon-card.svg" width="12" class="icon-bitcoin">
           <span class="address-divider"></span>
-        </div>
-        <div class="ellipsis" copy-to-clipboard="{{ btx.addressTo ? btx.addressTo : btx.outputs[0].address }}">
+        </div> -->
+        <div class="ellipsis id" copy-to-clipboard="{{ btx.addressTo ? btx.addressTo : btx.outputs[0].address }}">
           <span *ngIf="!contactName && !btx.addressTo">{{ btx.outputs[0].address }}</span>
           <span *ngIf="!contactName && btx.addressTo">{{ btx.addressTo }}</span>
           <span *ngIf="contactName">{{ contactName }}</span>
@@ -102,7 +118,7 @@
       </div>
     </ion-item>
 
-    <ion-item class="container-from">
+    <!-- <ion-item class="container-from">
       <span *ngIf="btx.action === 'sent'" translate>From</span>
       <span *ngIf="btx.action !== 'sent'" translate>To</span>
       <div class="wallet" *ngIf="wallet">
@@ -112,7 +128,7 @@
           class="icon-wallet" />
         <div>{{wallet.name}}</div>
       </div>
-    </ion-item>
+    </ion-item> -->
 
     <ion-item *ngIf="btx.action != 'received' && isShared">
       <ion-label>{{'Created by' | translate}}</ion-label>
