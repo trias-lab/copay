@@ -70,7 +70,9 @@ import { AboutPage } from '../pages/settings/about/about';
 import { SessionLogPage } from '../pages/settings/about/session-log/session-log';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
 import { AddressbookPage } from '../pages/settings/addressbook/addressbook';
+import { AddressbookModifyPage } from '../pages/settings/addressbook/modify/modify';
 import { AddressbookViewPage } from '../pages/settings/addressbook/view/view';
+
 import { AdvancedPage } from '../pages/settings/advanced/advanced';
 import { AltCurrencyPage } from '../pages/settings/alt-currency/alt-currency';
 import { FeePolicyPage } from '../pages/settings/fee-policy/fee-policy';
@@ -117,6 +119,7 @@ export const PAGES = [
   AddressAddPage,
   AddressbookAddPage,
   AddressbookViewPage,
+  AddressbookModifyPage,
   AboutPage,
   AdvancedPage,
   AllAddressesPage,

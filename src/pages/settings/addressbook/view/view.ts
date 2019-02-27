@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import {
+  ModalController,
+  NavController,
+  NavParams,
+  Platform
+} from 'ionic-angular';
 
 // Pages
-import { AmountPage } from '../../../../pages/send/amount/amount';
 
+// import { from } from 'rxjs/observable/from';
+import { AmountPage } from '../../../../pages/send/amount/amount';
 // Providers
 import { AddressBookProvider } from '../../../../providers/address-book/address-book';
 import { AddressProvider } from '../../../../providers/address/address';
 import { PopupProvider } from '../../../../providers/popup/popup';
+import { AddressbookModifyPage } from '../modify/modify';
 
 @Component({
   selector: 'page-addressbook-view',
@@ -26,6 +33,7 @@ export class AddressbookViewPage {
     private addressProvider: AddressProvider,
     private navCtrl: NavController,
     private navParams: NavParams,
+    private modalCtrl: ModalController,
     private popupProvider: PopupProvider,
     private translate: TranslateService,
     private platform: Platform,
@@ -61,6 +69,20 @@ export class AddressbookViewPage {
       recipientType: 'contact',
       network: this.addressProvider.getNetwork(this.address)
     });
+  }
+
+  public modify(): void {
+    let newsModal = this.modalCtrl.create(AddressbookModifyPage, {
+      address: this.address,
+      name: this.name,
+      email: this.email
+    });
+    newsModal.onDidDismiss(data => {
+      this.address = data.address;
+      this.name = data.name;
+      this.email = data.email;
+    });
+    newsModal.present();
   }
 
   public remove(addr: string): void {

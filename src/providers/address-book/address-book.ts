@@ -109,6 +109,45 @@ export class AddressBookProvider {
     });
   }
 
+  public modify(entry): Promise<any> {
+    return new Promise((resolve, reject) => {
+      var network = this.addressProvider.getNetwork(entry.address);
+      if (_.isEmpty(network)) {
+        let msg = this.translate.instant('Not valid bitcoin address');
+        return reject(msg);
+      }
+      this.persistenceProvider
+        .getAddressBook(network)
+        .then(ab => {
+          if (ab && _.isString(ab)) ab = JSON.parse(ab);
+          ab = ab || {};
+          if (_.isArray(ab)) ab = {}; // No array
+          // if (ab[entry.address]) {
+          //   let msg = this.translate.instant('Entry already exist');
+          //   return reject(msg);
+          // }
+          ab[entry.address] = entry;
+          this.persistenceProvider
+            .setAddressBook(network, JSON.stringify(ab))
+            .then(() => {
+              this.list()
+                .then(ab => {
+                  return resolve(ab);
+                })
+                .catch(err => {
+                  return reject(err);
+                });
+            })
+            .catch(() => {
+              let msg = this.translate.instant('Error adding new entry');
+              return reject(msg);
+            });
+        })
+        .catch(err => {
+          return reject(err);
+        });
+    });
+  }
   public remove(addr): Promise<any> {
     return new Promise((resolve, reject) => {
       var network = this.addressProvider.getNetwork(addr);
