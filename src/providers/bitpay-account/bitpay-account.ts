@@ -215,7 +215,7 @@ export class BitPayAccountProvider {
 
           let accountsArray = [];
           _.forEach(Object.keys(accounts), key => {
-            accounts[key].cards = accounts[key].cards;
+            // accounts[key].cards = accounts[key].cards;
             accounts[key].email = key;
             accounts[key].givenName = accounts[key].givenName || '';
             accounts[key].familyName = accounts[key].familyName || '';

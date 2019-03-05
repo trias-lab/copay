@@ -57,15 +57,10 @@ export class FeeProvider {
         .then(response => {
           let feeLevelRate;
 
-          if (response.fromCache) {
-            feeLevelRate = _.find(response.levels[network], o => {
-              return o.level == feeLevel;
-            });
-          } else {
-            feeLevelRate = _.find(response.levels[network], o => {
-              return o.level == feeLevel;
-            });
-          }
+          feeLevelRate = _.find(response.levels[network], o => {
+            return o.level == feeLevel;
+          });
+
           if (!feeLevelRate || !feeLevelRate.feePerKb) {
             let msg =
               this.translate.instant('Could not get dynamic fee for level:') +

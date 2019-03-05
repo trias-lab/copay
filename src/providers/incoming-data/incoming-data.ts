@@ -526,7 +526,7 @@ export class IncomingDataProvider {
         title: this.translate.instant('Eth Address')
       };
       // Plain Address (Tri)
-    } else if (this.isValidEthcoinAddress(data)) {
+    } else if (this.isValidTricoinAddress(data)) {
       this.logger.warn('tri');
       return {
         data,
