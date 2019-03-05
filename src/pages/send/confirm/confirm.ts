@@ -165,7 +165,7 @@ export class ConfirmPage extends WalletTabsChild {
 
     this.tx = {
       toAddress: this.navParams.data.toAddress,
-      sendMax: this.navParams.data.useSendMax ? true : false,
+      sendMax: this.navParams.data.useSendMax,
       amount: this.navParams.data.useSendMax
         ? 0
         : Number(this.navParams.data.amount),
@@ -333,22 +333,19 @@ export class ConfirmPage extends WalletTabsChild {
     this.tx.feeLevelName = feeOpts[this.tx.feeLevel];
     this.updateTx(this.tx, this.wallet, { dryRun: true }).catch(err => {
       let previousView = this.navCtrl.getPrevious().name;
-      switch (err) {
-        case 'insufficient_funds':
-          // Do not allow user to change or use max amount if previous view is not Amount
-          if (previousView === 'AmountPage') {
-            this.showInsufficientFundsInfoSheet();
-          } else {
-            this.showErrorInfoSheet(
-              this.translate.instant('Insufficient funds'),
-              null,
-              true
-            );
-          }
-          break;
-        default:
-          this.showErrorInfoSheet(err);
-          break;
+      if (err == 'insufficient_funds') {
+        // Do not allow user to change or use max amount if previous view is not Amount
+        if (previousView === 'AmountPage') {
+          this.showInsufficientFundsInfoSheet();
+        } else {
+          this.showErrorInfoSheet(
+            this.translate.instant('Insufficient funds'),
+            null,
+            true
+          );
+        }
+      } else {
+        this.showErrorInfoSheet(err);
       }
     });
   }
@@ -952,7 +949,7 @@ export class ConfirmPage extends WalletTabsChild {
     this.logger.debug(
       'New fee level chosen:' + data.newFeeLevel + ' was:' + this.tx.feeLevel
     );
-    this.usingCustomFee = data.newFeeLevel == 'custom' ? true : false;
+    this.usingCustomFee = data.newFeeLevel == 'custom';
 
     if (this.tx.feeLevel == data.newFeeLevel && !this.usingCustomFee) {
       return;

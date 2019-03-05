@@ -54,7 +54,7 @@ export class ShapeshiftSettingsPage {
       if (err) {
         this.logger.error(err);
         this.loading = false;
-        this.unverifiedAccount = err == 'unverified_account' ? true : false;
+        this.unverifiedAccount = err == 'unverified_account';
         return;
       }
 

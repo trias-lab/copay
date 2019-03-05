@@ -68,7 +68,7 @@ export class EmailNotificationsProvider {
       var currentEmail = this.getEmailIfEnabled(config);
 
       this.updateEmail({
-        enabled: currentEmail ? true : false,
+        enabled: currentEmail,
         email: currentEmail
       });
     }

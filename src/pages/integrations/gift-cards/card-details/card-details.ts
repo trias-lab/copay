@@ -121,11 +121,9 @@ export class CardDetailsPage {
     ];
     const shouldHidePin = this.cardConfig && this.cardConfig.hidePin;
     const pin = this.card && this.card.pin;
-    return !shouldHidePin &&
-      pin &&
-      legacyCardNames.indexOf(this.card.name) === -1
-      ? true
-      : false;
+    return (
+      !shouldHidePin && pin && legacyCardNames.indexOf(this.card.name) === -1
+    );
   }
 
   openArchiveSheet() {

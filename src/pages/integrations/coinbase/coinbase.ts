@@ -86,7 +86,7 @@ export class CoinbasePage {
               ? err.errors[0].message
               : err.error_description
               ? err.error_description
-              : err.error || err || 'Unknown error';
+              : err.error || 'Unknown error';
             this.popupProvider
               .ionicAlert('Error connecting to Coinbase', err)
               .then(() => {
@@ -175,7 +175,7 @@ export class CoinbasePage {
   }
 
   public getAuthenticateUrl(): string {
-    this.showOauthForm = this.isCordova || this.isElectron ? false : true;
+    this.showOauthForm = !(this.isCordova || this.isElectron);
     return this.coinbaseProvider.getOauthCodeUrl();
   }
 

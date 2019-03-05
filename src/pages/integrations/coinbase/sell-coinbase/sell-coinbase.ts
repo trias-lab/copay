@@ -410,9 +410,7 @@ export class SellCoinbasePage {
                 outputs,
                 message: comment,
                 payProUrl: null,
-                excludeUnconfirmedUtxos: configWallet.spendUnconfirmed
-                  ? false
-                  : true,
+                excludeUnconfirmedUtxos: !configWallet.spendUnconfirmed,
                 feeLevel: walletSettings.feeLevel || 'normal'
               };
 

@@ -38,6 +38,6 @@ export class WalletTabsChild {
   public isWithinWalletTabs(): boolean {
     const tabs = this.getParentTabs();
     const tabsInstance = tabs && (tabs.instance as WalletTabsPage);
-    return tabsInstance && tabsInstance.walletTabs ? true : false;
+    return tabsInstance && tabsInstance.walletTabs;
   }
 }

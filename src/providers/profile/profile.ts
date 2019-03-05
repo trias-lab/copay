@@ -154,9 +154,7 @@ export class ProfileProvider {
         .getHideBalanceFlag(wallet.credentials.walletId)
         .then(shouldHideBalance => {
           const isHidden =
-            shouldHideBalance && shouldHideBalance.toString() == 'true'
-              ? true
-              : false;
+            shouldHideBalance && shouldHideBalance.toString() == 'true';
           return resolve(isHidden);
         })
         .catch(err => {

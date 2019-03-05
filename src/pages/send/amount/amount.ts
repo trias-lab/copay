@@ -372,11 +372,7 @@ export class AmountPage extends WalletTabsChild {
       return this.finish();
     }
     let maxAmount;
-    if (this.wallet.coin == 'eth') {
-      maxAmount = this.txFormatProvider.weiToUnit(
-        this.wallet.status.availableBalanceSat
-      );
-    } else if (this.wallet.coin == 'tri') {
+    if (this.wallet.coin == 'eth' || this.wallet.coin == 'tri') {
       maxAmount = this.txFormatProvider.weiToUnit(
         this.wallet.status.availableBalanceSat
       );
@@ -491,8 +487,7 @@ export class AmountPage extends WalletTabsChild {
 
   private checkAmountForBitpaycard(amount: number): void {
     // Check if the top up amount is at least 1 usd
-    const isTopUp =
-      this.navParams.data.nextPage === 'BitPayCardTopUpPage' ? true : false;
+    const isTopUp = this.navParams.data.nextPage === 'BitPayCardTopUpPage';
     if (isTopUp && amount < 1) {
       this.allowSend = false;
     }

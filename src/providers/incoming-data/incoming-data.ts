@@ -345,17 +345,14 @@ export class IncomingDataProvider {
     let email = this.getParameterByName('email', data);
     let otp = this.getParameterByName('otp', data);
     let reason = this.getParameterByName('r', data);
-    switch (reason) {
-      default:
-      case '0':
-        /* For BitPay card binding */
-        let stateParams = { secret, email, otp };
-        let nextView = {
-          name: 'BitPayCardIntroPage',
-          params: stateParams
-        };
-        this.events.publish('IncomingDataRedir', nextView);
-        break;
+    if (reason == '0') {
+      /* For BitPay card binding */
+      let stateParams = { secret, email, otp };
+      let nextView = {
+        name: 'BitPayCardIntroPage',
+        params: stateParams
+      };
+      this.events.publish('IncomingDataRedir', nextView);
     }
   }
 

@@ -93,7 +93,7 @@ export class ShapeshiftConfirmPage {
     this.bitcore = this.bwcProvider.getBitcore();
     this.bitcoreCash = this.bwcProvider.getBitcoreCash();
 
-    this.useSendMax = this.navParams.data.useSendMax ? true : false;
+    this.useSendMax = this.navParams.data.useSendMax;
 
     this.amount = this.navParams.data.amount;
     this.currency = this.navParams.data.currency;
@@ -391,9 +391,7 @@ export class ShapeshiftConfirmPage {
         amount,
         outputs,
         message: this.message,
-        excludeUnconfirmedUtxos: this.configWallet.spendUnconfirmed
-          ? false
-          : true,
+        excludeUnconfirmedUtxos: !this.configWallet.spendUnconfirmed,
         customData: {
           shapeShift: toAddress,
           service: 'shapeshift'

@@ -27,11 +27,11 @@ export class DisclaimerPage {
     private persistenceProvider: PersistenceProvider,
     private translate: TranslateService
   ) {
-    this.hasEmail = this.emailProvider.getEmailIfEnabled() ? true : false;
+    this.hasEmail = this.emailProvider.getEmailIfEnabled();
     this.accepted = {
       first: false,
       second: false,
-      third: this.hasEmail ? false : true
+      third: !this.hasEmail
     };
     this.terms = {
       accepted: false

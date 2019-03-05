@@ -48,7 +48,7 @@ export class OnboardingPage {
     private modalCtrl: ModalController
   ) {
     this.appName = this.app.info.nameCase;
-    this.isCopay = this.appName == 'Copay' ? true : false;
+    this.isCopay = this.appName == 'Copay';
     this.isElectron = this.platformProvider.isElectron;
   }
 

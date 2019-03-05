@@ -254,7 +254,7 @@ export class WalletDetailsPage extends WalletTabsChild {
    * @param  {boolean}       newAddr whether generate a new address
    */
   private async setAddress(newAddr?: boolean): Promise<void> {
-    this.loadingAddr = newAddr || _.isEmpty(this.address) ? true : false;
+    this.loadingAddr = newAddr || _.isEmpty(this.address);
 
     let addr: string = (await this.walletProvider
       .getAddress(this.wallet, newAddr)
@@ -264,10 +264,7 @@ export class WalletDetailsPage extends WalletTabsChild {
       })) as string;
     this.loadingAddr = false;
 
-    let addressView = await this.walletProvider.getAddressView(
-      this.wallet,
-      addr
-    );
+    let addressView = this.walletProvider.getAddressView(this.wallet, addr);
 
     if (this.address && this.address != addressView) {
       // do something when coin is bch
@@ -487,7 +484,7 @@ export class WalletDetailsPage extends WalletTabsChild {
         this.updatingTxHistoryProgress = 0;
 
         const hasTx = txHistory[0];
-        this.showNoTransactionsYetMsg = hasTx ? false : true;
+        this.showNoTransactionsYetMsg = !hasTx;
 
         if (this.wallet.needsBackup && hasTx && this.showBackupNeededMsg)
           this.openBackupModal();

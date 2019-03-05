@@ -122,7 +122,7 @@ export class SendFeedbackPage {
   }
 
   public async leaveFeedback() {
-    this.leavingFeedback = this.leavingFeedback ? false : true;
+    this.leavingFeedback = !this.leavingFeedback;
     if (this.leavingFeedback) {
       await Observable.timer(50).toPromise();
       this.feedbackTextarea.setFocus();

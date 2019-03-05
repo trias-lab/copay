@@ -80,10 +80,7 @@ export class ReceivePage extends WalletTabsChild {
   // }
 
   private async updateQrAddress(address?): Promise<void> {
-    let qrAddress = await this.walletProvider.getProtoAddress(
-      this.wallet,
-      address
-    );
+    let qrAddress = this.walletProvider.getProtoAddress(this.wallet, address);
     this.address = address;
     this.qrAddress = qrAddress;
     await Observable.timer(200).toPromise();

@@ -119,8 +119,7 @@ export class SlideToAcceptPage implements AfterViewInit {
       }
 
       // If the max displacement position is reached
-      this.slideButtonDone =
-        xDisplacement >= this.xMax - this.delta / 2 ? true : false;
+      this.slideButtonDone = xDisplacement >= this.xMax - this.delta / 2;
     }
   }
 

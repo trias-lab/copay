@@ -291,9 +291,7 @@ export class HomePage {
     // Only BitPay Wallet
     this.bitPayCardProvider.get({}, (_, cards) => {
       this.zone.run(() => {
-        this.showBitPayCard = this.appProvider.info._enabledExtensions.debitcard
-          ? true
-          : false;
+        this.showBitPayCard = this.appProvider.info._enabledExtensions.debitcard;
         this.bitpayCardItems = cards;
       });
     });
@@ -494,7 +492,7 @@ export class HomePage {
 
   public checkHomeTip(): void {
     this.persistenceProvider.getHomeTipAccepted().then((value: string) => {
-      this.homeTip = value == 'accepted' ? false : true;
+      this.homeTip = value != 'accepted';
     });
   }
 
@@ -766,12 +764,12 @@ export class HomePage {
       pr(wallet).then(() => {
         this.debounceUpdateTxps();
         this.debounceUpdateNotifications();
-        let banlance =
-          wallet.status && wallet.status.totalBalanceStr
-            ? wallet.status.totalBalanceStr
-            : wallet.cachedBalance
-            ? wallet.cachedBalance
-            : '';
+        // let banlance =
+        //   wallet.status && wallet.status.totalBalanceStr
+        //     ? wallet.status.totalBalanceStr
+        //     : wallet.cachedBalance
+        //     ? wallet.cachedBalance
+        //     : '';
 
         // this.updateTxHistory(wallet);
 
@@ -785,10 +783,10 @@ export class HomePage {
         let alternativeUnitOne = wallet.status.alternativeIsoCode
           ? wallet.status.alternativeIsoCode
           : '';
-        let amount = banlance.split(' ')[0];
-        if (amount && amount.indexOf(',') != -1) {
-          amount = amount.replace(/,/g, '');
-        }
+        // let amount = banlance.split(' ')[0];
+        // if (amount && amount.indexOf(',') != -1) {
+        //   amount = amount.replace(/,/g, '');
+        // }
 
         this.totalBalance += parseFloat(alternativeBalance);
         // this.balanceItem.push({ value: parseFloat(amount) });

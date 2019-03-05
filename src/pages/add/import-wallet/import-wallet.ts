@@ -173,7 +173,7 @@ export class ImportWalletPage {
       data: parsedCode[1],
       network: parsedCode[2],
       derivationPath: parsedCode[3],
-      hasPassphrase: parsedCode[4] == 'true' ? true : false,
+      hasPassphrase: parsedCode[4] == 'true',
       coin: parsedCode[5]
     };
     if (!info.data) {
@@ -194,7 +194,7 @@ export class ImportWalletPage {
       this.popupProvider.ionicAlert(title, subtitle);
     }
 
-    let isTestnet = info.network == 'testnet' ? true : false;
+    let isTestnet = info.network == 'testnet';
     this.importForm.controls['testnetEnabled'].setValue(isTestnet);
     this.importForm.controls['derivationPath'].setValue(info.derivationPath);
     this.importForm.controls['words'].setValue(info.data);

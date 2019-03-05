@@ -195,10 +195,8 @@ export class ShapeshiftPage {
   }
 
   public goTo(page: string): void {
-    switch (page) {
-      case 'Shift':
-        this.navCtrl.push(ShapeshiftShiftPage);
-        break;
+    if (page == 'Shift') {
+      this.navCtrl.push(ShapeshiftShiftPage);
     }
   }
 

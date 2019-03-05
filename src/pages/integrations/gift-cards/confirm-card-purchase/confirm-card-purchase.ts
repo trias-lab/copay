@@ -300,7 +300,7 @@ export class ConfirmCardPurchasePage extends ConfirmPage {
         service: 'giftcards'
       },
       payProUrl,
-      excludeUnconfirmedUtxos: this.configWallet.spendUnconfirmed ? false : true
+      excludeUnconfirmedUtxos: !this.configWallet.spendUnconfirmed
     };
 
     if (details.requiredFeeRate) {

@@ -26,7 +26,7 @@ export class IncomingDataMenuComponent extends ActionSheetParent {
     this.coin = this.params.data.coin;
     this.fromHomeCard = this.params.data.fromHomeCard;
     if (this.type === 'url') {
-      this.https = this.data.indexOf('https://') === 0 ? true : false;
+      this.https = this.data.indexOf('https://') === 0;
     }
   }
 

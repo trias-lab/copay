@@ -47,9 +47,7 @@ export class LockPage {
           enabled:
             !this.lockOptions.method ||
             (this.lockOptions.method &&
-            this.lockOptions.method.toLowerCase() == 'disabled'
-              ? true
-              : false),
+              this.lockOptions.method.toLowerCase() == 'disabled'),
           disabled: false
         },
         {
@@ -57,9 +55,7 @@ export class LockPage {
           method: 'pin',
           enabled:
             this.lockOptions.method &&
-            this.lockOptions.method.toLowerCase() == 'pin'
-              ? true
-              : false,
+            this.lockOptions.method.toLowerCase() == 'pin',
           disabled: needsBackup
         },
         {
@@ -67,9 +63,7 @@ export class LockPage {
           method: 'fingerprint',
           enabled:
             this.lockOptions.method &&
-            this.lockOptions.method.toLowerCase() == 'fingerprint'
-              ? true
-              : false,
+            this.lockOptions.method.toLowerCase() == 'fingerprint',
           disabled: !isAvailable || needsBackup
         }
       ];

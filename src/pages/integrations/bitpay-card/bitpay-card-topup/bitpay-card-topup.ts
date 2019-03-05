@@ -300,9 +300,7 @@ export class BitPayCardTopUpPage {
               service: 'debitcard'
             },
             payProUrl,
-            excludeUnconfirmedUtxos: this.configWallet.spendUnconfirmed
-              ? false
-              : true
+            excludeUnconfirmedUtxos: !this.configWallet.spendUnconfirmed
           };
 
           if (details.requiredFeeRate) {

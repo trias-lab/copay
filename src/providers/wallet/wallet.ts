@@ -926,9 +926,9 @@ export class WalletProvider {
     switch (wallet.credentials.addressType) {
       case 'P2PKH':
         return 147;
-      default:
       case 'P2SH':
         return wallet.m * 72 + wallet.n * 36 + 44;
+      default:
     }
   }
 

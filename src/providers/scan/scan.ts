@@ -36,12 +36,12 @@ export class ScanProvider {
   private checkCapabilities(status) {
     this.logger.info('scannerService is reviewing platform capabilities...');
     // Permission can be assumed on the desktop builds
-    this.hasPermission = this.isDesktop || status.authorized ? true : false;
-    this.isDenied = status.denied ? true : false;
-    this.isRestricted = status.restricted ? true : false;
-    this.canEnableLight = status.canEnableLight ? true : false;
-    this.canChangeCamera = status.canChangeCamera ? true : false;
-    this.canOpenSettings = status.canOpenSettings ? true : false;
+    this.hasPermission = this.isDesktop || status.authorized;
+    this.isDenied = status.denied;
+    this.isRestricted = status.restricted;
+    this.canEnableLight = status.canEnableLight;
+    this.canChangeCamera = status.canChangeCamera;
+    this.canOpenSettings = status.canOpenSettings;
     this.logCapabilities();
   }
 

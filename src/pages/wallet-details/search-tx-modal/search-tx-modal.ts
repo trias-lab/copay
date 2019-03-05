@@ -69,7 +69,7 @@ export class SearchTxModalPage {
     });
 
     this.txHistoryShowMore =
-      this.filteredTxHistory.length > this.HISTORY_SHOW_LIMIT ? true : false;
+      this.filteredTxHistory.length > this.HISTORY_SHOW_LIMIT;
 
     return this.filteredTxHistory;
   }

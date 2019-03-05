@@ -143,7 +143,7 @@ export class SendPage extends WalletTabsChild {
 
   private updateContactsList(): void {
     this.addressBookProvider.list().then(ab => {
-      this.hasContacts = _.isEmpty(ab) ? false : true;
+      this.hasContacts = !_.isEmpty(ab);
       if (!this.hasContacts) return;
 
       let contactsList = [];

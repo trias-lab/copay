@@ -161,9 +161,7 @@ export class BackupGamePage {
 
   private shouldContinue(): void {
     this.selectComplete =
-      this.customWords.length === this.shuffledMnemonicWords.length
-        ? true
-        : false;
+      this.customWords.length === this.shuffledMnemonicWords.length;
   }
 
   private isDeletedSeed(): boolean {
@@ -224,7 +222,7 @@ export class BackupGamePage {
     this.isWrongOrder = false;
     this.error = false;
 
-    words = _.repeat('x', 300);
+    // words = _.repeat('x', 300);
 
     if (this.currentIndex == 2) this.slidePrev();
   }
