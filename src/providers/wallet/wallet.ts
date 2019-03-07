@@ -929,6 +929,7 @@ export class WalletProvider {
       case 'P2SH':
         return wallet.m * 72 + wallet.n * 36 + 44;
       default:
+        return 0;
     }
   }
 

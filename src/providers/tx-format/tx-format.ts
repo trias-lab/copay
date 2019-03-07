@@ -43,7 +43,7 @@ export class TxFormatProvider {
   }
 
   // TODO: Check return of formatAmount(...), sometimes returns a number and sometimes a string
-  public formatAmount(satoshis: number, fullPrecision?: boolean) {
+  public formatAmount(satoshis: number, fullPrecision?: boolean, coin?: string) {
     let settings = this.configProvider.get().wallet.settings;
 
     if (settings.unitCode == 'sat') return satoshis;
@@ -52,6 +52,9 @@ export class TxFormatProvider {
     var opts = {
       fullPrecision: !!fullPrecision
     };
+    if (coin) {
+      opts['coin'] = coin;
+    }
     return this.bwcProvider
       .getUtils()
       .formatAmount(satoshis, settings.unitCode, opts);
@@ -59,7 +62,7 @@ export class TxFormatProvider {
 
   public formatAmountStr(coin: string, satoshis: number): string {
     if (isNaN(satoshis)) return undefined;
-    return this.formatAmount(satoshis) + ' ' + coin.toUpperCase();
+    return this.formatAmount(satoshis, false, coin) + ' ' + coin.toUpperCase();
   }
 
   public toFiat(coin: string, satoshis: number, code: string): Promise<string> {
