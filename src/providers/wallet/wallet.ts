@@ -922,7 +922,7 @@ export class WalletProvider {
 
   // These 2 functions were taken from
   // https://github.com/bitpay/bitcore-wallet-service/blob/master/lib/model/txproposal.js#L243
-  private getEstimatedSizeForSingleInput(wallet): number {
+  private getEstimatedSizeForSingleInput(wallet): any {
     switch (wallet.credentials.addressType) {
       case 'P2PKH':
         return 147;
