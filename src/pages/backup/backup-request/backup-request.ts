@@ -17,6 +17,7 @@ import { BackupGamePage } from '../backup-game/backup-game';
 export class BackupRequestPage {
   private walletId: string;
   private fromOnboarding: boolean;
+  private password: string;
   public checked;
 
   constructor(
@@ -29,6 +30,7 @@ export class BackupRequestPage {
   ) {
     this.walletId = this.navParams.get('walletId');
     this.fromOnboarding = this.navParams.get('fromOnboarding');
+    this.password = this.navParams.get('password');
     this.checked = {
       // whether 3 tips are checked
       first: false,
@@ -49,7 +51,8 @@ export class BackupRequestPage {
     // Go to mnemonic backup game page directly
     this.navCtrl.push(BackupGamePage, {
       walletId: this.walletId,
-      fromOnboarding: this.fromOnboarding
+      fromOnboarding: this.fromOnboarding,
+      password: this.password
     });
   }
 

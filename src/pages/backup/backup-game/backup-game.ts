@@ -33,12 +33,13 @@ export class BackupGamePage {
   navBar: Navbar;
 
   private fromOnboarding: boolean;
+  private password: string;
 
   public currentIndex: number;
   public deleted: boolean;
   public mnemonicWords: string[];
   public shuffledMnemonicWords;
-  public password: string;
+  // public password: string;
   public customWords;
   public selectComplete: boolean;
   public error: boolean;
@@ -67,6 +68,7 @@ export class BackupGamePage {
   ) {
     this.walletId = this.navParams.get('walletId');
     this.fromOnboarding = this.navParams.get('fromOnboarding');
+    this.password = this.navParams.get('password');
     this.wallet = this.profileProvider.getWallet(this.walletId);
     this.credentialsEncrypted = this.wallet.isPrivKeyEncrypted();
   }
@@ -78,27 +80,33 @@ export class BackupGamePage {
       return;
     }
 
-    this.walletProvider
-      .getKeys(this.wallet)
-      .then(keys => {
-        if (_.isEmpty(keys)) {
-          this.logger.warn('Empty keys');
-        }
-        this.credentialsEncrypted = false;
-        this.keys = keys;
-        this.setFlow();
-      })
-      .catch(err => {
-        if (
-          err &&
-          err.message != 'FINGERPRINT_CANCELLED' &&
-          err.message != 'PASSWORD_CANCELLED'
-        ) {
-          const title = this.translate.instant('Could not decrypt wallet');
-          this.showErrorInfoSheet(this.bwcErrorProvider.msg(err), title);
-        }
-        this.navCtrl.pop();
-      });
+    if (this.fromOnboarding) {
+      this.credentialsEncrypted = false;
+      this.keys = this.wallet.getKeys(this.password);
+      this.setFlow();
+    } else {
+      this.walletProvider
+        .getKeys(this.wallet)
+        .then(keys => {
+          if (_.isEmpty(keys)) {
+            this.logger.warn('Empty keys');
+          }
+          this.credentialsEncrypted = false;
+          this.keys = keys;
+          this.setFlow();
+        })
+        .catch(err => {
+          if (
+            err &&
+            err.message != 'FINGERPRINT_CANCELLED' &&
+            err.message != 'PASSWORD_CANCELLED'
+          ) {
+            const title = this.translate.instant('Could not decrypt wallet');
+            this.showErrorInfoSheet(this.bwcErrorProvider.msg(err), title);
+          }
+          this.navCtrl.pop();
+        });
+    }
   }
 
   ngOnInit() {
@@ -216,7 +224,7 @@ export class BackupGamePage {
     this.shuffledMnemonicWords = this.shuffledWords(this.mnemonicWords);
     this.mnemonicHasPassphrase = this.wallet.mnemonicHasPassphrase();
     this.useIdeograms = words.indexOf('\u3000') >= 0;
-    this.password = '';
+    // this.password = '';
     this.customWords = [];
     this.selectComplete = false;
     this.isWrongOrder = false;

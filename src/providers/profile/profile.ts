@@ -10,6 +10,7 @@ import { BwcProvider } from '../bwc/bwc';
 import { ConfigProvider } from '../config/config';
 import { LanguageProvider } from '../language/language';
 import { Logger } from '../logger/logger';
+import { OnGoingProcessProvider } from '../on-going-process/on-going-process';
 import { PersistenceProvider } from '../persistence/persistence';
 import { PlatformProvider } from '../platform/platform';
 import { PopupProvider } from '../popup/popup';
@@ -28,6 +29,7 @@ export class ProfileProvider {
   private throttledBwsEvent;
   private validationLock: boolean = false;
   private errors = this.bwcProvider.getErrors();
+  private password: string = null;
 
   constructor(
     private logger: Logger,
@@ -41,7 +43,8 @@ export class ProfileProvider {
     private languageProvider: LanguageProvider,
     private events: Events,
     private popupProvider: PopupProvider,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private onGoingProcessProvider: OnGoingProcessProvider
   ) {
     this.throttledBwsEvent = _.throttle((n, wallet) => {
       this.newBwsEvent(n, wallet);
@@ -524,13 +527,12 @@ export class ProfileProvider {
       const msg = this.translate.instant(
         'Without encryption, a thief or another application on this device may be able to access your funds.'
       );
-      const okText = this.translate.instant("I'm sure");
-      const cancelText = this.translate.instant('Go Back');
-      this.popupProvider
-        .ionicConfirm(title, msg, okText, cancelText)
-        .then(res => {
-          return resolve(res);
-        });
+      const okText = this.translate.instant('Go Back');
+      // const cancelText = this.translate.instant('Go Back');
+      this.popupProvider.ionicAlert(title, msg, okText).then(() => {
+        // no cancel
+        return resolve();
+      });
     });
   }
 
@@ -566,36 +568,42 @@ export class ProfileProvider {
 
   private encrypt(wallet): Promise<any> {
     return new Promise(resolve => {
-      let title = this.translate.instant(
-        'Enter a password to encrypt your wallet'
-      );
-      const warnMsg = this.translate.instant(
-        'This password is only for this device, and it cannot be recovered. To avoid losing funds, write your password down.'
-      );
-      this.askPassword(warnMsg, title).then((password: string) => {
-        if (!password) {
-          this.showWarningNoEncrypt().then(res => {
-            if (res) return resolve();
-            this.encrypt(wallet).then(() => {
-              return resolve();
-            });
-          });
-        } else {
-          title = this.translate.instant(
-            'Enter your encrypt password again to confirm'
-          );
-          this.askPassword(warnMsg, title).then((password2: string) => {
-            if (!password2 || password != password2) {
+      if (!this.password) {
+        // ask password only once
+        let title = this.translate.instant(
+          'Enter a password to encrypt your wallets'
+        );
+        const warnMsg = this.translate.instant(
+          'This password is only for this device, and it cannot be recovered. To avoid losing funds, write your password down.'
+        );
+        this.askPassword(warnMsg, title).then((password: string) => {
+          if (!password) {
+            this.showWarningNoEncrypt().then(() => {
               this.encrypt(wallet).then(() => {
                 return resolve();
               });
-            } else {
-              wallet.encryptPrivateKey(password);
-              return resolve();
-            }
-          });
-        }
-      });
+            });
+          } else {
+            title = this.translate.instant(
+              'Enter your encrypt password again to confirm'
+            );
+            this.askPassword(warnMsg, title).then((password2: string) => {
+              if (!password2 || password != password2) {
+                this.encrypt(wallet).then(() => {
+                  return resolve();
+                });
+              } else {
+                wallet.encryptPrivateKey(password);
+                this.password = password;
+                return resolve();
+              }
+            });
+          }
+        });
+      } else {
+        wallet.encryptPrivateKey(this.password);
+        return resolve();
+      }
     });
   }
 
@@ -607,56 +615,55 @@ export class ProfileProvider {
       }
 
       // Encrypt wallet
-      // this.onGoingProcessProvider.pause();
-      // DO NOT use password to encrypt the wallet by default
-      // this.encrypt(wallet).then(() => {
-      // this.onGoingProcessProvider.resume();
+      this.onGoingProcessProvider.pause();
+      this.encrypt(wallet).then(() => {
+        this.onGoingProcessProvider.resume();
 
-      const walletId: string = wallet.credentials.walletId;
+        const walletId: string = wallet.credentials.walletId;
 
-      if (!this.profile.addWallet(JSON.parse(wallet.export()))) {
-        const message = this.replaceParametersProvider.replace(
-          this.translate.instant('Wallet already in {{nameCase}}'),
-          { nameCase: this.appProvider.info.nameCase }
-        );
-        return reject(message);
-      }
+        if (!this.profile.addWallet(JSON.parse(wallet.export()))) {
+          const message = this.replaceParametersProvider.replace(
+            this.translate.instant('Wallet already in {{nameCase}}'),
+            { nameCase: this.appProvider.info.nameCase }
+          );
+          return reject(message);
+        }
 
-      const skipKeyValidation: boolean = this.shouldSkipValidation(walletId);
-      if (!skipKeyValidation) {
-        this.logger.debug('Trying to runValidation: ' + walletId);
-        this.runValidation(wallet);
-      }
+        const skipKeyValidation: boolean = this.shouldSkipValidation(walletId);
+        if (!skipKeyValidation) {
+          this.logger.debug('Trying to runValidation: ' + walletId);
+          this.runValidation(wallet);
+        }
 
-      this.bindWalletClient(wallet);
+        this.bindWalletClient(wallet);
 
-      const saveBwsUrl = (): Promise<any> => {
-        return new Promise(resolve => {
-          const defaults = this.configProvider.getDefaults();
-          const bwsFor = {};
-          bwsFor[walletId] = opts.bwsurl || defaults.bws.url;
+        const saveBwsUrl = (): Promise<any> => {
+          return new Promise(resolve => {
+            const defaults = this.configProvider.getDefaults();
+            const bwsFor = {};
+            bwsFor[walletId] = opts.bwsurl || defaults.bws.url;
 
-          // Dont save the default
-          if (bwsFor[walletId] == defaults.bws.url) {
+            // Dont save the default
+            if (bwsFor[walletId] == defaults.bws.url) {
+              return resolve();
+            }
+
+            this.configProvider.set({ bwsFor });
             return resolve();
-          }
-
-          this.configProvider.set({ bwsFor });
-          return resolve();
-        });
-      };
-
-      saveBwsUrl().then(() => {
-        this.persistenceProvider
-          .storeProfile(this.profile)
-          .then(() => {
-            return resolve(wallet);
-          })
-          .catch(err => {
-            return reject(err);
           });
+        };
+
+        saveBwsUrl().then(() => {
+          this.persistenceProvider
+            .storeProfile(this.profile)
+            .then(() => {
+              return resolve(wallet);
+            })
+            .catch(err => {
+              return reject(err);
+            });
+        });
       });
-      // });
     });
   }
 
@@ -885,6 +892,7 @@ export class ProfileProvider {
   }
 
   private resetProfile(): void {
+    this.logger.debug('----Clearing wallets...');
     this.wallet = {};
     _.each(this.profile.credentials, credentials => {
       this.persistenceProvider.clearBackupFlag(credentials.walletId);
@@ -1312,8 +1320,7 @@ export class ProfileProvider {
   public createDefaultWallet(): Promise<any> {
     return new Promise((resolve, reject) => {
       // clear wallets in profile
-      this.logger.debug('----Clearing wallets...');
-      this.resetProfile();
+      if(this.profile.credentials.length) this.resetProfile();
 
       // default BTC wallet option
       const opts: Partial<WalletOptions> = {};
@@ -1360,7 +1367,7 @@ export class ProfileProvider {
 
                 this.createWallet(optsTri).then(walletTri => {
                   wallets.push(walletTri);
-                  return resolve(wallets);
+                  return resolve({'wallets': wallets, 'password':this.password});
                 });
               });
             })

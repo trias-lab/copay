@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ModalController, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
 // pages
-import { PinModalPage } from '../../pages/pin/pin-modal/pin-modal';
+// import { PinModalPage } from '../../pages/pin/pin-modal/pin-modal';
 import { ImportWalletPage } from '../add/import-wallet/import-wallet';
 import { BackupRequestPage } from '../backup/backup-request/backup-request';
 // import { CollectEmailPage } from './collect-email/collect-email';
@@ -44,8 +44,7 @@ export class OnboardingPage {
     private onGoingProcessProvider: OnGoingProcessProvider,
     // private persistenceProvider: PersistenceProvider,
     private popupProvider: PopupProvider,
-    private language: LanguageProvider,
-    private modalCtrl: ModalController
+    private language: LanguageProvider
   ) {
     this.appName = this.app.info.nameCase;
     this.isCopay = this.appName == 'Copay';
@@ -69,49 +68,54 @@ export class OnboardingPage {
   //   this.navCtrl.push(TourPage);
   // }
 
-  private openPinModal(action, wallet): void {
-    const modal = this.modalCtrl.create(
-      PinModalPage,
-      { action },
-      { cssClass: 'fullscreen-modal' }
-    );
-    modal.present();
-    modal.onDidDismiss(() => {
-      // the modal is dismissed after verifing the pin code
-      this.logger.info('---PIN setup finished');
-      // this.persistenceProvider.setOnboardingCompleted();
-      // request to backup the mneminic after setup pin code
-      this.navCtrl.push(BackupRequestPage, {
-        walletId: wallet.id,
-        fromOnboarding: true
-      });
-    });
-  }
+  // private openPinModal(action, wallet): void {
+  //   const modal = this.modalCtrl.create(
+  //     PinModalPage,
+  //     { action },
+  //     { cssClass: 'fullscreen-modal' }
+  //   );
+  //   modal.present();
+  //   modal.onDidDismiss(() => {
+  //     // the modal is dismissed after verifing the pin code
+  //     this.logger.info('---PIN setup finished');
+  //     // this.persistenceProvider.setOnboardingCompleted();
+  //     // request to backup the mneminic after setup pin code
+  //     this.navCtrl.push(BackupRequestPage, {
+  //       walletId: wallet.id,
+  //       fromOnboarding: true
+  //     });
+  //   });
+  // }
 
-  private setUpPin(wallet): Promise<any> {
-    return new Promise(resolve => {
-      this.openPinModal('initPin', wallet);
-      this.logger.info('---PIN setup started');
-      return resolve(wallet);
-    });
-  }
+  // private setUpPin(wallet): Promise<any> {
+  //   return new Promise(resolve => {
+  //     this.openPinModal('initPin', wallet);
+  //     this.logger.info('---PIN setup started');
+  //     return resolve(wallet);
+  //   });
+  // }
 
   public createDefaultWallet(): void {
     this.onGoingProcessProvider.set('creatingWallet');
     this.profileProvider
       .createDefaultWallet()
-      .then(wallets => {
+      .then(res => {
         this.onGoingProcessProvider.clear();
-        this.setUpPin(wallets[0]).then(() => {
-          // TODO: do something after pin setup
-          // no need to collect email
-          // this.navCtrl.push(CollectEmailPage, { walletId: wallet.id });
-
-          // this two wallets have the same mnemonic which will be backup once
-          this.profileProvider.setBackupFlag(wallets[1].credentials.walletId);
-          this.profileProvider.setBackupFlag(wallets[2].credentials.walletId);
-          this.profileProvider.setBackupFlag(wallets[3].credentials.walletId);
+        this.navCtrl.push(BackupRequestPage, {
+          walletId: res.wallets[0].id,
+          fromOnboarding: true,
+          password: res.password
         });
+        // this.setUpPin(wallets[0]).then(() => {
+        // TODO: do something after pin setup
+        // no need to collect email
+        // this.navCtrl.push(CollectEmailPage, { walletId: wallet.id });
+
+        // this wallets have the same mnemonic which will be backup once
+        this.profileProvider.setBackupFlag(res.wallets[1].credentials.walletId);
+        this.profileProvider.setBackupFlag(res.wallets[2].credentials.walletId);
+        this.profileProvider.setBackupFlag(res.wallets[3].credentials.walletId);
+        // });
       })
       .catch(err => {
         setTimeout(() => {
