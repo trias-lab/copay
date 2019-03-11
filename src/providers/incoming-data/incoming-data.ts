@@ -311,27 +311,6 @@ export class IncomingDataProvider {
     this.events.publish('IncomingDataRedir', nextView);
   }
 
-  private goToJoinWallet(data: string): void {
-    this.logger.debug('Incoming-data (redirect): Code to join to a wallet');
-    if (this.isValidJoinCode(data)) {
-      let stateParams = { url: data, fromScan: true };
-      let nextView = {
-        name: 'JoinWalletPage',
-        params: stateParams
-      };
-      this.events.publish('IncomingDataRedir', nextView);
-    } else if (this.isValidJoinLegacyCode(data)) {
-      let stateParams = { url: data, fromScan: true };
-      let nextView = {
-        name: 'JoinWalletPage',
-        params: stateParams
-      };
-      this.events.publish('IncomingDataRedir', nextView);
-    } else {
-      this.logger.error('Incoming-data: Invalid code to join to a wallet');
-    }
-  }
-
   private goToBitPayCard(data: string): void {
     this.logger.debug('Incoming-data (redirect): BitPay Card URL');
 
@@ -560,14 +539,6 @@ export class IncomingDataProvider {
         data,
         type: 'BitPayCard',
         title: this.translate.instant('BitPay Card URI')
-      };
-
-      // Join
-    } else if (this.isValidJoinCode(data) || this.isValidJoinLegacyCode(data)) {
-      return {
-        data,
-        type: 'JoinWallet',
-        title: this.translate.instant('Invitation Code')
       };
 
       // Check Private Key

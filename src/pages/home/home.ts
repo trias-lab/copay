@@ -13,7 +13,6 @@ import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
 
 // Pages
-import { AddPage } from '../add/add';
 import { ImportWalletPage } from '../add/import-wallet/import-wallet';
 import { BitPayCardPage } from '../integrations/bitpay-card/bitpay-card';
 import { BitPayCardIntroPage } from '../integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
@@ -984,10 +983,6 @@ export class HomePage {
   public openServerMessageLink(): void {
     let url = this.serverMessage.link;
     this.externalLinkProvider.open(url);
-  }
-  // pages switch
-  public goToAddView(): void {
-    this.navCtrl.push(AddPage);
   }
 
   public goToSwapPage(): void {

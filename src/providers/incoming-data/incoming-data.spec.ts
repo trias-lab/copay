@@ -92,40 +92,6 @@ describe('Provider: Incoming Data Provider', () => {
         });
       });
     });
-    it('Should handle Join Wallet', () => {
-      let data =
-        'copay:RTpopkn5KBnkxuT7x4ummDKx3Lu1LvbntddBC4ssDgaqP7DkojT8ccxaFQEXY4f3huFyMewhHZLbtc';
-      let stateParams = { url: data, fromScan: true };
-      let nextView = {
-        name: 'JoinWalletPage',
-        params: stateParams
-      };
-
-      expect(incomingDataProvider.redir(data, { activePage: 'ScanPage' })).toBe(
-        true
-      );
-      expect(loggerSpy).toHaveBeenCalledWith(
-        'Incoming-data (redirect): Code to join to a wallet'
-      );
-      expect(eventsSpy).toHaveBeenCalledWith('IncomingDataRedir', nextView);
-    });
-    it('Should handle Old Join Wallet', () => {
-      let data =
-        'RTpopkn5KBnkxuT7x4ummDKx3Lu1LvbntddBC4ssDgaqP7DkojT8ccxaFQEXY4f3huFyMewhHZLbtc';
-      let stateParams = { url: data, fromScan: true };
-      let nextView = {
-        name: 'JoinWalletPage',
-        params: stateParams
-      };
-
-      expect(incomingDataProvider.redir(data, { activePage: 'ScanPage' })).toBe(
-        true
-      );
-      expect(loggerSpy).toHaveBeenCalledWith(
-        'Incoming-data (redirect): Code to join to a wallet'
-      );
-      expect(eventsSpy).toHaveBeenCalledWith('IncomingDataRedir', nextView);
-    });
     it('Should handle QR Code Export feature', () => {
       let data = [
         "1|sick arch glare wheat anchor innocent garbage tape raccoon already obey ability|testnet|m/44'/1'/0'|false",

@@ -1,9 +1,7 @@
 /* Pages */
-import { AddPage } from '../pages/add/add';
 import { CopayersPage } from '../pages/add/copayers/copayers';
 import { CreateWalletPage } from '../pages/add/create-wallet/create-wallet';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
-import { JoinWalletPage } from '../pages/add/join-wallet/join-wallet';
 import { BackupGamePage } from '../pages/backup/backup-game/backup-game';
 import { BackupRequestPage } from '../pages/backup/backup-request/backup-request';
 import { SendFeedbackPage } from '../pages/feedback/send-feedback/send-feedback';
@@ -112,7 +110,6 @@ import { GIFT_CARD_PAGES } from './integrations/gift-cards/gift-cards';
 
 export const PAGES = [
   ActivityPage,
-  AddPage,
   AmountPage,
 
   AddressbookPage,
@@ -139,7 +136,6 @@ export const PAGES = [
   FeedbackCardPage,
   SharePage,
   ImportWalletPage,
-  JoinWalletPage,
   BackupGamePage,
   ConfirmPage,
   CustomAmountPage,

@@ -34,7 +34,6 @@ import { TouchIdProvider } from '../providers/touchid/touchid';
 // pages
 import { CopayersPage } from '../pages/add/copayers/copayers';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
-import { JoinWalletPage } from '../pages/add/join-wallet/join-wallet';
 // import { HomePage } from '../pages/home/home';
 // import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 // import { BitPayCardIntroPage } from '../pages/integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
@@ -86,7 +85,6 @@ export class CopayApp {
     ConfirmPage,
     CopayersPage,
     ImportWalletPage,
-    JoinWalletPage,
     PaperWalletPage,
     // ShapeshiftPage,
     WalletDetailsPage
