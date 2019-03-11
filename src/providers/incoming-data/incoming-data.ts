@@ -131,15 +131,6 @@ export class IncomingDataProvider {
     return !!(data && data.indexOf('bitpay://bitpay.com?secret=') === 0);
   }
 
-  private isValidJoinCode(data: string): boolean {
-    data = this.sanitizeUri(data);
-    return !!(data && data.match(/^copay:[0-9A-HJ-NP-Za-km-z]{70,80}$/));
-  }
-
-  private isValidJoinLegacyCode(data: string): boolean {
-    return !!(data && data.match(/^[0-9A-HJ-NP-Za-km-z]{70,80}$/));
-  }
-
   private isValidPrivateKey(data: string): boolean {
     return !!(
       data &&
@@ -420,11 +411,6 @@ export class IncomingDataProvider {
       // BitPayCard Authentication
     } else if (this.isValidBitPayCardUri(data)) {
       this.goToBitPayCard(data);
-      return true;
-
-      // Join
-    } else if (this.isValidJoinCode(data) || this.isValidJoinLegacyCode(data)) {
-      this.goToJoinWallet(data);
       return true;
 
       // Check Private Key
