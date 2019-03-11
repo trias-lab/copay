@@ -234,7 +234,7 @@ export class ImportWalletPage {
 
     setTimeout(() => {
       this.profileProvider
-        .importWallet(str2, opts)
+        .importWallet(str2, opts, this.fromOnboarding)
         .then(wallet => {
           this.onGoingProcessProvider.clear();
           this.finish(wallet);
@@ -248,21 +248,6 @@ export class ImportWalletPage {
     }, 100);
   }
 
-  private openPinModal(action): void {
-    const modal = this.modalCtrl.create(
-      PinModalPage,
-      { action },
-      { cssClass: 'fullscreen-modal' }
-    );
-    modal.present();
-    modal.onDidDismiss(() => {
-      // the modal is dismissed after verifing the pin code
-      this.logger.info('---PIN setup finished');
-      this.profileProvider.setOnboardingCompleted();
-      this.navCtrl.push(DisclaimerPage);
-    });
-  }
-
   private finish(wallet): void {
     this.walletProvider
       .updateRemotePreferences(wallet)
@@ -271,9 +256,8 @@ export class ImportWalletPage {
         this.events.publish('status:updated');
         this.pushNotificationsProvider.updateSubscription(wallet);
         if (this.fromOnboarding) {
-          // set new pin code when importing a wallet
-          this.openPinModal('initPin');
-          this.logger.info('---PIN setup started');
+          this.profileProvider.setOnboardingCompleted();
+          this.navCtrl.push(DisclaimerPage);
         } else {
           this.navCtrl.pop(); // back to homepage
           // this.app
@@ -295,11 +279,11 @@ export class ImportWalletPage {
       });
   }
 
-  private importExtendedPrivateKey(xPrivKey, opts) {
+  private importExtendedPrivateKey(xPrivKey, opts, fromOnboarding: boolean) {
     this.onGoingProcessProvider.set('importingWallet');
     setTimeout(() => {
       this.profileProvider
-        .importExtendedPrivateKey(xPrivKey, opts)
+        .importExtendedPrivateKey(xPrivKey, opts, fromOnboarding)
         .then(wallet => {
           this.onGoingProcessProvider.clear();
           this.finish(wallet);
@@ -412,7 +396,7 @@ export class ImportWalletPage {
       this.popupProvider.ionicAlert(title, subtitle);
       return;
     } else if (words.indexOf('xprv') == 0 || words.indexOf('tprv') == 0) {
-      return this.importExtendedPrivateKey(words, opts);
+      return this.importExtendedPrivateKey(words, opts, this.fromOnboarding);
     } else {
       let wordList = words.trim().split(/[\u3000\s]+/);
 

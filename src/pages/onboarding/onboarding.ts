@@ -102,7 +102,7 @@ export class OnboardingPage {
       .then(res => {
         this.onGoingProcessProvider.clear();
         this.navCtrl.push(BackupRequestPage, {
-          walletId: res.wallets[0].id,
+          walletId: res.walletsCreated[0].id,
           fromOnboarding: true,
           password: res.password
         });
@@ -112,9 +112,15 @@ export class OnboardingPage {
         // this.navCtrl.push(CollectEmailPage, { walletId: wallet.id });
 
         // this wallets have the same mnemonic which will be backup once
-        this.profileProvider.setBackupFlag(res.wallets[1].credentials.walletId);
-        this.profileProvider.setBackupFlag(res.wallets[2].credentials.walletId);
-        this.profileProvider.setBackupFlag(res.wallets[3].credentials.walletId);
+        this.profileProvider.setBackupFlag(
+          res.walletsCreated[1].credentials.walletId
+        );
+        this.profileProvider.setBackupFlag(
+          res.walletsCreated[2].credentials.walletId
+        );
+        this.profileProvider.setBackupFlag(
+          res.walletsCreated[3].credentials.walletId
+        );
         // });
       })
       .catch(err => {
