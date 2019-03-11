@@ -493,26 +493,52 @@ export class ProfileProvider {
 
       const addressBook = strParsed.addressBook ? strParsed.addressBook : {};
 
-      this.addAndBindWalletClient(
-        walletClient,
-        {
-          bwsurl: opts.bwsurl
-        },
-        fromOnboarding
-      )
-        .then(() => {
-          this.setMetaData(walletClient, addressBook)
+      if (fromOnboarding) {
+        // create default wallets when importing a wallet
+        this.createDefaultWallet().then(() => {
+          this.addAndBindWalletClient(
+            walletClient,
+            {
+              bwsurl: opts.bwsurl
+            },
+            fromOnboarding
+          )
             .then(() => {
-              return resolve(walletClient);
+              this.setMetaData(walletClient, addressBook)
+                .then(() => {
+                  return resolve(walletClient);
+                })
+                .catch(err => {
+                  this.logger.warn('Could not set meta data: ', err);
+                  return reject(err);
+                });
             })
             .catch(err => {
-              this.logger.warn('Could not set meta data: ', err);
               return reject(err);
             });
         })
-        .catch(err => {
-          return reject(err);
-        });
+      } else {
+        this.addAndBindWalletClient(
+          walletClient,
+          {
+            bwsurl: opts.bwsurl
+          },
+          fromOnboarding
+        )
+          .then(() => {
+            this.setMetaData(walletClient, addressBook)
+              .then(() => {
+                return resolve(walletClient);
+              })
+              .catch(err => {
+                this.logger.warn('Could not set meta data: ', err);
+                return reject(err);
+              });
+          })
+          .catch(err => {
+            return reject(err);
+          });
+      }      
     });
   }
 
@@ -576,9 +602,6 @@ export class ProfileProvider {
 
   private encrypt(wallet, fromOnboarding: boolean): Promise<any> {
     return new Promise(resolve => {
-      this.logger.debug('---encrypt');
-      this.logger.debug(this.password, fromOnboarding);
-      this.logger.debug(wallet.coin);
       if (!fromOnboarding) {
         // if not from OnBoarding, ask to enter encrypt password existed
         // ask password only once
@@ -597,7 +620,7 @@ export class ProfileProvider {
             });
           } else {
             wallet.encryptPrivateKey(password);
-            this.password = password;
+            // this.password = password;
             return resolve();
           }
         });
@@ -754,30 +777,60 @@ export class ProfileProvider {
       this.logger.info('Importing Wallet xPrivKey');
       const walletClient = this.bwcProvider.getClient(null, opts);
 
-      walletClient.importFromExtendedPrivateKey(xPrivKey, opts, err => {
-        if (err) {
-          if (err instanceof this.errors.NOT_AUTHORIZED) return reject(err);
-          this.bwcErrorProvider
-            .cb(err, this.translate.instant('Could not import'))
-            .then((msg: string) => {
-              return reject(msg);
-            });
-        } else {
-          this.addAndBindWalletClient(
-            walletClient,
-            {
-              bwsurl: opts.bwsurl
-            },
-            fromOnboarding
-          )
-            .then(wallet => {
-              return resolve(wallet);
-            })
-            .catch(err => {
-              return reject(err);
-            });
-        }
-      });
+      if (fromOnboarding) {
+        // create default wallets when importing a wallet
+        this.createDefaultWallet().then(() => {
+          walletClient.importFromExtendedPrivateKey(xPrivKey, opts, err => {
+            if (err) {
+              if (err instanceof this.errors.NOT_AUTHORIZED) return reject(err);
+              this.bwcErrorProvider
+                .cb(err, this.translate.instant('Could not import'))
+                .then((msg: string) => {
+                  return reject(msg);
+                });
+            } else {
+              this.addAndBindWalletClient(
+                walletClient,
+                {
+                  bwsurl: opts.bwsurl
+                },
+                fromOnboarding
+              )
+                .then(wallet => {
+                  return resolve(wallet);
+                })
+                .catch(err => {
+                  return reject(err);
+                });
+            }
+          });
+        });
+      } else {
+        walletClient.importFromExtendedPrivateKey(xPrivKey, opts, err => {
+          if (err) {
+            if (err instanceof this.errors.NOT_AUTHORIZED) return reject(err);
+            this.bwcErrorProvider
+              .cb(err, this.translate.instant('Could not import'))
+              .then((msg: string) => {
+                return reject(msg);
+              });
+          } else {
+            this.addAndBindWalletClient(
+              walletClient,
+              {
+                bwsurl: opts.bwsurl
+              },
+              fromOnboarding
+            )
+              .then(wallet => {
+                return resolve(wallet);
+              })
+              .catch(err => {
+                return reject(err);
+              });
+          }
+        });
+      }
     });
   }
 
@@ -1329,7 +1382,7 @@ export class ProfileProvider {
       opts.n = 1;
       opts.networkName = 'livenet';
       opts.coin = Coin.BTC;
-      
+
       this.createWallet(opts, !fromImporting)
         .then(wallet => {
           // default BTH wallet option
