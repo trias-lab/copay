@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import {
   App,
   Events,
-  ModalController,
+  // ModalController,
   NavController,
   NavParams
 } from 'ionic-angular';
@@ -13,7 +13,7 @@ import { Logger } from '../../../providers/logger/logger';
 // Pages
 // import { HomePage } from '../../home/home';
 import { DisclaimerPage } from '../../onboarding/disclaimer/disclaimer';
-import { PinModalPage } from '../../pin/pin-modal/pin-modal';
+// import { PinModalPage } from '../../pin/pin-modal/pin-modal';
 import { ScanPage } from '../../scan/scan';
 import { TabsPage } from '../../tabs/tabs';
 
@@ -60,7 +60,7 @@ export class ImportWalletPage {
 
   constructor(
     private app: App,
-    private modalCtrl: ModalController,
+    // private modalCtrl: ModalController,
     private navCtrl: NavController,
     private navParams: NavParams,
     private form: FormBuilder,
