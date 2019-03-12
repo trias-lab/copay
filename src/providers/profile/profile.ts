@@ -538,6 +538,32 @@ export class ProfileProvider {
           .catch(err => {
             return reject(err);
           });
+      }
+    });
+  }
+
+  // Ask to input encryp password already set
+  public getEncryptPassword(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let wallets = this.getWallets();
+      if(wallets && wallets[0]){
+        let wallet = wallets[0];
+        this.askPassword(
+          null,
+          this.translate.instant('Enter encrypt password')
+        ).then((password: string) => {
+          if (password === null) {
+            return reject(new Error('PASSWORD_CANCELLED'));
+          }
+          if (password == '') {
+            return reject(new Error('NO_PASSWORD'));
+          }
+          if (!wallet.checkPassword(password))
+            return reject(new Error('WRONG_PASSWORD'));
+          return resolve(password);
+        });
+      }else{
+        return reject()
       }      
     });
   }
@@ -604,29 +630,41 @@ export class ProfileProvider {
     return new Promise(resolve => {
       if (!fromOnboarding) {
         // if not from OnBoarding, ask to enter encrypt password existed
-        // ask password only once
-        let title = this.translate.instant(
-          'Enter your encrypt password to encrypt this wallet'
-        );
-        const warnMsg = this.translate.instant(
-          'This password is only for this device, and it cannot be recovered. To avoid losing funds, write your password down.'
-        );
-        this.askPassword(warnMsg, title).then((password: string) => {
-          if (!password) {
-            this.showWarningNoEncrypt().then(() => {
-              this.encrypt(wallet, fromOnboarding).then(() => {
+        this.getEncryptPassword()
+          .then((password: string) => {
+            if (!password) {
+              this.showWarningNoEncrypt().then(() => {
+                this.encrypt(wallet, fromOnboarding).then(() => {
+                  return resolve();
+                });
+              });
+            } else {
+              wallet.encryptPrivateKey(password);
+              return resolve();
+            }
+          })
+          .catch(err => {
+            if(err){
+              let message = this.translate.instant(
+                'Please enter your password to encrypt this wallet.'
+              );
+              // if no correct password, alert then ask for password again
+              this.popupProvider
+                .ionicAlert(this.bwcErrorProvider.msg(err, message))
+                .then(() => {
+                  this.encrypt(wallet, fromOnboarding).then(() => {
+                    return resolve();
+                  });
+                });
+            }else{
+              // if no wallets exist, ask to set new encrypt password
+              this.encrypt(wallet, true).then(() => {
                 return resolve();
               });
-            });
-          } else {
-            wallet.encryptPrivateKey(password);
-            // this.password = password;
-            return resolve();
-          }
-        });
+            }            
+          });
       } else if (!this.password) {
         // if from OnBoardng, but no encrypt password entered, ask to set encrypt password.
-        // ask password only once
         let title = this.translate.instant(
           'Enter a password to encrypt your wallets'
         );

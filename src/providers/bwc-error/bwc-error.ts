@@ -152,6 +152,9 @@ export class BwcErrorProvider {
         case 'MISSING_PARAMETER':
           body = this.translate.instant('Missing parameter');
           break;
+        case 'PASSWORD_CANCELLED':
+          body = this.translate.instant('No password');
+          break;
         case 'NO_PASSWORD':
           body = this.translate.instant('No password');
           break;
