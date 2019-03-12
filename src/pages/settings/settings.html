@@ -102,9 +102,18 @@
         <ion-toggle [(ngModel)]="fingerprintLock.enabled" (ngModelChange)="toggleFingerprint($event)"></ion-toggle>
       </button>
 
-      <button ion-item *ngIf="isCordova" (click)="resetPin()">
+      <!-- <button ion-item *ngIf="isCordova" (click)="resetPin()">
         <ion-label>
           {{'Reset PIN' | translate}}
+        </ion-label>
+        <ion-icon class="item-img" item-end>
+          <img src="assets/img/settings-icons/icon_next@2x.png" width="22">
+        </ion-icon>
+      </button> -->
+
+      <button ion-item *ngIf="isCordova" (click)="resetEncryptPassword()">
+        <ion-label>
+          {{'Reset Encrypt Password' | translate}}
         </ion-label>
         <ion-icon class="item-img" item-end>
           <img src="assets/img/settings-icons/icon_next@2x.png" width="22">

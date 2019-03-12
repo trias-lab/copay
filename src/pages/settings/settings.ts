@@ -13,6 +13,7 @@ import { ExternalLinkProvider } from '../../providers/external-link/external-lin
 import { HomeIntegrationsProvider } from '../../providers/home-integrations/home-integrations';
 import { LanguageProvider } from '../../providers/language/language';
 import { PlatformProvider } from '../../providers/platform/platform';
+import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { TouchIdProvider } from '../../providers/touchid/touchid';
 
@@ -68,7 +69,8 @@ export class SettingsPage {
     private platformProvider: PlatformProvider,
     private translate: TranslateService,
     private modalCtrl: ModalController,
-    private touchid: TouchIdProvider
+    private touchid: TouchIdProvider,
+    private popupProvider: PopupProvider
   ) {
     // this.appName = this.app.info.nameCase;
     this.appName = 'Tri Wallet';
@@ -148,6 +150,14 @@ export class SettingsPage {
 
   public resetPin(): void {
     this.openPinModal('lockSetUp');
+  }
+
+  public resetEncryptPassword(): void {
+    this.profileProvider.resetEncryptPassword().then(() => {
+      this.popupProvider.ionicAlert(
+        'Your encrypt password is updated successfully!'
+      );
+    });
   }
 
   public toggleFingerprint(): void {

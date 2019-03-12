@@ -348,6 +348,73 @@ export class ProfileProvider {
     this.events.publish('bwsEvent', wallet.id, n.type, n);
   }
 
+  public resetEncryptPassword(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.getEncryptPassword()
+        .then((oldPassword: string) => {
+          if (!oldPassword) {
+            this.popupProvider
+              .ionicAlert(
+                'Please enter your password to decrypt wallets firstly.'
+              )
+              .then(() => {
+                return reject();
+              });
+          } else {
+            // password checked.
+            // ask to set new encrypt password
+            let title = this.translate.instant(
+              'Enter a new password to encrypt your wallets'
+            );
+            const warnMsg = this.translate.instant(
+              'This password is only for this device, and it cannot be recovered. To avoid losing funds, write your password down.'
+            );
+            this.askPassword(warnMsg, title).then((password: string) => {
+              if (password) {
+                title = this.translate.instant(
+                  'Enter your encrypt password again to confirm'
+                );
+                this.askPassword(warnMsg, title).then((password2: string) => {
+                  if (password2 && password == password2) {
+                    this.updateEncryptPassword(oldPassword, password2);
+                    return resolve();
+                  } else {
+                    return reject();
+                  }
+                });
+              } else {
+                return reject();
+              }
+            });
+          }
+        })
+        .catch(() => {
+          this.popupProvider
+            .ionicAlert(
+              'Please enter your password to decrypt wallets firstly.'
+            )
+            .then(() => {
+              return reject();
+            });
+        });
+    });
+  }
+
+  /**
+   * update encrypt password for all wallets
+   */
+  private updateEncryptPassword(
+    oldPassword: string,
+    newPassword: string
+  ): void {
+    let wallets = this.getWallets();
+    wallets.forEach(wallet => {
+      wallet.decryptPrivateKey(oldPassword);
+      wallet.encryptPrivateKey(newPassword);
+      this.updateCredentials(JSON.parse(wallet.export()));
+    });
+  }
+
   public updateCredentials(credentials): void {
     this.profile.updateWallet(credentials);
     this.persistenceProvider.storeProfile(this.profile);
@@ -516,7 +583,7 @@ export class ProfileProvider {
             .catch(err => {
               return reject(err);
             });
-        })
+        });
       } else {
         this.addAndBindWalletClient(
           walletClient,
@@ -546,7 +613,7 @@ export class ProfileProvider {
   public getEncryptPassword(): Promise<any> {
     return new Promise((resolve, reject) => {
       let wallets = this.getWallets();
-      if(wallets && wallets[0]){
+      if (wallets && wallets[0]) {
         let wallet = wallets[0];
         this.askPassword(
           null,
@@ -562,9 +629,9 @@ export class ProfileProvider {
             return reject(new Error('WRONG_PASSWORD'));
           return resolve(password);
         });
-      }else{
-        return reject()
-      }      
+      } else {
+        return reject();
+      }
     });
   }
 
@@ -644,7 +711,7 @@ export class ProfileProvider {
             }
           })
           .catch(err => {
-            if(err){
+            if (err) {
               let message = this.translate.instant(
                 'Please enter your password to encrypt this wallet.'
               );
@@ -656,12 +723,12 @@ export class ProfileProvider {
                     return resolve();
                   });
                 });
-            }else{
+            } else {
               // if no wallets exist, ask to set new encrypt password
               this.encrypt(wallet, true).then(() => {
                 return resolve();
               });
-            }            
+            }
           });
       } else if (!this.password) {
         // if from OnBoardng, but no encrypt password entered, ask to set encrypt password.
