@@ -694,7 +694,7 @@ export class ProfileProvider {
   // }
 
   private encrypt(wallet, fromOnboarding: boolean): Promise<any> {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       if (!fromOnboarding) {
         // if not from OnBoarding, ask to enter encrypt password existed
         this.getEncryptPassword()
@@ -717,11 +717,11 @@ export class ProfileProvider {
               );
               // if no correct password, alert then ask for password again
               this.popupProvider
-                .ionicAlert(this.bwcErrorProvider.msg(err, message))
+                .ionicAlert(this.bwcErrorProvider.msg(err), message)
                 .then(() => {
-                  this.encrypt(wallet, fromOnboarding).then(() => {
-                    return resolve();
-                  });
+                  // this.encrypt(wallet, fromOnboarding).then(() => {
+                    return reject();
+                  // });
                 });
             } else {
               // if no wallets exist, ask to set new encrypt password
@@ -830,7 +830,10 @@ export class ProfileProvider {
               return reject(err);
             });
         });
-      });
+      })
+      .catch((err?) => {
+        return reject(err)
+      })
     });
   }
 
