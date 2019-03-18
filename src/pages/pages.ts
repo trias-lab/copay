@@ -63,6 +63,7 @@ import { ProposalsPage } from '../pages/home/proposals/proposals';
 
 /* Settings */
 // import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
+import { PasswordModalPage } from '../pages/password-modal/password-modal';
 import { PIN_COMPONENTS } from '../pages/pin/pin';
 import { AboutPage } from '../pages/settings/about/about';
 import { SessionLogPage } from '../pages/settings/about/session-log/session-log';
@@ -151,6 +152,7 @@ export const PAGES = [
   PaperWalletPage,
   PayProPage,
   ...PIN_COMPONENTS,
+  PasswordModalPage,
   ProposalsPage,
   ReceivePage,
   ScanPage,

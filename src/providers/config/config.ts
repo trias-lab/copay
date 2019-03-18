@@ -178,7 +178,7 @@ export class ConfigProvider {
 
       lock: {
         pin: {
-          method: null,
+          method: 'pin',
           bannedUntil: null
         },
         fingerprint: null
