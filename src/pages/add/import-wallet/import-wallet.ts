@@ -241,8 +241,10 @@ export class ImportWalletPage {
         })
         .catch(err => {
           this.onGoingProcessProvider.clear();
-          let title = this.translate.instant('Error');
-          this.popupProvider.ionicAlert(title, err);
+          if (err) {
+            let title = this.translate.instant('Error');
+            this.popupProvider.ionicAlert(title, err);
+          }
           return;
         });
     }, 100);
@@ -291,7 +293,7 @@ export class ImportWalletPage {
         .catch(err => {
           if (err instanceof this.errors.NOT_AUTHORIZED) {
             this.importErr = true;
-          } else {
+          } else if (err) {
             let title = this.translate.instant('Error');
             this.popupProvider.ionicAlert(title, err);
           }
@@ -313,7 +315,7 @@ export class ImportWalletPage {
         .catch(err => {
           if (err instanceof this.errors.NOT_AUTHORIZED) {
             this.importErr = true;
-          } else {
+          } else if (err) {
             let title = this.translate.instant('Error');
             this.popupProvider.ionicAlert(title, err);
           }
