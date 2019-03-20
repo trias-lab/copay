@@ -42,7 +42,7 @@ import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
 import { PaperWalletPage } from '../pages/paper-wallet/paper-wallet';
-import { PinModalPage } from '../pages/pin/pin-modal/pin-modal';
+import { PasswordModalPage } from '../pages/password-modal/password-modal';
 import { AmountPage } from '../pages/send/amount/amount';
 import { ConfirmPage } from '../pages/send/confirm/confirm';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
@@ -256,9 +256,9 @@ export class CopayApp {
     if (config && config.lock) {
       if (config.lock.fingerprint) {
         // this.openFingerprintModal();
-        this.openPINModal('checkFingerprint');
-      } else if (config.lock.pin.method) {
-        this.openPINModal('checkPin');
+        this.openPasswordModal('checkFingerprint');
+      } else if (config.lock.pin) {
+        this.openPasswordModal('checkPin');
       } else {
         return;
       }
@@ -267,10 +267,10 @@ export class CopayApp {
     }
   }
 
-  private openPINModal(action): void {
+  private openPasswordModal(action): void {
     this.isLockModalOpen = true;
     const modal = this.modalCtrl.create(
-      PinModalPage,
+      PasswordModalPage,
       { action },
       { cssClass: 'fullscreen-modal' }
     );

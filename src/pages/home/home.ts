@@ -324,6 +324,13 @@ export class HomePage {
       this.events.unsubscribe('status:updated');
       this.events.unsubscribe('Local/TxAction');
     });
+
+    // set pin to true entering homepage the first time
+    let config = this.configProvider.get();
+    if (config && config.lock && !config.lock.pin) {
+      let lock = { pin: true };
+      this.configProvider.set({ lock });
+    }
   }
 
   ngOnDestroy() {

@@ -1,11 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { Vibration } from '@ionic-native/vibration';
-import { NavController, NavParams, Platform} from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
 import { Animate } from '../../directives/animate/animate';
 
 // Providers
+import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { TouchIdProvider } from '../../providers/touchid/touchid';
 
@@ -18,9 +19,8 @@ import { TouchIdProvider } from '../../providers/touchid/touchid';
 
 @Component({
   selector: 'page-password-modal',
-  templateUrl: 'password-modal.html',
+  templateUrl: 'password-modal.html'
 })
-
 export class PasswordModalPage {
   private onPauseSubscription: Subscription;
 
@@ -36,10 +36,10 @@ export class PasswordModalPage {
     private navCtrl: NavController,
     private navParams: NavParams,
     private touchid: TouchIdProvider,
-    private profileProvider: ProfileProvider,    
+    private profileProvider: ProfileProvider,
     private vibration: Vibration,
+    private popupProvider: PopupProvider
   ) {
-
     this.unregister = this.platform.registerBackButtonAction(() => {});
 
     // action could be:
@@ -76,14 +76,18 @@ export class PasswordModalPage {
   }
 
   public confirm(): void {
-  	this.profileProvider.getEncryptPassword().then((password: string)=>{
-  		if(password == this.currentPassword){
-    		this.close();
-  		}else{
-  			this.currentPassword = ''
-  			this.shakeInput();
-  		}
-  	})
+    let wallets = this.profileProvider.getWallets();
+    if (wallets && wallets[0]) {
+      let wallet = wallets[0];
+      if (this.currentPassword && wallet.checkPassword(this.currentPassword)) {
+        this.close();
+      } else {
+        this.currentPassword = '';
+        this.shakeInput();
+      }
+    } else {
+      this.popupProvider.ionicAlert('Please try again later.');
+    }
   }
 
   public shakeInput() {
@@ -91,4 +95,3 @@ export class PasswordModalPage {
     this.vibration.vibrate(100);
   }
 }
-

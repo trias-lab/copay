@@ -57,10 +57,7 @@ export interface Config {
   };
 
   lock: {
-    pin: {
-      method: any;
-      bannedUntil: any;
-    };
+    pin: boolean;
     fingerprint: any; // "Face ID" / "Touch ID" / null
   };
 
@@ -177,10 +174,7 @@ export class ConfigProvider {
       },
 
       lock: {
-        pin: {
-          method: 'pin',
-          bannedUntil: null
-        },
+        pin: false,
         fingerprint: null
       },
 
