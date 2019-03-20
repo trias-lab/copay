@@ -64,7 +64,7 @@ import { ProposalsPage } from '../pages/home/proposals/proposals';
 /* Settings */
 // import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 import { PasswordModalPage } from '../pages/password-modal/password-modal';
-import { PIN_COMPONENTS } from '../pages/pin/pin';
+import { PinPad } from '../pages/pin-pad/pin-pad.component';
 import { AboutPage } from '../pages/settings/about/about';
 import { SessionLogPage } from '../pages/settings/about/session-log/session-log';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
@@ -76,7 +76,6 @@ import { AdvancedPage } from '../pages/settings/advanced/advanced';
 import { AltCurrencyPage } from '../pages/settings/alt-currency/alt-currency';
 import { FeePolicyPage } from '../pages/settings/fee-policy/fee-policy';
 import { LanguagePage } from '../pages/settings/language/language';
-// import { LockPage } from '../pages/settings/lock/lock';
 import { NotificationsPage } from '../pages/settings/notifications/notifications';
 import { SharePage } from '../pages/settings/share/share';
 import { AddressAddPage } from '../pages/wallet-details/add-address/add-address';
@@ -147,11 +146,10 @@ export const PAGES = [
   // FingerprintModalPage,
   HomePage,
   LanguagePage,
-  // LockPage,
   OnboardingPage,
   PaperWalletPage,
   PayProPage,
-  ...PIN_COMPONENTS,
+  PinPad,
   PasswordModalPage,
   ProposalsPage,
   ReceivePage,

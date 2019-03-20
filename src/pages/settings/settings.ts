@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ModalController, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
 import * as _ from 'lodash';
@@ -23,14 +23,12 @@ import { BitPaySettingsPage } from '../integrations/bitpay-card/bitpay-settings/
 import { CoinbaseSettingsPage } from '../integrations/coinbase/coinbase-settings/coinbase-settings';
 import { GiftCardsSettingsPage } from '../integrations/gift-cards/gift-cards-settings/gift-cards-settings';
 import { ShapeshiftSettingsPage } from '../integrations/shapeshift/shapeshift-settings/shapeshift-settings';
-import { PinModalPage } from '../pin/pin-modal/pin-modal';
 import { AboutPage } from './about/about';
 import { AddressbookPage } from './addressbook/addressbook';
 import { AdvancedPage } from './advanced/advanced';
 import { AltCurrencyPage } from './alt-currency/alt-currency';
 import { FeePolicyPage } from './fee-policy/fee-policy';
 import { LanguagePage } from './language/language';
-// import { LockPage } from './lock/lock';
 import { NotificationsPage } from './notifications/notifications';
 import { SharePage } from './share/share';
 import { WalletSettingsPage } from './wallet-settings/wallet-settings';
@@ -68,7 +66,6 @@ export class SettingsPage {
     private bitPayCardProvider: BitPayCardProvider,
     private platformProvider: PlatformProvider,
     private translate: TranslateService,
-    private modalCtrl: ModalController,
     private touchid: TouchIdProvider,
     private popupProvider: PopupProvider
   ) {
@@ -135,21 +132,6 @@ export class SettingsPage {
 
   public openAboutPage(): void {
     this.navCtrl.push(AboutPage);
-  }
-
-  // public openLockPage(): void {
-  //   let config = this.configProvider.get();
-  //   let lockMethod =
-  //     config && config.lock && config.lock.method
-  //       ? config.lock.method.toLowerCase()
-  //       : null;
-  //   if (!lockMethod || lockMethod == 'disabled') this.navCtrl.push(LockPage);
-  //   if (lockMethod == 'pin') this.openPinModal('lockSetUp');
-  //   if (lockMethod == 'fingerprint') this.checkFingerprint();
-  // }
-
-  public resetPin(): void {
-    this.openPinModal('lockSetUp');
   }
 
   public resetEncryptPassword(): void {
@@ -284,25 +266,4 @@ export class SettingsPage {
       cancelText
     );
   }
-
-  private openPinModal(action): void {
-    const modal = this.modalCtrl.create(
-      PinModalPage,
-      { action },
-      { cssClass: 'fullscreen-modal' }
-    );
-    modal.present();
-    modal.onDidDismiss(cancelClicked => {
-      // if (!cancelClicked) this.navCtrl.push(LockPage);
-      if (!cancelClicked && action == 'lockSetUp')
-        this.openPinModal('pinSetUp');
-      // if (!cancelClicked && action == 'pinSetUp');
-    });
-  }
-
-  // private checkFingerprint(): void {
-  //   this.touchid.check().then(() => {
-  //     this.navCtrl.push(LockPage);
-  //   });
-  // }
 }

@@ -13,7 +13,6 @@ import { Logger } from '../../../providers/logger/logger';
 // Pages
 // import { HomePage } from '../../home/home';
 import { DisclaimerPage } from '../../onboarding/disclaimer/disclaimer';
-// import { PinModalPage } from '../../pin/pin-modal/pin-modal';
 import { ScanPage } from '../../scan/scan';
 import { TabsPage } from '../../tabs/tabs';
 

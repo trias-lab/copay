@@ -4,7 +4,6 @@ import { NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
 // pages
-// import { PinModalPage } from '../../pages/pin/pin-modal/pin-modal';
 import { ImportWalletPage } from '../add/import-wallet/import-wallet';
 import { BackupRequestPage } from '../backup/backup-request/backup-request';
 // import { CollectEmailPage } from './collect-email/collect-email';
@@ -63,37 +62,6 @@ export class OnboardingPage {
   ionViewDidEnter() {
     if (this.isElectron) this.openElectronInfoModal();
   }
-
-  // public getStarted(): void {
-  //   this.navCtrl.push(TourPage);
-  // }
-
-  // private openPinModal(action, wallet): void {
-  //   const modal = this.modalCtrl.create(
-  //     PinModalPage,
-  //     { action },
-  //     { cssClass: 'fullscreen-modal' }
-  //   );
-  //   modal.present();
-  //   modal.onDidDismiss(() => {
-  //     // the modal is dismissed after verifing the pin code
-  //     this.logger.info('---PIN setup finished');
-  //     // this.persistenceProvider.setOnboardingCompleted();
-  //     // request to backup the mneminic after setup pin code
-  //     this.navCtrl.push(BackupRequestPage, {
-  //       walletId: wallet.id,
-  //       fromOnboarding: true
-  //     });
-  //   });
-  // }
-
-  // private setUpPin(wallet): Promise<any> {
-  //   return new Promise(resolve => {
-  //     this.openPinModal('initPin', wallet);
-  //     this.logger.info('---PIN setup started');
-  //     return resolve(wallet);
-  //   });
-  // }
 
   public createDefaultWallet(): void {
     this.onGoingProcessProvider.set('creatingWallet');
