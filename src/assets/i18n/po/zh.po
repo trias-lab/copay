@@ -882,7 +882,7 @@ msgid "Funds will be transferred to"
 msgstr "资金将会转移到"
 
 msgid "GOT IT"
-msgstr "HIỂU RỒI"
+msgstr "知道了"
 
 msgid "Generating .csv file..."
 msgstr "正在生成 .csv 文件..."
@@ -1335,13 +1335,13 @@ msgid "Now is a perfect time to assess your surroundings. Nearby windows? Hidden
 msgstr "现在是一个完美的时间来评估你的周围。附近的窗户吗？隐藏的摄像机？肩-间谍吗？"
 
 msgid "OK"
-msgstr "好的"
+msgstr "确定"
 
 msgid "Off"
 msgstr "关闭"
 
 msgid "Ok"
-msgstr "还行"
+msgstr "确定"
 
 msgid "On"
 msgstr "开启"
