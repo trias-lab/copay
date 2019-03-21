@@ -1,36 +1,20 @@
-<img src="https://raw.githubusercontent.com/bitpay/copay/master/resources/copay/android/icon/drawable-xxxhdpi-icon.png" alt="Copay" width="79">
+# Trias Wallet
 
-[![CircleCI](https://img.shields.io/circleci/project/github/bitpay/copay/master.svg)](https://circleci.com/gh/bitpay/copay/)
-[![Codecov](https://img.shields.io/codecov/c/github/bitpay/copay.svg)](https://codecov.io/gh/bitpay/copay/)
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/copay/localized.png)](https://crowdin.com/project/copay)
+[![CircleCI](https://img.shields.io/circleci/project/github/trias-lab/wallet/master.svg)](https://circleci.com/gh/trias-lab/wallet/)
 
-Copay is a secure bitcoin wallet platform for both desktop and mobile devices. Copay uses [Bitcore Wallet Service](https://github.com/bitpay/bitcore-wallet-service) (BWS) for peer synchronization and network interfacing.
-
-Binary versions of Copay are available for download at [Copay.io](https://copay.io/#download). Copay Binaries are signed with the key `copay@bitpay.com` – See the section [`How to Verify Copay Signatures`](https://github.com/bitpay/copay#how-to-verify-copay-signatures) for details.
-
-This project was created by BitPay Inc, and it is maintained by BitPay and houndreds of contributors. There is a BitPay branded version of Copay at mobile phone stores, BitPay Wallet, which features integration with the BitPay Visa Debit Card, as its main difference.
-
-For a list of frequently asked questions please visit the [Copay FAQ](https://github.com/bitpay/copay/wiki/COPAY---FAQ).
+Trias Wallet is a secure bitcoin wallet platform for mobile devices.
 
 ## Main Features
 
-- Bitcoin and Bitcoin Cash coin support
+- Bitcoin, Bitcoin Cash and ETH coin support
 - Multiple wallet creation and management in-app
-- Intuitive, multisignature security for personal or shared wallets
-- Easy spending proposal flow for shared wallets and group payments
 - [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) Hierarchical deterministic (HD) address generation and wallet backups
 - Device-based security: all private keys are stored locally, not in the cloud
 - Support for Bitcoin testnet wallets
-- Synchronous access across all major mobile and desktop platforms
-- Payment protocol (BIP70-BIP73) support: easily-identifiable payment requests and verifiable, secure bitcoin payments
 - Support for over 150 currency pricing options and unit denomination in BTC or bits
 - Mnemonic (BIP39) support for wallet backups
 - Paper wallet sweep support (BIP38)
-- Email notifications for payments and transfers
-- Push notifications (only available for ios and android versions)
-- Customizable wallet naming and background colors
 - Multiple languages supported
-- Available for [iOS](https://itunes.apple.com/us/app/copay/id951330296), [Android](https://play.google.com/store/apps/details?id=com.bitpay.copay&hl=en), [Windows Phone](http://www.windowsphone.com/en-us/store/app/copay-wallet/4372479b-a064-4d18-8bd3-74a3bdb81c3a), [Chrome App](https://chrome.google.com/webstore/detail/copay/cnidaodnidkbaplmghlelgikaiejfhja?hl=en), [Linux](https://github.com/bitpay/copay/releases/latest), [Windows](https://github.com/bitpay/copay/releases/latest) and [OS X](https://github.com/bitpay/copay/releases/latest) devices
 
 ## Testing in a Browser
 
@@ -39,7 +23,7 @@ For a list of frequently asked questions please visit the [Copay FAQ](https://gi
 Clone the repo and open the directory:
 
 ```sh
-git clone https://github.com/bitpay/copay.git
+git clone https://github.com/trias-lab/wallet.git
 cd copay
 ```
 
@@ -134,25 +118,6 @@ A current workaround is to comment out the line to prevent the removal of the fi
 
 [Source](https://github.com/phonegap/phonegap-plugin-push/issues/2518)
 
-### Desktop (Linux, macOS, and Windows)
-
-```sh
-npm run clean-all
-npm install
-npm run apply:copay
-npm run final:desktop
-```
-
-## Desktop Data Path
-
-Per-user application data directory for Copay or BitPay distribution.
-
-```sh
-"~/Library/Containers/com.bitpay.copay.desktop2/Data/.copay"
-# or
-"~/Library/Containers/com.bitpay.wallet.desktop/Data/.bitpay"
-```
-
 ## Configuration
 
 ### Enable External Services
@@ -164,18 +129,6 @@ COPAY_EXTERNAL_SERVICES_CONFIG_LOCATION="~/.copay/externalServices.json" npm run
 # or
 BITPAY_EXTERNAL_SERVICES_CONFIG_LOCATION="~/.bitpay/externalServices.json" npm run apply:bitpay
 ```
-
-## About Copay
-
-### General
-
-Copay implements a multisig wallet using [p2sh](https://en.bitcoin.it/wiki/Pay_to_script_hash) addresses. It supports multiple wallets, each with its own configuration, such as 3-of-5 (3 required signatures from 5 participant peers) or 2-of-3. To create a multisig wallet shared between multiple participants, Copay requires the extended public keys of all the wallet participants. Those public keys are then incorporated into the wallet configuration and combined to generate a payment address where funds can be sent into the wallet. Conversely, each participant manages their own private key and that private key is never transmitted anywhere.
-
-To unlock a payment and spend the wallet's funds, a quorum of participant signatures must be collected and assembled in the transaction. The funds cannot be spent without at least the minimum number of signatures required by the wallet configuration (2-of-3, 3-of-5, 6-of-6, etc.). Once a transaction proposal is created, the proposal is distributed among the wallet participants for each to sign the transaction locally. Finally, when the transaction is signed, the last signing participant will broadcast the transaction to the Bitcoin network.
-
-Copay also implements [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) to generate new addresses for peers. The public key that each participant contributes to the wallet is a BIP32 extended public key. As additional public keys are needed for wallet operations (to produce new addresses to receive payments into the wallet, for example) new public keys can be derived from the participants' original extended public keys. Once again, it's important to stress that each participant keeps their own private keys locally - private keys are not shared - and are used to sign transaction proposals to make payments from the shared wallet.
-
-For more information regarding how addresses are generated using this procedure, see: [Structure for Deterministic P2SH Multisignature Wallets](https://github.com/bitcoin/bips/blob/master/bip-0045.mediawiki).
 
 ## Copay Backups and Recovery
 
@@ -236,21 +189,6 @@ This will download all partial and complete language translations while also cle
 
 _Gracias totales!_
 
-## Release Schedules
-
-Copay uses the `MAJOR.MINOR.BATCH` convention for versioning. Any release that adds features should modify the MINOR or MAJOR number.
-
-### Bug Fixing Releases
-
-We release bug fixes as soon as possible for all platforms. Usually around a week after patches, a new release is made with language translation updates (like 1.1.4 and then 1.1.5). There is no coordination so all platforms are updated at the same time.
-
-### Minor and Major Releases
-
-- t+0: tag the release 1.2 and "text lock" (meaning only non-text related bug fixes. Though this rule is sometimes broken, it's good to make a rule.)
-- t+7: testing for 1.2 is finished, translation is also finished, and 1.2.1 is tagged with all translations along with bug fixes made in the last week.
-- t+7: iOS is submitted for 1.2.1. All other platforms are submitted with auto-release off.
-- t + (~17): All platforms 1.2.1 are released when Apple approves the iOS application update.
-
 ## How to Verify Copay Signatures
 
 1.  Download the `copay@bitpay.com` public key (`gpg --recv-keys 1112CFA1`)
@@ -306,33 +244,45 @@ gpg --import /tmp/key
 
 (Thanks @pzkpfwVI and @mika-mitzahlen for this section, taken from [Gist](https://gist.github.com/matiu/61c9f529efeeba66c0e2).
 
-## Contributing to this project
+## A Note on Production Readiness
 
-Anyone and everyone is welcome to contribute. Please take a moment to
-review the [guidelines for contributing](CONTRIBUTING.md).
+While Trias is being used in production in private, permissioned
+environments, we are still working actively to harden and audit it in preparation
+for use in public blockchains.
+We are also still making breaking changes to the protocol and the APIs.
+Thus, we tag the releases as _alpha software_.
 
-- [Bug reports](CONTRIBUTING.md#bugs)
-- [Feature requests](CONTRIBUTING.md#features)
-- [Pull requests](CONTRIBUTING.md#pull-requests)
+In any case, if you intend to run Trias in production,
+please [contact us](mailto:contact@trias.one) and [join the chat](https://www.trias.one).
 
-## Current Active Developers GPG keys ID
+## Security
 
-- 15EDAD8D9F2EB1AF @cmgustavo
+To report a security vulnerability, [bug report](mailto:contact@trias.one)
 
-- FC283098DA862864 @gabrielbazan7
+## Contributing
 
-- DD6D7EAADE12280D @Gamboster
+All code contributions and document maintenance are temporarily responsible for TriasLab.
 
-- D87947CC8A32D91C @msalcala11
+Trias are now developing at a high speed and we are looking forward to working with quality partners who are interested in Trias. If you want to join，please contact us:
 
-- 612C9C4DDAC47B61 @rastajpa
+- [Telegram](https://t.me/triaslab)
+- [Medium](https://medium.com/@Triaslab)
+- [BiYong](https://0.plus/#/triaslab)
+- [Twitter](https://twitter.com/triaslab)
+- [Gitbub](https://github.com/trias-lab/Documentation)
+- [Reddit](https://www.reddit.com/r/Trias_Lab)
+- [More](https://www.trias.one/)
+- [Email](mailto:contact@trias.one)
 
-- F8FC1D9B1B46486D @matiu
+### Upgrades
 
-## Support
+Trias is responsible for the code and documentation upgrades for all Trias modules. In an effort to avoid accumulating technical debt prior to Beta, we do not guarantee that data breaking changes (ie. bumps in the MINOR version) will work with existing Trias blockchains. In these cases you will have to start a new blockchain, or write something custom to get the old data into the new chain.
 
-Please see [Support requests](CONTRIBUTING.md#support)
+## Resources
 
-## License
+### Research
 
-Copay is released under the MIT License. Please refer to the [LICENSE](https://github.com/bitpay/copay/blob/master/LICENSE) file that accompanies this project for more information including complete terms and conditions.
+- [The latest paper](https://www.contact@trias.one/attachment/Trias-whitepaper%20attachments.zip)
+- [Project process](https://trias.one/updates/project)
+- [Original Whitepaper](https://trias.one/whitepaper)
+- [News room](https://trias.one/updates/recent)
