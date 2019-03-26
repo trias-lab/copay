@@ -965,7 +965,7 @@ msgstr "Ich akzeptiere die Geschäftsbedingungen und bestätige, dass ich der Nu
 msgid "I give explicit consent to BitPay to use my email address to send me email notifications about payments (and, if selected, email updates and news about the wallet)."
 msgstr ""
 
-msgid "I have read, understood, and agree to the Terms of Use"
+msgid "I have read, understood, and agree to the Terms of Use."
 msgstr "Ich habe die Nutzungsbedingungen gelesen und stimme ihnen zu"
 
 msgid "I have written it down"

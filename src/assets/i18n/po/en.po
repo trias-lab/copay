@@ -1087,8 +1087,8 @@ msgstr ""
 "notifications about payments (and, if selected, email updates and news about "
 "the wallet)."
 
-msgid "I have read, understood, and agree to the Terms of Use"
-msgstr "I have read, understood, and agree to the Terms of Use"
+msgid "I have read, understood, and agree to the Terms of Use."
+msgstr "I have read, understood, and agree to the Terms of Use."
 
 msgid "I have written it down"
 msgstr "I have written it down"

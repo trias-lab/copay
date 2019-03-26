@@ -965,7 +965,7 @@ msgstr "Eu concordo com os termos e certifico que sou o beneficiário efetivo do
 msgid "I give explicit consent to BitPay to use my email address to send me email notifications about payments (and, if selected, email updates and news about the wallet)."
 msgstr "Dou consentimento explícito para BitPay usar meu endereço de e-mail para enviar-me e-mail notificações sobre pagamentos (e, se selecionado, email atualizações e novidades sobre a carteira)."
 
-msgid "I have read, understood, and agree to the Terms of Use"
+msgid "I have read, understood, and agree to the Terms of Use."
 msgstr "Eu li, entendi e concordo com os Termos de Uso"
 
 msgid "I have written it down"

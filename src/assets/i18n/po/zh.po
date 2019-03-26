@@ -965,7 +965,7 @@ msgstr "本人同意条款，并证明本人是输入资产及目的地地址的
 msgid "I give explicit consent to BitPay to use my email address to send me email notifications about payments (and, if selected, email updates and news about the wallet)."
 msgstr "我明确同意BitPay使用我的电子邮件地址向我发送关于付款的电子邮件通知(如果选择，发送有关钱包的更新和资讯)。"
 
-msgid "I have read, understood, and agree to the Terms of Use"
+msgid "I have read, understood, and agree to the Terms of Use."
 msgstr "我已阅读、 理解并同意本使用条款。"
 
 msgid "I have written it down"
