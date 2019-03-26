@@ -386,20 +386,20 @@ describe('Provider: Incoming Data Provider', () => {
         expect(eventsSpy).toHaveBeenCalledWith('IncomingDataRedir', nextView);
       });
     });
-    it('Should handle BitPay Card URI', () => {
-      let data = 'bitpay://bitpay.com?secret=xxxxx&email=xxx@xx.com';
-      let stateParams = { secret: 'xxxxx', email: 'xxx@xx.com', otp: null };
-      let nextView = {
-        name: 'BitPayCardIntroPage',
-        params: stateParams
-      };
-      expect(incomingDataProvider.redir(data, { activePage: 'ScanPage' })).toBe(
-        true
-      );
-      expect(loggerSpy).toHaveBeenCalledWith(
-        'Incoming-data (redirect): BitPay Card URL'
-      );
-      expect(eventsSpy).toHaveBeenCalledWith('IncomingDataRedir', nextView);
-    });
+    // it('Should handle BitPay Card URI', () => {
+    //   let data = 'bitpay://bitpay.com?secret=xxxxx&email=xxx@xx.com';
+    //   let stateParams = { secret: 'xxxxx', email: 'xxx@xx.com', otp: null };
+    //   let nextView = {
+    //     name: 'BitPayCardIntroPage',
+    //     params: stateParams
+    //   };
+    //   expect(incomingDataProvider.redir(data, { activePage: 'ScanPage' })).toBe(
+    //     true
+    //   );
+    //   expect(loggerSpy).toHaveBeenCalledWith(
+    //     'Incoming-data (redirect): BitPay Card URL'
+    //   );
+    //   expect(eventsSpy).toHaveBeenCalledWith('IncomingDataRedir', nextView);
+    // });
   });
 });
