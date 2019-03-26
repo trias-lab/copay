@@ -720,7 +720,7 @@ export class ProfileProvider {
                 .ionicAlert(this.bwcErrorProvider.msg(err), message)
                 .then(() => {
                   // this.encrypt(wallet, fromOnboarding).then(() => {
-                    return reject();
+                  return reject();
                   // });
                 });
             } else {
@@ -783,57 +783,60 @@ export class ProfileProvider {
 
       // Encrypt wallet
       this.onGoingProcessProvider.pause();
-      this.encrypt(wallet, fromOnboarding).then(() => {
-        this.onGoingProcessProvider.resume();
+      this.encrypt(wallet, fromOnboarding)
+        .then(() => {
+          this.onGoingProcessProvider.resume();
 
-        const walletId: string = wallet.credentials.walletId;
+          const walletId: string = wallet.credentials.walletId;
 
-        if (!this.profile.addWallet(JSON.parse(wallet.export()))) {
-          const message = this.replaceParametersProvider.replace(
-            this.translate.instant('Wallet already in {{nameCase}}'),
-            { nameCase: this.appProvider.info.nameCase }
+          if (!this.profile.addWallet(JSON.parse(wallet.export()))) {
+            const message = this.replaceParametersProvider.replace(
+              this.translate.instant('Wallet already in {{nameCase}}'),
+              { nameCase: this.appProvider.info.nameCase }
+            );
+            return reject(message);
+          }
+
+          const skipKeyValidation: boolean = this.shouldSkipValidation(
+            walletId
           );
-          return reject(message);
-        }
+          if (!skipKeyValidation) {
+            this.logger.debug('Trying to runValidation: ' + walletId);
+            this.runValidation(wallet);
+          }
 
-        const skipKeyValidation: boolean = this.shouldSkipValidation(walletId);
-        if (!skipKeyValidation) {
-          this.logger.debug('Trying to runValidation: ' + walletId);
-          this.runValidation(wallet);
-        }
+          this.bindWalletClient(wallet);
 
-        this.bindWalletClient(wallet);
+          const saveBwsUrl = (): Promise<any> => {
+            return new Promise(resolve => {
+              const defaults = this.configProvider.getDefaults();
+              const bwsFor = {};
+              bwsFor[walletId] = opts.bwsurl || defaults.bws.url;
 
-        const saveBwsUrl = (): Promise<any> => {
-          return new Promise(resolve => {
-            const defaults = this.configProvider.getDefaults();
-            const bwsFor = {};
-            bwsFor[walletId] = opts.bwsurl || defaults.bws.url;
+              // Dont save the default
+              if (bwsFor[walletId] == defaults.bws.url) {
+                return resolve();
+              }
 
-            // Dont save the default
-            if (bwsFor[walletId] == defaults.bws.url) {
+              this.configProvider.set({ bwsFor });
               return resolve();
-            }
-
-            this.configProvider.set({ bwsFor });
-            return resolve();
-          });
-        };
-
-        saveBwsUrl().then(() => {
-          this.persistenceProvider
-            .storeProfile(this.profile)
-            .then(() => {
-              return resolve(wallet);
-            })
-            .catch(err => {
-              return reject(err);
             });
+          };
+
+          saveBwsUrl().then(() => {
+            this.persistenceProvider
+              .storeProfile(this.profile)
+              .then(() => {
+                return resolve(wallet);
+              })
+              .catch(err => {
+                return reject(err);
+              });
+          });
+        })
+        .catch((err?) => {
+          return reject(err);
         });
-      })
-      .catch((err?) => {
-        return reject(err)
-      })
     });
   }
 

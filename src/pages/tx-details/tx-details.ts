@@ -54,7 +54,7 @@ export class TxDetailsPage {
     private translate: TranslateService,
     private platform: Platform,
     private statusBar: StatusBar
-  ) { }
+  ) {}
 
   ionViewDidLoad() {
     this.config = this.configProvider.get();
@@ -187,7 +187,6 @@ export class TxDetailsPage {
       .getTx(this.wallet, this.txId)
       .then(tx => {
         if (!opts.hideLoading) this.onGoingProcess.clear();
-
 
         this.logger.warn('this is tx', tx);
         this.btx = this.txFormatProvider.processTx(

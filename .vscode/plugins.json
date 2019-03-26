@@ -27,6 +27,8 @@
     "cordova-custom-config",
     "cordova-plugin-customurlscheme",
     "cordova-plugin-fcm",
-    "cordova-plugin-ionic-webview"
+    "cordova-plugin-ionic-webview",
+    "cordova-plugin-wkwebview-engine",
+    "cordova-plugin-wkwebview-inputfocusfix"
   ]
 }

@@ -43,7 +43,11 @@ export class TxFormatProvider {
   }
 
   // TODO: Check return of formatAmount(...), sometimes returns a number and sometimes a string
-  public formatAmount(satoshis: number, fullPrecision?: boolean, coin?: string) {
+  public formatAmount(
+    satoshis: number,
+    fullPrecision?: boolean,
+    coin?: string
+  ) {
     let settings = this.configProvider.get().wallet.settings;
 
     if (settings.unitCode == 'sat') return satoshis;
