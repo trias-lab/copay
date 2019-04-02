@@ -24,7 +24,7 @@ Clone the repo and open the directory:
 
 ```sh
 git clone https://github.com/trias-lab/wallet.git
-cd copay
+cd wallet
 ```
 
 Ensure you have [Node](https://nodejs.org/) installed, then install and start Copay:
