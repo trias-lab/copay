@@ -62,7 +62,6 @@ import { ActivityPage } from '../pages/home/activity/activity';
 import { ProposalsPage } from '../pages/home/proposals/proposals';
 
 /* Settings */
-// import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 import { PasswordModalPage } from '../pages/password-modal/password-modal';
 import { PinPad } from '../pages/pin-pad/pin-pad.component';
 import { AboutPage } from '../pages/settings/about/about';
@@ -143,7 +142,6 @@ export const PAGES = [
   CollectEmailPage,
   ...GIFT_CARD_PAGES,
   GravatarPage,
-  // FingerprintModalPage,
   HomePage,
   LanguagePage,
   OnboardingPage,

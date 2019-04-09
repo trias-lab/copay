@@ -35,7 +35,6 @@ import { TouchIdProvider } from '../providers/touchid/touchid';
 import { CopayersPage } from '../pages/add/copayers/copayers';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
 // import { HomePage } from '../pages/home/home';
-// import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 // import { BitPayCardIntroPage } from '../pages/integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 // import { CoinbasePage } from '../pages/integrations/coinbase/coinbase';
 // import { ShapeshiftPage } from '../pages/integrations/shapeshift/shapeshift';
@@ -279,19 +278,6 @@ export class CopayApp {
       this.isLockModalOpen = false;
     });
   }
-
-  // private openFingerprintModal(): void {
-  //   this.isLockModalOpen = true;
-  //   const modal = this.modalCtrl.create(
-  //     FingerprintModalPage,
-  //     {},
-  //     { cssClass: 'fullscreen-modal' }
-  //   );
-  //   modal.present({ animate: false });
-  //   modal.onDidDismiss(() => {
-  //     this.isLockModalOpen = false;
-  //   });
-  // }
 
   // private registerIntegrations(): void {
   //   // Gift Cards
