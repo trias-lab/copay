@@ -57,7 +57,7 @@ export class ScanPage {
   public isCameraSelected: boolean;
   public fromAddressbook: boolean;
   public fromImport: boolean;
-  public fromJoin: boolean;
+  // public fromJoin: boolean;
   public fromSend: boolean;
   private onResumeSubscription: Subscription;
 
@@ -130,7 +130,7 @@ export class ScanPage {
     this.initializeBackButtonHandler();
     this.fromAddressbook = this.navParams.data.fromAddressbook;
     this.fromImport = this.navParams.data.fromImport;
-    this.fromJoin = this.navParams.data.fromJoin;
+    // this.fromJoin = this.navParams.data.fromJoin;
     this.fromSend =
       this.walletTabsProvider.getFromPage() &&
       this.walletTabsProvider.getFromPage().fromSend;
@@ -319,23 +319,21 @@ export class ScanPage {
   }
 
   private handleSuccessfulScan(contents: string): void {
-    var arr = contents.split(':');
-    var str = arr[1];
     if (this.fromAddressbook) {
-      this.events.publish('update:address', { value: str });
+      this.events.publish('update:address', { value: contents });
       this.navCtrl.pop();
     } else if (this.fromImport) {
-      this.events.publish('update:words', { value: str });
+      this.events.publish('update:words', { value: contents });
       this.navCtrl.pop();
-    } else if (this.fromJoin) {
-      this.events.publish('update:invitationCode', { value: str });
-      this.navCtrl.pop();
+      // } else if (this.fromJoin) {
+      //   this.events.publish('update:invitationCode', { value: contents });
+      //   this.navCtrl.pop();
     } else if (this.fromSend) {
-      this.events.publish('update:address', { value: str });
+      this.events.publish('update:address', { value: contents });
       this.close();
     } else {
       const redirParms = { activePage: 'ScanPage' };
-      this.incomingDataProvider.redir(str, redirParms);
+      this.incomingDataProvider.redir(contents, redirParms);
     }
   }
 
