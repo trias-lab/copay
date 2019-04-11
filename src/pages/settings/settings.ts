@@ -6,11 +6,11 @@ import { Logger } from '../../providers/logger/logger';
 // import * as _ from 'lodash';
 
 // providers
-import { AppProvider } from '../../providers/app/app';
-import { BitPayCardProvider } from '../../providers/bitpay-card/bitpay-card';
+// import { AppProvider } from '../../providers/app/app';
+// import { BitPayCardProvider } from '../../providers/bitpay-card/bitpay-card';
 import { ConfigProvider } from '../../providers/config/config';
 import { ExternalLinkProvider } from '../../providers/external-link/external-link';
-import { HomeIntegrationsProvider } from '../../providers/home-integrations/home-integrations';
+// import { HomeIntegrationsProvider } from '../../providers/home-integrations/home-integrations';
 import { LanguageProvider } from '../../providers/language/language';
 import { PlatformProvider } from '../../providers/platform/platform';
 import { PopupProvider } from '../../providers/popup/popup';
