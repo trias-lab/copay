@@ -1,6 +1,6 @@
 {
   "name": "*USERVISIBLENAME*",
-  "app_id": "cn.8lab.*BUNDLENAME*",
+  "app_id": "cn.traislab.*BUNDLENAME*",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

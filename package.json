@@ -1,5 +1,5 @@
 {
-  "name": "tri-wallet",
+  "name": "triaswallet",
   "description": "A Secure Bitcoin Wallet",
   "author": "TriasLab",
   "version": "2.1.2",
@@ -12,7 +12,7 @@
     "bitcore"
   ],
   "main": "electron/main.js",
-  "title": "Tri Wallet",
+  "title": "Trias Wallet",
   "user-agent": "%name %ver (%osinfo)",
   "webkit": {
     "page-cache": false,
@@ -35,7 +35,7 @@
     "prompt": "\n\n\n\n\n\n#\n#  Choose a distribution with:\n#\n#     $ npm run apply:copay\n#              or\n#     $ npm run apply:bitpay\n#\n",
     "start": "npm run ionic:serve && npm run e2e:serve",
     "clean": "rm -rf platforms && rm -rf plugins && rm -f config.xml",
-    "prepare:copay": "npm run clean && npm run apply:copay && ionic cordova prepare && npm run fix:fcm",
+    "prepare:copay": "npm run clean && npm run apply:copay && ionic cordova platform add ios; ionic cordova platform add android && npm run fix:fcm",
     "clean-all": "git clean -dfx",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
@@ -244,7 +244,7 @@
       "cordova-custom-config": {},
       "cordova-plugin-customurlscheme": {
         "URL_SCHEME": "bitcoin",
-        "SECOND_URL_SCHEME": "tri-wallet",
+        "SECOND_URL_SCHEME": "triaswallet",
         "THIRD_URL_SCHEME": "bitcoincash",
         "ANDROID_SCHEME": " ",
         "ANDROID_HOST": " ",
