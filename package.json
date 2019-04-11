@@ -86,57 +86,6 @@
     "sign:copay-windows": "gpg -u 1112CFA1 --output dist/Copay.exe.sig --detach-sig dist/Copay.exe",
     "verify:copay-desktop": "gpg --verify dist/Copay-linux.zip.sig dist/Copay-linux.zip; gpg --verify dist/Copay.exe.sig dist/Copay.exe; gpg --verify dist/Copay.dmg.sig dist/Copay.dmg"
   },
-  "build": {
-    "productName": "Tri Wallet",
-    "afterPack": "./electron/afterPack.js",
-    "files": [
-      "./electron/main.js",
-      "./package.json",
-      "./www/**/*"
-    ],
-    "protocols": {
-      "name": "URL protocol schemes",
-      "schemes": [
-        "bitcoin",
-        "bitcoincash",
-        "bchtest",
-        "tri wallet"
-      ]
-    },
-    "mac": {
-      "category": "public.app-category.finance",
-      "icon": "resources/tri wallet/mac/app.icns",
-      "artifactName": "${productName}.${ext}",
-      "extendInfo": {
-        "NSCameraUsageDescription": "Scan a Bitcoin Address directly to your Wallet and send funds to it"
-      },
-      "target": [
-        "mas"
-      ]
-    },
-    "mas": {
-      "identity": "BitPay, Inc. (884JRH5R93)",
-      "entitlements": "./tri-wallet-entitlements.mas.plist",
-      "provisioningProfile": "./tri-wallet-embedded.provisionprofile"
-    },
-    "win": {
-      "target": [
-        "appx"
-      ],
-      "icon": "resources/tri wallet/windows/icon.ico",
-      "artifactName": "${productName}.${ext}"
-    },
-    "appx": {
-      "publisher": "CN=F89609D1-EB3E-45FD-A58A-C2E3895FCE7B",
-      "publisherDisplayName": "BitPay Inc."
-    },
-    "linux": {
-      "target": [
-        "snap"
-      ],
-      "artifactName": "${productName}-linux.${ext}"
-    }
-  },
   "dependencies": {
     "@angular/animations": "5.2.10",
     "@angular/common": "5.2.10",
