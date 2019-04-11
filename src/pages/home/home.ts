@@ -133,10 +133,10 @@ export class HomePage {
     private addressBookProvider: AddressBookProvider,
     private appProvider: AppProvider,
     private platformProvider: PlatformProvider,
-    private homeIntegrationsProvider: HomeIntegrationsProvider,
+    // private homeIntegrationsProvider: HomeIntegrationsProvider,
     private persistenceProvider: PersistenceProvider,
     private feedbackProvider: FeedbackProvider,
-    private bitPayCardProvider: BitPayCardProvider,
+    // private bitPayCardProvider: BitPayCardProvider,
     private translate: TranslateService,
     private emailProvider: EmailNotificationsProvider,
     private replaceParametersProvider: ReplaceParametersProvider,
@@ -270,30 +270,30 @@ export class HomePage {
     this.subscribeIncomingDataMenuEvent();
     this.subscribeBwsEvents();
 
-    // Show integrations
-    const integrations = _.filter(this.homeIntegrationsProvider.get(), {
-      show: true
-    }).filter(i => i.name !== 'giftcards');
+    // // Show integrations
+    // const integrations = _.filter(this.homeIntegrationsProvider.get(), {
+    //   show: true
+    // }).filter(i => i.name !== 'giftcards');
 
-    this.showGiftCards = this.homeIntegrationsProvider.shouldShowInHome(
-      'giftcards'
-    );
+    // this.showGiftCards = this.homeIntegrationsProvider.shouldShowInHome(
+    //   'giftcards'
+    // );
 
-    // Hide BitPay if linked
-    setTimeout(() => {
-      this.homeIntegrations = _.remove(_.clone(integrations), x => {
-        if (x.name == 'debitcard' && x.linked) return;
-        else return x;
-      });
-    }, 200);
+    // // Hide BitPay if linked
+    // setTimeout(() => {
+    //   this.homeIntegrations = _.remove(_.clone(integrations), x => {
+    //     if (x.name == 'debitcard' && x.linked) return;
+    //     else return x;
+    //   });
+    // }, 200);
 
-    // Only BitPay Wallet
-    this.bitPayCardProvider.get({}, (_, cards) => {
-      this.zone.run(() => {
-        this.showBitPayCard = this.appProvider.info._enabledExtensions.debitcard;
-        this.bitpayCardItems = cards;
-      });
-    });
+    // // Only BitPay Wallet
+    // this.bitPayCardProvider.get({}, (_, cards) => {
+    //   this.zone.run(() => {
+    //     this.showBitPayCard = this.appProvider.info._enabledExtensions.debitcard;
+    //     this.bitpayCardItems = cards;
+    //   });
+    // });
   }
 
   ionViewDidLoad() {

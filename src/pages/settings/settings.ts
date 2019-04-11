@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 
 // providers
 import { AppProvider } from '../../providers/app/app';
@@ -56,14 +56,14 @@ export class SettingsPage {
 
   constructor(
     private navCtrl: NavController,
-    private app: AppProvider,
+    // private app: AppProvider,
     private language: LanguageProvider,
     private externalLinkProvider: ExternalLinkProvider,
     private profileProvider: ProfileProvider,
     private configProvider: ConfigProvider,
     private logger: Logger,
-    private homeIntegrationsProvider: HomeIntegrationsProvider,
-    private bitPayCardProvider: BitPayCardProvider,
+    // private homeIntegrationsProvider: HomeIntegrationsProvider,
+    // private bitPayCardProvider: BitPayCardProvider,
     private platformProvider: PlatformProvider,
     private translate: TranslateService,
     private touchid: TouchIdProvider,
@@ -101,21 +101,19 @@ export class SettingsPage {
 
   ionViewDidEnter() {
     // Show integrations
-    let integrations = this.homeIntegrationsProvider.get();
-
-    // Hide BitPay if linked
-    setTimeout(() => {
-      this.integrationServices = _.remove(_.clone(integrations), x => {
-        if (x.name == 'debitcard' && x.linked) return;
-        else return x;
-      });
-    }, 200);
-
-    // Only BitPay Wallet
-    this.bitPayCardProvider.get({}, (_, cards) => {
-      this.showBitPayCard = this.app.info._enabledExtensions.debitcard;
-      this.bitpayCardItems = cards;
-    });
+    // let integrations = this.homeIntegrationsProvider.get();
+    // // Hide BitPay if linked
+    // setTimeout(() => {
+    //   this.integrationServices = _.remove(_.clone(integrations), x => {
+    //     if (x.name == 'debitcard' && x.linked) return;
+    //     else return x;
+    //   });
+    // }, 200);
+    // // Only BitPay Wallet
+    // this.bitPayCardProvider.get({}, (_, cards) => {
+    //   this.showBitPayCard = this.app.info._enabledExtensions.debitcard;
+    //   this.bitpayCardItems = cards;
+    // });
   }
 
   public openAltCurrencyPage(): void {
