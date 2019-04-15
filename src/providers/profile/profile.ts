@@ -1496,14 +1496,15 @@ export class ProfileProvider {
 
       this.createWallet(opts, !fromImporting)
         .then(wallet => {
-          // default BTH wallet option
+          let mnemonic = wallet.getKeys(this.password).mnemonic;
+
           const optsBch: Partial<WalletOptions> = {};
           optsBch.m = 1;
           optsBch.n = 1;
           optsBch.networkName = 'livenet';
           optsBch.coin = Coin.BCH;
           // use the same mnemonic of the BTC waller created above.
-          optsBch.mnemonic = wallet.credentials.mnemonic;
+          optsBch.mnemonic = mnemonic;
 
           const optsEth: Partial<WalletOptions> = {};
           optsEth.m = 1;
@@ -1511,7 +1512,7 @@ export class ProfileProvider {
           optsEth.networkName = 'livenet';
           optsEth.coin = Coin.ETH;
           // use the same mnemonic of the BTC waller created above.
-          optsEth.mnemonic = wallet.credentials.mnemonic;
+          optsEth.mnemonic = mnemonic;
 
           const optsTri: Partial<WalletOptions> = {};
           optsTri.m = 1;
@@ -1519,7 +1520,7 @@ export class ProfileProvider {
           optsTri.networkName = 'livenet';
           optsTri.coin = Coin.TRI;
           // use the same mnemonic of the BTC waller created above.
-          optsTri.mnemonic = wallet.credentials.mnemonic;
+          optsTri.mnemonic = mnemonic;
 
           this.createWallet(optsBch, true)
             .then(walletBCH => {
