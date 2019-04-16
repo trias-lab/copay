@@ -147,10 +147,15 @@ export class SettingsPage {
       this.configProvider.set({ lock });
     } else {
       // check touchid before enable the option
-      this.touchid.check().then(() => {
-        lock.fingerprint = this.fingerprintLock.label;
-        this.configProvider.set({ lock });
-      });
+      this.touchid
+        .check()
+        .then(() => {
+          lock.fingerprint = this.fingerprintLock.label;
+          this.configProvider.set({ lock });
+        })
+        .catch(() => {
+          this.fingerprintLock.enabled = false;
+        });
     }
   }
 

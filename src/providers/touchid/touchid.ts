@@ -78,15 +78,13 @@ export class TouchIdProvider {
   private verifyIOSFingerprint(): Promise<any> {
     return (
       this.touchId
-        // .verifyFingerprint('Scan your fingerprint please')
-        .verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(
-          'Unlock with your PIN instead',
-          'Enter PIN'
-        )
+        .verifyFingerprint('Scan your fingerprint please')
+        // .verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(
+        //   'Unlock with your PIN instead',
+        //   'Enter PIN'
+        // )
         .catch(err => {
-          // get err.code -3 if user taps ‘Enter Password’ button
-          // do not bring up standard system passcode screen
-          if (err && (err.code == -2 || err.code == -3 || err.code == -128))
+          if (err && (err.code == -2 || err.code == -128))
             err.message = TouchIdErrors.fingerprintCancelled;
           throw err;
         })
