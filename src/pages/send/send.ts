@@ -4,7 +4,6 @@ import { Events, NavController, NavParams } from 'ionic-angular';
 import * as _ from 'lodash';
 
 // Providers
-// Pages
 import { Observable } from 'rxjs/Observable';
 import { ActionSheetProvider } from '../../providers/action-sheet/action-sheet';
 import { AddressBookProvider } from '../../providers/address-book/address-book';
@@ -16,6 +15,9 @@ import { Logger } from '../../providers/logger/logger';
 import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { Coin, WalletProvider } from '../../providers/wallet/wallet';
+
+// pages
+import { ReceivePage } from '../receive/receive';
 import { WalletTabsChild } from '../wallet-tabs/wallet-tabs-child';
 import { WalletTabsProvider } from '../wallet-tabs/wallet-tabs.provider';
 import { AmountPage } from './amount/amount';
@@ -73,6 +75,8 @@ export class SendPage extends WalletTabsChild {
     'BitcoinCashUri'
   ];
 
+  private address;
+
   constructor(
     navCtrl: NavController,
     private navParams: NavParams,
@@ -91,6 +95,8 @@ export class SendPage extends WalletTabsChild {
     private translate: TranslateService
   ) {
     super(navCtrl, profileProvider, walletTabsProvider);
+
+    this.address = this.navParams.get('address');
   }
 
   ionViewDidLoad() {
@@ -207,6 +213,10 @@ export class SendPage extends WalletTabsChild {
   public async goToReceive() {
     // await this.walletTabsProvider.goToTabIndex(0);
     this.navCtrl.pop();
+    this.navCtrl.push(ReceivePage, {
+      walletId: this.wallet.credentials.walletId,
+      address: this.address
+    });
     const coinName =
       this.wallet.coin === Coin.BTC
         ? 'bitcoin'

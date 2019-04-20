@@ -734,7 +734,8 @@ export class WalletDetailsPage extends WalletTabsChild {
 
   public send() {
     this.navCtrl.push(SendPage, {
-      walletId: this.wallet.credentials.walletId
+      walletId: this.wallet.credentials.walletId,
+      address: this.address
     });
   }
 }
