@@ -246,6 +246,8 @@ export class BackupGamePage {
         if (this.customWords[i].word !== this.mnemonicWords[i]) {
           this.isWrongOrder = true;
           this.customWords[i].correct = false;
+        } else {
+          this.customWords[i].correct = true;
         }
       }
     }
