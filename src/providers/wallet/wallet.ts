@@ -453,7 +453,6 @@ export class WalletProvider {
   public getProtoAddress(wallet, address: string) {
     let proto: string = this.getProtocolHandler(wallet.coin, wallet.network);
     let protoAddr: string = proto + ':' + address;
-    this.logger.debug('protoAddr: ', protoAddr);
 
     if (wallet.coin != 'bch' || this.useLegacyAddress()) {
       return protoAddr;
