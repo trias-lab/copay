@@ -11,8 +11,8 @@
         BitPay Inc.
     </author>
     <content src="index.html" />
+    <access origin="https://bws.bitpay.com" />
     <allow-navigation href="gap://ready" />
-    <access origin="*" />
 
     <preference name="AndroidPersistentFileLocation" value="Internal" />
     <preference name="iosPersistentFileLocation" value="Library" />
