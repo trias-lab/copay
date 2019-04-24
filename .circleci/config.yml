@@ -28,33 +28,8 @@ jobs:
       - store_test_results:
           path: ./test
 
-  bitpay:
-    docker:
-      - image: circleci/node@sha256:a6f4dfaae4e22f99d3910902362db706f32e0dbca7ce5ef757823d93fef1740e
-    working_directory: ~/copay
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm run apply:bitpay
-      - run: npm run test:lint
-      - run: npm run test:ci
-      - run: npx codecov
-      - store_artifacts:
-          path: ./test
-      - store_test_results:
-          path: ./test
-
 workflows:
   version: 2
   build_and_test:
     jobs:
       - copay
-      - bitpay
