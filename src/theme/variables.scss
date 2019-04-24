@@ -22,23 +22,27 @@ $app-direction: ltr;
 @import 'modals';
 @import 'zero-state';
 // Colors
-$colors: (primary: $color-primary,
-secondary: $color-secondary,
-warning: #fdb455,
-danger: #df5264,
-success: #01d1a2,
-info: #5476eb,
-light: #f4f4f4,
-blank: #fff,
-dark: #424242,
-grey: #667,
-light-grey: #9b9bab,
-error: #e56c7b);
+$colors: (
+  primary: $color-primary,
+  secondary: $color-secondary,
+  warning: #fdb455,
+  danger: #df5264,
+  success: #01d1a2,
+  info: #5476eb,
+  light: #f4f4f4,
+  blank: #fff,
+  dark: #424242,
+  grey: #667,
+  light-grey: #9b9bab,
+  error: #e56c7b
+);
 
-$background-colors: (warning: #fff7f2,
-danger: #fff2f4,
-success: #bfffeb,
-info: #eff1f8);
+$background-colors: (
+  warning: #fff7f2,
+  danger: #fff2f4,
+  success: #bfffeb,
+  info: #eff1f8
+);
 // App background color
 $background-color: #f8f8f9;
 // Item list background color
@@ -59,9 +63,11 @@ $toolbar-md-title-text-color: color($colors, light);
 // Onboarding colors
 $onboarding-gradient-top-color: $toolbar-background;
 $onboarding-gradient-bottom-color: $color-secondary-dark;
-$onboarding-background-image: linear-gradient(to bottom,
-$onboarding-gradient-top-color 0%,
-$onboarding-gradient-bottom-color 100%);
+$onboarding-background-image: linear-gradient(
+  to bottom,
+  $onboarding-gradient-top-color 0%,
+  $onboarding-gradient-bottom-color 100%
+);
 // Removes green border below the input (Android)
 $text-input-md-highlight-color-invalid: transparent;
 $text-input-md-highlight-color-valid: transparent;
@@ -144,10 +150,10 @@ $button-md-text-transform: none;
 }
 
 // Removes border-bottom
-.md ion-list>.item:last-child,
-.md ion-list>.item-wrapper:last-child .item,
-.ios ion-list>.item:last-child,
-.ios ion-list>.item-wrapper:last-child .item {
+.md ion-list > .item:last-child,
+.md ion-list > .item-wrapper:last-child .item,
+.ios ion-list > .item:last-child,
+.ios ion-list > .item-wrapper:last-child .item {
   border-bottom: none;
 }
 
@@ -175,7 +181,6 @@ ion-footer {
 }
 
 .toolbar {
-
   // Titles centered on all headers for material design
   &.toolbar-md {
     //material design only

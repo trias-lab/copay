@@ -4,7 +4,7 @@ page-wallet-details {
     background-color: #f8fafb !important;
   }
 
-  ion-content.has-refresher>.scroll-content {
+  ion-content.has-refresher > .scroll-content {
     background: transparent;
   }
 
@@ -26,7 +26,6 @@ page-wallet-details {
     }
 
     .refresher-refreshing {
-
       .spinner-crescent circle,
       .spinner-ios line {
         stroke: white;
@@ -583,9 +582,11 @@ page-wallet-details {
               right: 18px;
               width: 55px;
               height: 20px;
-              background: linear-gradient(270deg,
+              background: linear-gradient(
+                270deg,
                 rgba(181, 189, 194, 1) 0%,
-                rgba(145, 153, 158, 1) 100%);
+                rgba(145, 153, 158, 1) 100%
+              );
               border-radius: 10px;
               font-size: 14px;
               font-weight: 500;
@@ -612,7 +613,7 @@ page-wallet-details {
               justify-content: center;
             }
 
-            a>img {
+            a > img {
               width: 20px;
               height: 20px;
               display: inline-block;
