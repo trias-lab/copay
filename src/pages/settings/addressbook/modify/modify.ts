@@ -102,6 +102,9 @@ export class AddressbookModifyPage {
     this.viewCtrl.dismiss(concact);
   }
   private parseAddress(address: string): string {
-    return address.replace(/^(bitcoincash:|bchtest:|bitcoin:)/i, '');
+    return address.replace(
+      /^(bitcoincash:|bchtest:|bitcoin:|bitcoreEth:|bitcoreTri:)/i,
+      ''
+    );
   }
 }
