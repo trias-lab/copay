@@ -123,7 +123,7 @@
     "cordova-plugin-add-swift-support": "1.7.2",
     "cordova-plugin-android-fingerprint-auth": "1.4.3",
     "cordova-plugin-compat": "1.2.0",
-    "cordova-plugin-customurlscheme": "https://github.com/cmgustavo/Custom-URL-scheme.git#v4.0",
+    "cordova-plugin-customurlscheme-ng": "5.0.0",
     "cordova-plugin-device": "2.0.1",
     "cordova-plugin-dialogs": "2.0.1",
     "cordova-plugin-fcm": "https://github.com/cmgustavo/cordova-plugin-fcm.git#v4.1",
@@ -229,7 +229,7 @@
       "cordova-plugin-uniquedeviceid": {},
       "cordova-plugin-file": {},
       "cordova-custom-config": {},
-      "cordova-plugin-customurlscheme": {
+      "cordova-plugin-customurlscheme-ng": {
         "URL_SCHEME": "bitcoin",
         "SECOND_URL_SCHEME": "triaswallet",
         "THIRD_URL_SCHEME": "bitcoincash",
