@@ -84,11 +84,11 @@ export class IncomingDataProvider {
   }
 
   private isValidEthcoinAddress(data: string): boolean {
-    let reg = /^0x[a-fA-F0-9]{40}$/;
+    let reg = /^bitcoreEth\:0x[a-fA-F0-9]{40}$/;
     return reg.test(data);
   }
   private isValidTricoinAddress(data: string): boolean {
-    let reg = /^0x[a-fA-F0-9]{40}$/;
+    let reg = /^bitcoreTri\:0x[a-fA-F0-9]{40}$/;
     return reg.test(data);
   }
   private isValidBitcoinAddress(data: string): boolean {
