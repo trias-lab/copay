@@ -248,7 +248,7 @@ export class IncomingDataProvider {
     data: string
     // redirParams?: RedirParams
   ): void {
-    this.logger.debug('Incoming-data: Tri plain address');
+    this.logger.debug('Incoming-data: TRY plain address');
     const coin = Coin.TRI;
     this.goToAmountPage(data, coin);
   }
@@ -387,7 +387,7 @@ export class IncomingDataProvider {
       this.handlePlainEthcoinAddress(data);
       return true;
     }
-    // Plain Address (Tri)
+    // Plain Address (TRY)
     else if (this.isValidTricoinAddress(data)) {
       // this.handlePlainTricoinAddress(data, redirParams);
       this.handlePlainTricoinAddress(data);
@@ -487,13 +487,13 @@ export class IncomingDataProvider {
         type: 'EthcoinAddress',
         title: this.translate.instant('Eth Address')
       };
-      // Plain Address (Tri)
+      // Plain Address (TRY)
     } else if (this.isValidTricoinAddress(data)) {
       this.logger.warn('tri');
       return {
         data,
         type: 'TricoinAddress',
-        title: this.translate.instant('Tri Address')
+        title: this.translate.instant('TRY Address')
       };
       // Plain Address (Bitcoin)
     } else if (this.isValidBitcoinAddress(data)) {

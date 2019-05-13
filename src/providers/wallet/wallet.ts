@@ -1678,6 +1678,10 @@ export class WalletProvider {
   public getProtocolHandler(coin: string, network?: string): string {
     if (coin == 'bch') {
       return network == 'testnet' ? 'bchtest' : 'bitcoincash';
+    } else if (coin == 'eth') {
+      return 'bitcoreEth';
+    } else if (coin == 'tri') {
+      return 'bitcoreTri';
     } else {
       return 'bitcoin';
     }

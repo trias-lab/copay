@@ -57,8 +57,7 @@
         [ngClass]="{
           warn: wallet && tx.txp[wallet.id] && tx.txp[wallet.id].feeTooHigh,
           'btn-opacity': usingMerchantFee
-        }"
-        [disabled]="usingMerchantFee">
+        }" [disabled]="usingMerchantFee">
         change fee
       </button>
 
@@ -76,11 +75,13 @@
         </span>
       </div>
     </div>
-
-    <editable-item [scrollArea]="scrollArea" (focus)="hideSlideButton = $event" (valChange)="tx.description = $event"
-      [value]="tx.description" [itemPlaceholder]="'Enter a transaction memo' | translate">
-      <span item-label translate>Memo</span>
-    </editable-item>
+    <ion-item-divider></ion-item-divider>
+    <ion-item>
+      <ion-label stacked>{{'Notes' | translate}}</ion-label>
+      <ion-textarea placeholder="{{'Enter a transaction memo' | translate}}" [(ngModel)]="tx.description"
+        name="tx.description" autocomplete="off" autocorrect="off"></ion-textarea>
+    </ion-item>
+    <ion-item-divider></ion-item-divider>
   </div>
 
   <!--
@@ -236,8 +237,8 @@
   <page-slide-to-accept #slideButton *ngIf="isCordova" [ngClass]="{
       'slide-confirm-fast slide-confirm-down': hideSlideButton,
       'slide-confirm-slow': !hideSlideButton
-    }"
-    [disabled]="!wallet || !(tx?.txp)[wallet.id]" [buttonText]="buttonText" (slideDone)="approve(tx, wallet)"></page-slide-to-accept>
+    }" [disabled]="!wallet || !(tx?.txp)[wallet.id]" [buttonText]="buttonText" (slideDone)="approve(tx, wallet)">
+  </page-slide-to-accept>
   <div class="send-check" *ngIf="!isCordova">
     <p>Double check the deposite address!</p>
     <button ion-button block large (click)="approve(tx, wallet)" [disabled]="!wallet || !tx.txp[wallet.id]">
