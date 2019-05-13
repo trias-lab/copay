@@ -261,7 +261,7 @@ export class AmountPage extends WalletTabsChild {
     }
     if (parentWalletCoin === 'tri' || !parentWalletCoin) {
       this.availableUnits.push({
-        name: 'TRI',
+        name: 'TRY',
         id: 'tri',
         shortName: 'TRI'
       });

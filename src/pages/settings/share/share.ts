@@ -38,7 +38,7 @@ export class SharePage {
   ) {
     this.title = this.replaceParametersProvider.replace(
       this.translate.instant('Share {{appName}}'),
-      { appName: 'Tri Wallet' }
+      { appName: 'TRY Wallet' }
       // { appName: this.appProvider.info.nameCase }
     );
     let defaults = this.configProvider.getDefaults();

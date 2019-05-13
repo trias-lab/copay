@@ -45,7 +45,7 @@ describe('AboutPage', () => {
         );
         expect(instance.replaceParametersProvider.replace).toHaveBeenCalledWith(
           'testVal',
-          { appName: 'Tri Wallet' }
+          { appName: 'TRY Wallet' }
         );
         expect(instance.title).toEqual('testTitle');
       });
