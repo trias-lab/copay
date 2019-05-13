@@ -70,7 +70,7 @@ export class SettingsPage {
     private popupProvider: PopupProvider
   ) {
     // this.appName = this.app.info.nameCase;
-    this.appName = 'Tri Wallet';
+    this.appName = 'TRY Wallet';
     this.walletsBch = [];
     this.walletsBtc = [];
     this.isCordova = this.platformProvider.isCordova;

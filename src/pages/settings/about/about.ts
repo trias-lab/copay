@@ -36,7 +36,7 @@ export class AboutPage {
     this.version = '1.0.0';
     this.title = this.replaceParametersProvider.replace(
       this.translate.instant('About {{appName}}'),
-      { appName: 'Tri Wallet' }
+      { appName: 'TRY Wallet' }
       // { appName: this.appProvider.info.nameCase }
     );
   }

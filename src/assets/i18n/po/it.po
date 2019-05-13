@@ -2202,7 +2202,7 @@ msgid "Urgent"
 msgstr "Urgente"
 
 msgid "Use Bitcoin Cash Copay Style Addresses"
-msgstr "Utilizzare gli indirizzi Bitcoin Cash in stile Tri Wallet"
+msgstr "Utilizzare gli indirizzi Bitcoin Cash in stile TRY Wallet"
 
 msgid "Use Unconfirmed Funds"
 msgstr "Usa i fondi non confermati"

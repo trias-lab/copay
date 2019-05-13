@@ -819,7 +819,7 @@ export class HomePage {
           this.logger.warn('wwwwwwwwwww55555', 'aaa', alternativeBalance);
           this.triBalance += parseFloat(alternativeBalance);
           // this.balanceItem.push({
-          //   name: 'TRI',
+          //   name: 'TRY',
           //   value: parseFloat(amount),
           //   alternativeBalance: parseFloat(alternativeBalance),
           //   alternativeUnit: alternativeUnitOne
@@ -860,7 +860,7 @@ export class HomePage {
             alternativeUnit: alternativeUnitOne
           });
           this.balanceItem.push({
-            name: 'TRI',
+            name: 'TRY',
             // value: parseFloat(amount),
             alternativeBalance: this.triBalance,
             alternativeUnit: alternativeUnitOne
@@ -1110,7 +1110,7 @@ export class HomePage {
     _.each(this.walletsTri, (wallet, index: number) => {
       this.profileProvider.setWalletOrder(wallet.id, index);
     });
-    // this.logger.warn('wallet Tri!!!!!!', this.walletsTri);
+    // this.logger.warn('wallet TRY!!!!!!', this.walletsTri);
   }
 
   public goToDownload(): void {

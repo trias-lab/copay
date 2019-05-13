@@ -2499,7 +2499,7 @@ msgid "Urgent"
 msgstr "Urgent"
 
 msgid "Use Bitcoin Cash Copay Style Addresses"
-msgstr "Use Bitcoin Cash Tri Wallet Style Addresses"
+msgstr "Use Bitcoin Cash TRY Wallet Style Addresses"
 
 msgid "Use Unconfirmed Funds"
 msgstr "Use Unconfirmed Funds"
