@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { Logger } from '../../providers/logger/logger';
@@ -7,6 +7,7 @@ import { Logger } from '../../providers/logger/logger';
 import { AppProvider } from '../app/app';
 import { ConfigProvider } from '../config/config';
 import { HomeIntegrationsProvider } from '../home-integrations/home-integrations';
+import { HttpRequestsProvider } from '../http-requests/http-requests';
 import { PersistenceProvider } from '../persistence/persistence';
 
 @Injectable()
@@ -16,7 +17,7 @@ export class ShapeshiftProvider {
   constructor(
     private appProvider: AppProvider,
     private homeIntegrationsProvider: HomeIntegrationsProvider,
-    private http: HttpClient,
+    private httpNative: HttpRequestsProvider,
     private logger: Logger,
     private configProvider: ConfigProvider,
     private persistenceProvider: PersistenceProvider
@@ -67,20 +68,50 @@ export class ShapeshiftProvider {
     };
 
     const url = this.credentials.API_URL + '/shift';
-    const headers = new HttpHeaders({
+    const headers = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
       Authorization: 'Bearer ' + data.token
-    });
+    };
 
-    this.http.post(url, dataSrc, { headers }).subscribe(
+    this.httpNative.post(url, dataSrc, headers).subscribe(
       data => {
         this.logger.info('Shapeshift SHIFT: SUCCESS');
         return cb(null, data);
       },
       data => {
-        this.logger.error('Shapeshift SHIFT ERROR: ' + data.error.message);
-        return cb(data.error.message);
+        const error = this.parseError(data);
+        this.logger.error('Shapeshift SHIFT ERROR: ' + error);
+        return cb(error);
+      }
+    );
+  }
+
+  public sendamount(data, cb) {
+    const dataSrc = {
+      withdrawal: data.withdrawal,
+      pair: data.pair,
+      returnAddress: data.returnAddress,
+      apiKey: this.credentials.API_KEY,
+      depositAmount: data.depositAmount
+    };
+
+    const url = this.credentials.API_URL + '/sendamount';
+    const headers = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + data.token
+    };
+
+    this.httpNative.post(url, dataSrc, headers).subscribe(
+      data => {
+        this.logger.info('Shapeshift SENDAMOUNT: SUCCESS');
+        return cb(data.error, data.success);
+      },
+      data => {
+        const error = this.parseError(data);
+        this.logger.error('Shapeshift SENDAMOUNT ERROR: ' + error);
+        return cb(error);
       }
     );
   }
@@ -128,61 +159,65 @@ export class ShapeshiftProvider {
   }
 
   public getRate(pair: string, cb) {
-    this.http.get(this.credentials.API_URL + '/rate/' + pair).subscribe(
+    this.httpNative.get(this.credentials.API_URL + '/rate/' + pair).subscribe(
       data => {
         this.logger.info('Shapeshift PAIR: SUCCESS');
         return cb(null, data);
       },
       data => {
-        this.logger.error('Shapeshift PAIR ERROR: ' + data.error.message);
+        const error = this.parseError(data);
+        this.logger.error('Shapeshift PAIR ERROR: ' + error);
         return cb(data);
       }
     );
   }
 
   public getLimit(pair: string, cb) {
-    this.http.get(this.credentials.API_URL + '/limit/' + pair).subscribe(
+    this.httpNative.get(this.credentials.API_URL + '/limit/' + pair).subscribe(
       data => {
         this.logger.info('Shapeshift LIMIT: SUCCESS');
         return cb(null, data);
       },
       data => {
-        this.logger.error('Shapeshift LIMIT ERROR: ' + data.error.message);
+        const error = this.parseError(data);
+        this.logger.error('Shapeshift LIMIT ERROR: ' + error);
         return cb(data);
       }
     );
   }
 
   public getMarketInfo(pair: string, cb) {
-    this.http.get(this.credentials.API_URL + '/marketinfo/' + pair).subscribe(
-      data => {
-        this.logger.info('Shapeshift MARKET INFO: SUCCESS');
-        return cb(null, data);
-      },
-      data => {
-        this.logger.error('Shapeshift MARKET INFO ERROR', data.error.message);
-        return cb(data);
-      }
-    );
+    this.httpNative
+      .get(this.credentials.API_URL + '/marketinfo/' + pair)
+      .subscribe(
+        data => {
+          this.logger.info('Shapeshift MARKET INFO: SUCCESS');
+          return cb(null, data);
+        },
+        data => {
+          const error = this.parseError(data);
+          this.logger.error('Shapeshift MARKET INFO ERROR: ', error);
+          return cb(data);
+        }
+      );
   }
 
   public getStatus(addr: string, token: string, cb) {
-    const headers = new HttpHeaders({
+    const headers = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
       Authorization: 'Bearer ' + token
-    });
-    this.http
-      .get(this.credentials.API_URL + '/txStat/' + addr, { headers })
+    };
+    this.httpNative
+      .get(this.credentials.API_URL + '/txStat/' + addr, null, headers)
       .subscribe(
         data => {
           this.logger.info('Shapeshift STATUS: SUCCESS');
           return cb(null, data);
         },
         data => {
-          this.logger.error(
-            'Shapeshift STATUS ERROR: ' + data.error.error_description
-          );
+          const error = this.parseError(data);
+          this.logger.error('Shapeshift STATUS ERROR: ' + error);
           return cb(data.error);
         }
       );
@@ -219,7 +254,7 @@ export class ShapeshiftProvider {
         if (!accessToken) return cb();
         return cb(accessToken);
       })
-      .catch(_ => {
+      .catch(() => {
         return cb();
       });
   }
@@ -233,22 +268,19 @@ export class ShapeshiftProvider {
       client_secret: this.credentials.CLIENT_SECRET,
       redirect_uri: this.credentials.REDIRECT_URI
     };
-    const headers = new HttpHeaders({
+    const headers = {
       'Content-Type': 'application/json',
       Accept: 'application/json'
-    });
+    };
 
-    this.http.post(url, data, { headers }).subscribe(
+    this.httpNative.post(url, data, headers).subscribe(
       data => {
         this.logger.info('ShapeShift: GET Access Token: SUCCESS');
         // Show pending task from the UI
         this._afterTokenReceived(data, cb);
       },
       data => {
-        const error =
-          data && data.error && data.error.error_description
-            ? data.error.error_description
-            : data.statusText;
+        const error = this.parseError(data);
         this.logger.error(
           'ShapeShift: GET Access Token: ERROR ' + data.status + '. ' + error
         );
@@ -308,17 +340,18 @@ export class ShapeshiftProvider {
       Authorization: 'Bearer ' + token
     };
 
-    this.http.get(url, { headers }).subscribe(
+    this.httpNative.get(url, null, headers).subscribe(
       data => {
         this.logger.info('ShapeShift: Get Access Token Details SUCCESS');
         return cb(null, data);
       },
       data => {
+        const error = this.parseError(data);
         this.logger.error(
           'ShapeShift: Get Access Token Details ERROR ' +
             data.status +
             '. ' +
-            data.error.error_description
+            error
         );
         return cb(data.error);
       }
@@ -335,17 +368,15 @@ export class ShapeshiftProvider {
       Authorization: 'Bearer ' + token
     };
 
-    this.http.get(url, { headers }).subscribe(
+    this.httpNative.get(url, null, headers).subscribe(
       data => {
         this.logger.info('ShapeShift: Get Account SUCCESS');
         return cb(null, data);
       },
       data => {
+        const error = this.parseError(data);
         this.logger.error(
-          'ShapeShift: Get Account ERROR ' +
-            data.status +
-            '. ' +
-            data.error.error_description
+          'ShapeShift: Get Account ERROR ' + data.status + '. ' + error
         );
         return cb(data.error);
       }
@@ -355,23 +386,21 @@ export class ShapeshiftProvider {
   public revokeAccessToken(token) {
     const url = this.credentials.HOST + '/oauth/token/revoke';
     const data = new HttpParams().set('token', token);
-    const headers = new HttpHeaders({
+    const headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
       Authorization:
         'Basic ' +
         btoa(this.credentials.CLIENT_ID + ':' + this.credentials.CLIENT_SECRET)
-    });
+    };
 
-    this.http.post(url, data, { headers }).subscribe(
+    this.httpNative.post(url, data, headers).subscribe(
       () => {
         this.logger.info('ShapeShift: Revoke Access Token SUCCESS');
       },
       data => {
+        const error = this.parseError(data);
         this.logger.warn(
-          'ShapeShift: Revoke Access Token ERROR ' +
-            data.status +
-            '. ' +
-            data.error.error
+          'ShapeShift: Revoke Access Token ERROR ' + data.status + '. ' + error
         );
       }
     );
@@ -381,5 +410,17 @@ export class ShapeshiftProvider {
     this.revokeAccessToken(token);
     this.persistenceProvider.removeShapeshiftToken(this.credentials.NETWORK);
     this.homeIntegrationsProvider.updateLink('shapeshift', null); // Name, Token
+  }
+
+  private parseError(err: any): string {
+    if (!err) return 'Unknow Error';
+    if (!err.error) return err.message ? err.message : 'Unknow Error';
+
+    const parsedError = err.error.error_description
+      ? err.error.error_description
+      : err.error.error && err.error.error.message
+      ? err.error.error.message
+      : err.error;
+    return parsedError;
   }
 }

@@ -51,6 +51,7 @@ export { GiftCardProvider } from '../providers/gift-card/gift-card';
 export {
   HomeIntegrationsProvider
 } from '../providers/home-integrations/home-integrations';
+export { HttpRequestsProvider } from '../providers/http-requests/http-requests';
 export { IncomingDataProvider } from '../providers/incoming-data/incoming-data';
 export { LanguageProvider } from '../providers/language/language';
 export { Logger } from '../providers/logger/logger';

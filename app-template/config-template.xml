@@ -22,7 +22,7 @@
     <preference name="KeyboardResize" value="true" />
     <preference name="HideKeyboardFormAccessoryBar" value="false"/>
     <preference name="KeyboardResizeMode" value="ionic" />
-    
+
     <preference name="BackupWebStorage" value="none"/>
     <preference name="Orientation" value="default" />
     <preference name="cordova-custom-config-stoponerror" value="true" />
@@ -45,7 +45,7 @@
     <!-- <preference name="android-minSdkVersion" value="23" /> -->
     <!-- Android Version: Lollipop 5.1 (API Level 22) or higher -->
     <preference name="android-minSdkVersion" value="22" />
-
+    
     <!-- iOS 10.3 or higher -->
     <preference name="deployment-target" value="10.3" />
 
@@ -54,6 +54,7 @@
     <engine name="ios" spec="4.5.5" />
 
     <!-- Plugins -->
+    <plugin name="cordova-plugin-advanced-http" spec="2.0.8" />
     <plugin name="cordova-launch-review" spec="3.1.1" />
     <plugin name="cordova-clipboard" spec="1.1.1" />
     <plugin name="cordova-plugin-android-fingerprint-auth" spec="1.4.3" />
@@ -131,7 +132,7 @@
 
     <platform name="android">
       <preference name="android-manifest/application/@android:allowBackup" value="false" />
-
+      
       <icon src="resources/*PACKAGENAME*/android/icon/drawable-ldpi-icon.png" density="ldpi" />
       <icon src="resources/*PACKAGENAME*/android/icon/drawable-mdpi-icon.png" density="mdpi" />
       <icon src="resources/*PACKAGENAME*/android/icon/drawable-hdpi-icon.png" density="hdpi" />
