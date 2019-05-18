@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { File } from '@ionic-native/file';
 
-import { Logger } from '../../providers/logger/logger';
+import { Observable } from 'rxjs/Observable';
 
 // providers
 import { ConfigProvider } from '../../providers/config/config';
 import { LanguageProvider } from '../../providers/language/language';
+import { Logger } from '../../providers/logger/logger';
 import { PersistenceProvider } from '../../providers/persistence/persistence';
+import { PlatformProvider } from '../../providers/platform/platform';
 
 /* TODO: implement interface properly
 interface App {
@@ -50,6 +53,8 @@ export class AppProvider {
 
   constructor(
     public http: HttpClient,
+    private file: File,
+    private platformProvider: PlatformProvider,
     private logger: Logger,
     private language: LanguageProvider,
     public config: ConfigProvider,
@@ -79,10 +84,28 @@ export class AppProvider {
   }
 
   private getAppInfo() {
-    return this.http.get(this.jsonPathApp).toPromise();
+    if (this.platformProvider.isCordova) {
+      return Observable.fromPromise(
+        this.file.readAsText(
+          this.file.applicationDirectory + 'www/',
+          this.jsonPathApp
+        )
+      );
+    } else {
+      return this.http.get(this.jsonPathApp).toPromise();
+    }
   }
 
   private getServicesInfo() {
-    return this.http.get(this.jsonPathServices).toPromise();
+    if (this.platformProvider.isCordova) {
+      return Observable.fromPromise(
+        this.file.readAsText(
+          this.file.applicationDirectory + 'www/',
+          this.jsonPathServices
+        )
+      );
+    } else {
+      return this.http.get(this.jsonPathServices).toPromise();
+    }
   }
 }
