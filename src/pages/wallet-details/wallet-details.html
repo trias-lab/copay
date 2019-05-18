@@ -324,7 +324,7 @@
             <h3>{{u.name}} <span class="unused-mark"></span></h3>
             <!-- <p>{{u.path}} {{u.createdOn * 1000 | amDateFormat:'MMMM Do YYYY, hh:mm a'}}</p> -->
             <p>{{u.address}}</p>
-            <div class="selected" *ngIf="u.address == address && !editingAddr"><img src="../../assets/img/app/onboarding/icon_checkmark@2x.png"
+            <div class="selected" *ngIf="u.address == address && !editingAddr"><img src="assets/img/app/onboarding/icon_checkmark@2x.png"
                 alt=""></div>
             <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" *ngIf="editingAddr"></ion-icon>
           </ion-item>
@@ -337,7 +337,7 @@
                 wallet.coin):(w.amount | weiToUnit:
                 wallet.coin)}}</span></h3>
             <p>{{w.address}}</p>
-            <div class="selected" *ngIf="w.address == address && !editingAddr"><img src="../../assets/img/app/onboarding/icon_checkmark@2x.png"
+            <div class="selected" *ngIf="w.address == address && !editingAddr"><img src="assets/img/app/onboarding/icon_checkmark@2x.png"
                 alt=""></div>
             <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" *ngIf="editingAddr"></ion-icon>
           </ion-item>

@@ -1,52 +1,70 @@
 <ion-header>
-
   <ion-navbar>
-    <ion-title>
-      {{'Bitcoin Network Fee Policy'|translate}}
-    </ion-title>
+    <ion-title> {{ 'Bitcoin Network Fee Policy' | translate }} </ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content>
-
   <div class="explanation" padding>
-    <div class="heading" translate>Bitcoin transactions include a fee collected by miners on the network.</div>
-    <div class="description" translate>The higher the fee, the greater the incentive a miner has to include that
-      transaction in a block. Current fees are determined based on network load and the selected policy.</div>
+    <div class="heading" translate>
+      Bitcoin transactions include a fee collected by miners on the network.
+    </div>
+    <div class="description" translate>
+      The higher the fee, the greater the incentive a miner has to include that
+      transaction in a block. Current fees are determined based on network load
+      and the selected policy.
+    </div>
     <div class="estimates">
       <div>
         <span translate>Average confirmation time</span>:
-        <span class="fee-minutes" *ngIf="avgConfirmationTime">{{avgConfirmationTime | amDuration: 'minute'}}</span>
-        <span class="fee-minutes" *ngIf="!avgConfirmationTime && !error">...</span>
-        <span class="fee-minutes error" *ngIf="!avgConfirmationTime && error" translate>Error</span>
+        <span class="fee-minutes" *ngIf="avgConfirmationTime">{{
+          avgConfirmationTime | amDuration: 'minute'
+        }}</span>
+        <span class="fee-minutes" *ngIf="!avgConfirmationTime && !error"
+          >...</span
+        >
+        <span
+          class="fee-minutes error"
+          *ngIf="!avgConfirmationTime && error"
+          translate
+          >Error</span
+        >
       </div>
       <div>
         <span translate>Current fee rate for this policy</span>:
-        <span class="fee-rate" *ngIf="feePerSatByte">{{feePerSatByte}} satoshis/byte</span>
+        <span class="fee-rate" *ngIf="feePerSatByte"
+          >{{ feePerSatByte }} satoshis/byte</span
+        >
         <span class="fee-rate" *ngIf="!feePerSatByte && !error">...</span>
-        <span class="fee-rate error" *ngIf="!feePerSatByte && error" translate>Error</span>
+        <span class="fee-rate error" *ngIf="!feePerSatByte && error" translate
+          >Error</span
+        >
       </div>
     </div>
   </div>
 
-  <ion-list radio-group [(ngModel)]="currentFeeLevel" (ionChange)="save()" class="settings-list">
-    <ion-item *ngFor="let data of feeOpts | keys">
-      <ion-label>{{data.value}}</ion-label>
+  <ion-list
+    radio-group
+    [(ngModel)]="currentFeeLevel"
+    (ionChange)="save()"
+    class="settings-list"
+  >
+    <ion-item *ngFor="let data of (feeOpts | keys)">
+      <ion-label>{{ data.value }}</ion-label>
       <ion-radio [value]="data.key"></ion-radio>
     </ion-item>
   </ion-list>
 
-  <!-- <div class="customized-tabs" (click)="goToHomePage()">
-    <a class="nav-btn">
-      <img src="../../../assets/img/tab-icons/ico-home.svg" />
-      <span>Assets</span>
-    </a>
-    <a class="nav-btn active" (click)="goToSettingsPage()">
-      <img src="../../../assets/img/tab-icons/ico-settings-active.svg" />
-      <span>Settings</span>
-    </a>
-  </div> -->
-
+  <!--
+    <div class="customized-tabs" (click)="goToHomePage()">
+      <a class="nav-btn">
+        <img src="assets/img/tab-icons/ico-home.svg" />
+        <span>Assets</span>
+      </a>
+      <a class="nav-btn active" (click)="goToSettingsPage()">
+        <img src="assets/img/tab-icons/ico-settings-active.svg" />
+        <span>Settings</span>
+      </a>
+    </div>
+  -->
 </ion-content>
