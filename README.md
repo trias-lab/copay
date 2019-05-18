@@ -9,6 +9,7 @@ In addition to retaining some of its original excellent features, we redesigned 
 ## Main Features
 
 ### What features does Copay have?
+
 - Bitcoin and Bitcoin Cash coin support
 - Multiple wallet creation and management in-app
 - Intuitive, multisignature security for personal or shared wallets
@@ -28,18 +29,19 @@ In addition to retaining some of its original excellent features, we redesigned 
 - Available for iOS, Android, Windows Phone, Chrome App, Linux, Windows and OS X devices
 
 ### How about Trias Wallet?
+
 - Add TRY and ETH support
 - Add ETH/Token swap
 - Modify the flow of creation of the wallets. Create 4 wallets (BTC, BCH, ETH, TRY) by default, with a same mnemonic, so that it's easy to manage them。
 - Simplify password management. The user only needs to remember a password for unlocking the application, encrypting the wallet, confirming the transaction, and other operations that require authorization. Besides, the password will not be stored locally or in the cloud.
 - Add management of addresses of the wallet on wallet detail page.
 - No shared wallet any more.
-- For now, only support IOS and Android. 
+- For now, only support IOS and Android.
 - Still in progress...
 
 ## Testing in a Browser
 
-> **Note:** This method should only be used for development purposes. 
+> **Note:** This method should only be used for development purposes.
 
 Clone the repo and open the directory:
 
