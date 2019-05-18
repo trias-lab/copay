@@ -21,7 +21,7 @@ page-home {
         rgba(29, 33, 69, 0) 0%,
         rgba(4, 9, 45, 0.62) 100%
       ),
-      url('../../assets/img/img_bg_pattern.png') repeat-x;
+      url('../assets/img/img_bg_pattern.png') repeat-x;
   }
 
   ion-content.has-refresher > .scroll-content {
@@ -62,21 +62,21 @@ page-home {
   }
 
   .scan-btn {
-    background: url('../../assets/img/tab-icons/icon_scan@2x.png') no-repeat
+    background: url('../assets/img/tab-icons/icon_scan@2x.png') no-repeat
       center;
     background-size: 100% 100%;
     margin-right: 20px;
   }
 
   .swap-btn {
-    background: url('../../assets/img/tab-icons/icon_swap@2x.png') no-repeat
+    background: url('../assets/img/tab-icons/icon_swap@2x.png') no-repeat
       center;
     background-size: 100% 100%;
     margin-right: 20px;
   }
 
   .addr-btn {
-    background: url('../../assets/img/tab-icons/icon_contact@2x.png') no-repeat
+    background: url('../assets/img/tab-icons/icon_contact@2x.png') no-repeat
       center;
     background-size: 100% 100%;
   }
