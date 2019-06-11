@@ -12,7 +12,7 @@ import { PlatformProvider } from '../platform/platform';
 @Injectable()
 export class LanguageLoader implements TranslateLoader {
   private domain = '';
-  private _prefix: string = 'assets/i18n/';
+  private _prefix: string = 'assets/i18n/po/';
   private _suffix: string = '.po';
 
   constructor(
