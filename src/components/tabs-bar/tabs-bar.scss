@@ -6,16 +6,16 @@ tabs-bar {
   overflow: hidden;
   z-index: 111;
   bottom: 0;
-  height: 50px;
+  height: calc(50px + env(safe-area-inset-bottom));
   box-shadow: 0px -1px 6px 0px rgba(0, 33, 71, 0.11);
+  background: white;
   .common-tabs-bar {
     left: 0;
-    bottom: 0;
+    bottom: env(safe-area-inset-bottom);
     position: absolute;
     display: flex;
     width: 100%;
-    height: 100%;
-    background: white;
+    height: 50px;
     .tab-btn {
       margin: 0;
       text-align: center;
