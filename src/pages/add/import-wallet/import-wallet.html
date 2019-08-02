@@ -3,7 +3,7 @@
     <ion-title>{{'Import wallet' | translate}}</ion-title>
     <ion-buttons end>
       <button class="import-button" (click)="import()" [disabled]="!importForm.valid">
-      {{'Import' | translate}}
+        {{'Import' | translate}}
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -31,7 +31,8 @@
           <li translate>The Wallet Service URL</li>
         </ul>
         <small>
-          <span translate>NOTE: To import a wallet from a 3rd party software, please go to Add Wallet, Create Wallet, and
+          <span translate>NOTE: To import a wallet from a 3rd party software, please go to Add Wallet, Create Wallet,
+            and
             specify the Recovery Phrase there.</span>
         </small>
       </ion-item>
@@ -40,7 +41,9 @@
     <form [formGroup]="importForm" (ngSubmit)="import()">
       <ion-item *ngIf="selectedTab == 'words'">
         <ion-label stacked>{{'Mnemonic' | translate}}</ion-label>
-        <ion-textarea formControlName="words" [value]="importForm.value.words" placeholder="{{'Type the recovery phrase (usually 12 words)' | translate}}" autocapitalize="none"></ion-textarea>
+        <ion-textarea formControlName="words" [value]="importForm.value.words"
+          placeholder="{{'Type the recovery phrase (usually 12 words)' | translate}}" autocapitalize="none">
+        </ion-textarea>
       </ion-item>
 
       <div *ngIf="selectedTab == 'words'" class="scanner-icon" name="qr-scanner" (click)="openScanner()">
@@ -49,12 +52,12 @@
       </div>
 
       <div *ngIf="selectedTab == 'file'">
-       <!--  <ion-item *ngIf="!isSafari && !isCordova">
+        <!--  <ion-item *ngIf="!isSafari && !isCordova">
         </ion-item> -->
 
         <div class="file-container hide-validation" *ngIf="!isSafari && !isCordova">
-          <ion-input class="upload-hidden" type="file" accept="json" [(ngModel)]="formFile" (change)="fileChangeEvent($event)"
-            formControlName="file"></ion-input>
+          <ion-input class="upload-hidden" type="file" accept="json" [(ngModel)]="formFile"
+            (change)="fileChangeEvent($event)" formControlName="file"></ion-input>
           <div item-content class="upload-ui">
             <div class="empty-message"> {{'Select File' | translate}}&hellip;</div>
             <div class="filled-message">{{'Replace File' | translate}}</div>
@@ -67,7 +70,8 @@
 
         <ion-item *ngIf="isSafari || isCordova">
           <ion-label stacked>{{'File Content' | translate}}</ion-label>
-          <ion-textarea placeholder="{{'Please paste the code in the backup file' | translate}}" formControlName="backupText" rows="5" [value]="importForm.value.backupText"></ion-textarea>
+          <ion-textarea placeholder="{{'Please paste the code in the backup file' | translate}}"
+            formControlName="backupText" rows="5" [value]="importForm.value.backupText"></ion-textarea>
         </ion-item>
 
         <ion-item>
@@ -81,9 +85,9 @@
         <ion-select okText="{{okText}}" cancelText="{{cancelText}}" placeholder="{{'Select a coin' | translate}}"
           formControlName="coin">
           <ion-option value="btc">Bitcoin (BTC)</ion-option>
-          <ion-option value="bch">Bitcoin Cash (BCH)</ion-option>
+          <!-- <ion-option value="bch">Bitcoin Cash (BCH)</ion-option> -->
           <ion-option value="eth">Ethereum (ETH)</ion-option>
-          <ion-option value="tri">TRY</ion-option>
+          <!-- <ion-option value="tri">TRY</ion-option> -->
         </ion-select>
       </ion-item>
 
@@ -113,7 +117,8 @@
    -->
           <ion-item>
             <ion-label stacked>{{'Derivation path' | translate}}</ion-label>
-            <ion-input type="text" formControlName="derivationPath" [value]="importForm.value.derivationPath"></ion-input>
+            <ion-input type="text" formControlName="derivationPath" [value]="importForm.value.derivationPath">
+            </ion-input>
           </ion-item>
 
           <ion-item [ngClass]="{'with-label': importForm.value.testnetEnabled}">
@@ -138,7 +143,7 @@
         </ion-item>
 
       </div>
-    </form>    
+    </form>
   </ion-card>
 </ion-content>
 

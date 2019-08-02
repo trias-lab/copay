@@ -135,9 +135,10 @@
               'BTC' | translate }}</a>
             <a class="tab-btn" [ngClass]="{'active': selectedCoinType=='eth'}" (click)="selectCoinType('eth')">{{
               'ETH' | translate }}</a>
-            <a class="tab-btn" [ngClass]="{'active': selectedCoinType=='tri'}" (click)="selectCoinType('tri')">{{
-              'TRY' | translate }}</a>
-            <div class="import-btn" (click)="importWallet()"><img src="assets/img/icon_inline_import@2x.png" alt=""></div>
+            <!-- <a class="tab-btn" [ngClass]="{'active': selectedCoinType=='tri'}" (click)="selectCoinType('tri')">{{
+              'TRY' | translate }}</a> -->
+            <div class="import-btn" (click)="importWallet()"><img src="assets/img/icon_inline_import@2x.png" alt="">
+            </div>
           </div>
         </div>
       </ion-card>
@@ -196,7 +197,8 @@
           </div>
         </ion-item-divider> -->
 
-      <ion-list reorder="{{showReorderBtc}}" (ionItemReorder)="legendGenerate($event)" *ngIf="walletsBtc && walletsBtc[0] && (selectedCoinType=='btc' || selectedCoinType=='all')">
+      <ion-list reorder="{{showReorderBtc}}" (ionItemReorder)="legendGenerate($event)"
+        *ngIf="walletsBtc && walletsBtc[0] && (selectedCoinType=='btc' || selectedCoinType=='all')">
         <div class="card" *ngFor="let wallet of walletsBtc" (click)="goToWalletDetails(wallet)">
           <button ion-item>
             <ion-icon class="item-img" item-start>
@@ -268,7 +270,8 @@
           </div>
         </ion-item-divider> -->
 
-      <ion-list reorder="{{showReorderBch}}" (ionItemReorder)="reorderWalletsBch($event)" *ngIf="walletsBch && walletsBch[0] && (selectedCoinType=='btc' || selectedCoinType=='all')">
+      <ion-list reorder="{{showReorderBch}}" (ionItemReorder)="reorderWalletsBch($event)"
+        *ngIf="walletsBch && walletsBch[0] && (selectedCoinType=='btc' || selectedCoinType=='all')">
         <div class="card" *ngFor="let wallet of walletsBch" (click)="goToWalletDetails(wallet)">
           <button ion-item>
             <ion-icon class="item-img" item-start>
@@ -318,7 +321,8 @@
       <!-- </div> -->
 
 
-      <ion-list reorder="{{showReorderEth}}" (ionItemReorder)="reorderWalletsEth($event)" *ngIf="walletsEth && walletsEth[0] && (selectedCoinType=='eth' || selectedCoinType=='all')">
+      <ion-list reorder="{{showReorderEth}}" (ionItemReorder)="reorderWalletsEth($event)"
+        *ngIf="walletsEth && walletsEth[0] && (selectedCoinType=='eth' || selectedCoinType=='all')">
         <div class="card" *ngFor="let wallet of walletsEth" (click)="goToWalletDetails(wallet)">
           <button ion-item>
             <ion-icon class="item-img" item-start>
@@ -359,7 +363,8 @@
       </ion-list>
 
 
-      <ion-list reorder="{{showReorderTri}}" (ionItemReorder)="reorderWalletsTri($event)" *ngIf="walletsTri && walletsTri[0] && (selectedCoinType=='tri' || selectedCoinType=='all')">
+      <ion-list reorder="{{showReorderTri}}" (ionItemReorder)="reorderWalletsTri($event)"
+        *ngIf="walletsTri && walletsTri[0] && (selectedCoinType=='tri' || selectedCoinType=='all')">
         <div class="card" *ngFor="let wallet of walletsTri" (click)="goToWalletDetails(wallet)">
           <button ion-item>
             <ion-icon class="item-img" item-start>
