@@ -816,7 +816,7 @@ export class HomePage {
           //   alternativeUnit: alternativeUnitOne
           // });
         } else if (wallet.coin == 'tri') {
-          this.logger.warn('wwwwwwwwwww55555', 'aaa', alternativeBalance);
+          // this.logger.warn('wwwwwwwwwww55555', 'aaa', alternativeBalance);
           this.triBalance += parseFloat(alternativeBalance);
           // this.balanceItem.push({
           //   name: 'TRY',
@@ -837,16 +837,16 @@ export class HomePage {
         i++;
         // Update the chart.
         if (i == this.wallets.length) {
-          this.logger.warn(
-            'wwwwwwwwwww55555',
-            this.totalBalance,
-            'aa',
-            this.ethBalance,
-            'bb',
-            this.triBalance,
-            'cc',
-            this.btcBalance
-          );
+          // this.logger.warn(
+          //   'wwwwwwwwwww55555',
+          //   this.totalBalance,
+          //   'aa',
+          //   this.ethBalance,
+          //   'bb',
+          //   this.triBalance,
+          //   'cc',
+          //   this.btcBalance
+          // );
           this.balanceItem.push({
             name: 'ETH',
             // value: parseFloat(amount),
@@ -859,28 +859,28 @@ export class HomePage {
             alternativeBalance: this.btcBalance,
             alternativeUnit: alternativeUnitOne
           });
-          this.balanceItem.push({
-            name: 'TRY',
-            // value: parseFloat(amount),
-            alternativeBalance: this.triBalance,
-            alternativeUnit: alternativeUnitOne
-          });
+          // this.balanceItem.push({
+          //   name: 'TRY',
+          //   // value: parseFloat(amount),
+          //   alternativeBalance: this.triBalance,
+          //   alternativeUnit: alternativeUnitOne
+          // });
           this.balanceLegend = [];
           this.chartLegend = [];
           this.alternativeUnit = this.balanceItem[0].alternativeUnit;
-          this.logger.warn(
-            '********wwwwwwwwwww555555555555wallet-------',
-            this.balanceItem
-          );
+          // this.logger.warn(
+          //   '********wwwwwwwwwww555555555555wallet-------',
+          //   this.balanceItem
+          // );
           let sortedBalanceItem = _.orderBy(
             this.balanceItem,
             ['alternativeBalance'],
             ['desc']
           );
-          this.logger.warn(
-            '2222222wwwwwwwwwww555555555555wallet-------',
-            sortedBalanceItem
-          );
+          // this.logger.warn(
+          //   '2222222wwwwwwwwwww555555555555wallet-------',
+          //   sortedBalanceItem
+          // );
 
           // let part1 = _.slice(sortedBalanceItem, 0, 3);
           // let part2 = _.slice(sortedBalanceItem, 3);
@@ -892,10 +892,10 @@ export class HomePage {
           // );
           // let k = 0;
           _.each(sortedBalanceItem, (balanceItem, index: number) => {
-            this.logger.warn(
-              'bbbbbbwwwwwwwwwww555555555555wallet-------',
-              index
-            );
+            // this.logger.warn(
+            //   'bbbbbbwwwwwwwwwww555555555555wallet-------',
+            //   index
+            // );
             let legendOne = {
               color: this.legendColors[index],
               name: balanceItem.name,

@@ -1498,14 +1498,6 @@ export class ProfileProvider {
         .then(wallet => {
           let mnemonic = wallet.getKeys(this.password).mnemonic;
 
-          const optsBch: Partial<WalletOptions> = {};
-          optsBch.m = 1;
-          optsBch.n = 1;
-          optsBch.networkName = 'livenet';
-          optsBch.coin = Coin.BCH;
-          // use the same mnemonic of the BTC waller created above.
-          optsBch.mnemonic = mnemonic;
-
           const optsEth: Partial<WalletOptions> = {};
           optsEth.m = 1;
           optsEth.n = 1;
@@ -1514,36 +1506,63 @@ export class ProfileProvider {
           // use the same mnemonic of the BTC waller created above.
           optsEth.mnemonic = mnemonic;
 
-          const optsTri: Partial<WalletOptions> = {};
-          optsTri.m = 1;
-          optsTri.n = 1;
-          optsTri.networkName = 'livenet';
-          optsTri.coin = Coin.TRI;
-          // use the same mnemonic of the BTC waller created above.
-          optsTri.mnemonic = mnemonic;
+          let wallets = [];
+          wallets.push(wallet);
 
-          this.createWallet(optsBch, true)
-            .then(walletBCH => {
-              let wallets = [];
-              wallets.push(walletBCH);
-              wallets.push(wallet);
-              // return resolve(wallets);
-              this.createWallet(optsEth, true).then(walletETH => {
-                // let wallets = [];
-                wallets.push(walletETH);
-
-                this.createWallet(optsTri, true).then(walletTri => {
-                  wallets.push(walletTri);
-                  return resolve({
-                    walletsCreated: wallets,
-                    password: this.password
-                  });
-                });
-              });
-            })
-            .catch(err => {
-              return reject(err);
+          this.createWallet(optsEth, true).then(walletETH => {
+            wallets.push(walletETH);
+            return resolve({
+              walletsCreated: wallets,
+              password: this.password
             });
+          });
+
+          // const optsBch: Partial<WalletOptions> = {};
+          // optsBch.m = 1;
+          // optsBch.n = 1;
+          // optsBch.networkName = 'livenet';
+          // optsBch.coin = Coin.BCH;
+          // // use the same mnemonic of the BTC waller created above.
+          // optsBch.mnemonic = mnemonic;
+
+          // const optsEth: Partial<WalletOptions> = {};
+          // optsEth.m = 1;
+          // optsEth.n = 1;
+          // optsEth.networkName = 'livenet';
+          // optsEth.coin = Coin.ETH;
+          // // use the same mnemonic of the BTC waller created above.
+          // optsEth.mnemonic = mnemonic;
+
+          // const optsTri: Partial<WalletOptions> = {};
+          // optsTri.m = 1;
+          // optsTri.n = 1;
+          // optsTri.networkName = 'livenet';
+          // optsTri.coin = Coin.TRI;
+          // // use the same mnemonic of the BTC waller created above.
+          // optsTri.mnemonic = mnemonic;
+
+          // this.createWallet(optsBch, true)
+          //   .then(walletBCH => {
+          //     let wallets = [];
+          //     wallets.push(walletBCH);
+          //     wallets.push(wallet);
+          //     // return resolve(wallets);
+          //     this.createWallet(optsEth, true).then(walletETH => {
+          //       // let wallets = [];
+          //       wallets.push(walletETH);
+
+          //       this.createWallet(optsTri, true).then(walletTri => {
+          //         wallets.push(walletTri);
+          //         return resolve({
+          //           walletsCreated: wallets,
+          //           password: this.password
+          //         });
+          //       });
+          //     });
+          //   })
+          //   .catch(err => {
+          //     return reject(err);
+          //   });
         })
         .catch(err => {
           return reject(err);
