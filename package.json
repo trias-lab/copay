@@ -124,10 +124,10 @@
     "cordova-plugin-advanced-http": "2.0.8",
     "cordova-plugin-android-fingerprint-auth": "1.4.3",
     "cordova-plugin-compat": "1.2.0",
-    "cordova-plugin-customurlscheme-ng": "5.0.0",
+    "cordova-plugin-customurlscheme-ng": "5.0.1",
     "cordova-plugin-device": "2.0.1",
     "cordova-plugin-dialogs": "2.0.1",
-    "cordova-plugin-fcm-ng": "3.0.2",
+    "cordova-plugin-fcm-ng": "3.0.4",
     "cordova-plugin-file": "6.0.1",
     "cordova-plugin-globalization": "1.0.9",
     "cordova-plugin-inappbrowser": "2.0.2",
@@ -247,7 +247,8 @@
       "im.ltdev.cordova.UserAgent": {},
       "cordova-launch-review": {},
       "cordova-plugin-wkwebview-engine": {},
-      "cordova-plugin-advanced-http": {}
+      "cordova-plugin-advanced-http": {},
+      "cordova-plugin-add-swift-support": {}
     },
     "platforms": [
       "android",
