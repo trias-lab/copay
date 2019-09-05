@@ -1506,14 +1506,26 @@ export class ProfileProvider {
           // use the same mnemonic of the BTC waller created above.
           optsEth.mnemonic = mnemonic;
 
+          const optsTri: Partial<WalletOptions> = {};
+          optsTri.m = 1;
+          optsTri.n = 1;
+          optsTri.networkName = 'livenet';
+          optsTri.coin = Coin.TRI;
+          // use the same mnemonic of the BTC waller created above.
+          optsTri.mnemonic = mnemonic;
+
           let wallets = [];
           wallets.push(wallet);
 
           this.createWallet(optsEth, true).then(walletETH => {
             wallets.push(walletETH);
-            return resolve({
-              walletsCreated: wallets,
-              password: this.password
+
+            this.createWallet(optsTri, true).then(walletTri => {
+              wallets.push(walletTri);
+              return resolve({
+                walletsCreated: wallets,
+                password: this.password
+              });
             });
           });
 

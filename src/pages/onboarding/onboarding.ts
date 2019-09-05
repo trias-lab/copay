@@ -83,9 +83,9 @@ export class OnboardingPage {
         this.profileProvider.setBackupFlag(
           res.walletsCreated[1].credentials.walletId
         );
-        // this.profileProvider.setBackupFlag(
-        //   res.walletsCreated[2].credentials.walletId
-        // );
+        this.profileProvider.setBackupFlag(
+          res.walletsCreated[2].credentials.walletId
+        );
         // this.profileProvider.setBackupFlag(
         //   res.walletsCreated[3].credentials.walletId
         // );
