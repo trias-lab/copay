@@ -84,11 +84,13 @@ export class IncomingDataProvider {
   }
 
   private isValidEthcoinAddress(data: string): boolean {
-    let reg = /^bitcoreEth\:0x[a-fA-F0-9]{40}$/;
+    data = this.sanitizeUri(data);
+    let reg = /^(bitcoreEth\:)?0x[a-fA-F0-9]{40}$/;
     return reg.test(data);
   }
   private isValidTricoinAddress(data: string): boolean {
-    let reg = /^bitcoreTri\:0x[a-fA-F0-9]{40}$/;
+    data = this.sanitizeUri(data);
+    let reg = /^(bitcoreTri\:)?0x[a-fA-F0-9]{40}$/;
     return reg.test(data);
   }
   private isValidBitcoinAddress(data: string): boolean {
@@ -249,7 +251,7 @@ export class IncomingDataProvider {
     // redirParams?: RedirParams
   ): void {
     this.logger.debug('Incoming-data: TRY plain address');
-    const coin = Coin.TRI;
+    const coin = Coin.TRY;
     this.goToAmountPage(data, coin);
   }
 
