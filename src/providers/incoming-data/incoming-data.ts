@@ -239,20 +239,20 @@ export class IncomingDataProvider {
   }
 
   private handlePlainEthcoinAddress(
-    data: string
-    // redirParams?: RedirParams
+    data: string,
+    redirParams?: RedirParams
   ): void {
     this.logger.debug('Incoming-data: ETH plain address');
     const coin = Coin.ETH;
-    this.goToAmountPage(data, coin);
+    this.goToAmountPage(data, redirParams.coin || coin);
   }
   private handlePlainTricoinAddress(
-    data: string
-    // redirParams?: RedirParams
+    data: string,
+    redirParams?: RedirParams
   ): void {
     this.logger.debug('Incoming-data: TRY plain address');
     const coin = Coin.TRY;
-    this.goToAmountPage(data, coin);
+    this.goToAmountPage(data, redirParams.coin || coin);
   }
 
   private handlePlainBitcoinAddress(
@@ -385,14 +385,14 @@ export class IncomingDataProvider {
 
       // Plain Address (Eth)
     } else if (this.isValidEthcoinAddress(data)) {
-      // this.handlePlainEthcoinAddress(data, redirParams);
-      this.handlePlainEthcoinAddress(data);
+      this.handlePlainEthcoinAddress(data, redirParams);
+      // this.handlePlainEthcoinAddress(data);
       return true;
     }
     // Plain Address (TRY)
     else if (this.isValidTricoinAddress(data)) {
-      // this.handlePlainTricoinAddress(data, redirParams);
-      this.handlePlainTricoinAddress(data);
+      this.handlePlainTricoinAddress(data, redirParams);
+      // this.handlePlainTricoinAddress(data);
       return true;
     }
     // Plain Address (Bitcoin Cash)
