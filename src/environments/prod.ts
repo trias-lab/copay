@@ -9,8 +9,8 @@ const env: EnvironmentSchema = {
   ratesAPI: {
     btc: 'https://bitpay.com/api/rates',
     bch: 'https://bitpay.com/api/rates/bch',
-    eth: 'http://tbws.trias.one:3232/bws/api/v1/rates/eth',
-    tri: 'http://tbws.trias.one:3232/bws/api/v1/rates/tri'
+    eth: 'http://192.168.1.171:3232/bws/api/v1/rates/eth',
+    tri: 'http://192.168.1.171:3232/bws/api/v1/rates/tri'
   },
   activateScanner: true
 };
