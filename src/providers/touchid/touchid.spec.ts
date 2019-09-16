@@ -45,10 +45,9 @@ describe('Provider: TouchId Provider', () => {
     it('should verify iOS device has Fingerprint', () => {
       platformProvider.isIOS = true;
       const touchId = testBed.get(TouchID);
-      const spy = spyOn(
-        touchId,
-        'verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel'
-      ).and.returnValue(Promise.resolve());
+      const spy = spyOn(touchId, 'verifyFingerprint').and.returnValue(
+        Promise.resolve()
+      );
       touchIdProvider.check();
       expect(spy).toHaveBeenCalled();
     });
