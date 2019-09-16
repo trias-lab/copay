@@ -251,7 +251,7 @@ export class IncomingDataProvider {
     redirParams?: RedirParams
   ): void {
     this.logger.debug('Incoming-data: TRY plain address');
-    const coin = Coin.TRY;
+    const coin = Coin.TRI;
     this.goToAmountPage(data, redirParams.coin || coin);
   }
 
