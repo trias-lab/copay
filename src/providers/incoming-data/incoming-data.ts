@@ -84,11 +84,13 @@ export class IncomingDataProvider {
   }
 
   private isValidEthcoinAddress(data: string): boolean {
-    let reg = /^bitcoreEth\:0x[a-fA-F0-9]{40}$/;
+    data = this.sanitizeUri(data);
+    let reg = /^(bitcoreEth\:)?0x[a-fA-F0-9]{40}$/;
     return reg.test(data);
   }
   private isValidTricoinAddress(data: string): boolean {
-    let reg = /^bitcoreTri\:0x[a-fA-F0-9]{40}$/;
+    data = this.sanitizeUri(data);
+    let reg = /^(bitcoreTri\:)?0x[a-fA-F0-9]{40}$/;
     return reg.test(data);
   }
   private isValidBitcoinAddress(data: string): boolean {
@@ -237,20 +239,20 @@ export class IncomingDataProvider {
   }
 
   private handlePlainEthcoinAddress(
-    data: string
-    // redirParams?: RedirParams
+    data: string,
+    redirParams?: RedirParams
   ): void {
     this.logger.debug('Incoming-data: ETH plain address');
     const coin = Coin.ETH;
-    this.goToAmountPage(data, coin);
+    this.goToAmountPage(data, redirParams.coin || coin);
   }
   private handlePlainTricoinAddress(
-    data: string
-    // redirParams?: RedirParams
+    data: string,
+    redirParams?: RedirParams
   ): void {
     this.logger.debug('Incoming-data: TRY plain address');
-    const coin = Coin.TRI;
-    this.goToAmountPage(data, coin);
+    const coin = Coin.TRY;
+    this.goToAmountPage(data, redirParams.coin || coin);
   }
 
   private handlePlainBitcoinAddress(
@@ -383,14 +385,14 @@ export class IncomingDataProvider {
 
       // Plain Address (Eth)
     } else if (this.isValidEthcoinAddress(data)) {
-      // this.handlePlainEthcoinAddress(data, redirParams);
-      this.handlePlainEthcoinAddress(data);
+      this.handlePlainEthcoinAddress(data, redirParams);
+      // this.handlePlainEthcoinAddress(data);
       return true;
     }
     // Plain Address (TRY)
     else if (this.isValidTricoinAddress(data)) {
-      // this.handlePlainTricoinAddress(data, redirParams);
-      this.handlePlainTricoinAddress(data);
+      this.handlePlainTricoinAddress(data, redirParams);
+      // this.handlePlainTricoinAddress(data);
       return true;
     }
     // Plain Address (Bitcoin Cash)

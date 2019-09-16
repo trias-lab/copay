@@ -859,12 +859,12 @@ export class HomePage {
             alternativeBalance: this.btcBalance,
             alternativeUnit: alternativeUnitOne
           });
-          // this.balanceItem.push({
-          //   name: 'TRY',
-          //   // value: parseFloat(amount),
-          //   alternativeBalance: this.triBalance,
-          //   alternativeUnit: alternativeUnitOne
-          // });
+          this.balanceItem.push({
+            name: 'TRY',
+            // value: parseFloat(amount),
+            alternativeBalance: this.triBalance,
+            alternativeUnit: alternativeUnitOne
+          });
           this.balanceLegend = [];
           this.chartLegend = [];
           this.alternativeUnit = this.balanceItem[0].alternativeUnit;
