@@ -1706,8 +1706,8 @@ msgstr "Procurar transações"
 msgid "Search a contact"
 msgstr "Buscar contato"
 
-msgid "Search or enter bitcoin address"
-msgstr "Procure ou digite o endereço bitcoin"
+msgid "Search or enter wallet address"
+msgstr "Procure ou digite o endereço"
 
 msgid "Search your currency"
 msgstr "Procure a sua moeda"
@@ -2474,7 +2474,7 @@ msgstr "Sua carteira nunca foi salva num armazenamento em nuvem ou dispositivo p
 msgid "Your wallet key will be encrypted. The encrypt password cannot be recovered. Be sure to write it down."
 msgstr "Sua chave da carteira será criptografada. A senha criptografada não pode ser recuperada. Tenha certeza anotá-la."
 
-msgid "Your {walletType} wallet is backed up!"
+msgid "Your wallet is backed up!"
 msgstr ""
 
 msgid "[Balance Hidden]"

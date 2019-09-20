@@ -77,7 +77,7 @@
                 <img *ngIf="wallet.network != 'testnet' && wallet.coin=='btc'" src="assets/img/img_wallet_BTC@2x.png" />
                 <img *ngIf="wallet.network != 'testnet' && wallet.coin=='bch'" src="assets/img/img_wallet_BCH@2x.png" />
                 <img *ngIf="wallet.network != 'testnet' && wallet.coin=='eth'" src="assets/img/img_wallet_ETH@2x.png" />
-                <img *ngIf="wallet.network != 'testnet' && wallet.coin=='tri'" src="assets/img/img_wallet_TRI@2x.png" />
+                <img *ngIf="wallet.network != 'testnet' && wallet.coin=='try'" src="assets/img/img_wallet_TRI@2x.png" />
               </ion-col>
             </ion-row>
             <ion-row class="address-row">
@@ -295,7 +295,7 @@
               <ion-note item-end text-end>
                 <div class="amount">
                   <span [ngClass]="{'received': tx.action == 'received','sent': tx.action=='sent'}" *ngIf="tx.action != 'invalid'">{{tx.action
-                    == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{wallet.coin !== 'eth' && wallet.coin !== 'tri' ?
+                    == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{wallet.coin !== 'eth' && wallet.coin !== 'try' ?
                     (tx.amount | satToUnit:
                     wallet.coin) : (tx.amount | weiToUnit: wallet.coin)}}</span>
                   <span class="double-spend" *ngIf="tx.action == 'invalid'" translate>(possible double spend)</span>
@@ -333,7 +333,7 @@
         <div *ngIf="withBalance && withBalance[0]">
           <!-- <ion-item-divider>{{'Addresses with balance' | translate}}</ion-item-divider> -->
           <ion-item *ngFor="let w of withBalance" (click)=" editingAddr? editAddressName(w.address): this.address = w.address">
-            <h3>{{w.name}} <span>{{wallet.coin!=='eth' && wallet.coin!=='tri'? (w.amount | satToUnit:
+            <h3>{{w.name}} <span>{{wallet.coin!=='eth' && wallet.coin!=='try'? (w.amount | satToUnit:
                 wallet.coin):(w.amount | weiToUnit:
                 wallet.coin)}}</span></h3>
             <p>{{w.address}}</p>

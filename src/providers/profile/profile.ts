@@ -1510,7 +1510,7 @@ export class ProfileProvider {
           optsTri.m = 1;
           optsTri.n = 1;
           optsTri.networkName = 'livenet';
-          optsTri.coin = Coin.TRI;
+          optsTri.coin = Coin.TRY;
           // use the same mnemonic of the BTC waller created above.
           optsTri.mnemonic = mnemonic;
 
@@ -1549,7 +1549,7 @@ export class ProfileProvider {
           // optsTri.m = 1;
           // optsTri.n = 1;
           // optsTri.networkName = 'livenet';
-          // optsTri.coin = Coin.TRI;
+          // optsTri.coin = Coin.TRY;
           // // use the same mnemonic of the BTC waller created above.
           // optsTri.mnemonic = mnemonic;
 

@@ -112,7 +112,7 @@ export class SendPage extends WalletTabsChild {
     this.walletsBtc = this.profileProvider.getWallets({ coin: 'btc' });
     this.walletsBch = this.profileProvider.getWallets({ coin: 'bch' });
     this.walletsEth = this.profileProvider.getWallets({ coin: 'eth' });
-    this.walletsTri = this.profileProvider.getWallets({ coin: 'tri' });
+    this.walletsTri = this.profileProvider.getWallets({ coin: 'try' });
     this.hasBtcWallets = !_.isEmpty(this.walletsBtc);
     this.hasBchWallets = !_.isEmpty(this.walletsBch);
     this.hasEthWallets = !_.isEmpty(this.walletsEth);
@@ -222,8 +222,8 @@ export class SendPage extends WalletTabsChild {
         ? 'bitcoin'
         : this.wallet.coin === Coin.ETH
         ? 'ETH'
-        : this.wallet.coin === Coin.TRI
-        ? 'Tri'
+        : this.wallet.coin === Coin.TRY
+        ? 'Try'
         : 'bitcoin cash';
     const infoSheet = this.actionSheetProvider.createInfoSheet(
       'receiving-bitcoin',
@@ -395,7 +395,7 @@ export class SendPage extends WalletTabsChild {
         return _.includes(wallet.name.toLowerCase(), this.search.toLowerCase());
       });
     }
-    if (this.hasTriWallets && this.wallet.coin === 'tri') {
+    if (this.hasTriWallets && this.wallet.coin === 'try') {
       this.filteredWallets = this.walletTriList.filter(wallet => {
         return _.includes(wallet.name.toLowerCase(), this.search.toLowerCase());
       });

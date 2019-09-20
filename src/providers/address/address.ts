@@ -29,9 +29,9 @@ export class AddressProvider {
         lib: this.bitcoreEth,
         translateTo: 'eth'
       },
-      tri: {
+      try: {
         lib: this.bitcoreTri,
-        translateTo: 'tri'
+        translateTo: 'try'
       }
     };
   }
@@ -51,8 +51,8 @@ export class AddressProvider {
           return 'eth';
         } catch (e) {
           try {
-            new this.Bitcore['tri'].lib.Address(address);
-            return 'tri';
+            new this.Bitcore['try'].lib.Address(address);
+            return 'try';
           } catch (e) {
             return null;
           }

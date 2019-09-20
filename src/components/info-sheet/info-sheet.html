@@ -51,7 +51,8 @@
     </info-sheet-template>
 
     <info-sheet-template *ngSwitchCase="'miner-fee'" type="danger">
-      <span sheet-title-text>{{ '{coinName} miner fees unusually high' | translate: {coinName: params.coinName } }}</span>
+      <span
+        sheet-title-text>{{ '{coinName} miner fees unusually high' | translate: {coinName: params.coinName } }}</span>
       <span sheet-text>
         {{ '{coinName} miner fees are high due to record demand for limited space on the {coinName} network. BitPay
         does not receive and does not control {coinName} miner fees.' | translate: {coinName: params.coinName } }}
@@ -66,7 +67,7 @@
         or send max.' | translate: {amount: params.amount, coin: params.coin | uppercase} }}
       </span>
       <span sheet-button-text translate>Change Amount</span>
-      <span *ngIf="params.coin !== 'eth' && params.coin !== 'tri'" sheet-second-button-text translate>Send Max</span>
+      <span *ngIf="params.coin !== 'eth' && params.coin !== 'try'" sheet-second-button-text translate>Send Max</span>
     </info-sheet-template>
 
     <info-sheet-template *ngSwitchCase="'default-error'" type="danger">
@@ -86,8 +87,7 @@
     </info-sheet-template>
 
     <info-sheet-template *ngSwitchCase="'backup-ready'" type="success">
-      <span sheet-title-text>{{'Your {walletType} wallet is backed up!' | translate : {walletType: params.walletType}
-        }}</span>
+      <span sheet-title-text>{{'Your wallet is backed up!' | translate }}</span>
       <span sheet-text translate>
         Be sure to store your recovery phrase in a secure place. If this app is deleted, your money cannot be recovered
         without it.

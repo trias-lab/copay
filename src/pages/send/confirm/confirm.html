@@ -62,7 +62,7 @@
       </button>
 
       <div class="send-balance " *ngIf="wallet && tx.txp[wallet.id]">
-        <span><span class="fee-amount">{{tx.coin!=='eth' && tx.coin!=='tri'?(tx.txp[wallet.id].fee | satToUnit:
+        <span><span class="fee-amount">{{tx.coin!=='eth' && tx.coin!=='try'?(tx.txp[wallet.id].fee | satToUnit:
             tx.coin):(tx.txp[wallet.id].fee | weiToUnit: tx.coin)}}</span></span>
         <span> ≈ {{ tx.txp[wallet.id].fee | satToFiat: tx.coin }}</span>
         <span *ngIf="tx.txp[wallet.id].feeRatePerStr">

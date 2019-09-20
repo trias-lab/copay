@@ -70,7 +70,7 @@ export class WalletTransactionHistoryPage {
     this.satToBtc = 1 / 100000000;
     this.weiToEth = 1 / 1000000000000000000;
     this.unitToCoin =
-      this.wallet.coin !== 'eth' && this.wallet.coin !== 'tri'
+      this.wallet.coin !== 'eth' && this.wallet.coin !== 'try'
         ? this.satToBtc
         : this.weiToEth;
 
@@ -164,9 +164,9 @@ export class WalletTransactionHistoryPage {
               Date: this.formatDate(it.time * 1000),
               Destination:
                 this.currency !== 'ETH'
-                  ? this.currency !== 'TRI'
+                  ? this.currency !== 'TRY'
                     ? 'Bitcoin Network Fees'
-                    : 'TRI Network Fees'
+                    : 'TRY Network Fees'
                   : 'Ethereum Network Fees',
               Description: '',
               Amount: '-' + _fee,

@@ -1706,8 +1706,8 @@ msgstr "搜索交易"
 msgid "Search a contact"
 msgstr "查找联系人"
 
-msgid "Search or enter bitcoin address"
-msgstr "搜索或输入比特币地址"
+msgid "Search or enter wallet address"
+msgstr "搜索或输入钱包地址"
 
 msgid "Search your currency"
 msgstr "搜索您的货币"
@@ -2474,7 +2474,7 @@ msgstr "你的钱包是永远不会保存到云存储或标准设备备份。"
 msgid "Your wallet key will be encrypted. The encrypt password cannot be recovered. Be sure to write it down."
 msgstr "你的钱包密钥将被加密。加密密码无法恢复加密密码。请务必把它写下来。"
 
-msgid "Your {walletType} wallet is backed up!"
+msgid "Your wallet is backed up!"
 msgstr ""
 
 msgid "[Balance Hidden]"

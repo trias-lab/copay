@@ -131,7 +131,7 @@ export class ConfirmPage extends WalletTabsChild {
     let networkName;
     if (
       this.navParams.data.coin == 'eth' ||
-      this.navParams.data.coin == 'tri'
+      this.navParams.data.coin == 'try'
     ) {
       networkName = 'livenet';
     } else {
@@ -231,7 +231,7 @@ export class ConfirmPage extends WalletTabsChild {
 
   private getAmountDetails() {
     this.amount =
-      this.tx.coin === 'eth' || this.tx.coin === 'tri'
+      this.tx.coin === 'eth' || this.tx.coin === 'try'
         ? this.decimalPipe.transform(this.tx.amount / 1e18, '1.2-6')
         : this.decimalPipe.transform(this.tx.amount / 1e8, '1.2-6');
   }
@@ -667,7 +667,7 @@ export class ConfirmPage extends WalletTabsChild {
 
       if (
         tx.coin !== 'eth' &&
-        tx.coin !== 'tri' &&
+        tx.coin !== 'try' &&
         tx.amount > Number.MAX_SAFE_INTEGER
       ) {
         let msg = this.translate.instant('Amount too big');
@@ -815,7 +815,7 @@ export class ConfirmPage extends WalletTabsChild {
         if (amountUsd <= this.CONFIRM_LIMIT_USD) return resolve(false);
 
         let amount =
-          txp.coin !== 'eth' && txp.coin !== 'tri'
+          txp.coin !== 'eth' && txp.coin !== 'try'
             ? (this.tx.amount / 1e8).toFixed(8)
             : (this.tx.amount / 1e18).toFixed(8);
         let unit = txp.coin.toUpperCase();

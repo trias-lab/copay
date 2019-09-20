@@ -212,7 +212,7 @@ export class AmountPage extends WalletTabsChild {
 
     if (parentWalletCoin == 'eth') {
       this.unitToCoin = this.unitToWei;
-    } else if (parentWalletCoin == 'tri') {
+    } else if (parentWalletCoin == 'try') {
       this.unitToCoin = this.unitToWei;
     } else {
       this.unitToCoin = this.unitToSatoshi;
@@ -227,7 +227,7 @@ export class AmountPage extends WalletTabsChild {
     );
     if (parentWalletCoin == 'eth') {
       this.coinToUnit = this.weiToUnit;
-    } else if (parentWalletCoin == 'tri') {
+    } else if (parentWalletCoin == 'try') {
       this.coinToUnit = this.weiToUnit;
     } else {
       this.coinToUnit = this.satToUnit;
@@ -259,11 +259,11 @@ export class AmountPage extends WalletTabsChild {
         shortName: 'ETH'
       });
     }
-    if (parentWalletCoin === 'tri' || !parentWalletCoin) {
+    if (parentWalletCoin === 'try' || !parentWalletCoin) {
       this.availableUnits.push({
         name: 'TRY',
-        id: 'tri',
-        shortName: 'TRI'
+        id: 'try',
+        shortName: 'TRY'
       });
     }
     this.unitIndex = 0;
@@ -350,7 +350,7 @@ export class AmountPage extends WalletTabsChild {
         // hide send max for eth wallets
         if (
           this.navParams.data.coin !== 'eth' &&
-          this.navParams.data.coin !== 'tri'
+          this.navParams.data.coin !== 'try'
         )
           this.showSendMax = true;
         nextPage = ConfirmPage;
@@ -372,7 +372,7 @@ export class AmountPage extends WalletTabsChild {
       return this.finish();
     }
     let maxAmount;
-    if (this.wallet.coin == 'eth' || this.wallet.coin == 'tri') {
+    if (this.wallet.coin == 'eth' || this.wallet.coin == 'try') {
       maxAmount = this.txFormatProvider.weiToUnit(
         this.wallet.status.availableBalanceSat
       );

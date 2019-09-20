@@ -1708,8 +1708,8 @@ msgstr ""
 msgid "Search a contact"
 msgstr ""
 
-msgid "Search or enter bitcoin address"
-msgstr "連絡先検索かビットコインアドレスを指定"
+msgid "Search or enter wallet address"
+msgstr "連絡先検索かアドレスを指定"
 
 msgid "Search your currency"
 msgstr "通貨を検索"
@@ -2478,7 +2478,7 @@ msgstr "ウォレットは一度もクラウドへ保存されたりすること
 msgid "Your wallet key will be encrypted. The encrypt password cannot be recovered. Be sure to write it down."
 msgstr ""
 
-msgid "Your {walletType} wallet is backed up!"
+msgid "Your wallet is backed up!"
 msgstr ""
 
 msgid "[Balance Hidden]"
