@@ -8,7 +8,7 @@
     <span translate>Wallet created</span>
   </div>
 
-  <div class="item-title" *ngIf="notification.type == 'NewOutgoingTx'"> 
+  <div class="item-title" *ngIf="notification.type == 'NewOutgoingTx'">
     <span translate>Payment Sent</span>
   </div>
 
@@ -36,14 +36,18 @@
     <b>{{notification.message}}</b>
   </div>
 
-  <div class="item-subtitle"> 
+  <div class="item-subtitle">
     <span *ngIf="notification.creatorName && notification.wallet.n != 1">{{notification.creatorName}}</span>
     <span>{{notification.wallet.name}}</span>
   </div>
   <ion-note item-right>
     <!-- {{notification.types}} -->
     <div class="amount">
-      {{notification.data.amount | satToUnit: notification.wallet.coin}}
+      {{
+        notification.wallet.coin !== 'eth' && notification.wallet.coin !== 'try'
+          ? (notification.data.amount | satToUnit: notification.wallet.coin)
+          : (notification.data.amount | weiToUnit: 'eth')
+      }}
     </div>
     <time class="date">{{ notification.createdOn * 1000 | amTimeAgo}}</time>
   </ion-note>
