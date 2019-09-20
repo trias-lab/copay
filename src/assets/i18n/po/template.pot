@@ -1802,7 +1802,7 @@ msgstr ""
 msgid "Search a contact"
 msgstr ""
 
-msgid "Search or enter bitcoin address"
+msgid "Search or enter wallet address"
 msgstr ""
 
 msgid "Search your currency"

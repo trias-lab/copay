@@ -1708,8 +1708,8 @@ msgstr ""
 msgid "Search a contact"
 msgstr ""
 
-msgid "Search or enter bitcoin address"
-msgstr "連絡先検索かビットコインアドレスを指定"
+msgid "Search or enter wallet address"
+msgstr "連絡先検索かアドレスを指定"
 
 msgid "Search your currency"
 msgstr "通貨を検索"

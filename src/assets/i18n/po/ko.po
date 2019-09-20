@@ -1706,8 +1706,8 @@ msgstr ""
 msgid "Search a contact"
 msgstr ""
 
-msgid "Search or enter bitcoin address"
-msgstr "비트코인 주소를 검색 또는 입력해주세요"
+msgid "Search or enter wallet address"
+msgstr "주소를 검색하거나 입력하십시오"
 
 msgid "Search your currency"
 msgstr "통화 검색"

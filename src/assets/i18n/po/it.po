@@ -1706,8 +1706,8 @@ msgstr "Cerca Transazioni"
 msgid "Search a contact"
 msgstr "Cerca un contatto"
 
-msgid "Search or enter bitcoin address"
-msgstr "Cerca o inserisci indirizzo bitcoin"
+msgid "Search or enter wallet address"
+msgstr "Cerca o inserisci indirizzo"
 
 msgid "Search your currency"
 msgstr "Cerca la tua valuta"

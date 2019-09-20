@@ -1706,8 +1706,8 @@ msgstr "搜索交易"
 msgid "Search a contact"
 msgstr "查找联系人"
 
-msgid "Search or enter bitcoin address"
-msgstr "搜索或输入比特币地址"
+msgid "Search or enter wallet address"
+msgstr "搜索或输入钱包地址"
 
 msgid "Search your currency"
 msgstr "搜索您的货币"

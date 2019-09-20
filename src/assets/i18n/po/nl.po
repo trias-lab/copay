@@ -1706,8 +1706,8 @@ msgstr ""
 msgid "Search a contact"
 msgstr ""
 
-msgid "Search or enter bitcoin address"
-msgstr "Zoeken of bitcoin adres invullen"
+msgid "Search or enter wallet address"
+msgstr "Zoeken of adres invullen"
 
 msgid "Search your currency"
 msgstr "Zoek uw valuta"
