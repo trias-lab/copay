@@ -2670,7 +2670,7 @@ msgid ""
 "recovered. Be sure to write it down."
 msgstr ""
 
-msgid "Your {walletType} wallet is backed up!"
+msgid "Your wallet is backed up!"
 msgstr ""
 
 msgid "[Balance Hidden]"

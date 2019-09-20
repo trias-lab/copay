@@ -2860,8 +2860,8 @@ msgstr ""
 "Your wallet key will be encrypted. The encrypt password cannot be recovered. "
 "Be sure to write it down."
 
-msgid "Your {walletType} wallet is backed up!"
-msgstr "Your {walletType} wallet is backed up!"
+msgid "Your wallet is backed up!"
+msgstr "Your wallet is backed up!"
 
 msgid "[Balance Hidden]"
 msgstr "[Balance Hidden]"

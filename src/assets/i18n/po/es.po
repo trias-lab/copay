@@ -2475,7 +2475,7 @@ msgstr "Tu billetera nunca se sube a la nube ni se resguarda automáticamente en
 msgid "Your wallet key will be encrypted. The encrypt password cannot be recovered. Be sure to write it down."
 msgstr "La clave de la billetera será cifrada. La contraseña de cifrado no se puede recuperar. Asegúrese de anotarla."
 
-msgid "Your {walletType} wallet is backed up!"
+msgid "Your wallet is backed up!"
 msgstr "¡Su billetera {walletType} ha sido respaldada!"
 
 msgid "[Balance Hidden]"
