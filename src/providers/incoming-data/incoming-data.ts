@@ -251,7 +251,7 @@ export class IncomingDataProvider {
     redirParams?: RedirParams
   ): void {
     this.logger.debug('Incoming-data: TRY plain address');
-    const coin = Coin.TRI;
+    const coin = Coin.TRY;
     this.goToAmountPage(data, redirParams.coin || coin);
   }
 
@@ -491,7 +491,7 @@ export class IncomingDataProvider {
       };
       // Plain Address (TRY)
     } else if (this.isValidTricoinAddress(data)) {
-      this.logger.warn('tri');
+      this.logger.warn('try');
       return {
         data,
         type: 'TricoinAddress',

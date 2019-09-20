@@ -10,7 +10,7 @@ const env: EnvironmentSchema = {
     btc: 'https://bitpay.com/api/rates',
     bch: 'https://bitpay.com/api/rates/bch',
     eth: 'http://192.168.1.171:3232/bws/api/v1/rates/eth',
-    tri: 'http://192.168.1.171:3232/bws/api/v1/rates/tri'
+    try: 'http://192.168.1.171:3232/bws/api/v1/rates/try'
   },
   activateScanner: true
 };

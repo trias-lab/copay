@@ -478,7 +478,7 @@ export class HomePage {
         return x.credentials.coin == 'eth';
       });
       this.walletsTri = _.filter(this.wallets, (x: any) => {
-        return x.credentials.coin == 'tri';
+        return x.credentials.coin == 'try';
       });
       this.updateAllWallets();
     },
@@ -815,7 +815,7 @@ export class HomePage {
           //   alternativeBalance: parseFloat(alternativeBalance),
           //   alternativeUnit: alternativeUnitOne
           // });
-        } else if (wallet.coin == 'tri') {
+        } else if (wallet.coin == 'try') {
           // this.logger.warn('wwwwwwwwwww55555', 'aaa', alternativeBalance);
           this.triBalance += parseFloat(alternativeBalance);
           // this.balanceItem.push({

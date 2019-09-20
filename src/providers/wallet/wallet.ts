@@ -24,7 +24,7 @@ export enum Coin {
   BTC = 'btc',
   BCH = 'bch',
   ETH = 'eth',
-  TRI = 'tri'
+  TRY = 'try'
 }
 
 export interface WalletOptions {
@@ -1680,7 +1680,7 @@ export class WalletProvider {
       return network == 'testnet' ? 'bchtest' : 'bitcoincash';
     } else if (coin == 'eth') {
       return 'bitcoreEth';
-    } else if (coin == 'tri') {
+    } else if (coin == 'try') {
       return 'bitcoreTri';
     } else {
       return 'bitcoin';

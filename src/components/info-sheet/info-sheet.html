@@ -66,7 +66,7 @@
         or send max.' | translate: {amount: params.amount, coin: params.coin | uppercase} }}
       </span>
       <span sheet-button-text translate>Change Amount</span>
-      <span *ngIf="params.coin !== 'eth' && params.coin !== 'tri'" sheet-second-button-text translate>Send Max</span>
+      <span *ngIf="params.coin !== 'eth' && params.coin !== 'try'" sheet-second-button-text translate>Send Max</span>
     </info-sheet-template>
 
     <info-sheet-template *ngSwitchCase="'default-error'" type="danger">

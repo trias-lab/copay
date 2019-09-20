@@ -77,10 +77,10 @@ export class FeeProvider {
                 '/' +
                 network +
                 ' ' +
-                (coin !== 'eth' && coin !== 'tri'
+                (coin !== 'eth' && coin !== 'try'
                   ? (feeLevelRate.feePerKb / 1000).toFixed()
                   : (feeLevelRate.feePerKb / 1000000000).toFixed()) +
-                (coin !== 'eth' && coin !== 'tri' ? 'SAT/B' : ' Gwei')
+                (coin !== 'eth' && coin !== 'try' ? 'SAT/B' : ' Gwei')
             );
           return resolve(feeRate);
         })
