@@ -197,7 +197,7 @@ export class WalletDetailsPage extends WalletTabsChild {
   }
 
   shouldShowZeroState() {
-    return this.showNoTransactionsYetMsg && !this.updateStatusError;
+    return this.showNoTransactionsYetMsg && !this.updateStatusError && !(this.txps && this.txps.length>0);
   }
 
   shouldShowSpinner() {
