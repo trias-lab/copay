@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Events, ModalController } from 'ionic-angular';
+
+// import { Logger } from '../../../providers/logger/logger';
 import { TimeProvider } from '../../../providers/time/time';
 
 import { TxpDetailsPage } from '../../txp-details/txp-details';
@@ -16,7 +18,8 @@ export class TxpPage {
     private timeProvider: TimeProvider,
     private events: Events,
     private modalCtrl: ModalController
-  ) {}
+  ) // private logger: Logger
+  {}
 
   @Input()
   set tx(tx) {
@@ -37,6 +40,7 @@ export class TxpPage {
   }
 
   public createdWithinPastDay(time) {
+    // this.logger.info('````````````````````````````createdWithinPastDay:', time);
     return this.timeProvider.withinPastDay(time);
   }
 

@@ -181,6 +181,7 @@ export class TxDetailsPage {
   private updateTxDebounced = _.debounce(this.updateTx, 1000);
 
   private updateTx(opts?): void {
+    this.logger.debug('============updatetx');
     opts = opts ? opts : {};
     if (!opts.hideLoading) this.onGoingProcess.set('loadingTxInfo');
     this.walletProvider
