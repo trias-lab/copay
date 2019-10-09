@@ -181,7 +181,7 @@ export class WalletProvider {
           } else {
             tx.statusForUs = 'pending';
           }
-          this.logger.info('------pending txps:', JSON.stringify(tx))
+          // this.logger.info('------pending txps:', JSON.stringify(tx))
 
 
           if (!tx.deleteLockTime) tx.canBeRemoved = true;
