@@ -7,11 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content
-  #scrollArea
-  [ngClass]="{ 'no-margin-bottom': memoFocused }"
-  no-bounce
->
+<ion-content #scrollArea [ngClass]="{ 'no-margin-bottom': memoFocused }" no-bounce>
   <div class="card" *ngIf="tx">
     <div class="send-header-wrapper">
       <span class="send-heading" translate>Recipient</span>
@@ -29,7 +25,9 @@
             {{ amount }} {{ tx.coin | uppercase }}
           </ion-item>
         </ion-col>
-        <ion-col col-2 class="send-equal"> <div>≈</div> </ion-col>
+        <ion-col col-2 class="send-equal">
+          <div>≈</div>
+        </ion-col>
         <ion-col col-5>
           <ion-item class="confirm-amount">
             {{ tx.amount | satToFiat: tx.coin }}
@@ -55,37 +53,26 @@
     <div id="change-free-fee">
       <div class="send-title ">Transaction Fee</div>
 
-      <button
-        ion-button
-        class="item-fee"
-        [attr.detail-none]="usingMerchantFee ? '' : null"
-        (click)="chooseFeeLevel()"
+      <button ion-button class="item-fee" [attr.detail-none]="usingMerchantFee ? '' : null" (click)="chooseFeeLevel()"
         [ngClass]="{
           warn: wallet && tx.txp[wallet.id] && tx.txp[wallet.id].feeTooHigh,
           'btn-opacity': usingMerchantFee
-        }"
-        [disabled]="usingMerchantFee"
-      >
+        }" [disabled]="usingMerchantFee">
         change fee
       </button>
 
       <div class="send-balance " *ngIf="wallet && tx.txp[wallet.id]">
-        <span
-          ><span class="fee-amount">{{
+        <span><span class="fee-amount">{{
             tx.coin !== 'eth' && tx.coin !== 'try'
               ? (tx.txp[wallet.id].fee | satToUnit: tx.coin)
               : (tx.txp[wallet.id].fee | weiToUnit: 'eth')
-          }}</span></span
-        >
+          }}</span></span>
         <!-- TODO add weiToFiat -->
         <span> ≈ {{ tx.txp[wallet.id].fee | satToFiat: tx.coin }}</span>
         <span *ngIf="tx.txp[wallet.id].feeRatePerStr">
           &middot;
           <span>
-            <ion-icon
-              *ngIf="tx.txp[wallet.id].feeTooHigh"
-              name="warning"
-            ></ion-icon>
+            <ion-icon *ngIf="tx.txp[wallet.id].feeTooHigh" name="warning"></ion-icon>
             {{ tx.txp[wallet.id].feeRatePerStr }}
             <span translate> of total amount</span>
           </span>
@@ -95,13 +82,8 @@
     <ion-item-divider></ion-item-divider>
     <ion-item>
       <ion-label stacked>{{ 'Notes' | translate }}</ion-label>
-      <ion-textarea
-        placeholder="{{'Enter a transaction memo' | translate}}"
-        [(ngModel)]="tx.description"
-        name="tx.description"
-        autocomplete="off"
-        autocorrect="off"
-      ></ion-textarea>
+      <ion-textarea placeholder="{{'Enter a transaction memo' | translate}}" [(ngModel)]="tx.description"
+        name="tx.description" autocomplete="off" autocorrect="off"></ion-textarea>
     </ion-item>
     <ion-item-divider></ion-item-divider>
   </div>
@@ -256,27 +238,14 @@
       <button ion-button full class="button-footer" (click)="approve(tx, wallet)" [disabled]="!wallet || !tx.txp[wallet.id]">{{buttonText}}</button>
     </ion-toolbar>
   -->
-  <page-slide-to-accept
-    #slideButton
-    *ngIf="isCordova"
-    [ngClass]="{
+  <page-slide-to-accept #slideButton *ngIf="isCordova" [ngClass]="{
       'slide-confirm-fast slide-confirm-down': hideSlideButton,
       'slide-confirm-slow': !hideSlideButton
-    }"
-    [disabled]="!wallet || !(tx?.txp)[wallet.id]"
-    [buttonText]="buttonText"
-    (slideDone)="approve(tx, wallet)"
-  >
+    }" [disabled]="!wallet || !(tx?.txp)[wallet.id]" [buttonText]="buttonText" (slideDone)="approve(tx, wallet)">
   </page-slide-to-accept>
   <div class="send-check" *ngIf="!isCordova">
     <p>Double check the deposite address!</p>
-    <button
-      ion-button
-      block
-      large
-      (click)="approve(tx, wallet)"
-      [disabled]="!wallet || !tx.txp[wallet.id]"
-    >
+    <button ion-button block large (click)="approve(tx, wallet)" [disabled]="!wallet || !tx.txp[wallet.id]">
       {{ buttonText }}
     </button>
   </div>

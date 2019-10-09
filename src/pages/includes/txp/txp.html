@@ -26,7 +26,7 @@
       <span *ngIf="tx.action != 'invalid'">{{
           tx.coin !== 'eth' && tx.coin !== 'try'
             ? (tx.amount | satToUnit: tx.coin)
-            : (tx.amount | weiToUnit: 'eth')
+            : (tx.amount | weiToUnit: tx.coin)
         }}</span>
     </div>
     <div class="date">
