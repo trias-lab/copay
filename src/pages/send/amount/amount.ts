@@ -221,10 +221,10 @@ export class AmountPage extends WalletTabsChild {
     //   this.wallet.coin +
     //     '--------------------------------------- this.wallet.coin!!!!!!!!!!!!!!!!!!!!!!!!!'
     // );
-    this.logger.info(
-      this.unitToCoin +
-        '--------------------------------------- this.unitToCoin!!!!!!!!!!!!!!!!!!!!!!!!!'
-    );
+    // this.logger.info(
+    //   this.unitToCoin +
+    //     '--------------------------------------- this.unitToCoin!!!!!!!!!!!!!!!!!!!!!!!!!'
+    // );
     if (parentWalletCoin == 'eth') {
       this.coinToUnit = this.weiToUnit;
     } else if (parentWalletCoin == 'try') {

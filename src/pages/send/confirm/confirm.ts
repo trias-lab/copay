@@ -124,9 +124,9 @@ export class ConfirmPage extends WalletTabsChild {
   ionViewWillEnter() {
     this.navCtrl.swipeBackEnabled = false;
     this.isOpenSelector = false;
-    this.logger.info(
-      this.navParams.data.coin + '-_____________________________coin'
-    );
+    // this.logger.info(
+    //   this.navParams.data.coin + '-_____________________________coin'
+    // );
 
     let networkName;
     if (
@@ -140,9 +140,9 @@ export class ConfirmPage extends WalletTabsChild {
 
       try {
         networkName = new B.Address(this.navParams.data.toAddress).network.name;
-        this.logger.info(
-          networkName + '-_____________________________networkName'
-        );
+        // this.logger.info(
+        //   networkName + '-_____________________________networkName'
+        // );
       } catch (e) {
         var message = this.translate.instant(
           'Copay only supports Bitcoin Cash using new version numbers addresses'

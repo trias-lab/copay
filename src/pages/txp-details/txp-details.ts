@@ -128,7 +128,10 @@ export class TxpDetailsPage {
     this.checkPaypro();
     this.applyButtonText();
 
-    this.amount = this.decimalPipe.transform(this.tx.amount / 1e8, '1.2-6');
+    this.amount =
+      this.tx.coin === 'eth' || this.tx.coin === 'try'
+        ? this.decimalPipe.transform(this.tx.amount / 1e18, '1.2-6')
+        : this.decimalPipe.transform(this.tx.amount / 1e8, '1.2-6');
   }
 
   ionViewWillEnter() {
