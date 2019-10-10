@@ -145,7 +145,7 @@ export class ConfigProvider {
 
       // Bitcore wallet service URL
       bws: {
-        url: 'http://192.168.1.171:3232/bws/api'
+        url: 'http://tbws.trias.one:3232/bws/api'
       },
 
       download: {
