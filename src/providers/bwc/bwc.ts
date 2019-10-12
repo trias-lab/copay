@@ -24,8 +24,8 @@ export class BwcProvider {
     return BWC.BitcoreEth;
   }
 
-  public getBitcoreTri() {
-    return BWC.BitcoreTri;
+  public getBitcoreTry() {
+    return BWC.BitcoreTry;
   }
 
   public getErrors() {
