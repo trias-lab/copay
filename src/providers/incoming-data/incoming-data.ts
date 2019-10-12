@@ -90,7 +90,7 @@ export class IncomingDataProvider {
   }
   private isValidTricoinAddress(data: string): boolean {
     data = this.sanitizeUri(data);
-    let reg = /^(bitcoreTri\:)?0x[a-fA-F0-9]{40}$/;
+    let reg = /^(BitcoreTry\:)?0x[a-fA-F0-9]{40}$/;
     return reg.test(data);
   }
   private isValidBitcoinAddress(data: string): boolean {

@@ -1684,7 +1684,7 @@ export class WalletProvider {
     } else if (coin == 'eth') {
       return 'bitcoreEth';
     } else if (coin == 'try') {
-      return 'bitcoreTri';
+      return 'bitcoreTry';
     } else {
       return 'bitcoin';
     }
