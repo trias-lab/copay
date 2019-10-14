@@ -42,15 +42,15 @@
     <preference name="UseSwiftLanguageVersion" value="5" />
 
     <!-- Android Version: Marshmallow 6.0 (API Level 23) or higher -->
-    <!-- <preference name="android-minSdkVersion" value="23" /> -->
+    <preference name="android-minSdkVersion" value="23" />
     <!-- Android Version: Lollipop 5.1 (API Level 22) or higher -->
-    <preference name="android-minSdkVersion" value="22" />
+    <!-- <preference name="android-minSdkVersion" value="22" /> -->
     
     <!-- iOS 10.3 or higher -->
     <preference name="deployment-target" value="10.3" />
 
     <!-- Supported Platforms -->
-    <engine name="android" spec="7.1.2" />
+    <engine name="android" spec="7.1.4" />
     <engine name="ios" spec="4.5.5" />
 
     <!-- Plugins -->
@@ -87,7 +87,7 @@
       <variable name="SECOND_URL_SCHEME" value="*APPURI*" />
       <variable name="THIRD_URL_SCHEME" value="bitcoincash" />
     </plugin>
-    <plugin name="cordova-plugin-fcm-ng" spec="3.0.4" />
+    <plugin name="cordova-plugin-fcm-ng" spec="4.1.3" />
 
     <plugin name="cordova-plugin-wkwebview-engine" spec="1.1.4" />
 
