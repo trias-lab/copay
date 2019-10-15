@@ -91,7 +91,7 @@ export class AddressbookAddPage {
 
   private parseAddress(address: string): string {
     return address.replace(
-      /^(bitcoincash:|bchtest:|bitcoin:|bitcoreEth:|BitcoreTry:)/i,
+      /^(bitcoincash:|bchtest:|bitcoin:|bitcoreEth:|bitcoreTry:)/i,
       ''
     );
   }
