@@ -1522,8 +1522,10 @@ export class ProfileProvider {
 
             this.createWallet(optsTri, true).then(walletTri => {
               wallets.push(walletTri);
+              // only pass one wallet to backup page
+              // because all mnemonics of the default wallets are the same.
               return resolve({
-                walletsCreated: wallets,
+                walletDefault: wallet,
                 password: this.password
               });
             });

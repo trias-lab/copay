@@ -291,6 +291,13 @@ export class BackupGamePage {
       }
 
       this.profileProvider.setBackupFlag(this.wallet.credentials.walletId);
+      // if from onboarding page, set other wallets needsBackup flag to false
+      if (this.fromOnboarding) {
+        let wallets = this.profileProvider.getWallets();
+        _.each(wallets, value => {
+          this.profileProvider.setBackupFlag(value.credentials.walletId);
+        });
+      }
       return resolve();
     });
   }
