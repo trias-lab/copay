@@ -103,7 +103,7 @@ export class SendPage extends WalletTabsChild {
     this.logger.info('Loaded: SendPage');
 
     this.events.subscribe('update:address', data => {
-      this.search = data.value;
+      this.search = this.parseAddress(data.value);
       this.processInput();
     });
   }
@@ -126,6 +126,13 @@ export class SendPage extends WalletTabsChild {
 
   ngOnDestroy() {
     this.events.unsubscribe('update:address');
+  }
+
+  private parseAddress(address: string): string {
+    return address.replace(
+      /^(bitcoincash:|bchtest:|bitcoin:|bitcoreEth:|bitcoreTry:)/i,
+      ''
+    );
   }
 
   private getBchWalletsList(): FlatWallet[] {

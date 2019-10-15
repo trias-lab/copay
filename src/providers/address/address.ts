@@ -9,13 +9,13 @@ export class AddressProvider {
   private bitcoreCash;
   private Bitcore;
   private bitcoreEth;
-  private BitcoreTry;
+  private bitcoreTry;
 
   constructor(private bwcProvider: BwcProvider) {
     this.bitcore = this.bwcProvider.getBitcore();
     this.bitcoreCash = this.bwcProvider.getBitcoreCash();
     this.bitcoreEth = this.bwcProvider.getBitcoreEth();
-    this.BitcoreTry = this.bwcProvider.getBitcoreTry();
+    this.bitcoreTry = this.bwcProvider.getBitcoreTry();
     this.Bitcore = {
       btc: {
         lib: this.bitcore,
@@ -30,7 +30,7 @@ export class AddressProvider {
         translateTo: 'eth'
       },
       try: {
-        lib: this.BitcoreTry,
+        lib: this.bitcoreTry,
         translateTo: 'try'
       }
     };
@@ -110,7 +110,7 @@ export class AddressProvider {
 
   public extractAddress(str: string): string {
     const extractedAddress = str
-      .replace(/^(bitcoincash:|bchtest:|bitcoin:|bitcoreEth:|BitcoreTry:)/i, '')
+      .replace(/^(bitcoincash:|bchtest:|bitcoin:|bitcoreEth:|bitcoreTry:)/i, '')
       .replace(/\?.*/, '');
     return extractedAddress;
   }
@@ -122,7 +122,7 @@ export class AddressProvider {
     const URICash = this.bitcoreCash.URI;
     const AddressCash = this.bitcoreCash.Address;
     const AddressEth = this.bitcoreEth.Address;
-    const AddressTri = this.BitcoreTry.Address;
+    const AddressTri = this.bitcoreTry.Address;
 
     // Bip21 uri
     let uri, uriAddress;
@@ -147,7 +147,7 @@ export class AddressProvider {
         if (AddressEth.isValid(uriAddress, 'livenet')) return true;
         if (AddressEth.isValid(uriAddress, 'testnet')) return true;
       }
-    } else if (/^BitcoreTry:/i.test(str) || /^tritest:/i.test(str)) {
+    } else if (/^bitcoreTry:/i.test(str) || /^tritest:/i.test(str)) {
       if (URI.isValid(str)) {
         uri = new URI(str);
         uriAddress = uri.address.toString();
