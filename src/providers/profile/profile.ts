@@ -343,8 +343,6 @@ export class ProfileProvider {
 
     if (wallet.cachedActivity) wallet.cachedActivity.isValid = false;
 
-    if (wallet.cachedTxps) wallet.cachedTxps.isValid = false;
-
     this.events.publish('bwsEvent', wallet.id, n.type, n);
   }
 
