@@ -117,8 +117,6 @@ export class WalletProvider {
     if (wallet.completeHistory) wallet.completeHistory.isValid = false;
 
     if (wallet.cachedActivity) wallet.cachedActivity.isValid = false;
-
-    if (wallet.cachedTxps) wallet.cachedTxps.isValid = false;
   }
 
   public getStatus(wallet, opts): Promise<any> {
@@ -130,26 +128,7 @@ export class WalletProvider {
         let txps = status.pendingTxps;
         let now = Math.floor(Date.now() / 1000);
 
-        /* To test multiple outputs...
-        var txp = {
-          message: 'test multi-output',
-          fee: 1000,
-          createdOn: new Date() / 1000,
-          outputs: []
-        };
-        function addOutput(n) {
-          txp.outputs.push({
-            amount: 600,
-            toAddress: '2N8bhEwbKtMvR2jqMRcTCQqzHP6zXGToXcK',
-            message: 'output #' + (Number(n) + 1)
-          });
-        };
-        lodash.times(150, addOutput);
-        txps.push(txp);
-        */
-
         lodash.each(txps, tx => {
-
           tx = this.txFormatProvider.processTx(
             wallet.coin,
             tx,
@@ -181,8 +160,6 @@ export class WalletProvider {
           } else {
             tx.statusForUs = 'pending';
           }
-          // this.logger.info('------pending txps:', JSON.stringify(tx))
-
 
           if (!tx.deleteLockTime) tx.canBeRemoved = true;
         });
@@ -1021,7 +998,7 @@ export class WalletProvider {
         return wallet.completeHistory && wallet.completeHistory.isValid;
       };
 
-      if (isHistoryCached() && !opts.force)
+      if (isHistoryCached() && !opts.opts.force)
         return resolve(wallet.completeHistory);
 
       this.updateLocalTxHistory(wallet, opts)
