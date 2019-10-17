@@ -210,23 +210,23 @@ export class SwapPage {
       this.toQty = this.rate * newQty;
       this.toQtyEntered = this.toQty;
     } else if (this.fromQty !== newQty) {
-      this.fromQty = 0;
-      this.toQty = 0;
-      this.fromQtyEntered = this.fromQty;
-      this.toQtyEntered = this.toQty;
+      this.fromQty = null;
+      // this.toQty = 0;
+      // this.fromQtyEntered = this.fromQty;
+      // this.toQtyEntered = this.toQty;
     }
   }
 
   public handleChangeToQty(newQty) {
     if (newQty && this.toQty !== newQty) {
-      this.fromQty = this.toQty / this.rate;
       this.toQty = newQty;
+      this.fromQty = this.toQty / this.rate;
       this.fromQtyEntered = this.fromQty;
     } else if (this.toQty !== newQty) {
-      this.fromQty = 0;
-      this.toQty = 0;
-      this.fromQtyEntered = this.fromQty;
-      this.toQtyEntered = this.toQty;
+      // this.fromQty = 0;
+      this.toQty = null;
+      // this.fromQtyEntered = this.fromQty;
+      // this.toQtyEntered = this.toQty;
     }
   }
 
