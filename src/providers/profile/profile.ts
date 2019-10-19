@@ -739,9 +739,9 @@ export class ProfileProvider {
         this.askPassword(warnMsg, title).then((password: string) => {
           if (!password) {
             this.showWarningNoEncrypt().then(() => {
-              this.encrypt(wallet, fromOnboarding).then(() => {
-                return resolve();
-              });
+              // this.encrypt(wallet, fromOnboarding).then(() => {
+                return reject();
+              // });
             });
           } else {
             title = this.translate.instant(
@@ -1107,7 +1107,7 @@ export class ProfileProvider {
     this.persistenceProvider.storeNewProfile(this.profile);
   }
 
-  private resetProfile(): void {
+  public resetProfile(): void {
     this.logger.debug('----Clearing wallets...');
     this.wallet = {};
     _.each(this.profile.credentials, credentials => {
