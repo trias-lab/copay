@@ -3,6 +3,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import * as echarts from 'echarts';
 import {
+  App,
   Events,
   ModalController,
   NavController,
@@ -18,6 +19,7 @@ import { BitPayCardPage } from '../integrations/bitpay-card/bitpay-card';
 import { BitPayCardIntroPage } from '../integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 import { CoinbasePage } from '../integrations/coinbase/coinbase';
 import { ShapeshiftPage } from '../integrations/shapeshift/shapeshift';
+import { OnboardingPage } from '../onboarding/onboarding';
 import { PaperWalletPage } from '../paper-wallet/paper-wallet';
 // import { ScanPage } from '../scan/scan';
 import { AmountPage } from '../send/amount/amount';
@@ -117,6 +119,7 @@ export class HomePage {
   private latestVersion: string;
 
   constructor(
+    private app: App,
     private plt: Platform,
     private navCtrl: NavController,
     private profileProvider: ProfileProvider,
@@ -487,6 +490,21 @@ export class HomePage {
       leading: true
     }
   );
+
+  public shoBackToOnboardingPopup(): void {
+    let title = this.translate.instant('Warning!');
+    let message = this.translate.instant(
+      'Are you sure you want to go back to onboarding page to create default wallets?'
+    );
+    this.popupProvider.ionicConfirm(title, message, null, null).then(res => {
+      if (res) this.backToOnboarding();
+    });
+  }
+
+  public backToOnboarding() {
+    this.profileProvider.resetProfile();
+    this.app.getRootNavs()[0].setRoot(OnboardingPage);
+  }
 
   /**
    * handle the change of the coin type of wallets to display

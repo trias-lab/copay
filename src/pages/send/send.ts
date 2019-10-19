@@ -206,7 +206,8 @@ export class SendPage extends WalletTabsChild {
     network: string;
   }): boolean {
     return this.wallet
-      ? this.wallet.coin === recipient.coin &&
+      ? (this.wallet.coin === recipient.coin ||
+          (this.wallet.coin === 'try' && recipient.coin === 'eth')) &&
           this.wallet.network === recipient.network
       : true;
   }
@@ -433,7 +434,7 @@ export class SendPage extends WalletTabsChild {
           name: item.name,
           email: item.email,
           color: item.color,
-          coin: item.coin,
+          coin: this.wallet.coin,
           network: item.network
         });
       })

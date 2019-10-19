@@ -1,3 +1,4 @@
+import { OnboardingPage } from './../pages/onboarding/onboarding';
 import { Component, Renderer, ViewChild } from '@angular/core';
 import { Device } from '@ionic-native/device';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
@@ -196,14 +197,28 @@ export class CopayApp {
       this.statusBar.backgroundColorByName('white');
       this.splashScreen.hide();
 
-      // Subscribe Resume
-      this.onResumeSubscription = this.platform.resume.subscribe(() => {
-        // Check PIN or Fingerprint on Resume
-        this.openLockModal();
-      });
-
-      // Check PIN or Fingerprint
-      this.openLockModal();
+      this.profile
+        .loadAndBindProfile()
+        .then(profile => {
+          if (profile && profile.credentials.length > 0) {
+            // Subscribe Resume
+            this.onResumeSubscription = this.platform.resume.subscribe(() => {
+              // Check PIN or Fingerprint on Resume
+              this.openLockModal();
+            });
+            // Check PIN or Fingerprint
+            this.openLockModal();
+          } else {
+            // if all wallets are deleted,
+            // reset profile and back to OnBoarding page
+            this.profile.resetProfile();
+            this.rootPage = OnboardingPage;
+          }
+        })
+        .catch((err: Error) => {
+          this.logger.warn('LoadAndBindProfile', err.message);
+          this.rootPage = OnboardingPage;
+        });
     }
 
     // this.registerIntegrations();

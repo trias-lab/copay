@@ -85,7 +85,12 @@ page-addressbook-add {
   .item-ios.item-label-floating .text-input {
     margin: 0;
     padding: 0 0 0 8px;
-    width: auto;
+    width: 100%;
+  }
+
+  .item-ios.item-label-stacked .input-check .text-input,
+  .item-ios.item-label-floating .input-check .text-input {
+    padding-right: 32px;
   }
 
   .scanner-icon {
