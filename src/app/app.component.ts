@@ -1,4 +1,3 @@
-import { OnboardingPage } from './../pages/onboarding/onboarding';
 import { Component, Renderer, ViewChild } from '@angular/core';
 import { Device } from '@ionic-native/device';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
