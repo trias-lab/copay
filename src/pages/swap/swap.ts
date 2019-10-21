@@ -52,8 +52,8 @@ export class SwapPage {
   public feeOpts;
   public selectedFee; // Gas price of the transaction
 
-  private apiURL: string = 'https://ropsten-api.kyber.network/';
-  // private apiURL: string = 'https://api.kyber.network/'; // when production
+  // private apiURL: string = 'https://ropsten-api.kyber.network/';
+  private apiURL: string = 'https://api.kyber.network/'; // when production
 
   private onResumeSubscription: Subscription;
   private onPauseSubscription: Subscription;
