@@ -12,7 +12,7 @@ tabs-bar {
   .common-tabs-bar {
     left: 0;
     bottom: env(safe-area-inset-bottom);
-    position: absolute;
+    // position: absolute;
     display: flex;
     width: 100%;
     height: 50px;
