@@ -740,7 +740,7 @@ export class ProfileProvider {
           if (!password) {
             this.showWarningNoEncrypt().then(() => {
               // this.encrypt(wallet, fromOnboarding).then(() => {
-                return reject();
+              return reject();
               // });
             });
           } else {
@@ -1489,7 +1489,7 @@ export class ProfileProvider {
       const opts: Partial<WalletOptions> = {};
       opts.m = 1;
       opts.n = 1;
-      opts.networkName = 'livenet';
+      opts.networkName = 'testnet';
       opts.coin = Coin.BTC;
 
       this.createWallet(opts, !fromImporting)
