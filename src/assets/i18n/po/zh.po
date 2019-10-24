@@ -23,15 +23,6 @@ msgstr "（重复支付）"
 msgid "* A payment proposal can be deleted if 1) you are the creator, and no other copayer has signed, or 2) 10 minutes have passed since the proposal was created."
 msgstr "* 以下情况支付提议可被删除 1) 你是创建者但没有任何其他copayer已签名 或 2) 支付提议生成已超过十分钟"
 
-msgid "1. Tap \"Add Payment Method\" and select \"Gift Card\""
-msgstr ""
-
-msgid "2. Enter Gift Code"
-msgstr ""
-
-msgid "5-star ratings help us get BitPay Wallet into more hands, and more users means more resources can be committed to the app!"
-msgstr "Xếp hạng 5 sao giúp chúng tôi nhận BitPay Wallet thành nhiều hơn và nhiều người dùng hơn đồng nghĩa với việc nhiều tài nguyên hơn có thể được cam kết với ứng dụng!"
-
 msgid "A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum size allowed for a transaction was exceeded."
 msgstr "总数为{{amountAboveMaxSizeStr}}{{coin}} 的交易已被拒绝。超过了交易允许的最大额度。"
 
@@ -131,12 +122,6 @@ msgstr "差不多完成了 ！让我们回顾一下。"
 msgid "Alternative currency"
 msgstr "可选货币"
 
-msgid "Amazon.co.jp Gift Cards never expire and can be redeemed towards millions of items at www.amazon.co.jp."
-msgstr ""
-
-msgid "Amazon.com Gift Cards never expire and can be redeemed towards millions of items at www.amazon.com."
-msgstr ""
-
 msgid "Amount"
 msgstr "数额"
 
@@ -152,26 +137,11 @@ msgstr "量太大"
 msgid "An update to this app is available. For your security, please update to the latest version."
 msgstr "本程序有一个可用的更新。为了您的安全，请更新到最新版本。"
 
-msgid "Anyone with your recovery phrase can access or spend your bitcoin."
-msgstr ""
-
 msgid "Apply changes"
 msgstr "应用更改"
 
 msgid "Approximate Bitcoin network fee to transfer wallet's balance (with normal priority)"
 msgstr "转移钱包余额大约需要的比特币网络费用（正常优先级）"
-
-msgid "Archive All {brand} Gift Cards?"
-msgstr ""
-
-msgid "Archive Card"
-msgstr ""
-
-msgid "Archive this Card?"
-msgstr ""
-
-msgid "Archived Cards"
-msgstr ""
 
 msgid "Are you being watched?"
 msgstr "你正在被监视吗？"
@@ -263,8 +233,8 @@ msgstr "比特币钱包"
 msgid "Bitcoin is a currency."
 msgstr "比特币是一种货币。"
 
-msgid "Bitcoin is different - it cannot be safely held with a bank or web service."
-msgstr "比特币是特殊的—它无法被银行或者网络服务安全持有。"
+msgid "Cryptocurrency doesn’t possessed by any bank or internet service. "
+msgstr ""
 
 msgid "Bitcoin is secure, digital money."
 msgstr "比特币是安全的数字货币。"
@@ -977,8 +947,11 @@ msgstr "我知道了"
 msgid "I understand that if this app is moved to another device or deleted, my bitcoin can only be recovered with the recovery phrase"
 msgstr ""
 
-msgid "I understand that my funds are held securely on this device, not by a company"
-msgstr "我理解我的资金是在这个设备上被安全持有，而不是由一家公司持有。"
+msgid "My funds are stored on the blockchains, not companies nor this device."
+msgstr ""
+
+msgid "If this app is deleted, my assets can only be recovered with the recovery phrase."
+msgstr ""
 
 msgid "I'm disappointed"
 msgstr "Tôi thất vọng"
@@ -994,9 +967,6 @@ msgstr ""
 
 msgid "I've used this card"
 msgstr ""
-
-msgid "If enabled, Bitcoin Cash addresses will be shown using Copay style address, and not the new cashaddr format."
-msgstr "如果启用，比特币现金地址将使用copay样式地址显示，而不是使用新的cashaddr格式。"
 
 msgid "If enabled, the Recent Transactions card - a list of transactions occuring across all wallets - will appear in the Home tab."
 msgstr "如果启用，最近的交易卡-交易发生跨所有钱包名单-将出现在主页选项卡。"
@@ -1090,15 +1060,6 @@ msgstr "避免重复使用地址是个好主意-这既保护了您的隐私，�
 
 msgid "It's important that you write your recovery phrase down correctly. If something happens to your wallet, you'll need it to recover your money. Please review and try again."
 msgstr ""
-
-msgid "Join shared wallet"
-msgstr "加入共享钱包"
-
-msgid "Join wallet"
-msgstr "加入钱包"
-
-msgid "Joining Wallet..."
-msgstr "正在加入钱包..."
 
 msgid "Just scan the code to pay."
 msgstr "只是扫描代码来支付。"

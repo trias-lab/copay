@@ -28,13 +28,6 @@ msgstr ""
 "created."
 
 msgid ""
-"5-star ratings help us get BitPay Wallet into more hands, and more users "
-"means more resources can be committed to the app!"
-msgstr ""
-"5-star ratings help us get BitPay Wallet into more hands, and more users "
-"means more resources can be committed to the app!"
-
-msgid ""
 "A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum "
 "size allowed for a transaction was exceeded."
 msgstr ""
@@ -162,9 +155,6 @@ msgstr "Already duplicated"
 msgid "Alternative currency"
 msgstr "Alternative currency"
 
-msgid "Amazon.com is not available at this moment. Please try again later."
-msgstr "Amazon.com is not available at this moment. Please try again later."
-
 msgid "Amount"
 msgstr "Amount"
 
@@ -183,9 +173,6 @@ msgid ""
 msgstr ""
 "An update to this app is available. For your security, please update to the "
 "latest version."
-
-msgid "Anyone with your backup phrase can access or spend your bitcoin."
-msgstr "Anyone with your backup phrase can access or spend your bitcoin."
 
 msgid "Apply changes"
 msgstr "Apply changes"
@@ -308,10 +295,8 @@ msgstr "Bitcoin Wallets"
 msgid "Bitcoin is a currency."
 msgstr "Bitcoin is a currency."
 
-msgid ""
-"Bitcoin is different - it cannot be safely held with a bank or web service."
-msgstr ""
-"Bitcoin is different - it cannot be safely held with a bank or web service."
+msgid "Cryptocurrency doesn’t possessed by any bank or internet service. "
+msgstr "Cryptocurrency doesn’t possessed by any bank or internet service. "
 
 msgid "Bitcoin is secure, digital money."
 msgstr "Bitcoin is secure, digital money."
@@ -1097,16 +1082,15 @@ msgid "I understand"
 msgstr "I understand"
 
 msgid ""
-"I understand that if this app is moved to another device or deleted, my "
-"bitcoin can only be recovered with the backup phrase"
+"I understand that if this app is moved to another device or deleted, my bitcoin can only be recovered with the backup phrase"
 msgstr ""
-"I understand that if this app is moved to another device or deleted, my "
-"bitcoin can only be recovered with the backup phrase"
+"I understand that if this app is moved to another device or deleted, my bitcoin can only be recovered with the backup phrase"
 
-msgid ""
-"I understand that my funds are held securely on this device, not by a company"
-msgstr ""
-"I understand that my funds are held securely on this device, not by a company"
+msgid "My funds are stored on the blockchains, not companies nor this device."
+msgstr "My funds are stored on the blockchains, not companies nor this device."
+
+msgid "If this app is deleted, my assets can only be recovered with the recovery phrase."
+msgstr "If this app is deleted, my assets can only be recovered with the recovery phrase."
 
 msgid "I'm disappointed"
 msgstr "I'm disappointed"
@@ -1119,13 +1103,6 @@ msgstr "I'm sure"
 
 msgid "I'm very happy"
 msgstr "I'm very happy"
-
-msgid ""
-"If enabled, Bitcoin Cash addresses will be shown using Copay style address, "
-"and not the new cashaddr format."
-msgstr ""
-"If enabled, Bitcoin Cash addresses will be shown using Copay style address, "
-"and not the new cashaddr format."
 
 msgid ""
 "If enabled, the Recent Transactions card - a list of transactions occuring "
@@ -1251,15 +1228,6 @@ msgstr ""
 "It's important that you write your backup phrase down correctly. If "
 "something happens to your wallet, you'll need this backup to recover your "
 "money. Please review your backup and try again."
-
-msgid "Join shared wallet"
-msgstr "Join shared wallet"
-
-msgid "Join wallet"
-msgstr "Join wallet"
-
-msgid "Joining Wallet..."
-msgstr "Joining Wallet..."
 
 msgid "Just scan the code to pay."
 msgstr "Just scan the code to pay."

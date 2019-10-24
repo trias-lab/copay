@@ -16,17 +16,6 @@ msgid ""
 "created."
 msgstr ""
 
-msgid "1. Tap \"Add Payment Method\" and select \"Gift Card\""
-msgstr ""
-
-msgid "2. Enter Gift Code"
-msgstr ""
-
-msgid ""
-"5-star ratings help us get BitPay Wallet into more hands, and more users "
-"means more resources can be committed to the app!"
-msgstr ""
-
 msgid ""
 "A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum "
 "size allowed for a transaction was exceeded."
@@ -141,16 +130,6 @@ msgstr ""
 msgid "Alternative currency"
 msgstr ""
 
-msgid ""
-"Amazon.co.jp Gift Cards never expire and can be redeemed towards millions "
-"of items at www.amazon.co.jp."
-msgstr ""
-
-msgid ""
-"Amazon.com Gift Cards never expire and can be redeemed towards millions of "
-"items at www.amazon.com."
-msgstr ""
-
 msgid "Amount"
 msgstr ""
 
@@ -168,27 +147,12 @@ msgid ""
 "latest version."
 msgstr ""
 
-msgid "Anyone with your recovery phrase can access or spend your bitcoin."
-msgstr ""
-
 msgid "Apply changes"
 msgstr ""
 
 msgid ""
 "Approximate Bitcoin network fee to transfer wallet's balance (with normal "
 "priority)"
-msgstr ""
-
-msgid "Archive All {brand} Gift Cards?"
-msgstr ""
-
-msgid "Archive Card"
-msgstr ""
-
-msgid "Archive this Card?"
-msgstr ""
-
-msgid "Archived Cards"
 msgstr ""
 
 msgid "Are you being watched?"
@@ -288,7 +252,7 @@ msgstr ""
 msgid "Bitcoin is a currency."
 msgstr ""
 
-msgid "Bitcoin is different - it cannot be safely held with a bank or web service."
+msgid "Cryptocurrency doesn’t possessed by any bank or internet service. "
 msgstr ""
 
 msgid "Bitcoin is secure, digital money."
@@ -1036,6 +1000,12 @@ msgid ""
 "company"
 msgstr ""
 
+msgid "My funds are stored on the blockchains, not companies nor this device."
+msgstr ""
+
+msgid "If this app is deleted, my assets can only be recovered with the recovery phrase."
+msgstr ""
+
 msgid "I'm disappointed"
 msgstr ""
 
@@ -1049,11 +1019,6 @@ msgid "I'm very happy"
 msgstr ""
 
 msgid "I've used this card"
-msgstr ""
-
-msgid ""
-"If enabled, Bitcoin Cash addresses will be shown using Copay style address, "
-"and not the new cashaddr format."
 msgstr ""
 
 msgid ""
@@ -1169,15 +1134,6 @@ msgid ""
 "It's important that you write your recovery phrase down correctly. If "
 "something happens to your wallet, you'll need it to recover your money. "
 "Please review and try again."
-msgstr ""
-
-msgid "Join shared wallet"
-msgstr ""
-
-msgid "Join wallet"
-msgstr ""
-
-msgid "Joining Wallet..."
 msgstr ""
 
 msgid "Just scan the code to pay."

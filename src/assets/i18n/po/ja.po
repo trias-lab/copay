@@ -23,15 +23,6 @@ msgstr "(二重払い可能性あり)"
 msgid "* A payment proposal can be deleted if 1) you are the creator, and no other copayer has signed, or 2) 10 minutes have passed since the proposal was created."
 msgstr ""
 
-msgid "1. Tap \"Add Payment Method\" and select \"Gift Card\""
-msgstr ""
-
-msgid "2. Enter Gift Code"
-msgstr ""
-
-msgid "5-star ratings help us get BitPay Wallet into more hands, and more users means more resources can be committed to the app!"
-msgstr ""
-
 msgid "A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum size allowed for a transaction was exceeded."
 msgstr ""
 
@@ -131,12 +122,6 @@ msgstr "ほぼ完了!確認してみましょう。"
 msgid "Alternative currency"
 msgstr ""
 
-msgid "Amazon.co.jp Gift Cards never expire and can be redeemed towards millions of items at www.amazon.co.jp."
-msgstr ""
-
-msgid "Amazon.com Gift Cards never expire and can be redeemed towards millions of items at www.amazon.com."
-msgstr ""
-
 msgid "Amount"
 msgstr "金額"
 
@@ -152,26 +137,11 @@ msgstr "金額が大きすぎます"
 msgid "An update to this app is available. For your security, please update to the latest version."
 msgstr "このアプリのアップデートがあります。セキュリティーを保持するために最新版にアップデートして下さい。"
 
-msgid "Anyone with your recovery phrase can access or spend your bitcoin."
-msgstr ""
-
 msgid "Apply changes"
 msgstr ""
 
 msgid "Approximate Bitcoin network fee to transfer wallet's balance (with normal priority)"
 msgstr "ウォレットの残高を送るために推測される必要なビットコインネットワーク手数料(優先度：普通)"
-
-msgid "Archive All {brand} Gift Cards?"
-msgstr ""
-
-msgid "Archive Card"
-msgstr ""
-
-msgid "Archive this Card?"
-msgstr ""
-
-msgid "Archived Cards"
-msgstr ""
 
 msgid "Are you being watched?"
 msgstr "見られていませんか？"
@@ -265,7 +235,7 @@ msgstr "ビットコインウォレット"
 msgid "Bitcoin is a currency."
 msgstr "ビットコインは通貨の一つ"
 
-msgid "Bitcoin is different - it cannot be safely held with a bank or web service."
+msgid "Cryptocurrency doesn’t possessed by any bank or internet service. "
 msgstr ""
 
 msgid "Bitcoin is secure, digital money."
@@ -979,7 +949,13 @@ msgstr "承知しました"
 msgid "I understand that if this app is moved to another device or deleted, my bitcoin can only be recovered with the recovery phrase"
 msgstr ""
 
-msgid "I understand that my funds are held securely on this device, not by a company"
+msgid "My funds are stored on the blockchains, not companies nor this device."
+msgstr ""
+
+msgid "If this app is deleted, my assets can only be recovered with the recovery phrase."
+msgstr ""
+
+msgid "Cryptocurrency doesn’t possessed by any bank or internet service. "
 msgstr ""
 
 msgid "I'm disappointed"
@@ -995,9 +971,6 @@ msgid "I'm very happy"
 msgstr ""
 
 msgid "I've used this card"
-msgstr ""
-
-msgid "If enabled, Bitcoin Cash addresses will be shown using Copay style address, and not the new cashaddr format."
 msgstr ""
 
 msgid "If enabled, the Recent Transactions card - a list of transactions occuring across all wallets - will appear in the Home tab."
@@ -1092,15 +1065,6 @@ msgstr ""
 
 msgid "It's important that you write your recovery phrase down correctly. If something happens to your wallet, you'll need it to recover your money. Please review and try again."
 msgstr ""
-
-msgid "Join shared wallet"
-msgstr "共有ウォレットに参加"
-
-msgid "Join wallet"
-msgstr ""
-
-msgid "Joining Wallet..."
-msgstr "ウォレット参加中…"
 
 msgid "Just scan the code to pay."
 msgstr "コードを読み取って送金できます"
