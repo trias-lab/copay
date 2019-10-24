@@ -486,13 +486,13 @@ export class SwapPage {
                 this.walletProvider
                   .prepare(this.selectedWallet)
                   .then((password: string) => {
-                    this.onGoingProcessProvider.set('signingTx');
+                    // this.onGoingProcessProvider.set('signingTx');
                     let signedTx = this.selectedWallet.signEthTranscation(
                       password,
                       this.selectedAddr.path,
                       rawTx
                     );
-                    this.onGoingProcessProvider.set('broadcastingTx');
+                    // this.onGoingProcessProvider.set('broadcastingTx');
                     this.selectedWallet.broadcastRawTx(
                       {
                         rawTx: '0x' + signedTx.toString('hex'),
@@ -502,7 +502,7 @@ export class SwapPage {
                       err => {
                         if (err) return reject(err);
                         this.onGoingProcessProvider.clear();
-                        return resolve();
+                        return resolve(password);
                       }
                     );
                   })
@@ -510,7 +510,6 @@ export class SwapPage {
                     this.onGoingProcessProvider.clear();
                     return reject(err);
                   });
-                return resolve();
               })
               .catch(err => {
                 this.onGoingProcessProvider.clear();
@@ -649,53 +648,41 @@ export class SwapPage {
    * Execute the trade
    * @param {*} tradeDetails
    */
-  private async executeTrade(tradeDetails) {
+  private async executeTrade(tradeDetails, password) {
     // Extract the raw transaction details
     let rawTx = tradeDetails.data[0];
-    this.walletProvider
-      .prepare(this.selectedWallet)
-      .then((password: string) => {
-        this.onGoingProcessProvider.set('signingTx');
-        let signedTx = this.selectedWallet.signEthTranscation(
-          password,
-          this.selectedAddr.path,
-          rawTx
-        );
-        this.onGoingProcessProvider.set('broadcastingTx');
-        this.selectedWallet.broadcastRawTx(
-          {
-            rawTx: '0x' + signedTx.toString('hex'),
-            network: 'livenet',
-            coin: 'eth'
-          },
-          (err, txid) => {
-            if (err) {
-              this.logger.error(err);
-              this.popupProvider.ionicAlert(
-                this.translate.instant('Error executing trade:'),
-                this.bwcError.msg(err)
-              );
-            } else {
-              this.popupProvider.ionicAlert(
-                'Success',
-                'Transaction has been sent, we’ll notify you when it is comfirmed.',
-                'Great!'
-              );
-              this.logger.debug('Tx ' + txid + ' broadcast success!');
-              this.updateAll();
-            }
-            this.onGoingProcessProvider.clear();
-          }
-        );
-      })
-      .catch(err => {
+    this.onGoingProcessProvider.set('signingTx');
+    let signedTx = this.selectedWallet.signEthTranscation(
+      password,
+      this.selectedAddr.path,
+      rawTx
+    );
+    this.onGoingProcessProvider.set('broadcastingTx');
+    this.selectedWallet.broadcastRawTx(
+      {
+        rawTx: '0x' + signedTx.toString('hex'),
+        network: 'livenet',
+        coin: 'eth'
+      },
+      (err, txid) => {
+        if (err) {
+          this.logger.error(err);
+          this.popupProvider.ionicAlert(
+            this.translate.instant('Error executing trade:'),
+            this.bwcError.msg(err)
+          );
+        } else {
+          this.popupProvider.ionicAlert(
+            'Success',
+            'Transaction has been sent, we’ll notify you when it is comfirmed.',
+            'Great!'
+          );
+          this.logger.debug('Tx ' + txid + ' broadcast success!');
+          this.updateAll();
+        }
         this.onGoingProcessProvider.clear();
-        this.logger.error(err);
-        this.popupProvider.ionicAlert(
-          this.translate.instant('Error executing trade:'),
-          this.bwcError.msg(err)
-        );
-      });
+      }
+    );
   }
 
   public async startSwap() {
@@ -731,7 +718,7 @@ export class SwapPage {
 
           // enable token
           this.checkTokenEnabled(tokenToCheck)
-            .then(() => {
+            .then(password => {
               this.onGoingProcessProvider.set('creatingTx');
               // trade execution
               this.getTradeDetails(
@@ -742,7 +729,7 @@ export class SwapPage {
                 this.toQty * 0.97,
                 this.selectedFee
               ).then(tradeDetails => {
-                this.executeTrade(tradeDetails);
+                this.executeTrade(tradeDetails, password);
               });
             })
             .catch(err => {
