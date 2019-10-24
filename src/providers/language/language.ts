@@ -14,15 +14,15 @@ export class LanguageProvider {
       name: 'English',
       isoCode: 'en'
     },
-    {
-      name: '한국어',
-      isoCode: 'ko'
-    },
-    {
-      name: '日本語',
-      isoCode: 'ja',
-      useIdeograms: true
-    },
+    // {
+    //   name: '한국어',
+    //   isoCode: 'ko'
+    // },
+    // {
+    //   name: '日本語',
+    //   isoCode: 'ja',
+    //   useIdeograms: true
+    // },
     {
       name: '中文（简体）',
       isoCode: 'zh',
