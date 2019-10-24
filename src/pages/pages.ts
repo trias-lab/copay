@@ -83,8 +83,6 @@ import { WalletNamePage } from '../pages/settings/wallet-settings/wallet-name/wa
 import { WalletSettingsPage } from '../pages/settings/wallet-settings/wallet-settings';
 
 /* Wallet Advanced Settings */
-import { AllAddressesPage } from '../pages/settings/wallet-settings/wallet-settings-advanced/wallet-addresses/all-addresses/all-addresses';
-import { WalletAddressesPage } from '../pages/settings/wallet-settings/wallet-settings-advanced/wallet-addresses/wallet-addresses';
 import { WalletDeletePage } from '../pages/settings/wallet-settings/wallet-settings-advanced/wallet-delete/wallet-delete';
 import { WalletExportPage } from '../pages/settings/wallet-settings/wallet-settings-advanced/wallet-export/wallet-export';
 import { WalletExtendedPrivateKeyPage } from '../pages/settings/wallet-settings/wallet-settings-advanced/wallet-information/wallet-extended-private-key/wallet-extended-private-key';
@@ -116,7 +114,6 @@ export const PAGES = [
   AddressbookModifyPage,
   AboutPage,
   AdvancedPage,
-  AllAddressesPage,
   AltCurrencyPage,
   BackupRequestPage,
   BitPayCardIntroPage,
@@ -172,7 +169,6 @@ export const PAGES = [
   WalletNamePage,
   WalletColorPage,
   WalletInformationPage,
-  WalletAddressesPage,
   WalletExportPage,
   WalletServiceUrlPage,
   WalletTransactionHistoryPage,

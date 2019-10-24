@@ -16,7 +16,6 @@ import { WalletProvider } from '../../../providers/wallet/wallet';
 import { BackupRequestPage } from '../../backup/backup-request/backup-request';
 import { WalletColorPage } from './wallet-color/wallet-color';
 import { WalletNamePage } from './wallet-name/wallet-name';
-import { WalletAddressesPage } from './wallet-settings-advanced/wallet-addresses/wallet-addresses';
 import { WalletDeletePage } from './wallet-settings-advanced/wallet-delete/wallet-delete';
 import { WalletExportPage } from './wallet-settings-advanced/wallet-export/wallet-export';
 import { WalletInformationPage } from './wallet-settings-advanced/wallet-information/wallet-information';
@@ -200,11 +199,6 @@ export class WalletSettingsPage {
 
   public openWalletInformation(): void {
     this.navCtrl.push(WalletInformationPage, {
-      walletId: this.wallet.credentials.walletId
-    });
-  }
-  public openWalletAddresses(): void {
-    this.navCtrl.push(WalletAddressesPage, {
       walletId: this.wallet.credentials.walletId
     });
   }

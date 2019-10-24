@@ -1,7 +1,5 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Wallet Settings</ion-title>
-  </ion-navbar>
+  <ion-navbar> <ion-title>Wallet Settings</ion-title> </ion-navbar>
 </ion-header>
 
 <ion-content no-bounce>
@@ -31,7 +29,11 @@
       </ion-item>
       <ion-item-divider>{{'Security' | translate}}</ion-item-divider>
     -->
-    <button ion-item (click)="openBackupSettings()" [ngClass]="{ warn: needsBackup }">
+    <button
+      ion-item
+      (click)="openBackupSettings()"
+      [ngClass]="{ warn: needsBackup }"
+    >
       <span translate>Backup</span>
       <!--
         <ion-note *ngIf="needsBackup" class="wallet-warning" item-end>
@@ -47,36 +49,35 @@
         </ion-item>
       </div>
     -->
-    <!-- <div *ngIf="canSign">
-      <ion-item class="with-label">
-        <ion-label>{{ 'Request Encrypt Password' | translate }}</ion-label>
-        <ion-toggle [(ngModel)]="encryptEnabled" (ionChange)="encryptChange()" [disabled]="(needsBackup || !wallet.isComplete()) && !encryptEnabled"></ion-toggle>
-      </ion-item>
-      <label-tip type="info">
-        <span label-tip-title translate>Password Not Recoverable</span>
-        <div label-tip-body>
-          <span translate
-            >This password cannot be recovered. If this password is lost, funds
-            can only be recovered by reimporting your 12-word recovery
-            phrase.</span
-          >
-          <br />
-          <a
-            class="label-tip-link"
-            (click)="openSupportSpendingPassword()"
-            translate
-            >Learn More</a
-          >
-        </div>
-      </label-tip>
-    </div> -->
+    <!--
+      <div *ngIf="canSign">
+        <ion-item class="with-label">
+          <ion-label>{{ 'Request Encrypt Password' | translate }}</ion-label>
+          <ion-toggle [(ngModel)]="encryptEnabled" (ionChange)="encryptChange()" [disabled]="(needsBackup || !wallet.isComplete()) && !encryptEnabled"></ion-toggle>
+        </ion-item>
+        <label-tip type="info">
+          <span label-tip-title translate>Password Not Recoverable</span>
+          <div label-tip-body>
+            <span translate
+              >This password cannot be recovered. If this password is lost, funds
+              can only be recovered by reimporting your 12-word recovery
+              phrase.</span
+            >
+            <br />
+            <a
+              class="label-tip-link"
+              (click)="openSupportSpendingPassword()"
+              translate
+              >Learn More</a
+            >
+          </div>
+        </label-tip>
+      </div>
+    -->
     <!--
       <ion-item-divider>{{'Advanced' | translate}}</ion-item-divider>
       <button ion-item (click)="openWalletInformation()">
         <span translate>Wallet Information</span>
-      </button>
-      <button ion-item (click)="openWalletAddresses()">
-        <span translate>Wallet Addresses</span>
       </button>
     -->
     <button ion-item (click)="openExportWallet()">
