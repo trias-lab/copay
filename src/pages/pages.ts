@@ -6,10 +6,8 @@ import { BackupGamePage } from '../pages/backup/backup-game/backup-game';
 import { BackupRequestPage } from '../pages/backup/backup-request/backup-request';
 import { SendFeedbackPage } from '../pages/feedback/send-feedback/send-feedback';
 import { FinishModalPage } from '../pages/finish/finish';
-import { CollectEmailPage } from '../pages/onboarding/collect-email/collect-email';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
-import { TourPage } from '../pages/onboarding/tour/tour';
 import { PaperWalletPage } from '../pages/paper-wallet/paper-wallet';
 import { PayProPage } from '../pages/paypro/paypro';
 import { SlideToAcceptPage } from '../pages/slide-to-accept/slide-to-accept';
@@ -139,7 +137,6 @@ export const PAGES = [
   ConfirmPage,
   CustomAmountPage,
   DisclaimerPage,
-  CollectEmailPage,
   ...GIFT_CARD_PAGES,
   GravatarPage,
   HomePage,
@@ -167,7 +164,6 @@ export const PAGES = [
   SessionLogPage,
   SendFeedbackPage,
   FinishModalPage,
-  TourPage,
   TabsPage,
   TxpDetailsPage,
   TxDetailsPage,
