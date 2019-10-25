@@ -10,7 +10,6 @@ import {
   Platform
 } from 'ionic-angular';
 import * as _ from 'lodash';
-import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
 
 // Pages
@@ -40,7 +39,6 @@ import { ClipboardProvider } from '../../providers/clipboard/clipboard';
 import { ConfigProvider } from '../../providers/config/config';
 import { EmailNotificationsProvider } from '../../providers/email-notifications/email-notifications';
 import { ExternalLinkProvider } from '../../providers/external-link/external-link';
-import { FeedbackProvider } from '../../providers/feedback/feedback';
 // import { HomeIntegrationsProvider } from '../../providers/home-integrations/home-integrations';
 import { IncomingDataProvider } from '../../providers/incoming-data/incoming-data';
 import { Logger } from '../../providers/logger/logger';
@@ -138,7 +136,6 @@ export class HomePage {
     private platformProvider: PlatformProvider,
     // private homeIntegrationsProvider: HomeIntegrationsProvider,
     private persistenceProvider: PersistenceProvider,
-    private feedbackProvider: FeedbackProvider,
     // private bitPayCardProvider: BitPayCardProvider,
     private translate: TranslateService,
     private emailProvider: EmailNotificationsProvider,
@@ -304,7 +301,6 @@ export class HomePage {
 
     if (this.isElectron) this.checkUpdate();
     this.checkHomeTip();
-    this.checkFeedbackInfo();
 
     this.checkEmailLawCompliance();
 
@@ -525,31 +521,6 @@ export class HomePage {
     this.homeTip = false;
   }
 
-  private checkFeedbackInfo() {
-    this.persistenceProvider.getFeedbackInfo().then(info => {
-      if (!info) {
-        this.initFeedBackInfo();
-      } else {
-        let feedbackInfo = info;
-        // Check if current version is greater than saved version
-        let currentVersion = this.releaseProvider.getCurrentAppVersion();
-        let savedVersion = feedbackInfo.version;
-        let isVersionUpdated = this.feedbackProvider.isVersionUpdated(
-          currentVersion,
-          savedVersion
-        );
-        if (!isVersionUpdated) {
-          this.initFeedBackInfo();
-          return;
-        }
-        let now = moment().unix();
-        let timeExceeded = now - feedbackInfo.time >= 24 * 7 * 60 * 60;
-        this.showRateCard = timeExceeded && !feedbackInfo.sent;
-        // this.showCard.setShowRateCard(this.showRateCard);
-      }
-    });
-  }
-
   public checkClipboard() {
     return this.clipboardProvider
       .getData()
@@ -629,15 +600,6 @@ export class HomePage {
     this.countDown = setInterval(() => {
       setExpirationTime();
     }, 1000);
-  }
-
-  private initFeedBackInfo() {
-    this.persistenceProvider.setFeedbackInfo({
-      time: moment().unix(),
-      version: this.releaseProvider.getCurrentAppVersion(),
-      sent: false
-    });
-    this.showRateCard = false;
   }
 
   private updateWallet(opts): void {

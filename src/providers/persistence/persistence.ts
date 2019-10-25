@@ -15,12 +15,6 @@ export enum Network {
   testnet = 'testnet'
 }
 
-export interface FeedbackValues {
-  time: number;
-  version: string;
-  sent: boolean;
-}
-
 export interface GiftCardMap {
   [invoiceId: string]: GiftCard;
 }
@@ -39,7 +33,6 @@ const Keys = {
   COINBASE_TOKEN: network => 'coinbaseToken-' + network,
   COINBASE_TXS: network => 'coinbaseTxs-' + network,
   CONFIG: 'config',
-  FEEDBACK: 'feedback',
   FOCUSED_WALLET_ID: 'focusedWalletId',
   GIFT_CARD_CONFIG_CACHE: 'giftCardConfigCache',
   GIFT_CARDS: (cardName: CardName, network: Network) => {
@@ -242,14 +235,6 @@ export class PersistenceProvider {
 
   deleteProfile() {
     return this.storage.remove(Keys.PROFILE);
-  }
-
-  setFeedbackInfo(feedbackValues: FeedbackValues) {
-    return this.storage.set(Keys.FEEDBACK, feedbackValues);
-  }
-
-  getFeedbackInfo() {
-    return this.storage.get(Keys.FEEDBACK);
   }
 
   storeFocusedWalletId(walletId: string) {

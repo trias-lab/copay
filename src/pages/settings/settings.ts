@@ -18,7 +18,6 @@ import { ProfileProvider } from '../../providers/profile/profile';
 import { TouchIdProvider } from '../../providers/touchid/touchid';
 
 // pages
-import { SendFeedbackPage } from '../feedback/send-feedback/send-feedback';
 import { BitPaySettingsPage } from '../integrations/bitpay-card/bitpay-settings/bitpay-settings';
 import { CoinbaseSettingsPage } from '../integrations/coinbase/coinbase-settings/coinbase-settings';
 import { GiftCardsSettingsPage } from '../integrations/gift-cards/gift-cards-settings/gift-cards-settings';
@@ -213,10 +212,6 @@ export class SettingsPage {
 
   public openWalletSettingsPage(walletId: string): void {
     this.navCtrl.push(WalletSettingsPage, { walletId });
-  }
-
-  public openSendFeedbackPage(): void {
-    this.navCtrl.push(SendFeedbackPage);
   }
 
   public openSharePage(): void {

@@ -52,7 +52,6 @@ export class OnGoingProcessProvider {
       sweepingWallet: this.translate.instant('Sweeping Wallet...'),
       validatingWords: this.translate.instant('Validating recovery phrase...'),
       loadingTxInfo: this.translate.instant('Loading transaction info...'),
-      sendingFeedback: this.translate.instant('Sending feedback...'),
       generatingNewAddress: this.translate.instant('Generating new address...'),
       sendingByEmail: this.translate.instant('Preparing addresses...'),
       sending2faCode: this.translate.instant('Sending 2FA code...'),

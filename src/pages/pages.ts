@@ -4,7 +4,6 @@ import { CreateWalletPage } from '../pages/add/create-wallet/create-wallet';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
 import { BackupGamePage } from '../pages/backup/backup-game/backup-game';
 import { BackupRequestPage } from '../pages/backup/backup-request/backup-request';
-import { SendFeedbackPage } from '../pages/feedback/send-feedback/send-feedback';
 import { FinishModalPage } from '../pages/finish/finish';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
@@ -43,7 +42,6 @@ import { BitPaySettingsPage } from '../pages/integrations/bitpay-card/bitpay-set
 
 /*Includes */
 import { CardItemPage } from '../pages/includes/card-item/card-item';
-import { FeedbackCardPage } from '../pages/includes/feedback-card/feedback-card';
 import { GravatarPage } from '../pages/includes/gravatar/gravatar';
 import { TxpPage } from '../pages/includes/txp/txp';
 import { WalletActivityPage } from '../pages/includes/wallet-activity/wallet-activity';
@@ -127,7 +125,6 @@ export const PAGES = [
   CoinbasePage,
   CoinbaseTxDetailsPage,
   CopayersPage,
-  FeedbackCardPage,
   SharePage,
   ImportWalletPage,
   BackupGamePage,
@@ -159,7 +156,6 @@ export const PAGES = [
   FeePolicyPage,
   SearchTxModalPage,
   SessionLogPage,
-  SendFeedbackPage,
   FinishModalPage,
   TabsPage,
   TxpDetailsPage,
