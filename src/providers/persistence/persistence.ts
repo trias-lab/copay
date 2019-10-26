@@ -4,7 +4,6 @@ import { Events } from 'ionic-angular';
 import * as _ from 'lodash';
 import { Logger } from '../../providers/logger/logger';
 
-import { CardName, GiftCard } from '../gift-card/gift-card.types';
 import { PlatformProvider } from '../platform/platform';
 import { FileStorage } from './storage/file-storage';
 import { LocalStorage } from './storage/local-storage';
@@ -15,30 +14,17 @@ export enum Network {
   testnet = 'testnet'
 }
 
-export interface GiftCardMap {
-  [invoiceId: string]: GiftCard;
-}
-
 const Keys = {
   ADDRESS_BOOK: network => 'addressbook-' + network,
   ADDRESS_MANAGER: walletId => 'addressManager-' + walletId,
   AGREE_DISCLAIMER: 'agreeDisclaimer',
-  GIFT_CARD_USER_INFO: 'amazonUserInfo', // keeps legacy key for backwards compatibility
   APP_IDENTITY: network => 'appIdentity-' + network,
   BACKUP: walletId => 'backup-' + walletId,
   BALANCE_CACHE: cardId => 'balanceCache-' + cardId,
   BITPAY_ACCOUNTS_V2: network => 'bitpayAccounts-v2-' + network,
   CLEAN_AND_SCAN_ADDRESSES: 'CleanAndScanAddresses',
-  COINBASE_REFRESH_TOKEN: network => 'coinbaseRefreshToken-' + network,
-  COINBASE_TOKEN: network => 'coinbaseToken-' + network,
-  COINBASE_TXS: network => 'coinbaseTxs-' + network,
   CONFIG: 'config',
   FOCUSED_WALLET_ID: 'focusedWalletId',
-  GIFT_CARD_CONFIG_CACHE: 'giftCardConfigCache',
-  GIFT_CARDS: (cardName: CardName, network: Network) => {
-    const legacyGiftCardKey = getLegacyGiftCardKey(cardName, network);
-    return legacyGiftCardKey || `giftCards-${cardName}-${network}`;
-  },
   HIDE_BALANCE: walletId => 'hideBalance-' + walletId,
   HOME_TIP: 'homeTip',
   LAST_ADDRESS: walletId => 'lastAddress-' + walletId,
@@ -50,7 +36,6 @@ const Keys = {
   TX_CONFIRM_NOTIF: txid => 'txConfirmNotif-' + txid,
   TX_HISTORY: walletId => 'txsHistory-' + walletId,
   ORDER_WALLET: walletId => 'order-' + walletId,
-  SHAPESHIFT_TOKEN: network => 'shapeshiftToken-' + network
 };
 
 interface Storage {
@@ -334,42 +319,6 @@ export class PersistenceProvider {
     return this.storage.get(Keys.REMOTE_PREF_STORED);
   }
 
-  setCoinbaseToken(network: string, token: string) {
-    return this.storage.set(Keys.COINBASE_TOKEN(network), token);
-  }
-
-  getCoinbaseToken(network: string) {
-    return this.storage.get(Keys.COINBASE_TOKEN(network));
-  }
-
-  removeCoinbaseToken(network: string) {
-    return this.storage.remove(Keys.COINBASE_TOKEN(network));
-  }
-
-  setCoinbaseRefreshToken(network: string, token: string) {
-    return this.storage.set(Keys.COINBASE_REFRESH_TOKEN(network), token);
-  }
-
-  getCoinbaseRefreshToken(network: string) {
-    return this.storage.get(Keys.COINBASE_REFRESH_TOKEN(network));
-  }
-
-  removeCoinbaseRefreshToken(network: string) {
-    return this.storage.remove(Keys.COINBASE_REFRESH_TOKEN(network));
-  }
-
-  setCoinbaseTxs(network: string, ctx) {
-    return this.storage.set(Keys.COINBASE_TXS(network), ctx);
-  }
-
-  getCoinbaseTxs(network: string) {
-    return this.storage.get(Keys.COINBASE_TXS(network));
-  }
-
-  removeCoinbaseTxs(network: string) {
-    return this.storage.remove(Keys.COINBASE_TXS(network));
-  }
-
   setLogs(logs) {
     return this.storage.set(Keys.LOGS, logs);
   }
@@ -475,30 +424,6 @@ export class PersistenceProvider {
       .then(() => this.removeAddressManager(walletId));
   }
 
-  setGiftCardConfigCache(data) {
-    return this.storage.set(Keys.GIFT_CARD_CONFIG_CACHE, data);
-  }
-
-  getGiftCardConfigCache() {
-    return this.storage.get(Keys.GIFT_CARD_CONFIG_CACHE);
-  }
-
-  removeGiftCardConfigCache() {
-    return this.storage.remove(Keys.GIFT_CARD_CONFIG_CACHE);
-  }
-
-  setGiftCardUserInfo(data) {
-    return this.storage.set(Keys.GIFT_CARD_USER_INFO, data);
-  }
-
-  getGiftCardUserInfo() {
-    return this.storage.get(Keys.GIFT_CARD_USER_INFO);
-  }
-
-  removeGiftCardUserInfo() {
-    return this.storage.remove(Keys.GIFT_CARD_USER_INFO);
-  }
-
   setTxConfirmNotification(txid: string, val) {
     return this.storage.set(Keys.TX_CONFIRM_NOTIF(txid), val);
   }
@@ -596,38 +521,6 @@ export class PersistenceProvider {
       });
   }
 
-  setGiftCards(cardName: CardName, network: Network, gcs: string) {
-    return this.storage.set(Keys.GIFT_CARDS(cardName, network), gcs);
-  }
-
-  getGiftCards(cardName: CardName, network: Network): Promise<GiftCardMap> {
-    return this.storage.get(Keys.GIFT_CARDS(cardName, network));
-  }
-
-  setShapeshift(network: string, gcs) {
-    return this.storage.set('shapeShift-' + network, gcs);
-  }
-
-  getShapeshift(network: string) {
-    return this.storage.get('shapeShift-' + network);
-  }
-
-  removeShapeshift(network: string) {
-    return this.storage.remove('shapeShift-' + network);
-  }
-
-  setShapeshiftToken(network: string, token: string) {
-    return this.storage.set(Keys.SHAPESHIFT_TOKEN(network), token);
-  }
-
-  getShapeshiftToken(network: string) {
-    return this.storage.get(Keys.SHAPESHIFT_TOKEN(network));
-  }
-
-  removeShapeshiftToken(network: string) {
-    return this.storage.remove(Keys.SHAPESHIFT_TOKEN(network));
-  }
-
   setWalletOrder(walletId: string, order: number) {
     return this.storage.set(Keys.ORDER_WALLET(walletId), order);
   }
@@ -662,24 +555,5 @@ export class PersistenceProvider {
 
   removeEmailLawCompliance() {
     return this.storage.remove('emailLawCompliance');
-  }
-}
-
-function getLegacyGiftCardKey(cardName: CardName, network: Network) {
-  switch (cardName + network) {
-    case CardName.amazon + Network.livenet:
-      return 'amazonGiftCards-livenet';
-    case CardName.amazon + Network.testnet:
-      return 'amazonGiftCards-testnet';
-    case CardName.amazonJapan + Network.livenet:
-      return 'amazonGiftCards-livenet-japan';
-    case CardName.amazonJapan + Network.testnet:
-      return 'amazonGiftCards-testnet-japan';
-    case CardName.mercadoLibre + Network.livenet:
-      return 'MercadoLibreGiftCards-livenet';
-    case CardName.mercadoLibre + Network.testnet:
-      return 'MercadoLibreGiftCards-testnet';
-    default:
-      return undefined;
   }
 }

@@ -369,37 +369,5 @@ describe('Provider: Incoming Data Provider', () => {
         });
       });
     });
-    it('Should handle Coinbase URI', () => {
-      let data = ['bitpay://coinbase', 'copay://coinbase'];
-      data.forEach(element => {
-        let stateParams = { code: null };
-        let nextView = {
-          name: 'CoinbasePage',
-          params: stateParams
-        };
-        expect(
-          incomingDataProvider.redir(element, { activePage: 'ScanPage' })
-        ).toBe(true);
-        expect(loggerSpy).toHaveBeenCalledWith(
-          'Incoming-data (redirect): Coinbase URL'
-        );
-        expect(eventsSpy).toHaveBeenCalledWith('IncomingDataRedir', nextView);
-      });
-    });
-    // it('Should handle BitPay Card URI', () => {
-    //   let data = 'bitpay://bitpay.com?secret=xxxxx&email=xxx@xx.com';
-    //   let stateParams = { secret: 'xxxxx', email: 'xxx@xx.com', otp: null };
-    //   let nextView = {
-    //     name: 'BitPayCardIntroPage',
-    //     params: stateParams
-    //   };
-    //   expect(incomingDataProvider.redir(data, { activePage: 'ScanPage' })).toBe(
-    //     true
-    //   );
-    //   expect(loggerSpy).toHaveBeenCalledWith(
-    //     'Incoming-data (redirect): BitPay Card URL'
-    //   );
-    //   expect(eventsSpy).toHaveBeenCalledWith('IncomingDataRedir', nextView);
-    // });
   });
 });

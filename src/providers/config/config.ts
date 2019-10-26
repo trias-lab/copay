@@ -43,19 +43,6 @@ export interface Config {
     };
   };
 
-  rateApp: {
-    bitpay: {
-      ios: string;
-      android: string;
-      wp: string;
-    };
-    copay: {
-      ios: string;
-      android: string;
-      wp: string;
-    };
-  };
-
   lock: {
     pin: boolean;
     fingerprint: any; // "Face ID" / "Touch ID" / null
@@ -63,15 +50,6 @@ export interface Config {
 
   recentTransactions: {
     enabled: boolean;
-  };
-
-  showIntegration: {
-    coinbase: boolean;
-    debitcard: boolean;
-    amazon: boolean;
-    mercadolibre: boolean;
-    shapeshift: boolean;
-    giftcards: boolean;
   };
 
   pushNotificationsEnabled: boolean;
@@ -157,22 +135,6 @@ export class ConfigProvider {
         }
       },
 
-      rateApp: {
-        bitpay: {
-          ios:
-            'https://itunes.apple.com/app/bitpay-secure-bitcoin-wallet/id1149581638',
-          android:
-            'https://play.google.com/store/apps/details?id=com.bitpay.wallet',
-          wp: ''
-        },
-        copay: {
-          ios: 'https://itunes.apple.com/app/copay-bitcoin-wallet/id951330296',
-          android:
-            'https://play.google.com/store/apps/details?id=com.bitpay.copay',
-          wp: ''
-        }
-      },
-
       lock: {
         pin: false,
         fingerprint: null
@@ -180,16 +142,6 @@ export class ConfigProvider {
 
       recentTransactions: {
         enabled: true
-      },
-
-      // External services
-      showIntegration: {
-        coinbase: false,
-        debitcard: true,
-        amazon: true,
-        mercadolibre: true,
-        shapeshift: true,
-        giftcards: true
       },
 
       pushNotificationsEnabled: true,
@@ -291,13 +243,6 @@ export class ConfigProvider {
     }
     if (!this.configCache.wallet.settings.unitCode) {
       this.configCache.wallet.settings.unitCode = this.configDefault.wallet.settings.unitCode;
-    }
-    if (!this.configCache.showIntegration) {
-      this.configCache.showIntegration = this.configDefault.showIntegration;
-    } else {
-      if (this.configCache.showIntegration.giftcards !== false) {
-        this.configCache.showIntegration.giftcards = this.configDefault.showIntegration.giftcards;
-      }
     }
     if (!this.configCache.recentTransactions) {
       this.configCache.recentTransactions = this.configDefault.recentTransactions;

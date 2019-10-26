@@ -25,10 +25,6 @@ export class OnGoingProcessProvider {
       broadcastingTx: this.translate.instant('Broadcasting transaction...'),
       calculatingFee: this.translate.instant('Calculating fee...'),
       calculatingSendMax: this.translate.instant('Calculating send max...'),
-      connectingCoinbase: this.translate.instant('Connecting to Coinbase...'),
-      connectingShapeshift: this.translate.instant(
-        'Connecting to ShapeShift...'
-      ),
       creatingTx: this.translate.instant('Creating transaction...'),
       creatingWallet: this.translate.instant('Creating Wallet...'),
       deletingWallet: this.translate.instant('Deleting Wallet...'),
@@ -60,12 +56,6 @@ export class OnGoingProcessProvider {
       fetchingBitPayAccount: this.translate.instant(
         'Fetching BitPay Account...'
       ),
-      fetchingBitPayCards: this.translate.instant('Fetching BitPay Cards...'),
-      updatingGiftCards: this.translate.instant('Updating Gift Cards...'),
-      updatingGiftCard: this.translate.instant('Updating Gift Card...'),
-      cancelingGiftCard: this.translate.instant('Canceling Gift Card...'),
-      creatingGiftCard: this.translate.instant('Creating Gift Card...'),
-      buyingGiftCard: this.translate.instant('Buying Gift Card...'),
       topup: this.translate.instant('Top up in progress...'),
       duplicatingWallet: this.translate.instant('Duplicating wallet...'),
       enablingToken: this.translate.instant('Enabling token for transfer...')

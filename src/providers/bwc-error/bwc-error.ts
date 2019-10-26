@@ -52,9 +52,6 @@ export class BwcErrorProvider {
         case 'NOT_FOUND':
           body = this.translate.instant('Wallet service not found');
           break;
-        case 'ECONNRESET_ERROR':
-          body = this.translate.instant('Connection reset by peer');
-          break;
         case 'BAD_RESPONSE_CODE':
           body = this.translate.instant(
             'The request could not be understood by the server'

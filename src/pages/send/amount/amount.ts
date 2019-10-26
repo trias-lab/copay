@@ -17,18 +17,8 @@ import { RateProvider } from '../../../providers/rate/rate';
 import { TxFormatProvider } from '../../../providers/tx-format/tx-format';
 
 // Pages
-import { ActionSheetProvider, GiftCardProvider } from '../../../providers';
-import {
-  CardConfig,
-  CardName
-} from '../../../providers/gift-card/gift-card.types';
 import { ProfileProvider } from '../../../providers/profile/profile';
 import { Coin } from '../../../providers/wallet/wallet';
-import { BitPayCardTopUpPage } from '../../integrations/bitpay-card/bitpay-card-topup/bitpay-card-topup';
-import { BuyCoinbasePage } from '../../integrations/coinbase/buy-coinbase/buy-coinbase';
-import { SellCoinbasePage } from '../../integrations/coinbase/sell-coinbase/sell-coinbase';
-import { ConfirmCardPurchasePage } from '../../integrations/gift-cards/confirm-card-purchase/confirm-card-purchase';
-import { ShapeshiftConfirmPage } from '../../integrations/shapeshift/shapeshift-confirm/shapeshift-confirm';
 import { CustomAmountPage } from '../../receive/custom-amount/custom-amount';
 import { WalletTabsChild } from '../../wallet-tabs/wallet-tabs-child';
 import { WalletTabsProvider } from '../../wallet-tabs/wallet-tabs.provider';
@@ -67,8 +57,6 @@ export class AmountPage extends WalletTabsChild {
   public expression;
   public amount;
 
-  public shiftMax: number;
-  public shiftMin: number;
   public showSendMax: boolean;
   public allowSend: boolean;
   public recipientType: string;
@@ -80,18 +68,12 @@ export class AmountPage extends WalletTabsChild {
   public color: string;
   public useSendMax: boolean;
   public config: Config;
-  public toWalletId: string;
   private _id: string;
   public requestingAmount: boolean;
 
-  public cardName: CardName;
-  public cardConfig: CardConfig;
-
   constructor(
-    private actionSheetProvider: ActionSheetProvider,
     private configProvider: ConfigProvider,
     private filterProvider: FilterProvider,
-    private giftCardProvider: GiftCardProvider,
     private logger: Logger,
     navCtrl: NavController,
     private navParams: NavParams,
@@ -147,21 +129,11 @@ export class AmountPage extends WalletTabsChild {
 
     // BitPay Card ID or Wallet ID
     this._id = this.navParams.data.id;
-
-    // Use only with ShapeShift
-    this.toWalletId = this.navParams.data.toWalletId;
-    this.shiftMax = this.navParams.data.shiftMax;
-    this.shiftMin = this.navParams.data.shiftMin;
-
-    this.cardName = this.navParams.get('cardName');
   }
 
   async ionViewDidLoad() {
     this.setAvailableUnits();
     this.updateUnitUI();
-    this.cardConfig =
-      this.cardName &&
-      (await this.giftCardProvider.getCardConfig(this.cardName));
   }
 
   ionViewWillEnter() {
@@ -326,25 +298,8 @@ export class AmountPage extends WalletTabsChild {
   private getNextView() {
     let nextPage;
     switch (this.navParams.data.nextPage) {
-      case 'BitPayCardTopUpPage':
-        this.showSendMax = true;
-        nextPage = BitPayCardTopUpPage;
-        break;
-      case 'ConfirmCardPurchasePage':
-        nextPage = ConfirmCardPurchasePage;
-        break;
-      case 'BuyCoinbasePage':
-        nextPage = BuyCoinbasePage;
-        break;
-      case 'SellCoinbasePage':
-        nextPage = SellCoinbasePage;
-        break;
       case 'CustomAmountPage':
         nextPage = CustomAmountPage;
-        break;
-      case 'ShapeshiftConfirmPage':
-        this.showSendMax = true;
-        nextPage = ShapeshiftConfirmPage;
         break;
       default:
         // hide send max for eth wallets
@@ -471,7 +426,6 @@ export class AmountPage extends WalletTabsChild {
             a * this.unitToCoin,
             true
           );
-          this.checkAmountForBitpaycard(result);
         } else {
           this.alternativeAmount = result ? 'N/A' : null;
           this.allowSend = false;
@@ -480,16 +434,7 @@ export class AmountPage extends WalletTabsChild {
         this.alternativeAmount = this.filterProvider.formatFiatAmount(
           this.toFiat(result)
         );
-        this.checkAmountForBitpaycard(this.toFiat(result));
       }
-    }
-  }
-
-  private checkAmountForBitpaycard(amount: number): void {
-    // Check if the top up amount is at least 1 usd
-    const isTopUp = this.navParams.data.nextPage === 'BitPayCardTopUpPage';
-    if (isTopUp && amount < 1) {
-      this.allowSend = false;
     }
   }
 
@@ -545,22 +490,6 @@ export class AmountPage extends WalletTabsChild {
     return result;
   }
 
-  public validateGiftCardAmount(amount) {
-    return (
-      amount <= this.cardConfig.maxAmount && amount >= this.cardConfig.minAmount
-    );
-  }
-
-  public showCardAmountInfoSheet(amount) {
-    const sheetType =
-      amount < this.cardConfig.minAmount
-        ? 'below-minimum-gift-card-amount'
-        : 'above-maximum-gift-card-amount';
-    this.actionSheetProvider
-      .createInfoSheet(sheetType, this.cardConfig)
-      .present();
-  }
-
   public finish(): void {
     let unit = this.availableUnits[this.unitIndex];
     let _amount = this.evaluate(this.format(this.expression));
@@ -573,19 +502,13 @@ export class AmountPage extends WalletTabsChild {
 
     if (this.navParams.data.nextPage) {
       const amount = this.useSendMax ? null : _amount;
-      if (this.cardConfig && !this.validateGiftCardAmount(amount)) {
-        this.showCardAmountInfoSheet(amount);
-        return;
-      }
 
       data = {
         id: this._id,
         amount,
         currency: unit.id.toUpperCase(),
         coin,
-        useSendMax: this.useSendMax,
-        toWalletId: this.toWalletId,
-        cardName: this.cardName
+        useSendMax: this.useSendMax
       };
     } else {
       let amount = _amount;
