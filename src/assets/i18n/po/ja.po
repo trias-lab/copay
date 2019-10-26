@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: copay\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-10-26 19:00+0800\n"
+"PO-Revision-Date: 2019-10-26 19:23+0800\n"
 "Last-Translator: cmgustavo83\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -2238,3 +2238,14 @@ msgstr "作成"
 
 msgid "Recover"
 msgstr "回復"
+
+msgid "Set up a new wallet if you never used this app before."
+msgstr ""
+
+msgid "Recover your account data and balance."
+msgstr ""
+
+msgid ""
+"You'll be able to import existing wallet after created or recovered HD "
+"wallet."
+msgstr ""

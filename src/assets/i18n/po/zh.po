@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: copay\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-10-26 19:02+0800\n"
+"PO-Revision-Date: 2019-10-26 19:37+0800\n"
 "Last-Translator: cmgustavo83\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh\n"
@@ -801,7 +801,7 @@ msgid "Getting fee levels..."
 msgstr "正在获取收费水平..."
 
 msgid "Go Back"
-msgstr "返回\t#"
+msgstr "返回\t"
 
 msgid "Go back"
 msgstr "上一页"
@@ -2258,3 +2258,36 @@ msgstr "创建"
 
 msgid "Recover"
 msgstr "恢复"
+
+msgid "Set up a new wallet if you never used this app before."
+msgstr "初次使用此钱包请创建新钱包。"
+
+msgid "Recover your account data and balance."
+msgstr "恢复已备份的钱包。"
+
+msgid ""
+"You'll be able to import existing wallet after created or recovered HD "
+"wallet."
+msgstr "创建或恢复钱包后，您将仍能够导入已备份的钱包。"
+
+msgid "Enter a password to encrypt your wallets"
+msgstr "使用密码加密钱包"
+
+msgid "Backup Properly"
+msgstr "正确备份"
+
+msgid ""
+"Mnemonic is the only way to recover my wallet, I’ll write it down on paper."
+msgstr "助记词是恢复钱包的唯一方法，我会把它写下来。"
+
+msgid "Checked Surrendings"
+msgstr "检查环境"
+
+msgid "No one can peek at my phone and there's no survelience cameras around."
+msgstr "没有人可以偷看我的手机，周围也没有监控摄像头。"
+
+msgid "No Screenshots"
+msgstr "没有截图"
+
+msgid "Other apps have access to Photos app may steal my mnemonic."
+msgstr "其他可以访问“照片”应用程序的应用程序可能会窃取我的助记词。"

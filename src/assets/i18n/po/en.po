@@ -625,7 +625,6 @@ msgstr "Enable camera access in your device settings to get started."
 msgid "Enable email notifications"
 msgstr "Enable email notifications"
 
-#| msgid "Enable push notifications"
 msgid "Enable in-app notification"
 msgstr "Enable in-app notification"
 
@@ -901,9 +900,6 @@ msgstr ""
 "If you have funds stored on a website then you should move them into a "
 "secure wallet... like this one!"
 
-#| msgid ""
-#| "If you need to send to \"old\" addresses, and you are SURE those are BCH "
-#| "addresses, you can \"translate\" them using the BCH Translator tool."
 msgid ""
 "If you need to send to \"old\" addresses (like the one you just pasted), and "
 "you are SURE those are BCH addresses, you can \"translate\" them using the "
@@ -915,9 +911,6 @@ msgstr ""
 "BCH Translator tool and paste the corresponding address in CashAddr format "
 "for that \"old\" address."
 
-#| msgid ""
-#| "If you take a screenshot, your backup may be viewed by other apps. You "
-#| "can make a safe backup with physical paper and a pen."
 msgid ""
 "If you take a screenshot, your recovery phrase may be viewed by other apps. "
 "You can make a safe backup with physical paper and a pen."
@@ -941,7 +934,6 @@ msgstr "Import wallet"
 msgid "Importing Wallet..."
 msgstr "Importing Wallet..."
 
-#| msgid "In order to verify your wallet backup, please type your password."
 msgid ""
 "In order to verify your wallet recovery phrase, please type your password."
 msgstr ""
@@ -995,10 +987,6 @@ msgstr "It appears that you do not have any money to send."
 msgid "It's a ghost town in here"
 msgstr "It's a ghost town in here"
 
-#| msgid ""
-#| "It's important that you write your backup phrase down correctly. If "
-#| "something happens to your wallet, you'll need this backup to recover your "
-#| "money. Please review your backup and try again."
 msgid ""
 "It's important that you write your recovery phrase down correctly. If "
 "something happens to your wallet, you'll need it to recover your money. "
@@ -1345,7 +1333,6 @@ msgstr "Pending Proposals"
 msgid "Permanently delete this wallet."
 msgstr "Permanently delete this wallet."
 
-#| msgid "Session log"
 msgid "Persistent logs"
 msgstr "Persistent logs"
 
@@ -1602,7 +1589,6 @@ msgstr "Send by email"
 msgid "Send from"
 msgstr "Send from"
 
-#| msgid "Send by email"
 msgid "Send logs by email"
 msgstr "Send logs by email"
 
@@ -2351,3 +2337,39 @@ msgstr "Create"
 
 msgid "Recover"
 msgstr "Recover"
+
+msgid "Set up a new wallet if you never used this app before."
+msgstr "Set up a new wallet if you never used this app before."
+
+msgid "Recover your account data and balance."
+msgstr "Recover your account data and balance."
+
+msgid ""
+"You'll be able to import existing wallet after created or recovered HD "
+"wallet."
+msgstr ""
+"You'll be able to import existing wallet after created or recovered HD "
+"wallet."
+
+msgid "Enter a password to encrypt your wallets"
+msgstr "Enter a password to encrypt your wallets"
+
+msgid "Backup Properly"
+msgstr "Backup Properly"
+
+msgid ""
+"Mnemonic is the only way to recover my wallet, I'll write it down on paper."
+msgstr ""
+"Mnemonic is the only way to recover my wallet, I'll write it down on paper."
+
+msgid "Checked Surrendings"
+msgstr "Checked Surrendings"
+
+msgid "No one can peek at my phone and there's no survelience cameras around."
+msgstr "No one can peek at my phone and there's no survelience cameras around."
+
+msgid "No Screenshots"
+msgstr "No Screenshots"
+
+msgid "Other apps have access to Photos app may steal my mnemonic."
+msgstr "Other apps have access to Photos app may steal my mnemonic."

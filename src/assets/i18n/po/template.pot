@@ -2168,3 +2168,33 @@ msgstr ""
 
 msgid "Recover"
 msgstr ""
+
+msgid "Set up a new wallet if you never used this app before."
+msgstr ""
+
+msgid "Recover your account data and balance."
+msgstr ""
+
+msgid "You'll be able to import existing wallet after created or recovered HD wallet."
+msgstr ""
+
+msgid "Enter a password to encrypt your wallets"
+msgstr ""
+
+msgid "Backup Properly"
+msgstr ""
+
+msgid "Mnemonic is the only way to recover my wallet, I'll write it down on paper."
+msgstr ""
+
+msgid "Checked Surrendings"
+msgstr ""
+
+msgid "No one can peek at my phone and there's no survelience cameras around."
+msgstr ""
+
+msgid "No Screenshots"
+msgstr ""
+
+msgid "Other apps have access to Photos app may steal my mnemonic."
+msgstr ""
