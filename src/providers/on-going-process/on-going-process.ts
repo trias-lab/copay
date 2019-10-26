@@ -53,10 +53,6 @@ export class OnGoingProcessProvider {
       sending2faCode: this.translate.instant('Sending 2FA code...'),
       buyingBitcoin: this.translate.instant('Buying Bitcoin...'),
       sellingBitcoin: this.translate.instant('Selling Bitcoin...'),
-      fetchingBitPayAccount: this.translate.instant(
-        'Fetching BitPay Account...'
-      ),
-      topup: this.translate.instant('Top up in progress...'),
       duplicatingWallet: this.translate.instant('Duplicating wallet...'),
       enablingToken: this.translate.instant('Enabling token for transfer...')
     };

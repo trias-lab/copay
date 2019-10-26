@@ -7,7 +7,6 @@ import { TestUtils } from '../../test';
 import { AddressBookProvider } from '../../providers/address-book/address-book';
 import { ClipboardProvider } from '../../providers/clipboard/clipboard';
 import { IncomingDataProvider } from '../../providers/incoming-data/incoming-data';
-import { ConfigProvider } from './../../providers/config/config';
 import { HomePage } from './home';
 
 describe('HomePage', () => {

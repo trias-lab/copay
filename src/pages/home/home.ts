@@ -223,7 +223,6 @@ export class HomePage {
     // { color: '#AD40BB', percent: 0, name: 'BCH' }];
   }
   private _willEnter() {
-
     // Update list of wallets, status and TXPs
     this.setWallets();
     this.logger.warn('this.chartLegend!', this.chartLegend);
@@ -378,7 +377,7 @@ export class HomePage {
 
   private openEmailDisclaimer() {
     let message = this.translate.instant(
-      'By providing your email address, you give explicit consent to BitPay to use your email address to send you email notifications about payments.'
+      'By providing your email address, you give explicit consent to Copay to use your email address to send you email notifications about payments.'
     );
     let title = this.translate.instant('Privacy Policy update');
     let okText = this.translate.instant('Accept');
