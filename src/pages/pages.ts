@@ -8,7 +8,6 @@ import { FinishModalPage } from '../pages/finish/finish';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
 import { PaperWalletPage } from '../pages/paper-wallet/paper-wallet';
-import { PayProPage } from '../pages/paypro/paypro';
 import { SlideToAcceptPage } from '../pages/slide-to-accept/slide-to-accept';
 import { SwapConfirmPage } from '../pages/swap-confirm/swap-confirm';
 import { SwapPage } from '../pages/swap/swap';
@@ -105,7 +104,6 @@ export const PAGES = [
   LanguagePage,
   OnboardingPage,
   PaperWalletPage,
-  PayProPage,
   PinPad,
   PasswordModalPage,
   ProposalsPage,
