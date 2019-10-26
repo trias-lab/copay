@@ -85,27 +85,8 @@ export class BwcErrorProvider {
         case 'NOT_AUTHORIZED':
           body = this.translate.instant('Not authorized');
           break;
-        case 'TX_ALREADY_BROADCASTED':
-          body = this.translate.instant('Transaction already broadcasted');
-          break;
-        case 'TX_CANNOT_CREATE':
-          body = this.translate.instant(
-            'Locktime in effect. Please wait to create a new spend proposal'
-          );
-          break;
-        case 'TX_CANNOT_REMOVE':
-          body = this.translate.instant(
-            'Locktime in effect. Please wait to remove this spend proposal'
-          );
-          break;
         case 'TX_NOT_ACCEPTED':
           body = this.translate.instant('Spend proposal is not accepted');
-          break;
-        case 'TX_NOT_FOUND':
-          body = this.translate.instant('Spend proposal not found');
-          break;
-        case 'TX_NOT_PENDING':
-          body = this.translate.instant('The spend proposal is not pending');
           break;
         case 'UPGRADE_NEEDED':
           body = this.translate.instant(
