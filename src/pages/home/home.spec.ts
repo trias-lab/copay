@@ -32,13 +32,6 @@ describe('HomePage', () => {
 
   describe('Lifecycle Hooks', () => {
     describe('ionViewWillEnter', () => {
-      it('should get recentTransactions enabled', () => {
-        instance.ionViewWillEnter();
-        const configProvider = testBed.get(ConfigProvider);
-        const recentTransactionsEnabled = configProvider.get()
-          .recentTransactions.enabled;
-        expect(recentTransactionsEnabled).toEqual(true);
-      });
       it('should not break if address book list call fails', () => {
         spyOn(testBed.get(AddressBookProvider), 'list').and.returnValue(
           Promise.reject('bad error')

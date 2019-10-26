@@ -48,10 +48,6 @@ export interface Config {
     fingerprint: any; // "Face ID" / "Touch ID" / null
   };
 
-  recentTransactions: {
-    enabled: boolean;
-  };
-
   pushNotificationsEnabled: boolean;
 
   inAppNotificationsEnabled: boolean;
@@ -138,10 +134,6 @@ export class ConfigProvider {
       lock: {
         pin: false,
         fingerprint: null
-      },
-
-      recentTransactions: {
-        enabled: true
       },
 
       pushNotificationsEnabled: true,
@@ -243,9 +235,6 @@ export class ConfigProvider {
     }
     if (!this.configCache.wallet.settings.unitCode) {
       this.configCache.wallet.settings.unitCode = this.configDefault.wallet.settings.unitCode;
-    }
-    if (!this.configCache.recentTransactions) {
-      this.configCache.recentTransactions = this.configDefault.recentTransactions;
     }
     if (!this.configCache.pushNotificationsEnabled) {
       this.configCache.pushNotificationsEnabled = this.configDefault.pushNotificationsEnabled;

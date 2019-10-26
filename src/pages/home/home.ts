@@ -58,7 +58,6 @@ export class HomePage {
   public walletsEth;
   public walletsTri;
   public cachedBalanceUpdateOn: string;
-  public recentTransactionsEnabled: boolean;
   public txps;
   public txpsN: number;
   public notifications;
@@ -224,8 +223,6 @@ export class HomePage {
     // { color: '#AD40BB', percent: 0, name: 'BCH' }];
   }
   private _willEnter() {
-    // Show recent transactions card
-    this.recentTransactionsEnabled = this.configProvider.get().recentTransactions.enabled;
 
     // Update list of wallets, status and TXPs
     this.setWallets();
@@ -644,7 +641,6 @@ export class HomePage {
   );
 
   private getNotifications() {
-    if (!this.recentTransactionsEnabled) return;
     this.profileProvider
       .getNotifications({ limit: 3 })
       .then(data => {
