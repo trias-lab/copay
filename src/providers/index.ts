@@ -25,10 +25,6 @@ export { AddressProvider } from '../providers/address/address';
 export { AppIdentityProvider } from '../providers/app-identity/app-identity';
 export { AppProvider } from '../providers/app/app';
 export { BackupProvider } from '../providers/backup/backup';
-export {
-  BitPayAccountProvider
-} from '../providers/bitpay-account/bitpay-account';
-export { BitPayProvider } from '../providers/bitpay/bitpay';
 export { BwcErrorProvider } from '../providers/bwc-error/bwc-error';
 export { BwcProvider } from '../providers/bwc/bwc';
 export { ClipboardProvider } from '../providers/clipboard/clipboard';
