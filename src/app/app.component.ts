@@ -15,10 +15,7 @@ import { Observable, Subscription } from 'rxjs';
 
 // providers
 import { WalletTabsProvider } from '../pages/wallet-tabs/wallet-tabs.provider';
-// import { GiftCardProvider } from '../providers';
 import { AppProvider } from '../providers/app/app';
-// import { BitPayCardProvider } from '../providers/bitpay-card/bitpay-card';
-// import { CoinbaseProvider } from '../providers/coinbase/coinbase';
 import { ConfigProvider } from '../providers/config/config';
 import { EmailNotificationsProvider } from '../providers/email-notifications/email-notifications';
 import { IncomingDataProvider } from '../providers/incoming-data/incoming-data';
@@ -28,16 +25,10 @@ import { PlatformProvider } from '../providers/platform/platform';
 import { PopupProvider } from '../providers/popup/popup';
 import { ProfileProvider } from '../providers/profile/profile';
 import { PushNotificationsProvider } from '../providers/push-notifications/push-notifications';
-// import { ShapeshiftProvider } from '../providers/shapeshift/shapeshift';
 import { TouchIdProvider } from '../providers/touchid/touchid';
 
 // pages
-import { CopayersPage } from '../pages/add/copayers/copayers';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
-// import { HomePage } from '../pages/home/home';
-// import { BitPayCardIntroPage } from '../pages/integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
-// import { CoinbasePage } from '../pages/integrations/coinbase/coinbase';
-// import { ShapeshiftPage } from '../pages/integrations/shapeshift/shapeshift';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
 import { PaperWalletPage } from '../pages/paper-wallet/paper-wallet';
@@ -79,20 +70,14 @@ export class CopayApp {
     AddressbookAddPage,
     AddressAddPage,
     AmountPage,
-    // BitPayCardIntroPage,
-    // CoinbasePage,
     ConfirmPage,
-    CopayersPage,
     ImportWalletPage,
     PaperWalletPage,
-    // ShapeshiftPage,
     WalletDetailsPage
   };
 
   constructor(
-    // private config: Config,
     private platform: Platform,
-    // private navCtrl: NavController,
     private platformProvider: PlatformProvider,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
@@ -101,11 +86,7 @@ export class CopayApp {
     private appProvider: AppProvider,
     private profile: ProfileProvider,
     private configProvider: ConfigProvider,
-    // private giftCardProvider: GiftCardProvider,
     private modalCtrl: ModalController,
-    // private coinbaseProvider: CoinbaseProvider,
-    // private bitPayCardProvider: BitPayCardProvider,
-    // private shapeshiftProvider: ShapeshiftProvider,
     private emailNotificationsProvider: EmailNotificationsProvider,
     private screenOrientation: ScreenOrientation,
     private popupProvider: PopupProvider,
@@ -220,7 +201,6 @@ export class CopayApp {
         });
     }
 
-    // this.registerIntegrations();
     this.incomingDataRedirEvent();
     this.scanFromWalletEvent();
     this.events.subscribe('OpenWallet', wallet => this.openWallet(wallet));
@@ -293,25 +273,6 @@ export class CopayApp {
     });
   }
 
-  // private registerIntegrations(): void {
-  //   // Gift Cards
-  //   if (this.appProvider.info._enabledExtensions.giftcards)
-  //     this.giftCardProvider.register();
-  //   // ShapeShift
-  //   if (this.appProvider.info._enabledExtensions.shapeshift) {
-  //     this.shapeshiftProvider.setCredentials();
-  //     this.shapeshiftProvider.register();
-  //   }
-  //   // Coinbase
-  //   if (this.appProvider.info._enabledExtensions.coinbase) {
-  //     this.coinbaseProvider.setCredentials();
-  //     this.coinbaseProvider.register();
-  //   }
-  //   // BitPay Card
-  //   if (this.appProvider.info._enabledExtensions.debitcard)
-  //     this.bitPayCardProvider.register();
-  // }
-
   private incomingDataRedirEvent(): void {
     this.events.subscribe('IncomingDataRedir', nextView => {
       this.closeScannerFromWithinWallet();
@@ -327,7 +288,7 @@ export class CopayApp {
     if (this.isWalletModalOpen) {
       this.walletModal.dismiss();
     }
-    const page = wallet.isComplete() ? WalletTabsPage : CopayersPage;
+    const page =  WalletTabsPage;
     this.isWalletModalOpen = true;
     this.walletModal = this.modalCtrl.create(
       page,

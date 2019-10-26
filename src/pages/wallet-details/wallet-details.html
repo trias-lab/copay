@@ -126,7 +126,7 @@
     </div> -->
 
     <div *ngIf="lowUtxosWarning && wallet.network == 'livenet'" class="box-notification warning">
-      <a class="energized" (click)="openAddresses()">
+      <a class="energized">
         <ion-icon name="alert"></ion-icon>
         {{'Spending this balance will need significant Bitcoin network fees'|translate}}
         <ion-icon name="arrow-forward"></ion-icon>
@@ -215,18 +215,6 @@
                   <img src="assets/img/tx-action/icon-confirming.svg" width="40">
                 </div> -->
                 <div>
-                  <span *ngIf="tx.customData && tx.customData.service">
-                    <img class="icon-services" src="assets/img/shapeshift/icon-shapeshift.svg" *ngIf="tx.customData.service == 'shapeshift'"
-                      width="40">
-                    <img class="icon-services" src="assets/img/gift-cards/amazon/amazon-icon.svg" *ngIf="tx.customData.service === 'amazon'"
-                      width="40">
-                    <img class="icon-services" src="assets/img/gift-cards/mercado-libre/mercado-livre-icon.svg" *ngIf="tx.customData.service === 'mercadolibre'"
-                      width="40">
-                    <img class="icon-services" [src]="giftCardProvider.getIcon(tx.customData.giftCardName)" *ngIf="tx.customData.service === 'giftcards'"
-                      width="40">
-                    <img class="icon-services" src="assets/img/bitpay-card/icon-bitpay.svg" *ngIf="tx.customData.service == 'debitcard'"
-                      width="40">
-                  </span>
                   <span *ngIf="tx.customData && tx.customData.toWalletName && !tx.customData.service">
                     <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'" width="40">
                   </span>

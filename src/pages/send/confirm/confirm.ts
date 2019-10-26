@@ -8,7 +8,7 @@ import { Logger } from '../../../providers/logger/logger';
 // Pages
 import { FinishModalPage } from '../../finish/finish';
 // import { HomePage } from '../../home/home';
-import { PayProPage } from '../../paypro/paypro';
+// import { PayProPage } from '../../paypro/paypro';
 import { TabsPage } from '../../tabs/tabs';
 import { ChooseFeeLevelPage } from '../choose-fee-level/choose-fee-level';
 
@@ -900,21 +900,21 @@ export class ConfirmPage extends WalletTabsChild {
       : this.app.getRootNavs()[0].setRoot(TabsPage);
   }
 
-  public openPPModal(): void {
-    if (!this.wallet) return;
-    let modal = this.modalCtrl.create(
-      PayProPage,
-      {
-        tx: this.tx,
-        wallet: this.wallet
-      },
-      {
-        showBackdrop: true,
-        enableBackdropDismiss: true
-      }
-    );
-    modal.present();
-  }
+  // public openPPModal(): void {
+  //   if (!this.wallet) return;
+  //   let modal = this.modalCtrl.create(
+  //     PayProPage,
+  //     {
+  //       tx: this.tx,
+  //       wallet: this.wallet
+  //     },
+  //     {
+  //       showBackdrop: true,
+  //       enableBackdropDismiss: true
+  //     }
+  //   );
+  //   modal.present();
+  // }
 
   public chooseFeeLevel(): void {
     if (this.tx.coin == 'bch') return;

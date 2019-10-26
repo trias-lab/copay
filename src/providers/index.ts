@@ -25,15 +25,9 @@ export { AddressProvider } from '../providers/address/address';
 export { AppIdentityProvider } from '../providers/app-identity/app-identity';
 export { AppProvider } from '../providers/app/app';
 export { BackupProvider } from '../providers/backup/backup';
-export {
-  BitPayAccountProvider
-} from '../providers/bitpay-account/bitpay-account';
-export { BitPayCardProvider } from '../providers/bitpay-card/bitpay-card';
-export { BitPayProvider } from '../providers/bitpay/bitpay';
 export { BwcErrorProvider } from '../providers/bwc-error/bwc-error';
 export { BwcProvider } from '../providers/bwc/bwc';
 export { ClipboardProvider } from '../providers/clipboard/clipboard';
-export { CoinbaseProvider } from '../providers/coinbase/coinbase';
 export { ConfigProvider } from '../providers/config/config';
 export {
   DerivationPathHelperProvider
@@ -45,12 +39,7 @@ export {
 } from '../providers/email-notifications/email-notifications';
 export { ExternalLinkProvider } from '../providers/external-link/external-link';
 export { FeeProvider } from '../providers/fee/fee';
-export { FeedbackProvider } from '../providers/feedback/feedback';
 export { FilterProvider } from '../providers/filter/filter';
-export { GiftCardProvider } from '../providers/gift-card/gift-card';
-export {
-  HomeIntegrationsProvider
-} from '../providers/home-integrations/home-integrations';
 export { HttpRequestsProvider } from '../providers/http-requests/http-requests';
 export { IncomingDataProvider } from '../providers/incoming-data/incoming-data';
 export { LanguageLoader } from '../providers/language-loader/language-loader';
@@ -74,7 +63,6 @@ export {
   ReplaceParametersProvider
 } from '../providers/replace-parameters/replace-parameters';
 export { ScanProvider } from '../providers/scan/scan';
-export { ShapeshiftProvider } from '../providers/shapeshift/shapeshift';
 export { TimeProvider } from '../providers/time/time';
 export { TouchIdProvider } from '../providers/touchid/touchid';
 export {

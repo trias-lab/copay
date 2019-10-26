@@ -10,15 +10,10 @@ import {
   Platform
 } from 'ionic-angular';
 import * as _ from 'lodash';
-import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
 
 // Pages
 import { ImportWalletPage } from '../add/import-wallet/import-wallet';
-import { BitPayCardPage } from '../integrations/bitpay-card/bitpay-card';
-import { BitPayCardIntroPage } from '../integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
-import { CoinbasePage } from '../integrations/coinbase/coinbase';
-import { ShapeshiftPage } from '../integrations/shapeshift/shapeshift';
 import { OnboardingPage } from '../onboarding/onboarding';
 import { PaperWalletPage } from '../paper-wallet/paper-wallet';
 // import { ScanPage } from '../scan/scan';
@@ -34,14 +29,11 @@ import { ProposalsPage } from './proposals/proposals';
 // Providers
 import { AddressBookProvider } from '../../providers/address-book/address-book';
 import { AppProvider } from '../../providers/app/app';
-// import { BitPayCardProvider } from '../../providers/bitpay-card/bitpay-card';
 import { BwcErrorProvider } from '../../providers/bwc-error/bwc-error';
 import { ClipboardProvider } from '../../providers/clipboard/clipboard';
 import { ConfigProvider } from '../../providers/config/config';
 import { EmailNotificationsProvider } from '../../providers/email-notifications/email-notifications';
 import { ExternalLinkProvider } from '../../providers/external-link/external-link';
-import { FeedbackProvider } from '../../providers/feedback/feedback';
-// import { HomeIntegrationsProvider } from '../../providers/home-integrations/home-integrations';
 import { IncomingDataProvider } from '../../providers/incoming-data/incoming-data';
 import { Logger } from '../../providers/logger/logger';
 import { OnGoingProcessProvider } from '../../providers/on-going-process/on-going-process';
@@ -52,7 +44,6 @@ import { ProfileProvider } from '../../providers/profile/profile';
 import { ReleaseProvider } from '../../providers/release/release';
 import { ReplaceParametersProvider } from '../../providers/replace-parameters/replace-parameters';
 import { Coin, WalletProvider } from '../../providers/wallet/wallet';
-// import { SettingsPage } from '../settings/settings';
 
 @Component({
   selector: 'page-home',
@@ -67,7 +58,6 @@ export class HomePage {
   public walletsEth;
   public walletsTri;
   public cachedBalanceUpdateOn: string;
-  public recentTransactionsEnabled: boolean;
   public txps;
   public txpsN: number;
   public notifications;
@@ -76,9 +66,6 @@ export class HomePage {
   public addressbook;
   public newRelease: boolean;
   public updateText: string;
-  public homeIntegrations;
-  public bitpayCardItems;
-  public showBitPayCard: boolean = false;
   public showAnnouncement: boolean = false;
   public validDataFromClipboard;
   public payProDetailsData;
@@ -92,7 +79,6 @@ export class HomePage {
   public showReorderBch: boolean;
   public showReorderEth: boolean;
   public showReorderTri: boolean;
-  public showIntegration;
   public totalBalance: number; // Total balance amount
   public balanceItem; // Each wallet's coin amount
   // public balanceName; // Each wallet's coin name
@@ -106,9 +92,6 @@ export class HomePage {
   public ethBalance: number;
   public triBalance: number;
   public btcBalance: number;
-
-  public hideHomeIntegrations: boolean;
-  public showGiftCards: boolean;
 
   private isElectron: boolean;
   private updatingWalletId: object;
@@ -136,10 +119,7 @@ export class HomePage {
     private addressBookProvider: AddressBookProvider,
     private appProvider: AppProvider,
     private platformProvider: PlatformProvider,
-    // private homeIntegrationsProvider: HomeIntegrationsProvider,
     private persistenceProvider: PersistenceProvider,
-    private feedbackProvider: FeedbackProvider,
-    // private bitPayCardProvider: BitPayCardProvider,
     private translate: TranslateService,
     private emailProvider: EmailNotificationsProvider,
     private replaceParametersProvider: ReplaceParametersProvider,
@@ -243,9 +223,6 @@ export class HomePage {
     // { color: '#AD40BB', percent: 0, name: 'BCH' }];
   }
   private _willEnter() {
-    // Show recent transactions card
-    this.recentTransactionsEnabled = this.configProvider.get().recentTransactions.enabled;
-
     // Update list of wallets, status and TXPs
     this.setWallets();
     this.logger.warn('this.chartLegend!', this.chartLegend);
@@ -272,31 +249,6 @@ export class HomePage {
     this.checkClipboard();
     this.subscribeIncomingDataMenuEvent();
     this.subscribeBwsEvents();
-
-    // // Show integrations
-    // const integrations = _.filter(this.homeIntegrationsProvider.get(), {
-    //   show: true
-    // }).filter(i => i.name !== 'giftcards');
-
-    // this.showGiftCards = this.homeIntegrationsProvider.shouldShowInHome(
-    //   'giftcards'
-    // );
-
-    // // Hide BitPay if linked
-    // setTimeout(() => {
-    //   this.homeIntegrations = _.remove(_.clone(integrations), x => {
-    //     if (x.name == 'debitcard' && x.linked) return;
-    //     else return x;
-    //   });
-    // }, 200);
-
-    // // Only BitPay Wallet
-    // this.bitPayCardProvider.get({}, (_, cards) => {
-    //   this.zone.run(() => {
-    //     this.showBitPayCard = this.appProvider.info._enabledExtensions.debitcard;
-    //     this.bitpayCardItems = cards;
-    //   });
-    // });
   }
 
   ionViewDidLoad() {
@@ -304,7 +256,6 @@ export class HomePage {
 
     if (this.isElectron) this.checkUpdate();
     this.checkHomeTip();
-    this.checkFeedbackInfo();
 
     this.checkEmailLawCompliance();
 
@@ -426,7 +377,7 @@ export class HomePage {
 
   private openEmailDisclaimer() {
     let message = this.translate.instant(
-      'By providing your email address, you give explicit consent to BitPay to use your email address to send you email notifications about payments.'
+      'By providing your email address, you give explicit consent to Copay to use your email address to send you email notifications about payments.'
     );
     let title = this.translate.instant('Privacy Policy update');
     let okText = this.translate.instant('Accept');
@@ -525,31 +476,6 @@ export class HomePage {
     this.homeTip = false;
   }
 
-  private checkFeedbackInfo() {
-    this.persistenceProvider.getFeedbackInfo().then(info => {
-      if (!info) {
-        this.initFeedBackInfo();
-      } else {
-        let feedbackInfo = info;
-        // Check if current version is greater than saved version
-        let currentVersion = this.releaseProvider.getCurrentAppVersion();
-        let savedVersion = feedbackInfo.version;
-        let isVersionUpdated = this.feedbackProvider.isVersionUpdated(
-          currentVersion,
-          savedVersion
-        );
-        if (!isVersionUpdated) {
-          this.initFeedBackInfo();
-          return;
-        }
-        let now = moment().unix();
-        let timeExceeded = now - feedbackInfo.time >= 24 * 7 * 60 * 60;
-        this.showRateCard = timeExceeded && !feedbackInfo.sent;
-        // this.showCard.setShowRateCard(this.showRateCard);
-      }
-    });
-  }
-
   public checkClipboard() {
     return this.clipboardProvider
       .getData()
@@ -629,15 +555,6 @@ export class HomePage {
     this.countDown = setInterval(() => {
       setExpirationTime();
     }, 1000);
-  }
-
-  private initFeedBackInfo() {
-    this.persistenceProvider.setFeedbackInfo({
-      time: moment().unix(),
-      version: this.releaseProvider.getCurrentAppVersion(),
-      sent: false
-    });
-    this.showRateCard = false;
   }
 
   private updateWallet(opts): void {
@@ -723,7 +640,6 @@ export class HomePage {
   );
 
   private getNotifications() {
-    if (!this.recentTransactionsEnabled) return;
     this.profileProvider
       .getNotifications({ limit: 3 })
       .then(data => {
@@ -1181,19 +1097,6 @@ export class HomePage {
 
   public openActivityPage(): void {
     this.navCtrl.push(ActivityPage);
-  }
-
-  public goTo(page: string): void {
-    const pageMap = {
-      BitPayCardIntroPage,
-      CoinbasePage,
-      ShapeshiftPage
-    };
-    this.navCtrl.push(pageMap[page]);
-  }
-
-  public goToCard(cardId): void {
-    this.navCtrl.push(BitPayCardPage, { id: cardId });
   }
 
   public doRefresh(refresher) {

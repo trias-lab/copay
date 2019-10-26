@@ -7,7 +7,6 @@ import { TestUtils } from '../../test';
 import { AddressBookProvider } from '../../providers/address-book/address-book';
 import { ClipboardProvider } from '../../providers/clipboard/clipboard';
 import { IncomingDataProvider } from '../../providers/incoming-data/incoming-data';
-import { ConfigProvider } from './../../providers/config/config';
 import { HomePage } from './home';
 
 describe('HomePage', () => {
@@ -32,13 +31,6 @@ describe('HomePage', () => {
 
   describe('Lifecycle Hooks', () => {
     describe('ionViewWillEnter', () => {
-      it('should get recentTransactions enabled', () => {
-        instance.ionViewWillEnter();
-        const configProvider = testBed.get(ConfigProvider);
-        const recentTransactionsEnabled = configProvider.get()
-          .recentTransactions.enabled;
-        expect(recentTransactionsEnabled).toEqual(true);
-      });
       it('should not break if address book list call fails', () => {
         spyOn(testBed.get(AddressBookProvider), 'list').and.returnValue(
           Promise.reject('bad error')

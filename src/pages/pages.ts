@@ -1,17 +1,11 @@
 /* Pages */
-import { CopayersPage } from '../pages/add/copayers/copayers';
-import { CreateWalletPage } from '../pages/add/create-wallet/create-wallet';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
 import { BackupGamePage } from '../pages/backup/backup-game/backup-game';
 import { BackupRequestPage } from '../pages/backup/backup-request/backup-request';
-import { SendFeedbackPage } from '../pages/feedback/send-feedback/send-feedback';
 import { FinishModalPage } from '../pages/finish/finish';
-import { CollectEmailPage } from '../pages/onboarding/collect-email/collect-email';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
-import { TourPage } from '../pages/onboarding/tour/tour';
 import { PaperWalletPage } from '../pages/paper-wallet/paper-wallet';
-import { PayProPage } from '../pages/paypro/paypro';
 import { SlideToAcceptPage } from '../pages/slide-to-accept/slide-to-accept';
 import { SwapConfirmPage } from '../pages/swap-confirm/swap-confirm';
 import { SwapPage } from '../pages/swap/swap';
@@ -23,29 +17,8 @@ import { WalletBalancePage } from '../pages/wallet-details/wallet-balance/wallet
 import { WalletDetailsPage } from '../pages/wallet-details/wallet-details';
 import { WalletTabsPage } from '../pages/wallet-tabs/wallet-tabs';
 
-// Integrations: Coinbase
-import { BuyCoinbasePage } from '../pages/integrations/coinbase/buy-coinbase/buy-coinbase';
-import { CoinbasePage } from '../pages/integrations/coinbase/coinbase';
-import { CoinbaseSettingsPage } from '../pages/integrations/coinbase/coinbase-settings/coinbase-settings';
-import { CoinbaseTxDetailsPage } from '../pages/integrations/coinbase/coinbase-tx-details/coinbase-tx-details';
-import { SellCoinbasePage } from '../pages/integrations/coinbase/sell-coinbase/sell-coinbase';
-
-// Integrations: ShapeShift
-import { ShapeshiftPage } from '../pages/integrations/shapeshift/shapeshift';
-import { ShapeshiftConfirmPage } from '../pages/integrations/shapeshift/shapeshift-confirm/shapeshift-confirm';
-import { ShapeshiftDetailsPage } from '../pages/integrations/shapeshift/shapeshift-details/shapeshift-details';
-import { ShapeshiftSettingsPage } from '../pages/integrations/shapeshift/shapeshift-settings/shapeshift-settings';
-import { ShapeshiftShiftPage } from '../pages/integrations/shapeshift/shapeshift-shift/shapeshift-shift';
-
-// Integrations: BitPayCard
-import { BitPayCardPage } from '../pages/integrations/bitpay-card/bitpay-card';
-import { BitPayCardIntroPage } from '../pages/integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
-import { BitPayCardTopUpPage } from '../pages/integrations/bitpay-card/bitpay-card-topup/bitpay-card-topup';
-import { BitPaySettingsPage } from '../pages/integrations/bitpay-card/bitpay-settings/bitpay-settings';
-
 /*Includes */
 import { CardItemPage } from '../pages/includes/card-item/card-item';
-import { FeedbackCardPage } from '../pages/includes/feedback-card/feedback-card';
 import { GravatarPage } from '../pages/includes/gravatar/gravatar';
 import { TxpPage } from '../pages/includes/txp/txp';
 import { WalletActivityPage } from '../pages/includes/wallet-activity/wallet-activity';
@@ -85,8 +58,6 @@ import { WalletNamePage } from '../pages/settings/wallet-settings/wallet-name/wa
 import { WalletSettingsPage } from '../pages/settings/wallet-settings/wallet-settings';
 
 /* Wallet Advanced Settings */
-import { AllAddressesPage } from '../pages/settings/wallet-settings/wallet-settings-advanced/wallet-addresses/all-addresses/all-addresses';
-import { WalletAddressesPage } from '../pages/settings/wallet-settings/wallet-settings-advanced/wallet-addresses/wallet-addresses';
 import { WalletDeletePage } from '../pages/settings/wallet-settings/wallet-settings-advanced/wallet-delete/wallet-delete';
 import { WalletExportPage } from '../pages/settings/wallet-settings/wallet-settings-advanced/wallet-export/wallet-export';
 import { WalletExtendedPrivateKeyPage } from '../pages/settings/wallet-settings/wallet-settings-advanced/wallet-information/wallet-extended-private-key/wallet-extended-private-key';
@@ -104,9 +75,6 @@ import { CustomAmountPage } from '../pages/receive/custom-amount/custom-amount';
 import { WideHeaderPage } from './templates/wide-header-page/wide-header-page';
 import { WalletTabsChild } from './wallet-tabs/wallet-tabs-child';
 
-import { CardCatalogPage } from './integrations/gift-cards/card-catalog/card-catalog';
-import { GIFT_CARD_PAGES } from './integrations/gift-cards/gift-cards';
-
 export const PAGES = [
   ActivityPage,
   AmountPage,
@@ -118,35 +86,20 @@ export const PAGES = [
   AddressbookModifyPage,
   AboutPage,
   AdvancedPage,
-  AllAddressesPage,
   AltCurrencyPage,
   BackupRequestPage,
-  BitPayCardIntroPage,
-  BitPayCardPage,
-  BitPaySettingsPage,
-  BitPayCardTopUpPage,
-  BuyCoinbasePage,
-  CardCatalogPage,
   ChooseFeeLevelPage,
-  CreateWalletPage,
-  CoinbasePage,
-  CoinbaseTxDetailsPage,
-  CopayersPage,
-  FeedbackCardPage,
   SharePage,
   ImportWalletPage,
   BackupGamePage,
   ConfirmPage,
   CustomAmountPage,
   DisclaimerPage,
-  CollectEmailPage,
-  ...GIFT_CARD_PAGES,
   GravatarPage,
   HomePage,
   LanguagePage,
   OnboardingPage,
   PaperWalletPage,
-  PayProPage,
   PinPad,
   PasswordModalPage,
   ProposalsPage,
@@ -154,20 +107,11 @@ export const PAGES = [
   ScanPage,
   SendPage,
   SettingsPage,
-  SellCoinbasePage,
-  CoinbaseSettingsPage,
-  ShapeshiftConfirmPage,
-  ShapeshiftDetailsPage,
-  ShapeshiftSettingsPage,
-  ShapeshiftPage,
-  ShapeshiftShiftPage,
   NotificationsPage,
   FeePolicyPage,
   SearchTxModalPage,
   SessionLogPage,
-  SendFeedbackPage,
   FinishModalPage,
-  TourPage,
   TabsPage,
   TxpDetailsPage,
   TxDetailsPage,
@@ -176,7 +120,6 @@ export const PAGES = [
   WalletNamePage,
   WalletColorPage,
   WalletInformationPage,
-  WalletAddressesPage,
   WalletExportPage,
   WalletServiceUrlPage,
   WalletTransactionHistoryPage,

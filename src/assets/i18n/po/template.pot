@@ -16,17 +16,6 @@ msgid ""
 "created."
 msgstr ""
 
-msgid "1. Tap \"Add Payment Method\" and select \"Gift Card\""
-msgstr ""
-
-msgid "2. Enter Gift Code"
-msgstr ""
-
-msgid ""
-"5-star ratings help us get BitPay Wallet into more hands, and more users "
-"means more resources can be committed to the app!"
-msgstr ""
-
 msgid ""
 "A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum "
 "size allowed for a transaction was exceeded."
@@ -74,9 +63,6 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-msgid "Add BitPay Account?"
-msgstr ""
-
 msgid "Add Contact"
 msgstr ""
 
@@ -90,14 +76,6 @@ msgid "Add as a contact"
 msgstr ""
 
 msgid "Add funds"
-msgstr ""
-
-msgid ""
-"Add gift cards to your {appName} wallet from brands like Amazon, Delta, "
-"Hotels.com, and Uber."
-msgstr ""
-
-msgid "Add this BitPay account ({{email}})?"
 msgstr ""
 
 msgid "Address"
@@ -141,16 +119,6 @@ msgstr ""
 msgid "Alternative currency"
 msgstr ""
 
-msgid ""
-"Amazon.co.jp Gift Cards never expire and can be redeemed towards millions "
-"of items at www.amazon.co.jp."
-msgstr ""
-
-msgid ""
-"Amazon.com Gift Cards never expire and can be redeemed towards millions of "
-"items at www.amazon.com."
-msgstr ""
-
 msgid "Amount"
 msgstr ""
 
@@ -168,27 +136,12 @@ msgid ""
 "latest version."
 msgstr ""
 
-msgid "Anyone with your recovery phrase can access or spend your bitcoin."
-msgstr ""
-
 msgid "Apply changes"
 msgstr ""
 
 msgid ""
 "Approximate Bitcoin network fee to transfer wallet's balance (with normal "
 "priority)"
-msgstr ""
-
-msgid "Archive All {brand} Gift Cards?"
-msgstr ""
-
-msgid "Archive Card"
-msgstr ""
-
-msgid "Archive this Card?"
-msgstr ""
-
-msgid "Archived Cards"
 msgstr ""
 
 msgid "Are you being watched?"
@@ -221,14 +174,6 @@ msgstr ""
 msgid "Average confirmation time"
 msgstr ""
 
-msgid "Awaiting payment to confirm"
-msgstr ""
-
-msgid "Back up all your wallets before using this function"
-msgstr ""
-
-msgid "Back up your wallet before using this function"
-msgstr ""
 
 msgid "Backup"
 msgstr ""
@@ -258,12 +203,6 @@ msgid ""
 "can be recovered in the case your device was lost or stolen."
 msgstr ""
 
-msgid "Below Minimum Amount"
-msgstr ""
-
-msgid "BitPay Card URI"
-msgstr ""
-
 msgid "Bitcoin Address"
 msgstr ""
 
@@ -288,7 +227,7 @@ msgstr ""
 msgid "Bitcoin is a currency."
 msgstr ""
 
-msgid "Bitcoin is different - it cannot be safely held with a bank or web service."
+msgid "Cryptocurrency doesn’t possessed by any bank or internet service. "
 msgstr ""
 
 msgid "Bitcoin is secure, digital money."
@@ -303,9 +242,6 @@ msgstr ""
 msgid "Bitcoin transactions include a fee collected by miners on the network."
 msgstr ""
 
-msgid "Brands"
-msgstr ""
-
 msgid "Broadcast Payment"
 msgstr ""
 
@@ -315,20 +251,8 @@ msgstr ""
 msgid "Broadcasting transaction..."
 msgstr ""
 
-msgid "Buy Gift Card"
-msgstr ""
-
-msgid "Buy Gift Cards"
-msgstr ""
-
-msgid "Buying Bitcoin..."
-msgstr ""
-
-msgid "Buying Gift Card..."
-msgstr ""
-
 msgid ""
-"By providing your email address, you give explicit consent to BitPay to use "
+"By providing your email address, you give explicit consent to Copay to use "
 "your email address to send you email notifications about payments."
 msgstr ""
 
@@ -344,19 +268,10 @@ msgstr ""
 msgid "Cancel invitation"
 msgstr ""
 
-msgid "Canceling Gift Card..."
-msgstr ""
-
 msgid "Cannot create wallet"
 msgstr ""
 
 msgid "Cannot join the same wallet more that once"
-msgstr ""
-
-msgid "Card Archived"
-msgstr ""
-
-msgid "Card Settings"
 msgstr ""
 
 msgid "Certified by"
@@ -434,34 +349,13 @@ msgid ""
 "recovered in case your phone was lost or stolen."
 msgstr ""
 
-msgid "Connect my BitPay Card"
-msgstr ""
-
-msgid "Connect to ShapeShift Account"
-msgstr ""
-
-msgid "Connecting to Coinbase..."
-msgstr ""
-
-msgid "Connecting to Glidera..."
-msgstr ""
-
-msgid "Connecting to ShapeShift..."
-msgstr ""
-
-msgid "Connection reset by peer"
-msgstr ""
-
-msgid "Contact the ShapeShift support team."
-msgstr ""
-
 msgid "Continue"
 msgstr ""
 
 msgid "Contribute translations"
 msgstr ""
 
-msgid "Copay Session Logs. Be careful, this could contain sensitive private data"
+msgid "Session Logs. Be careful, this could contain sensitive private data"
 msgstr ""
 
 msgid "Copay only supports Bitcoin Cash using new version numbers addresses"
@@ -489,12 +383,6 @@ msgid "Copied to clipboard"
 msgstr ""
 
 msgid "Copied {coin} address"
-msgstr ""
-
-msgid "Copied: {claimCode}"
-msgstr ""
-
-msgid "Copy Code"
 msgstr ""
 
 msgid "Copy this text as it is to a safe place (notepad or email)"
@@ -545,9 +433,6 @@ msgstr ""
 msgid "Could not encrypt wallet"
 msgstr ""
 
-msgid "Could not get claim code. Please contact BitPay support."
-msgstr ""
-
 msgid "Could not get dynamic fee"
 msgstr ""
 
@@ -590,9 +475,6 @@ msgstr ""
 msgid "Create a new wallet"
 msgstr ""
 
-msgid "Create a new wallet to start using this app."
-msgstr ""
-
 msgid "Create bitcoin wallet"
 msgstr ""
 
@@ -611,16 +493,10 @@ msgstr ""
 msgid "Created by"
 msgstr ""
 
-msgid "Creating Gift Card..."
-msgstr ""
-
 msgid "Creating Wallet..."
 msgstr ""
 
 msgid "Creating transaction..."
-msgstr ""
-
-msgid "Current Cards"
 msgstr ""
 
 msgid "Current fee rate for this policy"
@@ -648,13 +524,6 @@ msgid "Deleting Wallet..."
 msgstr ""
 
 msgid "Deleting payment proposal..."
-msgstr ""
-
-msgid ""
-"Delta Gift Cards can be used toward airfare on any Delta marketed flight "
-"through www.delta.com, at the airport, through reservations, or by phone "
-"with Delta Vacations®. Delta Gift Cards do not have any expiration dates or "
-"fees."
 msgstr ""
 
 msgid "Deposit"
@@ -687,14 +556,6 @@ msgstr ""
 msgid "Do not include private key"
 msgstr ""
 
-msgid "Do you want to verify your account now?"
-msgstr ""
-
-msgid ""
-"Don't see your language on Crowdin? Contact the Owner on Crowdin! We'd love "
-"to support your language."
-msgstr ""
-
 msgid "Done"
 msgstr ""
 
@@ -705,12 +566,6 @@ msgid "Download logs"
 msgstr ""
 
 msgid "Duplicating wallet..."
-msgstr ""
-
-msgid ""
-"Each bitcoin wallet can generate billions of addresses from your 12-word "
-"recovery phrase. A new address is automatically generated and shown each "
-"time you receive a payment."
 msgstr ""
 
 msgid "Economy"
@@ -748,9 +603,6 @@ msgstr ""
 msgid "Enter Amount"
 msgstr ""
 
-msgid "Enter Two Factor for your BitPay account"
-msgstr ""
-
 msgid "Enter a new encrypt password"
 msgstr ""
 
@@ -761,9 +613,6 @@ msgid "Enter a transaction memo"
 msgstr ""
 
 msgid "Enter custom fee in sat/byte"
-msgstr ""
-
-msgid "Enter email address"
 msgstr ""
 
 msgid "Enter encrypt password"
@@ -793,9 +642,6 @@ msgstr ""
 msgid "Error adding new entry"
 msgstr ""
 
-msgid "Error connecting to ShapeShift"
-msgstr ""
-
 msgid "Error creating wallet"
 msgstr ""
 
@@ -814,16 +660,10 @@ msgstr ""
 msgid "Error in Payment Protocol"
 msgstr ""
 
-msgid "Error pairing BitPay Account"
-msgstr ""
-
 msgid "Error scanning funds:"
 msgstr ""
 
 msgid "Error sweeping wallet:"
-msgstr ""
-
-msgid "Error updating Debit Cards"
 msgstr ""
 
 msgid "Exceeded daily limit of $500 per user"
@@ -871,21 +711,6 @@ msgstr ""
 msgid "Fee level is not defined"
 msgstr ""
 
-msgid "Feedback"
-msgstr ""
-
-msgid "Feedback could not be submitted. Please try again later."
-msgstr ""
-
-msgid "Feedback!"
-msgstr ""
-
-msgid "Fetching BitPay Account..."
-msgstr ""
-
-msgid "Fetching BitPay Cards..."
-msgstr ""
-
 msgid "Fetching payment information..."
 msgstr ""
 
@@ -896,9 +721,6 @@ msgid "Fingerprint"
 msgstr ""
 
 msgid "From"
-msgstr ""
-
-msgid "From BitPay account"
 msgstr ""
 
 msgid ""
@@ -916,9 +738,6 @@ msgid "Funds found"
 msgstr ""
 
 msgid "Funds to be added"
-msgstr ""
-
-msgid "Funds were added to debit card"
 msgstr ""
 
 msgid "Funds will be transferred to"
@@ -941,8 +760,6 @@ msgid ""
 "fees may apply."
 msgstr ""
 
-msgid "Get news and updates from BitPay"
-msgstr ""
 
 msgid "Get started"
 msgstr ""
@@ -953,23 +770,6 @@ msgstr ""
 msgid "Getting fee levels..."
 msgstr ""
 
-msgid "Gift Card"
-msgstr ""
-
-msgid "Gift card canceled"
-msgstr ""
-
-msgid "Gift card purchases are temporarily unavailable. Please try again later."
-msgstr ""
-
-msgid ""
-"Give friends and family the gift of tapping a button and getting a ride - "
-"any time of day, any day of year."
-msgstr ""
-
-msgid "Give us feedback"
-msgstr ""
-
 msgid "Go Back"
 msgstr ""
 
@@ -977,12 +777,6 @@ msgid "Go back"
 msgstr ""
 
 msgid "Got it"
-msgstr ""
-
-msgid "Have you redeemed the entire balance of this gift card?"
-msgstr ""
-
-msgid "Having problems with a ShapeShift?"
 msgstr ""
 
 msgid "Help & support"
@@ -1003,20 +797,6 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-msgid "How satisfied are you with {{appName}} wallet?"
-msgstr ""
-
-msgid ""
-"I agree to the Terms and certify that I am the beneficial owner of the "
-"input assets and the destination address."
-msgstr ""
-
-msgid ""
-"I give explicit consent to BitPay to use my email address to send me email "
-"notifications about payments (and, if selected, email updates and news "
-"about the wallet)."
-msgstr ""
-
 msgid "I have read, understood, and agree to the Terms of Use."
 msgstr ""
 
@@ -1027,33 +807,14 @@ msgid "I understand"
 msgstr ""
 
 msgid ""
-"I understand that if this app is moved to another device or deleted, my "
-"bitcoin can only be recovered with the recovery phrase"
-msgstr ""
-
-msgid ""
 "I understand that my funds are held securely on this device, not by a "
 "company"
 msgstr ""
 
-msgid "I'm disappointed"
+msgid "My funds are stored on the blockchains, not companies nor this device."
 msgstr ""
 
-msgid "I'm satisfied"
-msgstr ""
-
-msgid "I'm sure"
-msgstr ""
-
-msgid "I'm very happy"
-msgstr ""
-
-msgid "I've used this card"
-msgstr ""
-
-msgid ""
-"If enabled, Bitcoin Cash addresses will be shown using Copay style address, "
-"and not the new cashaddr format."
+msgid "If this app is deleted, my assets can only be recovered with the recovery phrase."
 msgstr ""
 
 msgid ""
@@ -1065,7 +826,7 @@ msgid "If enabled, wallets will also try to spend unconfirmed funds."
 msgstr ""
 
 msgid ""
-"If this device is replaced or this app is deleted, neither you nor BitPay "
+"If this device is replaced or this app is deleted, neither you nor Trias  "
 "can recover your funds without a backup."
 msgstr ""
 
@@ -1123,9 +884,6 @@ msgstr ""
 msgid "Insufficient funds for fee"
 msgstr ""
 
-msgid "Integrations"
-msgstr ""
-
 msgid "Invalid"
 msgstr ""
 
@@ -1160,24 +918,9 @@ msgid "It's a ghost town in here"
 msgstr ""
 
 msgid ""
-"It's a good idea to avoid reusing addresses - this both protects your "
-"privacy and keeps your bitcoins secure against hypothetical attacks by "
-"quantum computers."
-msgstr ""
-
-msgid ""
 "It's important that you write your recovery phrase down correctly. If "
 "something happens to your wallet, you'll need it to recover your money. "
 "Please review and try again."
-msgstr ""
-
-msgid "Join shared wallet"
-msgstr ""
-
-msgid "Join wallet"
-msgstr ""
-
-msgid "Joining Wallet..."
 msgstr ""
 
 msgid "Just scan the code to pay."
@@ -1201,12 +944,6 @@ msgstr ""
 msgid "Learn more about testnet blockchain"
 msgstr ""
 
-msgid "Leave Feedback"
-msgstr ""
-
-msgid "Let's verify your recovery phrase."
-msgstr ""
-
 msgid "Linked"
 msgstr ""
 
@@ -1220,12 +957,6 @@ msgid "Lock"
 msgstr ""
 
 msgid "Locked"
-msgstr ""
-
-msgid "Locktime in effect. Please wait to create a new spend proposal"
-msgstr ""
-
-msgid "Locktime in effect. Please wait to remove this spend proposal"
 msgstr ""
 
 msgid "Low Fee"
@@ -1305,12 +1036,6 @@ msgstr ""
 msgid "Network"
 msgstr ""
 
-msgid "Network Cost"
-msgstr ""
-
-msgid "Network cost"
-msgstr ""
-
 msgid "Network error"
 msgstr ""
 
@@ -1362,9 +1087,6 @@ msgstr ""
 msgid "No wallets available to receive funds"
 msgstr ""
 
-msgid "No wallets available to use ShapeShift"
-msgstr ""
-
 msgid "No wallets with funds"
 msgstr ""
 
@@ -1380,9 +1102,6 @@ msgstr ""
 msgid "Not enough funds for fee"
 msgstr ""
 
-msgid "Not even BitPay can access it."
-msgstr ""
-
 msgid ""
 "Not including the private key allows to check the wallet balance, "
 "transaction history, and create spend proposals from the export. However, "
@@ -1391,9 +1110,6 @@ msgid ""
 msgstr ""
 
 msgid "Not right now"
-msgstr ""
-
-msgid "Not set"
 msgstr ""
 
 msgid "Not valid bitcoin address"
@@ -1439,40 +1155,10 @@ msgstr ""
 msgid "On this screen you can see all your wallets, accounts, and assets."
 msgstr ""
 
-msgid "Only redeemable on Mercado Livre (Brazil)"
-msgstr ""
-
-msgid "Only redeemable on www.amazon.co.jp (Japan website)"
-msgstr ""
-
-msgid "Only redeemable on www.amazon.com (USA website)"
-msgstr ""
-
 msgid "Open"
 msgstr ""
 
-msgid "Open Crowdin"
-msgstr ""
-
-msgid "Open GitHub"
-msgstr ""
-
-msgid "Open GitHub Project"
-msgstr ""
-
-msgid "Open Insight"
-msgstr ""
-
-msgid "Open Translation Community"
-msgstr ""
-
 msgid "Open settings"
-msgstr ""
-
-msgid "Open website"
-msgstr ""
-
-msgid "Order the BitPay Card"
 msgstr ""
 
 msgid "Ouch!"
@@ -1497,11 +1183,6 @@ msgid "Passwords do not match"
 msgstr ""
 
 msgid "Paste the backup plain text code"
-msgstr ""
-
-msgid ""
-"Paste this code on {cardConfig.website}. This gift card cannot be recovered "
-"if your claim code is lost."
 msgstr ""
 
 msgid "Pay 0% fees to turn bitcoin into dollars."
@@ -1578,9 +1259,6 @@ msgstr ""
 msgid "Please carefully write down this phrase."
 msgstr ""
 
-msgid "Please complete your account verification on ShapeShift website."
-msgstr ""
-
 msgid "Please connect a camera to get started."
 msgstr ""
 
@@ -1653,12 +1331,6 @@ msgstr ""
 msgid "Proposals"
 msgstr ""
 
-msgid "Purchase Limit Reached"
-msgstr ""
-
-msgid "Purchased Brands"
-msgstr ""
-
 msgid ""
 "Push notifications for {{appName}} are currently disabled. Enable them in "
 "the Settings app."
@@ -1676,16 +1348,10 @@ msgstr ""
 msgid "Rate"
 msgstr ""
 
-msgid "Rate on the {storeName}"
-msgstr ""
-
 msgid "Read more in our Wiki"
 msgstr ""
 
 msgid "Read more in our support page"
-msgstr ""
-
-msgid "Receipt Email"
 msgstr ""
 
 msgid "Receive"
@@ -1706,9 +1372,6 @@ msgstr ""
 msgid "Recent"
 msgstr ""
 
-msgid "Recent Transaction Card"
-msgstr ""
-
 msgid "Recent Transactions"
 msgstr ""
 
@@ -1719,12 +1382,6 @@ msgid "Recovery Phrase"
 msgstr ""
 
 msgid "Recreating Wallet..."
-msgstr ""
-
-msgid "Redeem Now"
-msgstr ""
-
-msgid "Redeem by going to the payment section in the Uber app."
 msgstr ""
 
 msgid "Reject Payment Proposal"
@@ -1841,9 +1498,6 @@ msgstr ""
 msgid "Send by email"
 msgstr ""
 
-msgid "Send feedback"
-msgstr ""
-
 msgid "Send from"
 msgstr ""
 
@@ -1857,12 +1511,6 @@ msgid "Sending"
 msgstr ""
 
 msgid "Sending 2FA code..."
-msgstr ""
-
-msgid "Sending From"
-msgstr ""
-
-msgid "Sending feedback..."
 msgstr ""
 
 msgid "Sending maximum amount"
@@ -1901,15 +1549,6 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-msgid "ShapeShift is not available at this moment. Please, try again later."
-msgstr ""
-
-msgid "ShapeShift max limit reached"
-msgstr ""
-
-msgid "ShapeShift requires a minimum value of {{min}}"
-msgstr ""
-
 msgid "Share"
 msgstr ""
 
@@ -1922,13 +1561,7 @@ msgstr ""
 msgid "Share this QR code to receive {amount} in your wallet {name}."
 msgstr ""
 
-msgid "Share this invitation with your copayers"
-msgstr ""
-
 msgid "Share {{appName}}"
-msgstr ""
-
-msgid "Shop Now"
 msgstr ""
 
 msgid "Show advanced options"
@@ -1940,18 +1573,10 @@ msgstr ""
 msgid "Show in Home"
 msgstr ""
 
-msgid "Sign Up for ShapeShift"
-msgstr ""
-
 msgid "Signatures rejected by server"
 msgstr ""
 
 msgid "Signing transaction..."
-msgstr ""
-
-msgid ""
-"Since only you control your money, you’ll need to save your recovery phrase "
-"in case this app is deleted."
 msgstr ""
 
 msgid "Single address"
@@ -1961,9 +1586,6 @@ msgid "Skip"
 msgstr ""
 
 msgid "Slide to accept"
-msgstr ""
-
-msgid "Slide to confirm"
 msgstr ""
 
 msgid "Slide to pay"
@@ -1978,9 +1600,6 @@ msgstr ""
 msgid "Spend proposal is not accepted"
 msgstr ""
 
-msgid "Spend proposal not found"
-msgstr ""
-
 msgid "Spendable balance"
 msgstr ""
 
@@ -1988,9 +1607,6 @@ msgid "Spending this balance will need significant Bitcoin network fees"
 msgstr ""
 
 msgid "Status"
-msgstr ""
-
-msgid "Submit Feature Request"
 msgstr ""
 
 msgid "Suggested by Merchant"
@@ -2014,9 +1630,6 @@ msgstr ""
 msgid "THIS ACTION CANNOT BE REVERSED"
 msgstr ""
 
-msgid "Take control of your money, get started with bitcoin."
-msgstr ""
-
 msgid "Tap and hold to show"
 msgstr ""
 
@@ -2024,9 +1637,6 @@ msgid "Tap to recreate"
 msgstr ""
 
 msgid "Tap to retry"
-msgstr ""
-
-msgid "Temporarily Unavailable"
 msgstr ""
 
 msgid "Terms of Use"
@@ -2039,11 +1649,6 @@ msgid "Text"
 msgstr ""
 
 msgid "Thanks!"
-msgstr ""
-
-msgid ""
-"The Gift of Go.™ With over 300 destinations and limitless adventures to "
-"choose from, the Delta Gift Card opens up a world of possibilities."
 msgstr ""
 
 msgid "The Safest, Fastest Asset Exchange on Earth"
@@ -2108,25 +1713,7 @@ msgid ""
 "will not be accessible from the export."
 msgstr ""
 
-msgid ""
-"The purchase amount is limited to {maxAmount} {currency} per day. Please "
-"modify your amount."
-msgstr ""
-
-msgid ""
-"The purchase amount must be at least {minAmount} {currency}. Please modify "
-"your amount."
-msgstr ""
-
 msgid "The request could not be understood by the server"
-msgstr ""
-
-msgid ""
-"The single address feature will force the wallet to only use one address "
-"rather than generating new addresses."
-msgstr ""
-
-msgid "The spend proposal is not pending"
 msgstr ""
 
 msgid ""
@@ -2218,15 +1805,6 @@ msgstr ""
 msgid "To get started, you'll need to create a bitcoin wallet and get some bitcoin."
 msgstr ""
 
-msgid "To {{reason}} you must first add your BitPay account - {{email}}"
-msgstr ""
-
-msgid "Top up in progress..."
-msgstr ""
-
-msgid "Top-up with this cryptocurrency is not enabled"
-msgstr ""
-
 msgid "Total"
 msgstr ""
 
@@ -2239,9 +1817,6 @@ msgstr ""
 msgid "Total wallet inputs"
 msgstr ""
 
-msgid "Trade any leading blockchain asset for any other. Protection by Design."
-msgstr ""
-
 msgid "Transaction"
 msgstr ""
 
@@ -2249,9 +1824,6 @@ msgid "Transaction History"
 msgstr ""
 
 msgid "Transaction ID"
-msgstr ""
-
-msgid "Transaction already broadcasted"
 msgstr ""
 
 msgid "Transaction has not been created"
@@ -2290,39 +1862,13 @@ msgstr ""
 msgid "Try again in {{expires}}"
 msgstr ""
 
-msgid "Turn bitcoin into dollars, swipe anywhere Visa® is accepted."
-msgstr ""
-
 msgid "Type the recovery phrase (usually 12 words)"
-msgstr ""
-
-msgid ""
-"Uber gift cards also apply to UberEATS orders. Enjoy food from hundreds of "
-"restaurants, delivered at Uber speed."
 msgstr ""
 
 msgid "Uh oh..."
 msgstr ""
 
-msgid "Unarchive Card"
-msgstr ""
-
 msgid "Unconfirmed"
-msgstr ""
-
-msgid "Unlink account"
-msgstr ""
-
-msgid "Unlink card"
-msgstr ""
-
-msgid "Unlink the account will remove it and all associated cards from this device."
-msgstr ""
-
-msgid "Unlink the card will remove it from this device."
-msgstr ""
-
-msgid "Unlock App"
 msgstr ""
 
 msgid "Unsent transactions"
@@ -2331,16 +1877,7 @@ msgstr ""
 msgid "Unused addresses"
 msgstr ""
 
-msgid "Unverified Account"
-msgstr ""
-
 msgid "Update Available"
-msgstr ""
-
-msgid "Updating Gift Card..."
-msgstr ""
-
-msgid "Updating Gift Cards..."
 msgstr ""
 
 msgid "Updating pending proposals... Please stand by"
@@ -2367,9 +1904,6 @@ msgstr ""
 msgid "Validating recovery phrase..."
 msgstr ""
 
-msgid "Verify Account"
-msgstr ""
-
 msgid "Version"
 msgstr ""
 
@@ -2379,13 +1913,7 @@ msgstr ""
 msgid "View Confirmation Status"
 msgstr ""
 
-msgid "View Invoice"
-msgstr ""
-
 msgid "View Privacy Policy"
-msgstr ""
-
-msgid "View Redemption Code"
 msgstr ""
 
 msgid "View Transaction on Insight"
@@ -2402,10 +1930,6 @@ msgstr ""
 
 msgid "View on blockchain"
 msgstr ""
-
-msgid "Visit ShapeShift.io"
-msgstr ""
-
 msgid ""
 "WARNING: Key derivation is not working on this device/wallet. Actions "
 "cannot be performed on this wallet."
@@ -2500,9 +2024,6 @@ msgstr ""
 msgid "Watch Out!"
 msgstr ""
 
-msgid "We appreciate your review"
-msgstr ""
-
 msgid ""
 "We are always looking for translation contributions! You can make "
 "corrections or help to make this app available in your native language by "
@@ -2510,22 +2031,6 @@ msgid ""
 msgstr ""
 
 msgid "We will confirm on the next screen."
-msgstr ""
-
-msgid ""
-"We're always listening for ways we can improve your experience. Feel free "
-"to leave us a review in the app store or request a new feature."
-msgstr ""
-
-msgid ""
-"We're always listening for ways we can improve your experience. Feel free "
-"to leave us a review in the app store or request a new feature. Also, let "
-"us know if you experience any technical issues."
-msgstr ""
-
-msgid ""
-"We're always listening for ways we can improve your experience. Is there "
-"anything we could do to improve your experience?"
 msgstr ""
 
 msgid "Website"
@@ -2537,18 +2042,6 @@ msgstr ""
 msgid ""
 "When this wallet was created, it was called \"{{walletName}}\". You can "
 "change the name displayed on this device below."
-msgstr ""
-
-msgid "Where would you like to receive email notifications about payments?"
-msgstr ""
-
-msgid "Where would you like to receive your Amazon gift card purchase receipts?"
-msgstr ""
-
-msgid "Why does this require authentication?"
-msgstr ""
-
-msgid "Why?"
 msgstr ""
 
 msgid "Withdraw"
@@ -2565,16 +2058,10 @@ msgstr ""
 msgid "Write Down Recovery Phrase"
 msgstr ""
 
-msgid "Write a Review"
-msgstr ""
-
 msgid "Wrong number of recovery words:"
 msgstr ""
 
 msgid "Wrong password"
-msgstr ""
-
-msgid "YES"
 msgstr ""
 
 msgid "Yes"
@@ -2591,39 +2078,7 @@ msgstr ""
 msgid "You can back up your wallet later from your wallet settings."
 msgstr ""
 
-msgid ""
-"You can continue to view your archived cards here if you need to access "
-"them."
-msgstr ""
-
-msgid ""
-"You can make contributions by signing up on our Crowdin community "
-"translation website. We’re looking forward to hearing from you!"
-msgstr ""
-
-msgid "You can scan bitcoin addresses, payment requests, paper wallets, and more."
-msgstr ""
-
-msgid ""
-"You can see the latest developments and contribute to this open source app "
-"by visiting our project on GitHub."
-msgstr ""
-
-msgid "You can spend bitcoin at millions of websites and stores worldwide."
-msgstr ""
-
 msgid "You can still export it from \"Export Wallet\" option."
-msgstr ""
-
-msgid "You can trade it for other currencies like US Dollars, Euros, or Pounds."
-msgstr ""
-
-msgid ""
-"You can use your Mercado Livre gift cards on your Mercado Pago account for "
-"everyday expenses like utilities and metro rides."
-msgstr ""
-
-msgid "You control your bitcoin."
 msgstr ""
 
 msgid "You could sign the transaction later in your wallet details"
@@ -2633,17 +2088,9 @@ msgid "You should not set a fee higher than {{maxFeeRecommended}} satoshis/byte.
 msgstr ""
 
 msgid ""
-"Your BitPay Card is ready. Add funds to your card to start using it at "
-"stores and ATMs worldwide."
-msgstr ""
-
-msgid "Your bitcoin wallet is ready!"
-msgstr ""
-
-msgid ""
 "Your extended private keys are all that is needed to access your bitcoin "
 "funds. Be sure to protect your private keys and store them only on secure "
-"devices. BitPay does not have access to your private keys, so you alone are "
+"devices. Trias does not have access to your private keys, so you alone are "
 "responsible for your keys. If you share key access with external services, "
 "you take responsibility for the risk of theft or breach. Only advanced "
 "users should handle extended private keys directly."
@@ -2662,9 +2109,6 @@ msgid ""
 "scanning your QR code."
 msgstr ""
 
-msgid "Your wallet is never saved to cloud storage or standard device backups."
-msgstr ""
-
 msgid ""
 "Your wallet key will be encrypted. The encrypt password cannot be "
 "recovered. Be sure to write it down."
@@ -2677,9 +2121,6 @@ msgid "[Balance Hidden]"
 msgstr ""
 
 msgid "[Scanning Funds]"
-msgstr ""
-
-msgid "add your BitPay Visa card(s)"
 msgstr ""
 
 msgid "me"
@@ -2696,7 +2137,7 @@ msgstr ""
 
 msgid ""
 "{coinName} miner fees are high due to record demand for limited space on "
-"the {coinName} network. BitPay does not receive and does not control "
+"the {coinName} network. Trias does not receive and does not control "
 "{coinName} miner fees."
 msgstr ""
 
@@ -2705,8 +2146,8 @@ msgstr ""
 
 msgid ""
 "{{appName}} depends on Bitcore Wallet Service (BWS) for blockchain "
-"information, networking and Copayer synchronization. The default "
-"configuration points to https://bws.bitpay.com (BitPay's public BWS "
+"information, networking. The default "
+"configuration points to https://tbws.trias.one (Trias's public BWS "
 "instance)."
 msgstr ""
 
@@ -2726,4 +2167,34 @@ msgid "Create"
 msgstr ""
 
 msgid "Recover"
+msgstr ""
+
+msgid "Set up a new wallet if you never used this app before."
+msgstr ""
+
+msgid "Recover your account data and balance."
+msgstr ""
+
+msgid "You'll be able to import existing wallet after created or recovered HD wallet."
+msgstr ""
+
+msgid "Enter a password to encrypt your wallets"
+msgstr ""
+
+msgid "Backup Properly"
+msgstr ""
+
+msgid "Mnemonic is the only way to recover my wallet, I'll write it down on paper."
+msgstr ""
+
+msgid "Checked Surrendings"
+msgstr ""
+
+msgid "No one can peek at my phone and there's no survelience cameras around."
+msgstr ""
+
+msgid "No Screenshots"
+msgstr ""
+
+msgid "Other apps have access to Photos app may steal my mnemonic."
 msgstr ""

@@ -18,10 +18,6 @@ export const testWallets: LocalStorageData = [
     value: `{"balance":"0.00 BCH","updatedOn":1522444993}`
   },
   {
-    key: `feedback`,
-    value: `{"time":1522340554,"version":"4.0.10","sent":false}`
-  },
-  {
     key: `lastAddress-24318897-a594-46e2-87fd-ba67ca980071`,
     value: `15zqaY9cc57p9NaiWBjrFBm8TfXqMVo5Dj`
   },

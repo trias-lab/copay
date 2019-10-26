@@ -5,7 +5,6 @@ import { Logger } from '../../providers/logger/logger';
 
 // providers
 import { ActionSheetProvider } from '../action-sheet/action-sheet';
-import { AppProvider } from '../app/app';
 import { BwcProvider } from '../bwc/bwc';
 import { PayproProvider } from '../paypro/paypro';
 import { Coin } from '../wallet/wallet';
@@ -25,7 +24,6 @@ export class IncomingDataProvider {
     private bwcProvider: BwcProvider,
     private payproProvider: PayproProvider,
     private logger: Logger,
-    private appProvider: AppProvider,
     private translate: TranslateService
   ) {
     this.logger.debug('IncomingDataProvider initialized');
@@ -112,25 +110,6 @@ export class IncomingDataProvider {
       this.bwcProvider.getBitcoreCash().Address.isValid(data, 'livenet') ||
       this.bwcProvider.getBitcoreCash().Address.isValid(data, 'testnet')
     );
-  }
-
-  private isValidCoinbaseUri(data: string): boolean {
-    data = this.sanitizeUri(data);
-    return !!(
-      data && data.indexOf(this.appProvider.info.name + '://coinbase') === 0
-    );
-  }
-
-  private isValidShapeshiftUri(data: string): boolean {
-    data = this.sanitizeUri(data);
-    return !!(
-      data && data.indexOf(this.appProvider.info.name + '://shapeshift') === 0
-    );
-  }
-
-  private isValidBitPayCardUri(data: string): boolean {
-    data = this.sanitizeUri(data);
-    return !!(data && data.indexOf('bitpay://bitpay.com?secret=') === 0);
   }
 
   private isValidPrivateKey(data: string): boolean {
@@ -304,54 +283,6 @@ export class IncomingDataProvider {
     this.events.publish('IncomingDataRedir', nextView);
   }
 
-  private goToBitPayCard(data: string): void {
-    this.logger.debug('Incoming-data (redirect): BitPay Card URL');
-
-    // Disable BitPay Card
-    if (!this.appProvider.info._enabledExtensions.debitcard) {
-      this.logger.warn('BitPay Card has been disabled for this build');
-      return;
-    }
-
-    let secret = this.getParameterByName('secret', data);
-    let email = this.getParameterByName('email', data);
-    let otp = this.getParameterByName('otp', data);
-    let reason = this.getParameterByName('r', data);
-    if (reason == '0') {
-      /* For BitPay card binding */
-      let stateParams = { secret, email, otp };
-      let nextView = {
-        name: 'BitPayCardIntroPage',
-        params: stateParams
-      };
-      this.events.publish('IncomingDataRedir', nextView);
-    }
-  }
-
-  private goToCoinbase(data: string): void {
-    this.logger.debug('Incoming-data (redirect): Coinbase URL');
-
-    let code = this.getParameterByName('code', data);
-    let stateParams = { code };
-    let nextView = {
-      name: 'CoinbasePage',
-      params: stateParams
-    };
-    this.events.publish('IncomingDataRedir', nextView);
-  }
-
-  private goToShapeshift(data: string): void {
-    this.logger.debug('Incoming-data (redirect): ShapeShift URL');
-
-    let code = this.getParameterByName('code', data);
-    let stateParams = { code };
-    let nextView = {
-      name: 'ShapeshiftPage',
-      params: stateParams
-    };
-    this.events.publish('IncomingDataRedir', nextView);
-  }
-
   public redir(data: string, redirParams?: RedirParams): boolean {
     // Payment Protocol with non-backwards-compatible request
     if (this.isValidPayProNonBackwardsCompatible(data)) {
@@ -398,21 +329,6 @@ export class IncomingDataProvider {
     // Plain Address (Bitcoin Cash)
     else if (this.isValidBitcoinCashAddress(data)) {
       this.handlePlainBitcoinCashAddress(data, redirParams);
-      return true;
-
-      // Coinbase
-    } else if (this.isValidCoinbaseUri(data)) {
-      this.goToCoinbase(data);
-      return true;
-
-      // ShapeShift
-    } else if (this.isValidShapeshiftUri(data)) {
-      this.goToShapeshift(data);
-      return true;
-
-      // BitPayCard Authentication
-    } else if (this.isValidBitPayCardUri(data)) {
-      this.goToBitPayCard(data);
       return true;
 
       // Check Private Key
@@ -513,22 +429,6 @@ export class IncomingDataProvider {
         title: this.translate.instant('Bitcoin Cash Address')
       };
 
-      // Coinbase
-    } else if (this.isValidCoinbaseUri(data)) {
-      return {
-        data,
-        type: 'Coinbase',
-        title: 'Coinbase URI'
-      };
-
-      // BitPayCard Authentication
-    } else if (this.isValidBitPayCardUri(data)) {
-      return {
-        data,
-        type: 'BitPayCard',
-        title: this.translate.instant('BitPay Card URI')
-      };
-
       // Check Private Key
     } else if (this.isValidPrivateKey(data)) {
       return {
@@ -565,16 +465,6 @@ export class IncomingDataProvider {
     newUri.replace('://', ':');
 
     return newUri;
-  }
-
-  private getParameterByName(name: string, url: string): string {
-    if (!url) return undefined;
-    name = name.replace(/[\[\]]/g, '\\$&');
-    let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 
   private checkPrivateKey(privateKey: string): boolean {
