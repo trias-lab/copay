@@ -1,6 +1,4 @@
 /* Pages */
-import { CopayersPage } from '../pages/add/copayers/copayers';
-import { CreateWalletPage } from '../pages/add/create-wallet/create-wallet';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
 import { BackupGamePage } from '../pages/backup/backup-game/backup-game';
 import { BackupRequestPage } from '../pages/backup/backup-request/backup-request';
@@ -91,8 +89,6 @@ export const PAGES = [
   AltCurrencyPage,
   BackupRequestPage,
   ChooseFeeLevelPage,
-  CreateWalletPage,
-  CopayersPage,
   SharePage,
   ImportWalletPage,
   BackupGamePage,

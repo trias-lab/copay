@@ -28,7 +28,6 @@ import { PushNotificationsProvider } from '../providers/push-notifications/push-
 import { TouchIdProvider } from '../providers/touchid/touchid';
 
 // pages
-import { CopayersPage } from '../pages/add/copayers/copayers';
 import { ImportWalletPage } from '../pages/add/import-wallet/import-wallet';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
@@ -72,7 +71,6 @@ export class CopayApp {
     AddressAddPage,
     AmountPage,
     ConfirmPage,
-    CopayersPage,
     ImportWalletPage,
     PaperWalletPage,
     WalletDetailsPage
@@ -290,7 +288,7 @@ export class CopayApp {
     if (this.isWalletModalOpen) {
       this.walletModal.dismiss();
     }
-    const page = wallet.isComplete() ? WalletTabsPage : CopayersPage;
+    const page =  WalletTabsPage;
     this.isWalletModalOpen = true;
     this.walletModal = this.modalCtrl.create(
       page,
