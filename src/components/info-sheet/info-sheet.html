@@ -161,17 +161,6 @@
       <span sheet-second-button-text translate>GOT IT</span>
     </info-sheet-template>
 
-    <info-sheet-template *ngSwitchCase="'appreciate-review'" type="love">
-      <span sheet-title-text translate>We appreciate your review</span>
-      <span sheet-text translate>
-        5-star ratings help us get BitPay Wallet into more hands, and more users
-        means more resources can be committed to the app!
-      </span>
-      <span sheet-button-text>{{
-        'Rate on the {storeName}' | translate: { storeName: params?.storeName }
-      }}</span>
-    </info-sheet-template>
-
     <info-sheet-template *ngSwitchCase="'backup-failed'" type="warning">
       <span sheet-title-text translate>Uh oh...</span>
       <span sheet-text translate>

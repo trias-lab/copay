@@ -8,7 +8,6 @@ import { DomProvider } from '../../providers/dom/dom';
 
 export type InfoSheetType =
   | 'address-copied'
-  | 'appreciate-review'
   | 'backup-failed'
   | 'backup-needed-with-activity'
   | 'backup-ready'
