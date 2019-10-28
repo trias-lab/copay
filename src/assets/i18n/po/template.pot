@@ -2198,3 +2198,69 @@ msgstr ""
 
 msgid "Other apps have access to Photos app may steal my mnemonic."
 msgstr ""
+
+msgid "Write down your mnemonic on paper, we'll help you double check in next step."
+msgstr ""
+
+msgid "Check Your Mnemonic"
+msgstr ""
+
+msgid "Transactions history will show here after you send or receive money from other accounts."
+msgstr ""
+
+msgid "Addresses"
+msgstr ""
+
+msgid "COPY"
+msgstr ""
+
+msgid "Assets"
+msgstr ""
+
+msgid "Account Balance"
+msgstr ""
+
+msgid "You can scan addresses and more."
+msgstr ""
+
+msgid "Withdraw Address"
+msgstr ""
+
+msgid "Swap"
+msgstr ""
+
+msgid "Initiate"
+msgstr ""
+
+msgid "Wallet"
+msgstr ""
+
+msgid "Make sure the balance is sufficient."
+msgstr ""
+
+msgid "Balance Not Sufficient."
+msgstr ""
+
+msgid "Current address:"
+msgstr ""
+
+msgid "Exchange Detail"
+msgstr ""
+
+msgid "Exchange..."
+msgstr ""
+
+msgid "For..."
+msgstr ""
+
+msgid "low"
+msgstr ""
+
+msgid "medium"
+msgstr ""
+
+msgid "high"
+msgstr ""
+
+msgid "Mnemonic"
+msgstr ""

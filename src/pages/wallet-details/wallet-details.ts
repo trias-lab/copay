@@ -475,11 +475,9 @@ export class WalletDetailsPage extends WalletTabsChild {
       this.updatingTxHistoryProgress = newTxs;
     }).bind(this);
 
+    opts.progressFn = progressFn;
     this.walletProvider
-      .getTxHistory(this.wallet, {
-        progressFn,
-        opts
-      })
+      .getTxHistory(this.wallet, opts)
       .then(txHistory => {
         this.updatingTxHistory = false;
         this.updatingTxHistoryProgress = 0;

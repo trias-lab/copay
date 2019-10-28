@@ -26,7 +26,8 @@
             <ion-row>
               <ion-col>
                 <div (longPress)="toggleBalance()">
-                  <div (tap)="updateAll(true)" *ngIf="!updateStatusError && !wallet.balanceHidden && !wallet.scanning && wallet.status">
+                  <div (tap)="updateAll(true)"
+                    *ngIf="!updateStatusError && !wallet.balanceHidden && !wallet.scanning && wallet.status">
                     <div class="balance-str">{{wallet.status && wallet.status.totalBalanceStr}}</div>
                     <div class="balance-alt-str">
                       {{wallet.status && wallet.status.totalBalanceAlternative}} {{wallet.status &&
@@ -82,16 +83,16 @@
             </ion-row>
             <ion-row class="address-row">
               <div class="address">{{address}}</div>
-              <div class="copy-button" copy-to-clipboard="{{address}}">
+              <div class="copy-button" copy-to-clipboard="{{address}}" translate>
                 COPY
               </div>
             </ion-row>
             <ion-row>
               <ion-col>
-                <a (click)="send()"><img src="assets/img/icon_send@2x.png" alt="">Send</a>
+                <a (click)="send()"><img src="assets/img/icon_send@2x.png" alt="">{{'Send' | translate }}</a>
               </ion-col>
               <ion-col>
-                <a (click)="receive()"><img src="assets/img/icon_receive@2x.png" alt="">Receive</a>
+                <a (click)="receive()"><img src="assets/img/icon_receive@2x.png" alt="">{{'Receive' | translate }}</a>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -103,7 +104,8 @@
             <img class="testnet-text" *ngIf="wallet.network == 'testnet'" src="assets/img/icon-text-testnet.svg">
             <img class="read-only" *ngIf="!wallet.canSign()" src="assets/img/icon-read-only.svg">
             <img class="read-only-text" *ngIf="!wallet.canSign()" src="assets/img/icon-text-read-only.svg">
-            <img class="auditable-text" *ngIf="wallet.status && wallet.status.wallet && wallet.status.wallet.singleAddress"
+            <img class="auditable-text"
+              *ngIf="wallet.status && wallet.status.wallet && wallet.status.wallet.singleAddress"
               src="assets/img/icon-text-auditable.svg">
             <img class="custom-bws" *ngIf="wallet.usingCustomBWS" src="assets/img/icon-bws-white.svg">
             <img class="encrypted" *ngIf="wallet.isPrivKeyEncrypted()" src="assets/img/icon-lock-white.svg">
@@ -139,13 +141,15 @@
           'Transactions' | translate }}</a>
         <a class="tab-btn" [ngClass]="{'active': selectedTab=='addresses'}" (click)="selectTab('addresses')">{{
           'Addresses' | translate }}</a>
-        <div *ngIf="selectedTab == 'addresses' && !editingAddr" class="edit-addr-btn" (click)=" this.editingAddr = true"><img
-            src="assets/img/icon_editName@2x.png" alt=""></div>
-        <div *ngIf="selectedTab == 'addresses' && !editingAddr" class="add-addr-btn" (click)="createAddress()"><img src="assets/img/icon_addAddr@2x.png"
-            alt=""></div>
-        <div *ngIf="selectedTab == 'addresses' &&  editingAddr" class="done-addr-btn" (click)=" this.editingAddr = false">Done</div>
+        <div *ngIf="selectedTab == 'addresses' && !editingAddr" class="edit-addr-btn"
+          (click)=" this.editingAddr = true"><img src="assets/img/icon_editName@2x.png" alt=""></div>
+        <div *ngIf="selectedTab == 'addresses' && !editingAddr" class="add-addr-btn" (click)="createAddress()"><img
+            src="assets/img/icon_addAddr@2x.png" alt=""></div>
+        <div *ngIf="selectedTab == 'addresses' &&  editingAddr" class="done-addr-btn"
+          (click)=" this.editingAddr = false">Done</div>
 
-        <div class="search-tx-btn" *ngIf="selectedTab=='transactions' && wallet && wallet.completeHistory && wallet.completeHistory.length > 4 && !shouldShowSpinner()"
+        <div class="search-tx-btn"
+          *ngIf="selectedTab=='transactions' && wallet && wallet.completeHistory && wallet.completeHistory.length > 4 && !shouldShowSpinner()"
           (click)="openSearchModal()">
           <img src="assets/img/icon_search@2x.png">
         </div>
@@ -184,7 +188,8 @@
           <img src="assets/img/img_TxEmpty@2x.png" />
         </div>
         <div class="subtitle-info">
-          <span translate>Transactions history will show here after you send or receive money from other accounts.</span>
+          <span translate>Transactions history will show here after you send or receive money from other
+            accounts.</span>
         </div>
       </div>
 
@@ -218,7 +223,8 @@
                   <span *ngIf="tx.customData && tx.customData.toWalletName && !tx.customData.service">
                     <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'" width="40">
                   </span>
-                  <span *ngIf="!tx.customData || (tx.customData && !tx.customData.service && !tx.customData.toWalletName)">
+                  <span
+                    *ngIf="!tx.customData || (tx.customData && !tx.customData.service && !tx.customData.toWalletName)">
                     <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'" width="40">
                   </span>
                   <span>
@@ -229,18 +235,22 @@
               </ion-icon>
 
               <div class="action" *ngIf="tx.confirmations == 0">
-                <span *ngIf="(tx.action == 'sent') && !(addressbook && tx.outputs[0] && addressbook[tx.outputs[0].address])">{{'Sending'
+                <span
+                  *ngIf="(tx.action == 'sent') && !(addressbook && tx.outputs[0] && addressbook[tx.outputs[0].address])">{{'Sending'
                   | translate}}</span>
-                <span *ngIf="(tx.action == 'moved') && !(addressbook && tx.outputs[0] && addressbook[tx.outputs[0].address])">{{'Moving'
+                <span
+                  *ngIf="(tx.action == 'moved') && !(addressbook && tx.outputs[0] && addressbook[tx.outputs[0].address])">{{'Moving'
                   | translate}}</span>
-                <span *ngIf="(tx.action == 'sent' || tx.action == 'moved') && (addressbook && tx.outputs[0] && addressbook[tx.outputs[0].address])">{{addressbook[tx.outputs[0].address].name
+                <span
+                  *ngIf="(tx.action == 'sent' || tx.action == 'moved') && (addressbook && tx.outputs[0] && addressbook[tx.outputs[0].address])">{{addressbook[tx.outputs[0].address].name
                   || addressbook[tx.outputs[0].address]}}</span>
                 <span *ngIf="tx.action == 'received'">{{'Receiving' | translate}}</span>
                 <span class="pending-mark">Pending</span>
               </div>
 
               <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'received'">
-                <span *ngIf="(!tx.note || (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address])">{{'Received'
+                <span
+                  *ngIf="(!tx.note || (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address])">{{'Received'
                   | translate}}</span>
                 <span *ngIf="tx.note && tx.note.body != ''">{{tx.note.body}}</span>
                 <span *ngIf="addressbook && tx.outputs[0] && addressbook[tx.outputs[0].address]">
@@ -249,11 +259,14 @@
               </div>
 
               <div class="action" *ngIf="tx.confirmations > 0 && tx.action == 'sent'">
-                <span *ngIf="(tx.message && (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (!tx.customData || !tx.customData.toWalletName)"
+                <span
+                  *ngIf="(tx.message && (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (!tx.customData || !tx.customData.toWalletName)"
                   translate>Sent</span>
-                <span *ngIf="!tx.message && (!tx.note || (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (!tx.customData || !tx.customData.toWalletName)">{{'Sent'
+                <span
+                  *ngIf="!tx.message && (!tx.note || (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (!tx.customData || !tx.customData.toWalletName)">{{'Sent'
                   | translate}}</span>
-                <span *ngIf="!tx.message && (!tx.note || (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (tx.customData && tx.customData.toWalletName)">
+                <span
+                  *ngIf="!tx.message && (!tx.note || (tx.note && !tx.note.body)) && (!addressbook || !tx.outputs[0] || !addressbook[tx.outputs[0].address]) && (tx.customData && tx.customData.toWalletName)">
                   {{ 'Sent to {walletName}' | translate: {walletName: tx.customData.toWalletName} }}
                 </span>
                 <span *ngIf="!tx.note && tx.message">{{tx.message}}</span>
@@ -282,7 +295,8 @@
               </div>
               <ion-note item-end text-end>
                 <div class="amount">
-                  <span [ngClass]="{'received': tx.action == 'received','sent': tx.action=='sent'}" *ngIf="tx.action != 'invalid'">{{tx.action
+                  <span [ngClass]="{'received': tx.action == 'received','sent': tx.action=='sent'}"
+                    *ngIf="tx.action != 'invalid'">{{tx.action
                     == 'received'?'+':(tx.action == 'sent'?'-':'')}}{{wallet.coin !== 'eth' && wallet.coin !== 'try' ?
                     (tx.amount | satToUnit:
                     wallet.coin) : (tx.amount | weiToUnit: wallet.coin)}}</span>
@@ -308,25 +322,27 @@
       <ion-list *ngIf="!loadingAddr" class="addresses-list">
         <div *ngIf="noBalance && noBalance[0]">
           <!-- <ion-item-divider>{{'Unused addresses' | translate}}</ion-item-divider> -->
-          <ion-item *ngFor="let u of noBalance" (click)="editingAddr? editAddressName(u.address,u.name): this.address = u.address">
+          <ion-item *ngFor="let u of noBalance"
+            (click)="editingAddr? editAddressName(u.address,u.name): this.address = u.address">
             <h3>{{u.name}} <span class="unused-mark"></span></h3>
             <!-- <p>{{u.path}} {{u.createdOn * 1000 | amDateFormat:'MMMM Do YYYY, hh:mm a'}}</p> -->
             <p>{{u.address}}</p>
-            <div class="selected" *ngIf="u.address == address && !editingAddr"><img src="assets/img/app/onboarding/icon_checkmark@2x.png"
-                alt=""></div>
+            <div class="selected" *ngIf="u.address == address && !editingAddr"><img
+                src="assets/img/app/onboarding/icon_checkmark@2x.png" alt=""></div>
             <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" *ngIf="editingAddr"></ion-icon>
           </ion-item>
         </div>
 
         <div *ngIf="withBalance && withBalance[0]">
           <!-- <ion-item-divider>{{'Addresses with balance' | translate}}</ion-item-divider> -->
-          <ion-item *ngFor="let w of withBalance" (click)=" editingAddr? editAddressName(w.address): this.address = w.address">
+          <ion-item *ngFor="let w of withBalance"
+            (click)=" editingAddr? editAddressName(w.address): this.address = w.address">
             <h3>{{w.name}} <span>{{wallet.coin!=='eth' && wallet.coin!=='try'? (w.amount | satToUnit:
                 wallet.coin):(w.amount | weiToUnit:
                 wallet.coin)}}</span></h3>
             <p>{{w.address}}</p>
-            <div class="selected" *ngIf="w.address == address && !editingAddr"><img src="assets/img/app/onboarding/icon_checkmark@2x.png"
-                alt=""></div>
+            <div class="selected" *ngIf="w.address == address && !editingAddr"><img
+                src="assets/img/app/onboarding/icon_checkmark@2x.png" alt=""></div>
             <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" *ngIf="editingAddr"></ion-icon>
           </ion-item>
         </div>

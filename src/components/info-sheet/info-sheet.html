@@ -36,10 +36,7 @@
       <span sheet-button-text translate>GOT IT</span>
     </info-sheet-template>
 
-    <info-sheet-template
-      *ngSwitchCase="'backup-needed-with-activity'"
-      type="info"
-    >
+    <info-sheet-template *ngSwitchCase="'backup-needed-with-activity'" type="info">
       <span sheet-title-text translate>Needs Backup</span>
       <span sheet-text translate>
         Congratulations! It looks like you've recently received money. It's
@@ -94,12 +91,7 @@
         }}
       </span>
       <span sheet-button-text translate>Change Amount</span>
-      <span
-        *ngIf="params.coin !== 'eth' && params.coin !== 'try'"
-        sheet-second-button-text
-        translate
-        >Send Max</span
-      >
+      <span *ngIf="params.coin !== 'eth' && params.coin !== 'try'" sheet-second-button-text translate>Send Max</span>
     </info-sheet-template>
 
     <info-sheet-template *ngSwitchCase="'default-error'" type="danger">
@@ -122,9 +114,11 @@
       <span sheet-title-text>{{
         'Your wallet is backed up!' | translate
       }}</span>
-      <span sheet-text translate>
-        Be sure to store your recovery phrase in a secure place. If this app is
-        deleted, your money cannot be recovered without it.
+      <span sheet-text>
+        {{
+          'Be sure to store your recovery phrase in a secure place. If this app is deleted, your money cannot be recovered without it.'
+            | translate
+        }}
       </span>
       <span sheet-button-text translate>GOT IT</span>
     </info-sheet-template>

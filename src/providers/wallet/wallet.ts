@@ -995,7 +995,7 @@ export class WalletProvider {
         return wallet.completeHistory && wallet.completeHistory.isValid;
       };
 
-      if (isHistoryCached() && !opts.opts.force)
+      if (isHistoryCached() && !opts.force)
         return resolve(wallet.completeHistory);
 
       this.updateLocalTxHistory(wallet, opts)
