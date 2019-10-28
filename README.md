@@ -2,7 +2,7 @@
 
 [![CircleCI](https://img.shields.io/circleci/project/github/trias-lab/wallet/master.svg)](https://circleci.com/gh/trias-lab/wallet/)
 
-Trias Wallet is a secure bitcoin wallet, based on [Copay of Bitpay](https://github.com/bitpay/copay).
+Trias Wallet is a secure bitcoin, ethereum and TRY wallet, based on [Copay of Bitpay](https://github.com/bitpay/copay).
 
 In addition to retaining some of its original excellent features, we redesigned it to meet the needs of our users, aiming to develop a simple, easy-to-use and secure wallet.
 
@@ -32,7 +32,7 @@ In addition to retaining some of its original excellent features, we redesigned 
 
 - Add TRY and ETH support
 - Add ETH/Token swap
-- Modify the flow of creation of the wallets. Create 4 wallets (BTC, BCH, ETH, TRY) by default, with a same mnemonic, so that it's easy to manage them。
+- Modify the flow of creation of the wallets. Create 4 wallets (BTC, ETH, TRY) by default, with a same mnemonic, so that it's easy to manage them。
 - Simplify password management. The user only needs to remember a password for unlocking the application, encrypting the wallet, confirming the transaction, and other operations that require authorization. Besides, the password will not be stored locally or in the cloud.
 - Add management of addresses of the wallet on wallet detail page.
 - No shared wallet any more.
