@@ -8,7 +8,7 @@
         <img src="assets/img/icon-settings.svg">
       </button>
     </ion-buttons> -->
-    <h1>Assets</h1>
+    <h1 translate>Assets</h1>
     <!-- <ion-fab *ngIf="wallets && wallets[0]" id="scan-button" right bottom>
       <button ion-fab color="primary" (click)="scan()">
         <ion-icon name="tab-scan"></ion-icon>
@@ -27,7 +27,7 @@
   </ion-refresher>
   <div id="chart"></div>
   <div class="account-detail">
-    <p>Account Balance</p>
+    <p translate>Account Balance</p>
     <h2>{{totalBalance ? totalBalance.toFixed(2) : 0}} {{alternativeUnit}}</h2>
     <div class="chart-legend">
       <a *ngFor="let legend of balanceLegend">
