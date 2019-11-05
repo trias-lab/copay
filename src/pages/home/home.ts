@@ -1,7 +1,6 @@
 import { Component, NgZone, ViewChild } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import * as echarts from 'echarts';
 import {
   App,
   Events,
@@ -44,6 +43,12 @@ import { ProfileProvider } from '../../providers/profile/profile';
 import { ReleaseProvider } from '../../providers/release/release';
 import { ReplaceParametersProvider } from '../../providers/replace-parameters/replace-parameters';
 import { Coin, WalletProvider } from '../../providers/wallet/wallet';
+
+// 引入 ECharts 主模块
+import * as echarts from 'echarts/lib/echarts';
+
+// 引入饼图
+import 'echarts/lib/chart/pie';
 
 @Component({
   selector: 'page-home',
