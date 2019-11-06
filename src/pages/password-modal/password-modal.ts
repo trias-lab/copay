@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar';
 import { Vibration } from '@ionic-native/vibration';
 import { NavController, NavParams, Platform } from 'ionic-angular';
 import { Subscription } from 'rxjs';
@@ -38,7 +39,8 @@ export class PasswordModalPage {
     private touchid: TouchIdProvider,
     private profileProvider: ProfileProvider,
     private vibration: Vibration,
-    private popupProvider: PopupProvider
+    private popupProvider: PopupProvider,
+    private statusBar: StatusBar
   ) {
     this.unregister = this.platform.registerBackButtonAction(() => {});
 
@@ -50,6 +52,20 @@ export class PasswordModalPage {
     if (this.action === 'checkFingerprint') {
       this.unregister = this.platform.registerBackButtonAction(() => {});
       this.checkFingerprint();
+    }
+  }
+
+  ionViewWillEnter() {
+    // set status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleDefault();
+    }
+  }
+
+  ionViewWillLeave() {
+    // reset status bar style
+    if (this.platform.is('ios')) {
+      this.statusBar.styleLightContent();
     }
   }
 
