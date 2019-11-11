@@ -288,7 +288,7 @@ export class CopayApp {
     if (this.isWalletModalOpen) {
       this.walletModal.dismiss();
     }
-    const page =  WalletTabsPage;
+    const page = WalletTabsPage;
     this.isWalletModalOpen = true;
     this.walletModal = this.modalCtrl.create(
       page,

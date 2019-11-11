@@ -35,7 +35,7 @@ const Keys = {
   REMOTE_PREF_STORED: 'remotePrefStored',
   TX_CONFIRM_NOTIF: txid => 'txConfirmNotif-' + txid,
   TX_HISTORY: walletId => 'txsHistory-' + walletId,
-  ORDER_WALLET: walletId => 'order-' + walletId,
+  ORDER_WALLET: walletId => 'order-' + walletId
 };
 
 interface Storage {

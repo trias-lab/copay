@@ -17,9 +17,8 @@ export class TxpPage {
   constructor(
     private timeProvider: TimeProvider,
     private events: Events,
-    private modalCtrl: ModalController
-  ) // private logger: Logger
-  {}
+    private modalCtrl: ModalController // private logger: Logger
+  ) {}
 
   @Input()
   set tx(tx) {
