@@ -740,7 +740,7 @@ export class ProfileProvider {
           if (!password) {
             this.showWarningNoEncrypt().then(() => {
               // this.encrypt(wallet, fromOnboarding).then(() => {
-                return reject();
+              return reject();
               // });
             });
           } else {
