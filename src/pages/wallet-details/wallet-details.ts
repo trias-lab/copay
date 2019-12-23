@@ -26,9 +26,7 @@ import { WalletProvider } from '../../providers/wallet/wallet';
 
 // pages
 import { BackupRequestPage } from '../../pages/backup/backup-request/backup-request';
-import { WalletAddressesPage } from '../../pages/settings/wallet-settings/wallet-settings-advanced/wallet-addresses/wallet-addresses';
 import { TxDetailsPage } from '../../pages/tx-details/tx-details';
-import { GiftCardProvider } from '../../providers/gift-card/gift-card';
 import { ReceivePage } from '../receive/receive';
 import { SendPage } from '../send/send';
 import { WalletSettingsPage } from '../settings/wallet-settings/wallet-settings';
@@ -88,7 +86,6 @@ export class WalletDetailsPage extends WalletTabsChild {
     private bwcError: BwcErrorProvider,
     private popupProvider: PopupProvider,
     private events: Events,
-    public giftCardProvider: GiftCardProvider,
     private logger: Logger,
     private timeProvider: TimeProvider,
     private translate: TranslateService,
@@ -478,11 +475,9 @@ export class WalletDetailsPage extends WalletTabsChild {
       this.updatingTxHistoryProgress = newTxs;
     }).bind(this);
 
+    opts.progressFn = progressFn;
     this.walletProvider
-      .getTxHistory(this.wallet, {
-        progressFn,
-        opts
-      })
+      .getTxHistory(this.wallet, opts)
       .then(txHistory => {
         this.updatingTxHistory = false;
         this.updatingTxHistoryProgress = 0;
@@ -626,12 +621,6 @@ export class WalletDetailsPage extends WalletTabsChild {
 
   public openBackup() {
     this.navCtrl.push(BackupRequestPage, {
-      walletId: this.wallet.credentials.walletId
-    });
-  }
-
-  public openAddresses() {
-    this.navCtrl.push(WalletAddressesPage, {
       walletId: this.wallet.credentials.walletId
     });
   }

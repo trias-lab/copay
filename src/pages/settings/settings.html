@@ -26,17 +26,6 @@
       -->
 
       <!--
-        <button ion-item (click)="openSendFeedbackPage()">
-          <ion-icon class="item-img" item-start>
-            <img src="assets/img/settings-icons/icon-send-feedback.svg" width="22">
-          </ion-icon>
-          <span translate>Send feedback</span>
-          <ion-icon class="item-img" item-end>
-            <img src="assets/img/settings-icons/icon_next@2x.png" width="22">
-          </ion-icon>
-        </button>
-      -->
-      <!--
         <button ion-item *ngIf="isCordova" (click)="openSharePage()">
           <ion-icon class="item-img" item-start>
             <img src="assets/img/settings-icons/icon-heart.svg" width="22">
@@ -131,58 +120,6 @@
           <img src="assets/img/settings-icons/icon_next@2x.png" width="22" />
         </ion-icon>
       </button>
-
-      <div *ngIf="showBitPayCard && bitpayCardItems && bitpayCardItems[0]">
-        <ion-item-divider> BitPay Visa <sup>&reg;</sup> Card </ion-item-divider>
-        <ion-list>
-          <button
-            ion-item
-            *ngFor="let card of bitpayCardItems"
-            (click)="openCardSettings(card.id)"
-          >
-            <ion-icon class="item-img" item-start>
-              <img src="assets/img/icon-card.svg" class="icon-card" />
-            </ion-icon>
-            <div class="item-title">
-              BitPay Visa&reg; Card ({{ card.lastFourDigits }})
-            </div>
-            <div class="item-subtitle">
-              {{
-                card.balance
-                  ? (card.balance | currency: card.currencySymbol:2)
-                  : ('Add funds to
-              get started' | translate)
-              }}
-              {{
-                card.updatedOn
-                  ? ' &middot; ' + (card.updatedOn * 1000 | amTimeAgo)
-                  : ''
-              }}
-            </div>
-          </button>
-        </ion-list>
-      </div>
-
-      <!--
-        <ion-item-divider>
-          {{'Integrations' | translate}}
-        </ion-item-divider>
-      -->
-
-      <!--
-        <button ion-item *ngFor="let integration of integrationServices" (click)="openSettingIntegration(integration.name)">
-          <ion-icon class="item-img" item-start>
-            <img src="{{integration.icon}}" class="icon-services" />
-          </ion-icon>
-          <span>{{integration.title}}</span>
-          <ion-note item-end>
-            <span *ngIf="integration.linked" translate>Linked</span>
-            <span *ngIf="!integration.linked">
-              {{integration.show ? ('On'|translate) : ('Off'|translate)}}
-            </span>
-          </ion-note>
-        </button>
-      -->
 
       <!-- <ion-item-divider>{{'More' | translate}}</ion-item-divider> -->
 

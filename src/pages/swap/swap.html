@@ -5,54 +5,104 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>swap</ion-title>
+    <ion-title>{{ 'Swap' | translate }}</ion-title>
     <ion-buttons end>
-      <button class="start-swap-btn" (click)="startSwap()" [disabled]="!(fromQty && toQty && selectedWallet && selectedAddr)">
+      <button
+        class="start-swap-btn"
+        (click)="startSwap()"
+        [disabled]="!(fromQty && toQty && selectedWallet && selectedAddr)"
+      >
         {{ 'Initiate' | translate }}
       </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content>
   <ion-card class="swap-form">
-    <h1>{{'Withdraw Address' | translate}}</h1>
+    <h1>{{ 'Withdraw Address' | translate }}</h1>
     <ion-item>
       <ion-label stacked>{{ 'Wallet' | translate }}</ion-label>
-      <ion-select id="wallet-selector" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedWallet" (ionChange)="handleSelectWallet(selectedWallet)">
+      <ion-select
+        id="wallet-selector"
+        interface="action-sheet"
+        okText="ok"
+        cancelText="cancel"
+        [(ngModel)]="selectedWallet"
+        (ionChange)="handleSelectWallet(selectedWallet)"
+      >
         <ion-option *ngFor="let w of wallets" [value]="w">
-        {{ w.coin | uppercase}}  {{ w.name | translate }}</ion-option>
+          {{ w.coin | uppercase }} {{ w.name | translate }}</ion-option
+        >
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label stacked>{{ 'Address' | translate }}</ion-label>
-      <ion-select id="address-selector" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedAddr" (ionChange)="handleSelectAddress(selectedAddr)" [disabled]="!selectedAddr">
+      <ion-select
+        id="address-selector"
+        interface="action-sheet"
+        okText="ok"
+        cancelText="cancel"
+        [(ngModel)]="selectedAddr"
+        (ionChange)="handleSelectAddress(selectedAddr)"
+        [disabled]="!selectedAddr"
+      >
         <ion-option *ngFor="let addr of addrWithBalance" [value]="addr">
-        {{ addr.name }}({{ addr.amount | weiToUnit: selectedWallet.coin }})</ion-option>
+          {{ addr.name }}({{
+            addr.amount | weiToUnit: selectedWallet.coin
+          }})</ion-option
+        >
       </ion-select>
     </ion-item>
-    <ion-note *ngIf="selectedAddr">Make sure the balance is sufficient. </ion-note>
-    <ion-note class="warning" *ngIf="!selectedAddr">Balance Not Sufficient. </ion-note>
-    <br>
-    <ion-note>Current address: {{ selectedWallet && selectedAddr && (selectedAddr.amount || 0 | weiToUnit: selectedWallet && selectedWallet.coin) || '0 ETH'}} </ion-note>
+    <ion-note *ngIf="selectedAddr" translate
+      >Make sure the balance is sufficient.
+    </ion-note>
+    <ion-note class="warning" *ngIf="!selectedAddr" translate
+      >Balance Not Sufficient.
+    </ion-note>
+    <br />
+    <ion-note
+      >{{ 'Current address:' | translate }}
+      {{
+        (selectedWallet &&
+          selectedAddr &&
+          (selectedAddr.amount || 0
+            | weiToUnit: selectedWallet && selectedWallet.coin)) ||
+          '0 ETH'
+      }}
+    </ion-note>
 
-    <h1>Exchange Detail</h1>
+    <h1 translate>Exchange Detail</h1>
     <div>
       <ion-label stacked>{{ 'Exchange...' | translate }}</ion-label>
       <ion-grid>
         <ion-row>
           <ion-col col-8>
-            <ion-input id='fromQty' type="number" [(ngModel)]="fromQtyEntered" (ionChange)="handleChangeFromQty(fromQtyEntered)" placeholder="0" required clearInput [disabled]="!selectedAddr"></ion-input>
+            <ion-input
+              id="fromQty"
+              type="number"
+              [(ngModel)]="fromQtyEntered"
+              (ionChange)="handleChangeFromQty(fromQtyEntered)"
+              placeholder="0"
+              required
+              clearInput
+              [disabled]="!selectedAddr"
+            ></ion-input>
           </ion-col>
           <ion-col col-4>
-            <ion-select id="fromCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedFromCoin" (ionChange)="handleChangeFromCoin(selectedFromCoin)" [disabled]="!selectedAddr">
+            <ion-select
+              id="fromCoin"
+              interface="action-sheet"
+              okText="ok"
+              cancelText="cancel"
+              [(ngModel)]="selectedFromCoin"
+              (ionChange)="handleChangeFromCoin(selectedFromCoin)"
+              [disabled]="!selectedAddr"
+            >
               <ion-option *ngFor="let token of fromTokens" [value]="token">{{
                 token.symbol | translate
-                }}</ion-option>
+              }}</ion-option>
             </ion-select>
           </ion-col>
         </ion-row>
@@ -63,22 +113,46 @@
       <ion-grid>
         <ion-row>
           <ion-col col-8>
-            <ion-input id='toQty' type="number" [(ngModel)]="toQtyEntered"  (ionChange)="handleChangeToQty(toQtyEntered)" placeholder="0" required clearInput [disabled]="!selectedAddr"></ion-input>
+            <ion-input
+              id="toQty"
+              type="number"
+              [(ngModel)]="toQtyEntered"
+              (ionChange)="handleChangeToQty(toQtyEntered)"
+              placeholder="0"
+              required
+              clearInput
+              [disabled]="!selectedAddr"
+            ></ion-input>
           </ion-col>
           <ion-col col-4>
-            <ion-select id="toCoin" interface="action-sheet" okText="ok" cancelText="cancel" [(ngModel)]="selectedToCoin" (ionChange)="handleChangeToCoin(selectedToCoin)" [disabled]="!selectedAddr">
-              <ion-option *ngFor="let token of toTokens" [value]="token" [selected]="token.symbol==toCoin">{{
-                token.symbol | translate
-                }}</ion-option>
+            <ion-select
+              id="toCoin"
+              interface="action-sheet"
+              okText="ok"
+              cancelText="cancel"
+              [(ngModel)]="selectedToCoin"
+              (ionChange)="handleChangeToCoin(selectedToCoin)"
+              [disabled]="!selectedAddr"
+            >
+              <ion-option
+                *ngFor="let token of toTokens"
+                [value]="token"
+                [selected]="token.symbol == toCoin"
+                >{{ token.symbol | translate }}</ion-option
+              >
             </ion-select>
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
-    <ion-note>Rate ≈ {{rate}}</ion-note>
+    <ion-note>Rate ≈ {{ rate }}</ion-note>
     <div>
-      <ion-label stacked>Fee level</ion-label>
-      <ion-segment [(ngModel)]="selectedFee" color="primary" (ionChange)="handleSelectFeeLevel(selectedFee)">
+      <ion-label stacked>{{ 'Fee level' | translate }}</ion-label>
+      <ion-segment
+        [(ngModel)]="selectedFee"
+        color="primary"
+        (ionChange)="handleSelectFeeLevel(selectedFee)"
+      >
         <ion-segment-button *ngFor="let fee of feeOpts" [value]="fee">
           {{ fee | translate }}
         </ion-segment-button>

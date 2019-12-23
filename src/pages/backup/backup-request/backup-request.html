@@ -5,66 +5,77 @@
 </ion-header>
 
 <ion-content no-bounce>
-  <ion-card (click)="checked.first=!checked.first">
-    <div
-      class="circle"
-      [ngClass]="{ filled: checked.first }"
-      animate
-    ></div>
+  <ion-card (click)="checked.first = !checked.first">
+    <div class="circle" [ngClass]="{ filled: checked.first }" animate></div>
     <ion-grid>
       <ion-row>
         <ion-col col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3>
           <img src="assets/img/app/onboarding/img_backup@2x.png" />
         </ion-col>
         <ion-col col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9>
-          <h1>Backup Properly</h1>
-          <p>Mnemonic is the only way to recover my wallet, I’ll write it down on paper.</p>
+          <h1 translate>Backup Properly</h1>
+          <p>
+            {{
+              "Mnemonic is the only way to recover my wallet, I'll write it down on paper."
+                | translate
+            }}
+          </p>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  <ion-card (click)="checked.second=!checked.second">
-    <div
-      class="circle"
-      [ngClass]="{ filled: checked.second }"
-      animate
-    ></div>
+  <ion-card (click)="checked.second = !checked.second">
+    <div class="circle" [ngClass]="{ filled: checked.second }" animate></div>
     <ion-grid>
       <ion-row>
         <ion-col col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3>
           <img src="assets/img/app/onboarding/img_checkS@2x.png" />
         </ion-col>
         <ion-col col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9>
-          <h1>Checked Surrendings</h1>
-          <p>No one can peek my phone and there's no survelience cameras around.</p>
+          <h1 translate>Checked Surrendings</h1>
+          <p>
+            {{
+              "No one can peek at my phone and there's no survelience cameras around."
+                | translate
+            }}
+          </p>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  <ion-card (click)="checked.third=!checked.third">
-    <div
-      class="circle"
-      [ngClass]="{ filled: checked.third }"
-      animate
-    ></div>
+  <ion-card (click)="checked.third = !checked.third">
+    <div class="circle" [ngClass]="{ filled: checked.third }" animate></div>
     <ion-grid>
       <ion-row>
         <ion-col col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3>
           <img src="assets/img/app/onboarding/img_noSs@2x.png" />
         </ion-col>
         <ion-col col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9>
-          <h1>No Screenshots</h1>
-          <p>Other apps have access to Photos app may steal my mnemonic.</p>
+          <h1 translate>No Screenshots</h1>
+          <p>
+            {{
+              'Other apps have access to Photos app may steal my mnemonic.'
+                | translate
+            }}
+          </p>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-card>  
+  </ion-card>
   <div>
-    <button class="primary" ion-button class="button-standard" (click)="initBackupFlow()" [disabled]="!checked.first || !checked.second || !checked.third">
-      {{'Backup wallet' | translate}}
+    <button
+      class="primary"
+      ion-button
+      class="button-standard"
+      (click)="initBackupFlow()"
+      [disabled]="!checked.first || !checked.second || !checked.third"
+    >
+      {{ 'Backup wallet' | translate }}
     </button>
-    <!-- <button class="secondary" ion-button clear class="button-standard btn-transparent primary-color" (click)="doBackupLater()">
-      {{'Do it later' | translate}}
-    </button> -->
+    <!--
+      <button class="secondary" ion-button clear class="button-standard btn-transparent primary-color" (click)="doBackupLater()">
+        {{'Do it later' | translate}}
+      </button>
+    -->
   </div>
 </ion-content>

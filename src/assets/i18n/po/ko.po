@@ -1,18 +1,19 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: copay\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2019-10-26 19:01+0800\n"
+"Last-Translator: cmgustavo83\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Crowdin-Project: copay\n"
 "X-Crowdin-Language: ko\n"
 "X-Crowdin-File: template.pot\n"
-"Project-Id-Version: copay\n"
-"Last-Translator: cmgustavo83\n"
-"Language-Team: Korean\n"
-"Language: ko\n"
-"PO-Revision-Date: 2018-11-07 19:24\n"
 
 msgid "(Trusted)"
 msgstr "(신뢰할 수 있음)"
@@ -20,32 +21,48 @@ msgstr "(신뢰할 수 있음)"
 msgid "(possible double spend)"
 msgstr "(이중 지출 가능)"
 
-msgid "* A payment proposal can be deleted if 1) you are the creator, and no other copayer has signed, or 2) 10 minutes have passed since the proposal was created."
+msgid ""
+"* A payment proposal can be deleted if 1) you are the creator, and no other "
+"copayer has signed, or 2) 10 minutes have passed since the proposal was "
+"created."
 msgstr ""
 
-msgid "1. Tap \"Add Payment Method\" and select \"Gift Card\""
+msgid ""
+"A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum "
+"size allowed for a transaction was exceeded."
 msgstr ""
+"A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum "
+"size allowed for a transaction was exceeded."
 
-msgid "2. Enter Gift Code"
+msgid ""
+"A total of {{amountBelowFeeStr}} {{coin}} were excluded. These funds come "
+"from UTXOs smaller than the network fee provided."
 msgstr ""
+"A total of {{amountBelowFeeStr}} {{coin}} were excluded. These funds come "
+"from UTXOs smaller than the network fee provided."
 
-msgid "5-star ratings help us get BitPay Wallet into more hands, and more users means more resources can be committed to the app!"
+msgid ""
+"A total of {{amountStr}} ({{fiatAmount | number:'1.2-2'}} "
+"{{currencyIsoCode}}) will be exchanged for {{withdrawalStr}} "
+"({{fiatWithdrawal | number:'1.2-2'}} {{currencyIsoCode}})."
 msgstr ""
+"총 {{amountStr}} ({{fiatAmount | number:'1.2-2'}} {{currencyIsoCode}}) 이 "
+"{{withdrawalStr}} ({{fiatWithdrawal | number:'1.2-2'}} {{currencyIsoCode}}) "
+"으로 교환 됩니다."
 
-msgid "A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum size allowed for a transaction was exceeded."
-msgstr "A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum size allowed for a transaction was exceeded."
+msgid ""
+"A total of {{fee}} {{coin}} were excluded. The maximum size allowed for a "
+"transaction was exceeded."
+msgstr ""
+"A total of {{fee}} {{coin}} were excluded. The maximum size allowed for a "
+"transaction was exceeded."
 
-msgid "A total of {{amountBelowFeeStr}} {{coin}} were excluded. These funds come from UTXOs smaller than the network fee provided."
-msgstr "A total of {{amountBelowFeeStr}} {{coin}} were excluded. These funds come from UTXOs smaller than the network fee provided."
-
-msgid "A total of {{amountStr}} ({{fiatAmount | number:'1.2-2'}} {{currencyIsoCode}}) will be exchanged for {{withdrawalStr}} ({{fiatWithdrawal | number:'1.2-2'}} {{currencyIsoCode}})."
-msgstr "총 {{amountStr}} ({{fiatAmount | number:'1.2-2'}} {{currencyIsoCode}}) 이 {{withdrawalStr}} ({{fiatWithdrawal | number:'1.2-2'}} {{currencyIsoCode}}) 으로 교환 됩니다."
-
-msgid "A total of {{fee}} {{coin}} were excluded. The maximum size allowed for a transaction was exceeded."
-msgstr "A total of {{fee}} {{coin}} were excluded. The maximum size allowed for a transaction was exceeded."
-
-msgid "A total of {{fee}} {{coin}} were excluded. These funds come from UTXOs smaller than the network fee provided."
-msgstr "A total of {{fee}} {{coin}} were excluded. These funds come from UTXOs smaller than the network fee provided."
+msgid ""
+"A total of {{fee}} {{coin}} were excluded. These funds come from UTXOs "
+"smaller than the network fee provided."
+msgstr ""
+"A total of {{fee}} {{coin}} were excluded. These funds come from UTXOs "
+"smaller than the network fee provided."
 
 msgid "About"
 msgstr "소개"
@@ -68,9 +85,6 @@ msgstr "활동"
 msgid "Add"
 msgstr "추가"
 
-msgid "Add BitPay Account?"
-msgstr ""
-
 msgid "Add Contact"
 msgstr "연락처 추가"
 
@@ -85,12 +99,6 @@ msgstr "연락처로 추가"
 
 msgid "Add funds"
 msgstr "자금 추가"
-
-msgid "Add gift cards to your {appName} wallet from brands like Amazon, Delta, Hotels.com, and Uber."
-msgstr ""
-
-msgid "Add this BitPay account ({{email}})?"
-msgstr ""
 
 msgid "Address"
 msgstr "주소"
@@ -119,7 +127,9 @@ msgstr ""
 msgid "All addresses"
 msgstr ""
 
-msgid "All of your bitcoin wallet balance may not be available for immediate spending."
+msgid ""
+"All of your bitcoin wallet balance may not be available for immediate "
+"spending."
 msgstr "모든 비트코인 지갑 잔액은 즉각적으로 지출할 수 없습니다."
 
 msgid "Allow camera access"
@@ -130,12 +140,6 @@ msgstr "거의 다 됐습니다! 검토해주세요."
 
 msgid "Alternative currency"
 msgstr "대체 통화"
-
-msgid "Amazon.co.jp Gift Cards never expire and can be redeemed towards millions of items at www.amazon.co.jp."
-msgstr "Amazon.co.jp 기프트 카드는 만료 기한이 없으며 www.amazon.co.jp 에서 수백만 가지 상품으로 교환 하실수 있습니다."
-
-msgid "Amazon.com Gift Cards never expire and can be redeemed towards millions of items at www.amazon.com."
-msgstr "Amazon.com 기프트 카드는 만료 기한이 없으며 www.amazon.com 에서 수백만 가지 상품으로 교환 하실수 있습니다."
 
 msgid "Amount"
 msgstr "금액"
@@ -149,29 +153,21 @@ msgstr "최소 허용 금액 이하"
 msgid "Amount too big"
 msgstr "금액이 너무 큽니다"
 
-msgid "An update to this app is available. For your security, please update to the latest version."
-msgstr "이 앱의 업데이트 버전을 이용하실 수 있습니다. 보안을 위해, 최신 버전을 업데이트해주세요."
-
-msgid "Anyone with your recovery phrase can access or spend your bitcoin."
-msgstr "귀하의 복구 문구를 가진 사람은 누구나 귀하의 비트코인에 액세스하고 사용할 수 있습니다."
+msgid ""
+"An update to this app is available. For your security, please update to the "
+"latest version."
+msgstr ""
+"이 앱의 업데이트 버전을 이용하실 수 있습니다. 보안을 위해, 최신 버전을 업데이"
+"트해주세요."
 
 msgid "Apply changes"
 msgstr "변경사항 적용"
 
-msgid "Approximate Bitcoin network fee to transfer wallet's balance (with normal priority)"
-msgstr "지갑 잔액을 이체하기 위한 대략적인 비트코인 네트워크 수수료 (보통 우선 순위)"
-
-msgid "Archive All {brand} Gift Cards?"
+msgid ""
+"Approximate Bitcoin network fee to transfer wallet's balance (with normal "
+"priority)"
 msgstr ""
-
-msgid "Archive Card"
-msgstr ""
-
-msgid "Archive this Card?"
-msgstr ""
-
-msgid "Archived Cards"
-msgstr ""
+"지갑 잔액을 이체하기 위한 대략적인 비트코인 네트워크 수수료 (보통 우선 순위)"
 
 msgid "Are you being watched?"
 msgstr "누군가 귀하를 지켜보고 있습니까?"
@@ -203,15 +199,6 @@ msgstr "이용 가능"
 msgid "Average confirmation time"
 msgstr "평균 확인 시간"
 
-msgid "Awaiting payment to confirm"
-msgstr "컨펌을 기다리고 있습니다."
-
-msgid "Back up all your wallets before using this function"
-msgstr ""
-
-msgid "Back up your wallet before using this function"
-msgstr ""
-
 msgid "Backup"
 msgstr "백업"
 
@@ -224,19 +211,22 @@ msgstr "나쁜 지갑 초청"
 msgid "Balance Hidden"
 msgstr ""
 
-msgid "Be sure to store your recovery phrase in a secure place. If this app is deleted, your money cannot be recovered without it."
-msgstr "안전한 장소에 복원 문구를 보관하세요. 이 앱이 삭제될 경우, 복원 문구 없이 귀하의 화폐를 복구할 수 없습니다."
+msgid ""
+"Be sure to store your recovery phrase in a secure place. If this app is "
+"deleted, your money cannot be recovered without it."
+msgstr ""
+"안전한 장소에 복원 문구를 보관하세요. 이 앱이 삭제될 경우, 복원 문구 없이 귀"
+"하의 화폐를 복구할 수 없습니다."
 
-msgid "Because you are sending the maximum amount contained in this wallet, the {coinName} miner fee ({fee} {coin}) will be deducted from the total. {msg}"
+msgid ""
+"Because you are sending the maximum amount contained in this wallet, the "
+"{coinName} miner fee ({fee} {coin}) will be deducted from the total. {msg}"
 msgstr ""
 
-msgid "Before retrieving your wallet address, it's recommended that you first write down your recovery phrase and store it securely so that your wallet can be recovered in the case your device was lost or stolen."
-msgstr ""
-
-msgid "Below Minimum Amount"
-msgstr ""
-
-msgid "BitPay Card URI"
+msgid ""
+"Before retrieving your wallet address, it's recommended that you first write "
+"down your recovery phrase and store it securely so that your wallet can be "
+"recovered in the case your device was lost or stolen."
 msgstr ""
 
 msgid "Bitcoin Address"
@@ -263,7 +253,7 @@ msgstr "비트코인 지갑"
 msgid "Bitcoin is a currency."
 msgstr "비트코인은 통화입니다."
 
-msgid "Bitcoin is different - it cannot be safely held with a bank or web service."
+msgid "Cryptocurrency doesn’t possessed by any bank or internet service. "
 msgstr ""
 
 msgid "Bitcoin is secure, digital money."
@@ -278,9 +268,6 @@ msgstr ""
 msgid "Bitcoin transactions include a fee collected by miners on the network."
 msgstr "비트코인 거래에는 마이너가 네트워크에서 수집한 수수료가 포함됩니다."
 
-msgid "Brands"
-msgstr ""
-
 msgid "Broadcast Payment"
 msgstr "결제 전파 중"
 
@@ -290,19 +277,9 @@ msgstr "전파 완료"
 msgid "Broadcasting transaction..."
 msgstr ""
 
-msgid "Buy Gift Card"
-msgstr ""
-
-msgid "Buy Gift Cards"
-msgstr ""
-
-msgid "Buying Bitcoin..."
-msgstr "비트코인 구입 중..."
-
-msgid "Buying Gift Card..."
-msgstr ""
-
-msgid "By providing your email address, you give explicit consent to BitPay to use your email address to send you email notifications about payments."
+msgid ""
+"By providing your email address, you give explicit consent to Copay to use "
+"your email address to send you email notifications about payments."
 msgstr ""
 
 msgid "Calculating fee..."
@@ -317,20 +294,11 @@ msgstr "취소"
 msgid "Cancel invitation"
 msgstr "초대 취소"
 
-msgid "Canceling Gift Card..."
-msgstr ""
-
 msgid "Cannot create wallet"
 msgstr ""
 
 msgid "Cannot join the same wallet more that once"
 msgstr "동일한 지갑에 두 번 이상 합류할 수 없습니다"
-
-msgid "Card Archived"
-msgstr ""
-
-msgid "Card Settings"
-msgstr ""
 
 msgid "Certified by"
 msgstr "인증자:"
@@ -401,28 +369,10 @@ msgstr "확인"
 msgid "Confirming"
 msgstr "확인 중"
 
-msgid "Congratulations! It looks like you've recently received money. It's highly advised that you verify your recovery phrase so that your funds can be recovered in case your phone was lost or stolen."
-msgstr ""
-
-msgid "Connect my BitPay Card"
-msgstr ""
-
-msgid "Connect to ShapeShift Account"
-msgstr ""
-
-msgid "Connecting to Coinbase..."
-msgstr "Coinbase 연결 중..."
-
-msgid "Connecting to Glidera..."
-msgstr "Glidera 연결 중..."
-
-msgid "Connecting to ShapeShift..."
-msgstr ""
-
-msgid "Connection reset by peer"
-msgstr "피어에 의한 연결 재설정"
-
-msgid "Contact the ShapeShift support team."
+msgid ""
+"Congratulations! It looks like you've recently received money. It's highly "
+"advised that you verify your recovery phrase so that your funds can be "
+"recovered in case your phone was lost or stolen."
 msgstr ""
 
 msgid "Continue"
@@ -431,7 +381,7 @@ msgstr "계속"
 msgid "Contribute translations"
 msgstr ""
 
-msgid "Copay Session Logs. Be careful, this could contain sensitive private data"
+msgid "Session Logs. Be careful, this could contain sensitive private data"
 msgstr ""
 
 msgid "Copay only supports Bitcoin Cash using new version numbers addresses"
@@ -459,12 +409,6 @@ msgid "Copied to clipboard"
 msgstr "클립보드에 복사됨"
 
 msgid "Copied {coin} address"
-msgstr ""
-
-msgid "Copied: {claimCode}"
-msgstr ""
-
-msgid "Copy Code"
 msgstr ""
 
 msgid "Copy this text as it is to a safe place (notepad or email)"
@@ -515,9 +459,6 @@ msgstr "지불 제안을 삭제할 수 없습니다"
 msgid "Could not encrypt wallet"
 msgstr ""
 
-msgid "Could not get claim code. Please contact BitPay support."
-msgstr ""
-
 msgid "Could not get dynamic fee"
 msgstr "동적 수수료를 받을 수 없습니다."
 
@@ -560,9 +501,6 @@ msgstr "지갑을 업데이트할 수 없습니다"
 msgid "Create a new wallet"
 msgstr ""
 
-msgid "Create a new wallet to start using this app."
-msgstr ""
-
 msgid "Create bitcoin wallet"
 msgstr "비트코인 지갑 만들기"
 
@@ -581,16 +519,10 @@ msgstr ""
 msgid "Created by"
 msgstr "생성자:"
 
-msgid "Creating Gift Card..."
-msgstr ""
-
 msgid "Creating Wallet..."
 msgstr "지갑 만드는 중..."
 
 msgid "Creating transaction..."
-msgstr ""
-
-msgid "Current Cards"
 msgstr ""
 
 msgid "Current fee rate for this policy"
@@ -618,9 +550,6 @@ msgid "Deleting Wallet..."
 msgstr "지갑 삭제 중..."
 
 msgid "Deleting payment proposal..."
-msgstr ""
-
-msgid "Delta Gift Cards can be used toward airfare on any Delta marketed flight through www.delta.com, at the airport, through reservations, or by phone with Delta Vacations®. Delta Gift Cards do not have any expiration dates or fees."
 msgstr ""
 
 msgid "Deposit"
@@ -653,12 +582,6 @@ msgstr "나중에 시도해주세요"
 msgid "Do not include private key"
 msgstr ""
 
-msgid "Do you want to verify your account now?"
-msgstr ""
-
-msgid "Don't see your language on Crowdin? Contact the Owner on Crowdin! We'd love to support your language."
-msgstr "Crowdin에 귀하의 언어가 없나요? Crowdin 소유자에게 문의하세요! 저희는 귀하의 언어를 지원하고 싶습니다."
-
 msgid "Done"
 msgstr ""
 
@@ -670,9 +593,6 @@ msgstr ""
 
 msgid "Duplicating wallet..."
 msgstr "지갑 복제 중..."
-
-msgid "Each bitcoin wallet can generate billions of addresses from your 12-word recovery phrase. A new address is automatically generated and shown each time you receive a payment."
-msgstr ""
 
 msgid "Economy"
 msgstr "이코노미"
@@ -701,13 +621,12 @@ msgstr "알림 받기 활성화"
 msgid "Enable the camera to get started."
 msgstr "시작하기 위해 카메라 활성화."
 
-msgid "Encryption can protect your funds if this device is stolen or compromised by malicious software."
+msgid ""
+"Encryption can protect your funds if this device is stolen or compromised by "
+"malicious software."
 msgstr ""
 
 msgid "Enter Amount"
-msgstr ""
-
-msgid "Enter Two Factor for your BitPay account"
 msgstr ""
 
 msgid "Enter a new encrypt password"
@@ -720,9 +639,6 @@ msgid "Enter a transaction memo"
 msgstr ""
 
 msgid "Enter custom fee in sat/byte"
-msgstr ""
-
-msgid "Enter email address"
 msgstr ""
 
 msgid "Enter encrypt password"
@@ -752,9 +668,6 @@ msgstr "오류"
 msgid "Error adding new entry"
 msgstr ""
 
-msgid "Error connecting to ShapeShift"
-msgstr ""
-
 msgid "Error creating wallet"
 msgstr "지갑 생성 오류"
 
@@ -773,17 +686,11 @@ msgstr ""
 msgid "Error in Payment Protocol"
 msgstr "지불 프로토콜 오류"
 
-msgid "Error pairing BitPay Account"
-msgstr "BitPay 계좌 페어링 오류"
-
 msgid "Error scanning funds:"
 msgstr "자금 스캔 오류:"
 
 msgid "Error sweeping wallet:"
 msgstr "지갑 스윕 오류:"
-
-msgid "Error updating Debit Cards"
-msgstr "직불 카드 업데이트 오류"
 
 msgid "Exceeded daily limit of $500 per user"
 msgstr "일일 제한 $500/사용자를 초과했습니다"
@@ -830,21 +737,6 @@ msgstr ""
 msgid "Fee level is not defined"
 msgstr "수수료 레벨이 정의되지 않았습니다"
 
-msgid "Feedback"
-msgstr ""
-
-msgid "Feedback could not be submitted. Please try again later."
-msgstr "피드백을 제출할 수 없습니다. 나중에 다시 시도해주세요."
-
-msgid "Feedback!"
-msgstr ""
-
-msgid "Fetching BitPay Account..."
-msgstr "BitPay 계좌 가져오는 중..."
-
-msgid "Fetching BitPay Cards..."
-msgstr ""
-
 msgid "Fetching payment information..."
 msgstr ""
 
@@ -857,10 +749,9 @@ msgstr ""
 msgid "From"
 msgstr "발신:"
 
-msgid "From BitPay account"
-msgstr "BitPay 계좌에서"
-
-msgid "From the destination device, go to Add wallet > Import wallet and scan this QR code"
+msgid ""
+"From the destination device, go to Add wallet > Import wallet and scan this "
+"QR code"
 msgstr ""
 
 msgid "Funds Will Not Be Accessible"
@@ -874,9 +765,6 @@ msgstr ""
 
 msgid "Funds to be added"
 msgstr "추가 할 자금"
-
-msgid "Funds were added to debit card"
-msgstr "직불 카드에 자금이 추가되었습니다"
 
 msgid "Funds will be transferred to"
 msgstr "다음으로 자금이 전송될 예정입니다:"
@@ -893,35 +781,21 @@ msgstr "새로운 주소 생성 중..."
 msgid "Get Help"
 msgstr ""
 
-msgid "Get local cash anywhere you go, from any Visa® compatible ATM. ATM bank fees may apply."
+msgid ""
+"Get local cash anywhere you go, from any Visa® compatible ATM. ATM bank fees "
+"may apply."
 msgstr ""
-
-msgid "Get news and updates from BitPay"
-msgstr "BitPay 뉴스 및 업데이트 소식을 받으세요"
 
 msgid "Get started"
 msgstr "시작하기"
 
-msgid "Get started by adding your first one."
-msgstr "첫 번째를 추가하여 시작하세요."
+msgid ""
+"Create contacts to mange frequently used addresses, so you don’t have to "
+"type in everytime."
+msgstr ""
 
 msgid "Getting fee levels..."
 msgstr "수수료 레벨 얻는 중..."
-
-msgid "Gift Card"
-msgstr "기프트 카드"
-
-msgid "Gift card canceled"
-msgstr ""
-
-msgid "Gift card purchases are temporarily unavailable. Please try again later."
-msgstr ""
-
-msgid "Give friends and family the gift of tapping a button and getting a ride - any time of day, any day of year."
-msgstr ""
-
-msgid "Give us feedback"
-msgstr ""
 
 msgid "Go Back"
 msgstr "돌아가기"
@@ -931,12 +805,6 @@ msgstr "돌아가기"
 
 msgid "Got it"
 msgstr "알았습니다"
-
-msgid "Have you redeemed the entire balance of this gift card?"
-msgstr ""
-
-msgid "Having problems with a ShapeShift?"
-msgstr ""
 
 msgid "Help & support"
 msgstr ""
@@ -956,15 +824,6 @@ msgstr "고급 옵션 숨기기"
 msgid "Home"
 msgstr "자산"
 
-msgid "How satisfied are you with {{appName}} wallet?"
-msgstr ""
-
-msgid "I agree to the Terms and certify that I am the beneficial owner of the input assets and the destination address."
-msgstr ""
-
-msgid "I give explicit consent to BitPay to use my email address to send me email notifications about payments (and, if selected, email updates and news about the wallet)."
-msgstr ""
-
 msgid "I have read, understood, and agree to the Terms of Use."
 msgstr ""
 
@@ -974,52 +833,58 @@ msgstr ""
 msgid "I understand"
 msgstr "이해합니다"
 
-msgid "I understand that if this app is moved to another device or deleted, my bitcoin can only be recovered with the recovery phrase"
+msgid ""
+"I understand that my funds are held securely on this device, not by a company"
 msgstr ""
 
-msgid "I understand that my funds are held securely on this device, not by a company"
+msgid "My funds are stored on the blockchains, not companies nor this device."
 msgstr ""
 
-msgid "I'm disappointed"
+msgid ""
+"If this app is deleted, my assets can only be recovered with the recovery "
+"phrase."
 msgstr ""
 
-msgid "I'm satisfied"
+msgid ""
+"If enabled, the Recent Transactions card - a list of transactions occuring "
+"across all wallets - will appear in the Home tab."
 msgstr ""
-
-msgid "I'm sure"
-msgstr ""
-
-msgid "I'm very happy"
-msgstr ""
-
-msgid "I've used this card"
-msgstr ""
-
-msgid "If enabled, Bitcoin Cash addresses will be shown using Copay style address, and not the new cashaddr format."
-msgstr ""
-
-msgid "If enabled, the Recent Transactions card - a list of transactions occuring across all wallets - will appear in the Home tab."
-msgstr "활성화할 경우, 최근 거래 카드(모든 지갑에서 발생한 거래 내역 목록)가 홈 탭에 표시됩니다."
+"활성화할 경우, 최근 거래 카드(모든 지갑에서 발생한 거래 내역 목록)가 홈 탭에 "
+"표시됩니다."
 
 msgid "If enabled, wallets will also try to spend unconfirmed funds."
 msgstr ""
 
-msgid "If this device is replaced or this app is deleted, neither you nor BitPay can recover your funds without a backup."
+msgid ""
+"If this device is replaced or this app is deleted, neither you nor Trias  "
+"can recover your funds without a backup."
 msgstr ""
 
-msgid "If you disable the persistent logs, all the logs registered so far will be deleted. However, you can still see the session logs on this screen."
+msgid ""
+"If you disable the persistent logs, all the logs registered so far will be "
+"deleted. However, you can still see the session logs on this screen."
 msgstr ""
 
-msgid "If you have funds stored on a website then you should move them into a secure wallet... like this one!"
+msgid ""
+"If you have funds stored on a website then you should move them into a "
+"secure wallet... like this one!"
 msgstr ""
 
-msgid "If you need to send to \"old\" addresses (like the one you just pasted), and you are SURE those are BCH addresses, you can \"translate\" them using the BCH Translator tool and paste the corresponding address in CashAddr format for that \"old\" address."
+msgid ""
+"If you need to send to \"old\" addresses (like the one you just pasted), and "
+"you are SURE those are BCH addresses, you can \"translate\" them using the "
+"BCH Translator tool and paste the corresponding address in CashAddr format "
+"for that \"old\" address."
 msgstr ""
 
-msgid "If you take a screenshot, your recovery phrase may be viewed by other apps. You can make a safe backup with physical paper and a pen."
+msgid ""
+"If you take a screenshot, your recovery phrase may be viewed by other apps. "
+"You can make a safe backup with physical paper and a pen."
 msgstr ""
 
-msgid "If you were using the old desktop version you will need to import your wallets manually."
+msgid ""
+"If you were using the old desktop version you will need to import your "
+"wallets manually."
 msgstr ""
 
 msgid "Import Words"
@@ -1031,7 +896,8 @@ msgstr "지갑 가져오기"
 msgid "Importing Wallet..."
 msgstr "지갑 가져오는 중..."
 
-msgid "In order to verify your wallet recovery phrase, please type your password."
+msgid ""
+"In order to verify your wallet recovery phrase, please type your password."
 msgstr ""
 
 msgid "Incomplete"
@@ -1048,9 +914,6 @@ msgstr "부족한 자금"
 
 msgid "Insufficient funds for fee"
 msgstr "수수료에 대해 부족한 자금"
-
-msgid "Integrations"
-msgstr ""
 
 msgid "Invalid"
 msgstr "무효"
@@ -1085,20 +948,11 @@ msgstr ""
 msgid "It's a ghost town in here"
 msgstr ""
 
-msgid "It's a good idea to avoid reusing addresses - this both protects your privacy and keeps your bitcoins secure against hypothetical attacks by quantum computers."
+msgid ""
+"It's important that you write your recovery phrase down correctly. If "
+"something happens to your wallet, you'll need it to recover your money. "
+"Please review and try again."
 msgstr ""
-
-msgid "It's important that you write your recovery phrase down correctly. If something happens to your wallet, you'll need it to recover your money. Please review and try again."
-msgstr ""
-
-msgid "Join shared wallet"
-msgstr "공유 지갑 합류"
-
-msgid "Join wallet"
-msgstr ""
-
-msgid "Joining Wallet..."
-msgstr "지갑 합류 중..."
 
 msgid "Just scan the code to pay."
 msgstr "지불하시려면 코드를 스캔해주세요."
@@ -1121,12 +975,6 @@ msgstr "더 보기"
 msgid "Learn more about testnet blockchain"
 msgstr ""
 
-msgid "Leave Feedback"
-msgstr ""
-
-msgid "Let's verify your recovery phrase."
-msgstr ""
-
 msgid "Linked"
 msgstr ""
 
@@ -1141,12 +989,6 @@ msgstr ""
 
 msgid "Locked"
 msgstr "잠김"
-
-msgid "Locktime in effect. Please wait to create a new spend proposal"
-msgstr "락타임입니다. 새로운 지출 제안을 생성하시려면 잠시만 기다려주세요"
-
-msgid "Locktime in effect. Please wait to remove this spend proposal"
-msgstr "락타임입니다. 이 지출 제안을 제거하시려면 잠시만 기다려주세요"
 
 msgid "Low Fee"
 msgstr ""
@@ -1205,7 +1047,9 @@ msgstr "자금 이전됨"
 msgid "Multiple recipients"
 msgstr "여러 수신자"
 
-msgid "NOTE: To import a wallet from a 3rd party software, please go to Add Wallet, Create Wallet, and specify the Recovery Phrase there."
+msgid ""
+"NOTE: To import a wallet from a 3rd party software, please go to Add Wallet, "
+"Create Wallet, and specify the Recovery Phrase there."
 msgstr ""
 
 msgid "Name"
@@ -1221,12 +1065,6 @@ msgid "Needs backup"
 msgstr ""
 
 msgid "Network"
-msgstr ""
-
-msgid "Network Cost"
-msgstr ""
-
-msgid "Network cost"
 msgstr ""
 
 msgid "Network error"
@@ -1280,9 +1118,6 @@ msgstr "이용 가능한 지갑이 없습니다"
 msgid "No wallets available to receive funds"
 msgstr "자금을 수신하기 위해 이용 가능한 지갑이 없습니다"
 
-msgid "No wallets available to use ShapeShift"
-msgstr ""
-
 msgid "No wallets with funds"
 msgstr ""
 
@@ -1298,16 +1133,14 @@ msgstr ""
 msgid "Not enough funds for fee"
 msgstr "수수료에 대해 자금이 부족합니다"
 
-msgid "Not even BitPay can access it."
-msgstr "BitPay조차도 액세스할 수 없습니다."
-
-msgid "Not including the private key allows to check the wallet balance, transaction history, and create spend proposals from the export. However, does not allow to approve (sign) proposals, so funds will not be accessible from the export."
+msgid ""
+"Not including the private key allows to check the wallet balance, "
+"transaction history, and create spend proposals from the export. However, "
+"does not allow to approve (sign) proposals, so funds will not be accessible "
+"from the export."
 msgstr ""
 
 msgid "Not right now"
-msgstr ""
-
-msgid "Not set"
 msgstr ""
 
 msgid "Not valid bitcoin address"
@@ -1316,8 +1149,12 @@ msgstr ""
 msgid "Note"
 msgstr "알림"
 
-msgid "Note: if this BCH wallet was duplicated from a BTC wallet, they share the same recovery phrase."
-msgstr "알림: 이 BCH 지갑이 BCT 지갑으로부터 복제된 경우, 두 지갑은 동일한 복원 문구를 공유합니다."
+msgid ""
+"Note: if this BCH wallet was duplicated from a BTC wallet, they share the "
+"same recovery phrase."
+msgstr ""
+"알림: 이 BCH 지갑이 BCT 지갑으로부터 복제된 경우, 두 지갑은 동일한 복원 문구"
+"를 공유합니다."
 
 msgid "Notifications"
 msgstr "알림"
@@ -1331,8 +1168,12 @@ msgstr "확인 시 알림 받기"
 msgid "Notify me when transactions are confirmed"
 msgstr "거래 확인 시 알림 받기"
 
-msgid "Now is a perfect time to assess your surroundings. Nearby windows? Hidden cameras? Shoulder-spies?"
-msgstr "주변 환경을 평가하기에 완벽한 시기입니다. 창문가이신가요? 숨겨진 카메라가 있지는 않나요? 스파이는 없나요?"
+msgid ""
+"Now is a perfect time to assess your surroundings. Nearby windows? Hidden "
+"cameras? Shoulder-spies?"
+msgstr ""
+"주변 환경을 평가하기에 완벽한 시기입니다. 창문가이신가요? 숨겨진 카메라가 있"
+"지는 않나요? 스파이는 없나요?"
 
 msgid "OK"
 msgstr "OK"
@@ -1349,40 +1190,10 @@ msgstr ""
 msgid "On this screen you can see all your wallets, accounts, and assets."
 msgstr "이 화면에서 귀하의 지갑, 계좌 및 자산을 모두 확인하실 수 있습니다."
 
-msgid "Only redeemable on Mercado Livre (Brazil)"
-msgstr ""
-
-msgid "Only redeemable on www.amazon.co.jp (Japan website)"
-msgstr ""
-
-msgid "Only redeemable on www.amazon.com (USA website)"
-msgstr ""
-
 msgid "Open"
 msgstr "열기"
 
-msgid "Open Crowdin"
-msgstr "Crowdin 열기"
-
-msgid "Open GitHub"
-msgstr "GitHub 열기"
-
-msgid "Open GitHub Project"
-msgstr "GitHub 프로젝트 열기"
-
-msgid "Open Insight"
-msgstr "Insight 열기"
-
-msgid "Open Translation Community"
-msgstr "번역 커뮤니티 열기"
-
 msgid "Open settings"
-msgstr ""
-
-msgid "Open website"
-msgstr "웹사이트 열기"
-
-msgid "Order the BitPay Card"
 msgstr ""
 
 msgid "Ouch!"
@@ -1407,9 +1218,6 @@ msgid "Passwords do not match"
 msgstr ""
 
 msgid "Paste the backup plain text code"
-msgstr ""
-
-msgid "Paste this code on {cardConfig.website}. This gift card cannot be recovered if your claim code is lost."
 msgstr ""
 
 msgid "Pay 0% fees to turn bitcoin into dollars."
@@ -1457,8 +1265,12 @@ msgstr ""
 msgid "Payment accepted, but not yet broadcasted"
 msgstr "지불이 허용되었으나, 아직 브로드캐스트되지 않았습니다"
 
-msgid "Payment accepted. It will be broadcasted by Glidera. In case there is a problem, it can be deleted 6 hours after it was created."
-msgstr "지불이 허용되었으며, Glidera에 의해 브로드캐스트될 것입니다. 문제가 있을 경우를 대비하여, 생성 후 6시간 후에 삭제될 수 있습니다."
+msgid ""
+"Payment accepted. It will be broadcasted by Glidera. In case there is a "
+"problem, it can be deleted 6 hours after it was created."
+msgstr ""
+"지불이 허용되었으며, Glidera에 의해 브로드캐스트될 것입니다. 문제가 있을 경우"
+"를 대비하여, 생성 후 6시간 후에 삭제될 수 있습니다."
 
 msgid "Payment request"
 msgstr "지불 요청"
@@ -1483,9 +1295,6 @@ msgstr ""
 
 msgid "Please carefully write down this phrase."
 msgstr "이 문구를 신중하게 기록하세요."
-
-msgid "Please complete your account verification on ShapeShift website."
-msgstr ""
 
 msgid "Please connect a camera to get started."
 msgstr "시작하시려면 카메라를 연결해주세요."
@@ -1559,14 +1368,12 @@ msgstr ""
 msgid "Proposals"
 msgstr "제안"
 
-msgid "Purchase Limit Reached"
+msgid ""
+"Push notifications for {{appName}} are currently disabled. Enable them in "
+"the Settings app."
 msgstr ""
-
-msgid "Purchased Brands"
-msgstr ""
-
-msgid "Push notifications for {{appName}} are currently disabled. Enable them in the Settings app."
-msgstr "현재 {{appName}}에 대한 알림 받기가 비활성화되었습니다. 앱 설정에서 활성화하세요."
+"현재 {{appName}}에 대한 알림 받기가 비활성화되었습니다. 앱 설정에서 활성화하"
+"세요."
 
 msgid "QR Code"
 msgstr ""
@@ -1580,16 +1387,10 @@ msgstr ""
 msgid "Rate"
 msgstr ""
 
-msgid "Rate on the {storeName}"
-msgstr ""
-
 msgid "Read more in our Wiki"
 msgstr "Wiki에서 더 보기"
 
 msgid "Read more in our support page"
-msgstr ""
-
-msgid "Receipt Email"
 msgstr ""
 
 msgid "Receive"
@@ -1610,9 +1411,6 @@ msgstr ""
 msgid "Recent"
 msgstr "최근"
 
-msgid "Recent Transaction Card"
-msgstr "최근 거래 카드"
-
 msgid "Recent Transactions"
 msgstr "최근 거래"
 
@@ -1624,12 +1422,6 @@ msgstr ""
 
 msgid "Recreating Wallet..."
 msgstr "지갑 재생성 중..."
-
-msgid "Redeem Now"
-msgstr ""
-
-msgid "Redeem by going to the payment section in the Uber app."
-msgstr ""
 
 msgid "Reject Payment Proposal"
 msgstr ""
@@ -1745,9 +1537,6 @@ msgstr "이메일로 주소 전송"
 msgid "Send by email"
 msgstr "이메일로 전송"
 
-msgid "Send feedback"
-msgstr ""
-
 msgid "Send from"
 msgstr "보낸 이:"
 
@@ -1762,12 +1551,6 @@ msgstr "전송 중"
 
 msgid "Sending 2FA code..."
 msgstr "2FA 코드 전송 중..."
-
-msgid "Sending From"
-msgstr ""
-
-msgid "Sending feedback..."
-msgstr "피드백 전송 중..."
 
 msgid "Sending maximum amount"
 msgstr "최대 금액 전송 중"
@@ -1805,15 +1588,6 @@ msgstr "비밀번호 설정"
 msgid "Settings"
 msgstr ""
 
-msgid "ShapeShift is not available at this moment. Please, try again later."
-msgstr ""
-
-msgid "ShapeShift max limit reached"
-msgstr ""
-
-msgid "ShapeShift requires a minimum value of {{min}}"
-msgstr ""
-
 msgid "Share"
 msgstr ""
 
@@ -1826,13 +1600,7 @@ msgstr "공유를 위해 친구를 초대하세요."
 msgid "Share this QR code to receive {amount} in your wallet {name}."
 msgstr ""
 
-msgid "Share this invitation with your copayers"
-msgstr "귀하의 코페이어와 이 초대를 공유하세요"
-
 msgid "Share {{appName}}"
-msgstr ""
-
-msgid "Shop Now"
 msgstr ""
 
 msgid "Show advanced options"
@@ -1844,16 +1612,10 @@ msgstr ""
 msgid "Show in Home"
 msgstr ""
 
-msgid "Sign Up for ShapeShift"
-msgstr ""
-
 msgid "Signatures rejected by server"
 msgstr "서버에 의해 서명 거절됨"
 
 msgid "Signing transaction..."
-msgstr ""
-
-msgid "Since only you control your money, you’ll need to save your recovery phrase in case this app is deleted."
 msgstr ""
 
 msgid "Single address"
@@ -1863,9 +1625,6 @@ msgid "Skip"
 msgstr "건너뛰기"
 
 msgid "Slide to accept"
-msgstr ""
-
-msgid "Slide to confirm"
 msgstr ""
 
 msgid "Slide to pay"
@@ -1880,9 +1639,6 @@ msgstr ""
 msgid "Spend proposal is not accepted"
 msgstr "지출 제안이 허용되지 않았습니다"
 
-msgid "Spend proposal not found"
-msgstr "지출 제안을 찾을 수 없습니다"
-
 msgid "Spendable balance"
 msgstr ""
 
@@ -1890,9 +1646,6 @@ msgid "Spending this balance will need significant Bitcoin network fees"
 msgstr "이 잔액을 사용하려면 유효한 비트코인 네트워크 수수료가 필요합니다"
 
 msgid "Status"
-msgstr ""
-
-msgid "Submit Feature Request"
 msgstr ""
 
 msgid "Suggested by Merchant"
@@ -1916,9 +1669,6 @@ msgstr "지갑 스윕 중..."
 msgid "THIS ACTION CANNOT BE REVERSED"
 msgstr "이 작업은 되돌릴 수 없습니다"
 
-msgid "Take control of your money, get started with bitcoin."
-msgstr ""
-
 msgid "Tap and hold to show"
 msgstr "표시하시려면 길게 탭하세요"
 
@@ -1926,9 +1676,6 @@ msgid "Tap to recreate"
 msgstr ""
 
 msgid "Tap to retry"
-msgstr ""
-
-msgid "Temporarily Unavailable"
 msgstr ""
 
 msgid "Terms of Use"
@@ -1943,9 +1690,6 @@ msgstr "문자"
 msgid "Thanks!"
 msgstr "감사합니다!"
 
-msgid "The Gift of Go.™ With over 300 destinations and limitless adventures to choose from, the Delta Gift Card opens up a world of possibilities."
-msgstr ""
-
 msgid "The Safest, Fastest Asset Exchange on Earth"
 msgstr ""
 
@@ -1955,64 +1699,86 @@ msgstr ""
 msgid "The amount of bitcoin immediately spendable from this wallet."
 msgstr "이 지갑에서 즉시 사용 가능한 비트코인 양."
 
-msgid "The amount of bitcoin stored in this wallet that is allocated as inputs to your pending transaction proposals. The amount is determined using unspent transaction outputs associated with this wallet and may be more than the actual amounts associated with your pending transaction proposals."
-msgstr "귀하의 보류 중인 거래 제안에 입금된 이 지갑에 저장된 비트코인 양. 이 양은 이 지갑과 관련된 미사용 거래 출금을 사용하여 결정되며 보류 중인 거래 제안과 관련된 실제 양보다 많을 수 있습니다."
+msgid ""
+"The amount of bitcoin stored in this wallet that is allocated as inputs to "
+"your pending transaction proposals. The amount is determined using unspent "
+"transaction outputs associated with this wallet and may be more than the "
+"actual amounts associated with your pending transaction proposals."
+msgstr ""
+"귀하의 보류 중인 거래 제안에 입금된 이 지갑에 저장된 비트코인 양. 이 양은 이 "
+"지갑과 관련된 미사용 거래 출금을 사용하여 결정되며 보류 중인 거래 제안과 관련"
+"된 실제 양보다 많을 수 있습니다."
 
-msgid "The amount of bitcoin stored in this wallet with less than 1 blockchain confirmation."
+msgid ""
+"The amount of bitcoin stored in this wallet with less than 1 blockchain "
+"confirmation."
 msgstr "1 블록체인 확인 미만의 이 지갑에 저장된 비트코인 양."
 
 msgid "The derivation path"
 msgstr "유도 경로"
 
-msgid "The destination wallet is not backed up. Please, complete the backup process before continue."
+msgid ""
+"The destination wallet is not backed up. Please, complete the backup process "
+"before continue."
 msgstr ""
 
 msgid "The exchange rate changes with the market."
 msgstr "환율은 시장에 따라 변합니다."
 
-msgid "The higher the fee, the greater the incentive a miner has to include that transaction in a block. Current fees are determined based on network load and the selected policy."
-msgstr "수수료가 높을수록, 마이너가 한 블록에서 그 거래에 포함시켜야하는 인센티브도 커집니다. 현재 수수료는 네트워크 로드 및 선택 정책에 따라 결정되었습니다."
+msgid ""
+"The higher the fee, the greater the incentive a miner has to include that "
+"transaction in a block. Current fees are determined based on network load "
+"and the selected policy."
+msgstr ""
+"수수료가 높을수록, 마이너가 한 블록에서 그 거래에 포함시켜야하는 인센티브도 "
+"커집니다. 현재 수수료는 네트워크 로드 및 선택 정책에 따라 결정되었습니다."
 
-msgid "The information you are about to share/export may contain sensitive data such us wallet IDs, addresses, balances, etc. Please be sure you trust the person or entity with whom you are sharing this information."
+msgid ""
+"The information you are about to share/export may contain sensitive data "
+"such us wallet IDs, addresses, balances, etc. Please be sure you trust the "
+"person or entity with whom you are sharing this information."
 msgstr ""
 
 msgid "The password of the recovery phrase (if set)"
 msgstr "복원 문구 비밀번호 (설정한 경우)"
 
-msgid "The payment was created but could not be completed. Please try again from home screen"
-msgstr "지불이 생성되었으나 완료되지 않았습니다. 홈 스크린에서 다시 시도해주세요"
+msgid ""
+"The payment was created but could not be completed. Please try again from "
+"home screen"
+msgstr ""
+"지불이 생성되었으나 완료되지 않았습니다. 홈 스크린에서 다시 시도해주세요"
 
 msgid "The payment was removed by creator"
 msgstr "생성자에 의해 지불이 제거되었습니다"
 
-msgid "The private key of this wallet is not available. The export allows to check the wallet balance, transaction history, and create spend proposals from the export. However, does not allow to approve (sign) proposals, so funds will not be accessible from the export."
-msgstr ""
-
-msgid "The purchase amount is limited to {maxAmount} {currency} per day. Please modify your amount."
-msgstr ""
-
-msgid "The purchase amount must be at least {minAmount} {currency}. Please modify your amount."
+msgid ""
+"The private key of this wallet is not available. The export allows to check "
+"the wallet balance, transaction history, and create spend proposals from the "
+"export. However, does not allow to approve (sign) proposals, so funds will "
+"not be accessible from the export."
 msgstr ""
 
 msgid "The request could not be understood by the server"
 msgstr "서버가 이해할 수 없는 요청입니다"
 
-msgid "The single address feature will force the wallet to only use one address rather than generating new addresses."
-msgstr ""
-
-msgid "The spend proposal is not pending"
-msgstr "보류 중인 지출 제안이 아닙니다"
-
-msgid "The testnet is an alternative Bitcoin block chain, to be used for testing. Testnet coins are separate and distinct from actual bitcoins, and do not have any value. This allows application developers or bitcoin testers to experiment, without having to use real bitcoins."
+msgid ""
+"The testnet is an alternative Bitcoin block chain, to be used for testing. "
+"Testnet coins are separate and distinct from actual bitcoins, and do not "
+"have any value. This allows application developers or bitcoin testers to "
+"experiment, without having to use real bitcoins."
 msgstr ""
 
 msgid "The total amount of bitcoin stored in this wallet."
 msgstr "이 지갑에 저장된 비트코인 양 합계."
 
-msgid "The transaction history and every new incoming transaction are cached in the app. This feature clean this up and synchronizes again from the server"
+msgid ""
+"The transaction history and every new incoming transaction are cached in the "
+"app. This feature clean this up and synchronizes again from the server"
 msgstr ""
 
-msgid "The wallet you are using does not match the network and/or the currency of the address provided"
+msgid ""
+"The wallet you are using does not match the network and/or the currency of "
+"the address provided"
 msgstr ""
 
 msgid "There is a new version of {{nameCase}} available"
@@ -2021,7 +1787,9 @@ msgstr ""
 msgid "There is an error in the form"
 msgstr "양식에 오류가 있습니다"
 
-msgid "There's obviously something we're doing wrong. How could we improve your experience?"
+msgid ""
+"There's obviously something we're doing wrong. How could we improve your "
+"experience?"
 msgstr ""
 
 msgid "This app is not available for your device."
@@ -2033,29 +1801,49 @@ msgstr "이 앱은 최첨단 보안 기능으로 귀하의 비트코인을 저�
 msgid "This bitcoin payment request has expired."
 msgstr "이 비트코인 지불 요청은 만료되었습니다."
 
-msgid "This field is only for users who, in previous versions (it's not supported anymore), set a password to protect their recovery phrase. This field is not for your encrypt password."
+msgid ""
+"This field is only for users who, in previous versions (it's not supported "
+"anymore), set a password to protect their recovery phrase. This field is not "
+"for your encrypt password."
 msgstr ""
 
 msgid "This information is available at the website."
 msgstr ""
 
-msgid "This password cannot be recovered. If this password is lost, funds can only be recovered by reimporting your 12-word recovery phrase."
+msgid ""
+"This password cannot be recovered. If this password is lost, funds can only "
+"be recovered by reimporting your 12-word recovery phrase."
 msgstr ""
 
-msgid "This password is only for this device, and it cannot be recovered. To avoid losing funds, write your password down."
+msgid ""
+"This password is only for this device, and it cannot be recovered. To avoid "
+"losing funds, write your password down."
 msgstr ""
 
-msgid "This recovery phrase was created with a password. To recover this wallet both the recovery phrase and password are needed."
-msgstr "이 복원 문구는 비밀번호와 함께 생성되었습니다. 이 지갑을 복원하시려면 복원 문구와 비밀번호 모두가 필요합니다."
+msgid ""
+"This recovery phrase was created with a password. To recover this wallet "
+"both the recovery phrase and password are needed."
+msgstr ""
+"이 복원 문구는 비밀번호와 함께 생성되었습니다. 이 지갑을 복원하시려면 복원 문"
+"구와 비밀번호 모두가 필요합니다."
 
-msgid "This transaction amount is too small compared to current Bitcoin network fees. Spending these funds will need a Bitcoin network fee cost comparable to the funds itself."
+msgid ""
+"This transaction amount is too small compared to current Bitcoin network "
+"fees. Spending these funds will need a Bitcoin network fee cost comparable "
+"to the funds itself."
 msgstr ""
 
-msgid "This transaction could take a long time to confirm or could be dropped due to the low fees set by the sender."
+msgid ""
+"This transaction could take a long time to confirm or could be dropped due "
+"to the low fees set by the sender."
 msgstr ""
 
-msgid "This wallet is not registered at the given Bitcore Wallet Service (BWS). You can recreate it from the local information."
-msgstr "이 지갑은 주어진 Bitcore Wallet Service(BWS)에 등록되지 않았습니다. 로컬 정보에서 재생성하실 수 있습니다."
+msgid ""
+"This wallet is not registered at the given Bitcore Wallet Service (BWS). You "
+"can recreate it from the local information."
+msgstr ""
+"이 지갑은 주어진 Bitcore Wallet Service(BWS)에 등록되지 않았습니다. 로컬 정보"
+"에서 재생성하실 수 있습니다."
 
 msgid "Timeline"
 msgstr "타임라인"
@@ -2063,17 +1851,9 @@ msgstr "타임라인"
 msgid "To"
 msgstr "수신:"
 
-msgid "To get started, you'll need to create a bitcoin wallet and get some bitcoin."
+msgid ""
+"To get started, you'll need to create a bitcoin wallet and get some bitcoin."
 msgstr "시작하시려면, 비트코인 지갑을 생성하셔야 합니다."
-
-msgid "To {{reason}} you must first add your BitPay account - {{email}}"
-msgstr ""
-
-msgid "Top up in progress..."
-msgstr "충전 중..."
-
-msgid "Top-up with this cryptocurrency is not enabled"
-msgstr ""
 
 msgid "Total"
 msgstr "합계"
@@ -2087,9 +1867,6 @@ msgstr ""
 msgid "Total wallet inputs"
 msgstr "지갑 입금 합계"
 
-msgid "Trade any leading blockchain asset for any other. Protection by Design."
-msgstr ""
-
 msgid "Transaction"
 msgstr "거래"
 
@@ -2098,9 +1875,6 @@ msgstr "거래 기록"
 
 msgid "Transaction ID"
 msgstr ""
-
-msgid "Transaction already broadcasted"
-msgstr "이미 브로드캐스트된 거래입니다"
 
 msgid "Transaction has not been created"
 msgstr "거래가 생성되지 않았습니다"
@@ -2138,38 +1912,14 @@ msgstr ""
 msgid "Try again in {{expires}}"
 msgstr "{{expires}} 내에 다시 시도해주세요"
 
-msgid "Turn bitcoin into dollars, swipe anywhere Visa® is accepted."
-msgstr ""
-
 msgid "Type the recovery phrase (usually 12 words)"
-msgstr ""
-
-msgid "Uber gift cards also apply to UberEATS orders. Enjoy food from hundreds of restaurants, delivered at Uber speed."
 msgstr ""
 
 msgid "Uh oh..."
 msgstr ""
 
-msgid "Unarchive Card"
-msgstr ""
-
 msgid "Unconfirmed"
 msgstr "미확인됨"
-
-msgid "Unlink account"
-msgstr ""
-
-msgid "Unlink card"
-msgstr ""
-
-msgid "Unlink the account will remove it and all associated cards from this device."
-msgstr ""
-
-msgid "Unlink the card will remove it from this device."
-msgstr ""
-
-msgid "Unlock App"
-msgstr ""
 
 msgid "Unsent transactions"
 msgstr "미전송 거래"
@@ -2177,17 +1927,8 @@ msgstr "미전송 거래"
 msgid "Unused addresses"
 msgstr ""
 
-msgid "Unverified Account"
-msgstr ""
-
 msgid "Update Available"
 msgstr "업데이트 이용 가능"
-
-msgid "Updating Gift Card..."
-msgstr ""
-
-msgid "Updating Gift Cards..."
-msgstr ""
 
 msgid "Updating pending proposals... Please stand by"
 msgstr ""
@@ -2213,9 +1954,6 @@ msgstr ""
 msgid "Validating recovery phrase..."
 msgstr "복구 문구 확인 중..."
 
-msgid "Verify Account"
-msgstr ""
-
 msgid "Version"
 msgstr "버전"
 
@@ -2225,13 +1963,7 @@ msgstr "보기"
 msgid "View Confirmation Status"
 msgstr ""
 
-msgid "View Invoice"
-msgstr ""
-
 msgid "View Privacy Policy"
-msgstr ""
-
-msgid "View Redemption Code"
 msgstr ""
 
 msgid "View Transaction on Insight"
@@ -2249,11 +1981,12 @@ msgstr ""
 msgid "View on blockchain"
 msgstr "블록체인에서 보기"
 
-msgid "Visit ShapeShift.io"
+msgid ""
+"WARNING: Key derivation is not working on this device/wallet. Actions cannot "
+"be performed on this wallet."
 msgstr ""
-
-msgid "WARNING: Key derivation is not working on this device/wallet. Actions cannot be performed on this wallet."
-msgstr "경고: 이 기기/지갑에서는 키 유도가 작동하지 않습니다. 이 지갑에서는 작업을 수행할 수 없습니다."
+"경고: 이 기기/지갑에서는 키 유도가 작동하지 않습니다. 이 지갑에서는 작업을 수"
+"행할 수 없습니다."
 
 msgid "WARNING: UNTRUSTED CERTIFICATE"
 msgstr "경고: 신뢰할 수 없는 인증서"
@@ -2321,8 +2054,12 @@ msgstr "지갑의 백업이 필요합니다"
 msgid "Wallet not found"
 msgstr "지갑을 찾을 수 없습니다"
 
-msgid "Wallet not registered at the wallet service. Recreate it from \"Create Wallet\" using \"Advanced Options\" to set your recovery phrase"
-msgstr "지갑 서비스에 등록되지 않은 지갑입니다. 복원 문구를 설정하시려면 \"고급 옵션\"을 사용하여 \"지갑 생성\"에서 지갑을 재생성하세요"
+msgid ""
+"Wallet not registered at the wallet service. Recreate it from \"Create Wallet"
+"\" using \"Advanced Options\" to set your recovery phrase"
+msgstr ""
+"지갑 서비스에 등록되지 않은 지갑입니다. 복원 문구를 설정하시려면 \"고급 옵션"
+"\"을 사용하여 \"지갑 생성\"에서 지갑을 재생성하세요"
 
 msgid "Wallet recovery phrase"
 msgstr ""
@@ -2342,22 +2079,13 @@ msgstr "경고: 이 거래에는 확인되지 않은 입금이 있습니다"
 msgid "Watch Out!"
 msgstr ""
 
-msgid "We appreciate your review"
-msgstr ""
-
-msgid "We are always looking for translation contributions! You can make corrections or help to make this app available in your native language by joining our community on Crowdin."
+msgid ""
+"We are always looking for translation contributions! You can make "
+"corrections or help to make this app available in your native language by "
+"joining our community on Crowdin."
 msgstr ""
 
 msgid "We will confirm on the next screen."
-msgstr ""
-
-msgid "We're always listening for ways we can improve your experience. Feel free to leave us a review in the app store or request a new feature."
-msgstr ""
-
-msgid "We're always listening for ways we can improve your experience. Feel free to leave us a review in the app store or request a new feature. Also, let us know if you experience any technical issues."
-msgstr ""
-
-msgid "We're always listening for ways we can improve your experience. Is there anything we could do to improve your experience?"
 msgstr ""
 
 msgid "Website"
@@ -2366,25 +2094,17 @@ msgstr ""
 msgid "What do you call this wallet?"
 msgstr "이 지갑을 뭐라고 부르시겠습니까?"
 
-msgid "When this wallet was created, it was called \"{{walletName}}\". You can change the name displayed on this device below."
+msgid ""
+"When this wallet was created, it was called \"{{walletName}}\". You can "
+"change the name displayed on this device below."
 msgstr ""
-
-msgid "Where would you like to receive email notifications about payments?"
-msgstr "지불에 대한 이메일 알림을 어디로 받으시겠습니까?"
-
-msgid "Where would you like to receive your Amazon gift card purchase receipts?"
-msgstr ""
-
-msgid "Why does this require authentication?"
-msgstr ""
-
-msgid "Why?"
-msgstr "왜냐구요?"
 
 msgid "Withdraw"
 msgstr ""
 
-msgid "Without encryption, a thief or another application on this device may be able to access your funds."
+msgid ""
+"Without encryption, a thief or another application on this device may be "
+"able to access your funds."
 msgstr ""
 
 msgid "Would you like to protect this wallet with a password?"
@@ -2393,16 +2113,10 @@ msgstr ""
 msgid "Write Down Recovery Phrase"
 msgstr ""
 
-msgid "Write a Review"
-msgstr ""
-
 msgid "Wrong number of recovery words:"
 msgstr "잘못된 복원 단어 수:"
 
 msgid "Wrong password"
-msgstr ""
-
-msgid "YES"
 msgstr ""
 
 msgid "Yes"
@@ -2411,52 +2125,32 @@ msgstr "네"
 msgid "Yes, skip"
 msgstr ""
 
-msgid "You are trying to send ({amount} {coin}) more than what your wallet contains. Please enter a lower amount or send max."
+msgid ""
+"You are trying to send ({amount} {coin}) more than what your wallet "
+"contains. Please enter a lower amount or send max."
 msgstr ""
 
 msgid "You can back up your wallet later from your wallet settings."
 msgstr ""
 
-msgid "You can continue to view your archived cards here if you need to access them."
-msgstr ""
-
-msgid "You can make contributions by signing up on our Crowdin community translation website. We’re looking forward to hearing from you!"
-msgstr "저희의 Crowdin 커뮤니티 번역 웹사이트에 가입하여 기여하실 수 있습니다. 귀하의 소식을 기다리겠습니다!"
-
-msgid "You can scan bitcoin addresses, payment requests, paper wallets, and more."
-msgstr "비트코인 주소, 지불 요청, 페이퍼 지갑 등을 스캔하실 수 있습니다."
-
-msgid "You can see the latest developments and contribute to this open source app by visiting our project on GitHub."
-msgstr "GitHub에서 저희의 프로젝트에 방문하여 이 오픈 소스 앱에 기여하시거나 최신 개발 사항을 확인하실 수 있습니다."
-
-msgid "You can spend bitcoin at millions of websites and stores worldwide."
-msgstr "전 세계 수백만 웹사이트 및 상점에서 비트코인을 사용하실 수 있습니다."
-
 msgid "You can still export it from \"Export Wallet\" option."
 msgstr ""
-
-msgid "You can trade it for other currencies like US Dollars, Euros, or Pounds."
-msgstr "US 달러, 유로 또는 파운드와 같은 다른 통화로 바꾸실 수 있습니다."
-
-msgid "You can use your Mercado Livre gift cards on your Mercado Pago account for everyday expenses like utilities and metro rides."
-msgstr ""
-
-msgid "You control your bitcoin."
-msgstr "귀하의 비트코인을 제어하실 수 있습니다."
 
 msgid "You could sign the transaction later in your wallet details"
 msgstr ""
 
-msgid "You should not set a fee higher than {{maxFeeRecommended}} satoshis/byte."
-msgstr "수수료를 {{maxFeeRecommended}} satoshis/byte보다 높게 설정하시면 안됩니다."
+msgid ""
+"You should not set a fee higher than {{maxFeeRecommended}} satoshis/byte."
+msgstr ""
+"수수료를 {{maxFeeRecommended}} satoshis/byte보다 높게 설정하시면 안됩니다."
 
-msgid "Your BitPay Card is ready. Add funds to your card to start using it at stores and ATMs worldwide."
-msgstr "귀하의 BitPay 카드가 준비되었습니다. 전 세계 상점 및 ATM에서 이용하시려면 카드에 자금을 추가해주세요."
-
-msgid "Your bitcoin wallet is ready!"
-msgstr "귀하의 비트코인 지갑이 준비되었습니다!"
-
-msgid "Your extended private keys are all that is needed to access your bitcoin funds. Be sure to protect your private keys and store them only on secure devices. BitPay does not have access to your private keys, so you alone are responsible for your keys. If you share key access with external services, you take responsibility for the risk of theft or breach. Only advanced users should handle extended private keys directly."
+msgid ""
+"Your extended private keys are all that is needed to access your bitcoin "
+"funds. Be sure to protect your private keys and store them only on secure "
+"devices. Trias does not have access to your private keys, so you alone are "
+"responsible for your keys. If you share key access with external services, "
+"you take responsibility for the risk of theft or breach. Only advanced users "
+"should handle extended private keys directly."
 msgstr ""
 
 msgid "Your fee is lower than recommended."
@@ -2465,13 +2159,16 @@ msgstr "귀하의 수수료는 권장액보다 낮습니다."
 msgid "Your name"
 msgstr "귀하의 이름"
 
-msgid "Your wallet address is similar to a bank account number. You can add funds to your wallet by withdrawing funds you may have stored on an exchange to your wallet address. Or other {coinName} users can send you money by scanning your QR code."
+msgid ""
+"Your wallet address is similar to a bank account number. You can add funds "
+"to your wallet by withdrawing funds you may have stored on an exchange to "
+"your wallet address. Or other {coinName} users can send you money by "
+"scanning your QR code."
 msgstr ""
 
-msgid "Your wallet is never saved to cloud storage or standard device backups."
-msgstr "귀하의 지갑을 절대로 클라우드 스토리지 또는 표준 장치 백업에 저장하지 마세요."
-
-msgid "Your wallet key will be encrypted. The encrypt password cannot be recovered. Be sure to write it down."
+msgid ""
+"Your wallet key will be encrypted. The encrypt password cannot be recovered. "
+"Be sure to write it down."
 msgstr ""
 
 msgid "Your wallet is backed up!"
@@ -2482,9 +2179,6 @@ msgstr "[숨겨진 잔액]"
 
 msgid "[Scanning Funds]"
 msgstr "[자금 스캔 중]"
-
-msgid "add your BitPay Visa card(s)"
-msgstr "귀하의 BitPay Visa 카드 추가"
 
 msgid "me"
 msgstr "나"
@@ -2498,13 +2192,19 @@ msgstr "준비 중..."
 msgid "{appName} BCH wallets use the CashAddr format by default"
 msgstr ""
 
-msgid "{coinName} miner fees are high due to record demand for limited space on the {coinName} network. BitPay does not receive and does not control {coinName} miner fees."
+msgid ""
+"{coinName} miner fees are high due to record demand for limited space on the "
+"{coinName} network. Trias does not receive and does not control {coinName} "
+"miner fees."
 msgstr ""
 
 msgid "{coinName} miner fees unusually high"
 msgstr ""
 
-msgid "{{appName}} depends on Bitcore Wallet Service (BWS) for blockchain information, networking and Copayer synchronization. The default configuration points to https://bws.bitpay.com (BitPay's public BWS instance)."
+msgid ""
+"{{appName}} depends on Bitcore Wallet Service (BWS) for blockchain "
+"information, networking. The default configuration points to https://tbws."
+"trias.one (Trias's public BWS instance)."
 msgstr ""
 
 msgid "{{fee}} {{coin}} will be deducted for bitcoin networking fees."
@@ -2524,3 +2224,12 @@ msgstr "Create"
 
 msgid "Recover"
 msgstr "Recover"
+
+msgid "Set up a new wallet if you never used this app before."
+msgstr ""
+
+msgid "Recover your account data and balance."
+msgstr ""
+
+msgid "You'll be able to import existing wallet after created or recovered HD wallet."
+msgstr ""

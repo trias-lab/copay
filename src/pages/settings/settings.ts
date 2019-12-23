@@ -3,14 +3,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
-// import * as _ from 'lodash';
-
 // providers
-// import { AppProvider } from '../../providers/app/app';
-// import { BitPayCardProvider } from '../../providers/bitpay-card/bitpay-card';
 import { ConfigProvider } from '../../providers/config/config';
 import { ExternalLinkProvider } from '../../providers/external-link/external-link';
-// import { HomeIntegrationsProvider } from '../../providers/home-integrations/home-integrations';
 import { LanguageProvider } from '../../providers/language/language';
 import { PlatformProvider } from '../../providers/platform/platform';
 import { PopupProvider } from '../../providers/popup/popup';
@@ -18,11 +13,6 @@ import { ProfileProvider } from '../../providers/profile/profile';
 import { TouchIdProvider } from '../../providers/touchid/touchid';
 
 // pages
-import { SendFeedbackPage } from '../feedback/send-feedback/send-feedback';
-import { BitPaySettingsPage } from '../integrations/bitpay-card/bitpay-settings/bitpay-settings';
-import { CoinbaseSettingsPage } from '../integrations/coinbase/coinbase-settings/coinbase-settings';
-import { GiftCardsSettingsPage } from '../integrations/gift-cards/gift-cards-settings/gift-cards-settings';
-import { ShapeshiftSettingsPage } from '../integrations/shapeshift/shapeshift-settings/shapeshift-settings';
 import { AboutPage } from './about/about';
 import { AddressbookPage } from './addressbook/addressbook';
 import { AdvancedPage } from './advanced/advanced';
@@ -46,30 +36,22 @@ export class SettingsPage {
   public config;
   public selectedAlternative;
   public isCordova: boolean;
-  public integrationServices = [];
-  public bitpayCardItems = [];
-  public showBitPayCard: boolean = false;
 
   public pinLock;
   public fingerprintLock;
-  // public needsBackupMsg: string;
 
   constructor(
     private navCtrl: NavController,
-    // private app: AppProvider,
     private language: LanguageProvider,
     private externalLinkProvider: ExternalLinkProvider,
     private profileProvider: ProfileProvider,
     private configProvider: ConfigProvider,
     private logger: Logger,
-    // private homeIntegrationsProvider: HomeIntegrationsProvider,
-    // private bitPayCardProvider: BitPayCardProvider,
     private platformProvider: PlatformProvider,
     private translate: TranslateService,
     private touchid: TouchIdProvider,
     private popupProvider: PopupProvider
   ) {
-    // this.appName = this.app.info.nameCase;
     this.appName = 'TRY Wallet';
     this.walletsBch = [];
     this.walletsBtc = [];
@@ -97,23 +79,6 @@ export class SettingsPage {
     };
 
     this.checkFingerprintLock();
-  }
-
-  ionViewDidEnter() {
-    // Show integrations
-    // let integrations = this.homeIntegrationsProvider.get();
-    // // Hide BitPay if linked
-    // setTimeout(() => {
-    //   this.integrationServices = _.remove(_.clone(integrations), x => {
-    //     if (x.name == 'debitcard' && x.linked) return;
-    //     else return x;
-    //   });
-    // }, 200);
-    // // Only BitPay Wallet
-    // this.bitPayCardProvider.get({}, (_, cards) => {
-    //   this.showBitPayCard = this.app.info._enabledExtensions.debitcard;
-    //   this.bitpayCardItems = cards;
-    // });
   }
 
   public openAltCurrencyPage(): void {
@@ -215,37 +180,8 @@ export class SettingsPage {
     this.navCtrl.push(WalletSettingsPage, { walletId });
   }
 
-  public openSendFeedbackPage(): void {
-    this.navCtrl.push(SendFeedbackPage);
-  }
-
   public openSharePage(): void {
     this.navCtrl.push(SharePage);
-  }
-
-  public openSettingIntegration(name: string): void {
-    switch (name) {
-      case 'coinbase':
-        this.navCtrl.push(CoinbaseSettingsPage);
-        break;
-      case 'debitcard':
-        this.navCtrl.push(BitPaySettingsPage);
-        break;
-      case 'shapeshift':
-        this.navCtrl.push(ShapeshiftSettingsPage);
-        break;
-      case 'giftcards':
-        this.navCtrl.push(GiftCardsSettingsPage);
-        break;
-    }
-  }
-
-  public openCardSettings(id): void {
-    this.navCtrl.push(BitPaySettingsPage, { id });
-  }
-
-  public openGiftCardsSettings() {
-    this.navCtrl.push(GiftCardsSettingsPage);
   }
 
   public openHelpExternalLink(): void {

@@ -11,7 +11,6 @@ import { BwcProvider } from '../bwc/bwc';
 import { ConfigProvider } from '../config/config';
 import { FeeProvider } from '../fee/fee';
 import { FilterProvider } from '../filter/filter';
-import { CardName } from '../gift-card/gift-card.types';
 import { LanguageProvider } from '../language/language';
 import { OnGoingProcessProvider } from '../on-going-process/on-going-process';
 import { PersistenceProvider } from '../persistence/persistence';
@@ -59,8 +58,6 @@ export interface TransactionProposal {
   message: string;
   customData?: {
     service?: string;
-    giftCardName?: CardName;
-    shapeShift?: string;
     toWalletName?: any;
   };
   payProUrl: any;
@@ -998,7 +995,7 @@ export class WalletProvider {
         return wallet.completeHistory && wallet.completeHistory.isValid;
       };
 
-      if (isHistoryCached() && !opts.opts.force)
+      if (isHistoryCached() && !opts.force)
         return resolve(wallet.completeHistory);
 
       this.updateLocalTxHistory(wallet, opts)
