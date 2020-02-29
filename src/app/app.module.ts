@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MarkdownModule } from 'ngx-markdown';
 
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -107,7 +106,6 @@ export class MyMissingTranslationHandler implements MissingTranslationHandler {
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MarkdownModule.forRoot(),
     MomentModule,
     NgxBarcodeModule,
     NgxQRCodeModule,
