@@ -968,7 +968,7 @@ export class WalletProvider {
       };
 
       if (wallet.completeHistory && wallet.completeHistory.isValid) {
-        let tx:any = finish(wallet.completeHistory);
+        let tx: any = finish(wallet.completeHistory);
         return resolve(tx);
       } else {
         let opts = {
@@ -976,7 +976,7 @@ export class WalletProvider {
         };
         this.getTxHistory(wallet, opts)
           .then(txHistory => {
-            let tx:any = finish(txHistory);
+            let tx: any = finish(txHistory);
             return resolve(tx);
           })
           .catch(err => {
