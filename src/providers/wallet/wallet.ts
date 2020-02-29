@@ -142,7 +142,7 @@ export class WalletProvider {
             return;
           }
 
-          let action = lodash.find(tx.actions, {
+          let action: any = lodash.find(tx.actions, {
             copayerId: tx.wallet.copayerId
           });
 
@@ -485,7 +485,6 @@ export class WalletProvider {
             (err.message && err.message == 'MAIN_ADDRESS_GAP_REACHED')
           ) {
             this.logger.warn(this.bwcErrorProvider.msg(err, 'Server Error'));
-            prefix = null;
             if (!this.isPopupOpen) {
               this.isPopupOpen = true;
               this.popupProvider
@@ -582,7 +581,7 @@ export class WalletProvider {
       let requestLimit = FIRST_LIMIT;
       let walletId = wallet.credentials.walletId;
       WalletProvider.progressFn[walletId] = opts.progressFn || (() => {});
-      let foundLimitTx = [];
+      let foundLimitTx: any = [];
 
       let fixTxsUnit = (txs): void => {
         if (!txs || !txs[0] || !txs[0].amountStr) return;
@@ -630,7 +629,9 @@ export class WalletProvider {
         .then(txsFromLocal => {
           fixTxsUnit(txsFromLocal);
 
-          let confirmedTxs = this.removeAndMarkSoftConfirmedTx(txsFromLocal);
+          let confirmedTxs: any = this.removeAndMarkSoftConfirmedTx(
+            txsFromLocal
+          );
           let endingTxid = confirmedTxs[0] ? confirmedTxs[0].txid : null;
           let endingTs = confirmedTxs[0] ? confirmedTxs[0].time : null;
 
@@ -967,7 +968,7 @@ export class WalletProvider {
       };
 
       if (wallet.completeHistory && wallet.completeHistory.isValid) {
-        let tx = finish(wallet.completeHistory);
+        let tx: any = finish(wallet.completeHistory);
         return resolve(tx);
       } else {
         let opts = {
@@ -975,7 +976,7 @@ export class WalletProvider {
         };
         this.getTxHistory(wallet, opts)
           .then(txHistory => {
-            let tx = finish(txHistory);
+            let tx: any = finish(txHistory);
             return resolve(tx);
           })
           .catch(err => {
