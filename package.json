@@ -74,7 +74,8 @@
     "sign:copay-macos": "gpg -u 1112CFA1 --output dist/Copay.dmg.sig --detach-sig dist/Copay.dmg",
     "sign:copay-linux": "gpg -u 1112CFA1 --output dist/Copay-linux.zip.sig --detach-sig dist/Copay-linux.zip",
     "sign:copay-windows": "gpg -u 1112CFA1 --output dist/Copay.exe.sig --detach-sig dist/Copay.exe",
-    "verify:copay-desktop": "gpg --verify dist/Copay-linux.zip.sig dist/Copay-linux.zip; gpg --verify dist/Copay.exe.sig dist/Copay.exe; gpg --verify dist/Copay.dmg.sig dist/Copay.dmg"
+    "verify:copay-desktop": "gpg --verify dist/Copay-linux.zip.sig dist/Copay-linux.zip; gpg --verify dist/Copay.exe.sig dist/Copay.exe; gpg --verify dist/Copay.dmg.sig dist/Copay.dmg",
+    "typedoc": "typedoc --mode modules --module commonjs --hideGenerator --exclude '**/*+(index|.spec|.e2e).ts' --out docs src"
   },
   "dependencies": {
     "@angular/animations": "5.2.10",
@@ -191,6 +192,7 @@
     "ts-node": "5.0.0",
     "tslint": "5.8.0",
     "tslint-config-prettier": "1.7.0",
+    "typedoc": "0.10.0",
     "typescript": "2.6.2",
     "webpack": "3.12.0"
   },

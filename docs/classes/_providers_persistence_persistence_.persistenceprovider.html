@@ -1,0 +1,2346 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PersistenceProvider | triaswallet</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">triaswallet</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_providers_persistence_persistence_.html">&quot;providers/persistence/persistence&quot;</a>
+				</li>
+				<li>
+					<a href="_providers_persistence_persistence_.persistenceprovider.html">PersistenceProvider</a>
+				</li>
+			</ul>
+			<h1>Class PersistenceProvider</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">PersistenceProvider</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#events" class="tsd-kind-icon">events</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#file" class="tsd-kind-icon">file</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#logger" class="tsd-kind-icon">logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#logsbuffer" class="tsd-kind-icon">logs<wbr>Buffer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#logsloaded" class="tsd-kind-icon">logs<wbr>Loaded</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#persistentlogs" class="tsd-kind-icon">persistent<wbr>Logs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#persistentlogsenabled" class="tsd-kind-icon">persistent<wbr>Logs<wbr>Enabled</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#platform" class="tsd-kind-icon">platform</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#storage" class="tsd-kind-icon">storage</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#_subscribeevents" class="tsd-kind-icon">_subscribe<wbr>Events</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#_unsubscribeevents" class="tsd-kind-icon">_unsubscribe<wbr>Events</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#checklogsconfig" class="tsd-kind-icon">check<wbr>Logs<wbr>Config</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#checkquota" class="tsd-kind-icon">check<wbr>Quota</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#clearbackupflag" class="tsd-kind-icon">clear<wbr>Backup<wbr>Flag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#clearconfig" class="tsd-kind-icon">clear<wbr>Config</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#clearlastaddress" class="tsd-kind-icon">clear<wbr>Last<wbr>Address</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#deleteoldlogs" class="tsd-kind-icon">delete<wbr>Old<wbr>Logs</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#deleteprofile" class="tsd-kind-icon">delete<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getaddressbook" class="tsd-kind-icon">get<wbr>Address<wbr>Book</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getaddressmanager" class="tsd-kind-icon">get<wbr>Address<wbr>Manager</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getappidentity" class="tsd-kind-icon">get<wbr>App<wbr>Identity</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getbackupflag" class="tsd-kind-icon">get<wbr>Backup<wbr>Flag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getbalancecache" class="tsd-kind-icon">get<wbr>Balance<wbr>Cache</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getbitpayaccounts" class="tsd-kind-icon">get<wbr>Bitpay<wbr>Accounts</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getbitpaydebitcards" class="tsd-kind-icon">get<wbr>Bitpay<wbr>Debit<wbr>Cards</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getcleanandscanaddresses" class="tsd-kind-icon">get<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getconfig" class="tsd-kind-icon">get<wbr>Config</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getcopaydisclaimerflag" class="tsd-kind-icon">get<wbr>Copay<wbr>Disclaimer<wbr>Flag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getcopayonboardingflag" class="tsd-kind-icon">get<wbr>Copay<wbr>Onboarding<wbr>Flag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getemaillawcompliance" class="tsd-kind-icon">get<wbr>Email<wbr>Law<wbr>Compliance</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getfocusedwalletid" class="tsd-kind-icon">get<wbr>Focused<wbr>Wallet<wbr>Id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#gethidebalanceflag" class="tsd-kind-icon">get<wbr>Hide<wbr>Balance<wbr>Flag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#gethometipaccepted" class="tsd-kind-icon">get<wbr>Home<wbr>Tip<wbr>Accepted</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getlastaddress" class="tsd-kind-icon">get<wbr>Last<wbr>Address</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getlastcurrencyused" class="tsd-kind-icon">get<wbr>Last<wbr>Currency<wbr>Used</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getlockstatus" class="tsd-kind-icon">get<wbr>Lock<wbr>Status</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getlogs" class="tsd-kind-icon">get<wbr>Logs</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getpersistentlogs" class="tsd-kind-icon">get<wbr>Persistent<wbr>Logs</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getprofile" class="tsd-kind-icon">get<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getremoteprefsstoredflag" class="tsd-kind-icon">get<wbr>Remote<wbr>Prefs<wbr>Stored<wbr>Flag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#gettxconfirmnotification" class="tsd-kind-icon">get<wbr>TxConfirm<wbr>Notification</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#gettxhistory" class="tsd-kind-icon">get<wbr>TxHistory</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#getwalletorder" class="tsd-kind-icon">get<wbr>Wallet<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#load" class="tsd-kind-icon">load</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#persistentlogschange" class="tsd-kind-icon">persistent<wbr>Logs<wbr>Change</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removeaddressmanager" class="tsd-kind-icon">remove<wbr>Address<wbr>Manager</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removeaddressbook" class="tsd-kind-icon">remove<wbr>Addressbook</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removeallwalletdata" class="tsd-kind-icon">remove<wbr>All<wbr>Wallet<wbr>Data</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removeappidentity" class="tsd-kind-icon">remove<wbr>App<wbr>Identity</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removebalancecache" class="tsd-kind-icon">remove<wbr>Balance<wbr>Cache</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removebitpayaccount" class="tsd-kind-icon">remove<wbr>Bitpay<wbr>Account</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removebitpaydebitcard" class="tsd-kind-icon">remove<wbr>Bitpay<wbr>Debit<wbr>Card</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removecleanandscanaddresses" class="tsd-kind-icon">remove<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removeemaillawcompliance" class="tsd-kind-icon">remove<wbr>Email<wbr>Law<wbr>Compliance</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removelockstatus" class="tsd-kind-icon">remove<wbr>Lock<wbr>Status</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removelogs" class="tsd-kind-icon">remove<wbr>Logs</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removetxconfirmnotification" class="tsd-kind-icon">remove<wbr>TxConfirm<wbr>Notification</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removetxhistory" class="tsd-kind-icon">remove<wbr>TxHistory</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#removewalletorder" class="tsd-kind-icon">remove<wbr>Wallet<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#savelog" class="tsd-kind-icon">save<wbr>Log</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_providers_persistence_persistence_.persistenceprovider.html#savenewlog" class="tsd-kind-icon">save<wbr>New<wbr>Log</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setaddressbook" class="tsd-kind-icon">set<wbr>Address<wbr>Book</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setaddressmanager" class="tsd-kind-icon">set<wbr>Address<wbr>Manager</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setappidentity" class="tsd-kind-icon">set<wbr>App<wbr>Identity</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setbackupflag" class="tsd-kind-icon">set<wbr>Backup<wbr>Flag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setbalancecache" class="tsd-kind-icon">set<wbr>Balance<wbr>Cache</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setbitpayaccount" class="tsd-kind-icon">set<wbr>Bitpay<wbr>Account</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setbitpaydebitcards" class="tsd-kind-icon">set<wbr>Bitpay<wbr>Debit<wbr>Cards</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setcleanandscanaddresses" class="tsd-kind-icon">set<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setdisclaimeraccepted" class="tsd-kind-icon">set<wbr>Disclaimer<wbr>Accepted</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setemaillawcompliance" class="tsd-kind-icon">set<wbr>Email<wbr>Law<wbr>Compliance</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#sethidebalanceflag" class="tsd-kind-icon">set<wbr>Hide<wbr>Balance<wbr>Flag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#sethometipaccepted" class="tsd-kind-icon">set<wbr>Home<wbr>Tip<wbr>Accepted</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setlastcurrencyused" class="tsd-kind-icon">set<wbr>Last<wbr>Currency<wbr>Used</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setlockstatus" class="tsd-kind-icon">set<wbr>Lock<wbr>Status</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setlogs" class="tsd-kind-icon">set<wbr>Logs</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setonboardingcompleted" class="tsd-kind-icon">set<wbr>Onboarding<wbr>Completed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setremoteprefsstoredflag" class="tsd-kind-icon">set<wbr>Remote<wbr>Prefs<wbr>Stored<wbr>Flag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#settxconfirmnotification" class="tsd-kind-icon">set<wbr>TxConfirm<wbr>Notification</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#settxhistory" class="tsd-kind-icon">set<wbr>TxHistory</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#setwalletorder" class="tsd-kind-icon">set<wbr>Wallet<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#storeconfig" class="tsd-kind-icon">store<wbr>Config</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#storefocusedwalletid" class="tsd-kind-icon">store<wbr>Focused<wbr>Wallet<wbr>Id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#storelastaddress" class="tsd-kind-icon">store<wbr>Last<wbr>Address</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#storenewprofile" class="tsd-kind-icon">store<wbr>New<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_providers_persistence_persistence_.persistenceprovider.html#storeprofile" class="tsd-kind-icon">store<wbr>Profile</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Persistence<wbr>Provider<span class="tsd-signature-symbol">(</span>logger<span class="tsd-signature-symbol">: </span><a href="_providers_logger_logger_.logger.html" class="tsd-signature-type">Logger</a>, platform<span class="tsd-signature-symbol">: </span><a href="_providers_platform_platform_.platformprovider.html" class="tsd-signature-type">PlatformProvider</a>, file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">File</span>, events<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Events</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_providers_persistence_persistence_.persistenceprovider.html" class="tsd-signature-type">PersistenceProvider</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L58">providers/persistence/persistence.ts:58</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>logger: <a href="_providers_logger_logger_.logger.html" class="tsd-signature-type">Logger</a></h5>
+								</li>
+								<li>
+									<h5>platform: <a href="_providers_platform_platform_.platformprovider.html" class="tsd-signature-type">PlatformProvider</a></h5>
+								</li>
+								<li>
+									<h5>file: <span class="tsd-signature-type">File</span></h5>
+								</li>
+								<li>
+									<h5>events: <span class="tsd-signature-type">Events</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_providers_persistence_persistence_.persistenceprovider.html" class="tsd-signature-type">PersistenceProvider</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="events" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> events</h3>
+					<div class="tsd-signature tsd-kind-icon">events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Events</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L64">providers/persistence/persistence.ts:64</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="file" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> file</h3>
+					<div class="tsd-signature tsd-kind-icon">file<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">File</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L63">providers/persistence/persistence.ts:63</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="logger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> logger</h3>
+					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <a href="_providers_logger_logger_.logger.html" class="tsd-signature-type">Logger</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L61">providers/persistence/persistence.ts:61</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="logsbuffer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> logs<wbr>Buffer</h3>
+					<div class="tsd-signature tsd-kind-icon">logs<wbr>Buffer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L52">providers/persistence/persistence.ts:52</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="logsloaded" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> logs<wbr>Loaded</h3>
+					<div class="tsd-signature tsd-kind-icon">logs<wbr>Loaded<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L57">providers/persistence/persistence.ts:57</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="persistentlogs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> persistent<wbr>Logs</h3>
+					<div class="tsd-signature tsd-kind-icon">persistent<wbr>Logs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L51">providers/persistence/persistence.ts:51</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="persistentlogsenabled" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> persistent<wbr>Logs<wbr>Enabled</h3>
+					<div class="tsd-signature tsd-kind-icon">persistent<wbr>Logs<wbr>Enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L58">providers/persistence/persistence.ts:58</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="platform" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> platform</h3>
+					<div class="tsd-signature tsd-kind-icon">platform<span class="tsd-signature-symbol">:</span> <a href="_providers_platform_platform_.platformprovider.html" class="tsd-signature-type">PlatformProvider</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L62">providers/persistence/persistence.ts:62</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="storage" class="tsd-anchor"></a>
+					<h3>storage</h3>
+					<div class="tsd-signature tsd-kind-icon">storage<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_providers_persistence_persistence_.storage.html" class="tsd-signature-type">Storage</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L50">providers/persistence/persistence.ts:50</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="_subscribeevents" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _subscribe<wbr>Events</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">_subscribe<wbr>Events<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L74">providers/persistence/persistence.ts:74</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="_unsubscribeevents" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _unsubscribe<wbr>Events</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">_unsubscribe<wbr>Events<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L82">providers/persistence/persistence.ts:82</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="checklogsconfig" class="tsd-anchor"></a>
+					<h3>check<wbr>Logs<wbr>Config</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Logs<wbr>Config<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L115">providers/persistence/persistence.ts:115</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="checkquota" class="tsd-anchor"></a>
+					<h3>check<wbr>Quota</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Quota<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L368">providers/persistence/persistence.ts:368</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="clearbackupflag" class="tsd-anchor"></a>
+					<h3>clear<wbr>Backup<wbr>Flag</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">clear<wbr>Backup<wbr>Flag<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L253">providers/persistence/persistence.ts:253</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="clearconfig" class="tsd-anchor"></a>
+					<h3>clear<wbr>Config</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">clear<wbr>Config<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L277">providers/persistence/persistence.ts:277</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="clearlastaddress" class="tsd-anchor"></a>
+					<h3>clear<wbr>Last<wbr>Address</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">clear<wbr>Last<wbr>Address<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L241">providers/persistence/persistence.ts:241</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="deleteoldlogs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> delete<wbr>Old<wbr>Logs</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Old<wbr>Logs<span class="tsd-signature-symbol">(</span>logs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L133">providers/persistence/persistence.ts:133</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>logs: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="deleteprofile" class="tsd-anchor"></a>
+					<h3>delete<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Profile<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L221">providers/persistence/persistence.ts:221</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getaddressbook" class="tsd-anchor"></a>
+					<h3>get<wbr>Address<wbr>Book</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Address<wbr>Book<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L352">providers/persistence/persistence.ts:352</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getaddressmanager" class="tsd-anchor"></a>
+					<h3>get<wbr>Address<wbr>Manager</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Address<wbr>Manager<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L339">providers/persistence/persistence.ts:339</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getappidentity" class="tsd-anchor"></a>
+					<h3>get<wbr>App<wbr>Identity</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>App<wbr>Identity<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L410">providers/persistence/persistence.ts:410</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getbackupflag" class="tsd-anchor"></a>
+					<h3>get<wbr>Backup<wbr>Flag</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Backup<wbr>Flag<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L249">providers/persistence/persistence.ts:249</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getbalancecache" class="tsd-anchor"></a>
+					<h3>get<wbr>Balance<wbr>Cache</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Balance<wbr>Cache<span class="tsd-signature-symbol">(</span>cardId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L398">providers/persistence/persistence.ts:398</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>cardId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getbitpayaccounts" class="tsd-anchor"></a>
+					<h3>get<wbr>Bitpay<wbr>Accounts</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Bitpay<wbr>Accounts<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L439">providers/persistence/persistence.ts:439</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getbitpaydebitcards" class="tsd-anchor"></a>
+					<h3>get<wbr>Bitpay<wbr>Debit<wbr>Cards</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Bitpay<wbr>Debit<wbr>Cards<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L492">providers/persistence/persistence.ts:492</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getcleanandscanaddresses" class="tsd-anchor"></a>
+					<h3>get<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L261">providers/persistence/persistence.ts:261</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getconfig" class="tsd-anchor"></a>
+					<h3>get<wbr>Config</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Config<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L269">providers/persistence/persistence.ts:269</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getcopaydisclaimerflag" class="tsd-anchor"></a>
+					<h3>get<wbr>Copay<wbr>Disclaimer<wbr>Flag</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Copay<wbr>Disclaimer<wbr>Flag<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L306">providers/persistence/persistence.ts:306</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getcopayonboardingflag" class="tsd-anchor"></a>
+					<h3>get<wbr>Copay<wbr>Onboarding<wbr>Flag</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Copay<wbr>Onboarding<wbr>Flag<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L310">providers/persistence/persistence.ts:310</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getemaillawcompliance" class="tsd-anchor"></a>
+					<h3>get<wbr>Email<wbr>Law<wbr>Compliance</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Email<wbr>Law<wbr>Compliance<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L552">providers/persistence/persistence.ts:552</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getfocusedwalletid" class="tsd-anchor"></a>
+					<h3>get<wbr>Focused<wbr>Wallet<wbr>Id</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Focused<wbr>Wallet<wbr>Id<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L229">providers/persistence/persistence.ts:229</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gethidebalanceflag" class="tsd-anchor"></a>
+					<h3>get<wbr>Hide<wbr>Balance<wbr>Flag</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Hide<wbr>Balance<wbr>Flag<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L293">providers/persistence/persistence.ts:293</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gethometipaccepted" class="tsd-anchor"></a>
+					<h3>get<wbr>Home<wbr>Tip<wbr>Accepted</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Home<wbr>Tip<wbr>Accepted<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L281">providers/persistence/persistence.ts:281</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getlastaddress" class="tsd-anchor"></a>
+					<h3>get<wbr>Last<wbr>Address</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Last<wbr>Address<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L233">providers/persistence/persistence.ts:233</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getlastcurrencyused" class="tsd-anchor"></a>
+					<h3>get<wbr>Last<wbr>Currency<wbr>Used</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Last<wbr>Currency<wbr>Used<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L364">providers/persistence/persistence.ts:364</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getlockstatus" class="tsd-anchor"></a>
+					<h3>get<wbr>Lock<wbr>Status</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Lock<wbr>Status<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L540">providers/persistence/persistence.ts:540</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getlogs" class="tsd-anchor"></a>
+					<h3>get<wbr>Logs</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Logs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L326">providers/persistence/persistence.ts:326</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getpersistentlogs" class="tsd-anchor"></a>
+					<h3>get<wbr>Persistent<wbr>Logs</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Persistent<wbr>Logs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L94">providers/persistence/persistence.ts:94</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getprofile" class="tsd-anchor"></a>
+					<h3>get<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Profile<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L213">providers/persistence/persistence.ts:213</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getremoteprefsstoredflag" class="tsd-anchor"></a>
+					<h3>get<wbr>Remote<wbr>Prefs<wbr>Stored<wbr>Flag</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Remote<wbr>Prefs<wbr>Stored<wbr>Flag<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L318">providers/persistence/persistence.ts:318</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gettxconfirmnotification" class="tsd-anchor"></a>
+					<h3>get<wbr>TxConfirm<wbr>Notification</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>TxConfirm<wbr>Notification<span class="tsd-signature-symbol">(</span>txid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L431">providers/persistence/persistence.ts:431</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>txid: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gettxhistory" class="tsd-anchor"></a>
+					<h3>get<wbr>TxHistory</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>TxHistory<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L386">providers/persistence/persistence.ts:386</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getwalletorder" class="tsd-anchor"></a>
+					<h3>get<wbr>Wallet<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Wallet<wbr>Order<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L528">providers/persistence/persistence.ts:528</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="load" class="tsd-anchor"></a>
+					<h3>load</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">load<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L88">providers/persistence/persistence.ts:88</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="persistentlogschange" class="tsd-anchor"></a>
+					<h3>persistent<wbr>Logs<wbr>Change</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">persistent<wbr>Logs<wbr>Change<span class="tsd-signature-symbol">(</span>enabled<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L163">providers/persistence/persistence.ts:163</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>enabled: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removeaddressmanager" class="tsd-anchor"></a>
+					<h3>remove<wbr>Address<wbr>Manager</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Address<wbr>Manager<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L343">providers/persistence/persistence.ts:343</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removeaddressbook" class="tsd-anchor"></a>
+					<h3>remove<wbr>Addressbook</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Addressbook<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L356">providers/persistence/persistence.ts:356</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removeallwalletdata" class="tsd-anchor"></a>
+					<h3>remove<wbr>All<wbr>Wallet<wbr>Data</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>All<wbr>Wallet<wbr>Data<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L418">providers/persistence/persistence.ts:418</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removeappidentity" class="tsd-anchor"></a>
+					<h3>remove<wbr>App<wbr>Identity</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>App<wbr>Identity<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L414">providers/persistence/persistence.ts:414</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removebalancecache" class="tsd-anchor"></a>
+					<h3>remove<wbr>Balance<wbr>Cache</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Balance<wbr>Cache<span class="tsd-signature-symbol">(</span>cardId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L402">providers/persistence/persistence.ts:402</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>cardId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removebitpayaccount" class="tsd-anchor"></a>
+					<h3>remove<wbr>Bitpay<wbr>Account</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Bitpay<wbr>Account<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L467">providers/persistence/persistence.ts:467</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>email: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removebitpaydebitcard" class="tsd-anchor"></a>
+					<h3>remove<wbr>Bitpay<wbr>Debit<wbr>Card</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Bitpay<wbr>Debit<wbr>Card<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, cardEid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L510">providers/persistence/persistence.ts:510</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>cardEid: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removecleanandscanaddresses" class="tsd-anchor"></a>
+					<h3>remove<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L265">providers/persistence/persistence.ts:265</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removeemaillawcompliance" class="tsd-anchor"></a>
+					<h3>remove<wbr>Email<wbr>Law<wbr>Compliance</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Email<wbr>Law<wbr>Compliance<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L556">providers/persistence/persistence.ts:556</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removelockstatus" class="tsd-anchor"></a>
+					<h3>remove<wbr>Lock<wbr>Status</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Lock<wbr>Status<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L544">providers/persistence/persistence.ts:544</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removelogs" class="tsd-anchor"></a>
+					<h3>remove<wbr>Logs</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Logs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L330">providers/persistence/persistence.ts:330</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removetxconfirmnotification" class="tsd-anchor"></a>
+					<h3>remove<wbr>TxConfirm<wbr>Notification</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>TxConfirm<wbr>Notification<span class="tsd-signature-symbol">(</span>txid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L435">providers/persistence/persistence.ts:435</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>txid: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removetxhistory" class="tsd-anchor"></a>
+					<h3>remove<wbr>TxHistory</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>TxHistory<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L390">providers/persistence/persistence.ts:390</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removewalletorder" class="tsd-anchor"></a>
+					<h3>remove<wbr>Wallet<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Wallet<wbr>Order<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L532">providers/persistence/persistence.ts:532</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="savelog" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> save<wbr>Log</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">save<wbr>Log<span class="tsd-signature-symbol">(</span>newLog<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L192">providers/persistence/persistence.ts:192</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>newLog: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="savenewlog" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> save<wbr>New<wbr>Log</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">save<wbr>New<wbr>Log<span class="tsd-signature-symbol">(</span>newLog<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L176">providers/persistence/persistence.ts:176</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>newLog: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setaddressbook" class="tsd-anchor"></a>
+					<h3>set<wbr>Address<wbr>Book</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Address<wbr>Book<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, addressbook<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L348">providers/persistence/persistence.ts:348</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>addressbook: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setaddressmanager" class="tsd-anchor"></a>
+					<h3>set<wbr>Address<wbr>Manager</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Address<wbr>Manager<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, addressManager<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L335">providers/persistence/persistence.ts:335</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>addressManager: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setappidentity" class="tsd-anchor"></a>
+					<h3>set<wbr>App<wbr>Identity</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>App<wbr>Identity<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L406">providers/persistence/persistence.ts:406</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setbackupflag" class="tsd-anchor"></a>
+					<h3>set<wbr>Backup<wbr>Flag</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Backup<wbr>Flag<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L245">providers/persistence/persistence.ts:245</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setbalancecache" class="tsd-anchor"></a>
+					<h3>set<wbr>Balance<wbr>Cache</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Balance<wbr>Cache<span class="tsd-signature-symbol">(</span>cardId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L394">providers/persistence/persistence.ts:394</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>cardId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setbitpayaccount" class="tsd-anchor"></a>
+					<h3>set<wbr>Bitpay<wbr>Account</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Bitpay<wbr>Account<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L443">providers/persistence/persistence.ts:443</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">object</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> family<wbr>Name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> given<wbr>Name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setbitpaydebitcards" class="tsd-anchor"></a>
+					<h3>set<wbr>Bitpay<wbr>Debit<wbr>Cards</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Bitpay<wbr>Debit<wbr>Cards<span class="tsd-signature-symbol">(</span>network<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, cards<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L475">providers/persistence/persistence.ts:475</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>network: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>email: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>cards: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setcleanandscanaddresses" class="tsd-anchor"></a>
+					<h3>set<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L257">providers/persistence/persistence.ts:257</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setdisclaimeraccepted" class="tsd-anchor"></a>
+					<h3>set<wbr>Disclaimer<wbr>Accepted</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Disclaimer<wbr>Accepted<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L297">providers/persistence/persistence.ts:297</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setemaillawcompliance" class="tsd-anchor"></a>
+					<h3>set<wbr>Email<wbr>Law<wbr>Compliance</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Email<wbr>Law<wbr>Compliance<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L548">providers/persistence/persistence.ts:548</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="sethidebalanceflag" class="tsd-anchor"></a>
+					<h3>set<wbr>Hide<wbr>Balance<wbr>Flag</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Hide<wbr>Balance<wbr>Flag<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L289">providers/persistence/persistence.ts:289</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>val: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="sethometipaccepted" class="tsd-anchor"></a>
+					<h3>set<wbr>Home<wbr>Tip<wbr>Accepted</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Home<wbr>Tip<wbr>Accepted<span class="tsd-signature-symbol">(</span>homeTip<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L285">providers/persistence/persistence.ts:285</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>homeTip: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setlastcurrencyused" class="tsd-anchor"></a>
+					<h3>set<wbr>Last<wbr>Currency<wbr>Used</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Last<wbr>Currency<wbr>Used<span class="tsd-signature-symbol">(</span>lastCurrencyUsed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L360">providers/persistence/persistence.ts:360</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>lastCurrencyUsed: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setlockstatus" class="tsd-anchor"></a>
+					<h3>set<wbr>Lock<wbr>Status</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Lock<wbr>Status<span class="tsd-signature-symbol">(</span>isLocked<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L536">providers/persistence/persistence.ts:536</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>isLocked: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setlogs" class="tsd-anchor"></a>
+					<h3>set<wbr>Logs</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Logs<span class="tsd-signature-symbol">(</span>logs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L322">providers/persistence/persistence.ts:322</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>logs: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setonboardingcompleted" class="tsd-anchor"></a>
+					<h3>set<wbr>Onboarding<wbr>Completed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Onboarding<wbr>Completed<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L301">providers/persistence/persistence.ts:301</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setremoteprefsstoredflag" class="tsd-anchor"></a>
+					<h3>set<wbr>Remote<wbr>Prefs<wbr>Stored<wbr>Flag</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Remote<wbr>Prefs<wbr>Stored<wbr>Flag<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L314">providers/persistence/persistence.ts:314</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="settxconfirmnotification" class="tsd-anchor"></a>
+					<h3>set<wbr>TxConfirm<wbr>Notification</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>TxConfirm<wbr>Notification<span class="tsd-signature-symbol">(</span>txid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L427">providers/persistence/persistence.ts:427</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>txid: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>val: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="settxhistory" class="tsd-anchor"></a>
+					<h3>set<wbr>TxHistory</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>TxHistory<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, txs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L379">providers/persistence/persistence.ts:379</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>txs: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setwalletorder" class="tsd-anchor"></a>
+					<h3>set<wbr>Wallet<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Wallet<wbr>Order<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, order<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L524">providers/persistence/persistence.ts:524</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>order: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="storeconfig" class="tsd-anchor"></a>
+					<h3>store<wbr>Config</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">store<wbr>Config<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L273">providers/persistence/persistence.ts:273</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>config: <span class="tsd-signature-type">object</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="storefocusedwalletid" class="tsd-anchor"></a>
+					<h3>store<wbr>Focused<wbr>Wallet<wbr>Id</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">store<wbr>Focused<wbr>Wallet<wbr>Id<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L225">providers/persistence/persistence.ts:225</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="storelastaddress" class="tsd-anchor"></a>
+					<h3>store<wbr>Last<wbr>Address</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">store<wbr>Last<wbr>Address<span class="tsd-signature-symbol">(</span>walletId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, address<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L237">providers/persistence/persistence.ts:237</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>walletId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>address: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="storenewprofile" class="tsd-anchor"></a>
+					<h3>store<wbr>New<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">store<wbr>New<wbr>Profile<span class="tsd-signature-symbol">(</span>profile<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L205">providers/persistence/persistence.ts:205</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profile: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="storeprofile" class="tsd-anchor"></a>
+					<h3>store<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">store<wbr>Profile<span class="tsd-signature-symbol">(</span>profile<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Evelynzzz/wallet/blob/edec73fd4/src/providers/persistence/persistence.ts#L209">providers/persistence/persistence.ts:209</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profile: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_providers_persistence_persistence_.html">"providers/persistence/persistence"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_providers_persistence_persistence_.network.html" class="tsd-kind-icon">Network</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_providers_persistence_persistence_.persistenceprovider.html" class="tsd-kind-icon">Persistence<wbr>Provider</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#events" class="tsd-kind-icon">events</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#file" class="tsd-kind-icon">file</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#logger" class="tsd-kind-icon">logger</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#logsbuffer" class="tsd-kind-icon">logs<wbr>Buffer</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#logsloaded" class="tsd-kind-icon">logs<wbr>Loaded</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#persistentlogs" class="tsd-kind-icon">persistent<wbr>Logs</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#persistentlogsenabled" class="tsd-kind-icon">persistent<wbr>Logs<wbr>Enabled</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#platform" class="tsd-kind-icon">platform</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#storage" class="tsd-kind-icon">storage</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#_subscribeevents" class="tsd-kind-icon">_subscribe<wbr>Events</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#_unsubscribeevents" class="tsd-kind-icon">_unsubscribe<wbr>Events</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#checklogsconfig" class="tsd-kind-icon">check<wbr>Logs<wbr>Config</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#checkquota" class="tsd-kind-icon">check<wbr>Quota</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#clearbackupflag" class="tsd-kind-icon">clear<wbr>Backup<wbr>Flag</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#clearconfig" class="tsd-kind-icon">clear<wbr>Config</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#clearlastaddress" class="tsd-kind-icon">clear<wbr>Last<wbr>Address</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#deleteoldlogs" class="tsd-kind-icon">delete<wbr>Old<wbr>Logs</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#deleteprofile" class="tsd-kind-icon">delete<wbr>Profile</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getaddressbook" class="tsd-kind-icon">get<wbr>Address<wbr>Book</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getaddressmanager" class="tsd-kind-icon">get<wbr>Address<wbr>Manager</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getappidentity" class="tsd-kind-icon">get<wbr>App<wbr>Identity</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getbackupflag" class="tsd-kind-icon">get<wbr>Backup<wbr>Flag</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getbalancecache" class="tsd-kind-icon">get<wbr>Balance<wbr>Cache</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getbitpayaccounts" class="tsd-kind-icon">get<wbr>Bitpay<wbr>Accounts</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getbitpaydebitcards" class="tsd-kind-icon">get<wbr>Bitpay<wbr>Debit<wbr>Cards</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getcleanandscanaddresses" class="tsd-kind-icon">get<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getconfig" class="tsd-kind-icon">get<wbr>Config</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getcopaydisclaimerflag" class="tsd-kind-icon">get<wbr>Copay<wbr>Disclaimer<wbr>Flag</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getcopayonboardingflag" class="tsd-kind-icon">get<wbr>Copay<wbr>Onboarding<wbr>Flag</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getemaillawcompliance" class="tsd-kind-icon">get<wbr>Email<wbr>Law<wbr>Compliance</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getfocusedwalletid" class="tsd-kind-icon">get<wbr>Focused<wbr>Wallet<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#gethidebalanceflag" class="tsd-kind-icon">get<wbr>Hide<wbr>Balance<wbr>Flag</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#gethometipaccepted" class="tsd-kind-icon">get<wbr>Home<wbr>Tip<wbr>Accepted</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getlastaddress" class="tsd-kind-icon">get<wbr>Last<wbr>Address</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getlastcurrencyused" class="tsd-kind-icon">get<wbr>Last<wbr>Currency<wbr>Used</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getlockstatus" class="tsd-kind-icon">get<wbr>Lock<wbr>Status</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getlogs" class="tsd-kind-icon">get<wbr>Logs</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getpersistentlogs" class="tsd-kind-icon">get<wbr>Persistent<wbr>Logs</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getprofile" class="tsd-kind-icon">get<wbr>Profile</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getremoteprefsstoredflag" class="tsd-kind-icon">get<wbr>Remote<wbr>Prefs<wbr>Stored<wbr>Flag</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#gettxconfirmnotification" class="tsd-kind-icon">get<wbr>TxConfirm<wbr>Notification</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#gettxhistory" class="tsd-kind-icon">get<wbr>TxHistory</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#getwalletorder" class="tsd-kind-icon">get<wbr>Wallet<wbr>Order</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#load" class="tsd-kind-icon">load</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#persistentlogschange" class="tsd-kind-icon">persistent<wbr>Logs<wbr>Change</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removeaddressmanager" class="tsd-kind-icon">remove<wbr>Address<wbr>Manager</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removeaddressbook" class="tsd-kind-icon">remove<wbr>Addressbook</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removeallwalletdata" class="tsd-kind-icon">remove<wbr>All<wbr>Wallet<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removeappidentity" class="tsd-kind-icon">remove<wbr>App<wbr>Identity</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removebalancecache" class="tsd-kind-icon">remove<wbr>Balance<wbr>Cache</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removebitpayaccount" class="tsd-kind-icon">remove<wbr>Bitpay<wbr>Account</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removebitpaydebitcard" class="tsd-kind-icon">remove<wbr>Bitpay<wbr>Debit<wbr>Card</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removecleanandscanaddresses" class="tsd-kind-icon">remove<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removeemaillawcompliance" class="tsd-kind-icon">remove<wbr>Email<wbr>Law<wbr>Compliance</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removelockstatus" class="tsd-kind-icon">remove<wbr>Lock<wbr>Status</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removelogs" class="tsd-kind-icon">remove<wbr>Logs</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removetxconfirmnotification" class="tsd-kind-icon">remove<wbr>TxConfirm<wbr>Notification</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removetxhistory" class="tsd-kind-icon">remove<wbr>TxHistory</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#removewalletorder" class="tsd-kind-icon">remove<wbr>Wallet<wbr>Order</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#savelog" class="tsd-kind-icon">save<wbr>Log</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#savenewlog" class="tsd-kind-icon">save<wbr>New<wbr>Log</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setaddressbook" class="tsd-kind-icon">set<wbr>Address<wbr>Book</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setaddressmanager" class="tsd-kind-icon">set<wbr>Address<wbr>Manager</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setappidentity" class="tsd-kind-icon">set<wbr>App<wbr>Identity</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setbackupflag" class="tsd-kind-icon">set<wbr>Backup<wbr>Flag</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setbalancecache" class="tsd-kind-icon">set<wbr>Balance<wbr>Cache</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setbitpayaccount" class="tsd-kind-icon">set<wbr>Bitpay<wbr>Account</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setbitpaydebitcards" class="tsd-kind-icon">set<wbr>Bitpay<wbr>Debit<wbr>Cards</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setcleanandscanaddresses" class="tsd-kind-icon">set<wbr>Clean<wbr>And<wbr>Scan<wbr>Addresses</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setdisclaimeraccepted" class="tsd-kind-icon">set<wbr>Disclaimer<wbr>Accepted</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setemaillawcompliance" class="tsd-kind-icon">set<wbr>Email<wbr>Law<wbr>Compliance</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#sethidebalanceflag" class="tsd-kind-icon">set<wbr>Hide<wbr>Balance<wbr>Flag</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#sethometipaccepted" class="tsd-kind-icon">set<wbr>Home<wbr>Tip<wbr>Accepted</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setlastcurrencyused" class="tsd-kind-icon">set<wbr>Last<wbr>Currency<wbr>Used</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setlockstatus" class="tsd-kind-icon">set<wbr>Lock<wbr>Status</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setlogs" class="tsd-kind-icon">set<wbr>Logs</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setonboardingcompleted" class="tsd-kind-icon">set<wbr>Onboarding<wbr>Completed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setremoteprefsstoredflag" class="tsd-kind-icon">set<wbr>Remote<wbr>Prefs<wbr>Stored<wbr>Flag</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#settxconfirmnotification" class="tsd-kind-icon">set<wbr>TxConfirm<wbr>Notification</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#settxhistory" class="tsd-kind-icon">set<wbr>TxHistory</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#setwalletorder" class="tsd-kind-icon">set<wbr>Wallet<wbr>Order</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#storeconfig" class="tsd-kind-icon">store<wbr>Config</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#storefocusedwalletid" class="tsd-kind-icon">store<wbr>Focused<wbr>Wallet<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#storelastaddress" class="tsd-kind-icon">store<wbr>Last<wbr>Address</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#storenewprofile" class="tsd-kind-icon">store<wbr>New<wbr>Profile</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_providers_persistence_persistence_.persistenceprovider.html#storeprofile" class="tsd-kind-icon">store<wbr>Profile</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../interfaces/_providers_persistence_persistence_.storage.html" class="tsd-kind-icon">Storage</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_providers_persistence_persistence_.html#keys" class="tsd-kind-icon">Keys</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
