@@ -32,14 +32,15 @@ export class BackupGamePage {
   @ViewChild(Navbar)
   navBar: Navbar;
 
+  /** If it is from onboarding page. */
   private fromOnboarding: boolean;
   private password: string;
+  private walletId: string;
 
   public currentIndex: number;
   public deleted: boolean;
   public mnemonicWords: string[];
   public shuffledMnemonicWords;
-  // public password: string;
   public customWords;
   public selectComplete: boolean;
   public error: boolean;
@@ -48,9 +49,8 @@ export class BackupGamePage {
   public useIdeograms;
   public wallet;
   public keys;
-  public isWrongOrder: boolean; // whether word is selected in wrong order when check mnemonic
-
-  private walletId: string;
+  /** whether word is selected in wrong order when check mnemonic */
+  public isWrongOrder: boolean;
 
   constructor(
     private events: Events,
@@ -136,6 +136,11 @@ export class BackupGamePage {
     errorInfoSheet.present();
   }
 
+  /**
+   * Generate shuffled mnemonic words
+   * @param words mnemonic words
+   * @returns shuffled mnemonic words
+   */
   private shuffledWords(words: string[]) {
     const sort = _.sortBy(words);
 
@@ -147,6 +152,11 @@ export class BackupGamePage {
     });
   }
 
+  /**
+   * Add a button to the input area when a word is selected.
+   * @param index index of word in [shuffled mnemonic words]{@link shuffledMnemonicWords}.
+   * @param item selected word
+   */
   public addButton(index: number, item): void {
     const newWord = {
       word: item.word,
@@ -159,6 +169,11 @@ export class BackupGamePage {
     this.shouldContinue();
   }
 
+  /**
+   * Remove a button from the input area when a word is selected.
+   * @param index index of selected word in the input area
+   * @param item selected word
+   */
   public removeButton(index: number, item): void {
     // if ($scope.loading) return;
     this.customWords.splice(index, 1);
@@ -215,6 +230,9 @@ export class BackupGamePage {
     this.selectComplete = false;
   }
 
+  /**
+   * Set game flow. Get mnemonic words and generate shuffled words.
+   */
   private setFlow(): void {
     if (!this.keys) return;
 
@@ -253,6 +271,9 @@ export class BackupGamePage {
     }
   }
 
+  /**
+   * Verify if the words are in the correct order.
+   */
   private confirm(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.error = false;

@@ -26,6 +26,13 @@ export class PasswordModalPage {
   private onPauseSubscription: Subscription;
 
   public currentPassword: string;
+  /**
+   * Action could be:
+   * - checkPassword: use to check the pin code before entering
+   *    the APP. The Modal DO NOT have a cancel button.
+   * - checkFingerprint: use to check the touchID or faceID before
+   *    entering the APP. If the check is cancelled or failed, PIN can be used to unlock the app.
+   */
   public action: string;
   public unregister;
 
@@ -44,9 +51,6 @@ export class PasswordModalPage {
   ) {
     this.unregister = this.platform.registerBackButtonAction(() => {});
 
-    // action could be:
-    // - checkPassword: use to check the pin code before entering the APP. The Modal DO NOT have a cancel button.
-    // - checkFingerprint: use to check the touchID or faceID before entering the APP. If the check is cancelled or failed, PIN can be used to unlock the app.
     this.action = this.navParams.get('action');
 
     if (this.action === 'checkFingerprint') {
@@ -79,6 +83,9 @@ export class PasswordModalPage {
     this.onPauseSubscription.unsubscribe();
   }
 
+  /**
+   * Check touchid
+   */
   public checkFingerprint(): void {
     this.touchid.check().then(() => {
       this.unregister();
@@ -91,6 +98,9 @@ export class PasswordModalPage {
     this.navCtrl.pop({ animate: true }); // navigate to the previous page in the stack.
   }
 
+  /**
+   * Verify password.
+   */
   public confirm(): void {
     let wallets = this.profileProvider.getWallets();
     if (wallets && wallets[0]) {
@@ -106,6 +116,9 @@ export class PasswordModalPage {
     }
   }
 
+  /**
+   * Shake the password input when password is wrong.
+   */
   public shakeInput() {
     this.passwordInput.animate('shake');
     this.vibration.vibrate(100);
