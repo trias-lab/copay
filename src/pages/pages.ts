@@ -18,7 +18,6 @@ import { WalletDetailsPage } from '../pages/wallet-details/wallet-details';
 import { WalletTabsPage } from '../pages/wallet-tabs/wallet-tabs';
 
 /*Includes */
-import { CardItemPage } from '../pages/includes/card-item/card-item';
 import { GravatarPage } from '../pages/includes/gravatar/gravatar';
 import { TxpPage } from '../pages/includes/txp/txp';
 
@@ -123,7 +122,6 @@ export const PAGES = [
   WalletTabsPage,
   WalletBalancePage,
   WideHeaderPage,
-  CardItemPage,
   SlideToAcceptPage,
   SwapPage,
   SwapConfirmPage
