@@ -21,7 +21,6 @@ import { WalletTabsPage } from '../pages/wallet-tabs/wallet-tabs';
 import { CardItemPage } from '../pages/includes/card-item/card-item';
 import { GravatarPage } from '../pages/includes/gravatar/gravatar';
 import { TxpPage } from '../pages/includes/txp/txp';
-import { WalletActivityPage } from '../pages/includes/wallet-activity/wallet-activity';
 
 /* Tabs */
 import { HomePage } from '../pages/home/home';
@@ -31,7 +30,6 @@ import { SendPage } from '../pages/send/send';
 import { SettingsPage } from '../pages/settings/settings';
 
 /* Home */
-import { ActivityPage } from '../pages/home/activity/activity';
 import { ProposalsPage } from '../pages/home/proposals/proposals';
 
 /* Settings */
@@ -76,7 +74,6 @@ import { WideHeaderPage } from './templates/wide-header-page/wide-header-page';
 import { WalletTabsChild } from './wallet-tabs/wallet-tabs-child';
 
 export const PAGES = [
-  ActivityPage,
   AmountPage,
 
   AddressbookPage,
@@ -129,7 +126,6 @@ export const PAGES = [
   WalletTabsChild,
   WalletTabsPage,
   WalletBalancePage,
-  WalletActivityPage,
   WideHeaderPage,
   CardItemPage,
   SlideToAcceptPage,
