@@ -18,10 +18,8 @@ import { WalletDetailsPage } from '../pages/wallet-details/wallet-details';
 import { WalletTabsPage } from '../pages/wallet-tabs/wallet-tabs';
 
 /*Includes */
-import { CardItemPage } from '../pages/includes/card-item/card-item';
 import { GravatarPage } from '../pages/includes/gravatar/gravatar';
 import { TxpPage } from '../pages/includes/txp/txp';
-import { WalletActivityPage } from '../pages/includes/wallet-activity/wallet-activity';
 
 /* Tabs */
 import { HomePage } from '../pages/home/home';
@@ -29,10 +27,6 @@ import { ReceivePage } from '../pages/receive/receive';
 import { ScanPage } from '../pages/scan/scan';
 import { SendPage } from '../pages/send/send';
 import { SettingsPage } from '../pages/settings/settings';
-
-/* Home */
-import { ActivityPage } from '../pages/home/activity/activity';
-import { ProposalsPage } from '../pages/home/proposals/proposals';
 
 /* Settings */
 import { PasswordModalPage } from '../pages/password-modal/password-modal';
@@ -76,7 +70,6 @@ import { WideHeaderPage } from './templates/wide-header-page/wide-header-page';
 import { WalletTabsChild } from './wallet-tabs/wallet-tabs-child';
 
 export const PAGES = [
-  ActivityPage,
   AmountPage,
 
   AddressbookPage,
@@ -102,7 +95,6 @@ export const PAGES = [
   PaperWalletPage,
   PinPad,
   PasswordModalPage,
-  ProposalsPage,
   ReceivePage,
   ScanPage,
   SendPage,
@@ -129,9 +121,7 @@ export const PAGES = [
   WalletTabsChild,
   WalletTabsPage,
   WalletBalancePage,
-  WalletActivityPage,
   WideHeaderPage,
-  CardItemPage,
   SlideToAcceptPage,
   SwapPage,
   SwapConfirmPage

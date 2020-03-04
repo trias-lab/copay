@@ -22,8 +22,6 @@ import { AddressbookPage } from '../settings/addressbook/addressbook';
 import { SwapPage } from '../swap/swap';
 import { TxDetailsPage } from '../tx-details/tx-details';
 import { TxpDetailsPage } from '../txp-details/txp-details';
-import { ActivityPage } from './activity/activity';
-import { ProposalsPage } from './proposals/proposals';
 
 // Providers
 import { AddressBookProvider } from '../../providers/address-book/address-book';
@@ -1094,14 +1092,6 @@ export class HomePage {
       { showBackdrop: false, enableBackdropDismiss: false }
     );
     modal.present();
-  }
-
-  public openProposalsPage(): void {
-    this.navCtrl.push(ProposalsPage);
-  }
-
-  public openActivityPage(): void {
-    this.navCtrl.push(ActivityPage);
   }
 
   public doRefresh(refresher) {
