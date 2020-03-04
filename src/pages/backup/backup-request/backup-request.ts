@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+// import { TranslateService } from '@ngx-translate/core';
 import { AlertController, NavController, NavParams } from 'ionic-angular';
 
 // Providers
 import { Logger } from '../../../providers/logger/logger';
-import { PopupProvider } from '../../../providers/popup/popup';
+// import { PopupProvider } from '../../../providers/popup/popup';
 
 // Pages
-import { DisclaimerPage } from '../../onboarding/disclaimer/disclaimer';
+// import { DisclaimerPage } from '../../onboarding/disclaimer/disclaimer';
 import { BackupGamePage } from '../backup-game/backup-game';
 
 @Component({
@@ -25,10 +25,10 @@ export class BackupRequestPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    private logger: Logger,
-    private translate: TranslateService,
-    private popupProvider: PopupProvider
-  ) {
+    private logger: Logger
+  ) // private translate: TranslateService,
+  // private popupProvider: PopupProvider
+  {
     this.walletId = this.navParams.get('walletId');
     this.fromOnboarding = this.navParams.get('fromOnboarding');
     this.password = this.navParams.get('password');
