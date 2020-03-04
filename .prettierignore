@@ -9,3 +9,4 @@ platforms/
 plugins/
 www/
 src/assets/*.json
+docs/
