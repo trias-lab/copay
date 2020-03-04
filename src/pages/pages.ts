@@ -29,9 +29,6 @@ import { ScanPage } from '../pages/scan/scan';
 import { SendPage } from '../pages/send/send';
 import { SettingsPage } from '../pages/settings/settings';
 
-/* Home */
-import { ProposalsPage } from '../pages/home/proposals/proposals';
-
 /* Settings */
 import { PasswordModalPage } from '../pages/password-modal/password-modal';
 import { PinPad } from '../pages/pin-pad/pin-pad.component';
@@ -99,7 +96,6 @@ export const PAGES = [
   PaperWalletPage,
   PinPad,
   PasswordModalPage,
-  ProposalsPage,
   ReceivePage,
   ScanPage,
   SendPage,
