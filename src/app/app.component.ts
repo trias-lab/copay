@@ -66,6 +66,10 @@ export class CopayApp {
   private isWalletModalOpen: boolean;
   private walletModal: any;
 
+  /**
+   * Redirect to these pages when there are data coming.
+   * For example, redirect to AmountPage after scanning an address qrcode.
+   */
   private pageMap = {
     AddressbookAddPage,
     AddressAddPage,
@@ -117,6 +121,11 @@ export class CopayApp {
       });
   }
 
+  /**
+   * Load app info, storage and so on to initialize the app.
+   *
+   * @param readySource states which platform ready was used, for example `cordova`
+   */
   private onPlatformReady(readySource): void {
     this.appProvider
       .load()
@@ -135,6 +144,11 @@ export class CopayApp {
       });
   }
 
+  /**
+   * Get device info once the app is loaded.
+   *
+   * @param readySource states which platform ready was used, for example `cordova`
+   */
   private onAppLoad(readySource) {
     const deviceInfo = this.platformProvider.getDeviceInfo();
 
@@ -243,6 +257,9 @@ export class CopayApp {
     }
   }
 
+  /**
+   * Show password modal to verify fingerprint or pincode.
+   */
   private openLockModal(): void {
     if (this.isLockModalOpen) return;
     let config = this.configProvider.get();
@@ -260,7 +277,13 @@ export class CopayApp {
     }
   }
 
-  private openPasswordModal(action): void {
+  /**
+   * Navigate to [password modal page]{@link PasswordModalPage}
+   * based on the [`action`]{@link PasswordModalPage.action}.
+   *
+   * @param {string} action "checkPassword" or "checkFingerprint"
+   */
+  private openPasswordModal(action: string): void {
     this.isLockModalOpen = true;
     const modal = this.modalCtrl.create(
       PasswordModalPage,
@@ -283,6 +306,11 @@ export class CopayApp {
     });
   }
 
+  /**
+   * Open wallet details page.
+   *
+   * @param wallet
+   */
   private openWallet(wallet) {
     // check if modal is already open
     if (this.isWalletModalOpen) {

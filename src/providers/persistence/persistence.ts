@@ -14,6 +14,9 @@ export enum Network {
   testnet = 'testnet'
 }
 
+/**
+ * Local storage keys.
+ */
 const Keys = {
   ADDRESS_BOOK: network => 'addressbook-' + network,
   ADDRESS_MANAGER: walletId => 'addressManager-' + walletId,
@@ -85,6 +88,9 @@ export class PersistenceProvider {
     this.persistentLogsEnabled = false;
   }
 
+  /**
+   * Create file storage or local storage according to the platform.
+   */
   public load() {
     this.storage = this.platform.isCordova
       ? new FileStorage(this.file, this.logger)
