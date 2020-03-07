@@ -3,30 +3,34 @@
     <ion-title class="address-back-title"
       >{{ 'Address Book' | translate }}</ion-title
     >
-    <ion-buttons *ngIf="!isEmptyList && !showEditAllRadio" right>
+    <ion-buttons *ngIf="!isEmptyList && !inSelectMode" right>
       <button ion-button (click)="addEntry()" class="address-header-addOne">
         <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-buttons *ngIf="!isEmptyList && !showEditAllRadio" right>
-      <button ion-button (click)="editeEntry()" class="address-header-addOne">
+    <ion-buttons *ngIf="!isEmptyList && !inSelectMode" right>
+      <button
+        ion-button
+        (click)="toggleSelectMode()"
+        class="address-header-addOne"
+      >
         <ion-icon name="create"></ion-icon>
       </button>
     </ion-buttons>
 
-    <ion-buttons *ngIf="!isEmptyList && showEditAllRadio" right>
+    <ion-buttons *ngIf="!isEmptyList && inSelectMode" right>
       <button
         ion-button
-        (click)="deleteAddConfirm(filteredAddressbook)"
+        (click)="deleteContacts()"
         class="address-header-addOne"
       >
         <ion-icon name="trash"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-buttons *ngIf="!isEmptyList && showEditAllRadio" right>
+    <ion-buttons *ngIf="!isEmptyList && inSelectMode" right>
       <button
         ion-button
-        (click)="deleteCancel(filteredAddressbook)"
+        (click)="cancelAllSelect()"
         class="address-header-addOne"
       >
         <ion-icon name="checkmark"></ion-icon>
@@ -62,8 +66,8 @@
         *ngFor="let entry of filteredAddressbook; let i = index"
         (click)="viewEntry(entry)"
       >
-        <div class="check-radio" *ngIf="showEditAllRadio">
-          <span *ngIf="entry.showEditRadio"
+        <div class="check-radio" *ngIf="inSelectMode">
+          <span *ngIf="entry.isSelected"
             ><ion-icon name="checkmark"></ion-icon
           ></span>
         </div>
