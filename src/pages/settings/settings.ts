@@ -5,7 +5,7 @@ import { Logger } from '../../providers/logger/logger';
 
 // providers
 import { ConfigProvider } from '../../providers/config/config';
-import { ExternalLinkProvider } from '../../providers/external-link/external-link';
+// import { ExternalLinkProvider } from '../../providers/external-link/external-link';
 import { LanguageProvider } from '../../providers/language/language';
 import { PlatformProvider } from '../../providers/platform/platform';
 import { PopupProvider } from '../../providers/popup/popup';
@@ -13,7 +13,7 @@ import { ProfileProvider } from '../../providers/profile/profile';
 import { TouchIdProvider } from '../../providers/touchid/touchid';
 
 // pages
-import { AboutPage } from './about/about';
+// import { AboutPage } from './about/about';
 import { AddressbookPage } from './addressbook/addressbook';
 import { AdvancedPage } from './advanced/advanced';
 import { AltCurrencyPage } from './alt-currency/alt-currency';
@@ -42,7 +42,7 @@ export class SettingsPage {
   constructor(
     private navCtrl: NavController,
     private language: LanguageProvider,
-    private externalLinkProvider: ExternalLinkProvider,
+    // private externalLinkProvider: ExternalLinkProvider,
     private profileProvider: ProfileProvider,
     private configProvider: ConfigProvider,
     private logger: Logger,
@@ -92,9 +92,9 @@ export class SettingsPage {
     this.navCtrl.push(AdvancedPage);
   }
 
-  public openAboutPage(): void {
-    this.navCtrl.push(AboutPage);
-  }
+  // public openAboutPage(): void {
+  //   this.navCtrl.push(AboutPage);
+  // }
 
   public resetEncryptPassword(): void {
     this.profileProvider.resetEncryptPassword().then(() => {

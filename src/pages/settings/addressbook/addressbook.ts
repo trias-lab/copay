@@ -143,7 +143,7 @@ export class AddressbookPage {
           this.removeAddList(contact);
         })
         .then(() => {
-          this.deleteCancle(contact);
+          this.deleteCancel(contact);
         })
         .catch(err => {
           this.popupProvider.ionicAlert(this.translate.instant('Error'), err);
@@ -170,7 +170,7 @@ export class AddressbookPage {
     }
   }
 
-  public deleteCancle(contact): any {
+  public deleteCancel(contact): any {
     for (let i = 0; i < contact.length; i++) {
       contact[i].showEditRadio = false;
     }
