@@ -71,6 +71,10 @@ export class AddressbookAddPage {
     this.events.unsubscribe('update:address');
   }
 
+  /**
+   * Validation of email in the form.
+   * @param control
+   */
   private emailOrEmpty(control: AbstractControl): ValidationErrors | null {
     return control.value === '' ? null : Validators.email(control);
   }
@@ -89,6 +93,10 @@ export class AddressbookAddPage {
       });
   }
 
+  /**
+   * Remove prefix of the address.
+   * @param address
+   */
   private parseAddress(address: string): string {
     return address.replace(
       /^(bitcoincash:|bchtest:|bitcoin:|bitcoreEth:|bitcoreTry:)/i,

@@ -31,8 +31,8 @@ import { SettingsPage } from '../pages/settings/settings';
 /* Settings */
 import { PasswordModalPage } from '../pages/password-modal/password-modal';
 import { PinPad } from '../pages/pin-pad/pin-pad.component';
-import { AboutPage } from '../pages/settings/about/about';
-import { SessionLogPage } from '../pages/settings/about/session-log/session-log';
+// import { AboutPage } from '../pages/settings/about/about';
+// import { SessionLogPage } from '../pages/settings/about/session-log/session-log';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
 import { AddressbookPage } from '../pages/settings/addressbook/addressbook';
 import { AddressbookModifyPage } from '../pages/settings/addressbook/modify/modify';
@@ -42,8 +42,8 @@ import { AdvancedPage } from '../pages/settings/advanced/advanced';
 import { AltCurrencyPage } from '../pages/settings/alt-currency/alt-currency';
 import { FeePolicyPage } from '../pages/settings/fee-policy/fee-policy';
 import { LanguagePage } from '../pages/settings/language/language';
-import { NotificationsPage } from '../pages/settings/notifications/notifications';
-import { SharePage } from '../pages/settings/share/share';
+// import { NotificationsPage } from '../pages/settings/notifications/notifications';
+// import { SharePage } from '../pages/settings/share/share';
 import { AddressAddPage } from '../pages/wallet-details/add-address/add-address';
 
 /* Wallet Settings */
@@ -77,12 +77,12 @@ export const PAGES = [
   AddressbookAddPage,
   AddressbookViewPage,
   AddressbookModifyPage,
-  AboutPage,
+  // AboutPage,
   AdvancedPage,
   AltCurrencyPage,
   BackupRequestPage,
   ChooseFeeLevelPage,
-  SharePage,
+  // SharePage,
   ImportWalletPage,
   BackupGamePage,
   ConfirmPage,
@@ -99,10 +99,10 @@ export const PAGES = [
   ScanPage,
   SendPage,
   SettingsPage,
-  NotificationsPage,
+  // NotificationsPage,
   FeePolicyPage,
   SearchTxModalPage,
-  SessionLogPage,
+  // SessionLogPage,
   FinishModalPage,
   TabsPage,
   TxpDetailsPage,

@@ -530,11 +530,6 @@ export class HomePage {
     this.slideDown = false;
   }
 
-  public processClipboardData(data): void {
-    this.clearCountDownInterval();
-    this.incomingDataProvider.redir(data, { fromHomeCard: true });
-  }
-
   private clearCountDownInterval(): void {
     if (this.countDown) clearInterval(this.countDown);
   }

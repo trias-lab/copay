@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+// import { TranslateService } from '@ngx-translate/core';
 import { NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
 // providers
 import { ConfigProvider } from '../../providers/config/config';
-import { ExternalLinkProvider } from '../../providers/external-link/external-link';
+// import { ExternalLinkProvider } from '../../providers/external-link/external-link';
 import { LanguageProvider } from '../../providers/language/language';
 import { PlatformProvider } from '../../providers/platform/platform';
 import { PopupProvider } from '../../providers/popup/popup';
@@ -13,15 +13,14 @@ import { ProfileProvider } from '../../providers/profile/profile';
 import { TouchIdProvider } from '../../providers/touchid/touchid';
 
 // pages
-import { AboutPage } from './about/about';
+// import { AboutPage } from './about/about';
 import { AddressbookPage } from './addressbook/addressbook';
 import { AdvancedPage } from './advanced/advanced';
 import { AltCurrencyPage } from './alt-currency/alt-currency';
 import { FeePolicyPage } from './fee-policy/fee-policy';
 import { LanguagePage } from './language/language';
-import { NotificationsPage } from './notifications/notifications';
-import { SharePage } from './share/share';
-import { WalletSettingsPage } from './wallet-settings/wallet-settings';
+// import { NotificationsPage } from './notifications/notifications';
+// import { SharePage } from './share/share';
 
 @Component({
   selector: 'page-settings',
@@ -43,12 +42,12 @@ export class SettingsPage {
   constructor(
     private navCtrl: NavController,
     private language: LanguageProvider,
-    private externalLinkProvider: ExternalLinkProvider,
+    // private externalLinkProvider: ExternalLinkProvider,
     private profileProvider: ProfileProvider,
     private configProvider: ConfigProvider,
     private logger: Logger,
     private platformProvider: PlatformProvider,
-    private translate: TranslateService,
+    // private translate: TranslateService,
     private touchid: TouchIdProvider,
     private popupProvider: PopupProvider
   ) {
@@ -93,9 +92,9 @@ export class SettingsPage {
     this.navCtrl.push(AdvancedPage);
   }
 
-  public openAboutPage(): void {
-    this.navCtrl.push(AboutPage);
-  }
+  // public openAboutPage(): void {
+  //   this.navCtrl.push(AboutPage);
+  // }
 
   public resetEncryptPassword(): void {
     this.profileProvider.resetEncryptPassword().then(() => {
@@ -105,6 +104,10 @@ export class SettingsPage {
     });
   }
 
+  /**
+   * Enable or disable TouchID.
+   * Check TouchID before enable the option.
+   */
   public toggleFingerprint(): void {
     let lock = this.configProvider.get().lock;
     if (!this.fingerprintLock.enabled) {
@@ -124,6 +127,9 @@ export class SettingsPage {
     }
   }
 
+  /**
+   * Check if TouchID is available.
+   */
   private checkFingerprintLock() {
     let lockOptions = this.configProvider.get().lock;
     // let needsBackup = this.needsBackup();
@@ -168,41 +174,37 @@ export class SettingsPage {
     this.navCtrl.push(AddressbookPage);
   }
 
-  public openNotificationsPage(): void {
-    this.navCtrl.push(NotificationsPage);
-  }
+  // public openNotificationsPage(): void {
+  //   this.navCtrl.push(NotificationsPage);
+  // }
 
   public openFeePolicyPage(): void {
     this.navCtrl.push(FeePolicyPage);
   }
 
-  public openWalletSettingsPage(walletId: string): void {
-    this.navCtrl.push(WalletSettingsPage, { walletId });
-  }
+  // public openSharePage(): void {
+  //   this.navCtrl.push(SharePage);
+  // }
 
-  public openSharePage(): void {
-    this.navCtrl.push(SharePage);
-  }
-
-  public openHelpExternalLink(): void {
-    let url =
-      this.appName == 'Copay'
-        ? 'https://github.com/bitpay/copay/issues'
-        : 'https://help.bitpay.com/bitpay-app';
-    let optIn = true;
-    let title = null;
-    let message = this.translate.instant(
-      'Help and support information is available at the website.'
-    );
-    let okText = this.translate.instant('Open');
-    let cancelText = this.translate.instant('Go Back');
-    this.externalLinkProvider.open(
-      url,
-      optIn,
-      title,
-      message,
-      okText,
-      cancelText
-    );
-  }
+  // public openHelpExternalLink(): void {
+  //   let url =
+  //     this.appName == 'Copay'
+  //       ? 'https://github.com/bitpay/copay/issues'
+  //       : 'https://help.bitpay.com/bitpay-app';
+  //   let optIn = true;
+  //   let title = null;
+  //   let message = this.translate.instant(
+  //     'Help and support information is available at the website.'
+  //   );
+  //   let okText = this.translate.instant('Open');
+  //   let cancelText = this.translate.instant('Go Back');
+  //   this.externalLinkProvider.open(
+  //     url,
+  //     optIn,
+  //     title,
+  //     message,
+  //     okText,
+  //     cancelText
+  //   );
+  // }
 }

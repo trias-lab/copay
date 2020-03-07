@@ -182,32 +182,13 @@ export class AmountPage extends WalletTabsChild {
 
     const parentWalletCoin = this.coin;
 
-    if (parentWalletCoin == 'eth') {
+    if (parentWalletCoin == 'eth' || parentWalletCoin == 'try') {
       this.unitToCoin = this.unitToWei;
-    } else if (parentWalletCoin == 'try') {
-      this.unitToCoin = this.unitToWei;
+      this.coinToUnit = this.weiToUnit;
     } else {
       this.unitToCoin = this.unitToSatoshi;
-    }
-    // this.logger.info(
-    //   this.wallet.coin +
-    //     '--------------------------------------- this.wallet.coin!!!!!!!!!!!!!!!!!!!!!!!!!'
-    // );
-    // this.logger.info(
-    //   this.unitToCoin +
-    //     '--------------------------------------- this.unitToCoin!!!!!!!!!!!!!!!!!!!!!!!!!'
-    // );
-    if (parentWalletCoin == 'eth') {
-      this.coinToUnit = this.weiToUnit;
-    } else if (parentWalletCoin == 'try') {
-      this.coinToUnit = this.weiToUnit;
-    } else {
       this.coinToUnit = this.satToUnit;
     }
-    // this.unitToCoin =
-    //   parentWalletCoin !== 'eth' ? this.unitToSatoshi : this.unitToWei;
-    // this.coinToUnit =
-    //   parentWalletCoin !== 'eth' ? this.satToUnit : this.weiToUnit;
 
     if (parentWalletCoin === 'btc' || !parentWalletCoin) {
       this.availableUnits.push({
@@ -297,18 +278,16 @@ export class AmountPage extends WalletTabsChild {
 
   private getNextView() {
     let nextPage;
-    switch (this.navParams.data.nextPage) {
-      case 'CustomAmountPage':
-        nextPage = CustomAmountPage;
-        break;
-      default:
-        // hide send max for eth wallets
-        if (
-          this.navParams.data.coin !== 'eth' &&
-          this.navParams.data.coin !== 'try'
-        )
-          this.showSendMax = true;
-        nextPage = ConfirmPage;
+    if (this.navParams.data.nextPage === 'CustomAmountPage') {
+      nextPage = CustomAmountPage;
+    } else {
+      // hide send max for eth wallets
+      if (
+        this.navParams.data.coin !== 'eth' &&
+        this.navParams.data.coin !== 'try'
+      )
+        this.showSendMax = true;
+      nextPage = ConfirmPage;
     }
     return nextPage;
   }
