@@ -25,9 +25,8 @@ export class BackupRequestPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    private logger: Logger // private translate: TranslateService,
-  ) // private popupProvider: PopupProvider
-  {
+    private logger: Logger
+  ) {
     this.walletId = this.navParams.get('walletId');
     this.fromOnboarding = this.navParams.get('fromOnboarding');
     this.password = this.navParams.get('password');

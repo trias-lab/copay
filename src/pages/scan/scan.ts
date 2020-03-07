@@ -272,8 +272,10 @@ export class ScanPage {
     this.canOpenSettings = capabilities.canOpenSettings;
   }
 
+  /**
+   * Always update the view according to the scanner state.
+   */
   private handleCapabilities(): void {
-    // always update the view
     if (!this.scanProvider.isInitialized()) {
       this.currentState = this.scannerStates.loading;
     } else if (!this.scannerIsAvailable) {
@@ -296,6 +298,9 @@ export class ScanPage {
     }
   }
 
+  /**
+   * Activate QRScanner.
+   */
   public activate(): void {
     this.scanProvider
       .activate()
