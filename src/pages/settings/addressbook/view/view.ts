@@ -91,7 +91,7 @@ export class AddressbookViewPage {
 
   /**
    * Remove this contact.
-   * @param addr 
+   * @param addr
    */
   public remove(addr: string): void {
     var title = this.translate.instant('Warning!');
