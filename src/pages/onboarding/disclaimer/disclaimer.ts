@@ -16,8 +16,8 @@ import { PersistenceProvider } from '../../../providers/persistence/persistence'
 })
 export class DisclaimerPage {
   public accepted;
-  public terms;
-  public hasEmail: boolean;
+  // public terms;
+  // public hasEmail: boolean;
 
   constructor(
     public navCtrl: NavController,

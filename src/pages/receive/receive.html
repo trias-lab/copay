@@ -1,53 +1,53 @@
 <ion-header class="wallet-details-header">
   <ion-navbar>
-    <!-- <ion-buttons left>
-      <button class="modal-close-button" (click)="close()" ion-button>
-        <ion-icon ios="md-close" md="md-close"></ion-icon>
-      </button>
-    </ion-buttons> -->
-
     <ion-title>Receive {{ wallet.coin.toUpperCase() }}</ion-title>
-
-    <!-- <ion-title>{{
-      (wallet && wallet.name) || ('Receive' | translate)
-      }}</ion-title> -->
-
     <ion-buttons right>
-      <button *ngIf="
+      <button
+        *ngIf="
           wallet &&
           wallet.isComplete() &&
           !wallet.needsBackup &&
           showShareButton
         "
-        (click)="shareAddress()" ion-button icon-only>
+        (click)="shareAddress()"
+        ion-button
+        icon-only
+      >
         <ion-icon ios="ios-share-outline" name="more" md="md-share"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
-  <!-- <ion-toolbar>
-    <div *ngIf="!wallet.balanceHidden && !wallet.scanning && wallet.status" class="wallet-details-header__balance">
-      <span>{{ wallet.status && wallet.status.totalBalanceStr }}</span>
-      <ion-icon *ngIf="wallet.status.totalBalanceSat != wallet.status.spendableAmount" ios="ios-timer-outline" md="md-timer"></ion-icon>
-    </div>
-    <div *ngIf="wallet.balanceHidden && !wallet.scanning" class="wallet-details-header__balance-hidden">
-      <span class="title" translate>[Balance Hidden]</span>
-    </div>
-  </ion-toolbar> -->
+  <!--
+    <ion-toolbar>
+      <div *ngIf="!wallet.balanceHidden && !wallet.scanning && wallet.status" class="wallet-details-header__balance">
+        <span>{{ wallet.status && wallet.status.totalBalanceStr }}</span>
+        <ion-icon *ngIf="wallet.status.totalBalanceSat != wallet.status.spendableAmount" ios="ios-timer-outline" md="md-timer"></ion-icon>
+      </div>
+      <div *ngIf="wallet.balanceHidden && !wallet.scanning" class="wallet-details-header__balance-hidden">
+        <span class="title" translate>[Balance Hidden]</span>
+      </div>
+    </ion-toolbar>
+  -->
 </ion-header>
 
 <ion-content no-bounce>
   <div class="wrapper">
-    <div class="prompt-user-fullscreen-container" *ngIf="wallet && wallet.isComplete() && wallet.needsBackup">
+    <div
+      class="prompt-user-fullscreen-container"
+      *ngIf="wallet && wallet.isComplete() && wallet.needsBackup"
+    >
       <div class="prompt-user">
         <div class="title-icon">
           <img src="assets/img/single-folded-content.svg" />
         </div>
         <div class="title-info"><span translate>Needs Backup</span></div>
         <div class="subtitle-info">
-          <span translate>Before retrieving your wallet address, it's recommended that you
+          <span translate
+            >Before retrieving your wallet address, it's recommended that you
             first write down your recovery phrase and store it securely so that
             your wallet can be recovered in the case your device was lost or
-            stolen.</span>
+            stolen.</span
+          >
         </div>
         <button ion-button class="button-standard" (click)="goToBackup()">
           {{ 'Write Down Recovery Phrase' | translate }}
@@ -55,65 +55,43 @@
       </div>
     </div>
 
-    <!--
-      <div class="qr-container" *ngIf="wallet && wallet.isComplete() && !wallet.needsBackup">
-        <div class="card qr-card" [ngClass]="{'qr-code-bounce': playAnimation}" *ngIf="wallets[0] && address">
-          <ngx-qrcode (click)="showFullAddr()" *ngIf="address" copy-to-clipboard="{{ address }}" hide-toast="true" qrc-value="{{qrAddress}}"
-            qrc-class="aclass" qrc-errorCorrectionLevel="M"></ngx-qrcode>
-        </div>
-      </div>
-    -->
-
-    <!--
-      <div *ngIf="wallets[0]" class="receive-content">
-        <div *ngIf="wallet && wallet.isComplete() && !wallet.needsBackup" class="address-container">
-          <div class="text-address ellipsis">
-            <img src="assets/img/icon-bitcoin-small.svg" alt="BTC" width="12" />
-            <span class="address-divider"></span>
-            <div [ngClass]="{'fade-in-out': playAnimation}" (click)="showFullAddr()" class="address-text ellipsis">
-              <span copy-to-clipboard="{{ address }}" hide-toast="true">{{ address }}</span>
-            </div>
-
-            <button class="new-address-btn" detail-none text-center (click)="setAddress(true)">
-              <span class="new-address" ion-text color="primary" translate>
-                <img [hidden]="loading" class="spin-icon" [ngClass]="{'spin-backwards': playAnimation}" src="assets/img/right.svg"
-                  width="16" />
-                <div *ngIf="loading" [ngClass]="{'spin-fast': loading}" class="spinner"></div>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    -->
-
     <ion-card *ngIf="wallet && wallet.isComplete() && !wallet.needsBackup">
       <div>
-        <div [ngClass]="{ 'qr-code-bounce': playAnimation }" *ngIf="wallets[0] && address">
-          <ngx-qrcode (click)="showFullAddr()" *ngIf="address" copy-to-clipboard="{{ address }}" hide-toast="true"
-            qrc-value="{{qrAddress}}" qrc-class="aclass" qrc-errorCorrectionLevel="M"></ngx-qrcode>
+        <div
+          [ngClass]="{ 'qr-code-bounce': playAnimation }"
+          *ngIf="wallets[0] && address"
+        >
+          <ngx-qrcode
+            (click)="showFullAddr()"
+            *ngIf="address"
+            copy-to-clipboard="{{ address }}"
+            hide-toast="true"
+            qrc-value="{{qrAddress}}"
+            qrc-class="aclass"
+            qrc-errorCorrectionLevel="M"
+          ></ngx-qrcode>
         </div>
-        <p class="adress_deposit">Deposit only {{ wallet.coin.toUpperCase() }} to this address.</p>
+        <p class="adress_deposit">
+          Deposit only {{ wallet.coin.toUpperCase() }} to this address.
+        </p>
       </div>
 
       <div *ngIf="wallets[0]" class="receive-content">
-        <div *ngIf="wallet && wallet.isComplete() && !wallet.needsBackup" class="address-container">
+        <div
+          *ngIf="wallet && wallet.isComplete() && !wallet.needsBackup"
+          class="address-container"
+        >
           <div class="text-address ellipsis">
-            <!-- <span class="address-divider"></span> -->
             <div class="adress_copy_address">Address</div>
-            <div [ngClass]="{ 'fade-in-out': playAnimation }" class="address-text ellipsis">
+            <div
+              [ngClass]="{ 'fade-in-out': playAnimation }"
+              class="address-text ellipsis"
+            >
               <span hide-toast="true">{{address}}</span>
             </div>
-
-            <!--
-              <div class="new-address-btn" detail-none text-center (click)="setAddress(true)">
-                <span class="new-address" ion-text color="primary" translate>
-                  <img [hidden]="loading" class="spin-icon" [ngClass]="{'spin-backwards': playAnimation}" src="assets/img/right.svg"
-                    width="16" />
-                  <div *ngIf="loading" [ngClass]="{'spin-fast': loading}" class="spinner"></div>
-                </span>
-              </div>
-            -->
-            <div class="adress_copy_btn" copy-to-clipboard="{{ address }}">COPY</div>
+            <div class="adress_copy_btn" copy-to-clipboard="{{ address }}">
+              COPY
+            </div>
           </div>
         </div>
       </div>

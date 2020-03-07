@@ -98,36 +98,6 @@ export class ReceivePage extends WalletTabsChild {
     });
   }
 
-  public showMoreOptions(): void {
-    const showShare =
-      this.showShareButton &&
-      this.wallet &&
-      this.wallet.isComplete() &&
-      !this.wallet.needsBackup;
-    const optionsSheet = this.actionSheetProvider.createOptionsSheet(
-      'address-options',
-      { showShare }
-    );
-    optionsSheet.present();
-
-    optionsSheet.onDidDismiss(option => {
-      // if (option == 'request-amount') this.requestSpecificAmount();
-      if (option == 'share-address') this.shareAddress();
-    });
-    if (!this.showShareButton) return;
-    this.shareAddress();
-
-    // const qrcode =
-    //   '<div><ngx-qrcode  hide-toast="true" qrc-value="{{qrAddress}}"  qrc-errorCorrectionLevel="M"></ngx-qrcode></div>';
-
-    // var canvas = document.createElement('canvas');
-    // canvas.style.border = 'solid 1px red';
-    // canvas.id = 'canvas';
-    // canvas.style.width = '100%';
-    // canvas.style.height = '100%';
-    // this.socialSharing.share(this.address, 'text', '../');
-  }
-
   public showFullAddr(): void {
     const infoSheet = this.actionSheetProvider.createInfoSheet(
       'address-copied',

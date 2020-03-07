@@ -6,15 +6,10 @@ import { Logger } from '../../providers/logger/logger';
 // pages
 import { ImportWalletPage } from '../add/import-wallet/import-wallet';
 import { BackupRequestPage } from '../backup/backup-request/backup-request';
-// import { CollectEmailPage } from './collect-email/collect-email';
 
 // providers
-import { ActionSheetProvider } from '../../providers/action-sheet/action-sheet';
-import { AppProvider } from '../../providers/app/app';
 import { LanguageProvider } from '../../providers/language/language';
 import { OnGoingProcessProvider } from '../../providers/on-going-process/on-going-process';
-// import { PersistenceProvider } from '../../providers/persistence/persistence';
-import { PlatformProvider } from '../../providers/platform/platform';
 import { PopupProvider } from '../../providers/popup/popup';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { LanguagePage } from '../settings/language/language';
@@ -25,30 +20,20 @@ import { LanguagePage } from '../settings/language/language';
   templateUrl: 'onboarding.html'
 })
 export class OnboardingPage {
-  public isCopay: boolean;
-  public appName: string;
-  public isElectron: boolean;
   public currentLanguageName: string;
 
+  /** Number of retries if an error occurred while creating the default wallets.  */
   private retryCount: number = 0;
 
   constructor(
     public navCtrl: NavController,
     private logger: Logger,
     private translate: TranslateService,
-    private app: AppProvider,
-    private platformProvider: PlatformProvider,
-    private actionSheetProvider: ActionSheetProvider,
     private profileProvider: ProfileProvider,
     private onGoingProcessProvider: OnGoingProcessProvider,
-    // private persistenceProvider: PersistenceProvider,
     private popupProvider: PopupProvider,
     private language: LanguageProvider
-  ) {
-    this.appName = this.app.info.nameCase;
-    this.isCopay = this.appName == 'Copay';
-    this.isElectron = this.platformProvider.isElectron;
-  }
+  ) {}
 
   ionViewDidLoad() {
     this.logger.info('Loaded: OnboardingPage');
@@ -58,9 +43,6 @@ export class OnboardingPage {
     this.currentLanguageName = this.language.getName(
       this.language.getCurrent()
     );
-  }
-  ionViewDidEnter() {
-    if (this.isElectron) this.openElectronInfoModal();
   }
 
   public createDefaultWallet(): void {
@@ -113,16 +95,6 @@ export class OnboardingPage {
 
   public restoreFromBackup(): void {
     this.navCtrl.push(ImportWalletPage, { fromOnboarding: true });
-  }
-
-  public openElectronInfoModal(): void {
-    const infoSheet = this.actionSheetProvider.createInfoSheet(
-      'electron-info',
-      {
-        appName: this.appName
-      }
-    );
-    infoSheet.present();
   }
 
   public openLanguagePage(): void {
