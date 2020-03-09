@@ -3,7 +3,7 @@ import { async, ComponentFixture } from '@angular/core/testing';
 import { TestUtils } from '../../../test';
 
 import { AboutPage } from './about';
-import { SessionLogPage } from './session-log/session-log';
+// import { SessionLogPage } from './session-log/session-log';
 
 describe('AboutPage', () => {
   let fixture: ComponentFixture<AboutPage>;
