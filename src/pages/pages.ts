@@ -18,10 +18,8 @@ import { WalletDetailsPage } from '../pages/wallet-details/wallet-details';
 import { WalletTabsPage } from '../pages/wallet-tabs/wallet-tabs';
 
 /*Includes */
-import { CardItemPage } from '../pages/includes/card-item/card-item';
 import { GravatarPage } from '../pages/includes/gravatar/gravatar';
 import { TxpPage } from '../pages/includes/txp/txp';
-import { WalletActivityPage } from '../pages/includes/wallet-activity/wallet-activity';
 
 /* Tabs */
 import { HomePage } from '../pages/home/home';
@@ -30,15 +28,11 @@ import { ScanPage } from '../pages/scan/scan';
 import { SendPage } from '../pages/send/send';
 import { SettingsPage } from '../pages/settings/settings';
 
-/* Home */
-import { ActivityPage } from '../pages/home/activity/activity';
-import { ProposalsPage } from '../pages/home/proposals/proposals';
-
 /* Settings */
 import { PasswordModalPage } from '../pages/password-modal/password-modal';
 import { PinPad } from '../pages/pin-pad/pin-pad.component';
-import { AboutPage } from '../pages/settings/about/about';
-import { SessionLogPage } from '../pages/settings/about/session-log/session-log';
+// import { AboutPage } from '../pages/settings/about/about';
+// import { SessionLogPage } from '../pages/settings/about/session-log/session-log';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
 import { AddressbookPage } from '../pages/settings/addressbook/addressbook';
 import { AddressbookModifyPage } from '../pages/settings/addressbook/modify/modify';
@@ -48,8 +42,8 @@ import { AdvancedPage } from '../pages/settings/advanced/advanced';
 import { AltCurrencyPage } from '../pages/settings/alt-currency/alt-currency';
 import { FeePolicyPage } from '../pages/settings/fee-policy/fee-policy';
 import { LanguagePage } from '../pages/settings/language/language';
-import { NotificationsPage } from '../pages/settings/notifications/notifications';
-import { SharePage } from '../pages/settings/share/share';
+// import { NotificationsPage } from '../pages/settings/notifications/notifications';
+// import { SharePage } from '../pages/settings/share/share';
 import { AddressAddPage } from '../pages/wallet-details/add-address/add-address';
 
 /* Wallet Settings */
@@ -76,7 +70,6 @@ import { WideHeaderPage } from './templates/wide-header-page/wide-header-page';
 import { WalletTabsChild } from './wallet-tabs/wallet-tabs-child';
 
 export const PAGES = [
-  ActivityPage,
   AmountPage,
 
   AddressbookPage,
@@ -84,12 +77,12 @@ export const PAGES = [
   AddressbookAddPage,
   AddressbookViewPage,
   AddressbookModifyPage,
-  AboutPage,
+  // AboutPage,
   AdvancedPage,
   AltCurrencyPage,
   BackupRequestPage,
   ChooseFeeLevelPage,
-  SharePage,
+  // SharePage,
   ImportWalletPage,
   BackupGamePage,
   ConfirmPage,
@@ -102,15 +95,14 @@ export const PAGES = [
   PaperWalletPage,
   PinPad,
   PasswordModalPage,
-  ProposalsPage,
   ReceivePage,
   ScanPage,
   SendPage,
   SettingsPage,
-  NotificationsPage,
+  // NotificationsPage,
   FeePolicyPage,
   SearchTxModalPage,
-  SessionLogPage,
+  // SessionLogPage,
   FinishModalPage,
   TabsPage,
   TxpDetailsPage,
@@ -129,9 +121,7 @@ export const PAGES = [
   WalletTabsChild,
   WalletTabsPage,
   WalletBalancePage,
-  WalletActivityPage,
   WideHeaderPage,
-  CardItemPage,
   SlideToAcceptPage,
   SwapPage,
   SwapConfirmPage

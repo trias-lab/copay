@@ -22,14 +22,13 @@ import { AddressbookViewPage } from './view/view';
 })
 export class AddressbookPage {
   private cache: boolean = false;
-  public addressbook: object[] = [];
-  public filteredAddressbook: object[] = [];
 
+  public addressbook: object[] = [];
+  public filteredAddressbook: any[] = [];
   public isEmptyList: boolean;
   public addressArray: object[] = [];
-
-  // select edit address book list
-  public showEditAllRadio: boolean = false;
+  /** Whether enable to select multiple contacts. */
+  public inSelectMode: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -62,7 +61,7 @@ export class AddressbookPage {
             name: _.isObject(contact) ? contact.name : contact,
             address: k,
             email: _.isObject(contact) ? contact.email : null,
-            showEditRadio: false // Default not selected
+            isSelected: false // Default not selected
           });
         });
         this.addressbook = _.clone(contacts);
@@ -73,22 +72,33 @@ export class AddressbookPage {
       });
   }
 
+  /**
+   * Go to add contact page.
+   */
   public addEntry(): void {
     this.navCtrl.push(AddressbookAddPage);
   }
 
+  /**
+   * View details of the contact.
+   * If in select mode, only toggle the select box.
+   * @param contact
+   */
   public viewEntry(contact): void {
-    // if select editEntry option , this.showEditAllRadio = true
-    if (this.showEditAllRadio) {
-      // edit address book list
-      this.selectDeletAdd(contact);
+    // if in select mode, toggle the select box.
+    if (this.inSelectMode) {
+      contact.isSelected = !contact.isSelected;
     } else {
       this.navCtrl.push(AddressbookViewPage, { contact });
     }
   }
 
+  /**
+   * Search for contacts by the content of searchbar.
+   * @param event input event
+   */
   public getItems(event): void {
-    // set val to the value of the searchbar
+    // get the input content of searchbar
     let val = event.target.value;
 
     // if the value is an empty string don't filter the items
@@ -104,46 +114,36 @@ export class AddressbookPage {
     }
   }
 
-  // select edit address book list
-  public editeEntry(): void {
-    this.showEditAllRadio = true;
+  /**
+   * Toggle the select mode.
+   */
+  public toggleSelectMode(): void {
+    this.inSelectMode = !this.inSelectMode;
   }
-  // edit address book list
-  public selectDeletAdd(contactList): void {
-    contactList.showEditRadio = !contactList.showEditRadio;
-  }
-  public filterDeleteAdd(contact): any {
-    let deleteListAdd: object[] = [];
-    for (let i = 0; i < contact.length; i++) {
-      if (contact[i].showEditRadio) {
-        deleteListAdd.push(contact[i]);
-      }
-    }
-    return deleteListAdd;
-  }
-  public deleteAddConfirm(contact): void {
+
+  /**
+   * Handler for the onclick event of delete contacts button.
+   */
+  public deleteContacts(): void {
     var title = this.translate.instant('Warning!');
     var message = this.translate.instant(
       'Are you sure you want to delete this contact?'
     );
 
-    var isSelect: boolean = false;
-
-    _.each(contact, data => {
-      if (data.showEditRadio) {
-        isSelect = true;
-      }
+    // whether there is any selected contact
+    var hasSelection: boolean = _.some(this.filteredAddressbook, addr => {
+      return addr.isSelected;
     });
 
-    if (isSelect) {
+    if (hasSelection) {
       this.popupProvider
         .ionicConfirm(title, message, null, null)
         .then(res => {
           if (!res) return;
-          this.removeAddList(contact);
+          this.confirmDelete();
         })
         .then(() => {
-          this.deleteCancle(contact);
+          this.cancelAllSelect();
         })
         .catch(err => {
           this.popupProvider.ionicAlert(this.translate.instant('Error'), err);
@@ -159,22 +159,33 @@ export class AddressbookPage {
     }
   }
 
-  public async removeAddList(contact): Promise<any> {
-    let deleteListAdd = this.filterDeleteAdd(contact);
-    for (let i = 0; i < deleteListAdd.length; i++) {
+  /**
+   * Delete contacts from the address book and update the view.
+   * @param contacts
+   */
+  private async confirmDelete(): Promise<any> {
+    // Filter selected ones from contacts.
+    let contactsSelected = _.filter(this.filteredAddressbook, o => {
+      return o.isSelected;
+    });
+    for (let i = 0; i < contactsSelected.length; i++) {
       await this.addressBookProvider
-        .remove(deleteListAdd[i].address)
+        .remove(contactsSelected[i].address)
         .then(() => {
           this.initAddressbook();
         });
     }
   }
 
-  public deleteCancle(contact): any {
-    for (let i = 0; i < contact.length; i++) {
-      contact[i].showEditRadio = false;
+  /**
+   * Unselect all contacts.
+   * @param contacts contact collection
+   */
+  public cancelAllSelect(): void {
+    for (let i = 0; i < this.filteredAddressbook.length; i++) {
+      this.filteredAddressbook[i].isSelected = false;
     }
 
-    this.showEditAllRadio = false;
+    this.toggleSelectMode();
   }
 }

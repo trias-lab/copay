@@ -1512,7 +1512,7 @@ export class ProfileProvider {
           // use the same mnemonic of the BTC waller created above.
           optsTri.mnemonic = mnemonic;
 
-          let wallets = [];
+          let wallets: any = [];
           wallets.push(wallet);
 
           this.createWallet(optsEth, true).then(walletETH => {
@@ -1615,7 +1615,7 @@ export class ProfileProvider {
 
     opts = opts || {};
 
-    let ret = _.values(this.wallet as any);
+    let ret = _.values(this.wallet);
 
     if (opts.coin) {
       ret = _.filter(ret, x => {
@@ -1659,7 +1659,6 @@ export class ProfileProvider {
       ret = _.filter(ret, w => {
         return w.isComplete();
       });
-    } else {
     }
 
     // Add cached balance async
@@ -1809,7 +1808,7 @@ export class ProfileProvider {
               });
             }
 
-            _.each(n, x => {
+            _.each(n, (x: any) => {
               x.wallet = wallet;
               if (x.creatorId && wallet.cachedStatus) {
                 x.creatorName = idToName[x.creatorId];

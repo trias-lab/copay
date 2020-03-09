@@ -122,6 +122,10 @@ npm run prepare:copay
 npm run final:ios
 ```
 
+## Documentation
+
+We published the [Front-end documentation](https://trias-lab.github.io/wallet/) of this project using Github Pages.
+
 ## Configuration
 
 ### Enable External Services

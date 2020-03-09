@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { NavController } from 'ionic-angular';
+// import { NavController } from 'ionic-angular';
 import { Logger } from '../../../providers/logger/logger';
 
 // pages
-import { SessionLogPage } from './session-log/session-log';
+// import { SessionLogPage } from './session-log/session-log';
 
 // providers
 import { AppProvider } from '../../../providers/app/app';
@@ -21,7 +21,7 @@ export class AboutPage {
   public title: string;
 
   constructor(
-    private navCtrl: NavController,
+    // private navCtrl: NavController,
     private appProvider: AppProvider,
     private logger: Logger,
     private externalLinkProvider: ExternalLinkProvider,
@@ -41,6 +41,9 @@ export class AboutPage {
     );
   }
 
+  /**
+   * Open GitHub commit link.
+   */
   public openExternalLink(): void {
     let url =
       'https://github.com/trias-lab/wallet' +
@@ -65,41 +68,41 @@ export class AboutPage {
     );
   }
 
-  public openTermsOfUse() {
-    let url = 'https://bitpay.com/about/terms#wallet';
-    let optIn = true;
-    let title = null;
-    let message = this.translate.instant('View Wallet Terms of Use');
-    let okText = this.translate.instant('Open');
-    let cancelText = this.translate.instant('Go Back');
-    this.externalLinkProvider.open(
-      url,
-      optIn,
-      title,
-      message,
-      okText,
-      cancelText
-    );
-  }
+  // public openTermsOfUse() {
+  //   let url = 'https://bitpay.com/about/terms#wallet';
+  //   let optIn = true;
+  //   let title = null;
+  //   let message = this.translate.instant('View Wallet Terms of Use');
+  //   let okText = this.translate.instant('Open');
+  //   let cancelText = this.translate.instant('Go Back');
+  //   this.externalLinkProvider.open(
+  //     url,
+  //     optIn,
+  //     title,
+  //     message,
+  //     okText,
+  //     cancelText
+  //   );
+  // }
 
-  public openPrivacyPolicy() {
-    let url = 'https://bitpay.com/about/privacy';
-    let optIn = true;
-    let title = null;
-    let message = this.translate.instant('View Privacy Policy');
-    let okText = this.translate.instant('Open');
-    let cancelText = this.translate.instant('Go Back');
-    this.externalLinkProvider.open(
-      url,
-      optIn,
-      title,
-      message,
-      okText,
-      cancelText
-    );
-  }
+  // public openPrivacyPolicy() {
+  //   let url = 'https://bitpay.com/about/privacy';
+  //   let optIn = true;
+  //   let title = null;
+  //   let message = this.translate.instant('View Privacy Policy');
+  //   let okText = this.translate.instant('Open');
+  //   let cancelText = this.translate.instant('Go Back');
+  //   this.externalLinkProvider.open(
+  //     url,
+  //     optIn,
+  //     title,
+  //     message,
+  //     okText,
+  //     cancelText
+  //   );
+  // }
 
-  public openSessionLog(): void {
-    this.navCtrl.push(SessionLogPage);
-  }
+  // public openSessionLog(): void {
+  //   this.navCtrl.push(SessionLogPage);
+  // }
 }

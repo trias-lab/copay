@@ -63,6 +63,7 @@ export class AppProvider {
     this.logger.debug('AppProvider initialized');
   }
 
+  /** Load app info and providers. */
   public async load() {
     await Promise.all([this.getInfo(), this.loadProviders()]);
     // TODO: Ref persistent logs
@@ -70,6 +71,9 @@ export class AppProvider {
     // this.persistence.checkLogsConfig();
   }
 
+  /**
+   * Get services and app info.
+   */
   private async getInfo() {
     [this.servicesInfo, this.info] = await Promise.all([
       this.getServicesInfo(),
@@ -77,12 +81,18 @@ export class AppProvider {
     ]);
   }
 
+  /**
+   * Load app local storage, configuration and language.
+   */
   private async loadProviders() {
     this.persistence.load();
     await this.config.load();
     this.language.load();
   }
 
+  /**
+   * Get app info from appConfig.json file in [`jsonPathApp`]{@link jsonPathApp}.
+   */
   private getAppInfo() {
     if (this.platformProvider.isCordova) {
       return Observable.fromPromise(
@@ -96,6 +106,9 @@ export class AppProvider {
     }
   }
 
+  /**
+   * Get external services info from configuration file in [`jsonPathServices`]{@link jsonPathServices}.
+   */
   private getServicesInfo() {
     if (this.platformProvider.isCordova) {
       return Observable.fromPromise(

@@ -54,7 +54,13 @@ export class ImportWalletPage {
   public isIOS: boolean;
   public file: File;
   public code;
+  /**
+   * Text on ok btn inside select form.
+   */
   public okText: string;
+  /**
+   * Text on cancel btn inside select form.
+   */
   public cancelText: string;
 
   constructor(
@@ -121,6 +127,11 @@ export class ImportWalletPage {
     this.events.unsubscribe('update:words');
   }
 
+  /**
+   * Update the import form when selecting tabs.
+   *
+   * @param {string} tab "words" or "file"
+   */
   selectTab(tab: string) {
     this.selectedTab = tab;
 
@@ -207,6 +218,12 @@ export class ImportWalletPage {
     this.importForm.controls['derivationPath'].setValue(path);
   }
 
+  /**
+   * Import wallet from a file content and ask password to decrypt it.
+   *
+   * @param str file content
+   * @param opts options including coin type and server url
+   */
   private importBlob(str: string, opts): void {
     let str2: string;
     let err = null;
@@ -249,6 +266,10 @@ export class ImportWalletPage {
     }, 100);
   }
 
+  /**
+   * Finish importing the wallet and navigate to [disclamer page]{@link DisclaimerPage}.
+   * @param wallet
+   */
   private finish(wallet): void {
     this.walletProvider
       .updateRemotePreferences(wallet)

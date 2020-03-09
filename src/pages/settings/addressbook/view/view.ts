@@ -40,8 +40,6 @@ export class AddressbookViewPage {
     private statusBar: StatusBar
   ) {}
 
-  ionViewDidLoad() {}
-
   ionViewWillEnter() {
     // set status bar style
     if (this.platform.is('ios')) {
@@ -60,6 +58,9 @@ export class AddressbookViewPage {
     }
   }
 
+  /**
+   * Send funds to the contact.
+   */
   public sendTo(): void {
     this.navCtrl.push(AmountPage, {
       toAddress: this.address,
@@ -71,6 +72,9 @@ export class AddressbookViewPage {
     });
   }
 
+  /**
+   * Modify the name, email or address of the contact.
+   */
   public modify(): void {
     let newsModal = this.modalCtrl.create(AddressbookModifyPage, {
       address: this.address,
@@ -85,6 +89,10 @@ export class AddressbookViewPage {
     newsModal.present();
   }
 
+  /**
+   * Remove this contact.
+   * @param addr 
+   */
   public remove(addr: string): void {
     var title = this.translate.instant('Warning!');
     var message = this.translate.instant(

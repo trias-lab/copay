@@ -4,9 +4,7 @@
 module.exports = function(config) {
   config.set({
     webpack: {
-      node: {
-        fs: 'empty'
-      }
+      node: { fs: 'empty', net: 'empty', tls: 'empty', dns: 'empty' }
     },
     basePath: '..',
     browserDisconnectTolerance: 2,
