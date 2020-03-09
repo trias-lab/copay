@@ -69,10 +69,10 @@ export interface TransactionProposal {
 
 @Injectable()
 export class WalletProvider {
-  // Ratio low amount warning (fee/amount) in incoming TX
+  /** Ratio low amount warning (fee/amount) in incoming TX. */
   private LOW_AMOUNT_RATIO: number = 0.15;
 
-  // Ratio of "many utxos" warning in total balance (fee/amount)
+  /** Ratio of "many utxos" warning in total balance (fee/amount) */
   private TOTAL_LOW_WARNING_RATIO: number = 0.3;
 
   private WALLET_STATUS_MAX_TRIES: number = 7;

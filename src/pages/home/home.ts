@@ -29,7 +29,7 @@ import { AppProvider } from '../../providers/app/app';
 import { BwcErrorProvider } from '../../providers/bwc-error/bwc-error';
 import { ClipboardProvider } from '../../providers/clipboard/clipboard';
 import { ConfigProvider } from '../../providers/config/config';
-import { EmailNotificationsProvider } from '../../providers/email-notifications/email-notifications';
+// import { EmailNotificationsProvider } from '../../providers/email-notifications/email-notifications';
 import { ExternalLinkProvider } from '../../providers/external-link/external-link';
 import { IncomingDataProvider } from '../../providers/incoming-data/incoming-data';
 import { Logger } from '../../providers/logger/logger';
@@ -82,14 +82,21 @@ export class HomePage {
   public showReorderBch: boolean;
   public showReorderEth: boolean;
   public showReorderTri: boolean;
-  public totalBalance: number; // Total balance amount
-  public balanceItem; // Each wallet's coin amount
-  // public balanceName; // Each wallet's coin name
-  public balanceLegend; // The legend attributes, like: name, color and percent
-  public chartLegend; // The chart legend attributes
-  public balanceChart; // The chart object
-  public legendColors; // Chart's color pools
-  public selectedLegendColors; // Chart's color pools
+  /** Total balance amount */
+  public totalBalance: number;
+  /** Each wallet's coin amount */
+  public balanceItem;
+  /** Each wallet's coin name */
+  // public balanceName;
+  /**  The legend attributes, like: name, color and percent */
+  public balanceLegend;
+  /** The chart legend attributes */
+  public chartLegend;
+  /**  The chart object */
+  public balanceChart;
+  /** Chart's color pattern */
+  public legendColors;
+  public selectedLegendColors;
   public alternativeUnit;
   // public updatePercent;
   public ethBalance: number;
@@ -124,7 +131,7 @@ export class HomePage {
     private platformProvider: PlatformProvider,
     private persistenceProvider: PersistenceProvider,
     private translate: TranslateService,
-    private emailProvider: EmailNotificationsProvider,
+    // private emailProvider: EmailNotificationsProvider,
     private replaceParametersProvider: ReplaceParametersProvider,
     private clipboardProvider: ClipboardProvider,
     private incomingDataProvider: IncomingDataProvider,
@@ -225,6 +232,7 @@ export class HomePage {
     // this.balanceLegend = [{ color: '#25EAB2', percent: 0, name: 'BTC' },
     // { color: '#AD40BB', percent: 0, name: 'BCH' }];
   }
+
   private _willEnter() {
     // Update list of wallets, status and TXPs
     this.setWallets();
@@ -260,7 +268,7 @@ export class HomePage {
     if (this.isElectron) this.checkUpdate();
     this.checkHomeTip();
 
-    this.checkEmailLawCompliance();
+    // this.checkEmailLawCompliance();
 
     this.subscribeStatusEvents();
 
@@ -378,39 +386,39 @@ export class HomePage {
     });
   }
 
-  private openEmailDisclaimer() {
-    let message = this.translate.instant(
-      'By providing your email address, you give explicit consent to Copay to use your email address to send you email notifications about payments.'
-    );
-    let title = this.translate.instant('Privacy Policy update');
-    let okText = this.translate.instant('Accept');
-    let cancelText = this.translate.instant('Disable notifications');
-    this.popupProvider
-      .ionicConfirm(title, message, okText, cancelText)
-      .then(ok => {
-        if (ok) {
-          // Accept new Privacy Policy
-          this.persistenceProvider.setEmailLawCompliance('accepted');
-        } else {
-          // Disable email notifications
-          this.persistenceProvider.setEmailLawCompliance('rejected');
-          this.emailProvider.updateEmail({
-            enabled: false,
-            email: 'null@email'
-          });
-        }
-      });
-  }
+  // private openEmailDisclaimer() {
+  //   let message = this.translate.instant(
+  //     'By providing your email address, you give explicit consent to Copay to use your email address to send you email notifications about payments.'
+  //   );
+  //   let title = this.translate.instant('Privacy Policy update');
+  //   let okText = this.translate.instant('Accept');
+  //   let cancelText = this.translate.instant('Disable notifications');
+  //   this.popupProvider
+  //     .ionicConfirm(title, message, okText, cancelText)
+  //     .then(ok => {
+  //       if (ok) {
+  //         // Accept new Privacy Policy
+  //         this.persistenceProvider.setEmailLawCompliance('accepted');
+  //       } else {
+  //         // Disable email notifications
+  //         this.persistenceProvider.setEmailLawCompliance('rejected');
+  //         this.emailProvider.updateEmail({
+  //           enabled: false,
+  //           email: 'null@email'
+  //         });
+  //       }
+  //     });
+  // }
 
-  private checkEmailLawCompliance(): void {
-    setTimeout(() => {
-      if (this.emailProvider.getEmailIfEnabled()) {
-        this.persistenceProvider.getEmailLawCompliance().then(value => {
-          if (!value) this.openEmailDisclaimer();
-        });
-      }
-    }, 2000);
-  }
+  // private checkEmailLawCompliance(): void {
+  //   setTimeout(() => {
+  //     if (this.emailProvider.getEmailIfEnabled()) {
+  //       this.persistenceProvider.getEmailLawCompliance().then(value => {
+  //         if (!value) this.openEmailDisclaimer();
+  //       });
+  //     }
+  //   }, 2000);
+  // }
 
   private startUpdatingWalletId(walletId: string) {
     this.updatingWalletId[walletId] = true;
@@ -524,11 +532,11 @@ export class HomePage {
       });
   }
 
-  public hideClipboardCard() {
-    this.validDataFromClipboard = null;
-    this.clipboardProvider.clear();
-    this.slideDown = false;
-  }
+  // public hideClipboardCard() {
+  //   this.validDataFromClipboard = null;
+  //   this.clipboardProvider.clear();
+  //   this.slideDown = false;
+  // }
 
   private clearCountDownInterval(): void {
     if (this.countDown) clearInterval(this.countDown);
@@ -931,7 +939,10 @@ export class HomePage {
     this.navCtrl.push(AddressbookPage);
   }
 
-  // 当点击BTC或者BCH钱包的具体某一项
+  /**
+   * Handler for the onclick event of wallet card
+   * @param wallet
+   */
   public goToWalletDetails(wallet): void {
     if (
       this.showReorderBtc ||
@@ -978,42 +989,42 @@ export class HomePage {
     }
   }
 
-  // public legendGenerate(indexes): void {
-  //   // let element = this.walletsBtc[indexes.from];
-  //   // this.walletsBtc.splice(indexes.from, 1);
-  //   // this.walletsBtc.splice(indexes.to, 0, element);
-  //   _.each(this.balanceLegend, (legend, index: number) => {
-  //     // this.profileProvider.setWalletOrder(wallet.id, index);
-  //     this.logger.warn('wallet btc!!!!!', legend);
+  public legendGenerate(): void {
+    // let element = this.walletsBtc[indexes.from];
+    // this.walletsBtc.splice(indexes.from, 1);
+    // this.walletsBtc.splice(indexes.to, 0, element);
+    _.each(this.balanceLegend, legend => {
+      // _.each(this.balanceLegend, (legend, index: number) => {
+      // this.profileProvider.setWalletOrder(wallet.id, index);
+      this.logger.warn('wallet btc!!!!!', legend);
+    });
+  }
 
-  //   });
+  // public reorderBtc(): void {
+  //   this.showReorderBtc = !this.showReorderBtc;
   // }
 
-  public reorderBtc(): void {
-    this.showReorderBtc = !this.showReorderBtc;
-  }
+  // public reorderBch(): void {
+  //   this.showReorderBch = !this.showReorderBch;
+  // }
 
-  public reorderBch(): void {
-    this.showReorderBch = !this.showReorderBch;
-  }
+  // public reorderEth(): void {
+  //   this.showReorderEth = !this.showReorderEth;
+  // }
 
-  public reorderEth(): void {
-    this.showReorderEth = !this.showReorderEth;
-  }
+  // public reorderTri(): void {
+  //   this.showReorderTri = !this.showReorderTri;
+  // }
 
-  public reorderTri(): void {
-    this.showReorderTri = !this.showReorderTri;
-  }
-
-  public reorderWalletsBtc(indexes): void {
-    let element = this.walletsBtc[indexes.from];
-    this.walletsBtc.splice(indexes.from, 1);
-    this.walletsBtc.splice(indexes.to, 0, element);
-    _.each(this.walletsBtc, (wallet, index: number) => {
-      this.profileProvider.setWalletOrder(wallet.id, index);
-    });
-    // this.logger.warn('wallet btc!!!!!', this.walletsBtc);
-  }
+  // public reorderWalletsBtc(indexes): void {
+  //   let element = this.walletsBtc[indexes.from];
+  //   this.walletsBtc.splice(indexes.from, 1);
+  //   this.walletsBtc.splice(indexes.to, 0, element);
+  //   _.each(this.walletsBtc, (wallet, index: number) => {
+  //     this.profileProvider.setWalletOrder(wallet.id, index);
+  //   });
+  //   // this.logger.warn('wallet btc!!!!!', this.walletsBtc);
+  // }
 
   public reorderWalletsBch(indexes): void {
     let element = this.walletsBch[indexes.from];

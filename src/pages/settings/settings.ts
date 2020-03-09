@@ -15,7 +15,7 @@ import { TouchIdProvider } from '../../providers/touchid/touchid';
 // pages
 // import { AboutPage } from './about/about';
 import { AddressbookPage } from './addressbook/addressbook';
-import { AdvancedPage } from './advanced/advanced';
+// import { AdvancedPage } from './advanced/advanced';
 import { AltCurrencyPage } from './alt-currency/alt-currency';
 import { FeePolicyPage } from './fee-policy/fee-policy';
 import { LanguagePage } from './language/language';
@@ -88,9 +88,9 @@ export class SettingsPage {
     this.navCtrl.push(LanguagePage);
   }
 
-  public openAdvancedPage(): void {
-    this.navCtrl.push(AdvancedPage);
-  }
+  // public openAdvancedPage(): void {
+  //   this.navCtrl.push(AdvancedPage);
+  // }
 
   // public openAboutPage(): void {
   //   this.navCtrl.push(AboutPage);

@@ -21,7 +21,7 @@ export {
   AddressManagerProvider
 } from '../providers/address-manager/address-manager';
 export { AddressProvider } from '../providers/address/address';
-export { AppIdentityProvider } from '../providers/app-identity/app-identity';
+// export { AppIdentityProvider } from '../providers/app-identity/app-identity';
 export { AppProvider } from '../providers/app/app';
 export { BackupProvider } from '../providers/backup/backup';
 export { BwcErrorProvider } from '../providers/bwc-error/bwc-error';

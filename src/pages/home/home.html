@@ -149,7 +149,7 @@
 
       <ion-list
         reorder="{{showReorderBtc}}"
-        (ionItemReorder)="legendGenerate($event)"
+        (ionItemReorder)="legendGenerate()"
         *ngIf="walletsBtc && walletsBtc[0] && (selectedCoinType=='btc' || selectedCoinType=='all')"
       >
         <div
