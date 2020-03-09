@@ -22,6 +22,9 @@ export class TouchIdProvider {
     private logger: Logger
   ) {}
 
+  /**
+   * Check if fingerprint serveice is available for the device.
+   */
   public isAvailable(): Promise<any> {
     return new Promise(resolve => {
       if (this.platform.isCordova && this.platform.isAndroid) {
@@ -38,6 +41,9 @@ export class TouchIdProvider {
     });
   }
 
+  /**
+   * Check if fingerprint service is available on ios device.
+   */
   private checkIOS(): Promise<any> {
     return new Promise(resolve => {
       this.touchId.isAvailable().then(
@@ -55,6 +61,9 @@ export class TouchIdProvider {
     });
   }
 
+  /**
+   * Check if fingerprint service is available on android device.
+   */
   private checkAndroid() {
     return new Promise(resolve => {
       this.androidFingerprintAuth
@@ -75,6 +84,9 @@ export class TouchIdProvider {
     });
   }
 
+  /**
+   * Verify the touchid for ios device.
+   */
   private verifyIOSFingerprint(): Promise<any> {
     return (
       this.touchId
@@ -91,6 +103,9 @@ export class TouchIdProvider {
     );
   }
 
+  /**
+   * Verify the fingerprint for android device.
+   */
   private verifyAndroidFingerprint(): Promise<any> {
     return this.androidFingerprintAuth
       .encrypt({ clientId: this.app.info.nameCase })
@@ -119,6 +134,10 @@ export class TouchIdProvider {
     return undefined;
   }
 
+  /**
+   * Whether touchid is enabled for the wallet
+   * @param wallet
+   */
   private isNeeded(wallet): string {
     let config = this.config.get();
     config.touchIdFor = config.touchIdFor || {};
