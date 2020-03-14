@@ -1,8 +1,6 @@
 <ion-header class="wallet-details-header">
   <ion-navbar>
-    <ion-title
-      >{{ 'Receive' | translate}} {{ wallet.coin.toUpperCase() }}</ion-title
-    >
+    <ion-title>{{ 'Receive' | translate}} {{ wallet.coin.toUpperCase() }}</ion-title>
     <ion-buttons right>
       <button
         *ngIf="
@@ -34,67 +32,27 @@
 
 <ion-content no-bounce>
   <div class="wrapper">
-    <div
-      class="prompt-user-fullscreen-container"
-      *ngIf="wallet && wallet.isComplete() && wallet.needsBackup"
-    >
+    <div class="prompt-user-fullscreen-container" *ngIf="wallet && wallet.isComplete() && wallet.needsBackup">
       <div class="prompt-user">
-        <div class="title-icon">
-          <img src="assets/img/single-folded-content.svg" />
-        </div>
+        <div class="title-icon"><img src="assets/img/single-folded-content.svg" /></div>
         <div class="title-info"><span translate>Needs Backup</span></div>
-        <div class="subtitle-info">
-          <span translate
-            >Before retrieving your wallet address, it's recommended that you
-            first write down your recovery phrase and store it securely so that
-            your wallet can be recovered in the case your device was lost or
-            stolen.</span
-          >
-        </div>
-        <button ion-button class="button-standard" (click)="goToBackup()">
-          {{ 'Write Down Recovery Phrase' | translate }}
-        </button>
+        <div class="subtitle-info"><span translate>Before retrieving your wallet address, it's recommended that you first write down your recovery phrase and store it securely so that your wallet can be recovered in the case your device was lost or stolen.</span></div>
+        <button ion-button class="button-standard" (click)="goToBackup()">{{ 'Write Down Recovery Phrase' | translate }}</button>
       </div>
     </div>
 
     <ion-card *ngIf="wallet && wallet.isComplete() && !wallet.needsBackup">
       <div>
-        <div
-          [ngClass]="{ 'qr-code-bounce': playAnimation }"
-          *ngIf="wallets[0] && address"
-        >
-          <ngx-qrcode
-            (click)="showFullAddr()"
-            *ngIf="address"
-            copy-to-clipboard="{{ address }}"
-            hide-toast="true"
-            qrc-value="{{qrAddress}}"
-            qrc-class="aclass"
-            qrc-errorCorrectionLevel="M"
-          ></ngx-qrcode>
-        </div>
-        <p class="adress_deposit">
-          {{ 'Deposit only {coinName} to this address.' | translate: { coinName:
-          wallet.coin.toUpperCase() } }}
-        </p>
+        <div [ngClass]="{ 'qr-code-bounce': playAnimation }" *ngIf="wallets[0] && address"><ngx-qrcode (click)="showFullAddr()" *ngIf="address" copy-to-clipboard="{{ address }}" hide-toast="true" qrc-value="{{qrAddress}}" qrc-class="aclass" qrc-errorCorrectionLevel="M"></ngx-qrcode></div>
+        <p class="adress_deposit">{{ 'Deposit only {coinName} to this address.' | translate: { coinName: wallet.coin.toUpperCase() } }}</p>
       </div>
 
       <div *ngIf="wallets[0]" class="receive-content">
-        <div
-          *ngIf="wallet && wallet.isComplete() && !wallet.needsBackup"
-          class="address-container"
-        >
+        <div *ngIf="wallet && wallet.isComplete() && !wallet.needsBackup" class="address-container">
           <div class="text-address ellipsis">
             <div class="adress_copy_address" translate>Address</div>
-            <div
-              [ngClass]="{ 'fade-in-out': playAnimation }"
-              class="address-text ellipsis"
-            >
-              <span hide-toast="true">{{address}}</span>
-            </div>
-            <div class="adress_copy_btn" copy-to-clipboard="{{ address }}">
-              COPY
-            </div>
+            <div [ngClass]="{ 'fade-in-out': playAnimation }" class="address-text ellipsis"><span hide-toast="true">{{address}}</span></div>
+            <div class="adress_copy_btn" copy-to-clipboard="{{ address }}">COPY</div>
           </div>
         </div>
       </div>

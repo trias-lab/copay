@@ -1,17 +1,12 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>{{ 'Language' | translate }}</ion-title>
-  </ion-navbar>
+  <ion-navbar> <ion-title>{{ 'Language' | translate }}</ion-title> </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list radio-group [(ngModel)]="currentLanguage" class="settings-list">
     <ion-item *ngFor="let language of languages">
       <ion-label> {{ language.name }} </ion-label>
-      <ion-radio
-        (click)="save(language.isoCode)"
-        [value]="language.isoCode"
-      ></ion-radio>
+      <ion-radio (click)="save(language.isoCode)" [value]="language.isoCode"></ion-radio>
     </ion-item>
   </ion-list>
 

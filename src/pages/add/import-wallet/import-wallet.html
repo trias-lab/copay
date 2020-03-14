@@ -1,76 +1,38 @@
 <ion-header>
   <ion-navbar>
     <ion-title>{{ 'Import wallet' | translate }}</ion-title>
-    <ion-buttons end>
-      <button
-        class="import-button"
-        (click)="import()"
-        [disabled]="!importForm.valid"
-      >
-        {{ 'Import' | translate }}
-      </button>
-    </ion-buttons>
+    <ion-buttons end> <button class="import-button" (click)="import()" [disabled]="!importForm.valid">{{ 'Import' | translate }}</button> </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content no-bounce>
   <ion-card>
     <div>
-      <ion-segment
-        [(ngModel)]="selectedTab"
-        color="primary"
-        (ionChange)="selectTab(selectedTab)"
-      >
-        <ion-segment-button value="words">
-          {{ 'Recovery Phrase' | translate }}
-        </ion-segment-button>
-        <ion-segment-button value="file">
-          {{ 'File/Text' | translate }}
-        </ion-segment-button>
+      <ion-segment [(ngModel)]="selectedTab" color="primary" (ionChange)="selectTab(selectedTab)">
+        <ion-segment-button value="words"> {{ 'Recovery Phrase' | translate }} </ion-segment-button>
+        <ion-segment-button value="file"> {{ 'File/Text' | translate }} </ion-segment-button>
       </ion-segment>
     </div>
 
     <ion-card *ngIf="importErr" (click)="importErr = false">
       <ion-item class="assertive">
-        <div translate>
-          Could not access the wallet at the server. Please check:
-        </div>
+        <div translate>Could not access the wallet at the server. Please check:</div>
         <ul>
           <li translate>The password of the recovery phrase (if set)</li>
           <li translate>The derivation path</li>
           <li translate>The Wallet Service URL</li>
         </ul>
-        <small>
-          <span translate
-            >NOTE: To import a wallet from a 3rd party software, please go to
-            Add Wallet, Create Wallet, and specify the Recovery Phrase
-            there.</span
-          >
-        </small>
+        <small> <span translate>NOTE: To import a wallet from a 3rd party software, please go to Add Wallet, Create Wallet, and specify the Recovery Phrase there.</span> </small>
       </ion-item>
     </ion-card>
 
     <form [formGroup]="importForm" (ngSubmit)="import()">
       <ion-item *ngIf="selectedTab == 'words'">
         <ion-label stacked>{{ 'Mnemonic' | translate }}</ion-label>
-        <ion-textarea
-          formControlName="words"
-          [value]="importForm.value.words"
-          placeholder="{{'Type the recovery phrase (usually 12 words)' | translate}}"
-          autocapitalize="none"
-        >
-        </ion-textarea>
+        <ion-textarea formControlName="words" [value]="importForm.value.words" placeholder="{{'Type the recovery phrase (usually 12 words)' | translate}}" autocapitalize="none"> </ion-textarea>
       </ion-item>
 
-      <div
-        *ngIf="selectedTab == 'words'"
-        class="scanner-icon"
-        name="qr-scanner"
-        (click)="openScanner()"
-      >
-        <img src="assets/img/qrcode-solid.svg" /> {{ 'Scan QR Code' | translate
-        }}
-      </div>
+      <div *ngIf="selectedTab == 'words'" class="scanner-icon" name="qr-scanner" (click)="openScanner()"><img src="assets/img/qrcode-solid.svg" /> {{ 'Scan QR Code' | translate }}</div>
 
       <div *ngIf="selectedTab == 'file'">
         <!--
@@ -78,40 +40,18 @@
           </ion-item>
         -->
 
-        <div
-          class="file-container hide-validation"
-          *ngIf="!isSafari && !isCordova"
-        >
-          <ion-input
-            class="upload-hidden"
-            type="file"
-            accept="json"
-            [(ngModel)]="formFile"
-            (change)="fileChangeEvent($event)"
-            formControlName="file"
-          ></ion-input>
+        <div class="file-container hide-validation" *ngIf="!isSafari && !isCordova">
+          <ion-input class="upload-hidden" type="file" accept="json" [(ngModel)]="formFile" (change)="fileChangeEvent($event)" formControlName="file"></ion-input>
           <div item-content class="upload-ui">
-            <div class="empty-message">
-              {{ 'Select File' | translate }}&hellip;
-            </div>
+            <div class="empty-message">{{ 'Select File' | translate }}&hellip;</div>
             <div class="filled-message">{{ 'Replace File' | translate }}</div>
           </div>
-          <div item-content class="file-info">
-            <span class="empty-message"
-              >{{ 'Choose a file to begin.' | translate }}&hellip;</span
-            >
-            <span class="filled-message">{{ prettyFileName }}</span>
-          </div>
+          <div item-content class="file-info"><span class="empty-message">{{ 'Choose a file to begin.' | translate }}&hellip;</span> <span class="filled-message">{{ prettyFileName }}</span></div>
         </div>
 
         <ion-item *ngIf="isSafari || isCordova">
           <ion-label stacked>{{ 'File Content' | translate }}</ion-label>
-          <ion-textarea
-            placeholder="{{'Please paste the code from the backup file here' | translate}}"
-            formControlName="backupText"
-            rows="5"
-            [value]="importForm.value.backupText"
-          ></ion-textarea>
+          <ion-textarea placeholder="{{'Please paste the code from the backup file here' | translate}}" formControlName="backupText" rows="5" [value]="importForm.value.backupText"></ion-textarea>
         </ion-item>
 
         <ion-item>
@@ -122,12 +62,7 @@
 
       <ion-item *ngIf="selectedTab != 'file'">
         <ion-label stacked>{{ 'Coin' | translate }}</ion-label>
-        <ion-select
-          okText="{{okText}}"
-          cancelText="{{cancelText}}"
-          placeholder="{{'Select a coin' | translate}}"
-          formControlName="coin"
-        >
+        <ion-select okText="{{okText}}" cancelText="{{cancelText}}" placeholder="{{'Select a coin' | translate}}" formControlName="coin">
           <ion-option value="btc">Bitcoin (BTC)</ion-option>
           <!-- <ion-option value="bch">Bitcoin Cash (BCH)</ion-option> -->
           <ion-option value="eth">Ethereum (ETH)</ion-option>
@@ -163,12 +98,7 @@
           -->
           <ion-item>
             <ion-label stacked>{{ 'Derivation path' | translate }}</ion-label>
-            <ion-input
-              type="text"
-              formControlName="derivationPath"
-              [value]="importForm.value.derivationPath"
-            >
-            </ion-input>
+            <ion-input type="text" formControlName="derivationPath" [value]="importForm.value.derivationPath"> </ion-input>
           </ion-item>
 
           <!--

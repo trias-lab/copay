@@ -1,11 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>{{'Wallet Name' | translate}}</ion-title>
-    <ion-buttons end>
-      <button class="header-option" (click)="save()" [disabled]="!walletNameForm.valid">
-        {{'Rename' | translate}}
-      </button>
-    </ion-buttons>
+    <ion-buttons end> <button class="header-option" (click)="save()" [disabled]="!walletNameForm.valid">{{'Rename' | translate}}</button> </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -13,9 +9,7 @@
   <ion-list class="settings-list">
     <div class="settings-explanation">
       <div class="settings-heading" translate>What do you call this wallet?</div>
-      <div class="settings-description">
-        {{description}}
-      </div>
+      <div class="settings-description">{{description}}</div>
     </div>
     <form [formGroup]="walletNameForm">
       <ion-item>

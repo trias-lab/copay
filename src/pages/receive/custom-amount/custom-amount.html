@@ -1,15 +1,9 @@
 <ion-header class="wallet-details-header">
   <ion-navbar [hideBackButton]="true" [navbar-bg]="wallet.color">
-    <ion-buttons left>
-      <button (click)="close()" ion-button>
-        {{'Close' | translate}}
-      </button>
-    </ion-buttons>
+    <ion-buttons left> <button (click)="close()" ion-button>{{'Close' | translate}}</button> </ion-buttons>
     <ion-title>{{ wallet.name }}</ion-title>
     <ion-buttons right>
-      <button *ngIf="showShareButton" ion-button icon-only (click)="shareAddress()">
-        <ion-icon ios="ios-share-outline" md="md-share"></ion-icon>
-      </button>
+      <button *ngIf="showShareButton" ion-button icon-only (click)="shareAddress()"><ion-icon ios="ios-share-outline" md="md-share"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -20,18 +14,14 @@
       <div class="card qr-card">
         <div class="qr-card-header">
           <span class="qr-card-title">{{'Payment Request' | translate}}</span>
-          <ion-icon (click)="showPaymentRequestInfo()">
-            <img src="assets/img/icon-info-blue.svg">
-          </ion-icon>
+          <ion-icon (click)="showPaymentRequestInfo()"> <img src="assets/img/icon-info-blue.svg" /> </ion-icon>
         </div>
         <div>
           <div class="qr-card-amount">
-            <span>{{amountUnitStr}}</span>
-            <br>
+            <span>{{amountUnitStr}}</span> <br />
             <small>({{altAmountStr}})</small>
           </div>
-          <ngx-qrcode (click)="showFullInfo()" *ngIf="address" hide-toast="true" copy-to-clipboard="{{ qrAddress }}" qrc-value="{{qrAddress}}"
-            qrc-class="aclass" qrc-errorCorrectionLevel="M"></ngx-qrcode>
+          <ngx-qrcode (click)="showFullInfo()" *ngIf="address" hide-toast="true" copy-to-clipboard="{{ qrAddress }}" qrc-value="{{qrAddress}}" qrc-class="aclass" qrc-errorCorrectionLevel="M"></ngx-qrcode>
         </div>
       </div>
     </div>
@@ -39,11 +29,8 @@
     <div *ngIf="wallet" class="receive-content">
       <div class="address-container">
         <div class="text-address ellipsis">
-          <img src="assets/img/icon-bitcoin-small.svg" alt="" width="12" />
-          <span class="address-divider"></span>
-          <div class="address-text ellipsis">
-            <span>{{ address }}</span>
-          </div>
+          <img src="assets/img/icon-bitcoin-small.svg" alt="" width="12" /> <span class="address-divider"></span>
+          <div class="address-text ellipsis"><span>{{ address }}</span></div>
         </div>
       </div>
     </div>
