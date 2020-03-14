@@ -1,6 +1,8 @@
 <ion-header class="wallet-details-header">
   <ion-navbar>
-    <ion-title>Receive {{ wallet.coin.toUpperCase() }}</ion-title>
+    <ion-title
+      >{{ 'Receive' | translate}} {{ wallet.coin.toUpperCase() }}</ion-title
+    >
     <ion-buttons right>
       <button
         *ngIf="
@@ -72,7 +74,8 @@
           ></ngx-qrcode>
         </div>
         <p class="adress_deposit">
-          Deposit only {{ wallet.coin.toUpperCase() }} to this address.
+          {{ 'Deposit only {coinName} to this address.' | translate: { coinName:
+          wallet.coin.toUpperCase() } }}
         </p>
       </div>
 
@@ -82,7 +85,7 @@
           class="address-container"
         >
           <div class="text-address ellipsis">
-            <div class="adress_copy_address">Address</div>
+            <div class="adress_copy_address" translate>Address</div>
             <div
               [ngClass]="{ 'fade-in-out': playAnimation }"
               class="address-text ellipsis"

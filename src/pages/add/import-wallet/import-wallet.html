@@ -68,8 +68,8 @@
         name="qr-scanner"
         (click)="openScanner()"
       >
-        <img src="assets/img/qrcode-solid.svg" />
-        {{ 'Scan QR Code' | translate }}
+        <img src="assets/img/qrcode-solid.svg" /> {{ 'Scan QR Code' | translate
+        }}
       </div>
 
       <div *ngIf="selectedTab == 'file'">
@@ -107,7 +107,7 @@
         <ion-item *ngIf="isSafari || isCordova">
           <ion-label stacked>{{ 'File Content' | translate }}</ion-label>
           <ion-textarea
-            placeholder="{{'Please paste the code in the backup file' | translate}}"
+            placeholder="{{'Please paste the code from the backup file here' | translate}}"
             formControlName="backupText"
             rows="5"
             [value]="importForm.value.backupText"
@@ -192,7 +192,7 @@
         </div>
 
         <ion-item>
-          <ion-label stacked>Wallet Service URL</ion-label>
+          <ion-label stacked translate>Wallet Service URL</ion-label>
           <ion-input type="text" formControlName="bwsURL"></ion-input>
         </ion-item>
       </div>
