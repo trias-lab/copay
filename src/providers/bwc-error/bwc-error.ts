@@ -144,6 +144,11 @@ export class BwcErrorProvider {
             'Exceeded daily limit of $500 per user'
           );
           break;
+        case 'INSUFFICIENT_ETH_FOR_FEE':
+          body = this.translate.instant(
+            'Insufficient ETH for TRY transaction fee. Please deposit some ETH in the same address from which you want to sent out TRY.'
+          );
+          break;
         case 'ERROR':
           body = err.message || err.error;
           break;
