@@ -37,9 +37,7 @@
         </button>
       -->
 
-      <!--
-        <ion-item-divider>{{'Preferences' | translate}}</ion-item-divider>
-      -->
+      <!-- <ion-item-divider>{{'Preferences' | translate}}</ion-item-divider> -->
 
       <!--
         <button ion-item (click)="openNotificationsPage()">
@@ -60,12 +58,8 @@
           </ion-icon>
         -->
         <ion-label> <span translate>Language</span> </ion-label>
-        <ion-note *ngIf="currentLanguageName" item-end>
-          {{ currentLanguageName }}
-        </ion-note>
-        <ion-icon class="item-img" item-end>
-          <img src="assets/img/settings-icons/icon_next@2x.png" width="22" />
-        </ion-icon>
+        <ion-note *ngIf="currentLanguageName" item-end> {{ currentLanguageName }} </ion-note>
+        <ion-icon class="item-img" item-end> <img src="assets/img/settings-icons/icon_next@2x.png" width="22" /> </ion-icon>
       </button>
 
       <button ion-item (click)="openAltCurrencyPage()">
@@ -75,12 +69,8 @@
           </ion-icon>
         -->
         <ion-label> {{ 'Alternative currency' | translate }} </ion-label>
-        <ion-note *ngIf="selectedAlternative" item-end>
-          {{ selectedAlternative.name }}
-        </ion-note>
-        <ion-icon class="item-img" item-end>
-          <img src="assets/img/settings-icons/icon_next@2x.png" width="22" />
-        </ion-icon>
+        <ion-note *ngIf="selectedAlternative" item-end> {{ selectedAlternative.name }} </ion-note>
+        <ion-icon class="item-img" item-end> <img src="assets/img/settings-icons/icon_next@2x.png" width="22" /> </ion-icon>
       </button>
 
       <button ion-item (click)="openFeePolicyPage()">
@@ -90,17 +80,12 @@
           </ion-icon>
         -->
         <ion-label> {{ 'Bitcoin network fee policy' | translate }} </ion-label>
-        <ion-icon class="item-img" item-end>
-          <img src="assets/img/settings-icons/icon_next@2x.png" width="22" />
-        </ion-icon>
+        <ion-icon class="item-img" item-end> <img src="assets/img/settings-icons/icon_next@2x.png" width="22" /> </ion-icon>
       </button>
 
       <button ion-item *ngIf="isCordova && fingerprintLock">
         <ion-label> {{ fingerprintLock.label | translate }} </ion-label>
-        <ion-toggle
-          [(ngModel)]="fingerprintLock.enabled"
-          (ngModelChange)="toggleFingerprint($event)"
-        ></ion-toggle>
+        <ion-toggle [(ngModel)]="fingerprintLock.enabled" (ngModelChange)="toggleFingerprint($event)"></ion-toggle>
       </button>
 
       <!--
@@ -116,9 +101,7 @@
 
       <button ion-item *ngIf="isCordova" (click)="resetEncryptPassword()">
         <ion-label> {{ 'Reset Encrypt Password' | translate }} </ion-label>
-        <ion-icon class="item-img" item-end>
-          <img src="assets/img/settings-icons/icon_next@2x.png" width="22" />
-        </ion-icon>
+        <ion-icon class="item-img" item-end> <img src="assets/img/settings-icons/icon_next@2x.png" width="22" /> </ion-icon>
       </button>
 
       <!-- <ion-item-divider>{{'More' | translate}}</ion-item-divider> -->

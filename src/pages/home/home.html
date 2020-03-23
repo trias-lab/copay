@@ -20,41 +20,23 @@
         </button>
       </ion-fab>
     -->
-    <span class="addr-btn" (click)="goToAddressbook()"></span>
-    <span class="swap-btn" (click)="goToSwapPage()"></span>
-    <span class="scan-btn" (click)="scan()"></span>
+    <span class="addr-btn" (click)="goToAddressbook()"></span> <span class="swap-btn" (click)="goToSwapPage()"></span> <span class="scan-btn" (click)="scan()"></span>
   </ion-navbar>
 </ion-header>
 
-<ion-content
-  class="fullscreen-tab clearfix"
-  [ngClass]="{'zero-state': !wallets || !wallets[0]}"
->
-  <ion-refresher
-    (ionRefresh)="doRefresh($event)"
-    *ngIf="!showReorderBtc && !showReorderBch"
-    pullMin="90"
-    pullMax="180"
-  >
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+<ion-content class="fullscreen-tab clearfix" [ngClass]="{'zero-state': !wallets || !wallets[0]}">
+  <ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="!showReorderBtc && !showReorderBch" pullMin="90" pullMax="180"> <ion-refresher-content></ion-refresher-content> </ion-refresher>
   <div id="chart"></div>
   <div class="account-detail">
     <p translate>Account Balance</p>
     <h2>{{totalBalance ? totalBalance.toFixed(2) : 0}} {{alternativeUnit}}</h2>
     <div class="chart-legend">
-      <a *ngFor="let legend of balanceLegend">
-        <span [ngStyle]="{'background-color': legend.color}"></span>
-        {{legend.name ? legend.name : ''}}
-        <b>{{legend.percent ? legend.percent : 0}}%</b></a
-      >
+      <a *ngFor="let legend of balanceLegend"> <span [ngStyle]="{'background-color': legend.color}"></span> {{legend.name ? legend.name : ''}} <b>{{legend.percent ? legend.percent : 0}}%</b></a>
     </div>
   </div>
   <div class="wrapper">
     <div class="header-extend" *ngIf="wallets && wallets[0]"></div>
-    <div
-      [ngClass]="{'content-animation': slideDown, 'initial-margin': validDataFromClipboard}"
-    >
+    <div [ngClass]="{'content-animation': slideDown, 'initial-margin': validDataFromClipboard}">
       <!--
         <ion-card class="server-message" *ngIf="serverMessage">
           <div class="server-message-icon">
@@ -86,105 +68,40 @@
         </ion-card>
       -->
 
-      <div
-        class="prompt-user-fullscreen-container"
-        *ngIf="!wallets || !wallets[0]"
-      >
+      <div class="prompt-user-fullscreen-container" *ngIf="!wallets || !wallets[0]">
         <div class="prompt-user">
-          <div class="title-icon larger-icon">
-            <img src="assets/img/ghost-straight-face.svg" />
-          </div>
-          <div class="title-info">
-            <span translate>No wallets available</span>
-          </div>
-          <div class="subtitle-info">
-            <span translate>Import a wallet to start using this app.</span>
-          </div>
-          <button ion-button class="button-standard" (click)="importWallet()">
-            {{'Import a wallet' | translate}}
-          </button>
-          <button
-            ion-button
-            class="button-standard"
-            (click)="shoBackToOnboardingPopup()"
-          >
-            {{'Create wallets' | translate}}
-          </button>
+          <div class="title-icon larger-icon"><img src="assets/img/ghost-straight-face.svg" /></div>
+          <div class="title-info"><span translate>No wallets available</span></div>
+          <div class="subtitle-info"><span translate>Create or import wallets to start using this app.</span></div>
+          <button ion-button class="button-standard" (click)="importWallet()">{{'Import a wallet' | translate}}</button> <button ion-button class="button-standard" (click)="shoBackToOnboardingPopup()">{{'Create wallets' | translate}}</button>
         </div>
       </div>
 
       <ion-card class="tabs-card" *ngIf="wallets && wallets[0]">
         <div class="tabs-wrapper list-header item">
           <div class="tabs-inner-wrapper">
-            <a
-              class="tab-btn"
-              [ngClass]="{'active': selectedCoinType=='all'}"
-              (click)="selectCoinType('all')"
-              >{{ 'All' | translate }}</a
-            >
-            <a
-              class="tab-btn"
-              [ngClass]="{'active': selectedCoinType=='btc'}"
-              (click)="selectCoinType('btc')"
-              >{{ 'BTC' | translate }}</a
-            >
-            <a
-              class="tab-btn"
-              [ngClass]="{'active': selectedCoinType=='eth'}"
-              (click)="selectCoinType('eth')"
-              >{{ 'ETH' | translate }}</a
-            >
-            <a
-              class="tab-btn"
-              [ngClass]="{'active': selectedCoinType=='try'}"
-              (click)="selectCoinType('try')"
-              >{{ 'TRY' | translate }}</a
-            >
-            <div class="import-btn" (click)="importWallet()">
-              <img src="assets/img/icon_inline_import@2x.png" alt="" />
-            </div>
+            <a class="tab-btn" [ngClass]="{'active': selectedCoinType=='all'}" (click)="selectCoinType('all')">{{ 'All' | translate }}</a> <a class="tab-btn" [ngClass]="{'active': selectedCoinType=='btc'}" (click)="selectCoinType('btc')">{{ 'BTC' | translate }}</a> <a class="tab-btn" [ngClass]="{'active': selectedCoinType=='eth'}" (click)="selectCoinType('eth')">{{ 'ETH' | translate }}</a>
+            <a class="tab-btn" [ngClass]="{'active': selectedCoinType=='try'}" (click)="selectCoinType('try')">{{ 'TRY' | translate }}</a>
+            <div class="import-btn" (click)="importWallet()"><img src="assets/img/icon_inline_import@2x.png" alt="" /></div>
           </div>
         </div>
       </ion-card>
 
-      <ion-list
-        reorder="{{showReorderBtc}}"
-        (ionItemReorder)="legendGenerate()"
-        *ngIf="walletsBtc && walletsBtc[0] && (selectedCoinType=='btc' || selectedCoinType=='all')"
-      >
-        <div
-          class="card"
-          *ngFor="let wallet of walletsBtc"
-          (click)="goToWalletDetails(wallet)"
-        >
+      <ion-list reorder="{{showReorderBtc}}" (ionItemReorder)="legendGenerate()" *ngIf="walletsBtc && walletsBtc[0] && (selectedCoinType=='btc' || selectedCoinType=='all')">
+        <div class="card" *ngFor="let wallet of walletsBtc" (click)="goToWalletDetails(wallet)">
           <button ion-item>
             <ion-icon class="item-img" item-start>
               <!--
                 <img *ngIf="wallet.network == 'testnet'" [ngStyle]="{'background-color': wallet.color}" src="assets/img/img_wallet_BTC@2x.png"
                 class="icon-wallet" />
               -->
-              <img
-                *ngIf="wallet.network == 'testnet'"
-                src="assets/img/icon-wallet-testnet.svg"
-                class="icon-wallet"
-              />
-              <img
-                *ngIf="wallet.network != 'testnet'"
-                src="assets/img/img_wallet_BTC@2x.png"
-                class="icon-wallet"
-              />
+              <img *ngIf="wallet.network == 'testnet'" src="assets/img/icon-wallet-testnet.svg" class="icon-wallet" /> <img *ngIf="wallet.network != 'testnet'" src="assets/img/img_wallet_BTC@2x.png" class="icon-wallet" />
             </ion-icon>
             <div class="item-title">
               <span class="name">{{wallet.name ? wallet.name : ''}}</span>
-              <span
-                class="amount"
-                *ngIf="wallet.isComplete() && !wallet.needsBackup"
-              >
+              <span class="amount" *ngIf="wallet.isComplete() && !wallet.needsBackup">
                 <span *ngIf="!wallet.balanceHidden && !wallet.scanning">
-                  {{wallet.status && wallet.status.totalBalanceStr ?
-                  (wallet.status.totalBalanceStr.split(' ')[0]) : (
-                  wallet.cachedBalance ? (wallet.cachedBalance.split(' ')[0]) :
-                  '')}}
+                  {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr.split(' ')[0]) : ( wallet.cachedBalance ? (wallet.cachedBalance.split(' ')[0]) : '')}}
                   <!--
                     {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
                     wallet.cachedBalance ? wallet.cachedBalance
@@ -205,32 +122,9 @@
               </span>
             </div>
             <div class="item-subtitle">
-              <span class="wallet-type" *ngIf="!wallet.needsBackup"
-                >Bitcoin</span
-              >
-              <span
-                class="wallet-warning"
-                *ngIf="!wallet.isComplete()"
-                translate
-              >
-                Incomplete
-              </span>
-              <span
-                class="wallet-warning"
-                *ngIf="wallet.isComplete() && wallet.needsBackup"
-                translate
-              >
-                Needs Backup
-              </span>
+              <span class="wallet-type" *ngIf="!wallet.needsBackup">Bitcoin</span> <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate> Incomplete </span> <span class="wallet-warning" *ngIf="wallet.isComplete() && wallet.needsBackup" translate> Needs Backup </span>
 
-              <span class="dollar-value">
-                {{(wallet.status && wallet.status.alternativeIsoCode &&
-                wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
-                {{wallet.status && wallet.status.totalBalanceAlternative ?
-                wallet.status.totalBalanceAlternative : 0}} {{wallet.status &&
-                wallet.status.alternativeIsoCode ?
-                wallet.status.alternativeIsoCode : ''}}</span
-              >
+              <span class="dollar-value"> {{(wallet.status && wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$' : ''}} {{wallet.status && wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}} {{wallet.status && wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
             </div>
           </button>
         </div>
@@ -260,40 +154,15 @@
         </ion-item-divider>
       -->
 
-      <ion-list
-        reorder="{{showReorderBch}}"
-        (ionItemReorder)="reorderWalletsBch($event)"
-        *ngIf="walletsBch && walletsBch[0] && (selectedCoinType=='btc' || selectedCoinType=='all')"
-      >
-        <div
-          class="card"
-          *ngFor="let wallet of walletsBch"
-          (click)="goToWalletDetails(wallet)"
-        >
+      <ion-list reorder="{{showReorderBch}}" (ionItemReorder)="reorderWalletsBch($event)" *ngIf="walletsBch && walletsBch[0] && (selectedCoinType=='btc' || selectedCoinType=='all')">
+        <div class="card" *ngFor="let wallet of walletsBch" (click)="goToWalletDetails(wallet)">
           <button ion-item>
-            <ion-icon class="item-img" item-start>
-              <img
-                *ngIf="wallet.network == 'testnet'"
-                src="assets/img/icon-wallet-testnet.svg"
-                class="icon-wallet"
-              />
-              <img
-                *ngIf="wallet.network != 'testnet'"
-                src="assets/img/img_wallet_BCH@2x.png"
-                class="icon-wallet"
-              />
-            </ion-icon>
+            <ion-icon class="item-img" item-start> <img *ngIf="wallet.network == 'testnet'" src="assets/img/icon-wallet-testnet.svg" class="icon-wallet" /> <img *ngIf="wallet.network != 'testnet'" src="assets/img/img_wallet_BCH@2x.png" class="icon-wallet" /> </ion-icon>
             <div class="item-title clearfix">
               <span class="name">{{wallet.name ? wallet.name : ''}}</span>
-              <span
-                class="amount"
-                *ngIf="wallet.isComplete() && !wallet.needsBackup"
-              >
+              <span class="amount" *ngIf="wallet.isComplete() && !wallet.needsBackup">
                 <span *ngIf="!wallet.balanceHidden && !wallet.scanning">
-                  {{wallet.status && wallet.status.totalBalanceStr ?
-                  (wallet.status.totalBalanceStr.split(' ')[0]) : (
-                  wallet.cachedBalance ? (wallet.cachedBalance.split(' ')[0]) :
-                  '')}}
+                  {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr.split(' ')[0]) : ( wallet.cachedBalance ? (wallet.cachedBalance.split(' ')[0]) : '')}}
                   <!--
                     {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
                     wallet.cachedBalance ? wallet.cachedBalance
@@ -315,71 +184,23 @@
               </span>
             </div>
             <div class="item-subtitle clearfix">
-              <span class="wallet-type" *ngIf="!wallet.needsBackup"
-                >Bitcoin</span
-              >
-              <span
-                class="wallet-warning"
-                *ngIf="!wallet.isComplete()"
-                translate
-              >
-                Incomplete
-              </span>
-              <span
-                class="wallet-warning"
-                *ngIf="wallet.isComplete() && wallet.needsBackup"
-                translate
-              >
-                Needs Backup
-              </span>
-              <span class="dollar-value">
-                {{(wallet.status && wallet.status.alternativeIsoCode &&
-                wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
-                {{wallet.status && wallet.status.totalBalanceAlternative ?
-                wallet.status.totalBalanceAlternative : 0}} {{wallet.status &&
-                wallet.status.alternativeIsoCode ?
-                wallet.status.alternativeIsoCode : ''}}</span
-              >
+              <span class="wallet-type" *ngIf="!wallet.needsBackup">Bitcoin</span> <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate> Incomplete </span> <span class="wallet-warning" *ngIf="wallet.isComplete() && wallet.needsBackup" translate> Needs Backup </span>
+              <span class="dollar-value"> {{(wallet.status && wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$' : ''}} {{wallet.status && wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}} {{wallet.status && wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
             </div>
           </button>
         </div>
       </ion-list>
       <!-- </div> -->
 
-      <ion-list
-        reorder="{{showReorderEth}}"
-        (ionItemReorder)="reorderWalletsEth($event)"
-        *ngIf="walletsEth && walletsEth[0] && (selectedCoinType=='eth' || selectedCoinType=='all')"
-      >
-        <div
-          class="card"
-          *ngFor="let wallet of walletsEth"
-          (click)="goToWalletDetails(wallet)"
-        >
+      <ion-list reorder="{{showReorderEth}}" (ionItemReorder)="reorderWalletsEth($event)" *ngIf="walletsEth && walletsEth[0] && (selectedCoinType=='eth' || selectedCoinType=='all')">
+        <div class="card" *ngFor="let wallet of walletsEth" (click)="goToWalletDetails(wallet)">
           <button ion-item>
-            <ion-icon class="item-img" item-start>
-              <img
-                *ngIf="wallet.network == 'testnet'"
-                src="assets/img/icon-wallet-testnet.svg"
-                class="icon-wallet"
-              />
-              <img
-                *ngIf="wallet.network != 'testnet'"
-                src="assets/img/img_wallet_ETH@2x.png"
-                class="icon-wallet"
-              />
-            </ion-icon>
+            <ion-icon class="item-img" item-start> <img *ngIf="wallet.network == 'testnet'" src="assets/img/icon-wallet-testnet.svg" class="icon-wallet" /> <img *ngIf="wallet.network != 'testnet'" src="assets/img/img_wallet_ETH@2x.png" class="icon-wallet" /> </ion-icon>
             <div class="item-title clearfix">
               <span class="name">{{wallet.name ? wallet.name : ''}}</span>
-              <span
-                class="amount"
-                *ngIf="wallet.isComplete() && !wallet.needsBackup"
-              >
+              <span class="amount" *ngIf="wallet.isComplete() && !wallet.needsBackup">
                 <span *ngIf="!wallet.balanceHidden && !wallet.scanning">
-                  {{wallet.status && wallet.status.totalBalanceStr ?
-                  (wallet.status.totalBalanceStr.split(' ')[0]) : (
-                  wallet.cachedBalance ? (wallet.cachedBalance.split(' ')[0]) :
-                  '')}}
+                  {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr.split(' ')[0]) : ( wallet.cachedBalance ? (wallet.cachedBalance.split(' ')[0]) : '')}}
                   <!--
                     {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
                     wallet.cachedBalance ? wallet.cachedBalance
@@ -391,70 +212,22 @@
               </span>
             </div>
             <div class="item-subtitle clearfix">
-              <span class="wallet-type" *ngIf="!wallet.needsBackup"
-                >Ethereum</span
-              >
-              <span
-                class="wallet-warning"
-                *ngIf="!wallet.isComplete()"
-                translate
-              >
-                Incomplete
-              </span>
-              <span
-                class="wallet-warning"
-                *ngIf="wallet.isComplete() && wallet.needsBackup"
-                translate
-              >
-                Needs Backup
-              </span>
-              <span class="dollar-value">
-                {{(wallet.status && wallet.status.alternativeIsoCode &&
-                wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
-                {{wallet.status && wallet.status.totalBalanceAlternative ?
-                wallet.status.totalBalanceAlternative : 0}} {{wallet.status &&
-                wallet.status.alternativeIsoCode ?
-                wallet.status.alternativeIsoCode : ''}}</span
-              >
+              <span class="wallet-type" *ngIf="!wallet.needsBackup">Ethereum</span> <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate> Incomplete </span> <span class="wallet-warning" *ngIf="wallet.isComplete() && wallet.needsBackup" translate> Needs Backup </span>
+              <span class="dollar-value"> {{(wallet.status && wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$' : ''}} {{wallet.status && wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}} {{wallet.status && wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
             </div>
           </button>
         </div>
       </ion-list>
 
-      <ion-list
-        reorder="{{showReorderTri}}"
-        (ionItemReorder)="reorderWalletsTri($event)"
-        *ngIf="walletsTri && walletsTri[0] && (selectedCoinType=='try' || selectedCoinType=='all')"
-      >
-        <div
-          class="card"
-          *ngFor="let wallet of walletsTri"
-          (click)="goToWalletDetails(wallet)"
-        >
+      <ion-list reorder="{{showReorderTri}}" (ionItemReorder)="reorderWalletsTri($event)" *ngIf="walletsTri && walletsTri[0] && (selectedCoinType=='try' || selectedCoinType=='all')">
+        <div class="card" *ngFor="let wallet of walletsTri" (click)="goToWalletDetails(wallet)">
           <button ion-item>
-            <ion-icon class="item-img" item-start>
-              <img
-                *ngIf="wallet.network == 'testnet'"
-                src="assets/img/icon-wallet-testnet.svg"
-                class="icon-wallet"
-              />
-              <img
-                *ngIf="wallet.network != 'testnet'"
-                src="assets/img/img_wallet_TRI@2x.png"
-                class="icon-wallet"
-              />
-            </ion-icon>
+            <ion-icon class="item-img" item-start> <img *ngIf="wallet.network == 'testnet'" src="assets/img/icon-wallet-testnet.svg" class="icon-wallet" /> <img *ngIf="wallet.network != 'testnet'" src="assets/img/img_wallet_TRI@2x.png" class="icon-wallet" /> </ion-icon>
             <div class="item-title clearfix">
               <span class="name">{{wallet.name ? wallet.name : ''}}</span>
-              <span
-                class="amount"
-                *ngIf="wallet.isComplete() && !wallet.needsBackup"
-              >
+              <span class="amount" *ngIf="wallet.isComplete() && !wallet.needsBackup">
                 <span *ngIf="!wallet.balanceHidden && !wallet.scanning">
-                  {{wallet.status && wallet.status.totalBalanceStr ?
-                  (wallet.status.totalBalanceStr.split(' ')[0]) : (
-                  wallet.cachedBalance ? (wallet.cachedBalance.split(' ')[0]) :
-                  '')}}
+                  {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr.split(' ')[0]) : ( wallet.cachedBalance ? (wallet.cachedBalance.split(' ')[0]) : '')}}
                   <!--
                     {{wallet.status && wallet.status.totalBalanceStr ? (wallet.status.totalBalanceStr) : (
                     wallet.cachedBalance ? wallet.cachedBalance
@@ -466,29 +239,8 @@
               </span>
             </div>
             <div class="item-subtitle clearfix">
-              <span class="wallet-type" *ngIf="!wallet.needsBackup">Trias</span>
-              <span
-                class="wallet-warning"
-                *ngIf="!wallet.isComplete()"
-                translate
-              >
-                Incomplete
-              </span>
-              <span
-                class="wallet-warning"
-                *ngIf="wallet.isComplete() && wallet.needsBackup"
-                translate
-              >
-                Needs Backup
-              </span>
-              <span class="dollar-value">
-                {{(wallet.status && wallet.status.alternativeIsoCode &&
-                wallet.status.alternativeIsoCode=='USD') ? '$' : ''}}
-                {{wallet.status && wallet.status.totalBalanceAlternative ?
-                wallet.status.totalBalanceAlternative : 0}} {{wallet.status &&
-                wallet.status.alternativeIsoCode ?
-                wallet.status.alternativeIsoCode : ''}}</span
-              >
+              <span class="wallet-type" *ngIf="!wallet.needsBackup">Trias</span> <span class="wallet-warning" *ngIf="!wallet.isComplete()" translate> Incomplete </span> <span class="wallet-warning" *ngIf="wallet.isComplete() && wallet.needsBackup" translate> Needs Backup </span>
+              <span class="dollar-value"> {{(wallet.status && wallet.status.alternativeIsoCode && wallet.status.alternativeIsoCode=='USD') ? '$' : ''}} {{wallet.status && wallet.status.totalBalanceAlternative ? wallet.status.totalBalanceAlternative : 0}} {{wallet.status && wallet.status.alternativeIsoCode ? wallet.status.alternativeIsoCode : ''}}</span>
             </div>
           </button>
         </div>

@@ -1,40 +1,10 @@
 <div class="common-tabs-bar">
-  <div
-    class="tab-btn"
-    [ngClass]="{ active: selectedTab == 'home' }"
-    (click)="select('home')"
-  >
-    <ion-icon class="tab-btn-icon">
-      <img
-        *ngIf="selectedTab !== 'home'"
-        src="assets/img/tab-icons/ico-home.svg"
-        alt=""
-      />
-      <img
-        *ngIf="selectedTab == 'home'"
-        src="assets/img/tab-icons/ico-home-active.svg"
-        alt=""
-      />
-    </ion-icon>
+  <div class="tab-btn" [ngClass]="{ active: selectedTab == 'home' }" (click)="select('home')">
+    <ion-icon class="tab-btn-icon"> <img *ngIf="selectedTab !== 'home'" src="assets/img/tab-icons/ico-home.svg" alt="" /> <img *ngIf="selectedTab == 'home'" src="assets/img/tab-icons/ico-home-active.svg" alt="" /> </ion-icon>
     <span class="tab-btn-text">{{ 'Home' | translate }}</span>
   </div>
-  <div
-    class="tab-btn"
-    [ngClass]="{ active: selectedTab == 'settings' }"
-    (click)="select('settings')"
-  >
-    <ion-icon class="tab-btn-icon">
-      <img
-        *ngIf="selectedTab !== 'settings'"
-        src="assets/img/tab-icons/ico-settings.svg"
-        alt=""
-      />
-      <img
-        *ngIf="selectedTab === 'settings'"
-        src="assets/img/tab-icons/ico-settings-active.svg"
-        alt=""
-      />
-    </ion-icon>
+  <div class="tab-btn" [ngClass]="{ active: selectedTab == 'settings' }" (click)="select('settings')">
+    <ion-icon class="tab-btn-icon"> <img *ngIf="selectedTab !== 'settings'" src="assets/img/tab-icons/ico-settings.svg" alt="" /> <img *ngIf="selectedTab === 'settings'" src="assets/img/tab-icons/ico-settings-active.svg" alt="" /> </ion-icon>
     <span class="tab-btn-text">{{ 'Settings' | translate }}</span>
     <!-- <div class="button-effect"></div> -->
   </div>

@@ -1,10 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>{{'Notifications' | translate}}</ion-title>
-  </ion-navbar>
-
+  <ion-navbar> <ion-title>{{'Notifications' | translate}}</ion-title> </ion-navbar>
 </ion-header>
-
 
 <ion-content>
   <ion-item-divider></ion-item-divider>
@@ -16,11 +12,7 @@
       </ion-item>
     </div>
 
-    <ion-item-divider *ngIf="!usePushNotifications && isIOSApp">
-      <span translate>
-        Push notifications for {{appName}} are currently disabled. Enable them in the Settings app.
-      </span>
-    </ion-item-divider>
+    <ion-item-divider *ngIf="!usePushNotifications && isIOSApp"> <span translate> Push notifications for {{appName}} are currently disabled. Enable them in the Settings app. </span> </ion-item-divider>
 
     <div *ngIf="usePushNotifications && pushNotifications">
       <ion-item>
@@ -50,8 +42,7 @@
 
     <label-tip *ngIf="emailNotifications" type="info" header="no-header">
       <div label-tip-body translate>
-        By providing your email address, you give explicit consent to Copay to use your email address to send you email notifications about payments.
-        <br>
+        By providing your email address, you give explicit consent to Copay to use your email address to send you email notifications about payments. <br />
         <a (click)="openPrivacyPolicy()" translate>View Privacy Policy</a>
       </div>
     </label-tip>
@@ -61,12 +52,7 @@
         <ion-label stacked>{{ 'Email' | translate }}</ion-label>
         <ion-input formControlName="email" type="email"></ion-input>
       </ion-item>
-      <div text-center>
-        <button ion-button class="button-standard" (click)="saveEmail()" [disabled]="emailForm.invalid">
-          {{'Save' | translate}}
-        </button>
-      </div>
+      <div text-center><button ion-button class="button-standard" (click)="saveEmail()" [disabled]="emailForm.invalid">{{'Save' | translate}}</button></div>
     </form>
   </ion-list>
-
 </ion-content>

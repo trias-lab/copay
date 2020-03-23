@@ -1,38 +1,23 @@
 <ion-content>
-	<h1>{{'Echange Details' | translate}}</h1>
-	<p>{{'Check the amount and currencies carefully.' | translate}}</p>
-	<ion-list>
+  <h1>{{'Echange Details' | translate}}</h1>
+  <p>{{'Check the amount and currencies carefully.' | translate}}</p>
+  <ion-list>
     <ion-item>
       Exchange...
-      <ion-note item-end>
-        {{exchangeFrom}}
-      </ion-note>
+      <ion-note item-end> {{exchangeFrom}} </ion-note>
     </ion-item>
     <ion-item>
       For...
-      <ion-note item-end>
-        {{exchangeTo}}
-      </ion-note>
+      <ion-note item-end> {{exchangeTo}} </ion-note>
     </ion-item>
     <ion-item>
       Address
-      <ion-note item-end>
-        {{address}}
-      </ion-note>
+      <ion-note item-end> {{address}} </ion-note>
     </ion-item>
     <ion-item>
       Gas price
-      <ion-note item-end>
-        {{gasPrice}}
-      </ion-note>
+      <ion-note item-end> {{gasPrice}} </ion-note>
     </ion-item>
   </ion-list>
-  <div class="button-group">  	
-		<a class="cancel-button" (click)="cancel()" >
-			Cancel
-		</a>
-		<button class="confirm-button" (click)="confirm()" ion-button>
-			Exchange
-		</button>
-  </div>
+  <div class="button-group"><a class="cancel-button" (click)="cancel()"> Cancel </a> <button class="confirm-button" (click)="confirm()" ion-button>Exchange</button></div>
 </ion-content>

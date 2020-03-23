@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// import { TranslateService } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
@@ -47,7 +47,7 @@ export class SettingsPage {
     private configProvider: ConfigProvider,
     private logger: Logger,
     private platformProvider: PlatformProvider,
-    // private translate: TranslateService,
+    private translate: TranslateService,
     private touchid: TouchIdProvider,
     private popupProvider: PopupProvider
   ) {
@@ -99,7 +99,7 @@ export class SettingsPage {
   public resetEncryptPassword(): void {
     this.profileProvider.resetEncryptPassword().then(() => {
       this.popupProvider.ionicAlert(
-        'Your encrypt password is updated successfully!'
+        this.translate.instant('Your encrypt password is updated successfully!')
       );
     });
   }
