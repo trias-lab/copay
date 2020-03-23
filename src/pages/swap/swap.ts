@@ -122,8 +122,10 @@ export class SwapPage {
         this.popupProvider
           .ionicAlert(
             this.translate.instant('Needs Backup'),
-            "There is no backed up ETH wallet. It's highly advised that you verify your recovery phrase so that your funds can be recovered in case your phone was lost or stolen.",
-            'Go Back'
+            this.translate.instant(
+              "There is no backed up ETH wallet. It's highly advised that you verify your recovery phrase so that your funds can be recovered in case your phone was lost or stolen."
+            ),
+            this.translate.instant('Go Back')
           )
           .then(() => {
             this.viewCtrl.dismiss();

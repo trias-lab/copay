@@ -1,82 +1,38 @@
 <ion-header>
   <ion-navbar>
-    <ion-title class="address-back-title"
-      >{{ 'Address Book' | translate }}</ion-title
-    >
+    <ion-title class="address-back-title">{{ 'Address Book' | translate }}</ion-title>
     <ion-buttons *ngIf="!isEmptyList && !inSelectMode" right>
-      <button ion-button (click)="addEntry()" class="address-header-addOne">
-        <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
-      </button>
+      <button ion-button (click)="addEntry()" class="address-header-addOne"><ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon></button>
     </ion-buttons>
     <ion-buttons *ngIf="!isEmptyList && !inSelectMode" right>
-      <button
-        ion-button
-        (click)="toggleSelectMode()"
-        class="address-header-addOne"
-      >
-        <ion-icon name="create"></ion-icon>
-      </button>
+      <button ion-button (click)="toggleSelectMode()" class="address-header-addOne"><ion-icon name="create"></ion-icon></button>
     </ion-buttons>
 
     <ion-buttons *ngIf="!isEmptyList && inSelectMode" right>
-      <button
-        ion-button
-        (click)="deleteContacts()"
-        class="address-header-addOne"
-      >
-        <ion-icon name="trash"></ion-icon>
-      </button>
+      <button ion-button (click)="deleteContacts()" class="address-header-addOne"><ion-icon name="trash"></ion-icon></button>
     </ion-buttons>
     <ion-buttons *ngIf="!isEmptyList && inSelectMode" right>
-      <button
-        ion-button
-        (click)="cancelAllSelect()"
-        class="address-header-addOne"
-      >
-        <ion-icon name="checkmark"></ion-icon>
-      </button>
+      <button ion-button (click)="cancelAllSelect()" class="address-header-addOne"><ion-icon name="checkmark"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <div class="zero-state" *ngIf="isEmptyList">
-    <ion-icon class="zero-state-icon">
-      <img class="svg" src="assets/img/img_ContactEmpty@3x.png" />
-    </ion-icon>
+    <ion-icon class="zero-state-icon"> <img class="svg" src="assets/img/img_ContactEmpty@3x.png" /> </ion-icon>
     <!-- <div class="zero-state-heading" translate>No contacts yet</div> -->
-    <div class="zero-state-description">
-      {{ 'Create contacts to mange frequently used addresses, so you don’t have
-      to type in everytime.' | translate }}
-    </div>
-    <button ion-button class="button-standard" (click)="addEntry()">
-      {{ 'Add Contact' | translate }}
-    </button>
+    <div class="zero-state-description">{{ 'Create contacts to mange frequently used addresses, so you don’t have to type in everytime.' | translate }}</div>
+    <button ion-button class="button-standard" (click)="addEntry()">{{ 'Add Contact' | translate }}</button>
   </div>
 
   <div *ngIf="!isEmptyList">
-    <ion-searchbar
-      placeholder="{{'Search a contact' | translate}}"
-      (ionInput)="getItems($event)"
-    ></ion-searchbar>
+    <ion-searchbar placeholder="{{'Search a contact' | translate}}" (ionInput)="getItems($event)"></ion-searchbar>
     <ion-list class="address-list">
-      <button
-        class="contact"
-        ion-item
-        *ngFor="let entry of filteredAddressbook; let i = index"
-        (click)="viewEntry(entry)"
-      >
+      <button class="contact" ion-item *ngFor="let entry of filteredAddressbook; let i = index" (click)="viewEntry(entry)">
         <div class="check-radio" *ngIf="inSelectMode">
-          <span *ngIf="entry.isSelected"
-            ><ion-icon name="checkmark"></ion-icon
-          ></span>
+          <span *ngIf="entry.isSelected"><ion-icon name="checkmark"></ion-icon></span>
         </div>
-        <gravatar
-          [name]="entry.name"
-          [height]="30"
-          [width]="30"
-          [email]="entry.email"
-        ></gravatar>
+        <gravatar [name]="entry.name" [height]="30" [width]="30" [email]="entry.email"></gravatar>
         <div class="contact-info">
           <div clss="item-title">{{ entry.name }}</div>
           <div class="item-subtitle">{{ entry.address }}</div>

@@ -5,10 +5,7 @@
 <ion-content no-bounce>
   <div class="wallet-set-title">
     <p class="set-name">{{ wallet && wallet.name }}</p>
-    <p class="set-detail" (click)="openWalletName()">
-      <img src="assets/img/settings-icons/icon_edit@2x.png" />
-      <span>Edit Wallet Name</span>
-    </p>
+    <p class="set-detail" (click)="openWalletName()"><img src="assets/img/settings-icons/icon_edit@2x.png" /> <span>Edit Wallet Name</span></p>
   </div>
   <ion-list class="settings-list">
     <!--
@@ -29,11 +26,7 @@
       </ion-item>
       <ion-item-divider>{{'Security' | translate}}</ion-item-divider>
     -->
-    <button
-      ion-item
-      (click)="openBackupSettings()"
-      [ngClass]="{ warn: needsBackup }"
-    >
+    <button ion-item (click)="openBackupSettings()" [ngClass]="{ warn: needsBackup }">
       <span translate>Backup</span>
       <!--
         <ion-note *ngIf="needsBackup" class="wallet-warning" item-end>
@@ -80,20 +73,13 @@
         <span translate>Wallet Information</span>
       </button>
     -->
-    <button ion-item (click)="openExportWallet()">
-      <span translate>Export Wallet</span>
-    </button>
+    <button ion-item (click)="openExportWallet()"><span translate>Export Wallet</span></button>
     <!--
       <button ion-item (click)="openWalletServiceUrl()">
         <span translate>Wallet Service URL</span>
       </button>
     -->
-    <button ion-item (click)="openTransactionHistory()">
-      <span translate>Transaction History</span>
-    </button>
-    <button ion-item (click)="openDeleteWallet()" class="delete">
-      <span translate>Delete Wallet</span>
-    </button>
+    <button ion-item (click)="openTransactionHistory()"><span translate>Transaction History</span></button> <button ion-item (click)="openDeleteWallet()" class="delete"><span translate>Delete Wallet</span></button>
     <ion-item-divider></ion-item-divider>
   </ion-list>
 </ion-content>

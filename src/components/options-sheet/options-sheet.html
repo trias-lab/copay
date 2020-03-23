@@ -2,16 +2,10 @@
   <div class="options-container" [ngSwitch]="sheetType">
     <div *ngSwitchCase="'address-options'">
       <div class="option" (click)="optionClicked('request-amount')">
-        <div class="option-icon">
-          <img src="assets/img/specific-amount.svg" />
-        </div>
+        <div class="option-icon"><img src="assets/img/specific-amount.svg" /></div>
         <div translate class="option-text">Request Specific Amount</div>
       </div>
-      <div
-        *ngIf="params.showShare"
-        class="option"
-        (click)="optionClicked('share-address')"
-      >
+      <div *ngIf="params.showShare" class="option" (click)="optionClicked('share-address')">
         <div class="option-icon"><img src="assets/img/icon-share.svg" /></div>
         <div translate class="option-text">Share Address</div>
       </div>

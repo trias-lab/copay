@@ -2,9 +2,7 @@
   <ion-navbar>
     <ion-title>{{'Search Transactions' | translate}}</ion-title>
     <ion-buttons left>
-      <button class="modal-close-button" (click)="close()" ion-button>
-        <ion-icon ios="md-close" md="md-close"></ion-icon>
-      </button>
+      <button class="modal-close-button" (click)="close()" ion-button><ion-icon ios="md-close" md="md-close"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -12,7 +10,7 @@
 <ion-content>
   <div>
     <ion-searchbar placeholder="{{'Search Transactions' | translate}}" [(ngModel)]="search" (ngModelChange)="updateSearchInput(search)"></ion-searchbar>
-    <div *ngIf="!(txHistorySearchResults && txHistorySearchResults[0])" class="hint">You can search for address, name, amount, date, TxID or notes. </div>
+    <div *ngIf="!(txHistorySearchResults && txHistorySearchResults[0])" class="hint">You can search for address, name, amount, date, TxID or notes.</div>
   </div>
 
   <ion-list *ngIf="txHistorySearchResults && txHistorySearchResults[0]" class="tx-history">
@@ -20,43 +18,44 @@
       <div class="btn-container" *ngFor="let tx of txHistorySearchResults; trackBy: trackByFn; let i = index;">
         <button ion-item (click)="close(tx.txid)">
           <ion-icon item-start>
-           <!--  <div *ngIf="tx.confirmations == 0">
-              <img src="assets/img/tx-action/icon-confirming.svg" width="40">
-            </div> -->
+            <!--
+              <div *ngIf="tx.confirmations == 0">
+                <img src="assets/img/tx-action/icon-confirming.svg" width="40">
+              </div>
+            -->
             <div>
-              <span *ngIf="!tx.customData || !tx.customData.service">
-                <img src="assets/img/tx-action/icon_received@2x.png" *ngIf="tx.action == 'received'" width="40">
-                <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'" width="40">
-                <img src="assets/img/tx-action/icon_moved@2x.png" *ngIf="tx.action == 'moved'" width="40">
-              </span>
+              <span *ngIf="!tx.customData || !tx.customData.service"> <img src="assets/img/tx-action/icon_received@2x.png" *ngIf="tx.action == 'received'" width="40" /> <img src="assets/img/tx-action/icon_sent@2x.png" *ngIf="tx.action == 'sent'" width="40" /> <img src="assets/img/tx-action/icon_moved@2x.png" *ngIf="tx.action == 'moved'" width="40" /> </span>
             </div>
           </ion-icon>
 
           <span class="action" *ngIf="tx.confirmations == 0">
-            <span *ngIf="(tx.action == 'sent') && !(addressbook && addressbook[tx.outputs[0].address])">{{'Sending'
-              | translate}}</span>
-            <span *ngIf="(tx.action == 'moved') && !(addressbook && addressbook[tx.outputs[0].address])">{{'Moving'
-              | translate}}</span>
-            <!-- <span *ngIf="(tx.action == 'sent' || tx.action == 'moved') && (addressbook && addressbook[tx.outputs[0].address])">{{addressbook[tx.outputs[0].address].name
-              || addressbook[tx.outputs[0].address]}}</span> -->
+            <span *ngIf="(tx.action == 'sent') && !(addressbook && addressbook[tx.outputs[0].address])">{{'Sending' | translate}}</span> <span *ngIf="(tx.action == 'moved') && !(addressbook && addressbook[tx.outputs[0].address])">{{'Moving' | translate}}</span>
+            <!--
+              <span *ngIf="(tx.action == 'sent' || tx.action == 'moved') && (addressbook && addressbook[tx.outputs[0].address])">{{addressbook[tx.outputs[0].address].name
+              || addressbook[tx.outputs[0].address]}}</span>
+            -->
             <span *ngIf="tx.action == 'received'">{{'Receiving' | translate}}</span>
           </span>
 
           <span class="action" *ngIf="tx.confirmations > 0 && tx.action == 'received'">
-            <span >{{'Received' | translate}}</span>
-            <!-- <span *ngIf="tx.note && tx.note.body != ''">{{tx.note.body}}</span>
-            <span *ngIf="addressbook && addressbook[tx.outputs[0].address]">
-              {{addressbook[tx.outputs[0].address].name || addressbook[tx.outputs[0].address]}}
-            </span> -->
+            <span>{{'Received' | translate}}</span>
+            <!--
+              <span *ngIf="tx.note && tx.note.body != ''">{{tx.note.body}}</span>
+              <span *ngIf="addressbook && addressbook[tx.outputs[0].address]">
+                {{addressbook[tx.outputs[0].address].name || addressbook[tx.outputs[0].address]}}
+              </span>
+            -->
           </span>
 
           <span class="action" *ngIf="tx.confirmations > 0 && tx.action == 'sent'">
-            <span >{{'Sent' | translate}}</span>
-            <!-- <span *ngIf="tx.message">{{tx.message}}</span>
-            <span *ngIf="!tx.message && tx.note && tx.note.body != ''">{{tx.note.body}}</span>
-            <span *ngIf="!tx.message && addressbook && addressbook[tx.outputs[0].address]">
-              {{addressbook[tx.outputs[0].address].name || addressbook[tx.outputs[0].address]}}
-            </span> -->
+            <span>{{'Sent' | translate}}</span>
+            <!--
+              <span *ngIf="tx.message">{{tx.message}}</span>
+              <span *ngIf="!tx.message && tx.note && tx.note.body != ''">{{tx.note.body}}</span>
+              <span *ngIf="!tx.message && addressbook && addressbook[tx.outputs[0].address]">
+                {{addressbook[tx.outputs[0].address].name || addressbook[tx.outputs[0].address]}}
+              </span>
+            -->
           </span>
 
           <span class="action" *ngIf="tx.confirmations > 0 && tx.action == 'moved'">
@@ -64,38 +63,21 @@
             <!-- <span *ngIf="tx.note && tx.note.body != ''">{{tx.note.body}}</span> -->
           </span>
 
-          <span class="action" *ngIf="tx.confirmations > 0 && tx.action == 'invalid'">
-            <span class="assertive" translate>Invalid</span>
-          </span>
+          <span class="action" *ngIf="tx.confirmations > 0 && tx.action == 'invalid'"> <span class="assertive" translate>Invalid</span> </span>
 
-          <span class="amount">
-            <span *ngIf="tx.action != 'invalid'">{{tx.amount |
-              satToUnit: wallet.coin}}</span>
-            <span class="double-spend" *ngIf="tx.action == 'invalid'" translate>(possible double spend)</span>
-          </span>
+          <span class="amount"> <span *ngIf="tx.action != 'invalid'">{{tx.amount | satToUnit: wallet.coin}}</span> <span class="double-spend" *ngIf="tx.action == 'invalid'" translate>(possible double spend)</span> </span>
 
           <div class="sub-description">
-            <span class="date">
-              <span *ngIf="tx.time && createdWithinPastDay(tx.time * 1000)">{{tx.time * 1000 | amTimeAgo}}</span>
-              <span *ngIf="tx.time && !createdWithinPastDay(tx.time * 1000)">{{tx.time * 1000 | amDateFormat:'MMM D,
-                YYYY'}}</span>
-            </span>
-            <span class="note" *ngIf="tx.message"> | {{tx.message}}</span>
-            <span class="note" *ngIf="!tx.message && tx.note && tx.note.body != ''"> | {{tx.note.body}}</span>
+            <span class="date"> <span *ngIf="tx.time && createdWithinPastDay(tx.time * 1000)">{{tx.time * 1000 | amTimeAgo}}</span> <span *ngIf="tx.time && !createdWithinPastDay(tx.time * 1000)">{{tx.time * 1000 | amDateFormat:'MMM D, YYYY'}}</span> </span> <span class="note" *ngIf="tx.message"> | {{tx.message}}</span> <span class="note" *ngIf="!tx.message && tx.note && tx.note.body != ''"> | {{tx.note.body}}</span>
           </div>
-
-          
         </button>
       </div>
     </div>
     <div class="txs-count" *ngIf="txHistoryShowMore">
-      <span>{{filteredTxHistory.length - txHistorySearchResults.length}} more</span>
-      &nbsp;
+      <span>{{filteredTxHistory.length - txHistorySearchResults.length}} more</span> &nbsp;
       <ion-icon name="arrow-down"></ion-icon>
     </div>
   </ion-list>
 
-  <ion-infinite-scroll *ngIf="txHistoryShowMore" (ionInfinite)="moreSearchResults($event)">
-    <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  <ion-infinite-scroll *ngIf="txHistoryShowMore" (ionInfinite)="moreSearchResults($event)"> <ion-infinite-scroll-content></ion-infinite-scroll-content> </ion-infinite-scroll>
 </ion-content>
