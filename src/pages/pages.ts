@@ -40,8 +40,6 @@ import { AdvancedPage } from '../pages/settings/advanced/advanced';
 import { AltCurrencyPage } from '../pages/settings/alt-currency/alt-currency';
 import { FeePolicyPage } from '../pages/settings/fee-policy/fee-policy';
 import { LanguagePage } from '../pages/settings/language/language';
-// import { NotificationsPage } from '../pages/settings/notifications/notifications';
-// import { SharePage } from '../pages/settings/share/share';
 import { AddressAddPage } from '../pages/wallet-details/add-address/add-address';
 
 /* Wallet Settings */
@@ -79,7 +77,6 @@ export const PAGES = [
   AltCurrencyPage,
   BackupRequestPage,
   ChooseFeeLevelPage,
-  // SharePage,
   ImportWalletPage,
   BackupGamePage,
   ConfirmPage,
@@ -96,7 +93,6 @@ export const PAGES = [
   ScanPage,
   SendPage,
   SettingsPage,
-  // NotificationsPage,
   FeePolicyPage,
   SearchTxModalPage,
   FinishModalPage,
