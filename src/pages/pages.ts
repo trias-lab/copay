@@ -31,8 +31,6 @@ import { SettingsPage } from '../pages/settings/settings';
 /* Settings */
 import { PasswordModalPage } from '../pages/password-modal/password-modal';
 import { PinPad } from '../pages/pin-pad/pin-pad.component';
-// import { AboutPage } from '../pages/settings/about/about';
-// import { SessionLogPage } from '../pages/settings/about/session-log/session-log';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
 import { AddressbookPage } from '../pages/settings/addressbook/addressbook';
 import { AddressbookModifyPage } from '../pages/settings/addressbook/modify/modify';
@@ -77,7 +75,6 @@ export const PAGES = [
   AddressbookAddPage,
   AddressbookViewPage,
   AddressbookModifyPage,
-  // AboutPage,
   AdvancedPage,
   AltCurrencyPage,
   BackupRequestPage,
@@ -102,7 +99,6 @@ export const PAGES = [
   // NotificationsPage,
   FeePolicyPage,
   SearchTxModalPage,
-  // SessionLogPage,
   FinishModalPage,
   TabsPage,
   TxpDetailsPage,
