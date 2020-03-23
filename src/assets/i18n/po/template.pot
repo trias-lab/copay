@@ -1,8 +1,15 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.3\n"
 
 msgid "(Trusted)"
 msgstr ""
@@ -10,36 +17,24 @@ msgstr ""
 msgid "(possible double spend)"
 msgstr ""
 
-msgid ""
-"* A payment proposal can be deleted if 1) you are the creator, and no other "
-"copayer has signed, or 2) 10 minutes have passed since the proposal was "
-"created."
+msgid "* A payment proposal can be deleted if 1) you are the creator, and no other copayer has signed, or 2) 10 minutes have passed since the proposal was created."
+msgstr ""
+
+msgid "A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum size allowed for a transaction was exceeded."
+msgstr ""
+
+msgid "A total of {{amountBelowFeeStr}} {{coin}} were excluded. These funds come from UTXOs smaller than the network fee provided."
 msgstr ""
 
 msgid ""
-"A total of {{amountAboveMaxSizeStr}} {{coin}} were excluded. The maximum "
-"size allowed for a transaction was exceeded."
+"A total of {{amountStr}} ({{fiatAmount | number:'1.2-2'}} {{currencyIsoCode}}) will be exchanged for {{withdrawalStr}} ({{fiatWithdrawal | number:'1.2-2'}} "
+"{{currencyIsoCode}})."
 msgstr ""
 
-msgid ""
-"A total of {{amountBelowFeeStr}} {{coin}} were excluded. These funds come "
-"from UTXOs smaller than the network fee provided."
+msgid "A total of {{fee}} {{coin}} were excluded. The maximum size allowed for a transaction was exceeded."
 msgstr ""
 
-msgid ""
-"A total of {{amountStr}} ({{fiatAmount | number:'1.2-2'}} "
-"{{currencyIsoCode}}) will be exchanged for {{withdrawalStr}} "
-"({{fiatWithdrawal | number:'1.2-2'}} {{currencyIsoCode}})."
-msgstr ""
-
-msgid ""
-"A total of {{fee}} {{coin}} were excluded. The maximum size allowed for a "
-"transaction was exceeded."
-msgstr ""
-
-msgid ""
-"A total of {{fee}} {{coin}} were excluded. These funds come from UTXOs "
-"smaller than the network fee provided."
+msgid "A total of {{fee}} {{coin}} were excluded. These funds come from UTXOs smaller than the network fee provided."
 msgstr ""
 
 msgid "About"
@@ -105,9 +100,7 @@ msgstr ""
 msgid "All addresses"
 msgstr ""
 
-msgid ""
-"All of your bitcoin wallet balance may not be available for immediate "
-"spending."
+msgid "All of your bitcoin wallet balance may not be available for immediate spending."
 msgstr ""
 
 msgid "Allow camera access"
@@ -131,17 +124,13 @@ msgstr ""
 msgid "Amount too big"
 msgstr ""
 
-msgid ""
-"An update to this app is available. For your security, please update to the "
-"latest version."
+msgid "An update to this app is available. For your security, please update to the latest version."
 msgstr ""
 
 msgid "Apply changes"
 msgstr ""
 
-msgid ""
-"Approximate Bitcoin network fee to transfer wallet's balance (with normal "
-"priority)"
+msgid "Approximate Bitcoin network fee to transfer wallet's balance (with normal priority)"
 msgstr ""
 
 msgid "Are you being watched?"
@@ -174,7 +163,6 @@ msgstr ""
 msgid "Average confirmation time"
 msgstr ""
 
-
 msgid "Backup"
 msgstr ""
 
@@ -187,20 +175,15 @@ msgstr ""
 msgid "Balance Hidden"
 msgstr ""
 
-msgid ""
-"Be sure to store your recovery phrase in a secure place. If this app is "
-"deleted, your money cannot be recovered without it."
+msgid "Be sure to store your recovery phrase in a secure place. If this app is deleted, your money cannot be recovered without it."
+msgstr ""
+
+msgid "Because you are sending the maximum amount contained in this wallet, the {coinName} miner fee ({fee} {coin}) will be deducted from the total. {msg}"
 msgstr ""
 
 msgid ""
-"Because you are sending the maximum amount contained in this wallet, the "
-"{coinName} miner fee ({fee} {coin}) will be deducted from the total. {msg}"
-msgstr ""
-
-msgid ""
-"Before retrieving your wallet address, it's recommended that you first "
-"write down your recovery phrase and store it securely so that your wallet "
-"can be recovered in the case your device was lost or stolen."
+"Before retrieving your wallet address, it's recommended that you first write down your recovery phrase and store it securely so that your wallet can be recovered in the "
+"case your device was lost or stolen."
 msgstr ""
 
 msgid "Bitcoin Address"
@@ -251,9 +234,7 @@ msgstr ""
 msgid "Broadcasting transaction..."
 msgstr ""
 
-msgid ""
-"By providing your email address, you give explicit consent to Copay to use "
-"your email address to send you email notifications about payments."
+msgid "By providing your email address, you give explicit consent to Copay to use your email address to send you email notifications about payments."
 msgstr ""
 
 msgid "Calculating fee..."
@@ -344,9 +325,8 @@ msgid "Confirming"
 msgstr ""
 
 msgid ""
-"Congratulations! It looks like you've recently received money. It's highly "
-"advised that you verify your recovery phrase so that your funds can be "
-"recovered in case your phone was lost or stolen."
+"Congratulations! It looks like you've recently received money. It's highly advised that you verify your recovery phrase so that your funds can be recovered in case your "
+"phone was lost or stolen."
 msgstr ""
 
 msgid "Continue"
@@ -595,15 +575,16 @@ msgstr ""
 msgid "Enable the camera to get started."
 msgstr ""
 
-msgid ""
-"Encryption can protect your funds if this device is stolen or compromised "
-"by malicious software."
+msgid "Encryption can protect your funds if this device is stolen or compromised by malicious software."
 msgstr ""
 
 msgid "Enter Amount"
 msgstr ""
 
 msgid "Enter a new encrypt password"
+msgstr ""
+
+msgid "Enter a new password to encrypt your wallets"
 msgstr ""
 
 msgid "Enter a password to encrypt your wallet"
@@ -723,9 +704,7 @@ msgstr ""
 msgid "From"
 msgstr ""
 
-msgid ""
-"From the destination device, go to Add wallet > Import wallet and scan this "
-"QR code"
+msgid "From the destination device, go to Add wallet > Import wallet and scan this QR code"
 msgstr ""
 
 msgid "Funds Will Not Be Accessible"
@@ -755,11 +734,8 @@ msgstr ""
 msgid "Get Help"
 msgstr ""
 
-msgid ""
-"Get local cash anywhere you go, from any Visa® compatible ATM. ATM bank "
-"fees may apply."
+msgid "Get local cash anywhere you go, from any Visa® compatible ATM. ATM bank fees may apply."
 msgstr ""
-
 
 msgid "Get started"
 msgstr ""
@@ -806,9 +782,7 @@ msgstr ""
 msgid "I understand"
 msgstr ""
 
-msgid ""
-"I understand that my funds are held securely on this device, not by a "
-"company"
+msgid "I understand that my funds are held securely on this device, not by a company"
 msgstr ""
 
 msgid "My funds are stored on the blockchains, not companies nor this device."
@@ -817,50 +791,42 @@ msgstr ""
 msgid "If this app is deleted, my assets can only be recovered with the recovery phrase."
 msgstr ""
 
-msgid ""
-"If enabled, the Recent Transactions card - a list of transactions occuring "
-"across all wallets - will appear in the Home tab."
+msgid "If enabled, the Recent Transactions card - a list of transactions occuring across all wallets - will appear in the Home tab."
 msgstr ""
 
 msgid "If enabled, wallets will also try to spend unconfirmed funds."
 msgstr ""
 
-msgid ""
-"If this device is replaced or this app is deleted, neither you nor Trias  "
-"can recover your funds without a backup."
+msgid "If this device is replaced or this app is deleted, neither you nor Trias  can recover your funds without a backup."
+msgstr ""
+
+msgid "If you disable the persistent logs, all the logs registered so far will be deleted. However, you can still see the session logs on this screen."
+msgstr ""
+
+msgid "If you have funds stored on a website then you should move them into a secure wallet... like this one!"
 msgstr ""
 
 msgid ""
-"If you disable the persistent logs, all the logs registered so far will be "
-"deleted. However, you can still see the session logs on this screen."
+"If you need to send to \"old\" addresses (like the one you just pasted), and you are SURE those are BCH addresses, you can \"translate\" them using the BCH Translator "
+"tool and paste the corresponding address in CashAddr format for that \"old\" address."
 msgstr ""
 
-msgid ""
-"If you have funds stored on a website then you should move them into a "
-"secure wallet... like this one!"
+msgid "If you take a screenshot, your recovery phrase may be viewed by other apps. You can make a safe backup with physical paper and a pen."
 msgstr ""
 
-msgid ""
-"If you need to send to \"old\" addresses (like the one you just pasted), "
-"and you are SURE those are BCH addresses, you can \"translate\" them using "
-"the BCH Translator tool and paste the corresponding address in CashAddr "
-"format for that \"old\" address."
+msgid "If you were using the old desktop version you will need to import your wallets manually."
 msgstr ""
 
-msgid ""
-"If you take a screenshot, your recovery phrase may be viewed by other apps. "
-"You can make a safe backup with physical paper and a pen."
-msgstr ""
-
-msgid ""
-"If you were using the old desktop version you will need to import your "
-"wallets manually."
+msgid "Import"
 msgstr ""
 
 msgid "Import Words"
 msgstr ""
 
 msgid "Import wallet"
+msgstr ""
+
+msgid "Import a wallet"
 msgstr ""
 
 msgid "Importing Wallet..."
@@ -918,9 +884,7 @@ msgid "It's a ghost town in here"
 msgstr ""
 
 msgid ""
-"It's important that you write your recovery phrase down correctly. If "
-"something happens to your wallet, you'll need it to recover your money. "
-"Please review and try again."
+"It's important that you write your recovery phrase down correctly. If something happens to your wallet, you'll need it to recover your money. Please review and try again."
 msgstr ""
 
 msgid "Just scan the code to pay."
@@ -1016,9 +980,7 @@ msgstr ""
 msgid "Multiple recipients"
 msgstr ""
 
-msgid ""
-"NOTE: To import a wallet from a 3rd party software, please go to Add "
-"Wallet, Create Wallet, and specify the Recovery Phrase there."
+msgid "NOTE: To import a wallet from a 3rd party software, please go to Add Wallet, Create Wallet, and specify the Recovery Phrase there."
 msgstr ""
 
 msgid "Name"
@@ -1103,10 +1065,8 @@ msgid "Not enough funds for fee"
 msgstr ""
 
 msgid ""
-"Not including the private key allows to check the wallet balance, "
-"transaction history, and create spend proposals from the export. However, "
-"does not allow to approve (sign) proposals, so funds will not be accessible "
-"from the export."
+"Not including the private key allows to check the wallet balance, transaction history, and create spend proposals from the export. However, does not allow to approve "
+"(sign) proposals, so funds will not be accessible from the export."
 msgstr ""
 
 msgid "Not right now"
@@ -1118,9 +1078,7 @@ msgstr ""
 msgid "Note"
 msgstr ""
 
-msgid ""
-"Note: if this BCH wallet was duplicated from a BTC wallet, they share the "
-"same recovery phrase."
+msgid "Note: if this BCH wallet was duplicated from a BTC wallet, they share the same recovery phrase."
 msgstr ""
 
 msgid "Notifications"
@@ -1135,9 +1093,7 @@ msgstr ""
 msgid "Notify me when transactions are confirmed"
 msgstr ""
 
-msgid ""
-"Now is a perfect time to assess your surroundings. Nearby windows? Hidden "
-"cameras? Shoulder-spies?"
+msgid "Now is a perfect time to assess your surroundings. Nearby windows? Hidden cameras? Shoulder-spies?"
 msgstr ""
 
 msgid "OK"
@@ -1230,9 +1186,7 @@ msgstr ""
 msgid "Payment accepted, but not yet broadcasted"
 msgstr ""
 
-msgid ""
-"Payment accepted. It will be broadcasted by Glidera. In case there is a "
-"problem, it can be deleted 6 hours after it was created."
+msgid "Payment accepted. It will be broadcasted by Glidera. In case there is a problem, it can be deleted 6 hours after it was created."
 msgstr ""
 
 msgid "Payment request"
@@ -1269,6 +1223,12 @@ msgid "Please enter the wallet recovery phrase"
 msgstr ""
 
 msgid "Please enter your PIN"
+msgstr ""
+
+msgid "Please enter your password to encrypt this wallet."
+msgstr ""
+
+msgid "Please enter your password to decrypt wallets firstly."
 msgstr ""
 
 msgid "Please tap each word in the correct order."
@@ -1331,9 +1291,7 @@ msgstr ""
 msgid "Proposals"
 msgstr ""
 
-msgid ""
-"Push notifications for {{appName}} are currently disabled. Enable them in "
-"the Settings app."
+msgid "Push notifications for {{appName}} are currently disabled. Enable them in the Settings app."
 msgstr ""
 
 msgid "QR Code"
@@ -1415,6 +1373,9 @@ msgid "Request Specific Amount"
 msgstr ""
 
 msgid "Required number of signatures"
+msgstr ""
+
+msgid "Reset Encrypt Password"
 msgstr ""
 
 msgid "Restore from backup"
@@ -1661,79 +1622,61 @@ msgid "The amount of bitcoin immediately spendable from this wallet."
 msgstr ""
 
 msgid ""
-"The amount of bitcoin stored in this wallet that is allocated as inputs to "
-"your pending transaction proposals. The amount is determined using unspent "
-"transaction outputs associated with this wallet and may be more than the "
-"actual amounts associated with your pending transaction proposals."
+"The amount of bitcoin stored in this wallet that is allocated as inputs to your pending transaction proposals. The amount is determined using unspent transaction outputs "
+"associated with this wallet and may be more than the actual amounts associated with your pending transaction proposals."
 msgstr ""
 
-msgid ""
-"The amount of bitcoin stored in this wallet with less than 1 blockchain "
-"confirmation."
+msgid "The amount of bitcoin stored in this wallet with less than 1 blockchain confirmation."
 msgstr ""
 
 msgid "The derivation path"
 msgstr ""
 
-msgid ""
-"The destination wallet is not backed up. Please, complete the backup "
-"process before continue."
+msgid "The destination wallet is not backed up. Please, complete the backup process before continue."
 msgstr ""
 
 msgid "The exchange rate changes with the market."
 msgstr ""
 
 msgid ""
-"The higher the fee, the greater the incentive a miner has to include that "
-"transaction in a block. Current fees are determined based on network load "
-"and the selected policy."
+"The higher the fee, the greater the incentive a miner has to include that transaction in a block. Current fees are determined based on network load and the selected "
+"policy."
 msgstr ""
 
 msgid ""
-"The information you are about to share/export may contain sensitive data "
-"such us wallet IDs, addresses, balances, etc. Please be sure you trust the "
-"person or entity with whom you are sharing this information."
+"The information you are about to share/export may contain sensitive data such us wallet IDs, addresses, balances, etc. Please be sure you trust the person or entity with "
+"whom you are sharing this information."
 msgstr ""
 
 msgid "The password of the recovery phrase (if set)"
 msgstr ""
 
-msgid ""
-"The payment was created but could not be completed. Please try again from "
-"home screen"
+msgid "The payment was created but could not be completed. Please try again from home screen"
 msgstr ""
 
 msgid "The payment was removed by creator"
 msgstr ""
 
 msgid ""
-"The private key of this wallet is not available. The export allows to check "
-"the wallet balance, transaction history, and create spend proposals from "
-"the export. However, does not allow to approve (sign) proposals, so funds "
-"will not be accessible from the export."
+"The private key of this wallet is not available. The export allows to check the wallet balance, transaction history, and create spend proposals from the export. However, "
+"does not allow to approve (sign) proposals, so funds will not be accessible from the export."
 msgstr ""
 
 msgid "The request could not be understood by the server"
 msgstr ""
 
 msgid ""
-"The testnet is an alternative Bitcoin block chain, to be used for testing. "
-"Testnet coins are separate and distinct from actual bitcoins, and do not "
-"have any value. This allows application developers or bitcoin testers to "
-"experiment, without having to use real bitcoins."
+"The testnet is an alternative Bitcoin block chain, to be used for testing. Testnet coins are separate and distinct from actual bitcoins, and do not have any value. This "
+"allows application developers or bitcoin testers to experiment, without having to use real bitcoins."
 msgstr ""
 
 msgid "The total amount of bitcoin stored in this wallet."
 msgstr ""
 
-msgid ""
-"The transaction history and every new incoming transaction are cached in "
-"the app. This feature clean this up and synchronizes again from the server"
+msgid "The transaction history and every new incoming transaction are cached in the app. This feature clean this up and synchronizes again from the server"
 msgstr ""
 
-msgid ""
-"The wallet you are using does not match the network and/or the currency of "
-"the address provided"
+msgid "The wallet you are using does not match the network and/or the currency of the address provided"
 msgstr ""
 
 msgid "There is a new version of {{nameCase}} available"
@@ -1742,9 +1685,7 @@ msgstr ""
 msgid "There is an error in the form"
 msgstr ""
 
-msgid ""
-"There's obviously something we're doing wrong. How could we improve your "
-"experience?"
+msgid "There's obviously something we're doing wrong. How could we improve your experience?"
 msgstr ""
 
 msgid "This app is not available for your device."
@@ -1757,43 +1698,30 @@ msgid "This bitcoin payment request has expired."
 msgstr ""
 
 msgid ""
-"This field is only for users who, in previous versions (it's not supported "
-"anymore), set a password to protect their recovery phrase. This field is "
-"not for your encrypt password."
+"This field is only for users who, in previous versions (it's not supported anymore), set a password to protect their recovery phrase. This field is not for your encrypt "
+"password."
 msgstr ""
 
 msgid "This information is available at the website."
 msgstr ""
 
-msgid ""
-"This password cannot be recovered. If this password is lost, funds can only "
-"be recovered by reimporting your 12-word recovery phrase."
+msgid "This password cannot be recovered. If this password is lost, funds can only be recovered by reimporting your 12-word recovery phrase."
+msgstr ""
+
+msgid "This password is only for this device, and it cannot be recovered. To avoid losing funds, write your password down."
+msgstr ""
+
+msgid "This recovery phrase was created with a password. To recover this wallet both the recovery phrase and password are needed."
 msgstr ""
 
 msgid ""
-"This password is only for this device, and it cannot be recovered. To avoid "
-"losing funds, write your password down."
+"This transaction amount is too small compared to current Bitcoin network fees. Spending these funds will need a Bitcoin network fee cost comparable to the funds itself."
 msgstr ""
 
-msgid ""
-"This recovery phrase was created with a password. To recover this wallet "
-"both the recovery phrase and password are needed."
+msgid "This transaction could take a long time to confirm or could be dropped due to the low fees set by the sender."
 msgstr ""
 
-msgid ""
-"This transaction amount is too small compared to current Bitcoin network "
-"fees. Spending these funds will need a Bitcoin network fee cost comparable "
-"to the funds itself."
-msgstr ""
-
-msgid ""
-"This transaction could take a long time to confirm or could be dropped due "
-"to the low fees set by the sender."
-msgstr ""
-
-msgid ""
-"This wallet is not registered at the given Bitcore Wallet Service (BWS). "
-"You can recreate it from the local information."
+msgid "This wallet is not registered at the given Bitcore Wallet Service (BWS). You can recreate it from the local information."
 msgstr ""
 
 msgid "Timeline"
@@ -1930,9 +1858,8 @@ msgstr ""
 
 msgid "View on blockchain"
 msgstr ""
-msgid ""
-"WARNING: Key derivation is not working on this device/wallet. Actions "
-"cannot be performed on this wallet."
+
+msgid "WARNING: Key derivation is not working on this device/wallet. Actions cannot be performed on this wallet."
 msgstr ""
 
 msgid "WARNING: UNTRUSTED CERTIFICATE"
@@ -2001,9 +1928,7 @@ msgstr ""
 msgid "Wallet not found"
 msgstr ""
 
-msgid ""
-"Wallet not registered at the wallet service. Recreate it from \"Create "
-"Wallet\" using \"Advanced Options\" to set your recovery phrase"
+msgid "Wallet not registered at the wallet service. Recreate it from \"Create Wallet\" using \"Advanced Options\" to set your recovery phrase"
 msgstr ""
 
 msgid "Wallet recovery phrase"
@@ -2025,9 +1950,8 @@ msgid "Watch Out!"
 msgstr ""
 
 msgid ""
-"We are always looking for translation contributions! You can make "
-"corrections or help to make this app available in your native language by "
-"joining our community on Crowdin."
+"We are always looking for translation contributions! You can make corrections or help to make this app available in your native language by joining our community on "
+"Crowdin."
 msgstr ""
 
 msgid "We will confirm on the next screen."
@@ -2039,17 +1963,13 @@ msgstr ""
 msgid "What do you call this wallet?"
 msgstr ""
 
-msgid ""
-"When this wallet was created, it was called \"{{walletName}}\". You can "
-"change the name displayed on this device below."
+msgid "When this wallet was created, it was called \"{{walletName}}\". You can change the name displayed on this device below."
 msgstr ""
 
 msgid "Withdraw"
 msgstr ""
 
-msgid ""
-"Without encryption, a thief or another application on this device may be "
-"able to access your funds."
+msgid "Without encryption, a thief or another application on this device may be able to access your funds."
 msgstr ""
 
 msgid "Would you like to protect this wallet with a password?"
@@ -2070,9 +1990,7 @@ msgstr ""
 msgid "Yes, skip"
 msgstr ""
 
-msgid ""
-"You are trying to send ({amount} {coin}) more than what your wallet "
-"contains. Please enter a lower amount or send max."
+msgid "You are trying to send ({amount} {coin}) more than what your wallet contains. Please enter a lower amount or send max."
 msgstr ""
 
 msgid "You can back up your wallet later from your wallet settings."
@@ -2088,12 +2006,9 @@ msgid "You should not set a fee higher than {{maxFeeRecommended}} satoshis/byte.
 msgstr ""
 
 msgid ""
-"Your extended private keys are all that is needed to access your bitcoin "
-"funds. Be sure to protect your private keys and store them only on secure "
-"devices. Trias does not have access to your private keys, so you alone are "
-"responsible for your keys. If you share key access with external services, "
-"you take responsibility for the risk of theft or breach. Only advanced "
-"users should handle extended private keys directly."
+"Your extended private keys are all that is needed to access your bitcoin funds. Be sure to protect your private keys and store them only on secure devices. Trias does not "
+"have access to your private keys, so you alone are responsible for your keys. If you share key access with external services, you take responsibility for the risk of "
+"theft or breach. Only advanced users should handle extended private keys directly."
 msgstr ""
 
 msgid "Your fee is lower than recommended."
@@ -2102,16 +2017,15 @@ msgstr ""
 msgid "Your name"
 msgstr ""
 
-msgid ""
-"Your wallet address is similar to a bank account number. You can add funds "
-"to your wallet by withdrawing funds you may have stored on an exchange to "
-"your wallet address. Or other {coinName} users can send you money by "
-"scanning your QR code."
+msgid "Your encrypt password is updated successfully!"
 msgstr ""
 
 msgid ""
-"Your wallet key will be encrypted. The encrypt password cannot be "
-"recovered. Be sure to write it down."
+"Your wallet address is similar to a bank account number. You can add funds to your wallet by withdrawing funds you may have stored on an exchange to your wallet address. "
+"Or other {coinName} users can send you money by scanning your QR code."
+msgstr ""
+
+msgid "Your wallet key will be encrypted. The encrypt password cannot be recovered. Be sure to write it down."
 msgstr ""
 
 msgid "Your wallet is backed up!"
@@ -2135,19 +2049,14 @@ msgstr ""
 msgid "{appName} BCH wallets use the CashAddr format by default"
 msgstr ""
 
-msgid ""
-"{coinName} miner fees are high due to record demand for limited space on "
-"the {coinName} network. Trias does not receive and does not control "
-"{coinName} miner fees."
+msgid "{coinName} miner fees are high due to record demand for limited space on the {coinName} network. Trias does not receive and does not control {coinName} miner fees."
 msgstr ""
 
 msgid "{coinName} miner fees unusually high"
 msgstr ""
 
 msgid ""
-"{{appName}} depends on Bitcore Wallet Service (BWS) for blockchain "
-"information, networking. The default "
-"configuration points to https://tbws.trias.one (Trias's public BWS "
+"{{appName}} depends on Bitcore Wallet Service (BWS) for blockchain information, networking. The default configuration points to https://tbws.trias.one (Trias's public BWS "
 "instance)."
 msgstr ""
 
@@ -2164,6 +2073,12 @@ msgid "{{wallet.m}}-of-{{wallet.n}}"
 msgstr ""
 
 msgid "Create"
+msgstr ""
+
+msgid "Create wallets"
+msgstr ""
+
+msgid "Create or import wallets to start using this app."
 msgstr ""
 
 msgid "Recover"
@@ -2203,6 +2118,9 @@ msgid "Write down your mnemonic on paper, we'll help you double check in next st
 msgstr ""
 
 msgid "Check Your Mnemonic"
+msgstr ""
+
+msgid "Check Wallet Password"
 msgstr ""
 
 msgid "Transactions history will show here after you send or receive money from other accounts."
@@ -2263,4 +2181,37 @@ msgid "high"
 msgstr ""
 
 msgid "Mnemonic"
+msgstr ""
+
+msgid "There is no backed up ETH wallet. It's highly advised that you verify your recovery phrase so that your funds can be recovered in case your phone was lost or stolen."
+msgstr ""
+
+msgid "Please select the contact you want to delete"
+msgstr ""
+
+msgid "Are you sure you want to go back to onboarding page to create default wallets?"
+msgstr ""
+
+msgid "File Content"
+msgstr ""
+
+msgid "Please paste the code from the backup file here"
+msgstr ""
+
+msgid "Create New Address"
+msgstr ""
+
+msgid "Edit Address Name"
+msgstr ""
+
+msgid "Address Name"
+msgstr ""
+
+msgid "Could not get the Address Manager of this wallet"
+msgstr ""
+
+msgid "This helps you identify the addresses, you can always replace it if you need to."
+msgstr ""
+
+msgid "This pin will be used to encrypt your wallet. You’ll need this to grant transfer, access wallet or import wallet."
 msgstr ""

@@ -353,7 +353,9 @@ export class ProfileProvider {
           if (!oldPassword) {
             this.popupProvider
               .ionicAlert(
-                'Please enter your password to decrypt wallets firstly.'
+                this.translate.instant(
+                  'Please enter your password to decrypt wallets firstly.'
+                )
               )
               .then(() => {
                 return reject();
@@ -389,7 +391,9 @@ export class ProfileProvider {
         .catch(() => {
           this.popupProvider
             .ionicAlert(
-              'Please enter your password to decrypt wallets firstly.'
+              this.translate.instant(
+                'Please enter your password to decrypt wallets firstly.'
+              )
             )
             .then(() => {
               return reject();

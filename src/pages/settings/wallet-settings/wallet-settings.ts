@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
-import { TranslateService } from '@ngx-translate/core';
+// import { TranslateService } from '@ngx-translate/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
 import { Logger } from '../../../providers/logger/logger';
 
 // providers
-import { ActionSheetProvider } from '../../../providers/action-sheet/action-sheet';
+// import { ActionSheetProvider } from '../../../providers/action-sheet/action-sheet';
 import { ConfigProvider } from '../../../providers/config/config';
-import { ExternalLinkProvider } from '../../../providers/external-link/external-link';
+// import { ExternalLinkProvider } from '../../../providers/external-link/external-link';
 import { ProfileProvider } from '../../../providers/profile/profile';
 import { TouchIdProvider } from '../../../providers/touchid/touchid';
 import { WalletProvider } from '../../../providers/wallet/wallet';
 
 // pages
 import { BackupRequestPage } from '../../backup/backup-request/backup-request';
-import { WalletColorPage } from './wallet-color/wallet-color';
+// import { WalletColorPage } from './wallet-color/wallet-color';
 import { WalletNamePage } from './wallet-name/wallet-name';
 import { WalletDeletePage } from './wallet-settings-advanced/wallet-delete/wallet-delete';
 import { WalletExportPage } from './wallet-settings-advanced/wallet-export/wallet-export';
-import { WalletInformationPage } from './wallet-settings-advanced/wallet-information/wallet-information';
-import { WalletServiceUrlPage } from './wallet-settings-advanced/wallet-service-url/wallet-service-url';
+// import { WalletInformationPage } from './wallet-settings-advanced/wallet-information/wallet-information';
+// import { WalletServiceUrlPage } from './wallet-settings-advanced/wallet-service-url/wallet-service-url';
 import { WalletTransactionHistoryPage } from './wallet-settings-advanced/wallet-transaction-history/wallet-transaction-history';
 
 @Component({
@@ -42,13 +42,13 @@ export class WalletSettingsPage {
     private profileProvider: ProfileProvider,
     private logger: Logger,
     private walletProvider: WalletProvider,
-    private externalLinkProvider: ExternalLinkProvider,
+    // private externalLinkProvider: ExternalLinkProvider,
     private configProvider: ConfigProvider,
     private navCtrl: NavController,
     private navParams: NavParams,
     private touchIdProvider: TouchIdProvider,
-    private translate: TranslateService,
-    private actionSheetProvider: ActionSheetProvider,
+    // private translate: TranslateService,
+    // private actionSheetProvider: ActionSheetProvider,
     private platform: Platform,
     private statusBar: StatusBar
   ) {}
@@ -91,92 +91,92 @@ export class WalletSettingsPage {
     }
   }
 
-  public hiddenBalanceChange(): void {
-    this.profileProvider.toggleHideBalanceFlag(
-      this.wallet.credentials.walletId
-    );
-  }
+  // public hiddenBalanceChange(): void {
+  //   this.profileProvider.toggleHideBalanceFlag(
+  //     this.wallet.credentials.walletId
+  //   );
+  // }
 
-  public encryptChange(): void {
-    if (!this.wallet) return;
-    let val = this.encryptEnabled;
+  // public encryptChange(): void {
+  //   if (!this.wallet) return;
+  //   let val = this.encryptEnabled;
 
-    if (val && !this.walletProvider.isEncrypted(this.wallet)) {
-      this.logger.debug('Encrypting private key for', this.wallet.name);
-      this.walletProvider
-        .encrypt(this.wallet)
-        .then(() => {
-          this.profileProvider.updateCredentials(
-            JSON.parse(this.wallet.export())
-          );
-          this.logger.debug('Wallet encrypted');
-        })
-        .catch(err => {
-          this.encryptEnabled = false;
-          let title = this.translate.instant('Could not encrypt wallet');
-          this.showErrorInfoSheet(err, title);
-        });
-    } else if (!val && this.walletProvider.isEncrypted(this.wallet)) {
-      this.walletProvider
-        .decrypt(this.wallet)
-        .then(() => {
-          this.profileProvider.updateCredentials(
-            JSON.parse(this.wallet.export())
-          );
-          this.logger.debug('Wallet decrypted');
-        })
-        .catch(err => {
-          this.encryptEnabled = true;
-          let title = this.translate.instant('Could not decrypt wallet');
-          this.showErrorInfoSheet(err, title);
-        });
-    }
-  }
+  //   if (val && !this.walletProvider.isEncrypted(this.wallet)) {
+  //     this.logger.debug('Encrypting private key for', this.wallet.name);
+  //     this.walletProvider
+  //       .encrypt(this.wallet)
+  //       .then(() => {
+  //         this.profileProvider.updateCredentials(
+  //           JSON.parse(this.wallet.export())
+  //         );
+  //         this.logger.debug('Wallet encrypted');
+  //       })
+  //       .catch(err => {
+  //         this.encryptEnabled = false;
+  //         let title = this.translate.instant('Could not encrypt wallet');
+  //         this.showErrorInfoSheet(err, title);
+  //       });
+  //   } else if (!val && this.walletProvider.isEncrypted(this.wallet)) {
+  //     this.walletProvider
+  //       .decrypt(this.wallet)
+  //       .then(() => {
+  //         this.profileProvider.updateCredentials(
+  //           JSON.parse(this.wallet.export())
+  //         );
+  //         this.logger.debug('Wallet decrypted');
+  //       })
+  //       .catch(err => {
+  //         this.encryptEnabled = true;
+  //         let title = this.translate.instant('Could not decrypt wallet');
+  //         this.showErrorInfoSheet(err, title);
+  //       });
+  //   }
+  // }
 
-  private showErrorInfoSheet(
-    err: Error | string,
-    infoSheetTitle: string
-  ): void {
-    if (!err) return;
-    this.logger.warn('Could not encrypt/decrypt wallet:', err);
-    const errorInfoSheet = this.actionSheetProvider.createInfoSheet(
-      'default-error',
-      { msg: err, title: infoSheetTitle }
-    );
-    errorInfoSheet.present();
-  }
+  // private showErrorInfoSheet(
+  //   err: Error | string,
+  //   infoSheetTitle: string
+  // ): void {
+  //   if (!err) return;
+  //   this.logger.warn('Could not encrypt/decrypt wallet:', err);
+  //   const errorInfoSheet = this.actionSheetProvider.createInfoSheet(
+  //     'default-error',
+  //     { msg: err, title: infoSheetTitle }
+  //   );
+  //   errorInfoSheet.present();
+  // }
 
-  public openSupportSpendingPassword(): void {
-    let url =
-      'https://support.bitpay.com/hc/en-us/articles/360000244506-What-Does-a-Spending-Password-Do-';
-    let optIn = true;
-    let title = null;
-    let message = this.translate.instant('Read more in our support page');
-    let okText = this.translate.instant('Open');
-    let cancelText = this.translate.instant('Go Back');
-    this.externalLinkProvider.open(
-      url,
-      optIn,
-      title,
-      message,
-      okText,
-      cancelText
-    );
-  }
+  // public openSupportSpendingPassword(): void {
+  //   let url =
+  //     'https://support.bitpay.com/hc/en-us/articles/360000244506-What-Does-a-Spending-Password-Do-';
+  //   let optIn = true;
+  //   let title = null;
+  //   let message = this.translate.instant('Read more in our support page');
+  //   let okText = this.translate.instant('Open');
+  //   let cancelText = this.translate.instant('Go Back');
+  //   this.externalLinkProvider.open(
+  //     url,
+  //     optIn,
+  //     title,
+  //     message,
+  //     okText,
+  //     cancelText
+  //   );
+  // }
 
-  public touchIdChange(): void {
-    if (this.touchIdPrevValue == this.touchIdEnabled) return;
-    let newStatus = this.touchIdEnabled;
-    this.walletProvider
-      .setTouchId(this.wallet, newStatus)
-      .then(() => {
-        this.touchIdPrevValue = this.touchIdEnabled;
-        this.logger.debug('Touch Id status changed: ' + newStatus);
-      })
-      .catch(() => {
-        this.touchIdEnabled = this.touchIdPrevValue;
-      });
-  }
+  // public touchIdChange(): void {
+  //   if (this.touchIdPrevValue == this.touchIdEnabled) return;
+  //   let newStatus = this.touchIdEnabled;
+  //   this.walletProvider
+  //     .setTouchId(this.wallet, newStatus)
+  //     .then(() => {
+  //       this.touchIdPrevValue = this.touchIdEnabled;
+  //       this.logger.debug('Touch Id status changed: ' + newStatus);
+  //     })
+  //     .catch(() => {
+  //       this.touchIdEnabled = this.touchIdPrevValue;
+  //     });
+  // }
 
   public openWalletName(): void {
     this.navCtrl.push(WalletNamePage, {
@@ -184,11 +184,11 @@ export class WalletSettingsPage {
     });
   }
 
-  public openWalletColor(): void {
-    this.navCtrl.push(WalletColorPage, {
-      walletId: this.wallet.credentials.walletId
-    });
-  }
+  // public openWalletColor(): void {
+  //   this.navCtrl.push(WalletColorPage, {
+  //     walletId: this.wallet.credentials.walletId
+  //   });
+  // }
 
   public openBackupSettings(): void {
     this.navCtrl.push(BackupRequestPage, {
@@ -197,21 +197,22 @@ export class WalletSettingsPage {
     });
   }
 
-  public openWalletInformation(): void {
-    this.navCtrl.push(WalletInformationPage, {
-      walletId: this.wallet.credentials.walletId
-    });
-  }
+  // public openWalletInformation(): void {
+  //   this.navCtrl.push(WalletInformationPage, {
+  //     walletId: this.wallet.credentials.walletId
+  //   });
+  // }
+
   public openExportWallet(): void {
     this.navCtrl.push(WalletExportPage, {
       walletId: this.wallet.credentials.walletId
     });
   }
-  public openWalletServiceUrl(): void {
-    this.navCtrl.push(WalletServiceUrlPage, {
-      walletId: this.wallet.credentials.walletId
-    });
-  }
+  // public openWalletServiceUrl(): void {
+  //   this.navCtrl.push(WalletServiceUrlPage, {
+  //     walletId: this.wallet.credentials.walletId
+  //   });
+  // }
   public openTransactionHistory(): void {
     this.navCtrl.push(WalletTransactionHistoryPage, {
       walletId: this.wallet.credentials.walletId

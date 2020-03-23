@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// import { TranslateService } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NavController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
 
@@ -15,7 +15,7 @@ import { TouchIdProvider } from '../../providers/touchid/touchid';
 // pages
 // import { AboutPage } from './about/about';
 import { AddressbookPage } from './addressbook/addressbook';
-import { AdvancedPage } from './advanced/advanced';
+// import { AdvancedPage } from './advanced/advanced';
 import { AltCurrencyPage } from './alt-currency/alt-currency';
 import { FeePolicyPage } from './fee-policy/fee-policy';
 import { LanguagePage } from './language/language';
@@ -47,7 +47,7 @@ export class SettingsPage {
     private configProvider: ConfigProvider,
     private logger: Logger,
     private platformProvider: PlatformProvider,
-    // private translate: TranslateService,
+    private translate: TranslateService,
     private touchid: TouchIdProvider,
     private popupProvider: PopupProvider
   ) {
@@ -88,9 +88,9 @@ export class SettingsPage {
     this.navCtrl.push(LanguagePage);
   }
 
-  public openAdvancedPage(): void {
-    this.navCtrl.push(AdvancedPage);
-  }
+  // public openAdvancedPage(): void {
+  //   this.navCtrl.push(AdvancedPage);
+  // }
 
   // public openAboutPage(): void {
   //   this.navCtrl.push(AboutPage);
@@ -99,7 +99,7 @@ export class SettingsPage {
   public resetEncryptPassword(): void {
     this.profileProvider.resetEncryptPassword().then(() => {
       this.popupProvider.ionicAlert(
-        'Your encrypt password is updated successfully!'
+        this.translate.instant('Your encrypt password is updated successfully!')
       );
     });
   }

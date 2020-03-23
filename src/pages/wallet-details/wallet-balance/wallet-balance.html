@@ -1,18 +1,10 @@
 <ion-header>
-  <ion-navbar [navbar-bg]="color">
-    <ion-title>
-      {{'Spendable balance' | translate}}
-    </ion-title>
-  </ion-navbar>
+  <ion-navbar [navbar-bg]="color"> <ion-title> {{'Spendable balance' | translate}} </ion-title> </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <label-tip type="warn" header="no-header" class="no-arrowhead">
-      <div label-tip-body translate>
-        All of your bitcoin wallet balance may not be available for immediate spending.
-      </div>
-    </label-tip>
+    <label-tip type="warn" header="no-header" class="no-arrowhead"> <div label-tip-body translate>All of your bitcoin wallet balance may not be available for immediate spending.</div> </label-tip>
     <ion-item>
       <div class="balance-container">
         <div class="title">
@@ -20,22 +12,12 @@
           <div translate>Total</div>
         </div>
         <div class="balance">
-          <span class="total">
-            {{status && status.totalBalanceStr}}
-          </span>
-          <div>
-            <span class="fiat">
-              {{status && status.totalBalanceAlternative}} {{status && status.alternativeIsoCode}}
-            </span>
-          </div>
+          <span class="total"> {{status && status.totalBalanceStr}} </span>
+          <div><span class="fiat"> {{status && status.totalBalanceAlternative}} {{status && status.alternativeIsoCode}} </span></div>
         </div>
       </div>
     </ion-item>
-    <label-tip type="info" header="no-header">
-      <div label-tip-body translate>
-        The total amount of bitcoin stored in this wallet.
-      </div>
-    </label-tip>
+    <label-tip type="info" header="no-header"> <div label-tip-body translate>The total amount of bitcoin stored in this wallet.</div> </label-tip>
 
     <ion-item>
       <div class="balance-container">
@@ -44,22 +26,12 @@
           <div translate>Available</div>
         </div>
         <div class="balance">
-          <span class="available">
-            {{status && status.spendableBalanceStr}}
-          </span>
-          <div>
-            <span class="fiat">
-              {{status && status.spendableBalanceAlternative}} {{status && status.alternativeIsoCode}}
-            </span>
-          </div>
+          <span class="available"> {{status && status.spendableBalanceStr}} </span>
+          <div><span class="fiat"> {{status && status.spendableBalanceAlternative}} {{status && status.alternativeIsoCode}} </span></div>
         </div>
       </div>
     </ion-item>
-    <label-tip type="info" header="no-header">
-      <div label-tip-body translate>
-        The amount of bitcoin immediately spendable from this wallet.
-      </div>
-    </label-tip>
+    <label-tip type="info" header="no-header"> <div label-tip-body translate>The amount of bitcoin immediately spendable from this wallet.</div> </label-tip>
 
     <ion-item>
       <div class="balance-container">
@@ -68,22 +40,12 @@
           <div translate>Confirming</div>
         </div>
         <div class="balance">
-          <span class="confirming">
-            {{status && status.pendingBalanceStr}}
-          </span>
-          <div>
-            <span class="fiat">
-              {{status && status.pendingBalanceAlternative}} {{status && status.alternativeIsoCode}}
-            </span>
-          </div>
+          <span class="confirming"> {{status && status.pendingBalanceStr}} </span>
+          <div><span class="fiat"> {{status && status.pendingBalanceAlternative}} {{status && status.alternativeIsoCode}} </span></div>
         </div>
       </div>
     </ion-item>
-    <label-tip type="info" header="no-header">
-      <div label-tip-body translate>
-        The amount of bitcoin stored in this wallet with less than 1 blockchain confirmation.
-      </div>
-    </label-tip>
+    <label-tip type="info" header="no-header"> <div label-tip-body translate>The amount of bitcoin stored in this wallet with less than 1 blockchain confirmation.</div> </label-tip>
 
     <ion-item>
       <div class="balance-container">
@@ -92,24 +54,11 @@
           <div translate>Locked</div>
         </div>
         <div class="balance">
-          <span class="locked">
-            {{status && status.lockedBalanceStr}}
-          </span>
-          <div>
-            <span class="fiat">
-              {{status && status.lockedBalanceAlternative}} {{status && status.alternativeIsoCode}}
-            </span>
-          </div>
+          <span class="locked"> {{status && status.lockedBalanceStr}} </span>
+          <div><span class="fiat"> {{status && status.lockedBalanceAlternative}} {{status && status.alternativeIsoCode}} </span></div>
         </div>
       </div>
     </ion-item>
-    <label-tip type="info" header="no-header">
-      <div label-tip-body translate>
-        The amount of bitcoin stored in this wallet that is allocated as inputs to your pending transaction proposals.
-        The amount is determined using unspent transaction outputs associated with this wallet and may be more than the
-        actual amounts associated with your pending transaction proposals.
-      </div>
-    </label-tip>
-
+    <label-tip type="info" header="no-header"> <div label-tip-body translate>The amount of bitcoin stored in this wallet that is allocated as inputs to your pending transaction proposals. The amount is determined using unspent transaction outputs associated with this wallet and may be more than the actual amounts associated with your pending transaction proposals.</div> </label-tip>
   </ion-list>
 </ion-content>

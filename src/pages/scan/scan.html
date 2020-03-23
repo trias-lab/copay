@@ -1,9 +1,7 @@
 <ion-header class="scan-header">
   <ion-navbar class="navbar-transparent">
     <ion-buttons left *ngIf="!fromAddressbook && !fromImport && !fromJoin">
-      <button class="modal-close-button" (click)="close()" ion-button>
-        <ion-icon ios="md-close" md="md-close"></ion-icon>
-      </button>
+      <button class="modal-close-button" (click)="close()" ion-button><ion-icon ios="md-close" md="md-close"></ion-icon></button>
     </ion-buttons>
     <ion-title>{{ 'Scan' | translate }}</ion-title>
   </ion-navbar>
@@ -11,23 +9,9 @@
 
 <ion-content *ngIf="!isCordova" class="fullscreen-tab">
   <div [hidden]="!selectedDevice || !hasPermission">
-    <div
-      [hidden]="!hasPermission"
-      class="browser-scanner page-scan-camera-ready"
-    >
-      <zxing-scanner
-        #scanner
-        class="test-class"
-        start="true"
-        [device]="selectedDevice"
-        (scanSuccess)="handleQrCodeResult($event)"
-      ></zxing-scanner>
-      <div class="guides">
-        <img
-          class="svg qr-scan-guides"
-          src="assets/img/bitpay-wallet-qr-scan-guides.svg"
-        />
-      </div>
+    <div [hidden]="!hasPermission" class="browser-scanner page-scan-camera-ready">
+      <zxing-scanner #scanner class="test-class" start="true" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+      <div class="guides"><img class="svg qr-scan-guides" src="assets/img/bitpay-wallet-qr-scan-guides.svg" /></div>
     </div>
   </div>
 
@@ -35,36 +19,18 @@
     <div class="header-container">
       <div>
         <div class="header" padding>
-          <div class="image-container">
-            <img src="assets/img/ico-receive.svg" />
-          </div>
+          <div class="image-container"><img src="assets/img/ico-receive.svg" /></div>
           <div class="title" padding translate>Scan QR Codes</div>
         </div>
-        <div class="subtitle">
-          {{ 'You can scan addresses and more.' | translate }}
-        </div>
+        <div class="subtitle">{{ 'You can scan addresses and more.' | translate }}</div>
       </div>
     </div>
     <div class="body">
       <div padding>
-        <div *ngIf="hasPermission === false" translate>
-          Enable the camera to get started.
-        </div>
-        <div *ngIf="!hasCameras && hasPermission === true" translate>
-          Please connect a camera to get started.
-        </div>
+        <div *ngIf="hasPermission === false" translate>Enable the camera to get started.</div>
+        <div *ngIf="!hasCameras && hasPermission === true" translate>Please connect a camera to get started.</div>
       </div>
-      <div>
-        <button
-          ion-button
-          outline
-          class="button-standard"
-          *ngIf="hasPermission === false"
-          (click)="loadCamera()"
-        >
-          {{ 'Retry camera' | translate }}
-        </button>
-      </div>
+      <div><button ion-button outline class="button-standard" *ngIf="hasPermission === false" (click)="loadCamera()">{{ 'Retry camera' | translate }}</button></div>
     </div>
   </div>
 </ion-content>
@@ -81,86 +47,27 @@
     <div class="header-container">
       <div>
         <div class="header" padding>
-          <div class="image-container">
-            <img src="assets/img/ico-receive.svg" />
-          </div>
+          <div class="image-container"><img src="assets/img/ico-receive.svg" /></div>
           <div class="title" padding translate>Scan QR Codes</div>
         </div>
-        <div class="subtitle">
-          {{ 'You can scan addresses and more.' | translate }}
-        </div>
+        <div class="subtitle">{{ 'You can scan addresses and more.' | translate }}</div>
       </div>
     </div>
     <div class="body">
       <div padding>
-        <div *ngIf="currentState == scannerStates.unauthorized" translate>
-          Enable the camera to get started.
-        </div>
-        <div *ngIf="currentState == scannerStates.denied" translate>
-          Enable camera access in your device settings to get started.
-        </div>
-        <div *ngIf="currentState == scannerStates.unavailable" translate>
-          Please connect a camera to get started.
-        </div>
+        <div *ngIf="currentState == scannerStates.unauthorized" translate>Enable the camera to get started.</div>
+        <div *ngIf="currentState == scannerStates.denied" translate>Enable camera access in your device settings to get started.</div>
+        <div *ngIf="currentState == scannerStates.unavailable" translate>Please connect a camera to get started.</div>
       </div>
       <div>
-        <button
-          ion-button
-          outline
-          class="button-standard"
-          *ngIf="currentState == scannerStates.unauthorized"
-          (click)="authorize()"
-        >
-          {{ 'Allow camera access' | translate }}
-        </button>
-        <button
-          ion-button
-          outline
-          class="button-standard"
-          *ngIf="currentState == scannerStates.denied && canOpenSettings"
-          (click)="openSettings()"
-        >
-          {{ 'Open settings' | translate }}
-        </button>
-        <button
-          ion-button
-          outline
-          class="button-standard"
-          *ngIf="currentState == scannerStates.unavailable"
-          (click)="attemptToReactivate()"
-        >
-          {{ 'Retry camera' | translate }}
-        </button>
+        <button ion-button outline class="button-standard" *ngIf="currentState == scannerStates.unauthorized" (click)="authorize()">{{ 'Allow camera access' | translate }}</button> <button ion-button outline class="button-standard" *ngIf="currentState == scannerStates.denied && canOpenSettings" (click)="openSettings()">{{ 'Open settings' | translate }}</button>
+        <button ion-button outline class="button-standard" *ngIf="currentState == scannerStates.unavailable" (click)="attemptToReactivate()">{{ 'Retry camera' | translate }}</button>
       </div>
     </div>
   </div>
-  <div
-    class="page-scan-loading-camera"
-    *ngIf="currentState == scannerStates.loading"
-  ></div>
-  <div
-    class="page-scan-camera-ready"
-    *ngIf="currentState == scannerStates.visible"
-  >
-    <div class="guides">
-      <img
-        class="svg qr-scan-guides"
-        src="assets/img/bitpay-wallet-qr-scan-guides.svg"
-      />
-    </div>
-    <div class="scanner-controls">
-      <span
-        *ngIf="canEnableLight"
-        class="icon-flash"
-        [ngClass]="{ active: lightActive }"
-        (click)="toggleLight()"
-      ></span>
-      <span
-        *ngIf="canChangeCamera"
-        class="icon-camera-toggle"
-        [ngClass]="{ active: cameraToggleActive }"
-        (click)="toggleCamera()"
-      ></span>
-    </div>
+  <div class="page-scan-loading-camera" *ngIf="currentState == scannerStates.loading"></div>
+  <div class="page-scan-camera-ready" *ngIf="currentState == scannerStates.visible">
+    <div class="guides"><img class="svg qr-scan-guides" src="assets/img/bitpay-wallet-qr-scan-guides.svg" /></div>
+    <div class="scanner-controls"><span *ngIf="canEnableLight" class="icon-flash" [ngClass]="{ active: lightActive }" (click)="toggleLight()"></span> <span *ngIf="canChangeCamera" class="icon-camera-toggle" [ngClass]="{ active: cameraToggleActive }" (click)="toggleCamera()"></span></div>
   </div>
 </ion-content>

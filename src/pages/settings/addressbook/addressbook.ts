@@ -165,7 +165,7 @@ export class AddressbookPage {
    */
   private async confirmDelete(): Promise<any> {
     // Filter selected ones from contacts.
-    let contactsSelected = _.filter(this.filteredAddressbook, o => {
+    let contactsSelected: any[] = _.filter(this.filteredAddressbook, o => {
       return o.isSelected;
     });
     for (let i = 0; i < contactsSelected.length; i++) {

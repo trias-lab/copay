@@ -2,14 +2,10 @@
   <ion-card (click)="createDefaultWallet()">
     <ion-grid>
       <ion-row>
-        <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-          <img src="assets/img/app/onboarding/img_create@2x.png" />
-        </ion-col>
+        <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4> <img src="assets/img/app/onboarding/img_create@2x.png" /> </ion-col>
         <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
           <h1>{{ 'Create' | translate }}</h1>
-          <p translate>
-            Set up a new wallet if you never used this app before.
-          </p>
+          <p translate>Set up a new wallet if you never used this app before.</p>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -18,9 +14,7 @@
   <ion-card id="recover-btn" (click)="restoreFromBackup()">
     <ion-grid>
       <ion-row>
-        <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-          <img src="assets/img/app/onboarding/img_recover@2x.png" />
-        </ion-col>
+        <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4> <img src="assets/img/app/onboarding/img_recover@2x.png" /> </ion-col>
         <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
           <h1>{{ 'Recover' | translate }}</h1>
           <p translate>Recover your account data and balance.</p>
@@ -29,19 +23,12 @@
     </ion-grid>
   </ion-card>
 
-  <p class="hint">
-    {{
-      "You'll be able to import existing wallet after created or recovered HD wallet."
-        | translate
-    }}
-  </p>
+  <p class="hint">{{ "You'll be able to import existing wallet after created or recovered HD wallet." | translate }}</p>
 
   <div class="changeLanguage">
     <button ion-item block (click)="openLanguagePage()">
       <ion-label> <span translate>Language</span> </ion-label>
-      <ion-note *ngIf="currentLanguageName" item-end>
-        {{ currentLanguageName }}
-      </ion-note>
+      <ion-note *ngIf="currentLanguageName" item-end> {{ currentLanguageName }} </ion-note>
     </button>
   </div>
 </ion-content>

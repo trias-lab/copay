@@ -1,19 +1,11 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>{{'Backup' | translate}}</ion-title>
-  </ion-navbar>
+  <ion-navbar> <ion-title>{{'Backup' | translate}}</ion-title> </ion-navbar>
 </ion-header>
-
 
 <ion-content no-bounce>
   <div *ngIf="deleted">
     <h1 class="deleted-title" translate>Wallet recovery phrase not available</h1>
-    <ion-item-divider>
-      {{'You can still export it from "Export Wallet" option.' |translate}}
-      <span *ngIf="wallet.coin == 'bch'" translate>
-        Note: if this BCH wallet was duplicated from a BTC wallet, they share the same recovery phrase.
-      </span>
-    </ion-item-divider>
+    <ion-item-divider> {{'You can still export it from "Export Wallet" option.' |translate}} <span *ngIf="wallet.coin == 'bch'" translate> Note: if this BCH wallet was duplicated from a BTC wallet, they share the same recovery phrase. </span> </ion-item-divider>
   </div>
 
   <ion-slides pager="true" *ngIf="!deleted">
@@ -31,18 +23,12 @@
                   </div>
                 </ion-col>
               </ion-row>
-              <div class="hint" translate>Write down your mnemonic on paper, we'll help you double check in next step.
-              </div>
+              <div class="hint" translate>Write down your mnemonic on paper, we'll help you double check in next step.</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="bottom-absolute">
-        <button *ngIf="currentIndex == 0" ion-button class="button-standard" [disabled]="credentialsEncrypted || error"
-          (click)="slideNext(true)">
-          {{'I have written it down' | translate}}
-        </button>
-      </div>
+      <div class="bottom-absolute"><button *ngIf="currentIndex == 0" ion-button class="button-standard" [disabled]="credentialsEncrypted || error" (click)="slideNext(true)">{{'I have written it down' | translate}}</button></div>
     </ion-slide>
 
     <ion-slide>
@@ -51,32 +37,22 @@
           <div class="slide-title" translate>Check Your Mnemonic</div>
           <div class="phrase-container">
             <div>
-              <div class="phrase">
-                <button ion-button *ngFor="let customWord of customWords; let i = index"
-                  (click)="removeButton(i, customWord)"
-                  [ngClass]="{'wrong':!customWord.correct}">{{customWord.word}}</button>
-              </div>
+              <div class="phrase"><button ion-button *ngFor="let customWord of customWords; let i = index" (click)="removeButton(i, customWord)" [ngClass]="{'wrong':!customWord.correct}">{{customWord.word}}</button></div>
             </div>
-            <div class="words">
-              <button ion-button *ngFor="let shuffledWord of shuffledMnemonicWords; let i = index"
-                (click)="addButton(i, shuffledWord)" [disabled]="shuffledWord.selected">{{shuffledWord.word}}</button>
-            </div>
-            <div class="hint invisible" [ngClass]="{'wrong':isWrongOrder}">
-              <ion-icon name="warning"></ion-icon><span translate>Wrong Word!</span>
-            </div>
+            <div class="words"><button ion-button *ngFor="let shuffledWord of shuffledMnemonicWords; let i = index" (click)="addButton(i, shuffledWord)" [disabled]="shuffledWord.selected">{{shuffledWord.word}}</button></div>
+            <div class="hint invisible" [ngClass]="{'wrong':isWrongOrder}"><ion-icon name="warning"></ion-icon><span translate>Wrong Word!</span></div>
             <div class="hint" translate>Please tap each word in the correct order.</div>
           </div>
         </div>
       </div>
       <div class="bottom-absolute">
         <div>
-          <button [disabled]="currentIndex != 1 || !selectComplete" ion-button class="button-standard"
-            (click)="slideNext(false)">
-            {{'Confirm' | translate}}
-          </button>
-          <!-- <button ion-button clear class="button-standard" (click)="setFlow()">
-            {{'Clear' | translate}}
-          </button> -->
+          <button [disabled]="currentIndex != 1 || !selectComplete" ion-button class="button-standard" (click)="slideNext(false)">{{'Confirm' | translate}}</button>
+          <!--
+            <button ion-button clear class="button-standard" (click)="setFlow()">
+              {{'Clear' | translate}}
+            </button>
+          -->
         </div>
       </div>
     </ion-slide>
@@ -84,26 +60,16 @@
     <ion-slide *ngIf="mnemonicHasPassphrase">
       <div class="slide-container">
         <div class="slide-body">
-          <div class="slide-title" translate>In order to verify your wallet recovery phrase, please type your password.
-          </div>
+          <div class="slide-title" translate>In order to verify your wallet recovery phrase, please type your password.</div>
           <ion-item>
             <ion-label stacked translate>Password</ion-label>
-            <ion-input type="password" id="password" [(ngModel)]="password" autocapitalize="off" spellcheck="false">
-            </ion-input>
+            <ion-input type="password" id="password" [(ngModel)]="password" autocapitalize="off" spellcheck="false"> </ion-input>
           </ion-item>
-          <div class="slide-title">
-            <span class="assertive" translate>This recovery phrase was created with a password. To recover this wallet
-              both the recovery phrase and password are needed.</span>
-          </div>
+          <div class="slide-title"><span class="assertive" translate>This recovery phrase was created with a password. To recover this wallet both the recovery phrase and password are needed.</span></div>
         </div>
       </div>
 
-      <div class="bottom-absolute">
-        <button *ngIf="currentIndex == 2" [disabled]="!password" ion-button class="button-standard"
-          (click)="finalStep()">
-          {{'Confirm' | translate}}
-        </button>
-      </div>
+      <div class="bottom-absolute"><button *ngIf="currentIndex == 2" [disabled]="!password" ion-button class="button-standard" (click)="finalStep()">{{'Confirm' | translate}}</button></div>
     </ion-slide>
   </ion-slides>
 </ion-content>
