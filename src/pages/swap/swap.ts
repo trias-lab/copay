@@ -163,7 +163,8 @@ export class SwapPage {
               this.addrWithBalance = addrWithBalance;
               _.forEach(addrWithBalance, (value, index) => {
                 this.addrWithBalance[index].name =
-                  (am[value.address] && am[value.address].name) || this.translate.instant('Default');
+                  (am[value.address] && am[value.address].name) ||
+                  this.translate.instant('Default');
               });
               // this.logger.debug('----------------------addr with balance')
               // this.logger.debug(addrWithBalance)
