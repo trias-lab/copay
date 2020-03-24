@@ -44,7 +44,7 @@
     <ion-card *ngIf="wallet && wallet.isComplete() && !wallet.needsBackup">
       <div>
         <div [ngClass]="{ 'qr-code-bounce': playAnimation }" *ngIf="wallets[0] && address"><ngx-qrcode (click)="showFullAddr()" *ngIf="address" copy-to-clipboard="{{ address }}" hide-toast="true" qrc-value="{{qrAddress}}" qrc-class="aclass" qrc-errorCorrectionLevel="M"></ngx-qrcode></div>
-        <p class="adress_deposit">{{ 'Deposit only {coinName} to this address.' | translate: { coinName: wallet.coin.toUpperCase() } }}</p>
+        <!-- <p class="adress_deposit">{{ 'Deposit only {coinName} to this address.' | translate: { coinName: wallet.coin.toUpperCase() } }}</p> -->
       </div>
 
       <div *ngIf="wallets[0]" class="receive-content">
@@ -52,7 +52,7 @@
           <div class="text-address ellipsis">
             <div class="adress_copy_address" translate>Address</div>
             <div [ngClass]="{ 'fade-in-out': playAnimation }" class="address-text ellipsis"><span hide-toast="true">{{address}}</span></div>
-            <div class="adress_copy_btn" copy-to-clipboard="{{ address }}">COPY</div>
+            <div class="adress_copy_btn" copy-to-clipboard="{{ address }}" translate>COPY</div>
           </div>
         </div>
       </div>

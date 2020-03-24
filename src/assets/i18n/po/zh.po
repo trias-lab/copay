@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: copay\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2020-03-23 12:54+0800\n"
+"PO-Revision-Date: 2020-03-24 11:52+0800\n"
 "Last-Translator: cmgustavo83\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh\n"
@@ -2131,7 +2131,7 @@ msgid "Website"
 msgstr "网站"
 
 msgid "What do you call this wallet?"
-msgstr "你叫这个钱包是什么？"
+msgstr "给这个钱包取个名字吧？"
 
 msgid ""
 "When this wallet was created, it was called \"{{walletName}}\". You can "
@@ -2314,7 +2314,7 @@ msgid "No one can peek at my phone and there's no survelience cameras around."
 msgstr "没有人可以偷看我的手机，周围也没有监控摄像头。"
 
 msgid "No Screenshots"
-msgstr "没有截图"
+msgstr "不要截图"
 
 msgid "Other apps have access to Photos app may steal my mnemonic."
 msgstr "其他可以访问“照片”应用程序的应用程序可能会窃取我的助记词。"
@@ -2440,3 +2440,24 @@ msgid ""
 "Insufficient ETH for TRY transaction fee. Please deposit some ETH in the "
 "same address from which you want to sent out TRY."
 msgstr "用于TRY交易的ETH交易费用不足。 请在此发送地址中存入一些ETH以发送TRY。"
+
+msgid "Wrong Word!"
+msgstr "错误!"
+
+msgid "Wallet Settings"
+msgstr "钱包设置"
+
+msgid "Edit Wallet Name"
+msgstr "修改钱包的名字"
+
+msgid "Input password"
+msgstr "请输入密码"
+
+msgid "Default"
+msgstr "默认"
+
+msgid "Rename"
+msgstr "重命名"
+
+msgid "Deposit only {coinName} to this address."
+msgstr "仅将{coinName}存入此地址。"

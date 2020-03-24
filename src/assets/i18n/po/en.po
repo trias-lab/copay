@@ -2533,3 +2533,24 @@ msgid ""
 msgstr ""
 "Insufficient ETH for TRY transaction fee. Please deposit some ETH in the "
 "same address from which you want to sent out TRY."
+
+msgid "Wrong Word!"
+msgstr "Wrong Word!"
+
+msgid "Wallet Settings"
+msgstr "Wallet Settings"
+
+msgid "Edit Wallet Name"
+msgstr "Edit Wallet Name"
+
+msgid "Input password"
+msgstr "Input password"
+
+msgid "Default"
+msgstr "Default"
+
+msgid "Rename"
+msgstr "Rename"
+
+msgid "Deposit only {coinName} to this address."
+msgstr "Deposit only {coinName} to this address."
