@@ -1686,7 +1686,7 @@ msgid "There is an error in the form"
 msgstr ""
 
 msgid "There's obviously something we're doing wrong. How could we improve your experience?"
-msgstr ""
+msgstr "" 
 
 msgid "This app is not available for your device."
 msgstr ""
@@ -2214,4 +2214,28 @@ msgid "This helps you identify the addresses, you can always replace it if you n
 msgstr ""
 
 msgid "This pin will be used to encrypt your wallet. You’ll need this to grant transfer, access wallet or import wallet."
+msgstr ""
+
+msgid "Insufficient ETH for TRY transaction fee. Please deposit some ETH in the same address from which you want to sent out TRY."
+msgstr ""
+
+msgid "Wrong Word!"
+msgstr ""
+
+msgid "Wallet Settings"
+msgstr ""
+
+msgid "Edit Wallet Name"
+msgstr ""
+
+msgid "Input password"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Rename"
+msgstr ""
+
+msgid "Deposit only {coinName} to this address."
 msgstr ""
