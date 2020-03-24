@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 // providers
@@ -32,7 +33,8 @@ export class AddressAddPage {
     private formBuilder: FormBuilder,
     private logger: Logger,
     private popupProvider: PopupProvider,
-    private profileProvider: ProfileProvider // private address: string
+    private profileProvider: ProfileProvider, // private address: string
+    private translate: TranslateService
   ) {
     this.wallet = this.profileProvider.getWallet(this.navParams.data.walletId);
     this.addressToEdit = this.navParams.get('addressToEdit');
@@ -40,7 +42,7 @@ export class AddressAddPage {
     let oldName = this.navParams.get('oldName');
     this.addressAddForm = this.formBuilder.group({
       name: [
-        oldName || 'Default',
+        oldName || this.translate.instant('Default'),
         Validators.compose([Validators.maxLength(20)])
       ],
       address: ''

@@ -1,11 +1,11 @@
 <ion-header>
-  <ion-navbar> <ion-title>Wallet Settings</ion-title> </ion-navbar>
+  <ion-navbar> <ion-title>{{'Wallet Settings' | translate }}</ion-title> </ion-navbar>
 </ion-header>
 
 <ion-content no-bounce>
   <div class="wallet-set-title">
     <p class="set-name">{{ wallet && wallet.name }}</p>
-    <p class="set-detail" (click)="openWalletName()"><img src="assets/img/settings-icons/icon_edit@2x.png" /> <span>Edit Wallet Name</span></p>
+    <p class="set-detail" (click)="openWalletName()"><img src="assets/img/settings-icons/icon_edit@2x.png" /> <span translate>Edit Wallet Name</span></p>
   </div>
   <ion-list class="settings-list">
     <!--
