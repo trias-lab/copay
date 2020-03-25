@@ -548,7 +548,23 @@ export class ConfirmPage extends WalletTabsChild {
   }
 
   protected showHighFeeSheet() {
-    const coinName = this.wallet.coin === 'btc' ? 'Bitcoin' : 'Bitcoin Cash';
+    let coinName = '';
+    switch (this.wallet.coin) {
+      case 'btc':
+        coinName = 'Bitcoin';
+        break;
+      case 'try':
+        coinName = 'TRY';
+        break;
+      case 'eth':
+        coinName = 'ETH';
+        break;
+      case 'bch':
+        coinName = 'Bitcoin Cash';
+        break;
+      default:
+        coinName = 'TRY';
+    }
     const minerFeeInfoSheet = this.actionSheetProvider.createInfoSheet(
       'miner-fee',
       { coinName }
