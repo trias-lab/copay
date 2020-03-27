@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ValidationErrors,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   Events,
   // NavController,
@@ -47,7 +41,6 @@ export class AddressbookModifyPage {
         this.navParams.data.name,
         Validators.compose([Validators.minLength(1), Validators.required])
       ],
-      email: [this.navParams.data.email, this.emailOrEmpty],
       address: [
         this.navParams.data.address,
         Validators.compose([
@@ -74,14 +67,6 @@ export class AddressbookModifyPage {
 
   ngOnDestroy() {
     this.events.unsubscribe('update:address');
-  }
-
-  /**
-   * Validation of email in the form.
-   * @param control
-   */
-  private emailOrEmpty(control: AbstractControl): ValidationErrors | null {
-    return control.value === '' ? null : Validators.email(control);
   }
 
   public save(): void {
