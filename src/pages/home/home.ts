@@ -260,6 +260,8 @@ export class HomePage {
     this.checkClipboard();
     this.subscribeIncomingDataMenuEvent();
     this.subscribeBwsEvents();
+    // Enable swipe back
+    this.navCtrl.swipeBackEnabled = true;
   }
 
   ionViewDidLoad() {
