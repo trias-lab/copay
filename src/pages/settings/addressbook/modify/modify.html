@@ -11,20 +11,6 @@
       <ion-label stacked>{{ 'Name' | translate }}</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
     </ion-item>
-
-    <ion-item>
-      <ion-label stacked>{{ 'Email' | translate }}</ion-label>
-      <ion-input formControlName="email" type="email"></ion-input>
-    </ion-item>
-    <ion-icon
-      *ngIf="
-        addressBookAdd.value.email &&
-        addressBookAdd.controls.email.status == 'INVALID'
-      "
-      class="check fail"
-      name="ios-close-circle"
-      item-right
-    ></ion-icon>
     <ion-item>
       <ion-label stacked>{{ 'Address' | translate }}</ion-label>
       <ion-input formControlName="address" type="text" [value]="addressBookAdd.value.address" address-validator class="input-check"></ion-input>

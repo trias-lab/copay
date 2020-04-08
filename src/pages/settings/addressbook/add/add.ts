@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ValidationErrors,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Events, NavController, NavParams } from 'ionic-angular';
 
 // providers
@@ -42,7 +36,6 @@ export class AddressbookAddPage {
         '',
         Validators.compose([Validators.minLength(1), Validators.required])
       ],
-      email: ['', this.emailOrEmpty],
       address: [
         '',
         Validators.compose([
@@ -69,14 +62,6 @@ export class AddressbookAddPage {
 
   ngOnDestroy() {
     this.events.unsubscribe('update:address');
-  }
-
-  /**
-   * Validation of email in the form.
-   * @param control
-   */
-  private emailOrEmpty(control: AbstractControl): ValidationErrors | null {
-    return control.value === '' ? null : Validators.email(control);
   }
 
   public save(): void {
